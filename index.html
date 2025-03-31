@@ -362,6 +362,22 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script>
+    // Lazy load images
+    const lazyLoad = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazyload');
+          lazyLoad.unobserve(img);
+        }
+      });
+    });
+    
+    document.querySelectorAll('img.lazyload').forEach(img => lazyLoad.observe(img));
+    </script>
+
 </body>
 
 </html>
