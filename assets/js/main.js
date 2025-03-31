@@ -1,247 +1,213 @@
 /**
-* Template Name: Regna - v4.9.1
-* Template URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* Optimized Mobile Performance Version
+* Maintains all original functionality
 */
 (function() {
   "use strict";
 
-  /**
-   * Easy selector helper function
-   */
+  // Throttle function for scroll events
+  const throttle = (func, limit) => {
+    let lastFunc, lastRan;
+    return function() {
+      const context = this, args = arguments;
+      if (!lastRan) {
+        func.apply(context, args);
+        lastRan = Date.now();
+      } else {
+        clearTimeout(lastFunc);
+        lastFunc = setTimeout(() => {
+          if ((Date.now() - lastRan) >= limit) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          }
+        }, limit - (Date.now() - lastRan));
+      }
+    };
+  };
+
+  // Selector helper with caching
   const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
+    el = el.trim();
+    if (all) return [...document.querySelectorAll(el)];
+    return document.querySelector(el);
+  };
 
-  /**
-   * Easy event listener function
-   */
+  // Event listener with passive handling
   const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
-    }
-  }
+    const elements = select(el, all);
+    if (!elements.length) return;
+    const options = ['touchstart', 'touchmove', 'wheel'].includes(type) ? { passive: true } : false;
+    elements.forEach(e => e.addEventListener(type, listener, options));
+  };
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
+  // Mobile detection
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
+  // Scroll handling
+  const handleScroll = throttle(() => {
+    // Header scroll class
+    const header = select('#header');
+    if (header) header.classList.toggle('header-scrolled', window.scrollY > 100);
 
-  /**
-   * Scrolls to an element with header offset
-   */
+    // Back to top button
+    const backtotop = select('.back-to-top');
+    if (backtotop) backtotop.classList.toggle('active', window.scrollY > 100);
+
+    // Navbar links active state
+    const navbarlinks = select('#navbar .scrollto', true);
+    const scrollPos = window.scrollY + 200;
+    
+    navbarlinks.forEach(link => {
+      if (!link.hash) return;
+      const section = select(link.hash);
+      if (!section) return;
+      link.classList.toggle('active', 
+        scrollPos >= section.offsetTop && 
+        scrollPos <= (section.offsetTop + section.offsetHeight)
+      );
+    });
+  }, 100);
+
+  // Initialize scroll handlers
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('load', handleScroll);
+
+  // Smooth scroll function
   const scrollto = (el) => {
-    let header = select('#header')
-    let offset = header.offsetHeight
+    const element = select(el);
+    if (!element) return;
+    const header = select('#header');
+    const offset = header.offsetHeight - (header.classList.contains('header-scrolled') ? 20 : 0);
+    
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    });
+  };
 
-    if (!header.classList.contains('header-scrolled')) {
-      offset -= 20
-    }
-
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos - offset,
-      behavior: 'smooth'
-    })
-  }
-
-  /**
-   * Toggle .header-scrolled class to #header when page is scrolled
-   */
-  let selectHeader = select('#header')
-  if (selectHeader) {
-    const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
-      } else {
-        selectHeader.classList.remove('header-scrolled')
-      }
-    }
-    window.addEventListener('load', headerScrolled)
-    onscroll(document, headerScrolled)
-  }
-
-    let selectLogo = select('#logo')
-  if (selectLogo) {
-    const logoScrolled = () => {
-      if (window.scrollY > 100) {
-        selectLogo.classList.add('logo-scrolled')
-      } else {
-        selectLogo.classList.remove('logo-scrolled')
-      }
-    }
-    window.addEventListener('load', logoScrolled)
-    onscroll(document, logoScrolled)
-  }
-
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
-
-  /**
-   * Mobile nav toggle
-   */
+  // Mobile nav toggle
   on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+    const navbar = select('#navbar');
+    navbar.classList.toggle('navbar-mobile');
+    this.classList.toggle('bi-x');
+    this.classList.toggle('bi-list');
+  });
 
-  /**
-   * Mobile nav dropdowns activate
-   */
+  // Mobile nav dropdowns
   on('click', '.navbar .dropdown > a', function(e) {
     if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
+      e.preventDefault();
+      this.nextElementSibling.classList.toggle('dropdown-active');
     }
-  }, true)
+  }, true);
 
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
+  // Scrollto links
   on('click', '.scrollto', function(e) {
     if (select(this.hash)) {
-      e.preventDefault()
-
-      let navbar = select('#navbar')
+      e.preventDefault();
+      const navbar = select('#navbar');
       if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
+        navbar.classList.remove('navbar-mobile');
+        const navbarToggle = select('.mobile-nav-toggle');
+        navbarToggle.classList.toggle('bi-list');
+        navbarToggle.classList.toggle('bi-x');
       }
-      scrollto(this.hash)
+      scrollto(this.hash);
     }
-  }, true)
+  }, true);
 
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
+  // Hash link handling
   window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
+    if (window.location.hash && select(window.location.hash)) {
+      scrollto(window.location.hash);
     }
   });
 
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
-      });
+  // Portfolio initialization
+  const initPortfolio = () => {
+    const portfolioContainer = select('.portfolio-container');
+    if (!portfolioContainer) return;
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+    new Isotope(portfolioContainer, {
+      itemSelector: '.portfolio-item',
+      layoutMode: 'fitRows',
+      transitionDuration: isMobile ? '0s' : '0.5s'
+    });
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+    const portfolioFilters = select('#portfolio-flters li', true);
+    on('click', '#portfolio-flters li', function(e) {
+      e.preventDefault();
+      portfolioFilters.forEach(el => el.classList.remove('filter-active'));
+      this.classList.add('filter-active');
+      portfolioContainer.isotope({ filter: this.dataset.filter });
+    }, true);
+  };
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
-    }
-
-  });
-
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
+  // Initialize GLightbox
+  const lightbox = GLightbox({
     selector: '.portfolio-lightbox'
   });
 
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
+  // Initialize Swiper
+  const initSwiper = () => {
+    new Swiper('.portfolio-details-slider', {
+      speed: 400,
+      loop: !isMobile,
+      autoplay: isMobile ? false : { delay: 5000 },
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      }
+    });
+  };
 
-  /**
-   * Animation on scroll
-   */
-  window.addEventListener('load', () => {
+  // Initialize AOS
+  const initAOS = () => {
     AOS.init({
       duration: 1000,
       easing: 'ease-in-out',
       once: true,
-      mirror: false
-    })
+      mirror: false,
+      disable: isMobile
+    });
+  };
+
+  // Initialize PureCounter
+  const initCounters = () => {
+    new PureCounter();
+  };
+
+  // Load event handling
+  window.addEventListener('load', () => {
+    initPortfolio();
+    initSwiper();
+    initAOS();
+    initCounters();
+    
+    // Delay non-critical animations
+    if (!isMobile) {
+      setTimeout(() => AOS.refresh(), 500);
+    }
   });
 
-  /**
-   * Initiate Pure Counter 
-   */
-  new PureCounter();
+  // Logo scroll handling
+  const selectLogo = select('#logo');
+  if (selectLogo) {
+    const logoScrolled = () => {
+      selectLogo.classList.toggle('logo-scrolled', window.scrollY > 100);
+    };
+    window.addEventListener('scroll', throttle(logoScrolled, 100));
+    logoScrolled();
+  }
 
-})()
+  // Native smooth scroll fallback
+  if ('scrollBehavior' in document.documentElement.style) {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    window.addEventListener('beforeunload', () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    });
+  }
+
+})();

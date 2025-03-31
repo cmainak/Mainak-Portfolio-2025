@@ -1,3 +1,19 @@
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-aos] {
+  will-change: transform, opacity;
+}
+
+.swiper-container {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
 body {
   background: #000;
   color: #666666;
