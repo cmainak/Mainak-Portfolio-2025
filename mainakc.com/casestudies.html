@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Case Study - Orbit Scan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="Images/Logo/Logo2.svg" type="image/svg">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0C4700;
+            --secondary: #FF9933;
+            --text: #333333;
+            --background: #F8F9FA;
+            --tertiary: #0C4700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .home-button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.9);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .home-button i {
+    color: #333;
+    font-size: 1.4rem;
+  }
+
+  .home-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  /*Floating Up Arrow Bitton */
+  .floating-up-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .floating-up-button i {
+      color: #333;
+      font-size: 1.4rem;
+  } 
+
+  .floating-up-button:hover {
+    transform: scale(1.1);
+    background: white;  
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+        /* Case Study Navigation */
+        .case-nav {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .case-nav a {
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin: 15px 0;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .case-nav a.active {
+            background: var(--primary);
+            transform: scale(1.4);
+        }
+
+        /* Hero Section */
+
+        .brand-logo {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        z-index: 100;
+        max-width: 100px;
+        margin-bottom: 30px;
+    }
+
+    .brand-logo img {
+        width: 100%;
+        height: auto;
+    }
+        .case-hero {
+            padding: 120px 0 60px;
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        /* Section Styles */
+        .case-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 10px 0;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: var(--tertiary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: bold;
+        }
+
+        /* Research Insights */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .insight-card {
+            padding: 30px;
+            background: white;
+            border-left: 4px solid var(--secondary);
+            border-radius: 4px;
+        }
+
+        /* Image Section */
+        .image-section {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .case-image {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 0px;
+            box-shadow: 0 4px 20px rgba(F,F,F,F,F,F,F);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .image-caption {
+            margin-top: 20px;
+            color: var(--text);
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        /* Design Showcase */
+        .design-showcase {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .design-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .design-image:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Video */
+        .video-container {
+    max-width: 80px; /* Adjust this value */
+    margin: 0 auto;
+}
+
+/* Video scales within container */
+.scaled-video {
+    width: 100%; 
+    height: auto; /* Maintain aspect ratio */
+    /* Optional: Add max-height for vertical constraints */
+    /* max-height: 400px; */
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .brand-logo {
+            max-width: 80px;
+            top: 20px;
+        }
+            .case-nav {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .case-section {
+                padding: 60px 20px;
+            }
+
+            .home-button {
+      width: 40px;
+      height: 40px;
+    }
+    .home-button i {
+      font-size: 1.2rem;
+    }
+
+    .floating-up-button {
+      width: 40px;
+      height: 40px;
+    }
+    .floating-up-button i {
+      font-size: 1.2rem;
+    }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-button">
+        <i class="fas fa-home"></i>
+      </a>
+
+      <a href="casestudies.html" class="floating-up-button">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+    <!-- Case Study Navigation -->
+    <nav class="case-nav">
+        <a href="#1stslide" class="active"></a>
+        <a href="#uxstudysequence"></a>
+        <a href="#Projectoverview"></a>
+        <a href="#Problemstatement"></a>
+        <a href="#Research&Discovery"></a>
+        <a href="#CompetitiveAnalysis"></a>
+        <a href="#ResearchSignificance"></a>
+        <a href="#UserStory"></a>
+        <a href="#StoryResolution"></a>
+        <a href="#CustomersJourneyMap"></a>
+        <a href="#VisualDesign"></a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="case-hero">
+        <div class="hero-content">
+            <div class="brand-logo" style="left: 30px; transform: none;">
+                <img src="CaseStudies/Images/Logo.png" alt="Brand Logo">
+            </div>
+            <h1>ORBIT SCAN</h1>
+            <p>A Complete Solution for Smarter, Healthier Product Choices</p>
+            <div class="project-meta">
+                <div>
+                    <h4>Role</h4>
+                    <p>UX Designer & Researcher</p>
+                </div>
+                <div>
+                    <h4>Duration</h4>
+                    <p>8 Weeks</p>
+                </div>
+                <div>
+                    <h4>Team</h4>
+                    <p>Individual</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- UX Study Sequence -->
+     <section class="case-section" id="uxstudysequence">
+        <div class="section-header">
+            <h2>UX Case Study Sequence</h2>
+        </div>
+        <div class="image-section">
+            <img src="CaseStudies/Images/Slide 2.png" alt="ProjectOverview" class="case-image">
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="case-section" id="Projectoverview">
+        <div class="section-header">
+            <h2>Project Overview</h2>
+            <p>OrbitScan is a mobile app that helps
+                consumers make informed choices about
+                the products they buy, particularly in the
+                food category.
+                It allows users to scan barcodes of products to
+                receive a detailed analysis of their ingredients,
+                nutritional value, and potential health impacts
+                by simplifying complex information and giving
+                practical health scores and recommendations,
+                Orbit Scan empowers users to make healthier
+                and more informed decisions.</p>
+        </div>
+        
+    </section>
+
+     <!-- Problem Statement -->
+     <section class="case-section" id="Problemstatement">
+        <div class="section-header">
+            <h2>Problem Statement</h2>
+            <p>Product labels and ingredient
+                lists are complex and
+                time-consuming to understand,
+                making it difficult to make
+                quick, informed choices while
+                shopping.
+                There's a fundamental gap in
+                nutrition and label literacy,
+                preventing consumers from
+                building long-term knowledge
+                about the foods they consume.</p>
+        </div>
+        <div class="image-section">
+            <img src="CaseStudies/Images/FISH BONE.png" alt="UX Process Flow" class="case-image">
+            <div class="image-caption">User journey mapping and design process visualization</div>
+        </div>
+        
+        
+    </section>
+
+
+   
+    <!-- Research & Discovery -->
+    <section class="case-section" id="Research&Discovery">
+        <div class="section-header">
+            <h2>Research & Discovery</h2>
+            <p>Exploring the 5 W's</p>
+        </div>
+
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <h4>WHO</h4>
+                    <ul>
+                        <p>Target Audience</p>
+                        <p>Level of Impact</p>
+                    </ul>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <h4>WHAT</h4>
+                <p>Defining the Problem Precisely</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <h4>WHEN</h4>
+                <p>Problem Occurrence Timeline</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <h4>WHERE</h4>
+                <p>Context Analysis</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <h4>WHY</h4>
+                <p>Impact Analysis</p>
+            </div>
+        </div>
+
+        <div class="image-section">
+            <p></p>
+            <br>
+            <img src="CaseStudies/Images/TG.png" alt="UX Process Flow" class="case-image">
+            <div class="image-caption">WHO Target Audience Spectrum (Primary)</div>
+        </div>
+        <div class="image-section">
+            <p></p>
+            <br>
+            <img src="CaseStudies/Images/Who Impact Assesment.png" alt="UX Process Flow" class="case-image">
+            <div class="image-caption">WHO: Level of Impact</div>
+        </div>
+        <div class="image-section">
+            <p></p>
+            <br>
+            <img src="CaseStudies/Images/WHAT.png" alt="UX Process Flow" class="case-image">
+            <div class="image-caption">WHAT: Defining the Problem Precisely</div>
+        </div>
+        <div class="image-section">
+            <p></p>
+            <br>
+            <img src="CaseStudies/Images/WHEN.png" alt="UX Process Flow" class="case-image">
+            <div class="image-caption">WHEN: Problem Occurrence Timeline</div>
+        </div>
+        <div class="image-section">
+            <p></p>
+            <br>
+            <img src="CaseStudies/Images/WHERE.png" alt="UX Process Flow" class="case-image">
+            <div class="image-caption">WHERE: Context Analysis</div>
+        </div>
+        <div class="image-section">
+            <p></p>
+            <br>
+            <img src="CaseStudies/Images/WHY.png" alt="UX Process Flow" class="case-image">
+            <div class="image-caption">WHY: Impact Analysis</div>
+        </div>
+    </section>
+
+    <!-- Competitive Analysis -->
+    <section class="case-section" id="CompetitiveAnalysis">
+        <div class="section-header">
+            <h2>Competitive Analysis</h2>
+        </div>
+        <div class="image-section">
+            <img src="CaseStudies/Images/Competitive analysis.png" alt="UX Process Flow" class="case-image">
+            
+        </div>
+
+    <!-- Research Significance -->
+    <section class="case-section" id="ResearchSignificance">
+        <div class="section-header">
+            <h2>Research Significance</h2>
+            <p>This research aims to develop an app
+                that addresses a critical gap in
+                consumer knowledge,
+                empowering users to make
+                healthier and more sustainable
+                choices. By providing personalized
+                recommendations, the app will
+                enhance consumer awareness and
+                promote healthier lifestyles,
+                ultimately contributing to public
+                health and environmental
+                sustainability.</p>
+                <br>
+                <img src="CaseStudies/Images/Significance of the study.png" alt="UX Process Flow" class="case-image">
+        </div>
+        
+    </section>
+
+    <!-- User Story-->
+    <section class="case-section" id="UserStory">
+        <div class="section-header">
+            <h2>User Story</h2>
+            <p>Stephanie is a
+                health-conscious mom who
+                cares deeply about the
+                well-being of her family.
+                As a working mom managing
+                a busy household, she's
+                particularly conscious about
+                healthy eating, especially
+                since her youngest child
+                developed food sensitivities.</p>
+                <br>
+                <img src="CaseStudies/Images/User Persona3.png" alt="UX Process Flow" class="case-image">
+
+                <br>
+
+                <p>One evening, Stephanie
+                    stumbles upon an article
+                    highlighting the dangers of
+                    certain additives commonly
+                    found in packaged foods.
+                    Realizing these ingredients
+                    might be in her family's
+                    everyday foods, she feels a
+                    growing sense of
+                    responsibility.But the more
+                    she researches, the more
+                    overwhelmed she feels.</p>
+                
+                    <br>
+
+                <img src="CaseStudies/Images/Harmful.png" alt="UX Process Flow" class="case-image">
+
+                <br>
+                <br>
+
+                <p>Stephanie stands in the grocery
+                    store aisle and tries to read product
+                    labels to find healthier options.
+                    She’s feeling overwhelmed. With a
+                    shopping cart containing half her
+                    list and two kids getting restless,
+                    she's trying to decode yet another
+                    product label.
+                    She's become increasingly aware of
+                    the importance of checking
+                    ingredients. But every shopping
+                    trip turns into a research project</p>
+                
+                    <br>
+
+                <img src="CaseStudies/Images/Sarah.png" alt="UX Process Flow" class="case-image">
+
+                <br>
+                <br>
+
+                <p>Stephanie’s Grocery Shopping Experience: Challenge</p>
+                
+                    <br>
+
+                <img src="CaseStudies/Images/challenges.png" alt="UX Process Flow" class="case-image">
+
+            
+
+                <br>
+                <br>
+
+                <p>Stephanie’s Pain Points</p>
+                
+                    <br>
+
+                <img src="CaseStudies/Images/Painpoints.png" alt="UX Process Flow" class="case-image">
+
+                <br>
+                <br>
+
+                <p>Stephanie’s Story, Climax: 
+                    <br>
+                    During lunch, Stephanie shares her struggles with a
+                    colleague.
+                    "I spend so much time reading labels and Googling
+                    ingredients but still feel unsure about my choices," she
+                    says.
+                    Her colleague suggests OrbitScan: "Just scan a barcode,
+                    and it shows health info instantly, plus better
+                    alternatives."
+                    Curious and hopeful, Stephanie downloads the app that
+                    evening, ready to try it on her next grocery trip.
+                    Touchpoints: Downloads the app, opens it, and
+                    familiarizes herself with its features.</p>
+                
+                    <br>
+
+                    <div class="image-caption">Stephanie downloads the app and signs up as a new user. She goes through the onboarding screens, where the app features are introduced. Next, she selects her food preferences based on her health needs. She then scrolls through the home screen, where top products, e-gift vouchers, and food articles are displayed on the Discover screen. She also clicks on the Lists tab to view products categorized by type. During this process, she familiarizes herself with the app.</div>
+
+
+                    <video class="case-image" controls muted loop poster="CaseStudies/Images/Video/Onboarding & Sign Up.mov">
+                        <source src="CaseStudies/Images/Video/Onboarding & Sign Up.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <br>
+                    <br>
+    
+                    <p>Impact:
+                        <br>
+                        On her next grocery trip, Stephanie puts OrbitScan to the test.
+                        She picks up the milk tetra pack she usually buys and scans the
+                        barcode.
+                        Within seconds, the app provides:
+                        ● Positives: "Good source of calcium."
+                        ● Negatives: "Contains additives like Carrageenan."
+                        ● Health Score Ratings: 41/100
+                        OrbitScan suggests a better alternative: An organic milk brand
+                        free of harmful additives and within her budget. She swaps the
+                        product without hesitation.
+                        Touchpoints:
+                        ● Scans the first product: Milk tetra pack.
+                        ● Receives health score and insights on ingredients.
+                        ● Replaces the product with a healthier alternative
+                        suggested by OrbitScan.
+                        ● Continues shopping and scans several other items
+                        (snacks, pantry staples, etc.).</p>
+                    
+                        <br>
+
+                        <div class="image-caption">Scans the first product: Milk tetra pack.
+
+                            Receives health score and insights on ingredients.
+                            
+                            Replaces the product with a healthier alternative suggested by OrbitScan.
+                            
+                            Continues shopping and scans several other items (snacks, pantry staples, etc.)</div>
+    
+    
+                        <video class="case-image" controls muted loop poster="CaseStudies/Images/Video/Product Scan & Recommendation.mov">
+                            <source src="CaseStudies/Images/Video/Product Scan & Recommendation.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+
+                        
+                    <br>
+                    <br>
+    
+                    <p>Stephanie’s Checkout Experience:
+                        <br>
+                        Stephanie finalized her purchase with confidence in her
+                        choices.
+                        ● She reviews the cart and feels assured about the selections.
+                        ● She scans the receipt to earn additional points for healthier
+                        products.
+                        Emotions:
+                        ● She is confident in the choices made, feeling good about her
+                        family's health.
+                        Relief: No more second-guessing or stress about product selection.
+                        Happiness: Proud of making healthier, smarter choices.
+                        Touchpoints:
+                        ● Scans receipt to earn points.
+                        ● Encouraged by the points earned for discounts on eco-friendly
+                        products.</p>
+                    
+                        <br>
+
+                        <div class="image-caption">Touchpoints:
+
+                            Scans receipt to earn points.
+                            
+                            Encouraged by the points earned for discounts on eco-friendly products.</div>
+    
+    
+                        <video class="case-image" controls muted loop poster="CaseStudies/Images/Video/Receipt Scan.mov">
+                            <source src="CaseStudies/Images/Video/Receipt Scan.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+        
+    </section>
+
+    <!-- Story resolution-->
+    <section class="case-section" id="Storyresolution">
+        <div class="section-header">
+            <h2>Story Resolution</h2>
+
+            <p>Stephanie’s Story Resolution</p>
+                        
+                            <br>
+        
+                        <img src="CaseStudies/Images/Resolution.png" alt="UX Process Flow" class="case-image">
+
+                        <br>
+                        <br>
+        
+        
+                        <img src="CaseStudies/Images/napkin-selection.svg" alt="UX Process Flow" class="case-image">
+
+    <!-- Customer Journey Map -->
+    <section class="case-section" id="CustomerJourneyMap">
+        <div class="section-header">
+            <h2>Customer Journey Map</h2>
+         
+            <img src="CaseStudies/Images/CUSTOMER JOURNEY MAP.png" alt="Custome Journey Map" class="design-image">
+        </div>
+        </section>
+
+<!-- Visual Design -->
+    <section class="case-section" id="VisualDesign">
+        <div class="section-header">
+            <h2>Visual Design</h2>
+
+        </div>
+
+        <div class="design-showcase">
+            <br>
+            <p>Onboarding Screens</p>
+            <img src="CaseStudies/Images/Cover.png" alt="Onboarding Screens" class="design-image">
+            
+            <p>Bottom Navigation</p>
+            
+            <img src="CaseStudies/Images/Bottom Nav.png" alt="Bottom Navigation Screens" class="design-image">
+           
+            <p>Scan process & Product Scoring Method</p>
+         
+            <img src="CaseStudies/Images/Scan Process & Product Scoring Method.png" alt="Scan process & Product Scoring Methods" class="design-image">
+
+            <p>Rewards</p>
+         
+            <img src="CaseStudies/Images/Rewards.png" alt="Rewards Screens" class="design-image">
+       
+<br>
+        <p>Logo</p>
+
+        <br>
+         
+            <img src="CaseStudies/Images/Orbit Scan Logo.png" alt="Orbit Logo" class="design-image">
+        
+<br>
+        <br>
+
+        <p>Typography: AudioWide , Merriweather (Secondary)</p>
+
+        <br>
+         
+            <img src="CaseStudies/Images/Typography.png" alt="Typography" class="design-image">
+     
+
+        <br>
+        <br>
+
+        <p>Color Palette</p>
+
+        <br>
+         
+            <img src="CaseStudies/Images/Group 41150.png" alt="Color Palette" class="design-image">
+        </div>
+    </section>
+
+  
+
+    <script>
+        // Smooth scroll and section tracking
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Update active navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.case-section');
+            const navLinks = document.querySelectorAll('.case-nav a');
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    navLinks[index].classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+chrome-extension://njggknpmkjapgklcfhaiigafiiebpchm/content-scripts/sidebar-entry.js
