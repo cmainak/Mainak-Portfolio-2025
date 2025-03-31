@@ -4,6 +4,8 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 (function() {
   "use strict";
 
@@ -243,5 +245,16 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
+
+  // Update the AOS initialization at the bottom of main.js
+window.addEventListener('load', () => {
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false,
+    disable: isMobile // Disable AOS on mobile devices
+  });
+});
 
 })()

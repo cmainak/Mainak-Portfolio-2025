@@ -73,8 +73,10 @@ h6 {
 # Disable AOS delay on mobile
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
-  [data-aos-delay] {
-    transition-delay: 0 !important;
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
@@ -361,6 +363,11 @@ h6 {
   #hero h1 {
     font-size: 50px;
     line-height: 38px;
+    background-attachment: scroll !important;
+  }
+  #hero {
+    background: url(../img/Cover-Hero-small.webp) top center;
+    background-size: cover;
   }
 }
 
