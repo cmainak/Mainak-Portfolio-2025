@@ -313,6 +313,7 @@ h6 {
   height: 100vh;
   background: url(../img/Cover-Hero.webp) top center;
   background-size: cover;
+  background-attachment: scroll;
   position: relative;
 }
 
