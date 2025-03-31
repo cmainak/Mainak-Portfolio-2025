@@ -204,7 +204,7 @@ h6 {
   transition: 0.5s;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .mobile-nav-toggle {
     display: none;
   }
@@ -245,7 +245,7 @@ h6 {
   border-radius: 0 !important;
 }
 
-/*
+
 .navbar-mobile {
   position: fixed;
   overflow: hidden;
@@ -304,7 +304,7 @@ h6 {
 .navbar-mobile .getstarted:focus {
   margin: 15px;
 }
-*/
+
 
 
 /*--------------------------------------------------------------
@@ -516,7 +516,7 @@ logo-slider:after {
   text-align: justify;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   #about{
     padding:0;
   }
@@ -531,7 +531,7 @@ logo-slider:after {
   vertical-align: middle;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .about-avatar img{
     max-width: 100% !important;
     align-items: center !important;
@@ -550,13 +550,13 @@ logo-slider:after {
   font-size: 18px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .about-text h2{
     font-size: 40px;
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .about-text p{
     font-size: 16px;
   }
