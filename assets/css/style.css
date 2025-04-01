@@ -411,9 +411,11 @@ section {
   padding-bottom: 50px !important;
 }
 
+
 .section-header{
   padding-bottom: 50px !important;
 }
+
 
 /* Work Section
 --------------------------------*/
@@ -664,7 +666,7 @@ logo-slider:after {
 }
 
 #services .title a {
-  color: #fff;
+  color: #000;
 }
 
 #services .description {
