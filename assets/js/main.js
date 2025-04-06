@@ -80,6 +80,11 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
     })
   }
 
+  function flipImage() {
+    const flipContainer = document.querySelector('.flip-container');
+    flipContainer.classList.toggle('flipped');
+}
+
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
    */

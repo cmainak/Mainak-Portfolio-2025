@@ -525,6 +525,7 @@ logo-slider:after {
   }
 }
 
+
 .about-avatar{
   padding: 30px !important;
 }
@@ -533,6 +534,8 @@ logo-slider:after {
   max-width: 80%;
   vertical-align: middle;
 }
+
+
 
 @media (max-width: 768px) {
   .about-avatar img{
@@ -552,6 +555,14 @@ logo-slider:after {
   font-family: 'Chakra Petch',;
   font-size: 18px;
 }
+
+.front, .back {
+  max-width: 100% !important;
+}
+.flip-container {
+  width: 100%;
+}
+
 
 @media (max-width: 768px) {
   .about-text h2{
