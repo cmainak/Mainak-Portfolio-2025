@@ -1,0 +1,253 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-image: url("images/tortoise-shell.svg");
+    background-color: #F0F0F2;
+}
+
+.case-study {
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.case-study-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-image {
+    width: 900px; /* Keep the defined width */
+    height: auto;
+    margin: 0 auto; /* Center the block-level div horizontally */
+    align-items: center;
+}
+
+.header-image img {
+    max-width: 100%;
+    display: block;
+    align-items: center;
+}
+
+.logo-iteration .header-image {
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Center the block-level div horizontally */
+}
+.header-content h1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 2em;
+}
+
+.header-content .client, .header-content .date {
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.header-content .tags {
+    display: flex;
+    gap: 5px;
+}
+
+.header-content .tag {
+    background-color: #eee;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+section ul, section ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+
+h3{
+        color: #147800; 
+        font-size: 20px;
+    }
+
+h2{
+color:#9eca0e;
+    }
+
+.visual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust minmax as needed */
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.visual-item {
+    /* Add styling for visual elements */
+    border: 1px solid #eee;
+    padding: 10px;
+    text-align: center;
+}
+
+.final-design {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust minmax as needed */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.final-design img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.results-visuals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust minmax as needed */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.results-visuals img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+.case-study-footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 2px solid #ddd;
+}
+
+.case-study-footer h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.contact-button {
+    background-color: #007bff; /* Example button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.contact-button:hover {
+    background-color: #0056b3;
+}
+
+.more-projects-section {
+    padding: 20px; /* Adjust as needed */
+    background-color: #f9f9f9; /* Adjust as needed */
+    border-radius: 8px; /* If the section has rounded corners */
+}
+
+.more-projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.more-projects-header h3 {
+    font-size: 1.1em; /* Adjust as needed */
+    color: #777; /* Adjust as needed */
+    margin: 0;
+}
+
+.more-projects-header .dots {
+    display: inline-block;
+    margin-left: 5px;
+    color: #ccc; /* Adjust as needed */
+}
+
+.more-projects-header .dots::before {
+    content: "••••"; /* Adjust the number of dots */
+}
+
+.more-projects-header .view-all {
+    color: #007bff; /* Adjust as needed */
+    text-decoration: none;
+    font-size: 0.9em; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+}
+
+.more-projects-header .view-all svg {
+    margin-left: 5px;
+}
+
+.project-cards-container {
+    display: flex;
+    gap: 20px; /* Adjust spacing between cards */
+}
+
+.project-card {
+    flex: 1;
+    border: 1px solid #ddd; /* Adjust border color */
+    border-radius: 8px; /* Adjust card border radius */
+    padding: 15px; /* Adjust padding inside the card */
+    background-color: #fff; /* Ensure card background is white */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.project-card.empty {
+    /* Styling for the empty card if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaa; /* Placeholder text color */
+    font-style: italic;
+}
+
+.project-card.empty::before {
+    content: "No Preview"; /* Example placeholder text */
+}
+
+.project-tags {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px; /* Adjust spacing between tags and image */
+}
+
+.project-tags .tag {
+    background-color: #eee; /* Adjust tag background color */
+    color: #333; /* Adjust tag text color */
+    padding: 5px 10px;
+    border-radius: 20px; /* Make them rounded */
+    font-size: 0.8em; /* Adjust tag font size */
+}
+
+.project-image {
+    /* Styling for the image container if needed */
+    text-align: center; /* Center the image within its container */
+}
+
+.project-image img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Prevent extra bottom spacing */
+}
+
+.project-placeholder {
+    /* Styling for the placeholder content */
+    text-align: center;
+}
