@@ -25,6 +25,7 @@ body {
     height: auto;
     margin: 0 auto; /* Center the block-level div horizontally */
     align-items: center;
+    max-width: 100%;
 }
 
 .header-image img {
@@ -245,9 +246,55 @@ color:#9eca0e;
     max-width: 100%;
     height: auto;
     display: block; /* Prevent extra bottom spacing */
+    max-width: 100%;
 }
 
 .project-placeholder {
     /* Styling for the placeholder content */
     text-align: center;
 }
+
+
+
+
+/* ----------- Mobile Responsiveness ----------- */
+@media screen and (max-width: 768px) {
+    h1, h2, h3 {
+      font-size: 90% !important;
+    }
+  
+    p, li {
+      font-size: 16px !important;
+    }
+  
+    .header-image img,
+    img {
+      width: 100% !important;
+      height: auto !important;
+    }
+  
+    iframe {
+      width: 100% !important;
+      height: auto;
+    }
+  
+    div[style*="display: flex"] {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center;
+    }
+  
+    .visual-grid {
+      display: block !important;
+    }
+  
+    .more-projects-section .project-cards-container {
+      flex-direction: column !important;
+      gap: 1rem;
+    }
+  
+    .project-card {
+      width: 100%;
+    }
+  }
+  
