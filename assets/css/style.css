@@ -69,14 +69,6 @@ h6 {
   opacity: 1;
 }
 
-.about-avatar img {
-  height: 800px;
-  object-fit:contain;
-  object-position: center;
-  max-width: 100%;
-  border-radius: 100%;
- 
-}
 
 
 /*--------------------------------------------------------------
