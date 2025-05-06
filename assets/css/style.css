@@ -513,6 +513,8 @@ logo-slider:after {
   color: #fff;
 }
 
+
+
 /* About Us Section
 --------------------------------*/
 #about {
@@ -589,13 +591,14 @@ logo-slider:after {
   border-radius: 50px;
   transition: 0.5s;
   margin-top: 50px !important;
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid #02437D;
+  color: #02437D;
 }
 
 #about .btn-get-started:hover {
-  background: #8e5aff;
-  border: 2px solid #8e5aff;
+  background: #02437D;
+  border: 2px solid #FF9933;
+  color: #fff;
 }
 
 
