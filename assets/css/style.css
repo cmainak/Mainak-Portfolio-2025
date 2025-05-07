@@ -578,6 +578,7 @@ logo-slider:after {
   .about-text p{
     font-size: 16px;
   }
+ 
 }
 
 #about .btn-get-started {
@@ -599,6 +600,12 @@ logo-slider:after {
   background: #02437D;
   border: 2px solid #FF9933;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  #about {
+    padding: 80px 20px !important;
+  }
 }
 
 
