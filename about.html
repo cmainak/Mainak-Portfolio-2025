@@ -63,44 +63,38 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 
-  @media (max-width: 768px) {
-  #about .experience-entry {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  #about .experience-entry:first-child {
-    border-bottom: none;
-  }
 
-  #about .experience-entry:last-child {
-    border-bottom: none;
+  .about-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    padding: 10px 10px;
   }
 
-  #about .experience-role {
-    font-weight: bold;
-    font-size: 1rem;
-    line-height: 1.4;
+  @media screen and (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+      padding: 60px 20px;
+    }
+
+    .about-container > div {
+      width: 100% !important;
+    }
+
+    .about-container img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .about-container ul {
+      padding-left: 0;
+    }
   }
-
-  #about .experience-date {
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: 4px;
-  }
-
-  #about h2 {
-    font-size: 1.2rem;
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
+</style>
 
 
-}
-
-
-  
-  </style>
 
 <link rel="icon" href="assets/img/Logo2.svg"type="image/svg">
 
@@ -131,7 +125,8 @@
   
   <!-- ======= About Section ======= -->
   <section id="about" style="padding: 100px 100px; font-family: 'Open Sans', sans-serif; background: #fff; color: #000;">
-    <div style="max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; gap: 40px;">
+    <div class="about-container">
+
       
       <!-- Left Column -->
       <div style="flex: 1 1 55%; min-width: 300px;">
