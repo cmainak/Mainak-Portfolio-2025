@@ -105,8 +105,7 @@ h6 {
 }
 
 #header.header-scrolled {
-  background: #000000(21, 13, 38, 0.94);
-  height: 100px;
+  background: rgba(4, 43, 79, 0.94);
   transition: all 0.5s;
 }
 
@@ -228,7 +227,8 @@ h6 {
 .mybottomnav{
   background: rgba(29, 29, 30, 0.9) !important;
   transition: all 0.5s;
-  font-family: 'Chakra Petch',;
+  font-family: 'Chakra Petch', sans-serif;
+  padding: 10px 0 !important;
   color: #fff;
   font-size: 18px;
   border-radius: 0 !important;
