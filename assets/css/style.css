@@ -1,7 +1,7 @@
 body {
   background: #000;
   color: #666666;
-  font-family: 'Jura', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 a {
@@ -28,7 +28,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Jura', sans-serif;
+  font-family: 'Chakra Petch' sans-serif;
   font-weight: 500;
   margin: 0 0 20px 0;
   padding: 0;
@@ -226,7 +226,7 @@ h6 {
 
 .mybottomnav{
   background: rgba(29, 29, 30, 0.9) !important;
-  transition: all 0.5s;
+  transition: all 0.1s;
   font-family: 'Chakra Petch', sans-serif;
   padding: 10px 0 !important;
   color: #fff;
