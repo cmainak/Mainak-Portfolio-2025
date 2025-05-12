@@ -141,10 +141,10 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
    */
   const initSwiper = () => {
     new Swiper('.portfolio-details-slider', {
-      speed: isMobile ? 100 : 100,
+      speed: isMobile ? 300 : 300,
       loop: true,
       autoplay: isMobile ? false : {
-        delay: 1000,
+        delay: 3000,
         disableOnInteraction: false
       },
       pagination: {
