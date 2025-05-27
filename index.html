@@ -76,7 +76,7 @@
         <ul>
           <li><a class="nav-link scrollto" href="#hero">Home</a></li>
        
-          <li><a class="nav-link scrollto" href="#about">About Me</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="work.html">Projects</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
@@ -206,10 +206,12 @@
 
           <div class="col-lg-5 col-md-8">
             <div class="form">
-              <form action="https://formsubmit.co/mainak.chak04@gmail.com" method="post" role="form" class="php-email-form">
+              <form action="https://formsubmit.co/mainak.chak04@gmail.com" method="POST" class="php-email-form">
+                <!-- Hidden fields for FormSubmit -->
                 <input type="hidden" name="_next" value="https://mainakc.netlify.app/thank-you.html">
                 <input type="hidden" name="_captcha" value="false">
-                
+                <input type="text" name="_honey" style="display:none">
+              
                 <div class="form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
@@ -217,18 +219,26 @@
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                  <input type="text" class="form-control" name="_subject" id="subject" placeholder="Subject" required>
                 </div>
                 <div class="form-group mt-3">
                   <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                 </div>
+              
+                <!-- Remove JS-based loaders and messages -->
+                <!-- You can replace this with a custom thank-you page instead -->
+                <!-- Optional: leave a manual message container -->
                 <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <div class="form-message error" style="display: none;">
+                    Something went wrong. Please try again later.
+                  </div>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
+              
+                <div class="text-center">
+                  <button type="submit">Send Message</button>
+                </div>
               </form>
+              
               
             </div>
           </div>
