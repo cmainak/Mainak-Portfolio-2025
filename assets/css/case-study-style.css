@@ -254,6 +254,21 @@ color:#9eca0e;
     text-align: center;
 }
 
+.more-text {
+    display: none;
+  }
+  
+  .read-more-btn {
+    color: #007bff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font: inherit;
+    padding: 0;
+    margin-left: 4px;
+  }
+  
+
 
 
 
