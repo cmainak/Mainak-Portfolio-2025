@@ -63,6 +63,14 @@ body {
     font-size: 0.9em;
 }
 
+.tag {
+    background: #f2f2f2;
+    padding: 0.4rem 0.8rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+  }
+  
+
 section {
     margin-bottom: 40px;
 }
@@ -258,7 +266,7 @@ color:#9eca0e;
     display: none;
   }
   
-  .read-more-btn {
+.read-more-btn {
     color: #007bff;
     cursor: pointer;
     background: none;
