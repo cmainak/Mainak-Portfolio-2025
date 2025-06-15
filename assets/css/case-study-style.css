@@ -291,6 +291,39 @@ color:#9eca0e;
     padding: 0;
     margin-left: 4px;
   }
+
+  .sticky-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .sticky-cluster {
+    flex: 1 1 300px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .sticky-title {
+    font-size: 20px;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .sticky-note {
+    background-color: #fff8c4;
+    border-left: 6px solid #f7d800;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
   
 
 
