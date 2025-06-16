@@ -370,10 +370,14 @@
 <section class="visual-exploration">
         <p style="font-size: 28px;">Final Implementation & Key Improvements</p>
 
-<h3 style="font-size: 24px;">Home Screen</h3>
+        <p style="font-size: 28px; color: #000000;"><strong>Home Screen</strong></p>
 
-<p style="font-size: 18px; max-width: 600px; margin-bottom: 1.5rem;">
-    Orbit Scan's onboarding introduces the app's core functionalities across four screens. It highlights instant health insights through product scanning, identification of harmful additives, and a reward system for making smart choices, encouraging users to begin.
+<p style="font-size: 18px; max-width:auto; margin-bottom: 1.5rem;">
+  The home section is designed to give a quick, strong first impression. It clearly shows who I am, what I do, and gives recruiters an easy way to access my resume.
+
+  I kept the intro short and to the point so it’s easy to scan, and added a clean call-to-action right up front. The visual design reflects my personality while still looking professional.
+  
+  
 </p>
 
 <div style="text-align: right;  align-items: center;">
@@ -388,7 +392,7 @@
   
   <!-- Text on the RIGHT -->
   <div style="max-width: 400px;">
-    <h3 style="font-size: 24px;">About Section</h3>
+    <p style="font-size: 28px; color: #000000;"><strong>About Section</strong></p>
     <p style="font-size: 18px;">
       I removed the work experience timeline, certifications, testimonials and focused the About section on personal storytelling, allowing my voice, values, and design perspective to shine through. This aligned better with recruiter expectations — they want to understand who you are and how you think, not just what you've done.
     </p>
@@ -399,16 +403,16 @@
 
           <!-- TEXT: LEFT -->
           <div style="flex: 1; min-width: 300px; max-width: 500px;">
-            <h3 style="font-size: 24px;">SCANNER</h3>
+            <p style="font-size: 28px; color: #000000;"><strong>Projects Section</strong></p>
             <p style="font-size: 18px;">
-              <strong>Left Screen:</strong> The left screen shows the detailed health information for a product after a scan. It highlights both positive and negative attributes of its ingredients. <br><br>
-              <strong>Right Screen:</strong> The right screen shows the options to <strong>"Add to Favorites"</strong>, view the <strong>"Scoring method"</strong>, and offers <strong>"Recommendations"</strong> for similar products.
+            Minimizing visible text to just titles, tags, and a CTA. <br><br>
+            Introducing hover-based interactions that reveal deeper context only when users engage with the card.
             </p>
           </div>
         
           <!-- IMAGE: RIGHT -->
           <div style="flex: 1; min-width: 300px; max-width: 600px; padding-left: 2rem;">
-            <img src="images/Scanner.svg" alt="Scanner Screen of OrbitScan"
+            <img src="assets/img/Portfolio Redesign/Projects_v2.png" alt="Project Section Cover"
                  style="width: 100%; height: auto;">
           </div>
         
@@ -419,87 +423,54 @@
 
             <!-- IMAGE: LEFT -->
             <div style="flex: 1; min-width: 300px; max-width: 600px;">
-              <img src="images/Additive analysis.svg" alt="Additive Analysis Screen of OrbitScan"
+              <img src="assets/img/Portfolio Redesign/Contact Section.png" alt="Contact Section"
                    style="width: 100%; height: auto;">
             </div>
           
             <!-- TEXT: RIGHT -->
             <div style="flex: 1; min-width: 300px; max-width: 500px;">
-              <h3 style="font-size: 24px;">ADDITIVE ANALYSIS</h3>
+              <p style="font-size: 28px; color: #000000;"><strong>Contact Section</strong></p>
               <p style="font-size: 18px;">
-                <strong>Left Screen:</strong> The left screen shows the detailed health information for a product after a scan. It highlights both positive and negative attributes of its ingredients. <br><br>
-                <strong>Right Screen:</strong> The right screen shows the options to <strong>"Add to Favorites"</strong>, view the <strong>"Scoring method"</strong>, and offers <strong>"Recommendations"</strong> for similar products.
-              </p>
+                The contact form was initially located on a separate page, breaking the flow and adding unnecessary friction to reaching out.</p>
+                <p style="font-size: 18px;">
+                I embedded the contact section directly into the homepage just above the footer and created jump links in the top nav bar. This streamlined access and aligned with user expectations for fast communication, without forcing an extra click.</p>
             </div>
           
           </div>
-          
-        <caption><strong>Before:</strong>
-            The health bar was color-coded (green, yellow, red) to indicate product quality, but lacked any labels or context. Users were unsure what the colors meant or how to interpret the bar.</caption>
-            <br>
-           <caption> <strong>After:</strong>
-            We added intuitive icons (✔️, ⚠️, ❌) along with descriptive text labels like “Healthy,” “Moderate,” and “Avoid.” This provided immediate clarity on the product's health score.</caption>
-            <br>
-            <caption> <strong>Reason:</strong>
-            During usability testing, 4 out of 5 users expressed confusion about the color meaning. After adding visual indicators and text, comprehension increased by 60%.</caption>
-
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
-
-  <!-- TEXT: LEFT -->
-  <div style="flex: 1; min-width: 300px; max-width: 500px;">
-    <h3 style="font-size: 24px;">CATEGORIES</h3>
-    <p style="font-size: 18px;">
-      The List of Categories screen allows users to easily browse top food product categories, such as Milk, Coffee, Juices, and Chocolates. Each category is visually supported with intuitive icons to enhance quick recognition and ease of navigation.
-    </p>
-    <p style="font-size: 18px;">
-      The purpose of this screen is to streamline product discovery by organizing items into familiar categories, helping users quickly find and scan items of interest. This design supports faster decision-making while maintaining a clean and user-friendly browsing experience.
-    </p>
-  </div>
-
-  <!-- IMAGE: RIGHT -->
-  <div style="flex: 1; min-width: 300px; max-width: 600px;">
-    <img src="images/List Nav.svg" alt="Categories Screen of OrbitScan"
-         style="width: 100%; height: auto;">
-  </div>
-
-</div>
-
-
-            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
-
-              <!-- IMAGE: LEFT -->
-              <div style="flex: 1; min-width: 300px; max-width: 600px;">
-                <img src="images/Rewards.svg" alt="Rewards Screen of OrbitScan"
-                     style="width: 100%; height: auto;">
-              </div>
             
               <!-- TEXT: RIGHT -->
-              <div style="flex: 1; min-width: 300px; max-width: 500px;">
-                <h3 style="font-size: 24px;">REWARDS</h3>
+              <div style="flex: 1; min-width: 300px; max-width: auto;">
+                <p style="font-size: 28px; color: #000000;">📈 Outcome</p>
                
-                <p style="font-size: 18px;"> <strong>Left Screen:</strong> Users can explore featured rewards and browse categories like Retail, Health, and Fashion. This screen motivates users by showcasing a range of options they can unlock with their earned points.
-                <p style="font-size: 18px;">  <strong>Right Screen:</strong> After selecting a reward, users choose the reward amount based on their available points. A clear, simple layout helps users quickly understand the redemption process and complete their reward claim with confidence. </p>
+                <p style="font-size: 18px;"> These iterative improvements resulted in a cleaner, more intuitive experience tailored to the actual behaviors and preferences of hiring professionals — not just my own assumptions. The final design balances storytelling, usability, and strategic content placement, ensuring visitors find value quickly and stay engaged.</p>
 
               </div>
             
             </div>
 
-            <h2 style="font-size: 36px; color: #02437D;">Result</h2>
+            <p style="font-size: 28px; color: #000000;">✅ Results (So Far)</p>
 
 
 <p style="font-size: 18px;">
-    OrbitScan resulted in a fully designed and interactive high-fidelity prototype, showcasing a seamless barcode scanning experience and personalized nutritional insights. I prepared detailed screens, user flows, and export-ready assets to guide future development efforts.
+  This project is still a work in progress. What you see currently is a mid- to high-fidelity layout shaped by desk research, usability principles, and direct feedback from hiring managers.
 </p>
+<p style="font-size: 18px;">
+  The visual structure and flow aim to reduce cognitive load and align more closely with what recruiters actually look for in UX portfolios. While the foundation is strong, there's still more to refine — including real content updates, detailed case study integration, and interaction enhancements.</p>
+  <p style="font-size: 18px;">
+    Next steps include usability testing on the updated version and iterating based on live feedback from target users (recruiters and hiring teams).</p>
 
-          <h2 style="font-size: 36px;">View Prototype</h2>
+
+    <p style="font-size: 28px; color: #000000;">View Prototype</p>
         <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
-            <iframe 
-              style="border: 1px solid rgba(0, 0, 0, 0.1);" 
-              width="1000" 
-              height="600" 
-              src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share" 
-              allowfullscreen>
-            </iframe>
+          <iframe 
+          src="https://mainakc.netlify.app/" 
+          width="100%" 
+          height="700px" 
+          style="border:none;"
+          title="Mainak's Portfolio"
+          loading="lazy">
+        </iframe>
+        
           </div>
 
           <br>
