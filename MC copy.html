@@ -377,83 +377,123 @@
 <section class="visual-exploration">
         <p style="font-size: 28px;">Final Implementation & Key Improvements</p>
 
-<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 6rem; margin: 4rem 0; flex-wrap: wrap;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 4rem; margin: 3rem 0; flex-wrap: wrap; font-family: Arial, sans-serif;">
+
+          <!-- TEXT LEFT -->
+          <div style="flex: 1; min-width: 280px; max-width: 500px; line-height: 1.6;">
+            <h3 style="font-size: 28px; color: #111111; margin-bottom: 16px;">🏠 Home Screen</h3>
+        
+            <p style="font-size: 18px; color: #333;">
+              The goal of the home section is simple—tell people who I am and what I do without making them scroll or guess.
+            </p>
+        
+            <p style="font-size: 18px; color: #333;">
+              I kept the intro short and added a clear button to download my resume. This way, recruiters or hiring managers can get what they need right away.
+            </p>
+        
+            <p style="font-size: 18px; color: #333;">
+              Earlier, I had the Home button placed beside the logo, assuming users would click the logo to return to the homepage. But during testing, it was clear that wasn’t working well. So I moved the Home link to the main nav with the rest, where it’s easier to find.
+            </p>
+          </div>
+        
+          <!-- IMAGE RIGHT -->
+          <div style="flex: 1; min-width: 300px; max-width: 600px;">
+            <img src="assets/img/Portfolio Redesign/Home.png" alt="Home Screen"
+                 style="width: 100%; height: auto; border-radius: 4px;">
+          </div>
+        
+        </div>
+        
+
+<br>
+
+
+
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 3rem; margin: 3rem 0; flex-wrap: wrap; font-family: Arial, sans-serif;">
+
+  <!-- Image FIRST (LEFT) -->
+  <div style="flex: 1; min-width: 300px; max-width: 500px;">
+    <img src="assets/img/Portfolio Redesign/Aboutv2.png" alt="About Section"
+         style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+  </div>
+
+  <!-- Text (RIGHT) -->
+  <div style="flex: 1; min-width: 280px; max-width: 480px; line-height: 1.6;">
+    <h3 style="font-size: 28px; color: #111111; margin-bottom: 16px;">💬 Rethinking the About Section</h3>
+
+    <p style="font-size: 18px; color: #333;">
+      I stripped out the traditional resume-style timeline, certifications, and testimonials.
+    </p>
+
+    <p style="font-size: 18px; color: #333;">
+      Instead, I focused on <strong>personal storytelling</strong>—sharing my journey, values, and design philosophy through a human-first lens. This helped create a more authentic connection with recruiters and reflected my approach to user-centered design.
+    </p>
+
+    <p style="font-size: 16px; color: #666; font-style: italic;">
+      ✦ Goal: Let who I am shine through, not just what I’ve done.
+    </p>
+  </div>
+</div>
+
+
+<br>
+
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 4rem; margin: 4rem 0; flex-wrap: wrap;">
 
   <!-- TEXT: LEFT -->
-  <div style="flex: 1; min-width: 300px; max-width: 500px;">
-    <p style="font-size: 28px; color: #000000;"><strong>Home Screen</strong></p>
-    <p style="font-size: 18px;">
-      The home section is designed to give a quick, strong first impression. It clearly shows who I am, what I do, and gives recruiters an easy way to access my resume.
-      I kept the intro short and to the point so it’s easy to scan, and added a clean call-to-action right up front. The visual design reflects my personality while still looking professional.
+  <div style="flex: 1; min-width: 300px; max-width: 500px; font-family: 'Arial', sans-serif; line-height: 1.6;">
+    <h3 style="font-size: 28px; color: #111111; margin-bottom: 16px;">🗂️ Streamlining the Projects Section</h3>
+
+    <p style="font-size: 18px; color: #333;">
+      The original project cards had too much visible text, making them hard to scan and overwhelming at a glance.
+    </p>
+    
+    <p style="font-size: 18px; color: #333;">
+      I simplified each card to show just the <strong>title</strong>, <strong>tags</strong>, and a <strong>clear CTA</strong>. Detailed information now appears only on hover using <em>progressive disclosure</em>.
+    </p>
+
+    <p style="font-size: 16px; color: #666; font-style: italic;">
+      ✦ Result: Cleaner UI, reduced cognitive load, and a smoother browsing experience.
     </p>
   </div>
 
   <!-- IMAGE: RIGHT -->
-  <div style="flex: 1; min-width: 300px; max-width: 600px; padding-left: 2rem;">
-    <img src="assets/img/Portfolio Redesign/Home.png" alt="Home Screen"
-         style="width: 100%; height: auto;">
+  <div style="flex: 1; min-width: 300px; max-width: 600px;">
+    <img src="assets/img/Portfolio Redesign/Projects_v2.png" alt="Project Section Cover"
+         style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
   </div>
 </div>
 
+        
 <br>
 
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
 
+  <!-- IMAGE: LEFT -->
+  <div style="flex: 1; min-width: 300px; max-width: 600px;">
+    <img src="assets/img/Portfolio Redesign/Contact Section.png" alt="Contact Section"
+         style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+  </div>
 
-
-<div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin: 2rem 0; flex-wrap: nowrap;">
-  
-  <!-- Image FIRST to keep it on the LEFT -->
-  <img src="assets/img/Portfolio Redesign/Aboutv2.png" alt="Home Screen of OrbitScan"
-       style="width: 500px; max-width: 90%; height: auto; flex-shrink: 0;">
-  
-  <!-- Text on the RIGHT -->
-  <div style="max-width: 400px;">
-    <p style="font-size: 28px; color: #000000;"><strong>About Section</strong></p>
-    <p style="font-size: 18px;">
-      I removed the work experience timeline, certifications, testimonials and focused the About section on personal storytelling, allowing my voice, values, and design perspective to shine through. This aligned better with recruiter expectations — they want to understand who you are and how you think, not just what you've done.
+  <!-- TEXT: RIGHT -->
+  <div style="flex: 1; min-width: 300px; max-width: 500px; font-family: 'Arial', sans-serif; line-height: 1.6;">
+    <h3 style="font-size: 28px; color: #111111; margin-bottom: 12px;">📬 Rethinking the Contact Experience</h3>
+    
+    <p style="font-size: 18px; color: #333;">
+      Originally, the contact form lived on a separate page — creating an awkward break in flow when users wanted to reach out.
+    </p>
+    
+    <p style="font-size: 18px; color: #333;">
+      To make communication seamless, I embedded the form directly into the homepage (just above the footer) and added a navigation jump link. Now, visitors can get in touch with just one scroll or click — no extra page, no friction.
+    </p>
+    
+    <p style="font-size: 16px; color: #666; font-style: italic;">
+      ✦ Result: Reduced bounce rate on the contact page and aligned with modern user flow expectations.
     </p>
   </div>
 </div>
 
-<br>
-
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 6rem; margin: 4rem 0; flex-wrap: wrap;">
-
-          <!-- TEXT: LEFT -->
-          <div style="flex: 1; min-width: 300px; max-width: 500px;">
-            <p style="font-size: 28px; color: #000000;"><strong>Projects Section</strong></p>
-            <p style="font-size: 18px;">
-            Minimizing visible text to just titles, tags, and a CTA. <br><br>
-            Introducing hover-based interactions that reveal deeper context only when users engage with the card.
-            </p>
-          </div>
-        
-          <!-- IMAGE: RIGHT -->
-          <div style="flex: 1; min-width: 300px; max-width: 600px; padding-left: 2rem;">
-            <img src="assets/img/Portfolio Redesign/Projects_v2.png" alt="Project Section Cover"
-                 style="width: 100%; height: auto;">
-          </div>
-        </div>
-        
-<br>
-          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
-
-            <!-- IMAGE: LEFT -->
-            <div style="flex: 1; min-width: 300px; max-width: 600px;">
-              <img src="assets/img/Portfolio Redesign/Contact Section.png" alt="Contact Section"
-                   style="width: 100%; height: auto;">
-            </div>
-          
-            <!-- TEXT: RIGHT -->
-            <div style="flex: 1; min-width: 300px; max-width: 500px;">
-              <p style="font-size: 28px; color: #000000;"><strong>Contact Section</strong></p>
-              <p style="font-size: 18px;">
-                The contact form was initially located on a separate page, breaking the flow and adding unnecessary friction to reaching out.</p>
-                <p style="font-size: 18px;">
-                I embedded the contact section directly into the homepage just above the footer and created jump links in the top nav bar. This streamlined access and aligned with user expectations for fast communication, without forcing an extra click.</p>
-            </div>
-          
-          </div>
 
           <br>
             
