@@ -369,4 +369,10 @@ color:#9eca0e;
       width: 100%;
     }
   }
+  @media (max-width: 768px) {
+    .jump-sidebar {
+      display: none !important;
+    }
+  }
+  
   
