@@ -515,6 +515,54 @@ logo-slider:after {
   color: #fff;
 }
 
+/* Video Showcase Section */
+.video-showcase {
+  padding: 8rem 11%;
+  background-color: #f9f9f9;
+  }
+  
+  .video-showcase .section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  }
+  
+  .video-showcase .section-header h2 {
+  font-size: 36px;
+  color: #191919;
+  text-transform: uppercase;
+  }
+  
+  .video-showcase .section-header p {
+  font-size: 16px;
+  color: #666;
+  }
+  
+  .video-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  }
+  
+  .video-item {
+  width: 100%;
+  text-align: center;
+  }
+  
+  .video-item video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .video-item p {
+  margin-top: 1rem;
+  font-size: 14px;
+  color: #333;
+  }
+  
+
 
 
 /* About Us Section

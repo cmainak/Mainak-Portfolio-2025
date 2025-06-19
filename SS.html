@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+    <link rel="stylesheet" href="assets/css/case-study-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="assets/img/Logo2.svg" type="image/svg">
+    <style>
+
+.home-button {
+  position: fixed;
+  top: 20px; /* Distance from top */
+  right: 20px; /* Stick to the right instead of left */
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Remove transform used for centering */
+.home-button:hover {
+  transform: scale(1.1); /* Only scale now */
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-button i {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+}
+
+        
+          /*Floating Up Arrow Bitton */
+          .floating-up-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+          }
+        
+          .floating-up-button i {
+              color: #333;
+              font-size: 1.4rem;
+          } 
+        
+          .floating-up-button:hover {
+            transform: scale(1.1);
+            background: white;  
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          }
+        
+        </style>
+</head>
+
+<!-- MODERN JUMP LINK SIDEBAR -->
+<div class="jump-sidebar" style="position: fixed; top: 18px; left: 25px; width: 180px; font-family: 'Inter', sans-serif; z-index: 999;">
+  <nav style="background-color: #ffffff; border-left: 4px solid #FF9933; padding: 16px 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+   
+    <ul style="
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* <-- THIS adds vertical spacing */
+  ">
+  
+      <li><a href="#background" style="text-decoration: none; color: #02437D;">Background</a></li>
+      <li><a href="#problem" style="text-decoration: none; color: #02437D;">Problem</a></li>
+      <li><a href="#approach" style="text-decoration: none; color: #02437D;">Approach</a></li>
+      <li><a href="#discover" style="text-decoration: none; color: #02437D;">Discover</a></li>
+      <li><a href="#define" style="text-decoration: none; color: #02437D;">Define</a></li>
+      <li><a href="#develop" style="text-decoration: none; color: #02437D;">Develop</a></li>
+      <li><a href="#deliver" style="text-decoration: none; color: #02437D;">Deliver</a></li>
+      <li><a href="#result" style="text-decoration: none; color: #02437D;">Result</a></li>
+      <li><a href="#prototype" style="text-decoration: none; color: #02437D; ">Final Prototype</a></li>
+    </ul>
+  </nav>
+</div>
+
+<body>
+    <a href="index.html" class="home-button">
+        <i class="fas fa-home"></i>
+      </a>
+    
+      <a href="SS.html" class="floating-up-button">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+
+    <div class="case-study">
+        <header class="case-study-header">
+            <div class="header-image">
+              <img src="assets/img/ShowScout/ShowScout Cover.svg" alt="  Cover Picture">
+            </div>
+           
+        </header>
+
+        
+
+        
+        <div class="header-content">
+          <h1>SHOWSCOUT</h1>
+          <h3>This self-initiated project was focused on rebranding and rebuilding my personal UX portfolio from scratch.</h3>
+          <p><strong>Timeline –</strong> Dec 2023 to Present</p>
+          <p class="tools"><strong>Tools –</strong> Figma, HTML, CSS, JS, GitHub, Netlify</p>
+          <p><strong>Skills - </strong></p>
+          <div class="tags">
+            <span class="tag">UX Research</span>
+            <span class="tag">Responsive Web Design</span>
+            <span class="tag">Bootstrap (Framework)</span>
+            <span class="tag">Visual Design</span>
+          </div>
+        </div>
+        
+        
+
+        <!-- BACKGROUND SECTION WITH JUMP LINK TARGET -->
+<section id="background" class="overview" style="scroll-margin-top: 80px;">
+  <h2 style="font-size: 36px; color: #02437D;">BACKGROUND</h2>
+
+  <section style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+
+    <!-- Text Left -->
+    <div style="flex: 1 1 300px; min-width: 280px;">
+      <p style="font-size: 18px;">
+        When I first began building my portfolio, I did what most designers do: crafted it based on my own tastes, ideas, and assumptions. 
+        But halfway through my master’s program, a piece of advice hit me like a reality check:
+      </p>
+      <p style="font-size: 18px;"><strong>"Your portfolio is your work, but you are not the user."</strong></p>
+      <p style="font-size: 18px;">
+        That shifted everything. To redesign my portfolio through a user-centered lens, I had to start by understanding the actual users — recruiters and hiring managers — and their needs, expectations, and frustrations with design portfolios.
+      </p>
+    </div>
+
+    <!-- Image Right -->
+    <div style="flex: 1 1 300px; min-width: 280px; text-align: right;">
+      <img src="assets/img/Portfolio Redesign/Portfolio BG.png" alt="Approach Diagram" style="width: 100%; max-width: 650px; height: 350px;" loading="lazy">
+    </div>
+
+  </section>
+</section>
+
+
+    <!-- PROBLEM SECTION -->
+<section id="problem" class="the-problem" style="scroll-margin-top: 80px;">
+  <h2 style="font-size: 36px; color: #02437D;">THE PROBLEM</h2>
+  <p style="font-size: 18px;">
+    My portfolio was built around my own preferences and assumptions, not around the actual users — recruiters and hiring managers.
+    This made it harder for them to quickly understand my strengths and for me to stand out in a crowded job market.
+  </p>
+</section>
+
+        <!-- DOUBLE DIAMOND SECTION -->
+<section id="approach" class="our-approach" style="scroll-margin-top: 80px;">
+  <h2 style="font-size: 36px; color: #02437D;">🔷 🔷 DOUBLE DIAMOND DESIGN PROCESS</h2>
+  <p style="font-size: 18px; margin-bottom: 1rem;">
+    The project follows a user-centered design thinking approach aligned with the Double Diamond model — emphasizing research, collaboration,
+    and iterative validation to meet real recruiter needs.
+  </p>
+  <div class="header-image">
+    <img src="assets/img/Portfolio Redesign/DD.png" alt="Approach Diagram" style="width: 100%; height: auto;">
+  </div>
+</section>
+
+        <!-- DISCOVER SECTION -->
+<section id="discover" style="scroll-margin-top: 80px;">
+  <h2 style="font-size: 36px; color: #02437D;">PHASE 1 🔍 DISCOVER</h2>
+
+  <section style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 1rem;">
+
+    <!-- Research Objectives -->
+    <div style="flex: 1 1 300px; min-width: 250px; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+      <h3 style="font-size: 20px; color: #000;">📋 Research Objectives</h3>
+      <ul style="font-size: 18px; padding-left: 1rem;">
+        <li>Understand what skills and traits hiring managers want to see.</li>
+        <li>Identify what keeps them engaged — and what pushes them away.</li>
+        <li>Learn how they evaluate portfolios and spot the best ones.</li>
+      </ul>
+    </div>
+
+    <!-- Literature Review -->
+    <div style="flex: 1 1 300px; min-width: 250px; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+      <h3 style="font-size: 20px; color: #000;">📚 Literature Review</h3>
+      <ul style="font-size: 18px; padding-left: 1rem;">
+        <li>Most spend less than 3 minutes reviewing a portfolio.</li>
+        <li>They expect 3–4 strong projects with full process visibility.</li>
+        <li>Storytelling and clear rationale matter more than flashy visuals.</li>
+        <li>Cluttered or confusing layouts can be a dealbreaker.</li>
+      </ul>
+    </div>
+
+    <!-- Industry Analysis -->
+    <div style="flex: 1 1 300px; min-width: 250px; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+      <h3 style="font-size: 20px; color: #000;">💼 Industry Analysis</h3>
+      <ul style="font-size: 18px; padding-left: 1rem;">
+        <li>Make info scannable with strong visual hierarchy.</li>
+        <li>Find the right balance between narrative and visuals.</li>
+        <li>Include rationale alongside the design — not buried in text.</li>
+      </ul>
+    </div>
+
+  </section>
+</section>
+
+        
+        
+        
+
+
+            
+       
+       <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">Main Themes Extracted from Hiring manager interviews:</p>
+<div class="read-more-paragraph">
+  <span class="dots">...</span>
+  <div class="more-text">
+    <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
+        <li>“I want to see how they think — not just what they made.”</li>
+        <li>“A case study that clearly shows the why behind each step is 10x more impressive than a flashy UI.”</li>
+<li>“Don’t make me work hard to find your best work — it should be obvious.”</li>
+        
+  </div>
+  <button class="read-more-btn">Read more</button>
+</div>
+
+        <h4 style="font-size: 30px;"> Affinity Mapping</h4>
+
+        <section>
+          <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">
+            Based on semi-structured interviews, I synthesized themes using affinity mapping. The insights below are organized into core themes that emerged repeatedly.
+          </p>
+
+          
+        
+          <div class="sticky-grid">
+        
+    
+            <div class="sticky-cluster">
+              
+              <div class="sticky-note">“Storytelling”</div>
+              <div class="sticky-note">“Process & Problem Solving”</div>
+            </div>
+        
+     
+            <div class="sticky-cluster">
+
+              <div class="sticky-note">"Communication"</div>
+              <div class="sticky-note">“Impact & Outcomes”</div>
+            </div>
+        
+        
+            <div class="sticky-cluster">
+
+              <div class="sticky-note">“Adaptability & Versatility”</div>
+              <div class="sticky-note">“Visual Balance & Craft”</div>
+              
+            </div>
+            <div class="sticky-cluster">
+            <div class="sticky-note">“Usability”</div>
+              <div class="sticky-note">“Diverse Expectations”</div>
+        
+          </div>
+        </section>
+        
+                <br>
+
+                <!-- DEFINE SECTION -->
+<section id="define" style="scroll-margin-top: 80px; margin-top: 4rem;">
+  <h2 style="font-size: 36px; color: #02437D;">PHASE 2 👤 DEFINE</h2>
+
+  <!-- Who Are We Designing For -->
+  <div style="margin-bottom: 2rem;">
+    <h3 style="font-size: 28px; color: #000000;">🧭 Who are we designing for?</h3>
+    <p style="font-size: 18px;">
+      While this project is technically about my portfolio, the real users aren't me — it's the people reviewing it under time pressure, making quick-fit decisions:
+    </p>
+    <ul style="font-size: 18px; padding-left: 1rem;">
+      <li>UX Hiring Managers</li>
+      <li>Design Leads</li>
+      <li>Recruiters</li>
+    </ul>
+    <p style="font-size: 18px;">
+      Through desk research, reviews, and industry analysis, I found that portfolio reviewers usually spend less than 2–5 minutes on a first pass. That means I need to communicate clearly and quickly — but still allow depth for those who want to explore.
+    </p>
+  </div>
+
+  <!-- Persona Image -->
+  <div class="header-image" style="margin-top: 2rem;">
+    <h3 style="font-size: 28px; color: #000000;">🧑‍💼 Persona</h3>
+    <img src="assets/img/Portfolio Redesign/Persona.png" alt="Persona Diagram" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px;">
+  </div>
+</section>
+
+                   
+
+        <section class="user-flow">
+          <section id="develop" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+          <h2 style="font-size: 36px; color: #02437D;">PHASE - 3 ✏️ DEVELOP</h2>
+
+
+          <h2 style="font-size: 28px; color: #000000;">Logo Iteration</h2>
+            <div class="header-image">
+                <br>
+                <img src="assets/img/Portfolio Redesign/Logo Iteration.png"Logo Iteration">
+            </div>
+
+            <h2 style="font-size: 28px; color: #000000;">User Flow</h2>
+            <div class="header-image">
+                <img src="assets/img/Portfolio Redesign/User Flow.png">
+        </section>
+
+
+        <br>
+
+    
+        <section class="logo-iteration">
+          <h2 style="font-size: 28px; color: #000000;"> Mid-Fidelity Wireframe </h2>
+        <div class="header-image">
+          <img src="assets/img/Portfolio Redesign/Low-fi.png">
+
+
+          <section>
+            <h2 style="font-size: 28px; color: #000000;">✅ Usability Testing & Key Findings</h2>
+            <p style="font-size: 18px; max-width: auto; margin-bottom: 2rem;">
+              To validate the high-fidelity prototype of my portfolio, I conducted a usability test with peers and industry professionals who had experience reviewing portfolios. The goal was to assess clarity, cognitive load, and navigational flow based on real user feedback.
+            </p>
+
+            <div class="header-image">
+              <img src="assets/img/Portfolio Redesign/High-fi.png">
+
+              <p style="font-size: 28px; color: #000000;"><strong>Usability Testing Prototype</strong></p>
+              <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+                <iframe 
+                src="https://mainakchakraborty.netlify.app/home" 
+                width="100%" 
+                height="700px" 
+                style="border:none;"
+                title="Mainak's Portfolio"
+                loading="lazy">
+              </iframe>
+</div>
+<h2 style="font-size: 28px; color: #000000;">🔍 Testing Goals</h2>
+            <li>Assess overall clarity and content hierarchy of key sections</li>
+            <li>Identify cognitive load issues</li>
+            <li>Evaluate navigation (including jump links vs. separate pages)</li>
+            <li>Understand which areas felt redundant or unnecessary</li>
+              </ul>
+          </section>
+
+          <h2 style="font-size: 28px; color: #000000;"> 🧠 UX Principles Guiding the Design </h2>
+            <p style="font-size: 18px; max-width: auto;">Informed by usability tests, I applied two key principles that directly address recruiter/hiring manager behavior:</p>
+            <p style="font-size: 18px;"> 1. Cognitive Load Reduction</p>
+            <ul>
+              <li>Visually scannable</li>
+              <li>Clear in hierarchy</li>
+              <li>Predictable in navigation</li>
+              <li>Light on jargon or filler</li>
+            </ul>
+            <p style="font-size: 18px;"> 2. Progressive Disclosure</p>
+         
+              <ul>
+                <li> Case study summaries show key outcomes, tags, and roles — click to expand full story</li>
+                <li>Process sections are chunked with headings, visual cues, and expandable modules</li>
+                <li>The About section leads with a short pitch, followed by deeper content (philosophy, timeline, resume)</li>
+              </ul>
+
+              <h2 style="font-size: 28px; color: #000000;">🧠 Key Feedback & Insights</h2>
+
+<div style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
+
+  <!-- Card 1: About Section -->
+  <div style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #ffffff;">
+    <h3 style="margin: 0 0 8px 0; font-size: 20px; color: #333;">📍 About Section</h3>
+    <p><strong>Feedback:</strong> Users liked the concise storytelling and visuals, but found the experience timeline redundant since it’s already in the resume.</p>
+    <p><strong>Action Taken:</strong> Focused this section purely on narrative and personal brand; removed detailed experience to reduce repetition.</p>
+  </div>
+
+  <!-- Card 2: Projects Section -->
+  <div style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <h3 style="margin: 0 0 8px 0; font-size: 20px; color: #333;">📍 Projects Section</h3>
+    <p><strong>Feedback:</strong> Project cards looked too dense and made quick browsing harder.</p>
+    <p><strong>Action Taken:</strong> Implemented progressive disclosure using hover effects to keep cards clean and reduce cognitive load.</p>
+  </div>
+
+  <!-- Card 3: Contact Section -->
+  <div style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #ffffff;">
+    <h3 style="margin: 0 0 8px 0; font-size: 20px; color: #333;">📍 Contact Section</h3>
+    <p><strong>Feedback:</strong> A separate contact page disrupted flow and added an extra click.</p>
+    <p><strong>Action Taken:</strong> Integrated the contact form into the homepage and added jump links in the navbar for smoother access.</p>
+  </div>
+
+</div>
+
+
+                
+<br>
+<section id="deliver" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+<h2 style="font-size: 36px; color: #02437D;">PHASE-4 🚀 DELIVER </h2>
+<section class="visual-exploration">
+        <p style="font-size: 28px;">Final Implementation & Key Improvements</p>
+
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 4rem; margin: 3rem 0; flex-wrap: wrap; font-family: Arial, sans-serif;">
+
+          <!-- TEXT LEFT -->
+          <div style="flex: 1; min-width: 280px; max-width: 500px; line-height: 1.6;">
+            <h3 style="font-size: 28px; color: #111111; margin-bottom: 16px;">🏠 Home Screen</h3>
+        
+            <p style="font-size: 18px; color: #333;">
+              The goal of the home section is simple—tell people who I am and what I do without making them scroll or guess.
+            </p>
+        
+            <p style="font-size: 18px; color: #333;">
+              I kept the intro short and added a clear button to download my resume. This way, recruiters or hiring managers can get what they need right away.
+            </p>
+        
+            <p style="font-size: 18px; color: #333;">
+              Earlier, I had the Home button placed beside the logo, assuming users would click the logo to return to the homepage. But during testing, it was clear that wasn’t working well. So I moved the Home link to the main nav with the rest, where it’s easier to find.
+            </p>
+          </div>
+        
+          <!-- IMAGE RIGHT -->
+          <div style="flex: 1; min-width: 300px; max-width: 600px;">
+            <img src="assets/img/Portfolio Redesign/Home.png" alt="Home Screen"
+                 style="width: 100%; height: auto; border-radius: 4px;">
+          </div>
+        
+        </div>
+        
+
+<br>
+
+
+
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 3rem; margin: 3rem 0; flex-wrap: wrap; font-family: Arial, sans-serif;">
+
+  <!-- Image FIRST (LEFT) -->
+  <div style="flex: 1; min-width: 300px; max-width: 500px;">
+    <img src="assets/img/Portfolio Redesign/Aboutv2.png" alt="About Section"
+         style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+  </div>
+
+  <!-- Text (RIGHT) -->
+  <div style="flex: 1; min-width: 280px; max-width: 480px; line-height: 1.6;">
+    <h3 style="font-size: 28px; color: #111111; margin-bottom: 16px;">💬 Rethinking the About Section</h3>
+
+    <p style="font-size: 18px; color: #333;">
+      I stripped out the traditional resume-style timeline, certifications, and testimonials.
+    </p>
+
+    <p style="font-size: 18px; color: #333;">
+      Instead, I focused on <strong>personal storytelling</strong>—sharing my journey, values, and design philosophy through a human-first lens. This helped create a more authentic connection with recruiters and reflected my approach to user-centered design.
+    </p>
+
+    <p style="font-size: 16px; color: #666; font-style: italic;">
+      ✦ Goal: Let who I am shine through, not just what I’ve done.
+    </p>
+  </div>
+</div>
+
+
+<br>
+
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 4rem; margin: 4rem 0; flex-wrap: wrap;">
+
+  <!-- TEXT: LEFT -->
+  <div style="flex: 1; min-width: 300px; max-width: 500px; font-family: 'Arial', sans-serif; line-height: 1.6;">
+    <h3 style="font-size: 28px; color: #111111; margin-bottom: 16px;">🗂️ Streamlining the Projects Section</h3>
+
+    <p style="font-size: 18px; color: #333;">
+      The original project cards had too much visible text, making them hard to scan and overwhelming at a glance.
+    </p>
+    
+    <p style="font-size: 18px; color: #333;">
+      I simplified each card to show just the <strong>title</strong>, <strong>tags</strong>, and a <strong>clear CTA</strong>. Detailed information now appears only on hover using <em>progressive disclosure</em>.
+    </p>
+
+    <p style="font-size: 16px; color: #666; font-style: italic;">
+      ✦ Result: Cleaner UI, reduced cognitive load, and a smoother browsing experience.
+    </p>
+  </div>
+
+  <!-- IMAGE: RIGHT -->
+  <div style="flex: 1; min-width: 300px; max-width: 600px;">
+    <img src="assets/img/Portfolio Redesign/Projects_v2.png" alt="Project Section Cover"
+         style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+  </div>
+</div>
+
+        
+<br>
+
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
+
+  <!-- IMAGE: LEFT -->
+  <div style="flex: 1; min-width: 300px; max-width: 600px;">
+    <img src="assets/img/Portfolio Redesign/Contact Section.png" alt="Contact Section"
+         style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+  </div>
+
+  <!-- TEXT: RIGHT -->
+  <div style="flex: 1; min-width: 300px; max-width: 500px; font-family: 'Arial', sans-serif; line-height: 1.6;">
+    <h3 style="font-size: 28px; color: #111111; margin-bottom: 12px;">📬 Rethinking the Contact Experience</h3>
+    
+    <p style="font-size: 18px; color: #333;">
+      Originally, the contact form lived on a separate page — creating an awkward break in flow when users wanted to reach out.
+    </p>
+    
+    <p style="font-size: 18px; color: #333;">
+      To make communication seamless, I embedded the form directly into the homepage (just above the footer) and added a navigation jump link. Now, visitors can get in touch with just one scroll or click — no extra page, no friction.
+    </p>
+    
+    <p style="font-size: 16px; color: #666; font-style: italic;">
+      ✦ Result: Reduced bounce rate on the contact page and aligned with modern user flow expectations.
+    </p>
+  </div>
+</div>
+
+
+          <br>
+            
+              <!-- TEXT: RIGHT -->
+              <div style="flex: 1; min-width: 300px; max-width: auto;">
+                <p style="font-size: 28px; color: #000000;">📈 Outcome</p>
+               
+                <ul style="font-size: 18px;">
+                  <li>Built and deployed a responsive portfolio website using HTML, CSS, and JavaScript, hosted via Netlify with version control maintained through GitHub.</li>
+                  <li>Implemented clean and maintainable code architecture to ensure scalability and ease of updates.</li>
+                  <li>Improved site navigation and content structure to reduce cognitive load — jump links were introduced for quicker access to key sections like Projects and Contact.</li>
+                  <li>Applied principles of progressive disclosure to simplify project cards and improve content scanning.</li>
+                </ul>
+
+              </div>
+            
+            </div>
+            <section id="result" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+            <p style="font-size: 28px; color: #000000;">✅ Results (So Far)</p>
+
+
+<p style="font-size: 18px;">
+  This project is still a work in progress. What you see currently is a mid- to high-fidelity layout shaped by desk research, usability principles, and direct feedback from hiring managers.
+</p>
+<p style="font-size: 18px;">
+  The visual structure and flow aim to reduce cognitive load and align more closely with what recruiters actually look for in UX portfolios. While the foundation is strong, there's still more to refine — including real content updates, detailed case study integration, and interaction enhancements.</p>
+  <p style="font-size: 18px;">
+    Next steps include usability testing on the updated version and iterating based on live feedback from target users (recruiters and hiring teams).</p>
+
+    <section id="prototype" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+    <p style="font-size: 28px; color: #000000;"><strong>View Prototype</strong></p>
+        <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+          <iframe 
+          src="https://mainakc.netlify.app/" 
+          width="100%" 
+          height="700px" 
+          style="border:none;"
+          title="Mainak's Portfolio"
+          loading="lazy">
+        </iframe>
+        
+          </div>
+
+          <br>
+
+        <div class="more-projects-section">
+            <div class="more-projects-header">
+                <h3>MORE PROJECTS <span class="dots"></span></h3>
+                <a href="work.html" class="view-all">View All <svg viewBox="0 0 24 24" fill="currentColor" style="width:1em;height:1em;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg></a>
+            </div>
+            <div class="project-cards-container">
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">UX Design</span>
+                        <span class="tag">Mobile App IOS</span>
+                        <span class="tag">Figma</span>
+                    </div>
+                    <div class="project-image">
+                        <a href="MW/MW.html" target="_blank">
+                        <img src="images/Manage Wise Cover.svg" alt="ManageWise Cover">
+                    </div>
+                </div>
+                
+             
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">UX Research</span>
+                        <span class="tag">Visual Design</span>
+                        <span class="tag">Figma</span>
+                    </div>
+                    <div class="project-image">
+                        <a href="orbitscan.html" target="_blank">
+                        <img src="images/Orbit Scan Cover.svg" alt="Online Ticketing Platform"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.querySelectorAll('.read-more-btn').forEach(function(btn) {
+              btn.addEventListener('click', function() {
+                const parent = btn.closest('.read-more-paragraph');
+                const dots = parent.querySelector('.dots');
+                const moreText = parent.querySelector('.more-text');
+          
+                if (moreText.style.display === "inline") {
+                  moreText.style.display = "none";
+                  dots.style.display = "inline";
+                  btn.textContent = "Read more";
+                } else {
+                  moreText.style.display = "inline";
+                  dots.style.display = "none";
+                  btn.textContent = "Read less";
+                }
+              });
+            });
+          </script>
+          
+
+    
+
+</body>
+</html>
