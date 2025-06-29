@@ -394,8 +394,8 @@ h6 {
 }
 
 #hero .btn-get-started:hover {
-  background: linear-gradient(to right, #02437D, #000000);
-  border: 2px solid #02437D;
+  background: #02437D;
+  border: 2px solid #FF9933;
   color:#fff;
 }
 
@@ -512,8 +512,8 @@ logo-slider:after {
 }
 
 #work .btn-get-started:hover {
-  background: linear-gradient(to right, #02437D, #000000);
-  border: 2px solid #fff;
+  background: #02437D;
+  border: 2px solid #FF9933;
   color: #fff;
 }
 
@@ -674,8 +674,8 @@ logo-slider:after {
 }
 
 #contact .social-links a:hover {
-  background: #fff;
-  color: #02437D;
+  background: #02437D;
+  border: 2px solid #FF9933;
 }
 
 #contact .php-email-form .error-message {
@@ -741,17 +741,18 @@ logo-slider:after {
   letter-spacing: 1px;
   display: inline-block;
   padding: 8px 28px;
-  border-radius: 50px;
+  border-radius: 100px;
   transition: 0.5s;
   margin: 10px;
-  border: 2px solid #02437D !important;
-  color: #02437D;
-  background-color: #fff;
+background: #fff;
+border: 2px solid #000000;
+  color: #000;
+
 }
 
 #contact .php-email-form button[type=submit]:hover {
   background: #02437D;
-  border: 2px solid #fff !important;
+  border: 2px solid #FF9933!important;
   color: #fff;
 }
 
