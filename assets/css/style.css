@@ -1,5 +1,5 @@
 body {
-  background: #000;
+  background: #FAFAFA;
   color: #666666;
   font-family: 'Chakra Petch', sans-serif;
 }
@@ -784,9 +784,9 @@ border: 2px solid #000000;
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: linear-gradient(to right, #02437D, #000000);
+  background: #FAFAFA;
   padding: 30px 0;
-  color: #fff;
+  color: #000;
   font-size: 14px;
   margin-bottom: 30px;
 }
@@ -799,11 +799,11 @@ border: 2px solid #000000;
   padding-top: 10px;
   text-align: center;
   font-size: 13px;
-  color: #fff;
+  color: #FAFAFA;
 }
 
 #footer .credits a{
-  color: #fff;
+  color: #FAFAFA;
 }
 
 
