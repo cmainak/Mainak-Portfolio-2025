@@ -656,8 +656,8 @@ logo-slider:after {
 
 #contact .social-links a {
   font-size: 18px;
-  color: #fff;
-  background-color: #02437D;
+  color: #000;
+  background-color: #fff;
   line-height: 1;
   border-radius: 50%;
   text-align: center;
@@ -674,7 +674,7 @@ logo-slider:after {
 }
 
 #contact .social-links a:hover {
-  background: #02437D;
+  background: #fff;
   border: 2px solid #FF9933;
 }
 
