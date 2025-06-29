@@ -317,7 +317,7 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url(../img/) top center;
+  background: url(../img/Portfolio_BG.jpg) top center;
   background-size: cover;
   position: relative;
 }
@@ -370,7 +370,7 @@ h6 {
     background-attachment: scroll !important;
   }
   #hero {
-    background: url(../img/Cover\ Hero.png) top center;
+    background: url(../img/Portfolio_BG.jpg) top center;
     background-size: cover;
     background-attachment: scroll !important;
   }
@@ -388,13 +388,14 @@ h6 {
   border-radius: 50px;
   transition: 0.5s;
   margin: 10px;
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid #02437D;
+  color: #02437D;
 }
 
 #hero .btn-get-started:hover {
   background: linear-gradient(to right, #02437D, #000000);
-  border: 2px solid #fff;
+  border: 2px solid #02437D;
+  color:#fff;
 }
 
 /*--------------------------------------------------------------
