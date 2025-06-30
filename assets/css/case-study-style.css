@@ -49,6 +49,7 @@ body {
   .header-content h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    text-align: left;
   }
   
   .header-content h3 {
@@ -56,12 +57,14 @@ body {
     font-weight: normal;
     color: #444;
     margin-bottom: 1.5rem;
+    text-align: left;
   }
   
   .header-content p {
     font-size: 1rem;
     color: #555;
     margin-bottom: 0.5rem;
+    
   }
   
   .header-content .tools {
@@ -69,11 +72,12 @@ body {
   }
   
   .header-content .tags {
-    display: flex;
+    display:block;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
+    text-align: left;
   }
   
   .header-content .tag {
@@ -83,6 +87,7 @@ body {
     border-radius: 16px;
     font-size: 0.9rem;
     white-space: nowrap;
+    
   }
   
   
