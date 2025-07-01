@@ -810,17 +810,17 @@ border: 2px solid #000000;
 /* Portfolio Section
 --------------------------------*/
 #portfolio {
-  padding: 0px 0;
   background: #fff;
   text-align: center;
 }
 
 #portfolio h2 {
-  padding: 40px 0;
+  padding: 60px 0;
 }
 
 .bottomline{
   margin: auto;
+  padding: px 0;
   max-width: 1080px;
   height: 1px;
   border-top: 1px solid #000;
@@ -830,7 +830,7 @@ border: 2px solid #000000;
 }
 
 #portfolio .portfolio-container{
-  margin-top: 50px !important;
+  margin-top: 5px !important;
  
 }
 
