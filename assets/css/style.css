@@ -809,6 +809,34 @@ border: 2px solid #000000;
 
 /* Portfolio Section
 --------------------------------*/
+#portfolio {
+  padding: 50px 0 !important;
+  background: #fff;
+  text-align: center;
+}
+
+.bottomline{
+  margin: auto;
+  max-width: 1080px;
+  height: 1px;
+  border-top: 1px solid #000;
+}
+#portfolio .section-header{
+  padding-top: 80px;
+}
+
+#portfolio .portfolio-container{
+  margin-top: 50px !important;
+ 
+}
+
+
+/*--------------------------------------------------------------
+# Portfolio Hero Section
+--------------------------------------------------------------*/
+
+
+
 /*--------------------------------------------------------------
 # Project Section
 --------------------------------------------------------------*/
@@ -861,7 +889,7 @@ border: 2px solid #000000;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(232, 232, 232, 0.85);
   opacity: 0;
   display: flex;
   justify-content: center;
