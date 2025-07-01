@@ -814,10 +814,6 @@ border: 2px solid #000000;
   text-align: center;
 }
 
-#portfolio h2 {
-  padding: 60px 0;
-}
-
 .bottomline{
   margin: auto;
   padding: px 0;
@@ -826,7 +822,9 @@ border: 2px solid #000000;
   border-top: 1px solid #000;
 }
 #portfolio .section-header{
-  padding-top: 80px;
+  padding-top:  20px; /* reduce the gap */
+  
+  margin-bottom: 10px; /* optional: tighten spacing under header */
 }
 
 #portfolio .portfolio-container{
