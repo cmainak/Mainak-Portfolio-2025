@@ -807,127 +807,86 @@ border: 2px solid #000000;
 }
 
 
-/* Portfolio Section
---------------------------------*/
+/* Portfolio Section */
 #portfolio {
   background: #fff;
   text-align: center;
+  padding: 60px 0;
 }
 
-.bottomline{
-  margin: auto;
-  padding: px 0;
+.bottomline {
+  margin: 10px auto 0 auto;
   max-width: 1080px;
   height: 1px;
   border-top: 1px solid #000;
 }
-#portfolio .section-header{
-  padding-top:  20px; /* reduce the gap */
-  
-  margin-bottom: 10px; /* optional: tighten spacing under header */
+
+#portfolio .section-header {
+  padding-top: 20px;
+  margin-bottom: 20px;
 }
-
-#portfolio .portfolio-container{
-  margin-top: 5px !important;
- 
-}
-
-
-
-/*--------------------------------------------------------------
-# Portfolio Hero Section
---------------------------------------------------------------*/
-
-
-
-/*--------------------------------------------------------------
-# Project Section
---------------------------------------------------------------*/
 
 /* Portfolio Grid */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));  
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   gap: 30px;
-  max-width: 1200px; /* Optional: keeps grid nicely centered */
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto 80px auto;
   padding: 0 20px;
-  margin-bottom: 80px; /* Adjust as needed */
 }
-
 
 /* Portfolio Card */
 .portfolio-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
   background: #fff;
-  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
 }
 
 .portfolio-card img {
   width: 100%;
   height: auto;
+  display: block;
   transition: transform 0.3s ease;
-}
-
-.portfolio-content {
-  text-align: left;
-  padding: 16px; /* consistent padding on all sides */
-}
-
-@media (max-width: 768px) {
-  .portfolio-content {
-    padding: 12px; /* Slightly tighter for mobile, but still clean */
-  }
-}
-
-.portfolio-content h4 {
-  font-size: 16px;
-  margin-bottom: 6px;
-  color: #042B4F;
-}
-
-.portfolio-content p {
-  font-size: 13px;
-  color: #555;
-}
-
-/* Hover Button */
-.portfolio-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(232, 232, 232, 0.85);
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.3s ease;
 }
 
 .portfolio-card:hover img {
   transform: scale(1.02);
 }
 
-.portfolio-card:hover .portfolio-hover {
-  opacity: 1;
+.portfolio-content {
+  text-align: left;
+  padding: 16px;
 }
 
+.portfolio-content h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #042B4F;
+}
+
+.portfolio-content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* View Button */
 .view-btn {
   display: inline-block;
-  margin-top: 16px 16px; /* adds space above the button */
+  margin-top: 12px;
   padding: 10px 20px;
   background: #FF9933;
   color: white;
   text-decoration: none;
   border-radius: 24px;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   transition: background 0.3s ease;
 }
 
@@ -936,4 +895,37 @@ border: 2px solid #000000;
   color: #000;
 }
 
+/* Responsive Text and Padding */
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Fixed two columns */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 80px auto;
+  padding: 0 20px;
+}
 
+/* Responsive: 1 column on smaller screens */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr; /* Single column for mobile */
+  }
+
+  .portfolio-content {
+    padding: 12px;
+  }
+
+  .portfolio-content h4 {
+    font-size: 16px;
+  }
+
+  .portfolio-content p {
+    font-size: 13px;
+  }
+
+  .view-btn {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+}
