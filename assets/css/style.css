@@ -874,6 +874,7 @@ border: 2px solid #000000;
 
 .portfolio-content {
   text-align: left;
+  padding: 16px; /* consistent padding on all sides */
 }
 
 @media (max-width: 768px) {
