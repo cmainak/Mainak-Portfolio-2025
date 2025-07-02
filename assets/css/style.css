@@ -852,6 +852,7 @@ border: 2px solid #000000;
   max-width: 1200px; /* Optional: keeps grid nicely centered */
   margin: 0 auto;
   padding: 0 20px;
+  margin-bottom: 80px; /* Adjust as needed */
 }
 
 
