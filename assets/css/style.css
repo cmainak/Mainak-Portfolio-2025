@@ -888,11 +888,14 @@ border: 2px solid #000000;
   font-weight: 600;
   font-size: 14px;
   transition: background 0.3s ease;
+  border: 2px solid #fff;
+
 }
 
 .view-btn:hover {
   background: #FFFFFF;
   color: #000;
+  border: 2px solid #000;
 }
 
 /* Responsive Text and Padding */
