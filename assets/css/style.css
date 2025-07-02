@@ -873,8 +873,13 @@ border: 2px solid #000000;
 }
 
 .portfolio-content {
-  padding: 12px;
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .portfolio-content {
+    padding: 12px; /* Slightly tighter for mobile, but still clean */
+  }
 }
 
 .portfolio-content h4 {
@@ -912,6 +917,8 @@ border: 2px solid #000000;
 }
 
 .view-btn {
+  display: inline-block;
+  margin-top: 16px 16px; /* adds space above the button */
   padding: 10px 20px;
   background: #FF9933;
   color: white;
@@ -926,4 +933,5 @@ border: 2px solid #000000;
   background: #FFFFFF;
   color: #000;
 }
+
 
