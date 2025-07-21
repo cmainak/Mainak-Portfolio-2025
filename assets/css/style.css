@@ -904,14 +904,19 @@ border: 2px solid #000000;
 
 /* Responsive Text and Padding */
 /* Portfolio Grid */
+:root {
+  --portfolio-columns: 1;
+}
+
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Fixed two columns */
+  grid-template-columns: repeat(var(--portfolio-columns), 1fr);
   gap: 30px;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto 80px auto;
   padding: 0 20px;
 }
+
 
 /* Responsive: 1 column on smaller screens */
 @media (max-width: 768px) {
