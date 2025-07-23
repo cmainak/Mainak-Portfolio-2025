@@ -446,7 +446,7 @@ section {
   border-top: 1px solid #000;
 }
 
-/* SLIDESHOW
+/* PROJECT SLIDESHOW
 --------------------------------*/
 logo-slider {
   --image-size: 300px;
@@ -496,6 +496,9 @@ logo-slider:after {
     transform: translateX(-100%);
   }
 }
+
+/* PROJECT SLIDESHOW ENDED
+--------------------------------*/
 
 
 #work .btn-get-started {
