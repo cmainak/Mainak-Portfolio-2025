@@ -72,33 +72,108 @@
 </head>
 
 <!-- MODERN JUMP LINK SIDEBAR -->
-<div class="jump-sidebar" style="position: fixed; top: 18px; left: 25px; width: 180px; font-family: 'Inter', sans-serif; z-index: 999;">
-  <nav style="background-color: #ffffff; border-left: 4px solid #FF9933; padding: 16px 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
-   
-    <ul style="
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.7;
-    color: #444;
+
+
+<!-- BOTTOM-FIXED, RESPONSIVE NAV PILL BAR WITH EDGE PADDING -->
+<nav aria-label="Case Study Navigation"
+  style="
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: 84vw;
+    max-width: 960px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.88);
+    box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
+    border-radius: 2.2em;
+    padding: 10px 10px 10px 10px;
     display: flex;
-    flex-direction: column;
-    gap: 12px; /* <-- THIS adds vertical spacing */
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    overflow-x: auto;
+    white-space: nowrap;
   ">
-  
-      <li><a href="#background" style="text-decoration: none; color: #02437D;">Background</a></li>
-      <li><a href="#problem" style="text-decoration: none; color: #02437D;">Problem</a></li>
-      <li><a href="#approach" style="text-decoration: none; color: #02437D;">Approach</a></li>
-      <li><a href="#discover" style="text-decoration: none; color: #02437D;">Discover</a></li>
-      <li><a href="#define" style="text-decoration: none; color: #02437D;">Define</a></li>
-      <li><a href="#develop" style="text-decoration: none; color: #02437D;">Develop</a></li>
-      <li><a href="#deliver" style="text-decoration: none; color: #02437D;">Deliver</a></li>
-      <li><a href="#result" style="text-decoration: none; color: #02437D;">Result</a></li>
-      <li><a href="#prototype" style="text-decoration: none; color: #02437D; ">Final Prototype</a></li>
-    </ul>
-  </nav>
-</div>
+  <ul style="
+    margin: 0; padding: 0; list-style: none;
+    display: flex; gap: 7px; align-items: center; flex-wrap: nowrap;
+    width: 100%; max-width:100vw; overflow-x:auto; white-space:nowrap;">
+    <li>
+      <a href="#background" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 32px 9px 22px; border-radius:2em 1.8em 1.8em 2em; 
+        box-shadow:0 2px 8px rgba(80,80,120,0.04); transition:background .17s,color .17s;">Background</a>
+    </li>
+    <li>
+      <a href="#problem" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 22px;border-radius:2em; background:transparent; transition:background .17s,color .17s;">Problem</a>
+    </li>
+    <li>
+      <a href="#approach" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 22px;border-radius:2em; background:transparent; transition:background .17s,color .17s;">Approach</a>
+    </li>
+    <li>
+      <a href="#discover" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 22px;border-radius:2em; background:transparent; transition:background .17s,color .17s;">Discover</a>
+    </li>
+    <li>
+      <a href="#define" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 22px;border-radius:2em; background:transparent; transition:background .17s,color .17s;">Define</a>
+    </li>
+    <li>
+      <a href="#develop" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 22px;border-radius:2em; background:transparent; transition:background .17s,color .17s;">Develop</a>
+    </li>
+    <li>
+      <a href="#deliver" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 22px;border-radius:2em; background:transparent; transition:background .17s,color .17s;">Deliver</a>
+    </li>
+    <li>
+      <a href="#result" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 22px;border-radius:2em; background:transparent; transition:background .17s,color .17s;">Result</a>
+    </li>
+    <li>
+      <a href="#prototype" 
+        style="display:inline-block;text-decoration:none;color:#000;font-weight:600;font-size:1.08rem;
+        padding:9px 22px 9px 32px; border-radius:1.8em 2em 2em 1.8em; background:transparent; transition:background .17s,color .17s;">Final Prototype</a>
+    </li>
+  </ul>
+</nav>
+<!-- Pills Hover/Active Styling (inline) -->
+<style>
+nav[aria-label="Case Study Navigation"] a:hover,
+nav[aria-label="Case Study Navigation"] a:focus {
+  background: #02437D !important;
+  color: #FFF !important;
+  outline: none;
+}
+nav[aria-label="Case Study Navigation"] a[aria-current="page"] {
+  background: #02437D !important;
+  color: #fff !important;
+}
+@media (max-width: 950px) {
+  nav[aria-label="Case Study Navigation"] ul { gap: 3px !important; }
+  nav[aria-label="Case Study Navigation"] a {
+    font-size: 0.97rem !important;
+    padding: 8px 12px !important;
+  }
+  nav[aria-label="Case Study Navigation"] li:first-child a { padding-left: 14px !important;}
+  nav[aria-label="Case Study Navigation"] li:last-child a { padding-right: 14px !important;}
+}
+@media (max-width: 650px) {
+  nav[aria-label="Case Study Navigation"] a { font-size:0.91rem!important; }
+}
+</style>
+<!-- Add extra bottom space to page to avoid content being covered -->
+<div style="min-height:65px"></div>
+
 
 <body>
 
