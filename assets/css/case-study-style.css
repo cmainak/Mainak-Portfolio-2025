@@ -41,6 +41,7 @@ body {
     height: auto;
     margin: 0 auto; /* Center the block-level div horizontally */
 }
+
 .header-content {
     padding: 2rem 1rem;
     max-width: 800px;
