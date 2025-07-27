@@ -3,9 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bank of America – Surplus Manager</title>
+  <title>Wells Fargo – Surplus Manager</title>
+  <link rel="stylesheet" href="assets/css/case-study-style.css">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <style>
+
+.circle-button {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.circle-button img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+}
+
+.circle-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.circle-button.home {
+  top: 20px;
+  right: 20px;
+}
+
+.circle-button.up {
+  bottom: 20px;
+  right: 20px;
+}
+
+
     body {
       margin: 0;
       font-family: 'Lato', sans-serif;
@@ -112,9 +151,121 @@
       .left-column, .right-column {
         max-width: 100%;
       }
+      
     }
+
+    
   </style>
 </head>
+
+<!-- MODERN JUMP LINK SIDEBAR -->
+<!-- Bottom-Fixed Navigation Pills -->
+<nav aria-label="Case Study Navigation"
+  style="
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: 50vw;
+    max-width: 960px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.88);
+    box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
+    border-radius: 2.2em;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    overflow-x: auto;
+    white-space: nowrap;
+  ">
+  <ul style="
+    margin: 0; padding: 0; list-style: none;
+    display: flex; gap: 7px; align-items: center; flex-wrap: nowrap;
+    width: 100%; overflow-x:auto; white-space:nowrap;">
+    
+    <li><a href="#empathize" class="jump-pill">Empathize</a></li>
+    <li><a href="#define" class="jump-pill">Define</a></li>
+    <li><a href="#ideate" class="jump-pill">Ideate</a></li>
+    <li><a href="#prototype" class="jump-pill">Prototype</a></li>
+    <li><a href="#test" class="jump-pill">Test</a></li>
+    <li><a href="#Finalprototype" class="jump-pill" style="padding-right: 32px;">Final Prototype</a></li>
+  </ul>
+</nav>
+
+<!-- Inline CSS -->
+<style>
+html { scroll-behavior: smooth; }
+.jump-pill {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 9px 22px;
+  border-radius: 2em;
+  background: transparent;
+  transition: background .17s, color .17s;
+}
+.jump-pill:hover,
+.jump-pill:focus {
+  background: #c40000 !important;
+  color: #fff !important;
+  outline: none;
+}
+.jump-pill.active {
+  background: #c40000 !important;
+  color: #fff !important;
+}
+@media (max-width: 950px) {
+  nav[aria-label="Case Study Navigation"] ul { gap: 3px !important; }
+  .jump-pill {
+    font-size: 0.97rem !important;
+    padding: 8px 12px !important;
+  }
+}
+@media (max-width: 650px) {
+  .jump-pill { font-size:0.91rem!important; }
+}
+</style>
+
+<!-- Highlight Active Section -->
+<script>
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".jump-pill");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100; // offset for nav height
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+<!-- Add extra bottom space -->
+<div style="min-height:65px"></div>
+
+<!-- Home Button -->
+<a href="index.html" class="circle-button home" title="Home">
+    <img src="https://img.icons8.com/ios-filled/24/000000/home.png" alt="Home" />
+  </a>
+  
+  <!-- Back to Top Button -->
+  <a href="#" class="circle-button up" title="Back to top">
+    <img src="https://img.icons8.com/ios-filled/24/000000/up.png" alt="Back to top" />
+  </a>
+  
+  
+
 <body>
 
   <!-- Top single phone image -->
@@ -124,7 +275,7 @@
 
   <!-- Project Title -->
   <div class="title-section">
-    <h2>Bank of America</h2>
+    <h1>WELLS FARGO</h1>
     <h3>Adding a Finance Feature – Surplus Manager</h3>
   </div>
 
@@ -162,5 +313,496 @@
     </div>
   </div>
 
+  <section style="padding: 60px 20px; background-color: #fff;">
+    <h2 style="text-align: center; color: #d32f2f; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">THE PROCESS</h2>
+  
+    <!-- Icons Row -->
+    <div style="display: flex; justify-content: space-between; max-width: 800px; margin: 40px auto;">
+      <div style="text-align: center;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/brainstorm-skill.png" alt="Empathize" style="height: 48px; margin-bottom: 10px;">
+        <p style="font-weight: 500;">Empathize</p>
+      </div>
+      <div style="text-align: center;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/document.png" alt="Define" style="height: 48px; margin-bottom: 10px;">
+        <p style="font-weight: 500;">Define</p>        
+      </div>
+      <div style="text-align: center;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/idea.png" alt="Ideate" style="height: 48px; margin-bottom: 10px;">
+        <p style="font-weight: 500;">Ideate</p>
+      </div>
+      <div style="text-align: center;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/engineering.png" alt="Prototype" style="height: 48px; margin-bottom: 10px;">
+        <p style="font-weight: 500;">Prototype</p>
+      </div>
+      <div style="text-align: center;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/approval.png" alt="Test" style="height: 48px; margin-bottom: 10px;">
+        <p style="font-weight: 500;">Test</p>
+      </div>
+    </div>
+
+    <br>
+    <br>
+  
+    <!-- Empathize Section -->
+<section id="empathize" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="border: 2px solid #FCC606; padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+      <h3 style="font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 700; color: #d32f2f; text-align: center; margin-bottom: 30px;">
+        01 / Empathize – Exploring the User’s Needs
+      </h3>
+  
+      <!-- Research Approach -->
+      <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Research Approach</h4>
+      <p style="margin-bottom: 16px;">
+        To better understand the financial challenges that young professionals face, I decided to first dive into customer interviews. By asking open-ended questions, I knew that I could explore and navigate through the different financial concerns they have, what goals they strive for, and what other methods they use to manage their finance outside of their banking applications.
+      </p>
+      <p style="margin-bottom: 16px;">
+        To focus my efforts on young professionals, I recruited participants who were single and did not own a home. They were 25 to 35 years of age, were working professionals, and use their mobile banking applications frequently. I recruited 5 participants and conducted 45-minute to an hour long interviews. Before the interview, I prepared questions to guide the interview. But I anticipated that the participants would have different financial concerns and goals. So I prepared a range of questions and focused on the participant’s financial journey.
+      </p>
+      <p style="margin-bottom: 16px;">
+        The goals for my research process was the following:
+      </p>
+      <ul style="margin-left: 20px; margin-bottom: 20px;">
+        <li>Explore and identify patterns of finance management amongst young professionals.</li>
+        <li>Identify pain points and unmet needs that current banks/financial services do not address.</li>
+      </ul>
+  
+      <!-- Customer Interviews -->
+      <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Customer Interviews Findings</h4>
+      <p style="margin-bottom: 16px;">
+        As anticipated, all the participants had different financial concerns, habits, and goals. Some participants were struggling to pay down previously accumulated debt, while some were making plans for their future. Regardless of their financial situation, all of the participants were juggling finances paycheck to paycheck and try to set budgets for themselves.
+      </p>
+  
+      <ul style="margin-left: 20px;">
+        <li style="margin-bottom: 16px;">
+          <strong>Four out of five participants all tried to use Mint but found it frustrating and not as helpful as they thought it would be.</strong> They thought it would help them manage their finances and budget accordingly. Only one participant it currently using Mint just to keep track of payment due dates and as a general overview of how she’s using her money.
+          <br><br>
+          Specifically, users were frustrated that Mint would categorize items in the wrong category, they were unable the split the charges, and there would be a lag in the charges. Also users thought they would like managing all the charges. But after a while, they grew tired of keeping up with it. Users also thought they would enjoy the budgeting feature. But the budgeting feature didn’t help because every month looked different and it would only alert you once you’ve reached the limit.
+        </li>
+        <li style="margin-bottom: 16px;">
+          <strong>Two participants created their own way of recording their finances via spreadsheet and a list of charges in a notebook.</strong> These two participants had specific savings goals and needed to break down their finances to figure out how they could use their money. They also keep track of their payment due dates like this.
+        </li>
+        <li style="margin-bottom: 16px;">
+          <strong>All participants saved based off of their paycheck and outgoing expenses.</strong> Some participants keep a log of outgoing expenses to figure out how much they can save and try to set a budget for themselves for how much they can spend. A few participants just put aside a manageable amount aside from each paycheck because they knew they had a large expense coming up.
+        </li>
+        <li style="margin-bottom: 0;">
+          <strong>Several participants wished that they did not have to keep track of their payment dates.</strong> One participant’s next financial goal is to have all her payments on autopay. She has been wanting to do this for a while but doesn’t full comfortable losing control of her finances that way.
+        </li>
+      </ul>
+    </div>
+  </section>
+  
+<!-- Define Section -->
+<section id="define" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="border: 2px solid #d32f2f; padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+      
+      <!-- Section Title -->
+      <h3 style="font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 700; color: #d32f2f; text-align: center; margin-bottom: 30px;">
+        02 / Define – Establishing the User's Needs and Problems
+      </h3>
+  
+      <!-- Overview + Persona -->
+      <div style="display: flex; flex-direction: row; gap: 60px; margin-bottom: 30px; flex-wrap: wrap;">
+        
+        <!-- Sidebar Overview -->
+        <div style="flex: 1; min-width: 220px;">
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Overview</h4>
+          <p style="margin: 0;">
+            This stage focuses on synthesizing the research insights into clear problem statements and defining the target persona.
+          </p>
+        </div>
+  
+        <!-- Persona Details -->
+        <div style="flex: 3; min-width: 300px;">
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Persona Development</h4>
+          <p style="margin-bottom: 16px;">
+            The five participants were all single and did not own a home but varied on financial status, goals, and struggles. Two of the participants were on top of their finances and kept records to keep on track with payments and savings goals. One participant was struggling to pay down her sizable debt for the last 8 years of her life. Another participant did not struggle particularly with debt or strive to reach a financial goal and was content with her financial status as is. The last participant was living paycheck to paycheck but had savings goals and was looking to stabilize her future.
+          </p>
+          <p style="margin-bottom: 16px;">
+            Although the participants varied in financial status, goals, and struggles, they all worked off of their paycheck and did not have other investments or financial advisors. So I created Jasmine as the key persona to focus on for this feature. She is someone who has some debt, savings goals, and wants to have a better grasp on her finances. Like the participants, she manages her finances paycheck to paycheck. She is looking to make a significant commitment to attend graduate school but needs to save more money and stay on top of her finances.
+          </p>
+        </div>
+      </div>
+  
+      <!-- Persona Image -->
+      <div style="text-align: center; margin-bottom: 40px;">
+        <img src="assets/img/Orbit/User Persona3.png" alt="Persona Jasmine" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+      </div>
+  
+      <!-- Problem Statements -->
+      <div>
+        <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Problem Statements</h4>
+        <p style="margin-bottom: 16px;">
+          After conducting the interviews with my participants, I focused my energy on creating “How Might We” problem statements. After composing 18 problem statements, I noticed that there were general recurring themes and specific problems that I was interested in tackling.
+        </p>
+        <p style="margin-bottom: 16px;">
+          These are the 3 problem statements I decided to focus on before the Ideation phase:
+        </p>
+        <ul style="margin-left: 20px; margin-bottom: 0;">
+          <li style="margin-bottom: 12px;">
+            <strong>How might we show users how they are using their money</strong> so that they can understand how they are spending their money?
+          </li>
+          <li style="margin-bottom: 12px;">
+            <strong>How might we educate users to prepare for life goals</strong> they are actively looking to achieve?
+          </li>
+          <li style="margin-bottom: 0;">
+            <strong>How might we remind users of their finance goals</strong> so that they are able to achieve those goals and not go off track?
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Ideate Section -->
+<section id="ideate" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="border: 2px solid #d32f2f; padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+      
+      <!-- Section Title -->
+      <h3 style="font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 700; color: #d32f2f; text-align: center; margin-bottom: 30px;">
+        03 / Ideate – Creating the Framework
+      </h3>
+  
+      <!-- Overview and Content -->
+      <div style="display: flex; flex-direction: row; gap: 60px; margin-bottom: 30px; flex-wrap: wrap;">
+        
+        <!-- Sidebar Overview -->
+        <div style="flex: 1; min-width: 220px;">
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Overview</h4>
+          <ul style="margin-left: 20px;">
+            <li>Ideation</li>
+            <li>Storyboarding</li>
+            <li>User Flow</li>
+          </ul>
+        </div>
+  
+        <!-- Main Content -->
+        <div style="flex: 3; min-width: 300px;">
+          
+          <!-- Ideation -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Ideation</h4>
+          <p style="margin-bottom: 16px;">
+            For the Ideation phase, I utilized the Crazy 8 brainstorming exercise. This exercise involved five-minute intervals of eight sketches followed by short breaks. While I didn’t always complete eight sketches each time, this method pushed me to explore multiple ideas quickly. After five sessions, I compiled and grouped my sketches into key themes.
+          </p>
+  
+          <!-- Crazy 8 Themes Images -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px;">
+            <div style="text-align: center;">
+              <img src="YOUR_IMAGE_PATH_1" alt="Remaining Balance Manager" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+              <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">REMAINING BALANCE MANAGER</p>
+            </div>
+            <div style="text-align: center;">
+              <img src="YOUR_IMAGE_PATH_2" alt="Savings Goals" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+              <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">SAVINGS GOALS + SHORT/LONG TERM</p>
+            </div>
+            <div style="text-align: center;">
+              <img src="YOUR_IMAGE_PATH_3" alt="Tracking Calendar" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+              <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">TRACKING CALENDAR / BILL PAY</p>
+            </div>
+            <div style="text-align: center;">
+              <img src="YOUR_IMAGE_PATH_4" alt="Expense Breakdown" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+              <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">EXPENSE BREAKDOWN</p>
+            </div>
+            <div style="text-align: center;">
+              <img src="YOUR_IMAGE_PATH_5" alt="Account Tracker" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+              <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">ACCOUNT TRACKER / FINANCE EDUCATION</p>
+            </div>
+          </div>
+  
+          <!-- Storyboarding -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Storyboarding</h4>
+          <p style="margin-bottom: 16px;">
+            In this phase, I used the Crazy 8 exercise again to illustrate how a user would interact with a specific idea. After five sessions, I focused on the “Managing by Pay Period” feature. This approach aligned closely with participants’ actual behavior of budgeting per paycheck.
+          </p>
+  
+          <!-- Storyboard Images -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px;">
+            <div style="text-align: center;">
+              <img src="YOUR_IMAGE_PATH_6" alt="Managing Income" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+              <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">MANAGING INCOME AND EXPENDITURES (2)</p>
+            </div>
+            <div style="text-align: center;">
+              <img src="YOUR_IMAGE_PATH_7" alt="Managing Pay Period" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+              <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">MANAGING BY PAY PERIOD (2)</p>
+            </div>
+            <div style="text-align: center;">
+              <img src="YOUR_IMAGE_PATH_8" alt="Improving Financial Health" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+              <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">IMPROVING FINANCIAL HEALTH</p>
+            </div>
+          </div>
+  
+          <!-- User Flow -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">User Flow</h4>
+          <p style="margin-bottom: 16px;">
+            After sketching out these storyboards, I decided to design a feature that helps users manage finances by paycheck period while integrating ways to improve financial health and manage expenses. Initially named “Money Manager,” this feature evolved into the “Surplus Manager” after testing the low-fidelity prototype.
+          </p>
+  
+          <!-- User Flow Image -->
+          <div style="text-align: center; margin-top: 30px;">
+            <img src="YOUR_USERFLOW_IMAGE_PATH" alt="User Flow Diagram" style="max-width: 100%; border-top: 2px solid #d32f2f; padding-top: 10px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+ <!-- Prototype Section -->
+<section id="prototype" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="border: 2px solid #d32f2f; padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+  
+      <!-- Section Title -->
+      <h3 style="font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 700; color: #d32f2f; text-align: center; margin-bottom: 30px;">
+        04 / Prototype – Let's Make the Design!
+      </h3>
+  
+      <!-- Overview and Content -->
+      <div style="display: flex; flex-direction: row; gap: 60px; margin-bottom: 30px; flex-wrap: wrap;">
+        
+        <!-- Sidebar Overview -->
+        <div style="flex: 1; min-width: 220px;">
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Overview</h4>
+          <ul style="margin-left: 20px;">
+            <li>Wireframes</li>
+            <li>Low Fidelity Prototype Testing</li>
+            <li>Final Design</li>
+          </ul>
+        </div>
+  
+        <!-- Main Content -->
+        <div style="flex: 3; min-width: 300px;">
+  
+          <!-- Wireframes -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Wireframes</h4>
+          <p style="margin-bottom: 16px;">
+            While developing the storyboard concept of paying by paycheck, I examined Bank of America’s mobile banking app and noticed features like “Bill Pay” and “Life Plan” that had been available for years but were largely unnoticed by users. Even participants who were existing customers had never used them.
+          </p>
+          <p style="margin-bottom: 16px;">
+            I decided to integrate similar ideas into my finance management feature. Participants managed finances based on their paycheck, bills, and savings goals, so the new feature would allow them to set up their plan based on pay schedules (bi-weekly, monthly, or custom).
+          </p>
+  
+          <!-- Reference Images -->
+          <div style="display: flex; gap: 20px; margin: 24px 0 32px; flex-wrap: wrap;">
+            <img src="YOUR_IMAGE_PAY_BILLS" alt="Pay Bills Feature" style="flex: 1; min-width: 150px; border: 1px solid #ccc; border-radius: 6px;">
+            <img src="YOUR_IMAGE_LIFE_PLAN" alt="Life Plan Feature" style="flex: 1; min-width: 150px; border: 1px solid #ccc; border-radius: 6px;">
+          </div>
+  
+          <p style="margin-bottom: 16px;">
+            The “Money Manager” feature appears on the dashboard and displays the available balance, scheduled bill payments, and remaining funds until the next paycheck. I also integrated goal tracking and easy access to upcoming payments.
+          </p>
+  
+          <!-- Wireframe Image -->
+          <h4 style="font-size: 14px; font-weight: bold; text-align: center; margin-bottom: 10px;">WIREFRAMES</h4>
+          <img src="YOUR_IMAGE_WIREFRAMES_GRID" alt="Wireframes Overview" style="width: 100%; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;">
+  
+          <!-- CTA -->
+          <div style="text-align: center; margin-bottom: 40px;">
+            <a href="YOUR_LOW_FI_LINK" target="_blank" style="display: inline-block; background-color: #d32f2f; color: #fff; font-weight: 600; text-decoration: none; padding: 12px 22px; border-radius: 4px;">
+              View Low-Fidelity Prototype
+            </a>
+          </div>
+  
+          <!-- Low-Fi Usability Testing -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Low-Fidelity Prototype Usability Testing</h4>
+          <p>
+            I tested this prototype with 3 participants. Feedback revealed that some UI elements caused confusion, such as large negative balances in “Pending Transactions.” Based on insights, I iterated the flow to prioritize surplus balance management rather than individual payment flows.
+          </p>
+        </div>
+      </div>
+  
+      <!-- High-Fidelity Prototype Section -->
+      <div style="max-width: 980px; margin: 40px auto; padding: 40px 20px; border: 1px solid #ddd; border-radius: 12px; background-color: #ffffff; display: flex; flex-wrap: wrap; gap: 40px;">
+        
+        <!-- Text Column -->
+        <div style="flex: 1 1 400px; min-width: 280px;">
+          <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 16px;">High-Fidelity Prototype</h3>
+          <p style="margin-bottom: 16px;">
+            Based on user feedback, I renamed the feature from “Money Manager” to “Surplus Manager” to better reflect its purpose. Participants found the previous name misleading as it sounded investment-related.
+          </p>
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Key Highlights</h4>
+          <ul style="margin-left: 20px; margin-bottom: 16px;">
+            <li><strong>Surplus Spotlight:</strong> Central focus on remaining funds after bills.</li>
+            <li><strong>Manage by Pay Period:</strong> Users can track spending across pay cycles.</li>
+          </ul>
+        </div>
+  
+        <!-- Image Column -->
+        <div style="flex: 1 1 400px; min-width: 280px; display: flex; align-items: center; justify-content: center;">
+          <img src="YOUR_FINAL_PROTOTYPE_IMAGE" alt="Surplus Manager Summary Screen" style="max-width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+  
+ 
+ <!-- Test Section -->
+<section id="test" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="border: 2px solid #d32f2f; padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+  
+      <!-- Section Title -->
+      <h3 style="font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 700; color: #d32f2f; text-align: center; margin-bottom: 30px;">
+        05 / Test – It’s Time to Test the Prototype!
+      </h3>
+  
+      <!-- Layout: Sidebar + Content -->
+      <div style="display: flex; flex-direction: row; gap: 60px; margin-bottom: 30px; flex-wrap: wrap;">
+  
+        <!-- Sidebar Overview -->
+        <div style="flex: 1; min-width: 220px;">
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Overview</h4>
+          <ul style="margin-left: 20px; line-height: 1.6;">
+            <li>Usability Test Plan</li>
+            <li>Findings</li>
+            <li>Priority Revisions</li>
+            <li>Next Steps</li>
+          </ul>
+        </div>
+  
+        <!-- Main Content -->
+        <div style="flex: 3; min-width: 300px;">
+  
+          <!-- Usability Test Plan -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Usability Test Plan</h4>
+          <p style="margin-bottom: 16px;">
+            I conducted tests with 4 participants—2 of whom were part of the low-fidelity prototype testing. For high-fidelity testing, the platform did not allow Bank of America demo logins, so participants used screenshots and scenario-based tasks. I ensured the interface felt intuitive for both Bank of America users and non-users.
+          </p>
+  
+          <!-- Findings -->
+          <h4 style="font-size: 16px; font-weight: bold; margin: 20px 0 10px;">Usability Test Findings</h4>
+          <p style="margin-bottom: 16px;">
+            Participants appreciated the feature, noting it would simplify financial tracking and make the experience engaging. Key feedback included:
+          </p>
+          <ul style="margin-left: 20px; margin-bottom: 16px;">
+            <li>“Select Amount” confused users—they thought it referred to paying from the Surplus Balance.</li>
+            <li>One participant assumed “Minimum Amount” meant “total due” rather than minimum payment.</li>
+            <li>The term “Open Balances” was unclear for some participants, but they liked the interactive chart after explanation.</li>
+            <li>Participants suggested integrating Outgoing Payments more closely with outstanding balance management.</li>
+          </ul>
+  
+          <!-- Priority Revisions -->
+          <h4 style="font-size: 16px; font-weight: bold; margin: 20px 0 10px;">Priority Revisions</h4>
+          <p style="margin-bottom: 16px;">
+            Based on feedback, I created a new user flow focusing on the Outgoing Payments pathway. This approach offers a more direct route for paying down debt and provides better clarity during transactions.
+          </p>
+  
+          <!-- Outgoing Payment Image -->
+          <div style="text-align: center; margin: 30px 0;">
+            <img src="YOUR_IMAGE_OUTGOING" alt="Outgoing Payments Screen" style="max-width: 300px; width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+          </div>
+  
+          <!-- User Flow -->
+          <h4 style="font-size: 14px; font-weight: bold; text-align: center; margin-bottom: 10px;">UPDATED USER FLOW</h4>
+          <img src="YOUR_IMAGE_USERFLOW" alt="Updated User Flow" style="width: 100%; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;">
+  
+          <!-- CTA -->
+          <div style="text-align: center; margin-bottom: 40px;">
+            <a href="YOUR_FINAL_PROTOTYPE_LINK" target="_blank" style="display: inline-block; background-color: #d32f2f; color: #fff; font-weight: 600; text-decoration: none; padding: 12px 22px; border-radius: 4px;">
+              View Final Prototype
+            </a>
+          </div>
+  
+          <!-- Next Steps -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Next Steps</h4>
+          <p style="margin-bottom: 16px;">
+            I plan to test the new Outgoing Payments pathway further. This direct approach addresses user concerns and creates a streamlined experience for paying down credit card debt.
+          </p>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Final Prototype-->
+
+  <section id="Finalprototype" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="border: 2px solid #d32f2f; padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+         <!-- Section Title -->
+  <h3 style="font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 700; color: #d32f2f; text-align: center; margin-bottom: 30px;">
+    Final Prototype
+  </h3>
+      OrbitScan resulted in a fully designed and interactive high-fidelity prototype, showcasing a seamless barcode scanning experience and personalized nutritional insights. I prepared detailed screens, user flows, and export-ready assets to guide future development efforts.
+  </p>
+  
+            <section id="prototype" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+          <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+              <iframe 
+                style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+                width="1000" 
+                height="600" 
+                src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share" 
+                allowfullscreen>
+              </iframe>
+            </div>
+        </section>
+
+        <!--More Projects-->
+
+            <div style="max-width: 1040px; margin: 0 auto; background-color: #fff;">
+        <div class="more-projects-section">
+            <div class="more-projects-header">
+                <h3>MORE PROJECTS <span class="dots"></span></h3>
+                <a href="work.html" class="view-all">View All <svg viewBox="0 0 24 24" fill="currentColor" style="width:1em;height:1em;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg></a>
+            </div>
+            <div class="project-cards-container">
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">UX Case Study</span>
+                        <span class="tag">Mobile App IOS</span>
+                        <span class="tag">Figma</span>
+                    </div>
+                    <div class="project-image">
+                        <a href="MW/MW.html" target="_blank">
+                        <img src="assets/img/Manage Wise/ManageWise Cover.png" loading="lazy" alt="ManageWise Cover">
+                    </div>
+                </div>
+                
+             
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">Website Redesign</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                        <span class="tag">Figma</span>
+                    </div>
+                    <div class="project-image">
+                        <a href="MC copy.html" target="_blank">
+                        <img src="assets/img/Projects/Cover/MC.png" loading="lazy" alt="Portfolio Redesign"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.querySelectorAll('.read-more-btn').forEach(function(btn) {
+              btn.addEventListener('click', function() {
+                const parent = btn.closest('.read-more-paragraph');
+                const dots = parent.querySelector('.dots');
+                const moreText = parent.querySelector('.more-text');
+          
+                if (moreText.style.display === "inline") {
+                  moreText.style.display = "none";
+                  dots.style.display = "inline";
+                  btn.textContent = "Read more";
+                } else {
+                  moreText.style.display = "inline";
+                  dots.style.display = "none";
+                  btn.textContent = "Read less";
+                }
+              });
+            });
+          </script>
+
+<script>
+  window.addEventListener("load", function () {
+    // Force the loader to stay for 2 seconds even if the page loads faster
+    setTimeout(function () {
+      document.getElementById("loader").style.display = "none";
+    }, 2000); // 2000ms = 2 seconds
+  });
+</script>
+  
+  
 </body>
 </html>
