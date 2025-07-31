@@ -863,21 +863,45 @@ border: 2px solid #000000;
   margin: 0 auto;
 }
 
-/* Portfolio Card */
-.portfolio-tile {
+/* ========== CONTAINER SETUP ========== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========== PORTFOLIO TILE ========== */
+.portfolio-wrapper {
   display: flex;
   flex-direction: column;
-  background-color: #f9f9f9;
+  gap: 80px; /* space between multiple tiles */
+}
+
+.portfolio-tile {
+  display: flex;
+ 
+  flex-direction: column;
+  background-color: #f9f9f900;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
+  width: 100%;
 }
 
 .portfolio-tile:hover {
   transform: translateY(-4px);
 }
 
+.tile-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* ========== TEXT CONTENT ========== */
 .tile-text {
   padding: 24px;
 }
@@ -927,35 +951,26 @@ border: 2px solid #000000;
   color: #fff;
 }
 
-.tile-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ========== RESPONSIVE ========== */
-
+/* ========== RESPONSIVE + LAYOUT ADJUSTMENTS ========== */
 @media (min-width: 768px) {
-  .portfolio-wrapper {
-    gap: 60px;
-  }
-
   .portfolio-tile {
     flex-direction: row;
     align-items: center;
+    gap: 40px;
   }
 
   .tile-image {
-    flex: 1;
+    flex: 0.9;
+    padding: 24px;
   }
 
   .tile-text {
-    flex: 1;
+    flex: 1.1;
+    padding: 24px;
   }
 
   .tile-image img {
-    height: 100%;
-    object-fit: cover;
+    height: auto;
   }
 }
 
@@ -972,7 +987,6 @@ border: 2px solid #000000;
     font-size: 1.1rem;
   }
 }
-
 
   /* Calendly Link */
 
