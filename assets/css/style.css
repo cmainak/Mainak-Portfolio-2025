@@ -842,26 +842,9 @@ border: 2px solid #000000;
 
 /* Portfolio Section */
 /* New Portfolio Layout */
-#portfolio {
-  padding: 80px 20px;
-  background-color: #fff;
-  position: relative;
-  z-index: 1;
-}
 
-.section-header h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
 
-.portfolio-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+
 
 /* ========== CONTAINER SETUP ========== */
 .container {
