@@ -34,8 +34,9 @@
   <link href="assets/css/style.css" rel="stylesheet">
   
   <style>
+
     /*Floating Up Arrow Bitton */
-  .floating-up-button {
+    .floating-up-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -63,15 +64,17 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 
+/* About container fix for yellow background issues */
+.about-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px; /* reduced gap */
+  padding: 20px; /* extra padding so text doesn't hit the curve */
+  box-sizing: border-box;
+}
 
-  .about-container {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 100px;
-    padding: 10px 10px;
-  }
 
   @media screen and (max-width: 768px) {
     .about-container {
@@ -141,18 +144,18 @@
 <p>Over the past few years, I’ve worked across media, consumer insights, and advertising. This mix has shaped me approach product design from multiple angles not just as visual problem-solving, but as a balance between user value, business goals, and execution.</p>
 <p>Working in Market Research taught me both qualitative and quantitative research methods. Skilled in design thinking and translating research findings into web and mobile interfaces that align user needs with business goals.
 
-  <p class="about-lead">What I really took from that experience is the importance of  <span class="swoosh">asking the right questions</span> — and knowing that good research is about listening, not assuming. Working in fast-paced projects taught me how to work with tight timelines, collaborate across teams, and manage the little details that can make or break a study.</p>
+  <p class="about-lead">What I really took from that experience is the importance of  <span class="swoosh">asking the right questions.</span> Working in fast-paced projects taught me how to work with tight timelines, collaborate across teams, and manage the little details that can make or break a study.</p>
   
  <p> These skills naturally pushed me toward UX, where I get to bring research and design together to build things that genuinely help people. My background helps me stay curious, think critically, and make sure I’m designing with the actual user in mind — not just what I think they need.</p>
   
   </p>
   <p style="font-size: 16px; line-height: 1.6; margin-top: 15px;">
 
-    Outside of design, I unwind through getting behind the lens, hitting the trails, or playing football.
+    Outside of design, I unwind through, working out, gaming, hitting the trails, or playing football.
   </p>
 
   <p></p>
-  <p> Feel free to reach out. I am always open for collaboration or conversations.
+  <p> Feel free to reach out. I am open for collaboration or conversations. Avg response time 2 days.
         </p>
 
 
@@ -257,6 +260,7 @@
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js" defer></script>
+
 
 </body>
 
