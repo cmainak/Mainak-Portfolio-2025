@@ -780,10 +780,9 @@ logo-slider:after {
 /* Footer End */
 
 
-/* Portfolio Section */
 /* New Portfolio Layout */
 
-
+/* ========== PORTFOLIO TILE STARTS ========== */
 
 
 /* ========== CONTAINER SETUP ========== */
@@ -911,6 +910,11 @@ logo-slider:after {
   }
 }
 
+/* ========== PORTFOLIO TILE ENDS ========== */
+  
+
+  /* ========== CALENDLY STARTS ========== */
+
   /* Calendly Link */
 
   .contact-section {
@@ -930,8 +934,7 @@ logo-slider:after {
     color: #555;
     margin-top: 10px;
   }
-  
-  
+
   .calendly-wrapper {
     display: flex;
     justify-content: center;
@@ -946,7 +949,7 @@ logo-slider:after {
     border-radius: 12px;
     overflow: hidden;
   }
-  
+    /* ========== CALENDLY ENDS ========== */
   .social-links {
     margin-top: 20px;
   }
