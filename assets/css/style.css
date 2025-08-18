@@ -237,120 +237,7 @@ h6 {
 /* Logo Home Hover Ends*/
 
 
-/* Mobile Navigation */
 
-.mobile-nav-toggle {
-  color: #fff;
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-  line-height: 0;
-  transition: 0.5s;
-}
-
-@media (max-width: 768px) {
-  .mobile-nav-toggle {
-    display: none;
-  }
-
-  .navbar ul {
-    display: none;
-  }
-
- .back-to-top{
-  display: none !important;
- }
-}
-
-/* BOTTOMNAV */
-.bottomnav{
-  width: 100% !important;
-}
-
-.mybottomnav{
-  background: rgba(29, 29, 30, 0.9) !important;
-  transition: all 0.1s;
-  font-family: 'Chakra Petch', sans-serif;
-  padding: 10px 0 !important;
-  color: #fff;
-  font-size: 18px;
-  border-radius: 0 !important;
-}
-
-.mybottomnav:hover{
-  background: linear-gradient(to right, #02437D, #000000) !important;
-  color: #fff !important;
-  border-radius: 0 !important;
-}
-
-
-.mybottomnav.active{
-  background: linear-gradient(to right, #02437D, #000000) !important;
-  color: #fff !important;
-  border-radius: 0 !important;
-}
-
-
-.navbar-mobile {
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(77, 77, 77, 0.9);
-  transition: 0.3s;
-  z-index: 999;
-}
-
-.navbar-mobile .mobile-nav-toggle {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
-
-.navbar-mobile ul {
-  display: block;
-  position: absolute;
-  top: 55px;
-  right: 15px;
-  bottom: 15px;
-  left: 15px;
-  padding: 10px 0;
-  background-color: #fff;
-  overflow-y: auto;
-  transition: 0.3s;
-}
-
-.navbar-mobile>ul>li {
-  padding: 0;
-}
-
-.navbar-mobile a:hover:before,
-.navbar-mobile li:hover>a:before,
-.navbar-mobile .active:before {
-  visibility: hidden;
-}
-
-.navbar-mobile a,
-.navbar-mobile a:focus {
-  padding: 10px 20px;
-  font-size: 15px;
-  color: #666666;
-}
-
-.navbar-mobile a:hover,
-.navbar-mobile .active,
-.navbar-mobile li:hover>a {
-  color: #2dc997;
-}
-
-.navbar-mobile .getstarted,
-.navbar-mobile .getstarted:focus {
-  margin: 15px;
-}
-
-/* Nav Bar Ends */
 
 
 
@@ -728,29 +615,30 @@ logo-slider:after {
 --------------------------------------------------------------*/
 #footer {
   background: #02437D;
-  padding: 30px;
+  padding: 20px;
   color: #fff;
   font-size: 14px;
   text-align: center;
-  margin-top: 180px; /* Or more depending on your content */
+  margin-top: 180px; /* adjust as needed */
 }
 
 .footer-container {
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  align-items: center;
+  flex-direction: row; /* Always horizontal */
   justify-content: center;
-  margin-bottom: 5px;
+  align-items: center;
+  gap: 30px; /* spacing between links */
+  flex-wrap: nowrap; /* ensures it won’t break on very small screens */
+  overflow-x: auto;  /* ✅ allow horizontal scroll if screen too small */
 }
 
 .footer-link {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-weight: 500;
   color: #fff;
-  font-family: 'Jura', sans-serif; /* Assuming your primary heading font */
+  font-family: 'Jura', sans-serif;
 }
 
 .footer-link i {
@@ -762,22 +650,9 @@ logo-slider:after {
   text-decoration: none;
   font-size: 16px;
 }
-
-@media screen and (max-width: 400px) {
-  .footer-link {
-    font-size: 12px;
-    gap: 6px;
-  }
-}
-
-/* Desktop view */
-@media screen and (min-width: 768px) {
-  .footer-container {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
 /* Footer End */
+
+
 
 
 /* New Portfolio Layout */
@@ -909,14 +784,10 @@ logo-slider:after {
     font-size: 1.1rem;
   }
 }
-
 /* ========== PORTFOLIO TILE ENDS ========== */
   
 
   /* ========== CALENDLY STARTS ========== */
-
-  /* Calendly Link */
-
   .contact-section {
     padding: 60px 20px;
     background-color: #fff;
@@ -963,6 +834,112 @@ logo-slider:after {
   .social-links a:hover {
     color: #000;
   }
+
+  /* Mobile Navigation */
+
+@media (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: none;
+  }
+
+  .navbar ul {
+    display: none;
+  }
+
+ .back-to-top{
+  display: none !important;
+ }
+}
+
+/* BOTTOMNAV */
+.bottomnav{
+  width: 100% !important;
+}
+
+.mybottomnav{
+  background: rgba(29, 29, 30, 0.9) !important;
+  transition: all 0.1s;
+  font-family: 'Chakra Petch', sans-serif;
+  padding: 10px 0 !important;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 0 !important;
+}
+
+.mybottomnav:hover{
+  background: linear-gradient(to right, #02437D, #000000) !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+}
+
+
+.mybottomnav.active{
+  background: linear-gradient(to right, #02437D, #000000) !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+}
+
+
+.navbar-mobile {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(77, 77, 77, 0.9);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.navbar-mobile .mobile-nav-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.navbar-mobile ul {
+  display: block;
+  position: absolute;
+  top: 55px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  padding: 10px 0;
+  background-color: #fff;
+  overflow-y: auto;
+  transition: 0.3s;
+}
+
+.navbar-mobile>ul>li {
+  padding: 0;
+}
+
+.navbar-mobile a:hover:before,
+.navbar-mobile li:hover>a:before,
+.navbar-mobile .active:before {
+  visibility: hidden;
+}
+
+.navbar-mobile a,
+.navbar-mobile a:focus {
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #666666;
+}
+
+.navbar-mobile a:hover,
+.navbar-mobile .active,
+.navbar-mobile li:hover>a {
+  color: #2dc997;
+}
+
+.navbar-mobile .getstarted,
+.navbar-mobile .getstarted:focus {
+  margin: 15px;
+}
+
+/* Nav Bar Ends */
   
   /* Responsive */
   @media (max-width: 768px) {
