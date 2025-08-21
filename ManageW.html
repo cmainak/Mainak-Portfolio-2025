@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ManageWise Personalizing Productivity Through AI</title>
+  <link rel="stylesheet" href="assets/css/case-study-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+
+
+.home-button {
+  position: fixed;
+  top: 20px; /* Distance from top */
+  right: 20px; /* Stick to the right instead of left */
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Remove transform used for centering */
+.home-button:hover {
+  transform: scale(1.1); /* Only scale now */
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-button i {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+}
+
+        
+          /*Floating Up Arrow Bitton */
+          .floating-up-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+          }
+        
+          .floating-up-button i {
+              color: #333;
+              font-size: 1.4rem;
+          } 
+        
+          .floating-up-button:hover {
+            transform: scale(1.1);
+            background: white;  
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          }
+        
+
+
+    body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      background-color: #fff;
+      color: #111;
+    }
+
+    .top-center-image {
+      display: flex;
+      justify-content: center;
+      margin: 60px 0 30px;
+    }
+
+    .top-center-image img {
+      max-width: 180px;
+      height: auto;
+    }
+
+    .title-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .title-section h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .title-section h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 22px;
+      color: #FFCD29;
+      margin-top: 10px;
+    }
+
+    .content-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 0 20px 60px;
+    }
+
+    .left-column {
+      flex: 1 1 300px;
+      max-width: 320px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      height: 300px;
+    }
+
+    .left-column p {
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .left-column em {
+      font-size: 14px;
+      color: #666;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background-color: #FFCD29;
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .right-column {
+      flex: 2 1 600px;
+    }
+
+    .right-column .section {
+      margin-bottom: 40px;
+    }
+
+    .right-column h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .right-column p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .content-container {
+        flex-direction: column;
+      }
+
+      .left-column, .right-column {
+        max-width: 100%;
+      }
+      
+    }
+
+    
+</style>
+</head>
+
+<!-- MODERN JUMP LINK SIDEBAR -->
+<!-- Bottom-Fixed Navigation Pills -->
+<nav aria-label="Case Study Navigation"
+  style="
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: 50vw;
+    max-width: 660px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.88);
+    box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
+    border-radius: 2.2em;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    overflow-x: auto;
+    white-space: nowrap;
+  ">
+<ul style="
+margin: 0; padding: 0; list-style: none;
+display: flex; gap: 7px; align-items: center; flex-wrap: nowrap;
+width: 100%; overflow-x:auto; white-space:nowrap;">
+    
+<li><a href="#empathize" class="jump-pill">Empathize</a></li>
+<li><a href="#define" class="jump-pill">Define</a></li>
+<li><a href="#ideate" class="jump-pill">Ideate</a></li>
+<li><a href="#prototype" class="jump-pill">Prototype</a></li>
+<li><a href="#test" class="jump-pill">Test</a></li>
+<li><a href="#Result" class="jump-pill" style="padding-right: 32px;">Result</a></li>
+</ul>
+</nav>
+
+<!-- Inline CSS -->
+<style>
+html { scroll-behavior: smooth; }
+.jump-pill {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 9px 22px;
+  border-radius: 2em;
+  background: transparent;
+  transition: background .17s, color .17s;
+}
+.jump-pill:hover,
+.jump-pill:focus {
+  background: #FFCD29 !important;
+  color: #000 !important;
+  outline: none;
+}
+.jump-pill.active {
+  background: #FFCD29 !important;
+  color: #fff !important;
+}
+@media (max-width: 950px) {
+  nav[aria-label="Case Study Navigation"] ul { gap: 3px !important; }
+  .jump-pill {
+    font-size: 0.97rem !important;
+    padding: 8px 12px !important;
+  }
+}
+@media (max-width: 650px) {
+  .jump-pill { font-size:0.91rem!important; }
+}
+</style>
+
+<!-- Highlight Active Section -->
+<script>
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".jump-pill");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100; // offset for nav height
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+<!-- Add extra bottom space -->
+<div style="min-height:65px"></div>
+
+<body>
+
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: flex; align-items: center; justify-content: center; z-index: 9999;">
+        <p style="font-size: 18px; color: #333;">Loading awesome work... hang tight 🚀</p>
+      </div>
+
+      <a href="index.html" class="home-button">
+        <i class="fas fa-home"></i>
+      </a>
+    
+      <a href="ManageW.html" class="floating-up-button">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+
+  <!-- Top single phone image -->
+  <div class="top-center-image">
+    <img src="https://via.placeholder.com/180x360?text=Bank+of+America" alt="Bank of America logo phone mockup">
+  </div>
+
+  <!-- Project Title -->
+  <div class="title-section">
+    <h1>Manage Wise — Personalizing Productivity Through AI
+    </h1>
+    <h3>Smarter Savings with Surplus Manager – A New Finance Feature</h3>
+  </div>
+
+  <!-- Main Content Split Layout -->
+  <div class="content-container">
+
+    <!-- Left Overview Box -->
+    <div class="left-column">
+      <p><strong>ROLE:</strong> UX Designer</p>
+      <p><strong>TIMELINE:</strong> 10 Weeks</p>
+      <p><strong>TOOLS USED:</strong>Figma, Goggle Forms, </p>
+      <em>This project is a fictitious scenario, completed as a part of a graduate program.</em>
+      <a href="#" class="cta-button">View High-Fidelity Prototype</a>
+    </div>
+
+    <!-- Right Description Sections -->
+    <div class="right-column">
+      <div class="section">
+        <h4>Background</h4>
+        <p>Picture this: Millions of customers across the U.S. start their financial day by opening the <strong>Chase Mobile® app</strong>, a digital hub that lets them <strong>check balances</strong>, <strong>transfer funds</strong>, <strong>pay bills</strong>, <strong>deposit checks</strong>, and get a full view of their <strong>spending habits</strong>. With features like <strong>detailed spending reports</strong>, <strong>account alerts</strong>, and credit monitoring via <strong>Credit Journey®</strong>, users have plenty of tools to stay on top of their money.</p>
+        <p>Even more, Chase has teamed up with <strong>J.P. Morgan</strong> for investment management—alongside built-in perks like <strong>Autosave</strong>, interactive budgeting, and custom notifications. Yet, despite all these capabilities making everyday banking easy and secure, one thing remains: <strong>most actions are still driven by the user</strong>. Behind all the power, there’s an unmet need for a little extra help—especially for those who wish some steps could just happen for them.</p>
+        </div>
+
+    <div class="section">
+        <h4>Problem</h4>
+        <p>The landscape is shifting: <strong>More than half of Millennials (58%) and Gen Z (57%)</strong> are thinking about switching banks for one simple reason—they want better, more personal digital experiences. In fact, <strong>73% of consumers</strong> are drawn to the idea of banking with tech giants like <strong>Google, Apple, or PayPal</strong> over traditional banks.</p>
+        <p>Here's where the gap appears. <strong>Chase Mobile® offers plenty of smart tools</strong>, but doesn’t automatically spot or flag extra cash—the “<strong>surplus</strong>” that’s left in checking accounts after bills and spending. Without a friendly prompt or an effortless way to move this money, <strong>young users may miss out on saving or investing it</strong>. In a world racing toward <strong>smarter, proactive digital banking</strong>, this missing piece could make all the difference. </p>
+        <p>So, there’s an opportunity: <strong>Chase can win the loyalty of young professionals</strong> by helping them face their day-to-day financial challenges—with tools that make managing and growing their money almost effortless.</p>
+    </div>
+
+    <div class="section">
+        <h4>Project Scope</h4>
+        <p>This project is about designing a <strong>surplus management feature</strong> for the Chase Mobile® app—tailored for Millennials and Gen Z, but helpful for anyone who wants their money to “work harder.” The idea: <strong>Make it easy to spot the extra cash</strong> left in checking accounts each month, and—with just a tap—move it to savings or investment, without the user having to calculate or second-guess.</p>
+        <p>To bring this vision to life, the project will:</p>
+        <ul>
+          <li><strong>Dig deep into user needs</strong> through interviews and real-world observation.</li>
+          <li><strong>Define and prototype</strong> how the app detects surplus, prompts the user, and recommends transfers.</li>
+          <li><strong>Create a user experience</strong> that fits right into Chase’s look and feel, but feels new in how it simplifies a complex task.</li>
+          <li><strong>Test with real people</strong> and refine every detail, ensuring the tool is genuinely helpful for today’s mobile-first customers.</li>
+        </ul>
+        <p><strong>Bottom line:</strong> This feature will turn leftover money into an opportunity—for users to build habits they’re proud of, and for Chase to stay ahead in the ever-evolving world of digital banking. Chase can uniquely deliver this feature natively, with deeper banking integration, trust, and automation than standalone apps.</p>
+    </div>
+    </div>
+    </div>
+
+    <section style="padding: 60px 20px; background-color: #fff;">
+    <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">THE PROCESS</h2>
+  
+    <!-- Icons Row -->
+    <div style="display: flex; justify-content: space-between; max-width: 800px; margin: 40px auto;">
+    <div style="text-align: center;">
+    <img src="https://img.icons8.com/ios-filled/50/000000/brainstorm-skill.png" alt="Empathize" style="height: 48px; margin-bottom: 10px;">
+    <p style="font-weight: 500;">Empathize</p>
+    </div>
+    <div style="text-align: center;">
+    <img src="https://img.icons8.com/ios-filled/50/000000/document.png" alt="Define" style="height: 48px; margin-bottom: 10px;">
+    <p style="font-weight: 500;">Define</p>        
+    </div>
+    <div style="text-align: center;">
+    <img src="https://img.icons8.com/ios-filled/50/000000/idea.png" alt="Ideate" style="height: 48px; margin-bottom: 10px;">
+    <p style="font-weight: 500;">Ideate</p>
+    </div>
+    <div style="text-align: center;">
+    <img src="https://img.icons8.com/ios-filled/50/000000/engineering.png" alt="Prototype" style="height: 48px; margin-bottom: 10px;">
+    <p style="font-weight: 500;">Prototype</p>
+    </div>
+    <div style="text-align: center;">
+    <img src="https://img.icons8.com/ios-filled/50/000000/approval.png" alt="Test" style="height: 48px; margin-bottom: 10px;">
+    <p style="font-weight: 500;">Test</p>
+    </div>
+    </div>
+  
+   <!-- Empathize Section -->
+<section id="empathize" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+      <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
+        01 / Empathize – Exploring the User’s Needs
+      </h2>
+  
+      <!-- Research Approach -->
+      <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Research Approach</h4>
+      <p style="margin-bottom: 16px;">
+        I began by putting myself in the shoes of <strong>young professionals</strong>—those juggling rent, bills, and the occasional splurge, all while wanting to save more for the future. To understand their real, everyday needs, I conducted in-depth interviews with <strong>Chase Mobile® app users</strong> aged 25 to 35 who are single, don’t own homes, and do most of their <strong>money management on mobile apps</strong>.
+      </p>
+      <p style="margin-bottom: 16px;">
+        Over a series of five, 45–60 minute conversations, I focused on how these users <strong>track spending</strong>, try to plan savings, and interact with both their bank and outside finance tools. Open-ended questions encouraged them to share their personal routines, frustrations, and workarounds—giving me a window into not just what they do, but <strong>why</strong> they do it.
+      </p>
+      <p style="margin-bottom: 16px;">
+        <strong>Research goals:</strong>
+      </p>
+      <ul style="margin-left: 20px; margin-bottom: 20px;">
+        <li>Spot patterns in how young professionals manage—and sometimes struggle with—their finances.</li>
+        <li>Zero in on pain points and unmet needs that banks and finance apps overlook.</li>
+        <li>Uncover what motivates or discourages saving and investing in this group.</li>
+      </ul>
+  
+      <!-- Key Findings from Customer Interviews -->
+      <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Key Findings from Customer Interviews</h4>
+      <p style="margin-bottom: 16px;">
+        <strong>Diverse goals, similar money struggles:</strong> Whether paying off student loans or saving for something big, every participant carefully managed finances <strong>between paychecks</strong>.
+      </p>
+      <p style="margin-bottom: 16px;">
+        <strong>Popular budgeting apps weren’t the answer:</strong> Most had tried <strong>Mint</strong> or <strong>Rocket Money</strong>, but quickly became frustrated by <strong>inaccurate categories</strong>, <strong>laggy updates</strong>, and needing to <strong>pay premium fees</strong> for full access. These tools felt complex or high-maintenance, and didn’t deliver what users wanted most: simplicity and reliability.
+       Plus recent consumer apps like <strong>Surplus Expense Tracker</strong> show that people are already looking for ways to keep track of their leftover funds—proving this is a real need, not just a guess.</p>
+      <p style="margin-bottom: 16px;">
+        <strong>Manual tracking was still king:</strong> Two participants opted for <strong>spreadsheets</strong> and handwritten logs, finding these more flexible and trustworthy than any app. It helped them break down their expenses and savings, tailored to their unique lives.
+      </p>
+      <p style="margin-bottom: 16px;">
+        <strong>Payment dates & automation struggles:</strong> Many wished managing payment due dates was easier. While some dreamed of <strong>autopay</strong> for everything, they worried it might mean less control or even unwanted overdrafts. The right balance of convenience and control was missing.
+      </p>
+      <p style="margin-bottom: 16px;">
+        Across the board, these young professionals wanted a banking tool that would <strong>do the heavy lifting for them</strong>—making it easy to spot extra cash in their accounts and <strong>turn it into progress</strong> with less effort, less guesswork, and fewer headaches.
+      </p>
+    </div>
+  </section>
+  
+  
+<!-- Define Section -->
+<section id="define" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+  
+      <!-- Section Title -->
+      <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
+        02 / Define – What Users Really Need From Surplus Manager
+      </h2>
+  
+      <!-- Overview + Persona -->
+      <div style="display: flex; flex-direction: row; gap: 60px; margin-bottom: 30px; flex-wrap: wrap;">
+        <!-- Sidebar Overview -->
+        <div style="flex: 1; min-width: 220px;">
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Overview</h4>
+          <p style="margin: 0;">
+            At this point, it’s time to put a name and face to the patterns we discovered. By bringing together real stories from our research, we create a clear picture of who we’re designing for—and the daily struggles they face when it comes to handling their leftover money.
+          </p>
+        </div>
+        <!-- Persona Details -->
+        <div style="flex: 3; min-width: 300px;">
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Meet Niya</h4>
+          <p style="margin-bottom: 16px;">
+            Thinking about all those conversations, a relatable story came forward: <strong>Niya</strong>, a young professional living on her own. She gets paid every other week, covers her rent and bills, and does her best to save—sometimes for a big goal, like grad school. But life is busy, and keeping up with budgets or extra money at the end of the month feels overwhelming.
+          </p>
+          <p style="margin-bottom: 16px;">
+            Niya has tested out a few finance apps, but <strong>most are either overwhelming or don’t sync smoothly with her Chase banking.</strong>. She wants one place, right in the app she already trusts, to quickly see what’s left in her account and easily put it towards her future—without the stress or spreadsheets.
+          </p>
+        </div>
+      </div>
+  
+<!-- Persona Section: Niya (Chase Surplus Manager) -->
+<div class="persona-section" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; border: 2px solid #FFCD29; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(26,138,250,0.03); max-width: 900px; margin: 32px auto 0; padding: 20px 20px 16px 24px;">
+    <!-- Left: Info Grid -->
+    <div style="flex: 2 1 370px; min-width: 310px;">
+      <div style="margin-bottom: 12px;">
+        <h4 style="color:#FFCD29; font-size:16px; font-weight:700; margin:0 0 4px 0;">Goals</h4>
+        <ul style="padding-left: 16px; margin:0;">
+          <li>Build savings for grad school quickly and easily</li>
+          <li>Feel in control of “leftover” cash after monthly expenses</li>
+          <li>Automate progress—without overthinking or manual work</li>
+        </ul>
+      </div>
+      <div style="margin-bottom: 12px;">
+        <h4 style="color:#FFCD29; font-size:16px; font-weight:700; margin:0 0 4px 0;">Pain Points</h4>
+        <ul style="padding-left: 16px; margin:0;">
+          <li>Budgeting apps feel overwhelming or costly</li>
+          <li>Manual tools and spreadsheets take too much effort</li>
+          <li>Unsure how much is safe to save after bills</li>
+          <li>Worries about missing payments if she saves too much</li>
+        </ul>
+      </div>
+      <div style="margin-bottom: 12px;">
+        <h4 style="color:#FFCD29; font-size:16px; font-weight:700; margin:0 0 4px 0;">Behaviors</h4>
+        <ul style="padding-left: 16px; margin:0;">
+          <li>Checks Chase Mobile® frequently for balances & bills</li>
+          <li>Tried Mint and Rocket Money, but abandoned quickly</li>
+          <li>Uses Google Sheets monthly for tracking</li>
+          <li>Relies on app reviews and friends’ recommendations</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#FFCD29; font-size:16px; font-weight:700; margin:0 0 4px 0;">App Expectations</h4>
+        <ul style="padding-left: 16px; margin:0;">
+          <li>Clear and automatic view of surplus funds</li>
+          <li>Easy, flexible transfers to savings or investment</li>
+          <li>Guidance tailored to her habits—no nags or premium fees</li>
+          <li>All inside the Chase app she already trusts</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Right: Visual/Profile -->
+    <div style="flex:1 1 210px; min-width:170px; display:flex; flex-direction:column; align-items:center;">
+      <img src="assets/img/Chase/Niya_Persona.png" alt="Persona Niya" style="width:100%; height:320px; object-fit:contain; border-radius: 12px; box-shadow: 0 2px 8px rgba(50,146,230,.08); margin-bottom:10px; background:#f4f6f8; padding-top:7px;">
+      <div style="background:#f4f6f8; border-radius:8px; padding:12px 10px 10px 10px; width:100%; box-sizing:border-box;">
+        <div style="font-weight:600; color:#FFCD29; margin-bottom:4px;">NAME: NIYA PATEL</div>
+        <div style="margin-bottom:2px;">AGE: 29</div>
+        <div style="margin-bottom:2px;">OCCUPATION: Marketing Analyst</div>
+        <div style="margin-bottom:2px;">LOCATION: Urban Apt. Renter</div>
+        <div style="margin-bottom:2px;">LIFESTYLE: Single, digitally savvy</div>
+        <div style="margin-bottom:2px;">INCOME: $58,000/year</div>
+        <div><strong>Brands used:</strong><br>
+          <span style="display:inline-block; margin-top:2px;">
+            Chase Mobile®, Mint, Surplus Expense Tracker, Rocket Money, Google Sheets
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  
+      <!-- Problem Statements -->
+      <div>
+        <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">What’s Getting in the Way?</h4>
+        <p style="margin-bottom: 16px;">
+          So, after all the stories and notes, here’s what stood out: <strong>Niya isn’t alone</strong>. Many users like her feel unsure about their “extra” money and don’t have a simple, helpful way to save or invest it—right now, when it matters most.
+        </p>
+        <p style="margin-bottom: 16px;">
+          If we could wave a magic wand, what would truly help? These are the questions guiding our next steps:
+        </p>
+        <ul style="margin-left: 20px; margin-bottom: 0;">
+          <li style="margin-bottom: 12px;">
+            <strong>How might we help Niya (and others like her) clearly see what’s actually left after bills—</strong>so she feels in control and confident about her money?
+          </li>
+          <li style="margin-bottom: 12px;">
+            <strong>How might we make moving surplus money into savings or investment the easiest part of her month—</strong>not another chore?
+          </li>
+          <li style="margin-bottom: 0;">
+            <strong>How might we build the right habits, little by little—</strong>so Niya (and everyone like her) starts celebrating progress without the pressure?
+          </li>
+        </ul>
+        <p style="margin-top: 20px;">
+          These honest, everyday questions become our roadmap. Everything we design for Surplus Manager will help users like Niya do more with the money they work so hard for—without extra stress.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+
+  <!-- Ideate Section -->
+<section id="ideate" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+      <!-- Section Title -->
+      <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
+        03 / Ideate – Creating the Framework
+      </h2>
+  
+<!-- Main Content -->
+<div style="flex: 3; min-width: 300px;">
+  
+<!-- Ideation -->
+<h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">How My Ideas Took Shape</h4>
+<p style="margin-bottom: 16px;">
+  For the ideation phase, I utilized the Crazy 8 brainstorming exercise. Each session consisted of five minutes spent rapidly sketching as many ideas as possible—ideally eight per round—followed by an intentional 20–30 minute break. I didn’t always complete eight sketches each round, but this approach pushed me to generate a wide range of concepts in a short time and gave me space to reflect between sessions.
+</p>
+<p style="margin-bottom: 16px;">
+After five Crazy 8 sessions, I compiled my sketches and organized them by theme. I filled pages with ideas, doodles, and quick notes. Then, I circled the ones that made me think, “Yes, this actually helps!” Every idea I kept was inspired by something users told me—they wanted things to be clear, quick, and give them a little nudge when they need it.
+</p>
+
+  
+        <!-- Crazy 8 Themes Images -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px;">
+          <div style="text-align: center;">
+            <img src="YOUR_IMAGE_PATH_1" alt="Remaining Balance Manager" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+            <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">REMAINING BALANCE MANAGER</p>
+          </div>
+          <div style="text-align: center;">
+            <img src="YOUR_IMAGE_PATH_2" alt="Savings Goals" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+            <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">SAVINGS GOALS + SHORT/LONG TERM</p>
+          </div>
+          <div style="text-align: center;">
+            <img src="YOUR_IMAGE_PATH_3" alt="Tracking Calendar" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+            <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">TRACKING CALENDAR / BILL PAY</p>
+          </div>
+          <div style="text-align: center;">
+            <img src="YOUR_IMAGE_PATH_4" alt="Expense Breakdown" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+            <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">EXPENSE BREAKDOWN</p>
+          </div>
+          <div style="text-align: center;">
+            <img src="YOUR_IMAGE_PATH_5" alt="Account Tracker" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+            <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">ACCOUNT TRACKER / FINANCE EDUCATION</p>
+          </div>
+        </div>
+  
+        <!-- Storyboarding -->
+        <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Storyboarding</h4>
+        <p style="margin-bottom: 16px;">
+          With rough themes in hand, I used another round of Crazy 8’s to sketch out the <strong>user journey</strong>. One path stood out above the rest: “Managing by Pay Period.” This approach mirrored how users like Niya actually budget in real life—tracking by each paycheck, not just by month.
+        </p>
+        <p style="margin-bottom: 16px;">
+          I filled pages with ideas, doodles, and quick notes. Then, I circled the ones that made me think, “Yes, this actually helps!” Every idea I kept was inspired by something users told me—they wanted things to be clear, quick, and give them a little nudge when they need it.
+        </p>
+  
+        <!-- Storyboard Images -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px;">
+          <div style="text-align: center;">
+            <img src="YOUR_IMAGE_PATH_6" alt="Managing Income" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+            <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">MANAGING INCOME AND EXPENDITURES (2)</p>
+          </div>
+          <div style="text-align: center;">
+            <img src="YOUR_IMAGE_PATH_7" alt="Managing Pay Period" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+            <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">MANAGING BY PAY PERIOD (2)</p>
+          </div>
+          <div style="text-align: center;">
+            <img src="YOUR_IMAGE_PATH_8" alt="Improving Financial Health" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+            <p style="font-size: 13px; font-weight: 600; margin-top: 8px;">IMPROVING FINANCIAL HEALTH</p>
+          </div>
+        </div>
+  
+        <!-- User Flow -->
+        <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">User Flow</h4>
+        <p style="margin-bottom: 16px;">
+          Pulling everything together, I mapped a complete <strong>user flow</strong> for Surplus Manager. What began as a “Money Manager” feature evolved through sketches, feedback, and early tests into a tool that tracks by pay period, helps automate savings, and turns leftover money into real momentum. Every step was checked for clarity, confidence, and zero stress.
+        </p>
+  
+        <!-- User Flow Image -->
+        <div style="text-align: center; margin-top: 30px;">
+          <img src="YOUR_USERFLOW_IMAGE_PATH" alt="User Flow Diagram" style="max-width: 100%; border-top: 2px solid #d32f2f; padding-top: 10px;">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+ <!-- Prototype Section -->
+<section id="prototype" style="padding: 60px 20px; background-color: #ffffff;">
+    <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+  
+      <!-- Section Title -->
+      <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">   04 / Prototype – Let's Make the Design!</h2>
+  
+        <!-- Main Content -->
+        <div style="flex: 3; min-width: 300px;">
+  
+          <!-- Wireframes -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Wireframes</h4>
+          <p style="margin-bottom: 16px;">
+            While developing the storyboard concept of paying by paycheck, I examined Bank of America’s mobile banking app and noticed features like “Bill Pay” and “Life Plan” that had been available for years but were largely unnoticed by users. Even participants who were existing customers had never used them.
+          </p>
+          <p style="margin-bottom: 16px;">
+            I decided to integrate similar ideas into my finance management feature. Participants managed finances based on their paycheck, bills, and savings goals, so the new feature would allow them to set up their plan based on pay schedules (bi-weekly, monthly, or custom).
+          </p>
+  
+          <!-- Reference Images -->
+          <div style="display: flex; gap: 20px; margin: 24px 0 32px; flex-wrap: wrap;">
+            <img src="YOUR_IMAGE_PAY_BILLS" alt="Pay Bills Feature" style="flex: 1; min-width: 150px; border: 1px solid #ccc; border-radius: 6px;">
+            <img src="YOUR_IMAGE_LIFE_PLAN" alt="Life Plan Feature" style="flex: 1; min-width: 150px; border: 1px solid #ccc; border-radius: 6px;">
+          </div>
+  
+          <p style="margin-bottom: 16px;">
+            The “Money Manager” feature appears on the dashboard and displays the available balance, scheduled bill payments, and remaining funds until the next paycheck. I also integrated goal tracking and easy access to upcoming payments.
+          </p>
+  
+          <!-- Wireframe Image -->
+          <h4 style="font-size: 14px; font-weight: bold; text-align: center; margin-bottom: 10px;">WIREFRAMES</h4>
+          <img src="YOUR_IMAGE_WIREFRAMES_GRID" alt="Wireframes Overview" style="width: 100%; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;">
+  
+          <!-- CTA -->
+          <div style="text-align: center; margin-bottom: 40px;">
+            <a href="YOUR_LOW_FI_LINK" target="_blank" style="display: inline-block; background-color: #FFCD29; color: #000; font-weight: 600; text-decoration: none; padding: 12px 22px; border-radius: 4px;">
+              View Low-Fidelity Prototype
+            </a>
+          </div>
+  
+          <!-- Low-Fi Usability Testing -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Low-Fidelity Prototype Usability Testing</h4>
+          <p>
+            I tested this prototype with 3 participants. Feedback revealed that some UI elements caused confusion, such as large negative balances in “Pending Transactions.” Based on insights, I iterated the flow to prioritize surplus balance management rather than individual payment flows.
+          </p>
+        </div>
+      </div>
+  
+      <!-- High-Fidelity Prototype Section -->
+      <div style="max-width: 980px; margin: 40px auto; padding: 40px 20px; border: 1px solid #ddd; border-radius: 12px; background-color: #ffffff; display: flex; flex-wrap: wrap; gap: 40px;">
+        
+        <!-- Text Column -->
+        <div style="flex: 1 1 400px; min-width: 280px;">
+          <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 16px; color: #FFCD29;">High-Fidelity Prototype</h3>
+          <p style="margin-bottom: 16px;">
+            Based on user feedback, I renamed the feature from “Money Manager” to “Surplus Manager” to better reflect its purpose. Participants found the previous name misleading as it sounded investment-related.
+          </p>
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Key Highlights</h4>
+          <ul style="margin-left: 20px; margin-bottom: 16px;">
+            <li><strong>Surplus Spotlight:</strong> Central focus on remaining funds after bills.</li>
+            <li><strong>Manage by Pay Period:</strong> Users can track spending across pay cycles.</li>
+          </ul>
+        </div>
+  
+        <!-- Image Column -->
+        <div style="flex: 1 1 400px; min-width: 280px; display: flex; align-items: center; justify-content: center;">
+          <img src="YOUR_FINAL_PROTOTYPE_IMAGE" alt="Surplus Manager Summary Screen" style="max-width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    </div>
+    </div>
+  
+</div>
+</section>
+  
+  
+ 
+ <!-- Test Section -->
+<section id="test" style="padding: 60px 20px; background-color: #ffffff;">
+<div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+  
+      <!-- Section Title -->
+      <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">  05 / Test – It’s Time to Test the Prototype!</h2>
+  
+        <!-- Main Content -->
+        <div style="flex: 3; min-width: 300px;">
+  
+          <!-- Usability Test Plan -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Usability Test Plan</h4>
+          <p style="margin-bottom: 16px;">
+            I conducted tests with 4 participants—2 of whom were part of the low-fidelity prototype testing. For high-fidelity testing, the platform did not allow Bank of America demo logins, so participants used screenshots and scenario-based tasks. I ensured the interface felt intuitive for both Bank of America users and non-users.
+          </p>
+  
+          <!-- Findings -->
+          <h4 style="font-size: 16px; font-weight: bold; margin: 20px 0 10px;">Usability Test Findings</h4>
+          <p style="margin-bottom: 16px;">
+            Participants appreciated the feature, noting it would simplify financial tracking and make the experience engaging. Key feedback included:
+          </p>
+          <ul style="margin-left: 20px; margin-bottom: 16px;">
+            <li>“Select Amount” confused users—they thought it referred to paying from the Surplus Balance.</li>
+            <li>One participant assumed “Minimum Amount” meant “total due” rather than minimum payment.</li>
+            <li>The term “Open Balances” was unclear for some participants, but they liked the interactive chart after explanation.</li>
+            <li>Participants suggested integrating Outgoing Payments more closely with outstanding balance management.</li>
+          </ul>
+  
+          <!-- Priority Revisions -->
+          <h4 style="font-size: 16px; font-weight: bold; margin: 20px 0 10px;">Priority Revisions</h4>
+          <p style="margin-bottom: 16px;">
+            Based on feedback, I created a new user flow focusing on the Outgoing Payments pathway. This approach offers a more direct route for paying down debt and provides better clarity during transactions.
+          </p>
+  
+          <!-- Outgoing Payment Image -->
+          <div style="text-align: center; margin: 30px 0;">
+            <img src="YOUR_IMAGE_OUTGOING" alt="Outgoing Payments Screen" style="max-width: 300px; width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+          </div>
+  
+          <!-- User Flow -->
+          <h4 style="font-size: 14px; font-weight: bold; text-align: center; margin-bottom: 10px;">UPDATED USER FLOW</h4>
+          <img src="YOUR_IMAGE_USERFLOW" alt="Updated User Flow" style="width: 100%; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;">
+  
+  
+          <!-- Next Steps -->
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Next Steps</h4>
+          <p style="margin-bottom: 16px;">
+            I plan to test the new Outgoing Payments pathway further. This direct approach addresses user concerns and creates a streamlined experience for paying down credit card debt.
+          </p>
+  
+</div>
+</div>
+</div>
+</section>
+
+<!--Final Prototype-->
+
+<section id="Result" style="padding: 60px 20px; background-color: #ffffff;">
+<div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+<!-- Section Title -->
+<h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">  Final Prototype </h2>
+
+  
+<p>OrbitScan resulted in a fully designed and interactive high-fidelity prototype, showcasing a seamless barcode scanning experience and personalized nutritional insights. I prepared detailed screens, user flows, and export-ready assets to guide future development efforts.
+</p>
+  
+<section id="prototype" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+<div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="1000" height="600" 
+src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share" allowfullscreen>
+</iframe>
+</div>
+</section>
+
+<!--More Projects-->
+
+<div style="max-width: 1040px; margin: 0 auto; background-color: #fff;">
+<div class="more-projects-section">
+<div class="more-projects-header">
+<h3>MORE PROJECTS <span class="dots"></span></h3>
+<a href="work.html" class="view-all">View All <svg viewBox="0 0 24 24" fill="currentColor" style="width:1em;height:1em;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg></a>
+</div>
+<div class="project-cards-container">
+<div class="project-card">
+<div class="project-tags">
+<span class="tag">UX Case Study</span>
+<span class="tag">Mobile App IOS</span>
+<span class="tag">Figma</span>
+</div>
+<div class="project-image">
+<a href="MW/MW.html" target="_blank">
+<img src="assets/img/Manage Wise/ManageWise Cover.png" loading="lazy" alt="ManageWise Cover">
+</div>
+</div>
+                
+             
+<div class="project-card">
+<div class="project-tags">
+<span class="tag">Website Redesign</span>
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">JS</span>
+<span class="tag">Figma</span>
+</div>
+<div class="project-image">
+<a href="MC copy.html" target="_blank">
+<img src="assets/img/Projects/Cover/MC.png" loading="lazy" alt="Portfolio Redesign"></a>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.read-more-btn').forEach(function(btn) {
+btn.addEventListener('click', function() {
+const parent = btn.closest('.read-more-paragraph');
+const dots = parent.querySelector('.dots');
+const moreText = parent.querySelector('.more-text');
+          
+    if (moreText.style.display === "inline") {
+    moreText.style.display = "none";
+    dots.style.display = "inline";
+    btn.textContent = "Read more";} else {
+    moreText.style.display = "inline";
+    dots.style.display = "none";
+    btn.textContent = "Read less";}
+    });
+    });
+    </script>
+
+<script>
+  window.addEventListener("load", function () {
+    // Force the loader to stay for 2 seconds even if the page loads faster
+    setTimeout(function () {
+      document.getElementById("loader").style.display = "none";
+    }, 2000); // 2000ms = 2 seconds
+  });
+</script>
+  
+  
+</body>
+</html>
