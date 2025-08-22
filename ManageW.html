@@ -490,8 +490,6 @@ box-sizing:border-box;
       </h2>
   
       <!-- Approach -->
-      <h2 style="font-size: 18px; color: #000; font-weight: bold; margin-bottom: 10px;">Research Approach</h4>
-      <p style="margin-bottom: 16px;">
         
       <p><strong>Surveys:</strong> n=20 total; students and early-career professionals; frequent app users </p>
       <p><strong>Interviews:</strong> ages 22–35; mixed student/working; current users of Apple/Google calendars and to-do apps (Notion, Google Keep, MS To Do)</p>
@@ -508,7 +506,7 @@ box-sizing:border-box;
       <!-- Key Findings from Surveys -->
       <p style="font-size: 20px; font-weight: bold; margin-bottom: 10px;"></p>
       <section style="font-family: Inter, Arial, sans-serif; color:#0f172a; margin:28px 0;">
-        <p class="about-lead"> <p style="margin:0 0 12px; color: #000; font-size:22px;"><span class="swoosh">Key Findings from Customer Interviews</span></p>
+        <h2 style="margin:0 0 8px; color: #000; font-size:20px;">Key Findings from Survey</h2>
         <div style="overflow-x:auto; border:1px solid #e5e7eb; border-radius:12px;">
           <table style="width:100%; border-collapse:separate; border-spacing:0; min-width:760px;">
             <thead>
@@ -600,7 +598,68 @@ box-sizing:border-box;
           }
         </style>
       </section>
-      <!-- Key Findings from Surveys End -->      
+      <!-- Key Findings from Surveys End -->   
+       
+      <!--Interviews Highlights-->
+      <section style="--gap:12px; --radius:12px; --line:#e5e7eb; --text:#0f172a; --muted:#475569; --pill-bg:#f1f5f9; --pill-text:#0f172a; margin:28px 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+        <h2 style="margin:0 0 8px; color: #000; font-size:20px;">Interview Highlights</h2>
+        <p style="margin:0 0 16px; font-size:14px; color:var(--muted);">Snapshot of who we spoke with and what tools they currently use.</p>
+      
+        <!-- Card -->
+        <div style="border:1px solid var(--line); border-radius:16px; padding:16px; background:#fff; display:grid; grid-template-columns:repeat(12, 1fr); gap:16px; max-width:860px;">
+          <!-- Column: Demographics -->
+          <div style="grid-column: span 5;">
+            <div style="font-size:12px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:8px; margin-bottom:8px;">Who</div>
+            <h3 style="margin:0 0 6px; font-size:18px;">Ages 22–35</h3>
+            <p style="margin:0 0 12px; font-size:14px; color:var(--muted);">Mixed students and working professionals.</p>
+      
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <span style="background:var(--pill-bg); color:var(--pill-text); padding:6px 10px; border-radius:999px; font-size:13px;">Students</span>
+              <span style="background:var(--pill-bg); color:var(--pill-text); padding:6px 10px; border-radius:999px; font-size:13px;">Working professionals</span>
+              <span style="background:var(--pill-bg); color:var(--pill-text); padding:6px 10px; border-radius:999px; font-size:13px;">Early‑career</span>
+            </div>
+          </div>
+      
+          <!-- Divider -->
+          <div style="grid-column: span 1; display:flex; align-items:center; justify-content:center;">
+            <div style="width:1px; height:100%; background:var(--line);"></div>
+          </div>
+      
+          <!-- Column: Current tools -->
+          <div style="grid-column: span 6;">
+            <div style="font-size:12px; letter-spacing:0.5px; text-transform:uppercase; color:#047857; background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:8px; margin-bottom:8px;">Current Tools</div>
+      
+            <div style="margin-bottom:10px;">
+              <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Calendars</div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <span style="background:#eef2ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-size:13px;">Apple Calendar</span>
+                <span style="background:#eef2ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-size:13px;">Google Calendar</span>
+              </div>
+            </div>
+      
+            <div>
+              <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">To‑do / Notes</div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <span style="background:#fff7ed; color:#9a3412; padding:6px 10px; border-radius:999px; font-size:13px; border:1px solid #fed7aa;">Notion</span>
+                <span style="background:#f0f9ff; color:#0369a1; padding:6px 10px; border-radius:999px; font-size:13px; border:1px solid #bae6fd;">Google Keep</span>
+                <span style="background:#ecfeff; color:#0f766e; padding:6px 10px; border-radius:999px; font-size:13px; border:1px solid #99f6e4;">Microsoft To Do</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Tiny footnote -->
+        <div style="margin-top:10px; font-size:12px; color:var(--muted);">Participants were familiar with calendar and task tools; insights reflect real‑world workflows.</div>
+      
+        <!-- Responsive: stack columns -->
+        <style>
+          @media (max-width: 720px) {
+            section > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+            section > div[style*="grid-template-columns"] > div:nth-child(2) { display: none !important; }
+          }
+        </style>
+      </section>
+      
     
   
   
@@ -610,118 +669,276 @@ box-sizing:border-box;
   
       <!-- Section Title -->
       <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
-        02 / Define – What Users Really Need From Surplus Manager
+        02 / Define 
       </h2>
   
-      <!-- Overview + Persona -->
-      <div style="display: flex; flex-direction: row; gap: 60px; margin-bottom: 30px; flex-wrap: wrap;">
-        <!-- Sidebar Overview -->
-        <div style="flex: 1; min-width: 220px;">
-          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Overview</h4>
-          <p style="margin: 0;">
-            At this point, it’s time to put a name and face to the patterns we discovered. By bringing together real stories from our research, we create a clear picture of who we’re designing for—and the daily struggles they face when it comes to handling their leftover money.
-          </p>
-        </div>
-        <!-- Persona Details -->
-        <div style="flex: 3; min-width: 300px;">
-          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Meet Niya</h4>
-          <p style="margin-bottom: 16px;">
-            Thinking about all those conversations, a relatable story came forward: <strong>Niya</strong>, a young professional living on her own. She gets paid every other week, covers her rent and bills, and does her best to save—sometimes for a big goal, like grad school. But life is busy, and keeping up with budgets or extra money at the end of the month feels overwhelming.
-          </p>
-          <p style="margin-bottom: 16px;">
-            Niya has tested out a few finance apps, but <strong>most are either overwhelming or don’t sync smoothly with her Chase banking.</strong>. She wants one place, right in the app she already trusts, to quickly see what’s left in her account and easily put it towards her future—without the stress or spreadsheets.
-          </p>
+      <section style="--gap:12px; --radius:12px; --line:#e5e7eb; --text:#0f172a; --muted:#475569; --pill-bg:#f1f5f9; --pill-text:#0f172a; margin:28px 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+        <h2 style="margin:0 0 8px; color: #000; font-size:20px;">User Persona</h2>
+      
+<!-- Persona: Alex -->
+<section style="--brand:#2563eb;  --line:#e5e7eb; --text:#0f172a; --muted:#475569; --chip:#f1f5f9; --good:#16a34a; --pain:#b91c1c; margin:28px 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+  <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; border:1px solid var(--line); background:#fff; border-radius:14px; box-shadow:0 4px 16px rgba(15, 23, 42, 0.04); max-width:980px; margin:0 auto; padding:20px;">
+    
+    <!-- Left: Persona content -->
+    <div style="flex:2 1 420px; min-width:320px;">
+      <!-- Header row -->
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+      
+        <div>
+          <h2 style="margin:0 0 8px; color:#000; font-size:20px;">Alex, 26 — CS Grad Student</h2>
+          <p style="margin:2px 0 0; font-size:13px; color:var(--muted);">Juggling classes and part‑time work; values visual planning and timely reminders.</p>
         </div>
       </div>
-  
-<!-- Persona Section: Niya (Chase Surplus Manager) -->
-<div class="persona-section" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; border: 2px solid #FFCD29; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(26,138,250,0.03); max-width: 900px; margin: 32px auto 0; padding: 20px 20px 16px 24px;">
-    <!-- Left: Info Grid -->
-    <div style="flex: 2 1 370px; min-width: 310px;">
-      <div style="margin-bottom: 12px;">
-        <h4 style="color:#FFCD29; font-size:16px; font-weight:700; margin:0 0 4px 0;">Goals</h4>
-        <ul style="padding-left: 16px; margin:0;">
-          <li>Build savings for grad school quickly and easily</li>
-          <li>Feel in control of “leftover” cash after monthly expenses</li>
-          <li>Automate progress—without overthinking or manual work</li>
+
+      <!-- Quick facts chips -->
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;">
+        <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:12px;">Apple Calendar</span>
+        <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:12px;">Google Calendar</span>
+        <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:12px;">Simple to‑do tools (Notion, Keep, MS To Do)</span>
+      </div>
+
+      <!-- Goals / Pain / Behaviors -->
+      <div style="display:grid; grid-template-columns:repeat(12, 1fr); gap:14px;">
+        <!-- Goals -->
+        <div style="grid-column:span 6; border:1px solid var(--line); border-radius:12px; padding:12px;">
+          <div style="font-size:11px; letter-spacing:0.5px; text-transform:uppercase; color:var(--good); background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Goals</div>
+          <ul style="margin:0; padding-left:18px; color:var(--text); font-size:16px; line-height:1.5;">
+            <li>Efficient weekly planning</li>
+            <li>Clear, confident priorities</li>
+            <li>Maintain momentum toward academic and personal goals</li>
+          </ul>
+        </div>
+
+        <!-- Pain Points -->
+        <div style="grid-column:span 6; border:1px solid var(--line); border-radius:12px; padding:12px;">
+          <div style="font-size:11px; letter-spacing:0.5px; text-transform:uppercase; color:var(--pain); background:#fef2f2; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Pain Points</div>
+          <ul style="margin:0; padding-left:18px; color:var(--text); font-size:16px; line-height:1.5;">
+            <li>Hard to start large tasks</li>
+            <li>Scattered tools across apps</li>
+            <li>Procrastination triggers derail focus</li>
+          </ul>
+        </div>
+
+        <!-- Behaviors -->
+        <div style="grid-column:span 12; border:1px solid var(--line); border-radius:12px; padding:12px;">
+          <div style="font-size:11px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Behaviors</div>
+          <ul style="margin:0; padding-left:18px; color:var(--text); font-size:16px; line-height:1.5;">
+            <li>Schedules classes/work first; fits tasks into remaining slots</li>
+            <li>Sets reminders for deadlines and exam prep</li>
+            <li>Uses simple checklists; avoids heavy setups</li>
+          </ul>
+        </div>
+        <!-- Opportunity summary -->
+        <div style="grid-column:span 12; border:1px solid var(--line); border-radius:12px; padding:12px;">
+          <div style="font-size:11px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Opportunity</div>
+        <ul style="margin:0; padding-left:18px; font-size:14px; color:var(--text); line-height:1.5;">
+          <li>Visual weekly planner with progress cues</li>
+          <li>Smart “first step” suggestions for big tasks</li>
+          <li>Lightweight integration across calendar + to‑do</li>
         </ul>
       </div>
-      <div style="margin-bottom: 12px;">
-        <h4 style="color:#FFCD29; font-size:16px; font-weight:700; margin:0 0 4px 0;">Pain Points</h4>
-        <ul style="padding-left: 16px; margin:0;">
-          <li>Budgeting apps feel overwhelming or costly</li>
-          <li>Manual tools and spreadsheets take too much effort</li>
-          <li>Unsure how much is safe to save after bills</li>
-          <li>Worries about missing payments if she saves too much</li>
-        </ul>
-      </div>
-      <div style="margin-bottom: 12px;">
-        <h4 style="color:#FFCD29; font-size:16px; font-weight:700; margin:0 0 4px 0;">Behaviors</h4>
-        <ul style="padding-left: 16px; margin:0;">
-          <li>Checks Chase Mobile® frequently for balances & bills</li>
-          <li>Tried Mint and Rocket Money, but abandoned quickly</li>
-          <li>Uses Google Sheets monthly for tracking</li>
-          <li>Relies on app reviews and friends’ recommendations</li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="color:#FFCD29; font-size:16px; font-weight:700; margin:0 0 4px 0;">App Expectations</h4>
-        <ul style="padding-left: 16px; margin:0;">
-          <li>Clear and automatic view of surplus funds</li>
-          <li>Easy, flexible transfers to savings or investment</li>
-          <li>Guidance tailored to her habits—no nags or premium fees</li>
-          <li>All inside the Chase app she already trusts</li>
-        </ul>
       </div>
     </div>
-    <!-- Right: Visual/Profile -->
-    <div style="flex:1 1 210px; min-width:170px; display:flex; flex-direction:column; align-items:center;">
-      <img src="assets/img/Chase/Niya_Persona.png" alt="Persona Niya" style="width:100%; height:320px; object-fit:contain; border-radius: 12px; box-shadow: 0 2px 8px rgba(50,146,230,.08); margin-bottom:10px; background:#f4f6f8; padding-top:7px;">
-      <div style="background:#f4f6f8; border-radius:8px; padding:12px 10px 10px 10px; width:100%; box-sizing:border-box;">
-        <div style="font-weight:600; color:#FFCD29; margin-bottom:4px;">NAME: NIYA PATEL</div>
-        <div style="margin-bottom:2px;">AGE: 29</div>
-        <div style="margin-bottom:2px;">OCCUPATION: Marketing Analyst</div>
-        <div style="margin-bottom:2px;">LOCATION: Urban Apt. Renter</div>
-        <div style="margin-bottom:2px;">LIFESTYLE: Single, digitally savvy</div>
-        <div style="margin-bottom:2px;">INCOME: $58,000/year</div>
-        <div><strong>Brands used:</strong><br>
-          <span style="display:inline-block; margin-top:2px;">
-            Chase Mobile®, Mint, Surplus Expense Tracker, Rocket Money, Google Sheets
-          </span>
+
+    <!-- Right: Profile card with feature image -->
+    <aside style="flex:1 1 240px; min-width:220px;">
+      <div style="background:#f8fafc; border:1px solid var(--line); border-radius:12px; padding:12px;">
+        <!-- Featured photo -->
+        <img src="assets/img/Manage Wise/Alex.jpg" alt="Alex persona photo" style="width:100%; height:180px; border-radius:8px; object-fit:cover; background:#e2e8f0; margin-bottom:10px;">
+
+        <!-- Header labels -->
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+          <div>
+            <div style="font-weight:700; color:var(--brand);">Primary Persona</div>
+            <div style="font-size:13px; color:var(--muted);">Refined from “Alex”</div>
+          </div>
         </div>
+
+        <div style="font-size:13px; color:#111827; margin-bottom:8px;"><strong>Age:</strong> 26</div>
+        <div style="font-size:13px; color:#111827; margin-bottom:8px;"><strong>Role:</strong> CS Grad Student & Part‑time Employee</div>
+        <div style="font-size:13px; color:#111827; margin-bottom:10px;"><strong>Tools:</strong> Apple/Google Calendar; Notion, Google Keep, MS To Do</div>
+
+        <blockquote style="margin:0; padding:10px 12px; background:#fff; border:1px solid var(--line); border-radius:10px; color:#334155; font-style:italic;">
+          “If I can see my week and what’s next, I stay on track.”
+        </blockquote>
       </div>
-    </div>
+
+      
+    </aside>
   </div>
+
+  <!-- Mobile: stack columns -->
+  <style>
+    @media (max-width: 760px) {
+      section > div { padding:16px !important; }
+      section h2 { font-size:20px !important; }
+      section div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+      /* Optional: increase photo height slightly on small screens */
+      section img[alt="Alex persona photo"] { height: 200px !important; }
+    }
+  </style>
+</section>
+
+
+  <!-- Mobile: stack columns -->
+  <style>
+    @media (max-width: 760px) {
+      section > div { padding:16px !important; }
+      section h2 { font-size:20px !important; }
+      section div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</section>
+
   
   
 
   
-      <!-- Problem Statements -->
-      <div>
-        <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">What’s Getting in the Way?</h4>
-        <p style="margin-bottom: 16px;">
-          So, after all the stories and notes, here’s what stood out: <strong>Niya isn’t alone</strong>. Many users like her feel unsure about their “extra” money and don’t have a simple, helpful way to save or invest it—right now, when it matters most.
-        </p>
-        <p style="margin-bottom: 16px;">
-          If we could wave a magic wand, what would truly help? These are the questions guiding our next steps:
-        </p>
-        <ul style="margin-left: 20px; margin-bottom: 0;">
-          <li style="margin-bottom: 12px;">
-            <strong>How might we help Niya (and others like her) clearly see what’s actually left after bills—</strong>so she feels in control and confident about her money?
-          </li>
-          <li style="margin-bottom: 12px;">
-            <strong>How might we make moving surplus money into savings or investment the easiest part of her month—</strong>not another chore?
-          </li>
-          <li style="margin-bottom: 0;">
-            <strong>How might we build the right habits, little by little—</strong>so Niya (and everyone like her) starts celebrating progress without the pressure?
-          </li>
-        </ul>
-        <p style="margin-top: 20px;">
-          These honest, everyday questions become our roadmap. Everything we design for Surplus Manager will help users like Niya do more with the money they work so hard for—without extra stress.
-        </p>
-      </div>
-    </div>
-  </section>
+      <!-- Affinity Maps -->
+      <section style="--text:#0f172a; --muted:#475569; --line:#e5e7eb; --title:#111827; --note1:#fef3c7; --note2:#e0f2fe; --note3:#dcfce7; --note4:#fae8ff; --note5:#fee2e2; --note6:#e9d5ff; --accent:#2563eb; --pill:#0f766e; margin:32px 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+        <!-- Header -->
+        <div style="max-width:1100px; margin:0 auto 10px; display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+          <h2 style="margin:0; font-size:24px; color:var(--title);">Affinity mapping</h2>
+          <div style="font-size:12px; color:var(--muted);">Inputs: 3 interviews • 2 surveys (n=10 + n=10) • competitor scan</div>
+        </div>
+      
+        <!-- Purpose / Process with limitation + competitor resonance -->
+        <div style="max-width:1100px; margin:0 auto 16px; display:flex; flex-wrap:wrap; gap:12px;">
+          <div style="flex:1 1 520px; min-width:280px; border:1px solid var(--line); border-radius:12px; padding:12px; background:#fff;">
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Purpose</div>
+            <p style="margin:0; font-size:14px; color:var(--muted);">We synthesized interview notes, survey comments, and competitor insights into clusters to reveal shared pain points and prioritize opportunities for the first iteration.</p>
+          </div>
+          <div style="flex:1 1 520px; min-width:280px; border:1px solid var(--line); border-radius:12px; padding:12px; background:#fff;">
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#047857; background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Process</div>
+            <p style="margin:0 0 6px; font-size:14px; color:var(--muted);">3 interviews, 2 short surveys (n=10 + n=10), competitor scan (Todoist, Microsoft To Do, Trello). We grouped observations into themes and mapped each theme to a concrete design move.</p>
+            <p style="margin:0 0 6px; font-size:12px; color:#6b7280;">Limitation: directional insights from small, convenience samples—used to shape early prototypes, not to generalize.</p>
+            <p style="margin:0; font-size:12px; color:#6b7280;">Competitor resonance: Todoist is robust yet overwhelming; MS To Do simple but limited customization—reinforcing low‑friction capture, clear priorities, and integrated scheduling.</p>
+          </div>
+        </div>
+      
+        <!-- Theme boundary note -->
+        <div style="max-width:1100px; margin:0 auto 10px; font-size:12px; color:#6b7280;">
+          Themes are related; we separated drivers (Prioritization clarity) from sustainers (Motivation & progress) and enablers (Personalization).
+        </div>
+      
+        <!-- Row 1: Full-width raw board image -->
+        <figure style="max-width:1100px; margin:0 auto 14px; border:1px solid var(--line); border-radius:12px; padding:10px; background:#fff;">
+          <img src="assets/img/affinity-board-raw.jpg" alt="Affinity board with clustered sticky notes" style="width:100%; height:420px; object-fit:cover; border-radius:8px; background:#f1f5f9;">
+          <figcaption style="margin-top:8px; font-size:12px; color:var(--muted);">
+            Clustering interviews, surveys, and competitor notes surfaced six recurring themes that shaped our design.
+          </figcaption>
+        </figure>
+      
+        <!-- Rows 2–3: Six theme cards (3 per row) -->
+        <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:24px;">
+          <!-- Start friction -->
+          <div style="background:var(--note1); border:1px solid #fcd34d; border-radius:12px; padding:16px; box-shadow:0 2px 0 rgba(0,0,0,0.06);">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <div style="width:18px; height:18px; border-radius:4px; background:#f59e0b;"></div>
+              <div style="font-weight:700; font-size:16px;">Start friction</div>
+            </div>
+            <p style="margin:0 0 6px; font-size:14px; color:#374151;">Capture without mandatory fields; clear first action.</p>
+            <blockquote style="margin:0; font-size:12px; color:#374151; font-style:italic;">“I don’t want to set dates every time.”</blockquote>
+          </div>
+      
+          <!-- Fragmented tools -->
+          <div style="background:var(--note2); border:1px solid #93c5fd; border-radius:12px; padding:16px; box-shadow:0 2px 0 rgba(0,0,0,0.06);">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <div style="width:18px; height:18px; border-radius:4px; background:#3b82f6;"></div>
+              <div style="font-weight:700; font-size:16px;">Fragmented tools</div>
+            </div>
+            <p style="margin:0 0 6px; font-size:14px; color:#374151;">Calendar and reminders must be integrated.</p>
+            <div style="display:flex; gap:6px; align-items:center; margin-top:4px;">
+              <span style="font-size:11px; color:#1e3a8a; background:#dbeafe; border:1px solid #bfdbfe; padding:2px 6px; border-radius:999px;">50% want calendar integration</span>
+            </div>
+            <blockquote style="margin:6px 0 0; font-size:12px; color:#374151; font-style:italic;">“Calendar here, to‑dos there—I forget things.”</blockquote>
+          </div>
+      
+          <!-- Prioritization clarity -->
+          <div style="background:var(--note3); border:1px solid #86efac; border-radius:12px; padding:16px; box-shadow:0 2px 0 rgba(0,0,0,0.06);">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <div style="width:18px; height:18px; border-radius:4px; background:#22c55e;"></div>
+              <div style="font-weight:700; font-size:16px;">Prioritization clarity</div>
+            </div>
+            <p style="margin:0 0 6px; font-size:14px; color:#374151;">Visible, simple priority cues.</p>
+            <div style="display:flex; gap:6px; align-items:center; margin-top:4px;">
+              <span style="font-size:11px; color:#065f46; background:#d1fae5; border:1px solid #a7f3d0; padding:2px 6px; border-radius:999px;">60% request better prioritization</span>
+            </div>
+            <blockquote style="margin:6px 0 0; font-size:12px; color:#374151; font-style:italic;">“I’m unsure what’s most important today.”</blockquote>
+          </div>
+      
+          <!-- Motivation & progress -->
+          <div style="background:var(--note4); border:1px solid #f0abfc; border-radius:12px; padding:16px; box-shadow:0 2px 0 rgba(0,0,0,0.06);">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <div style="width:18px; height:18px; border-radius:4px; background:#a855f7;"></div>
+              <div style="font-weight:700; font-size:16px;">Motivation & progress</div>
+            </div>
+            <p style="margin:0 0 6px; font-size:14px; color:#374151;">Unambiguous goal categories and progress.</p>
+            <div style="display:flex; gap:6px; align-items:center; margin-top:4px;">
+              <span style="font-size:11px; color:#6b21a8; background:#f3e8ff; border:1px solid #e9d5ff; padding:2px 6px; border-radius:999px;">45% value goal tracking</span>
+            </div>
+            <blockquote style="margin:6px 0 0; font-size:12px; color:#374151; font-style:italic;">“I lose steam when I can’t see progress.”</blockquote>
+          </div>
+      
+          <!-- AI interest + trust -->
+          <div style="background:var(--note5); border:1px solid #fecaca; border-radius:12px; padding:16px; box-shadow:0 2px 0 rgba(0,0,0,0.06);">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <div style="width:18px; height:18px; border-radius:4px; background:#ef4444;"></div>
+              <div style="font-weight:700; font-size:16px;">AI interest + trust</div>
+            </div>
+            <p style="margin:0 0 6px; font-size:14px; color:#374151;">Transparent Ask AI with preview and confirm.</p>
+            <blockquote style="margin:0; font-size:12px; color:#374151; font-style:italic;">“Show me what it will do before it changes anything.”</blockquote>
+          </div>
+      
+          <!-- Personalization -->
+          <div style="background:var(--note6); border:1px solid #d8b4fe; border-radius:12px; padding:16px; box-shadow:0 2px 0 rgba(0,0,0,0.06);">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <div style="width:18px; height:18px; border-radius:4px; background:#8b5cf6;"></div>
+              <div style="font-weight:700; font-size:16px;">Personalization</div>
+            </div>
+            <p style="margin:0 0 6px; font-size:14px; color:#374151;">Flexible goal categories without extra steps.</p>
+            <blockquote style="margin:0; font-size:12px; color:#374151; font-style:italic;">“My categories don’t fit canned templates.”</blockquote>
+          </div>
+        </div>
+      
+        <!-- Row 4: Opportunities with priorities -->
+        <div style="max-width:1100px; margin:16px auto 6px; border:1px solid var(--line); border-radius:12px; background:#fff; padding:10px 12px;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#0f766e;">Opportunities (prioritized)</div>
+      
+            <span style="font-size:13px; color:#064e3b; background:#d1fae5; border:1px solid #a7f3d0; padding:6px 10px; border-radius:999px; font-weight:700;">P1 — Make date/time optional at capture</span>
+            <span style="font-size:13px; color:#064e3b; background:#d1fae5; border:1px solid #a7f3d0; padding:6px 10px; border-radius:999px; font-weight:700;">P1 — Priority chips on Add Task</span>
+            <span style="font-size:13px; color:#064e3b; background:#d1fae5; border:1px solid #a7f3d0; padding:6px 10px; border-radius:999px; font-weight:700;">P1 — “Ask AI” inside Planner + confirm</span>
+      
+            <span style="font-size:13px; color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; padding:6px 10px; border-radius:999px;">P2 — “Goal Categories” + “Add New Category”</span>
+            <span style="font-size:13px; color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; padding:6px 10px; border-radius:999px;">P2 — Google/Outlook integrations</span>
+      
+            <span style="font-size:13px; color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; padding:6px 10px; border-radius:999px;">P3 — Clear progress views & trends</span>
+          </div>
+        </div>
+      
+        <!-- Leads to: hand-off to design -->
+        <div style="max-width:1100px; margin:0 auto; font-size:12px; color:#334155;">
+          <strong>Leads to:</strong> Add Task (optional date/time + priority chips), Planner + Ask AI (preview/confirm), Goals (Goal Categories + Add New), Integrations (Google/Outlook).
+        </div>
+      
+        <!-- Responsive tweaks -->
+        <style>
+          @media (max-width: 1120px) {
+            section figure img[alt="Affinity board with clustered sticky notes"] { height: 360px !important; }
+          }
+          @media (max-width: 900px) {
+            section > div[style*="grid-template-columns: repeat(3"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          }
+          @media (max-width: 600px) {
+            section figure img[alt="Affinity board with clustered sticky notes"] { height: 240px !important; }
+            section > div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+          }
+        </style>
+      </section>
+      
+      <!-- Affinity Maps End -->      
+      
   
   
   
