@@ -212,11 +212,11 @@ margin: 0; padding: 0; list-style: none;
 display: flex; gap: 7px; align-items: center; flex-wrap: nowrap;
 width: 100%; overflow-x:auto; white-space:nowrap;">
     
-<li><a href="#empathize" class="jump-pill">Empathize</a></li>
-<li><a href="#define" class="jump-pill">Define</a></li>
-<li><a href="#ideate" class="jump-pill">Ideate</a></li>
-<li><a href="#prototype" class="jump-pill">Prototype</a></li>
-<li><a href="#test" class="jump-pill">Test</a></li>
+<li><a href="#process" class="jump-pill">Process</a></li>
+<li><a href="#discover" class="jump-pill">Define</a></li>
+<li><a href="#define" class="jump-pill">Ideate</a></li>
+<li><a href="#design" class="jump-pill">Prototype</a></li>
+<li><a href="#deliver" class="jump-pill">Test</a></li>
 <li><a href="#Result" class="jump-pill" style="padding-right: 32px;">Result</a></li>
 </ul>
 </nav>
@@ -370,7 +370,7 @@ window.addEventListener("scroll", () => {
   box-sizing: border-box;
 ">
 
-  <!-- Discover -->
+  <!-- Discover  Icon (Process) -->
   <div class="process-tile" style="
     text-align: center;
     flex: 0 0 auto;
@@ -401,7 +401,7 @@ window.addEventListener("scroll", () => {
     </p>
   </div>
 
-  <!-- Define -->
+  <!-- Define Icon (Process) -->
   <div class="process-tile" style="
     text-align: center;
     flex: 0 0 auto;
@@ -432,7 +432,7 @@ window.addEventListener("scroll", () => {
     </p>
   </div>
 
-  <!-- Design -->
+  <!-- Design Icon (Process) -->
   <div class="process-tile" style="
     text-align: center;
     flex: 0 0 auto;
@@ -463,7 +463,7 @@ window.addEventListener("scroll", () => {
     </p>
   </div>
 
-  <!-- Deliver -->
+  <!-- Deliver Icon (Process) -->
   <div class="process-tile" style="
     text-align: center;
     flex: 0 0 auto;
@@ -494,6 +494,7 @@ window.addEventListener("scroll", () => {
     </p>
   </div>
 </div>
+
 
 <!-- Scoped mobile/tablet hard caps -->
 <style>
@@ -531,152 +532,145 @@ window.addEventListener("scroll", () => {
   
 <!-- Discover Section -->
 <div class="title">
-<section id="discover" style="padding: 60px 20px; background-color: #ffffff;">
-<div style="padding: 40px 30px; max-width: 1040px; margin: 0 auto; background-color: #fff;">
-<h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
-01 / Discover – Exploring the User’s Needs
-</h2>
-  
-<!-- Approach -->
-        
-<p><strong>Surveys:</strong> n=20 total; students and early-career professionals; frequent app users </p>
-<p><strong>Interviews:</strong> ages 22–35; mixed student/working; current users of Apple/Google calendars and to-do apps (Notion, Google Keep, MS To Do)</p>
-<p><strong>Competitive Analysis:</strong> Todoist, Microsoft To Do, Trello</p>
-<p style="margin-bottom: 16px;">
-        
-</p>
-<p style="margin-bottom: 16px;">
-</p>
-<ul style="margin-left: 20px; margin-bottom: 20px;">
-        
-</ul>
-  
-<!-- Key Findings from Surveys -->
-<p style="font-size: 20px; font-weight: bold; margin-bottom: 10px;"></p>
-<section style="font-family: Inter, Arial, sans-serif; color:#0f172a; margin:28px 0;">
-<h2 style="margin:0 0 8px; color: #000; font-size:20px;">Key Findings from Survey</h2>
-<div style="overflow-x:auto; border:1px solid #e5e7eb; border-radius:12px;">
-<table style="width:100%; border-collapse:separate; border-spacing:0; min-width:760px;">
-<tr>
-<th style="text-align:left; background:#f8fafc; color:#0f172a; font-size:12px; text-transform:uppercase; letter-spacing:0.5px; padding:12px; border-bottom:1px solid #e5e7eb;">Theme</th>
-<th style="text-align:left; background:#f8fafc; color:#0f172a; font-size:12px; text-transform:uppercase; letter-spacing:0.5px; padding:12px; border-bottom:1px solid #e5e7eb;">User Quote</th>
-<th style="text-align:left; background:#f8fafc; color:#0f172a; font-size:12px; text-transform:uppercase; letter-spacing:0.5px; padding:12px; border-bottom:1px solid #e5e7eb;">Opportunity</th>
-              </tr>
-              <tr>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7;">Overlapping tasks</td>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7; color:#334155; font-style:italic;">“My work, studies, and personal stuff all clash.”</td>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7; color:#000;">Simplify daily planning</td>
-              </tr>
-              <tr>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7;">Fragmented tools</td>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7; color:#334155; font-style:italic;">“I switch between Google Calendar, Notion, and Apple Calendar.”</td>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7; color:#000;">Integrate multiple workflows</td>
-              </tr>
-              <tr>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7;">Motivation drops</td>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7; color:#334155; font-style:italic;">“I lose track when I don’t see progress.”</td>
-                <td style="padding:12px; border-bottom:1px solid #eef2f7; color:#000;">Visual progress dashboards</td>
-              </tr>
-              <tr>
-                <td style="padding:12px;">Poor prioritization</td>
-                <td style="padding:12px; color:#334155; font-style:italic;">“I don’t know where to start when I’m overwhelmed.”</td>
-                <td style="padding:12px; color:#000;">Smart scheduling support</td>
-              </tr>
-          </table>
-        </div>
-</section>
+  <section id="discover" style="padding: 60px 20px; background-color: #ffffff;">
+    <!-- MATCH Process width -->
+    <div style="padding: 40px 30px; margin: 0; background:#fff;">
+      <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
+        01 / Discover – Exploring the User’s Needs
+      </h2>
 
-      <!--Survey Highlights-->
-      <section style="--gap:12px; --radius:999px; --bg:#f6f7f9; --text:#0f172a; --muted:#64748b; --bar1:#3b82f6; --bar2:#06b6d4; --bar3:#22c55e; --bar4:#f59e0b; --bar5:#8b5cf6; margin:24px 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+      <!-- Key Findings from Survey -->
+      <section id="discover-key-findings"
+        style="font-family: 'Raleway', sans-serif; color:#0f172a; margin:28px auto 0; padding:0;">
+        <h2 style="margin:0 0 12px; color:#000; font-size:20px;">Key Findings from Survey</h2>
+        <div data-grid="insights" style="display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:16px;">
+          <!-- Card 1 -->
+          <article style="border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:12px;">
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px;">Theme</div>
+            <h3 style="margin:8px 0 8px; font-size:16px; color:#111827;">Overlapping tasks</h3>
+            <blockquote style="margin:0 0 10px; color:#334155; font-style:italic;">“My work, studies, and personal stuff all clash.”</blockquote>
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#047857; background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:6px;">Opportunity</div>
+            <p style="margin:8px 0 0; color:#065f46;">Simplify daily planning</p>
+          </article>
+
+          <!-- Card 2 -->
+          <article style="border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:12px;">
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px;">Theme</div>
+            <h3 style="margin:8px 0 8px; font-size:16px; color:#111827;">Fragmented tools</h3>
+            <blockquote style="margin:0 0 10px; color:#334155; font-style:italic;">“I switch between Google Calendar, Notion, and Apple Calendar.”</blockquote>
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#047857; background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:6px;">Opportunity</div>
+            <p style="margin:8px 0 0; color:#065f46;">Integrate multiple workflows</p>
+          </article>
+
+          <!-- Card 3 -->
+          <article style="border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:12px;">
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px;">Theme</div>
+            <h3 style="margin:8px 0 8px; font-size:16px; color:#111827;">Motivation drops</h3>
+            <blockquote style="margin:0 0 10px; color:#334155; font-style:italic;">“I lose track when I don’t see progress.”</blockquote>
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#047857; background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:6px;">Opportunity</div>
+            <p style="margin:8px 0 0; color:#065f46;">Visual progress dashboards</p>
+          </article>
+
+          <!-- Card 4 -->
+          <article style="border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:12px;">
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px;">Theme</div>
+            <h3 style="margin:8px 0 8px; font-size:16px; color:#111827;">Poor prioritization</h3>
+            <blockquote style="margin:0 0 10px; color:#334155; font-style:italic;">“I don’t know where to start when I’m overwhelmed.”</blockquote>
+            <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#047857; background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:6px;">Opportunity</div>
+            <p style="margin:8px 0 0; color:#065f46;">Smart scheduling support</p>
+          </article>
+        </div>
+      </section>
+      <!-- Key Findings End -->
+
+      <!-- Survey Highlights -->
+      <section id="discover-survey-highlights"
+        style="--gap:12px; --radius:999px; --bg:#f6f7f9; --text:#0f172a; --muted:#64748b; --bar1:#3b82f6; --bar2:#06b6d4; --bar3:#22c55e; --bar4:#f59e0b; --bar5:#8b5cf6; margin:24px auto; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
         <h2 style="margin:0 0 8px; color: #000; font-size:20px;">Survey Highlights</h2>
         <p style="margin:0 0 14px; font-size:14px; color:var(--muted);">Key signals (multiple selections allowed).</p>
-      
-        <!-- Chart: simple flex, no scripts -->
-        <div style="display:flex; flex-direction:column; gap:var(--gap); max-width:720px;">
-          <!-- Row -->
+
+        <!-- Chart (no inner max-width cap) -->
+        <div style="display:flex; flex-direction:column; gap:var(--gap);">
           <div style="display:flex; align-items:center; gap:10px;">
             <div style="flex:0 0 220px; min-width:160px; font-size:14px;">Use productivity apps daily</div>
             <div style="flex:1; background:var(--bg); border-radius:var(--radius); overflow:hidden;">
               <div style="width:70%; background:var(--bar1); color:#fff; padding:8px 10px; font-size:12px; text-align:right;">70%</div>
             </div>
           </div>
-      
+
           <div style="display:flex; align-items:center; gap:10px;">
             <div style="flex:0 0 220px; min-width:160px; font-size:14px;">Struggle with procrastination</div>
             <div style="flex:1; background:var(--bg); border-radius:var(--radius); overflow:hidden;">
               <div style="width:40%; background:var(--bar2); color:#fff; padding:8px 10px; font-size:12px; text-align:right;">40%</div>
             </div>
           </div>
-      
+
           <div style="display:flex; align-items:center; gap:10px;">
             <div style="flex:0 0 220px; min-width:160px; font-size:14px;">Request better task prioritization</div>
             <div style="flex:1; background:var(--bg); border-radius:var(--radius); overflow:hidden;">
               <div style="width:60%; background:var(--bar3); color:#0f172a; padding:8px 10px; font-size:12px; text-align:right;">60%</div>
             </div>
           </div>
-      
+
           <div style="display:flex; align-items:center; gap:10px;">
             <div style="flex:0 0 220px; min-width:160px; font-size:14px;">Want calendar integration</div>
             <div style="flex:1; background:var(--bg); border-radius:var(--radius); overflow:hidden;">
               <div style="width:50%; background:var(--bar4); color:#0f172a; padding:8px 10px; font-size:12px; text-align:right;">50%</div>
             </div>
           </div>
-      
+
           <div style="display:flex; align-items:center; gap:10px;">
-            <div style="flex:0 0 220px; min-width:160px; font-size:14px;">Value goal‑tracking dashboards</div>
+            <div style="flex:0 0 220px; min-width:160px; font-size:14px;">Value goal-tracking dashboards</div>
             <div style="flex:1; background:var(--bg); border-radius:var(--radius); overflow:hidden;">
               <div style="width:45%; background:var(--bar5); color:#fff; padding:8px 10px; font-size:12px; text-align:right;">45%</div>
             </div>
           </div>
         </div>
-      
+
         <div style="margin-top:10px; font-size:12px; color:var(--muted);">
           Bars show share of respondents. Categories may overlap; totals won’t equal 100%.
         </div>
-      
-        <!-- Tiny responsive tweak; no heavy CSS -->
+
+        <!-- Scoped tiny responsive tweak -->
         <style>
           @media (max-width: 600px) {
-            section > div[style*="flex-direction:column"] > div > div:first-child { flex-basis: 44% !important; min-width: 44% !important; font-size:13px !important; }
-            section h2 { font-size:18px !important; }
+            #discover-survey-highlights > div[style*="flex-direction:column"] > div > div:first-child { flex-basis: 44% !important; min-width: 44% !important; font-size:13px !important; }
+            #discover-survey-highlights h2 { font-size:18px !important; }
           }
         </style>
-</div>
+      </section>
+      <!-- Survey Highlights End -->
 
-</section>
-
-      <!-- Key Findings from Surveys End -->   
-
-<!-- Define Section -->
-      <!--Interviews Highlights-->
-      <section style="--gap:12px; --radius:12px; --line:#e5e7eb; --text:#0f172a; --muted:#475569; --pill-bg:#f1f5f9; --pill-text:#0f172a; margin:28px 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+      <!-- Interview Highlights -->
+      <section id="discover-interview-highlights"
+        style="--gap:12px; --radius:12px; --line:#e5e7eb; --text:#0f172a; --muted:#475569; --pill-bg:#f1f5f9; --pill-text:#0f172a; margin:28px auto; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width:960px;">
         <h2 style="margin:0 0 8px; color: #000; font-size:20px;">Interview Highlights</h2>
         <p style="margin:0 0 16px; font-size:14px; color:var(--muted);">Snapshot of who we spoke with and what tools they currently use.</p>
-      
-        <!-- Card -->
-        <div style="border:1px solid var(--line); border-radius:16px; padding:16px; background:#fff; display:grid; grid-template-columns:repeat(12, 1fr); gap:16px; max-width:860px;">
+
+        <!-- Card (no inner max-width cap) -->
+        <div style="border:1px solid var(--line); border-radius:16px; padding:16px; background:#fff; display:grid; grid-template-columns:repeat(12, 1fr); gap:16px;">
           <!-- Column: Demographics -->
           <div style="grid-column: span 5;">
             <div style="font-size:12px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:8px; margin-bottom:8px;">Who</div>
             <h3 style="margin:0 0 6px; font-size:18px;">Ages 22–35</h3>
             <p style="margin:0 0 12px; font-size:14px; color:var(--muted);">Mixed students and working professionals.</p>
-      
+
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
               <span style="background:var(--pill-bg); color:var(--pill-text); padding:6px 10px; border-radius:999px; font-size:13px;">Students</span>
               <span style="background:var(--pill-bg); color:var(--pill-text); padding:6px 10px; border-radius:999px; font-size:13px;">Working professionals</span>
-              <span style="background:var(--pill-bg); color:var(--pill-text); padding:6px 10px; border-radius:999px; font-size:13px;">Early‑career</span>
+              <span style="background:var(--pill-bg); color:var(--pill-text); padding:6px 10px; border-radius:999px; font-size:13px;">Early-career</span>
             </div>
           </div>
-      
+
           <!-- Divider -->
           <div style="grid-column: span 1; display:flex; align-items:center; justify-content:center;">
             <div style="width:1px; height:100%; background:var(--line);"></div>
           </div>
-      
+
           <!-- Column: Current tools -->
           <div style="grid-column: span 6;">
             <div style="font-size:12px; letter-spacing:0.5px; text-transform:uppercase; color:#047857; background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:8px; margin-bottom:8px;">Current Tools</div>
-      
+
             <div style="margin-bottom:10px;">
               <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Calendars</div>
               <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -684,9 +678,9 @@ window.addEventListener("scroll", () => {
                 <span style="background:#eef2ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-size:13px;">Google Calendar</span>
               </div>
             </div>
-      
+
             <div>
-              <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">To‑do / Notes</div>
+              <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">To-do / Notes</div>
               <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 <span style="background:#fff7ed; color:#9a3412; padding:6px 10px; border-radius:999px; font-size:13px; border:1px solid #fed7aa;">Notion</span>
                 <span style="background:#f0f9ff; color:#0369a1; padding:6px 10px; border-radius:999px; font-size:13px; border:1px solid #bae6fd;">Google Keep</span>
@@ -697,33 +691,37 @@ window.addEventListener("scroll", () => {
         </div>
         <!-- End Card -->
 
+        <div style="margin-top:10px; font-size:12px; color:var(--muted);">Participants were familiar with calendar and task tools; insights reflect real-world workflows.</div>
 
-      
-        <!-- Tiny footnote -->
-        <div style="margin-top:10px; font-size:12px; color:var(--muted);">Participants were familiar with calendar and task tools; insights reflect real‑world workflows.</div>
-      
-        <!-- Responsive: stack columns -->
+        <!-- Scoped responsive -->
         <style>
           @media (max-width: 720px) {
-            section > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
-            section > div[style*="grid-template-columns"] > div:nth-child(2) { display: none !important; }
+            #discover-interview-highlights > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+            #discover-interview-highlights > div[style*="grid-template-columns"] > div:nth-child(2) { display: none !important; }
           }
         </style>
-        </div>
       </section>
-      <!-- Interviews Highlights End -->
-      
+      <!-- Interview Highlights End -->
+    </div>
+  </section>
+</div>
+
+
+  
     
   
 <!-- Define Section --> 
-<section id="empathize" style="padding: 60px 20px; background-color: #ffffff;">
-  <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+
+<div class="title">
+<section id="define" style="padding: 60px 20px; background-color: #ffffff;">
+  <div style="padding: 40px 30px; margin: 0; background:#fff;">
     <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
       02 / Define 
     </h2>
   
       
-  <!-- Persona --><section class="container" style="--line:#e5e7eb; --text:#0f172a; --muted:#475569; --chip:#f1f5f9; --good:#16a34a; --pain:#b91c1c; margin:28px auto 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding:0;"> 
+  <!-- Persona -->
+   <section class="container" style="--line:#e5e7eb; --text:#0f172a; --muted:#475569; --chip:#f1f5f9; --good:#16a34a; --pain:#b91c1c; margin:28px auto 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding:0;"> 
     <h2 style="margin:0 0 8px; color:#000; font-size:20px;">User Persona</h2>
 
 <!-- Persona: Alex --> 
@@ -783,7 +781,7 @@ window.addEventListener("scroll", () => {
       <!-- Right sidebar -->
       <aside style="flex:1 1 240px; min-width:200px;">
         <div style="background:#f8fafc; border:1px solid var(--line); border-radius:12px; padding:12px;">
-          <img src="assets/img/Manage-Wise/Alex.jpg" alt="Alex persona photo" style="width:100%; height:180px; border-radius:8px; object-fit:cover; background:#e2e8f0; margin-bottom:10px;">
+          <img src="assets/img/Manage Wise/Alex.jpg" alt="Alex persona photo" style="width:100%; height:180px; border-radius:8px; object-fit:cover; background:#e2e8f0; margin-bottom:10px;">
           <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
             <div>
               <div style="font-weight:700; color:#2563eb;">Primary Persona</div>
@@ -829,7 +827,7 @@ window.addEventListener("scroll", () => {
   </div>
   
   <figure style="margin:0 auto 14px; border:1px solid var(--line); border-radius:12px; padding:10px; background:#fff;">
-    <img src="assets/img/affinity-board-raw.jpg" alt="Affinity board with clustered sticky notes" style="width:100%; height:420px; object-fit:cover; border-radius:8px; background:#f1f5f9;">
+    <img src="assets/img/Manage Wise/Affinity Mapping.png" alt="Affinity board with clustered sticky notes" style="width:100%; height:420px; object-fit:cover; border-radius:8px; background:#f1f5f9;">
     <figcaption style="margin-top:8px; font-size:12px; color:var(--muted);">
       Clustering interviews, surveys, and competitor notes surfaced six recurring themes that shaped our design.
     </figcaption>
@@ -928,6 +926,7 @@ window.addEventListener("scroll", () => {
   </style>
   
     </div>
+  </div>
   </section>
   <!-- Affinity Maps End -->
 
@@ -937,8 +936,9 @@ window.addEventListener("scroll", () => {
   
 
   <!-- Ideate Section -->
+<div class="title">
 <section id="ideate" style="padding: 60px 20px; background-color: #ffffff;">
-    <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+  <div style="padding: 40px 30px; margin: 0; background:#fff;">
       <!-- Section Title -->
       <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
         03 / Ideate – Creating the Framework
@@ -1018,6 +1018,7 @@ After five Crazy 8 sessions, I compiled my sketches and organized them by theme.
         </div>
       </div>
     </div>
+  </div>
   </section>
   
   
