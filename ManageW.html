@@ -39,9 +39,7 @@
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.4rem;
 }
-
-        
-          /*Floating Up Arrow Bitton */
+/*Floating Up Arrow Button */
           .floating-up-button {
             position: fixed;
             bottom: 20px;
@@ -253,7 +251,7 @@
     bottom: 18px;
     transform: translateX(-50%);
     width: 50vw;
-    max-width: 530px;
+    max-width: 430px;
     z-index: 1000;
     background: rgba(255,255,255,0.88);
     box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
@@ -270,11 +268,11 @@ margin: 0; padding: 0; list-style: none;
 display: flex; gap: 7px; align-items: center; flex-wrap: nowrap;
 width: 100%; overflow-x:auto; white-space:nowrap;">
     
-<li><a href="#process" class="jump-pill">Process</a></li>
-<li><a href="#discover" class="jump-pill">Define</a></li>
-<li><a href="#define" class="jump-pill">Ideate</a></li>
-<li><a href="#design" class="jump-pill">Prototype</a></li>
-<li><a href="#deliver" class="jump-pill">Test</a></li>
+
+<li><a href="#discover" class="jump-pill">Discover</a></li>
+<li><a href="#define" class="jump-pill">Define</a></li>
+<li><a href="#design" class="jump-pill">Design</a></li>
+<li><a href="#deliver" class="jump-pill">Deliver</a></li>
 </ul>
 </nav>
 
@@ -347,25 +345,18 @@ width: 100%; overflow-x:auto; white-space:nowrap;">
   
   <!-- End of content-container -->
 
-    <!-- Process Section -->
+<!-- Process Section -->
 
+<!-- Process Section -->
 <div class="section">
 <section id="process" style="padding: 60px 20px; background-color: #ffffff;">
 <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
 <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">PROCESS: The Agile Way</h2>
-<!-- Icons Row (Discover · Define · Design · Deliver) -->
-<div data-process-icons style="
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 16px;
-  flex-wrap: wrap;
-  max-width: 900px;
-  margin: 40px auto 24px;
-  padding: 0 12px;
-  box-sizing: border-box;
-">
 
+<!-- Icons Row (Discover · Define · Design · Deliver) -->
+<!-- Icons Row -->
+<div data-process-icons style="display: flex; justify-content: center; align-items: flex-start; gap: 16px; flex-wrap: wrap; max-width: 900px; margin: 40px auto 24px; padding: 0 12px; box-sizing: border-box;">
+  <!-- ... all four tiles here ... -->
   <!-- Discover  Icon (Process) -->
   <div class="process-tile" style="
     text-align: center;
@@ -489,32 +480,30 @@ width: 100%; overflow-x:auto; white-space:nowrap;">
       Lo‑fi · Hi‑fi · Iterations
     </p>
   </div>
-
-
-
-
-
-<p>
-  We followed an Agile-inspired, iterative process with four phases: Discover, Define, Design, and Deliver. This structure allowed exploration of the problem space, convergence on a clear framing, rapid testing, and measurable improvements.
-</p>
-
+<p style="margin-top: 16px; font-size: 14px; text-align: center; color: #444; font-family: 'Raleway', sans-serif;">
+    We followed an Agile-inspired, iterative process with four phases: Discover, Define, Design, and Deliver. This structure allowed exploration of the problem space, convergence on a clear framing, rapid testing, and measurable improvements.
+  </p>
 </div>
 </section>
+</div>
   
 <!-- Discover Section -->
 <div class="title">
-<section id="discover" style="padding: 60px 20px; background-color: #ffffff;">
+<section id="discover" style="padding: 60px 20px; margin:8px auto 12px; background-color: #ffffff;">
 <!-- MATCH Process width -->
-<div style="padding: 40px 30px; margin: 0; background:#fff;">
+<div style="padding: 40px 30px; margin-top:6px; background:#fff;">
 <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
 01 / Discover – Exploring the User’s Needs
 </h2>
 
       <!-- Key Findings from Survey -->
       <section id="discover-key-findings"
-        style="font-family: 'Raleway', sans-serif; color:#0f172a; margin:28px auto 0; padding:0;">
-        <h2 style="margin:0 0 12px; color:#000; font-size:20px;">Key Findings from Survey</h2>
-        <div data-grid="insights" style="display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:16px;">
+        style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#0f172a; margin:24px auto 0; padding:0;">
+        <h2 style="margin:0 0 12px; color:#000; font-size:24px;">Key Findings from Survey</h2>
+        <div data-grid="insights" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; align-items:stretch;">
+
+          <!-- Your card articles here -->
+        
           <!-- Card 1 -->
           <article style="border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:12px;">
             <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px;">Theme</div>
@@ -556,7 +545,7 @@ width: 100%; overflow-x:auto; white-space:nowrap;">
 
       <!-- Survey Highlights -->
       <section id="discover-survey-highlights" style="--gap:12px; --radius:999px; --bg:#f6f7f9; --text:#0f172a; --muted:#64748b; --bar1:#3b82f6; --bar2:#06b6d4; --bar3:#22c55e; --bar4:#f59e0b; --bar5:#8b5cf6; margin:24px auto; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
-        <h2 style="margin:0 0 8px; color: #000; font-size:20px;">Survey Highlights</h2>
+        <h2 style="margin:0 0 8px; color: #000; font-size:24px;">Survey Highlights</h2>
         <p style="margin:0 0 14px; font-size:14px; color:var(--muted);">Key signals (multiple selections allowed).</p>
 
         <!-- Chart (no inner max-width cap) -->
@@ -612,10 +601,10 @@ width: 100%; overflow-x:auto; white-space:nowrap;">
       <!-- Survey Highlights End -->
 
       <!-- Interview Highlights -->
-      <section id="discover-interview-highlights"
-        style="--gap:12px; --radius:12px; --line:#e5e7eb; --text:#0f172a; --muted:#475569; --pill-bg:#f1f5f9; --pill-text:#0f172a; margin:28px auto; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width:960px;">
-        <h2 style="margin:0 0 8px; color: #000; font-size:20px;">Interview Highlights</h2>
-        <p style="margin:0 0 16px; font-size:16px; color:var(--muted);">Snapshot of who we spoke with and what tools they currently use.</p>
+      <section id="discover-interview-highlights" 
+      style="--gap:12px; --radius:12px; --line:#e5e7eb; --text:#0f172a; --muted:#475569; --pill-bg:#f1f5f9; --pill-text:#0f172a; margin:8px auto 12px; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+        <h2 style="margin:0 0 8px; color: #000; font-size:24px;">Interview Highlights</h2>
+        <p style="margin:0 0 14px; font-size:14px; color:var(--muted);"> Snapshot of who we spoke with and what tools they currently use.</p>
 
         <!-- Card (no inner max-width cap) -->
         <div style="border:1px solid var(--line); border-radius:16px; padding:16px; background:#fff; display:grid; grid-template-columns:repeat(12, 1fr); gap:16px;">
@@ -672,6 +661,155 @@ width: 100%; overflow-x:auto; white-space:nowrap;">
     </div>
   </section>
   <!-- Interview Highlights End -->
+
+  <!-- Competitive Analysis (Discover) Starts -->
+  <section style="padding:36px 20px 48px; background:#ffffff; margin:0 auto; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#0f172a;">
+  <!-- Header -->
+  <div style="max-width:1000px; margin:0 auto;">
+    <h2 style="margin:0 0 8px; font-size:24px; line-height:1.2; letter-spacing:.2px; color:#111827;">
+      Competitive analysis
+    </h2>
+    <p style="margin:0; font-size:14px; color:#475569;">
+      We compared three widely used tools to understand strengths to keep and gaps to improve for day planning, prioritization, and AI transparency.
+    </p>
+  </div>
+
+  <!-- Key Takeaways (chips) -->
+  <div style="max-width:1000px; margin:16px auto 24px; display:flex; flex-wrap:wrap; gap:8px;">
+    <span style="display:inline-block; padding:6px 10px; font-size:12px; border:1px solid #e5e7eb; border-radius:999px; background:#f8fafc;">Low‑friction capture</span>
+    <span style="display:inline-block; padding:6px 10px; font-size:12px; border:1px solid #e5e7eb; border-radius:999px; background:#f8fafc;">Priority clarity</span>
+    <span style="display:inline-block; padding:6px 10px; font-size:12px; border:1px solid #e5e7eb; border-radius:999px; background:#f8fafc;">Calendar integration</span>
+    <span style="display:inline-block; padding:6px 10px; font-size:12px; border:1px solid #e5e7eb; border-radius:999px; background:#f8fafc;">Transparent AI (preview → confirm)</span>
+    <span style="display:inline-block; padding:6px 10px; font-size:12px; border:1px solid #e5e7eb; border-radius:999px; background:#f8fafc;">Personal goals & progress</span>
+  </div>
+
+  <!-- Cards grid -->
+  <div style="
+    max-width:1000px; margin:0 auto; 
+    display:flex; flex-wrap:wrap; gap:16px; 
+    align-items:stretch; justify-content:center;">
+    <!-- Todoist -->
+    <article style="
+      flex:1 1 300px; max-width:320px; 
+      border:1px solid #e5e7eb; border-radius:12px; 
+      background:#ffffff; box-shadow:0 1px 2px rgba(16,24,40,0.04);">
+      
+    <div style="padding:16px 16px 12px; display:flex; align-items:center; gap:12px;">
+    <div style="width:32px; height:32px; border-radius:6px; background:#111827; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:12px;">TD</div>
+    <div>
+    <h3 style="margin:0; font-size:16px; color:#111827;">Todoist</h3>
+    <p style="margin:0; font-size:12px; color:#64748b;">Robust task manager</p>
+    </div>
+    </div>
+    <div style="padding:0 16px 16px;">
+    <div style="margin:8px 0 10px; font-size:12px; color:#0f172a;">
+    <strong style="font-size:12px; color:#111827;">Strengths</strong>
+    <ul style="margin:6px 0 0 18px; padding:0; line-height:1.5;">
+    <li>Powerful cross‑platform tasking and labels.</li>
+    <li>Recurring tasks, filters, and ecosystem add‑ons.</li>
+    </ul>
+    </div>
+    <div style="font-size:12px; color:#0f172a;">
+    <strong style="font-size:12px; color:#111827;">Gaps</strong>
+    <ul style="margin:6px 0 0 18px; padding:0; line-height:1.5;">
+    <li>Can overwhelm new users; setup heavy to get value.</li>
+    <li>Prioritization exists but not always visible at capture.</li>
+    </ul>
+    </div>
+    <div style="margin-top:12px; padding:10px; border:1px dashed #e5e7eb; border-radius:8px; background:#f8fafc;">
+          <p style="margin:0; font-size:12px; color:#0f172a;">
+            Opportunity for Manage Wise: <strong>low‑friction capture + priority chips by default</strong>.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Microsoft To Do -->
+    <article style="
+      flex:1 1 300px; max-width:320px; 
+      border:1px solid #e5e7eb; border-radius:12px; 
+      background:#ffffff; box-shadow:0 1px 2px rgba(16,24,40,0.04);
+    ">
+      <div style="padding:16px 16px 12px; display:flex; align-items:center; gap:12px;">
+        <div style="width:32px; height:32px; border-radius:6px; background:#2563eb; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:12px;">MS</div>
+        <div>
+          <h3 style="margin:0; font-size:16px; color:#111827;">Microsoft To Do</h3>
+          <p style="margin:0; font-size:12px; color:#64748b;">Simple lists + reminders</p>
+        </div>
+      </div>
+      <div style="padding:0 16px 16px;">
+        <div style="margin:8px 0 10px; font-size:12px; color:#0f172a;">
+          <strong style="font-size:12px; color:#111827;">Strengths</strong>
+          <ul style="margin:6px 0 0 18px; padding:0; line-height:1.5;">
+            <li>Clean UI; strong reminders; good with Microsoft suite.</li>
+            <li>Easy to adopt for quick lists.</li>
+          </ul>
+        </div>
+        <div style="font-size:12px; color:#0f172a;">
+          <strong style="font-size:12px; color:#111827;">Gaps</strong>
+          <ul style="margin:6px 0 0 18px; padding:0; line-height:1.5;">
+            <li>Limited customization for complex planning.</li>
+            <li>No transparent AI planning mental model.</li>
+            <li></li>
+          </ul>
+        </div>
+        <div style="margin-top:12px; padding:10px; border:1px dashed #e5e7eb; border-radius:8px; background:#f8fafc;">
+          <p style="margin:0; font-size:12px; color:#0f172a;">
+            Opportunity for Manage Wise: <strong>Planner + Ask AI (preview → confirm)</strong> to keep control.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Trello -->
+    <article style="
+      flex:1 1 300px; max-width:320px; 
+      border:1px solid #e5e7eb; border-radius:12px; 
+      background:#ffffff; box-shadow:0 1px 2px rgba(16,24,40,0.04);
+    ">
+      <div style="padding:16px 16px 12px; display:flex; align-items:center; gap:12px;">
+        <div style="width:32px; height:32px; border-radius:6px; background:#0ea5e9; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:12px;">TR</div>
+        <div>
+          <h3 style="margin:0; font-size:16px; color:#111827;">Trello</h3>
+          <p style="margin:0; font-size:12px; color:#64748b;">Visual boards for teams</p>
+        </div>
+      </div>
+      <div style="padding:0 16px 16px;">
+        <div style="margin:8px 0 10px; font-size:12px; color:#0f172a;">
+          <strong style="font-size:12px; color:#111827;">Strengths</strong>
+          <ul style="margin:6px 0 0 18px; padding:0; line-height:1.5;">
+            <li>Highly visual workflows; flexible for collaboration.</li>
+            <li>Great for multi‑step projects and teams.</li>
+          </ul>
+        </div>
+        <div style="font-size:12px; color:#0f172a;">
+          <strong style="font-size:12px; color:#111827;">Gaps</strong>
+          <ul style="margin:6px 0 0 18px; padding:0; line-height:1.5;">
+            <li>Heavy for solo, day‑to‑day planning.</li>
+            <li>Board mental model adds overhead for quick starts.</li>
+          </ul>
+        </div>
+        <div style="margin-top:12px; padding:10px; border:1px dashed #e5e7eb; border-radius:8px; background:#f8fafc;">
+          <p style="margin:0; font-size:12px; color:#0f172a;">
+            Opportunity for Manage Wise: <strong>personal day planner + priority chips</strong> over boards.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Summary row -->
+  <div style="max-width:1000px; margin:20px auto 0; padding:12px; border:1px solid #e5e7eb; border-radius:10px; background:#f8fafc;">
+    <p style="margin:0; font-size:13px; color:#0f172a;">
+      Summary: Keep what works—reminders, cross‑platform reliability, and visual clarity—while closing gaps with 
+      <strong>low‑friction capture</strong>, <strong>visible priority chips</strong>, and a <strong>transparent Ask AI</strong> that previews and requires confirmation. 
+      Integrate calendars to reduce context switching; keep goals personal with clear progress cues.
+    </p>
+  </div>
+</section>
+
+
+  <!-- Competitive Analysis End -->
 
   
 <!-- Define Section --> 
@@ -769,7 +907,8 @@ width: 100%; overflow-x:auto; white-space:nowrap;">
      /* Phone: single-column cards */ @media (max-width: 600px) { [data-grid="persona-cards"] { grid-template-columns: 1fr !important; } } 
     </style> </section>
 
- <!-- Affinity Maps --> <section class="container" style="--text:#0f172a; --muted:#475569; --line:#e5e7eb; --title:#111827; --note1:#fef3c7; --note2:#e0f2fe; --note3:#dcfce7; --note4:#fae8ff; --note5:#fee2e2; --note6:#e9d5ff; --accent:#2563eb; --pill:#0f766e; margin:32px auto 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding:0;"> 
+ <!-- Affinity Maps --> 
+  <section class="container" style="--text:#0f172a; --muted:#475569; --line:#e5e7eb; --title:#111827; --note1:#fef3c7; --note2:#e0f2fe; --note3:#dcfce7; --note4:#fae8ff; --note5:#fee2e2; --note6:#e9d5ff; --accent:#2563eb; --pill:#0f766e; margin:32px auto 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding:0;"> 
   <div class="container" style="max-width:1100px; padding:0;"> 
   <div style="margin:0 auto 10px; display:flex; align-items:baseline; justify-content:space-between; gap:12px;"> 
   <h2 style="margin:0; font-size:24px; color:var(--title);">Affinity mapping</h2> <div style="font-size:14px; color:var(--muted);">Inputs: 3 interviews - 2 surveys (n=10 + n=10) - competitor scan</div> </div>
@@ -895,24 +1034,18 @@ width: 100%; overflow-x:auto; white-space:nowrap;">
   </section>
   <!-- Affinity Maps End -->
 
-      
-  
-  
-  
-
-  <!-- Ideate Section -->
+  <!-- Design Section -->
 <div class="title">
-<section id="ideate" style="padding: 60px 20px; background-color: #ffffff;">
+<section id="design" style="padding: 60px 20px; background-color: #ffffff;">
   <div style="padding: 40px 30px; margin: 0; background:#fff;">
       <!-- Section Title -->
       <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
-        03 / Ideate – Creating the Framework
+        03 / Ideation & Design – Creating the Framework
       </h2>
   
 <!-- Main Content -->
 <div style="flex: 3; min-width: 300px;">
-  
-<!-- Ideation -->
+
 <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">How My Ideas Took Shape</h4>
 <p style="margin-bottom: 16px;">
   For the ideation phase, I utilized the Crazy 8 brainstorming exercise. Each session consisted of five minutes spent rapidly sketching as many ideas as possible—ideally eight per round—followed by an intentional 20–30 minute break. I didn’t always complete eight sketches each round, but this approach pushed me to generate a wide range of concepts in a short time and gave me space to reflect between sessions.
@@ -989,7 +1122,7 @@ After five Crazy 8 sessions, I compiled my sketches and organized them by theme.
   
 
  <!-- Prototype Section -->
-<section id="prototype" style="padding: 60px 20px; background-color: #ffffff;">
+<section id="deliver  " style="padding: 60px 20px; background-color: #ffffff;">
     <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
   
       <!-- Section Title -->
@@ -1063,9 +1196,9 @@ After five Crazy 8 sessions, I compiled my sketches and organized them by theme.
   
   
  
- <!-- Test Section -->
-<section id="test" style="padding: 60px 20px; background-color: #ffffff;">
-<div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+ <!-- Deliver Section -->
+<section id="test" style="padding: 60px 20px; background-color: #ffffff;margin: 6px 12px; gap: 2px;">
+<div style="padding: 40px 30px; max-width: 960px;  background-color: #fff;">
   
       <!-- Section Title -->
       <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">  05 / Test – It’s Time to Test the Prototype!</h2>
