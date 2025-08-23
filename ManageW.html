@@ -180,13 +180,71 @@
         max-width: 100%;
       }
       
-    }
-
-    
+    }  
 </style>
+<!-- Inline CSS -->
+<style>
+  html { scroll-behavior: smooth; }
+  .jump-pill {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.08rem;
+    padding: 9px 22px;
+    border-radius: 2em;
+    background: transparent;
+    transition: background .17s, color .17s;
+  }
+  .jump-pill:hover,
+  .jump-pill:focus {
+    background: #FFCD29 !important;
+    color: #000 !important;
+    outline: none;
+  }
+  .jump-pill.active {
+    background: #FFCD29 !important;
+    color: #fff !important;
+  }
+  @media (max-width: 950px) {
+    nav[aria-label="Case Study Navigation"] ul { gap: 3px !important; }
+    .jump-pill {
+      font-size: 0.97rem !important;
+      padding: 8px 12px !important;
+    }
+  }
+  @media (max-width: 650px) {
+    .jump-pill { font-size:0.91rem!important; }
+  }
+  </style>
+  
+  <!-- Scoped mobile/tablet hard caps -->
+  <style>
+    /* Tablet: allow two per row if space is tight */
+    @media (max-width: 960px) {
+      [data-process-icons] .process-tile {
+        min-width: 140px !important;
+        width: calc(50% - 12px) !important;
+      }
+    }
+    /* Phone: one per row and lock icon size so it never “expands” */
+    @media (max-width: 600px) {
+      [data-process-icons] .process-tile {
+        width: 100% !important;
+        min-width: 0 !important;
+      }
+      [data-process-icons] img.process-icon {
+        height: 40px !important;
+        width: 40px !important;
+      }
+      [data-process-icons] p.process-label {
+        font-size: 13px !important;
+      }
+    }
+  </style>
 </head>
 
-<!-- MODERN JUMP LINK SIDEBAR -->
+
 <!-- Bottom-Fixed Navigation Pills -->
 <nav aria-label="Case Study Navigation"
   style="
@@ -217,70 +275,8 @@ width: 100%; overflow-x:auto; white-space:nowrap;">
 <li><a href="#define" class="jump-pill">Ideate</a></li>
 <li><a href="#design" class="jump-pill">Prototype</a></li>
 <li><a href="#deliver" class="jump-pill">Test</a></li>
-<li><a href="#Result" class="jump-pill" style="padding-right: 32px;">Result</a></li>
 </ul>
 </nav>
-
-<!-- Inline CSS -->
-<style>
-html { scroll-behavior: smooth; }
-.jump-pill {
-  display: inline-block;
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  font-size: 1.08rem;
-  padding: 9px 22px;
-  border-radius: 2em;
-  background: transparent;
-  transition: background .17s, color .17s;
-}
-.jump-pill:hover,
-.jump-pill:focus {
-  background: #FFCD29 !important;
-  color: #000 !important;
-  outline: none;
-}
-.jump-pill.active {
-  background: #FFCD29 !important;
-  color: #fff !important;
-}
-@media (max-width: 950px) {
-  nav[aria-label="Case Study Navigation"] ul { gap: 3px !important; }
-  .jump-pill {
-    font-size: 0.97rem !important;
-    padding: 8px 12px !important;
-  }
-}
-@media (max-width: 650px) {
-  .jump-pill { font-size:0.91rem!important; }
-}
-</style>
-
-<!-- Highlight Active Section -->
-<script>
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".jump-pill");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100; // offset for nav height
-    if (pageYOffset >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
-  });
-});
-</script>
-
-<!-- Add extra bottom space -->
-<div style="min-height:65px"></div>
 
 <body>
 
@@ -298,11 +294,12 @@ window.addEventListener("scroll", () => {
 
   <!-- Top single phone image -->
   <div class="top-center-image">
-    <img src="https://via.placeholder.com/180x360?text=Bank+of+America" alt="Bank of America logo phone mockup">
+    <img src="" alt="ManageWise Cover Photo">
   </div>
 
   <!-- Project Title -->
   <div class="title-section">
+    <section id="intro" style="padding: 60px 20px; background-color: #ffffff;">
     <h1>Manage Wise</h1>
     <h3>Personalizing Productivity Through AI</h3>
   </div>
@@ -346,6 +343,7 @@ window.addEventListener("scroll", () => {
     <p>This question guided the design process, focusing on creating a single, intuitive platform that adapts to each user’s unique needs and preferences.</p>
   </div>
 </div>
+</section>
   
   <!-- End of content-container -->
 
@@ -493,48 +491,24 @@ window.addEventListener("scroll", () => {
   </div>
 
 
-<!-- Scoped mobile/tablet hard caps -->
-<style>
-  /* Tablet: allow two per row if space is tight */
-  @media (max-width: 900px) {
-    [data-process-icons] .process-tile {
-      min-width: 140px !important;
-      width: calc(50% - 12px) !important;
-    }
-  }
 
-  /* Phone: one per row and lock icon size so it never “expands” */
-  @media (max-width: 600px) {
-    [data-process-icons] .process-tile {
-      width: 100% !important;
-      min-width: 0 !important;
-    }
-    [data-process-icons] img.process-icon {
-      height: 40px !important;
-      width: 40px !important;
-    }
-    [data-process-icons] p.process-label {
-      font-size: 13px !important;
-    }
-  }
-</style>
 
 
 <p>
   We followed an Agile-inspired, iterative process with four phases: Discover, Define, Design, and Deliver. This structure allowed exploration of the problem space, convergence on a clear framing, rapid testing, and measurable improvements.
 </p>
 
-
-
+</div>
+</section>
   
 <!-- Discover Section -->
 <div class="title">
-  <section id="discover" style="padding: 60px 20px; background-color: #ffffff;">
-    <!-- MATCH Process width -->
-    <div style="padding: 40px 30px; margin: 0; background:#fff;">
-      <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
-        01 / Discover – Exploring the User’s Needs
-      </h2>
+<section id="discover" style="padding: 60px 20px; background-color: #ffffff;">
+<!-- MATCH Process width -->
+<div style="padding: 40px 30px; margin: 0; background:#fff;">
+<h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
+01 / Discover – Exploring the User’s Needs
+</h2>
 
       <!-- Key Findings from Survey -->
       <section id="discover-key-findings"
@@ -581,8 +555,7 @@ window.addEventListener("scroll", () => {
       <!-- Key Findings End -->
 
       <!-- Survey Highlights -->
-      <section id="discover-survey-highlights"
-        style="--gap:12px; --radius:999px; --bg:#f6f7f9; --text:#0f172a; --muted:#64748b; --bar1:#3b82f6; --bar2:#06b6d4; --bar3:#22c55e; --bar4:#f59e0b; --bar5:#8b5cf6; margin:24px auto; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+      <section id="discover-survey-highlights" style="--gap:12px; --radius:999px; --bg:#f6f7f9; --text:#0f172a; --muted:#64748b; --bar1:#3b82f6; --bar2:#06b6d4; --bar3:#22c55e; --bar4:#f59e0b; --bar5:#8b5cf6; margin:24px auto; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
         <h2 style="margin:0 0 8px; color: #000; font-size:20px;">Survey Highlights</h2>
         <p style="margin:0 0 14px; font-size:14px; color:var(--muted);">Key signals (multiple selections allowed).</p>
 
@@ -642,13 +615,12 @@ window.addEventListener("scroll", () => {
       <section id="discover-interview-highlights"
         style="--gap:12px; --radius:12px; --line:#e5e7eb; --text:#0f172a; --muted:#475569; --pill-bg:#f1f5f9; --pill-text:#0f172a; margin:28px auto; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width:960px;">
         <h2 style="margin:0 0 8px; color: #000; font-size:20px;">Interview Highlights</h2>
-        <p style="margin:0 0 16px; font-size:14px; color:var(--muted);">Snapshot of who we spoke with and what tools they currently use.</p>
+        <p style="margin:0 0 16px; font-size:16px; color:var(--muted);">Snapshot of who we spoke with and what tools they currently use.</p>
 
         <!-- Card (no inner max-width cap) -->
         <div style="border:1px solid var(--line); border-radius:16px; padding:16px; background:#fff; display:grid; grid-template-columns:repeat(12, 1fr); gap:16px;">
           <!-- Column: Demographics -->
           <div style="grid-column: span 5;">
-            <div style="font-size:12px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:8px; margin-bottom:8px;">Who</div>
             <h3 style="margin:0 0 6px; font-size:18px;">Ages 22–35</h3>
             <p style="margin:0 0 12px; font-size:14px; color:var(--muted);">Mixed students and working professionals.</p>
 
@@ -666,10 +638,10 @@ window.addEventListener("scroll", () => {
 
           <!-- Column: Current tools -->
           <div style="grid-column: span 6;">
-            <div style="font-size:12px; letter-spacing:0.5px; text-transform:uppercase; color:#047857; background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:8px; margin-bottom:8px;">Current Tools</div>
+            <h3 style="margin:0 0 6px; font-size:18px;">Current Tools</h3>
 
             <div style="margin-bottom:10px;">
-              <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Calendars</div>
+              <div style="font-size:14px; color:var(--muted); margin-bottom:6px;">Calendars</div>
               <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 <span style="background:#eef2ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-size:13px;">Apple Calendar</span>
                 <span style="background:#eef2ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-size:13px;">Google Calendar</span>
@@ -677,7 +649,7 @@ window.addEventListener("scroll", () => {
             </div>
 
             <div>
-              <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">To-do / Notes</div>
+              <div style="font-size:14px; color:var(--muted); margin-bottom:6px;">To-do / Notes</div>
               <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 <span style="background:#fff7ed; color:#9a3412; padding:6px 10px; border-radius:999px; font-size:13px; border:1px solid #fed7aa;">Notion</span>
                 <span style="background:#f0f9ff; color:#0369a1; padding:6px 10px; border-radius:999px; font-size:13px; border:1px solid #bae6fd;">Google Keep</span>
@@ -701,11 +673,7 @@ window.addEventListener("scroll", () => {
       <!-- Interview Highlights End -->
     </div>
   </section>
-</div>
 
-
-  
-    
   
 <!-- Define Section --> 
 
@@ -727,18 +695,18 @@ window.addEventListener("scroll", () => {
        <div style="flex:2 1 420px; min-width:280px;"> 
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;"> 
         <div> <h2 style="margin:0 0 8px; color:#000; font-size:20px;">Alex, 26 — CS Grad Student</h2>
-          <p style="margin:2px 0 0; font-size:13px; color:var(--muted);">Juggling classes and part‑time work; values visual planning and timely reminders.</p> 
+          <p style="margin:2px 0 0; font-size:12px; color:var(--muted);">Juggling classes and part‑time work; values visual planning and timely reminders.</p> 
         </div> </div>
 
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;">
-          <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:12px;">Apple Calendar</span>
-          <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:12px;">Google Calendar</span>
-          <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:12px;">Simple to‑do tools (Notion, Keep, MS To Do)</span>
+          <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:14px;">Apple Calendar</span>
+          <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:14px;">Google Calendar</span>
+          <span style="background:var(--chip); color:#0f172a; padding:6px 10px; border-radius:999px; font-size:14px;">Simple to‑do tools (Notion, Keep, MS To Do)</span>
         </div>
       
         <div data-grid="persona-cards" style="display:grid; grid-template-columns:repeat(12, 1fr); gap:14px;">
           <div style="grid-column:span 6; border:1px solid var(--line); border-radius:12px; padding:12px;">
-            <div style="font-size:11px; letter-spacing:0.5px; text-transform:uppercase; color:var(--good); background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Goals</div>
+            <div style="font-size:14px; letter-spacing:0.5px; text-transform:uppercase; color:var(--good); background:#ecfdf5; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Goals</div>
             <ul style="margin:0; padding-left:18px; color:var(--text); font-size:16px; line-height:1.5;">
               <li>Efficient weekly planning</li>
               <li>Clear, confident priorities</li>
@@ -747,7 +715,7 @@ window.addEventListener("scroll", () => {
           </div>
       
           <div style="grid-column:span 6; border:1px solid var(--line); border-radius:12px; padding:12px;">
-            <div style="font-size:11px; letter-spacing:0.5px; text-transform:uppercase; color:var(--pain); background:#fef2f2; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Pain Points</div>
+            <div style="font-size:14px; letter-spacing:0.5px; text-transform:uppercase; color:var(--pain); background:#fef2f2; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Pain Points</div>
             <ul style="margin:0; padding-left:18px; color:var(--text); font-size:16px; line-height:1.5;">
               <li>Hard to start large tasks</li>
               <li>Scattered tools across apps</li>
@@ -756,8 +724,8 @@ window.addEventListener("scroll", () => {
           </div>
       
           <div style="grid-column:span 12; border:1px solid var(--line); border-radius:12px; padding:12px;">
-            <div style="font-size:11px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Behaviors</div>
-            <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:16px; line-height:1.5;">
+            <div style="font-size:14px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Behaviors</div>
+            <ul style="margin:0; padding-left:18px; color:var(--text); font-size:16px; line-height:1.5;">
               <li>Schedules classes/work first; fits tasks into remaining slots</li>
               <li>Sets reminders for deadlines and exam prep</li>
               <li>Uses simple checklists; avoids heavy setups</li>
@@ -765,8 +733,9 @@ window.addEventListener("scroll", () => {
           </div>
       
           <div style="grid-column:span 12; border:1px solid var(--line); border-radius:12px; padding:12px;">
-            <div style="font-size:11px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Opportunity</div>
-            <ul style="margin:0; padding-left:18px; font-size:14px; color:var(--text); line-height:1.5;">
+            <div style="font-size:14px; letter-spacing:0.5px; text-transform:uppercase; color:#2563eb; background:#eff6ff; display:inline-block; padding:4px 8px; border-radius:6px; margin-bottom:8px;">Opportunity
+            </div>
+            <ul style="margin:0; padding-left:18px; font-size:16px; color:var(--text); line-height:1.5;">
               <li>Visual weekly planner with progress cues</li>
               <li>Smart “first step” suggestions for big tasks</li>
               <li>Lightweight integration across calendar + to‑do</li>
@@ -782,12 +751,12 @@ window.addEventListener("scroll", () => {
           <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
             <div>
               <div style="font-weight:700; color:#2563eb;">Primary Persona</div>
-              <div style="font-size:13px; color:var(--muted);">Refined from “Alex”</div>
+              <div style="font-size:14px; color:var(--muted);">Refined from “Alex”</div>
             </div>
           </div>
-          <div style="font-size:13px; color:#111827; margin-bottom:8px;"><strong>Age:</strong> 26</div>
-          <div style="font-size:13px; color:#111827; margin-bottom:8px;"><strong>Role:</strong> CS Grad Student & Part‑time Employee</div>
-          <div style="font-size:13px; color:#111827; margin-bottom:10px;"><strong>Tools:</strong> Apple/Google Calendar; Notion, Google Keep, MS To Do</div>
+          <div style="font-size:14px; color:#111827; margin-bottom:8px;"><strong>Age:</strong> 26</div>
+          <div style="font-size:14px; color:#111827; margin-bottom:8px;"><strong>Role:</strong> CS Grad Student & Part‑time Employee</div>
+          <div style="font-size:14px; color:#111827; margin-bottom:10px;"><strong>Tools:</strong> Apple/Google Calendar; Notion, Google Keep, MS To Do</div>
           <blockquote style="margin:0; padding:10px 12px; background:#fff; border:1px solid var(--line); border-radius:10px; color:#334155; font-style:italic;">
             “If I can see my week and what’s next, I stay on track.”
           </blockquote>
@@ -804,7 +773,7 @@ window.addEventListener("scroll", () => {
  <!-- Affinity Maps --> <section class="container" style="--text:#0f172a; --muted:#475569; --line:#e5e7eb; --title:#111827; --note1:#fef3c7; --note2:#e0f2fe; --note3:#dcfce7; --note4:#fae8ff; --note5:#fee2e2; --note6:#e9d5ff; --accent:#2563eb; --pill:#0f766e; margin:32px auto 0; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding:0;"> 
   <div class="container" style="max-width:1100px; padding:0;"> 
   <div style="margin:0 auto 10px; display:flex; align-items:baseline; justify-content:space-between; gap:12px;"> 
-  <h2 style="margin:0; font-size:24px; color:var(--title);">Affinity mapping</h2> <div style="font-size:12px; color:var(--muted);">Inputs: 3 interviews - 2 surveys (n=10 + n=10) - competitor scan</div> </div>
+  <h2 style="margin:0; font-size:24px; color:var(--title);">Affinity mapping</h2> <div style="font-size:14px; color:var(--muted);">Inputs: 3 interviews - 2 surveys (n=10 + n=10) - competitor scan</div> </div>
 
   <div style="margin:0 auto 16px; display:flex; flex-wrap:wrap; gap:12px;">
     <div style="flex:1 1 520px; min-width:280px; border:1px solid var(--line); border-radius:12px; padding:12px; background:#fff;">
