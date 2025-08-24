@@ -328,13 +328,31 @@ body {
 
 
 
-/* Define section responsive rules */
-@media (max-width: 1120px) {
-  .affinity-image {
-    height: 360px !important;
+/* === AFFINITY RESPONSIVE RULES STARTS === */
+@media (min-width: 901px) {
+  [data-grid="themes"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important; /* Force 2 equal-height rows */
+    gap: 24px !important;
+    align-items: stretch !important; /* Ensure equal heights in each row */
   }
 }
 
+@media (max-width: 900px) {
+  [data-grid="themes"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important; /* Reset rows for tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  [data-grid="themes"] {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important; /* Reset rows for mobile */
+  }
+}
+/* === AFFINITY RESPONSIVE RULES ENDS=== */
 
 /* Persona responsive rules Starts */
 /* Replace your entire persona responsive section with this consolidated version */
@@ -385,14 +403,6 @@ body {
   }
 }
 /* Persona responsive rules Ends */
-
-
-.affinity-image {
-    height: 240px !important;
-  }
-  [data-grid="themes"] {
-    grid-template-columns: 1fr !important;
-  }
 
 /* Define section responsive rules Ends */
 
@@ -1229,7 +1239,7 @@ body {
         <div style="max-width: 1100px; margin: 0 auto;">
           <h2 style="margin: 0 0 8px; font-size: 28px; line-height: 1.2; color: #111827;">Converting Low‑Fi Sketches to Mid‑Fi Screens</h2>
           <p style="margin: 0 0 16px; font-size: 14px; color: #475569;">
-            We converged Crazy 8 ideas into testable flows: Add Task, Planner + Ask AI (preview → confirm), and Goals (categories + progress).
+            We converged Crazy 8 ideas into testable flows: Add Task, Planner + Ask AI (MVP), and Goals (set goals + view progress).
           </p>
         </div>
   
@@ -1411,6 +1421,13 @@ body {
                 Your browser does not support the video tag.
               </video>
             </div>
+            <br>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; font-size: 12px;">
+              <span style="padding: 6px 10px; border: 1px solid #e5e7eb; border-radius: 999px;">Success: 3/3</span>
+              <span style="padding: 6px 10px; border: 1px solid #e5e7eb; border-radius: 999px;">Median time: 32s</span>
+              <span style="padding: 6px 10px; border: 1px solid #e5e7eb; border-radius: 999px;">Errors: 0</span>
+            </div>
+            <br>
             <div style="padding: 10px 12px; font-size: 12px; color: #334155; background: #f8fafc; border-top: 1px solid #e5e7eb;">
               Clip: Participant completing the Ask AI task scenario expecting clear output and confirmation.
             </div>
@@ -1509,9 +1526,8 @@ body {
       
     <section id="prototype" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
     <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
-    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="1000" height="600" 
-    src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share" allowfullscreen>
-    </iframe>
+      <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/Q23ONt1t5GInwVq4kRGTtf/Manage-Wise-Productivity-App_WMM614_Mainak-Chakraborty?page-id=0%3A1&node-id=1-4594&viewport=621%2C380%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4594&embed-host=share" allowfullscreen>
+      </iframe>
     </div>
     </section>
     
