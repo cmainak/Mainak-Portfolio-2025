@@ -224,58 +224,102 @@ body {
   margin-bottom: 14px;
 }
 
-/* === RESPONSIVE BREAKPOINTS === */
-@media (max-width: 950px) {
-  nav[aria-label="Case Study Navigation"] ul { 
-    gap: 3px !important; 
+/* === RESPONSIVE JUMP LINKS BREAKPOINTS === */
+/* === JUMP NAVIGATION RESPONSIVE === */
+
+/* Base styles for jump pills */
+.jump-pill {
+  display: block;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 8px;
+  border-radius: 1.8em;
+  text-decoration: none;
+  color: #000;
+  background: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jump-pill:hover, .jump-pill.active {
+  background: #FFCD29;
+  color: #000;
+  font-weight: 600;
+}
+
+/* Large screens (desktop) */
+@media (min-width: 1025px) {
+  .jump-nav {
+    width: 430px !important;
+    max-width: 430px !important;
   }
   .jump-pill {
-    font-size: 0.97rem !important;
-    padding: 8px 12px !important;
+    font-size: 1rem !important;
+    padding: 12px 16px !important;
   }
 }
 
-@media (max-width: 768px) {
-  .content-container {
-    flex-direction: column;
+/* Medium screens (tablet) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .jump-nav {
+    width: calc(100vw - 60px) !important;
+    max-width: 400px !important;
   }
-  .left-column, .right-column {
-    max-width: 100%;
+  .jump-pill {
+    font-size: 0.95rem !important;
+    padding: 10px 12px !important;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .jump-nav {
+    width: calc(100vw - 32px) !important;
+    max-width: 360px !important;
+    padding: 6px !important;
   }
   
-  /* Mobile navigation adjustments */
-  nav[aria-label="Case Study Navigation"] {
-    width: 90vw !important;
+  .jump-nav ul {
+    gap: 4px !important;
   }
-}
-
-@media (max-width: 650px) {
-  .jump-pill { 
-    font-size: 0.91rem !important; 
-  }
-}
-
-/* === PROCESS ICONS RESPONSIVE === */
-@media (max-width: 960px) {
-  [data-process-icons] .process-tile {
-    min-width: 140px !important;
-    width: calc(50% - 12px) !important;
-  }
-}
-
-@media (max-width: 600px) {
-  [data-process-icons] .process-tile {
-    width: 100% !important;
+  
+  .jump-pill {
+    font-size: 0.9rem !important;
+    padding: 8px 6px !important;
     min-width: 0 !important;
   }
-  [data-process-icons] img.process-icon {
-    height: 40px !important;
-    width: 40px !important;
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .jump-nav {
+    width: calc(100vw - 24px) !important;
+    max-width: 320px !important;
+    bottom: 12px !important;
   }
-  [data-process-icons] p.process-label {
-    font-size: 13px !important;
+  
+  .jump-nav ul {
+    gap: 3px !important;
+  }
+  
+  .jump-pill {
+    font-size: 0.85rem !important;
+    padding: 8px 4px !important;
   }
 }
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .jump-pill {
+    font-size: 0.8rem !important;
+    padding: 6px 3px !important;
+  }
+}
+/* === JUMP NAVIGATION RESPONSIVE ENDS === */
+
 
 /* === DISCOVER SECTION STYLES === */
 
@@ -452,164 +496,374 @@ body {
     <i class="fas fa-arrow-up"></i>
   </a>
 
-  <!-- Bottom-Fixed Navigation Pills -->
-  <nav aria-label="Case Study Navigation"
-    style="
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      width: 50vw;
-      max-width: 430px;
-      z-index: 1000;
-      background: rgba(255,255,255,0.88);
-      box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
-      border-radius: 2.2em;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-      overflow-x: auto;
-      white-space: nowrap;
-    ">
-    <ul style="
-      margin: 0; padding: 0; list-style: none;
-      display: flex; gap: 7px; align-items: center; flex-wrap: nowrap;
-      width: 100%; overflow-x: auto; white-space: nowrap;
-    ">
-      <li><a href="#discover" class="jump-pill">Discover</a></li>
-      <li><a href="#define" class="jump-pill">Define</a></li>
-      <li><a href="#design" class="jump-pill">Design</a></li>
-      <li><a href="#deliver" class="jump-pill">Deliver</a></li>
-    </ul>
-  </nav>
+  <!-- Bottom-Fixed Jump Navigation Pills STARTS-->
+
+<nav aria-label="Case Study Navigation" class="jump-nav"
+style="
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: calc(100vw - 40px);
+  max-width: 430px;
+  min-width: 280px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
+  border-radius: 2.2em;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+">
+<ul style="
+  margin: 0; padding: 0; list-style: none;
+  display: flex; gap: 6px; align-items: center; 
+  width: 100%; justify-content: space-between;
+">
+  <li style="flex: 1;"><a href="#discover" class="jump-pill">Discover</a></li>
+  <li style="flex: 1;"><a href="#define" class="jump-pill">Define</a></li>
+  <li style="flex: 1;"><a href="#design" class="jump-pill">Design</a></li>
+  <li style="flex: 1;"><a href="#deliver" class="jump-pill">Deliver</a></li>
+</ul>
+</nav>
+
+  <!-- Bottom-Fixed Jump Navigation Pills ENDS-->
 
   <!-- Main Content Section -->
   <section id="intro" style="padding: 60px 20px; background-color: #ffffff;">
     
-    <!-- Top Center Image -->
-    <div class="top-center-image">
-      <img src="assets/img/Manage Wise/ManageWise Cover.png" alt="ManageWise Cover Photo">
+    <!--HERO IMAGE STARTS MANAGEWISE COVER-->
+<!-- MAXIMUM WIDTH HERO VERSION -->
+<div class="hero-cover-section" style="text-align: center; padding: 40px 20px 32px; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%); margin-bottom: 24px;">
+  <div style="max-width: 1100px; width: 98%; margin: 0 auto;">
+    
+    <!-- Cover Image -->
+    <div class="cover-image-container" style="position: relative; display: inline-block; margin-bottom: 20px; width: 100%;">
+      <img src="assets/img/Manage Wise/ManageWise Cover.png" 
+           alt="ManageWise App Cover" 
+           style="width: 100%; max-width: 800px; height: auto; border-radius: 20px; box-shadow: 0 12px 50px rgba(0, 0, 0, 0.18); transition: all 0.3s ease;">
+      
+      <!-- Glow effect -->
+      <div style="position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px; background: linear-gradient(135deg, rgba(255, 205, 41, 0.15) 0%, rgba(255, 205, 41, 0.08) 100%); border-radius: 35px; z-index: -1;"></div>
     </div>
+    
+    <!-- Title and Tagline -->
+    <h1 style="margin: 20px 0 8px; font-size: 36px; font-weight: 700; color: #111827; font-family: 'Raleway', sans-serif;">ManageWise</h1>
+    <p style="margin: 0 0 24px; font-size: 20px; color: #FFCD29; font-weight: 600; font-family: 'Raleway', sans-serif;">Personalizing Productivity Through AI</p>
+    
+  </div>
+</div>
 
-    <!-- Project Title -->
-    <div class="title-section">
-      <h1>ManageWise</h1>
-      <h3>Personalizing Productivity Through AI</h3>
-    </div>
+<!--HERO IMAGE ENDS-->
 
+    <!-- Main Content Split Layout STARTS -->
+   <!-- Enhanced Project Overview Section -->
+<section id="project-overview" style="padding: 48px 20px; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    
     <!-- Main Content Split Layout -->
-    <div class="content-container">
+    <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 40px; align-items: start;">
 
-      <!-- Left Overview Box -->
-      <div class="left-column">
-        <p><strong>ROLE:</strong> UX Researcher & Product Designer</p>
-        <p><strong>TIMELINE:</strong> 10 Weeks</p>
-        <p><strong>TOOLS:</strong> Figma, FigJam, Google Forms, Notion</p>
-        <p><strong>TEAM:</strong> Solo (peer testers)</p>
-        <p><strong>SCOPE:</strong> Concept-to-prototype of a productivity app with AI-assisted scheduling and goals</p>
-        <em>This project is a fictitious scenario, completed as a part of a graduate program.</em>
-        <a href="#" class="cta-button">View High-Fidelity Prototype</a>
+      <!-- Left Overview Card -->
+      <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08); position: sticky; top: 80px;">
+        
+        <!-- Project Details -->
+        <div style="margin-bottom: 24px;">
+          <div style="margin-bottom: 16px;">
+            <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Role</span>
+            <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500;">UX Researcher & Product Designer</p>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Timeline</span>
+            <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500;">10 Weeks</p>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Tools</span>
+            <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500;">Figma, FigJam, Google Forms, Notion</p>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Team</span>
+            <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500;">Solo (peer testers)</p>
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Scope</span>
+            <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500; line-height: 1.5;">Concept-to-prototype of a productivity app with AI-assisted scheduling and goals</p>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div style="padding: 12px; background: #f8fafc; border-radius: 8px; margin-bottom: 24px; border-left: 3px solid #FFCD29;">
+          <p style="margin: 0; font-size: 12px; color: #64748b; font-style: italic; line-height: 1.4;">
+            This project is a fictitious scenario, completed as part of a graduate program.
+          </p>
+        </div>
+
+        <!-- CTA Button -->
+        <a href="#final-prototype" style="display: block; text-align: center; padding: 12px 20px; background: #FFCD29; color: #000; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; transition: all 0.2s ease; border: 2px solid #FFCD29;" onmouseover="this.style.background='#fff'; this.style.color='#FFCD29'" onmouseout="this.style.background='#FFCD29'; this.style.color='#000'">
+          View High-Fidelity Prototype →
+        </a>
       </div>
 
-      <!-- Right Description Sections -->
-      <div class="right-column">
-        <div class="section">
-          <h4>Background</h4>
-          <p>The productivity app space is crowded — Todoist, Trello, Microsoft To Do — yet users still struggle to manage overlapping tasks, track personal goals, and stay motivated.</p>
-          <p style="font-style: italic; font-size: 17px; color: #333;">"Users don't need more tools. <span style="background: linear-gradient(120deg, #FFCD29 0%, #FFCD29 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 75%;">They need personalized support</span> — one system that integrates tasks, goals, and progress insights without overwhelming them."</p>
+      <!-- Right Content Sections -->
+      <div style="display: flex; flex-direction: column; gap: 32px;">
+        
+        <!-- Background Section -->
+        <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);">
+          <h3 style="margin: 0 0 16px; font-size: 20px; color: #111827; font-family: 'Raleway', sans-serif; font-weight: 600;">Background</h3>
+          
+          <p style="margin: 0 0 16px; font-size: 15px; color: #374151; line-height: 1.6;">
+            The productivity app space is crowded — Todoist, Trello, Microsoft To Do — yet users still struggle to manage overlapping tasks, track personal goals, and stay motivated.
+          </p>
+          
+          <!-- Quote Highlight -->
+          <div style="padding: 20px; background: linear-gradient(135deg, #fffbf0 0%, #fef3c7 100%); border-radius: 12px; border-left: 4px solid #FFCD29; margin: 16px 0;">
+            <p style="margin: 0; font-size: 16px; color: #1f2937; font-style: italic; line-height: 1.6;">
+              "Users don't need more tools. <span style="background: #FFCD29; padding: 2px 6px; border-radius: 4px; color: #000; font-weight: 600;">They need personalized support</span> — one system that integrates tasks, goals, and progress insights without overwhelming them."
+            </p>
+          </div>
         </div>
 
-        <div class="section">
-          <h4>Problem</h4>
-          <p>Individuals feel overwhelmed by long task lists, struggle to prioritize, and juggle multiple tools (calendars, notes, to-dos), which fragments planning and reduces follow-through.</p>
-          <p><strong>Key Research Stats:</strong></p>
-          <ul>
-            <li>70% of participants use at least one productivity app daily.</li>
-            <li>40% still struggle with procrastination despite using these tools.</li>
-            <li>Most existing apps focus on tasks only, ignoring personalization and integrated goal-tracking.</li>
-          </ul>
+        <!-- Problem Section -->
+        <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);">
+          <h3 style="margin: 0 0 16px; font-size: 20px; color: #111827; font-family: 'Raleway', sans-serif; font-weight: 600;">Problem</h3>
+          
+          <p style="margin: 0 0 20px; font-size: 15px; color: #374151; line-height: 1.6;">
+            Individuals feel overwhelmed by long task lists, struggle to prioritize, and juggle multiple tools (calendars, notes, to-dos), which fragments planning and reduces follow-through.
+          </p>
+          
+          <!-- Research Stats -->
+          <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb;">
+            <h4 style="margin: 0 0 12px; font-size: 14px; color: #111827; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Key Research Stats</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; flex-shrink: 0;"></div>
+                <span style="font-size: 14px; color: #374151;">70% of participants use at least one productivity app daily</span>
+              </div>
+              
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%; flex-shrink: 0;"></div>
+                <span style="font-size: 14px; color: #374151;">40% still struggle with procrastination despite using these tools</span>
+              </div>
+              
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 6px; height: 6px; background: #ef4444; border-radius: 50%; flex-shrink: 0;"></div>
+                <span style="font-size: 14px; color: #374151;">Most existing apps focus on tasks only, ignoring personalization and integrated goal-tracking</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="section">
-          <h4>How Might We</h4>
-          <p>"How might we design a personalized productivity app that integrates task management, goal-setting, and AI-driven smart scheduling — without overwhelming users?"</p>
-          <p>This question guided the design process, focusing on creating a single, intuitive platform that adapts to each user's unique needs and preferences.</p>
+        <!-- How Might We Section -->
+        <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);">
+          <h3 style="margin: 0 0 16px; font-size: 20px; color: #111827; font-family: 'Raleway', sans-serif; font-weight: 600;">How Might We</h3>
+          
+          <!-- HMW Question -->
+          <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: 12px; border-left: 4px solid #3b82f6; margin-bottom: 16px;">
+            <p style="margin: 0; font-size: 16px; color: #1e40af; font-weight: 500; line-height: 1.6;">
+              "How might we design a personalized productivity app that integrates task management, goal-setting, and AI-driven smart scheduling — without overwhelming users?"
+            </p>
+          </div>
+          
+          <p style="margin: 0; font-size: 15px; color: #374151; line-height: 1.6;">
+            This question guided the design process, focusing on creating a single, intuitive platform that adapts to each user's unique needs and preferences.
+          </p>
         </div>
+
       </div>
 
-    </div> <!-- End content-container -->
+    </div>
+  </div>
+</section>
 
-  </section>
+<!-- Responsive CSS -->
+<style>
+@media (max-width: 1024px) {
+  #project-overview [style*="grid-template-columns: 1fr 1.8fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  
+  #project-overview [style*="position: sticky"] {
+    position: static !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #project-overview {
+    padding: 32px 20px !important;
+  }
+  
+  #project-overview [style*="padding: 28px"] {
+    padding: 20px !important;
+  }
+  
+  #project-overview [style*="gap: 32px"] {
+    gap: 24px !important;
+  }
+}
+</style>
+
+    <!-- Main Content Split Layout ENDS -->
+
 
 <!-- Process Section -->
-<section id="process" style="padding: 60px 20px; background-color: #ffffff;">
-    <div style="padding: 40px 30px; max-width: 960px; margin: 0 auto; background-color: #fff;">
+<!-- Enhanced Process Section -->
+<section id="process" style="padding: 60px 20px; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 40px 30px; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(16, 24, 40, 0.1); border: 1px solid #e5e7eb;">
+    
+    <!-- Section Title -->
+    <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px;">
+      PROCESS: The Agile Way
+    </h2>
+    
+    <!-- Subtitle -->
+    <p style="text-align: center; font-size: 15px; color: #64748b; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Following the Double Diamond methodology to ensure user-centered design decisions
+    </p>
+
+    <!-- Process Tiles Grid -->
+    <div data-process-icons style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 32px;">
       
-      <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
-        PROCESS: The Agile Way
-      </h2>
-  
-      <!-- Process Icons Row -->
-      <div data-process-icons style="display: flex; justify-content: center; align-items: flex-start; gap: 16px; flex-wrap: wrap; max-width: 900px; margin: 40px auto 24px; padding: 0 12px; box-sizing: border-box;">
+      <!-- Discover Tile -->
+      <div class="process-tile" style="text-align: center; padding: 28px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.06); transition: all 0.3s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16,24,40,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(16,24,40,0.06)'">
         
-        <!-- Discover Tile -->
-        <div class="process-tile" style="text-align: center; flex: 0 0 auto; width: calc(25% - 12px); min-width: 140px; max-width: 220px; box-sizing: border-box;">
-          <img class="process-icon"
-               src="https://img.icons8.com/ios-filled/100/000000/search-in-cloud.png"
-               alt="Discover"
-               style="display: inline-block; height: clamp(40px, 2.6rem, 56px); width: clamp(40px, 2.6rem, 56px); object-fit: contain; margin-bottom: 10px;">
-          <p class="process-label" style="margin: 0; font-weight: 600; font-family: 'Raleway', sans-serif; font-size: clamp(13px, 1rem, 16px); line-height: 1.2;">Discover</p>
-          <p style="margin: 4px 0 0; font-size: 12px; color: #555; font-family: 'Raleway', sans-serif;">
-            Surveys · Interviews · Competitive
-          </p>
+        <!-- Phase Number -->
+        <div style="position: absolute; top: 12px; right: 12px; width: 24px; height: 24px; background: #f1f5f9; color: #64748b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600;">01</div>
+        
+        <!-- Icon -->
+        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <img src="https://img.icons8.com/ios-filled/50/3b82f6/search-in-cloud.png" alt="Discover" style="width: 28px; height: 28px;">
         </div>
-  
-        <!-- Define Tile -->
-        <div class="process-tile" style="text-align: center; flex: 0 0 auto; width: calc(25% - 12px); min-width: 140px; max-width: 220px; box-sizing: border-box;">
-          <img class="process-icon"
-               src="https://img.icons8.com/ios-filled/100/000000/define-location.png"
-               alt="Define"
-               style="display: inline-block; height: clamp(40px, 2.6rem, 56px); width: clamp(40px, 2.6rem, 56px); object-fit: contain; margin-bottom: 10px;">
-          <p class="process-label" style="margin: 0; font-weight: 600; font-family: 'Raleway', sans-serif; font-size: clamp(13px, 1rem, 16px); line-height: 1.2;">Define</p>
-          <p style="margin: 4px 0 0; font-size: 12px; color: #555; font-family: 'Raleway', sans-serif;">
-            Affinity Mapping · Persona · JTBD
-          </p>
-        </div>
-  
-        <!-- Design Tile -->
-        <div class="process-tile" style="text-align: center; flex: 0 0 auto; width: calc(25% - 12px); min-width: 140px; max-width: 220px; box-sizing: border-box;">
-          <img class="process-icon"
-               src="https://img.icons8.com/ios-filled/100/000000/design.png"
-               alt="Design"
-               style="display: inline-block; height: clamp(40px, 2.6rem, 56px); width: clamp(40px, 2.6rem, 56px); object-fit: contain; margin-bottom: 10px;">
-          <p class="process-label" style="margin: 0; font-weight: 600; font-family: 'Raleway', sans-serif; font-size: clamp(13px, 1rem, 16px); line-height: 1.2;">Design</p>
-          <p style="margin: 4px 0 0; font-size: 12px; color: #555; font-family: 'Raleway', sans-serif;">
-            Flows · IA · Wireframes · Hi‑fi
-          </p>
-        </div>
-  
-        <!-- Deliver Tile -->
-        <div class="process-tile" style="text-align: center; flex: 0 0 auto; width: calc(25% - 12px); min-width: 140px; max-width: 220px; box-sizing: border-box;">
-          <img class="process-icon"
-               src="https://img.icons8.com/ios-filled/100/000000/task-completed.png"
-               alt="Deliver"
-               style="display: inline-block; height: clamp(40px, 2.6rem, 56px); width: clamp(40px, 2.6rem, 56px); object-fit: contain; margin-bottom: 10px;">
-          <p class="process-label" style="margin: 0; font-weight: 600; font-family: 'Raleway', sans-serif; font-size: clamp(13px, 1rem, 16px); line-height: 1.2;">Deliver</p>
-          <p style="margin: 4px 0 0; font-size: 12px; color: #555; font-family: 'Raleway', sans-serif;">
-            Lo‑fi · Hi‑fi · Iterations
-          </p>
-        </div>
-  
+        
+        <!-- Title -->
+        <h3 style="margin: 0 0 8px; font-weight: 700; font-family: 'Raleway', sans-serif; font-size: 18px; color: #111827; letter-spacing: 0.5px;">Discover</h3>
+        
+        <!-- Methods -->
+        <p style="margin: 0; font-size: 14px; color: #64748b; line-height: 1.5;">
+          Surveys • Interviews • Competitive Analysis
+        </p>
       </div>
-  
-      <!-- Process Description -->
-      <p style="margin-top: 16px; font-size: 14px; text-align: center; color: #444; font-family: 'Raleway', sans-serif;">
-        We followed an Agile-inspired, iterative process with four phases: Discover, Define, Design, and Deliver, also known as <span style="background: linear-gradient(120deg, #FFCD29 0%, #FFCD29 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 75%;">Double Diamond Design Process</span>. This structure allowed exploration of the problem space, convergence on a clear framing, rapid testing, and measurable improvements.
-      </p>
-  
+
+      <!-- Define Tile -->
+      <div class="process-tile" style="text-align: center; padding: 28px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.06); transition: all 0.3s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16,24,40,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(16,24,40,0.06)'">
+        
+        <!-- Phase Number -->
+        <div style="position: absolute; top: 12px; right: 12px; width: 24px; height: 24px; background: #f1f5f9; color: #64748b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600;">02</div>
+        
+        <!-- Icon -->
+        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <img src="https://img.icons8.com/ios-filled/50/10b981/define-location.png" alt="Define" style="width: 28px; height: 28px;">
+        </div>
+        
+        <!-- Title -->
+        <h3 style="margin: 0 0 8px; font-weight: 700; font-family: 'Raleway', sans-serif; font-size: 18px; color: #111827; letter-spacing: 0.5px;">Define</h3>
+        
+        <!-- Methods -->
+        <p style="margin: 0; font-size: 14px; color: #64748b; line-height: 1.5;">
+          Affinity Mapping • Persona • JTBD
+        </p>
+      </div>
+
+      <!-- Design Tile -->
+      <div class="process-tile" style="text-align: center; padding: 28px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.06); transition: all 0.3s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16,24,40,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(16,24,40,0.06)'">
+        
+        <!-- Phase Number -->
+        <div style="position: absolute; top: 12px; right: 12px; width: 24px; height: 24px; background: #f1f5f9; color: #64748b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600;">03</div>
+        
+        <!-- Icon -->
+        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <img src="https://img.icons8.com/ios-filled/50/f59e0b/design.png" alt="Design" style="width: 28px; height: 28px;">
+        </div>
+        
+        <!-- Title -->
+        <h3 style="margin: 0 0 8px; font-weight: 700; font-family: 'Raleway', sans-serif; font-size: 18px; color: #111827; letter-spacing: 0.5px;">Design</h3>
+        
+        <!-- Methods -->
+        <p style="margin: 0; font-size: 14px; color: #64748b; line-height: 1.5;">
+          User Flows • IA • Wireframes • Hi-fi
+        </p>
+      </div>
+
+      <!-- Deliver Tile -->
+      <div class="process-tile" style="text-align: center; padding: 28px 20px; background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.06); transition: all 0.3s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16,24,40,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(16,24,40,0.06)'">
+        
+        <!-- Phase Number -->
+        <div style="position: absolute; top: 12px; right: 12px; width: 24px; height: 24px; background: #f1f5f9; color: #64748b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600;">04</div>
+        
+        <!-- Icon -->
+        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <img src="https://img.icons8.com/ios-filled/50/ec4899/task-completed.png" alt="Deliver" style="width: 28px; height: 28px;">
+        </div>
+        
+        <!-- Title -->
+        <h3 style="margin: 0 0 8px; font-weight: 700; font-family: 'Raleway', sans-serif; font-size: 18px; color: #111827; letter-spacing: 0.5px;">Deliver</h3>
+        
+        <!-- Methods -->
+        <p style="margin: 0; font-size: 14px; color: #64748b; line-height: 1.5;">
+          Prototypes • Testing • Iterations
+        </p>
+      </div>
+
     </div>
-  </section>
+
+    <!-- Process Description -->
+    <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 4px solid #FFCD29; margin-top: 32px;">
+      <p style="margin: 0; font-size: 15px; text-align: center; color: #374151; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+        We followed an Agile-inspired, iterative process with four phases: Discover, Define, Design, and Deliver, also known as the 
+        <span style="background: #FFCD29; color: #000; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Double Diamond Design Process</span>. 
+        This structure allowed exploration of the problem space, convergence on a clear framing, rapid testing, and measurable improvements.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Responsive CSS for Process Section -->
+<style>
+@media (max-width: 1024px) {
+  #process [data-process-icons] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #process {
+    padding: 40px 20px !important;
+  }
+  
+  #process > div {
+    padding: 24px 20px !important;
+  }
+  
+  #process [data-process-icons] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .process-tile {
+    padding: 20px 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #process [data-process-icons] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  #process h2 {
+    font-size: 24px !important;
+  }
+}
+</style>
+
 
   <!-- Process Section Ends -->
 
@@ -1764,7 +2018,7 @@ body {
         <a href="#screen1" style="flex-grow: 1; display: flex; flex-direction: column; text-decoration: none; color: inherit;">
           
           <!-- Large Image Area -->
-          <div style="flex-grow: 1; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
+          <div style="flex-grow: 1; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
             <img src="assets/img/Manage Wise/Screens Final/Onboarding Sign Up.png" alt="Onboarding and Sign-Up Flow" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15)); transition: transform 0.3s ease;">
             <div style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.95); color: #059669; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 700; backdrop-filter: blur(4px);">REFINED</div>
           </div>
@@ -1792,7 +2046,7 @@ body {
         <a href="#screen2" style="flex-grow: 1; display: flex; flex-direction: column; text-decoration: none; color: inherit;">
           
           <!-- Large Image Area -->
-          <div style="flex-grow: 1; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
+          <div style="flex-grow: 1; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
             <img src="assets/img/Manage Wise/Screens Final/Add New Task Set Priorities.png" alt="Add Task and Priority Setting" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15)); transition: transform 0.3s ease;">
             <div style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.95); color: #059669; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 700; backdrop-filter: blur(4px);">REFINED</div>
           </div>
@@ -1820,7 +2074,7 @@ body {
         <a href="#screen3" style="flex-grow: 1; display: flex; flex-direction: column; text-decoration: none; color: inherit;">
           
           <!-- Large Image Area -->
-          <div style="flex-grow: 1; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
+          <div style="flex-grow: 1; background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e9d5ff 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
             <img src="assets/img/Manage Wise/Screens Final/Ask AI.png" alt="Smart Schedule with Ask AI" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15)); transition: transform 0.3s ease;">
             <div style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.95); color: #dc2626; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 700; backdrop-filter: blur(4px);">MVP</div>
           </div>
@@ -1848,7 +2102,7 @@ body {
         <a href="#screen4" style="flex-grow: 1; display: flex; flex-direction: column; text-decoration: none; color: inherit;">
           
           <!-- Large Image Area -->
-          <div style="flex-grow: 1; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
+          <div style="flex-grow: 1; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
             <img src="assets/img/Manage Wise/Screens Final/Delete a Schedule task.png" alt="Delete Scheduled Task" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15)); transition: transform 0.3s ease;">
             <div style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.95); color: #059669; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 700; backdrop-filter: blur(4px);">REFINED</div>
           </div>
@@ -1876,7 +2130,7 @@ body {
         <a href="#screen5" style="flex-grow: 1; display: flex; flex-direction: column; text-decoration: none; color: inherit;">
           
           <!-- Large Image Area -->
-          <div style="flex-grow: 1; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
+          <div style="flex-grow: 1; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%); display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
             <img src="assets/img/Manage Wise/Screens Final/Add Goal View Progress.png" alt="Goals and Progress Tracking" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15)); transition: transform 0.3s ease;">
             <div style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.95); color: #059669; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 700; backdrop-filter: blur(4px);">REFINED</div>
           </div>
@@ -1985,7 +2239,9 @@ body {
 }
 </style>
 
-    <!--DELIVER SECTION ENDS-->
+    
+
+<!--DELIVER SECTION ENDS-->
     
     
    <!-- Interactive Final Prototype Section Figma STARTS-->
@@ -2129,61 +2385,216 @@ body {
     
     <!--More Projects-->
     
-    <div style="max-width: 1040px; margin: 0 auto; background-color: #fff;">
-    <div class="more-projects-section">
-    <div class="more-projects-header">
-    <h3>MORE PROJECTS <span class="dots"></span></h3>
-    <a href="work.html" class="view-all">View All <svg viewBox="0 0 24 24" fill="currentColor" style="width:1em;height:1em;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg></a>
-    </div>
-    <div class="project-cards-container">
-    <div class="project-card">
-    <div class="project-tags">
-    <span class="tag">UX Case Study</span>
-    <span class="tag">Mobile App IOS</span>
-    <span class="tag">Figma</span>
-    </div>
-    <div class="project-image">
-    <a href="MW/MW.html" target="_blank">
-    <img src="assets/img/Manage Wise/ManageWise Cover.png" loading="lazy" alt="ManageWise Cover">
-    </div>
-    </div>
+<!-- Enhanced More Projects Section -->
+<section id="more-projects" style="padding: 60px 20px; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);">
+  <div style="max-width: 1100px; margin: 0 auto;">
     
-    <!--Project Cards-->
-                 
-    <div class="project-card">
-    <div class="project-tags">
-    <span class="tag">Website Redesign</span>
-    <span class="tag">HTML</span>
-    <span class="tag">CSS</span>
-    <span class="tag">JS</span>
-    <span class="tag">Figma</span>
+    <!-- Section Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <h2 style="margin: 0 0 8px; font-size: 28px; color: #FFCD29; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
+          MORE PROJECTS
+        </h2>
+        <p style="margin: 0; font-size: 14px; color: #64748b;">
+          Explore additional case studies and design work
+        </p>
+      </div>
+      
+      <!-- View All Link -->
+      <a href="work.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; background: #fff; color: #111827; text-decoration: none; border: 1px solid #e5e7eb; border-radius: 8px; font-weight: 500; font-size: 14px; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(16, 24, 40, 0.04);" onmouseover="this.style.background='#FFCD29'; this.style.borderColor='#FFCD29'; this.style.color='#000'" onmouseout="this.style.background='#fff'; this.style.borderColor='#e5e7eb'; this.style.color='#111827'">
+        <span>View All</span>
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+        </svg>
+      </a>
     </div>
-    <div class="project-image">
-    <a href="MC copy.html" target="_blank">
-    <img src="assets/img/Projects/Cover/MC.png" loading="lazy" alt="Portfolio Redesign"></a>
-    </div>
-    </div>
-    </div>
-    </div>
+
+    <!-- Enhanced More Projects Section ENDS -->
+
+    <!-- Project Cards Grid -->
+    <div class="project-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 32px;">
+      
+<!-- Project Card 1: Orbit Scan (Corrected) -->
+<div class="project-card" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16, 24, 40, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 24, 40, 0.08)'">
+  
+  <!-- Project Image -->
+  <div style="position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+    <a href="orbitscan.html" target="_blank" style="display: block; height: 100%;">
+      <img src="assets/img/Orbit/Orbit Scan Cover.png" 
+           alt="Orbit Scan Grocery Shopping App Cover" 
+           style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
+           onmouseover="this.style.transform='scale(1.05)'"
+           onmouseout="this.style.transform='scale(1)'">
+    </a>
     
-    <script>
-    document.querySelectorAll('.read-more-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-    const parent = btn.closest('.read-more-paragraph');
-    const dots = parent.querySelector('.dots');
-    const moreText = parent.querySelector('.more-text');
-              
-        if (moreText.style.display === "inline") {
-        moreText.style.display = "none";
-        dots.style.display = "inline";
-        btn.textContent = "Read more";} else {
-        moreText.style.display = "inline";
-        dots.style.display = "none";
-        btn.textContent = "Read less";}
-        });
-        });
-        </script>
+    <!-- Status Badge -->
+    <div style="position: absolute; top: 12px; right: 12px; background: rgba(34, 197, 94, 0.9); color: #fff; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; backdrop-filter: blur(4px);">
+      Health Tech
+    </div>
+  </div>
+
+  <!-- Project Content -->
+  <div style="padding: 24px;">
     
+    <!-- Project Tags -->
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+      <span style="padding: 4px 10px; background: #eff6ff; color: #1e40af; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #dbeafe;">UX Research</span>
+      <span style="padding: 4px 10px; background: #fef3c7; color: #92400e; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #fed7aa;">Visual Design</span>
+      <span style="padding: 4px 10px; background: #f3e8ff; color: #6b21a8; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #e9d5ff;">Figma</span>
+    </div>
+
+    <!-- Project Title & Description -->
+    <h3 style="margin: 0 0 8px; font-size: 18px; color: #111827; font-weight: 600; line-height: 1.3;">
+      Orbit Scan
+    </h3>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #64748b; line-height: 1.5;">
+      Smart grocery shopping app that scans food barcodes to decode ingredients, interpret health claims, and provide personalized nutrition guidance for healthier shopping decisions.
+    </p>
+
+    <!-- Project Stats/Details -->
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #f1f5f9;">
+      <div style="display: flex; gap: 16px;">
+        <div style="text-align: center;">
+          <div style="font-size: 16px; font-weight: 600; color: #111827;">12</div>
+          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Weeks</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 16px; font-weight: 600; color: #111827;">Health</div>
+          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Tech</div>
+        </div>
+      </div>
+      
+      <!-- View Project Arrow -->
+      <div style="width: 32px; height: 32px; background: #f8fafc; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;" onmouseover="this.style.background='#FFCD29'" onmouseout="this.style.background='#f8fafc'">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px; color: #64748b;">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End of Project Card 1 Orbit Scan -->
+
+
+      <!-- Project Card 2: Portfolio Redesign -->
+      <!-- Project Card 2: Personal Portfolio Design -->
+<div class="project-card" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16, 24, 40, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 24, 40, 0.08)'">
+  
+  <!-- Project Image -->
+  <div style="position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+    <a href="MC copy.html" target="_blank" style="display: block; height: 100%;">
+      <img src="assets/img/Projects/Cover/MC.png" 
+           alt="Personal Portfolio Website Redesign" 
+           style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
+           onmouseover="this.style.transform='scale(1.05)'"
+           onmouseout="this.style.transform='scale(1)'">
+    </a>
+    
+    <!-- Status Badge -->
+    <div style="position: absolute; top: 12px; right: 12px; background: rgba(59, 130, 246, 0.9); color: #fff; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; backdrop-filter: blur(4px);">
+      Web Design
+    </div>
+  </div>
+
+  <!-- Project Content -->
+  <div style="padding: 24px;">
+    
+    <!-- Project Tags -->
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+      <span style="padding: 4px 10px; background: #eff6ff; color: #1e40af; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #dbeafe;">Website Redesign</span>
+      <span style="padding: 4px 10px; background: #fef3c7; color: #92400e; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #fed7aa;">HTML</span>
+      <span style="padding: 4px 10px; background: #fee2e2; color: #991b1b; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #fecaca;">CSS</span>
+      <span style="padding: 4px 10px; background: #f3e8ff; color: #6b21a8; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #e9d5ff;">Figma</span>
+    </div>
+
+    <!-- Project Title & Description -->
+    <h3 style="margin: 0 0 8px; font-size: 18px; color: #111827; font-weight: 600; line-height: 1.3;">
+      Personal Portfolio Redesign
+    </h3>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #64748b; line-height: 1.5;">
+      Complete redesign and development of a personal portfolio website featuring modern UI principles, responsive layouts, and enhanced user experience to showcase design work effectively.
+    </p>
+
+    <!-- Project Stats/Details -->
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #f1f5f9;">
+      <div style="display: flex; gap: 16px;">
+        <div style="text-align: center;">
+          <div style="font-size: 16px; font-weight: 600; color: #111827;">6</div>
+          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Weeks</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 16px; font-weight: 600; color: #111827;">Web</div>
+          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Design</div>
+        </div>
+      </div>
+      
+      <!-- View Project Arrow -->
+      <div style="width: 32px; height: 32px; background: #f8fafc; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;" onmouseover="this.style.background='#FFCD29'" onmouseout="this.style.background='#f8fafc'">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px; color: #64748b;">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- End of Project Card 2 Portfolio Redesign -->
+
+<!-- Additional CTA with LinkedIn -->
+<div style="text-align: center; margin-top: 48px; padding: 32px; background: #fff; border-radius: 16px; border: 1px solid #e5e7eb;">
+  <h3 style="margin: 0 0 8px; font-size: 20px; color: #111827; font-weight: 600;">
+    Interested in working together?
+  </h3>
+  <p style="margin: 0 0 20px; font-size: 14px; color: #64748b; max-width: 400px; margin-left: auto; margin-right: auto;">
+    I'm always open to discussing new opportunities, design challenges, and creative collaborations.
+  </p>
+  <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #FFCD29; color: #000; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; transition: all 0.2s ease;" onmouseover="this.style.background='#e6b800'" onmouseout="this.style.background='#FFCD29'">
+    <span>Connect on LinkedIn</span>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.78-1.75-1.75s.79-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.27h-3v-5.5c0-1.32-.5-2.22-1.75-2.22-1 0-1.5.68-1.75 1.33-.09.22-.11.52-.11.83v5.56h-3v-10h3v1.33c.4-.61 1.17-1.48 2.84-1.48 2.08 0 3.65 1.36 3.65 4.28v6.87z"/>
+    </svg>
+  </a>
+</div>
+
+</section>
+
+<!-- Responsive CSS for More Projects -->
+<style>
+@media (max-width: 768px) {
+  .project-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  
+  #more-projects {
+    padding: 40px 20px !important;
+  }
+  
+  #more-projects h2 {
+    font-size: 24px !important;
+  }
+  
+  .project-card [style*="padding: 24px"] {
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-cards-grid {
+    gap: 20px !important;
+  }
+  
+  #more-projects [style*="flex-wrap: wrap"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+}
+</style>
+
+    <!--More Projects ENDS-->
     <script>
       window.addEventListener("load", function () {
         // Force the loader to stay for 2 seconds even if the page loads faster
