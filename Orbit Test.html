@@ -237,7 +237,8 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
           }
 
-          /* === MAIN CONTENT STRUCTURE === */
+/* === MAIN CONTENT STRUCTURE === */
+
 .top-center-image {
   display: flex;
   justify-content: center;
@@ -329,7 +330,8 @@
   line-height: 1.6;
   margin-bottom: 14px;
 }
-        
+/* === MAIN CONTENT STRUCTURE ENDS === */  
+
 </style>
 </head>
 
@@ -375,7 +377,7 @@ style="
 ">
   <li style="flex: 1;"><a href="#discover" class="jump-pill">Discover</a></li>
   <li style="flex: 1;"><a href="#define" class="jump-pill">Define</a></li>
-  <li style="flex: 1;"><a href="#design" class="jump-pill">Design</a></li>
+  <li style="flex: 1;"><a href="#develop" class="jump-pill">Develop</a></li>
   <li style="flex: 1;"><a href="#deliver" class="jump-pill">Deliver</a></li>
 </ul>
 </nav>
@@ -493,218 +495,616 @@ style="
             </div>
           </div>
           <br>
-          <!-- How Might We Section -->
-          <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);">
-            <h3 style="margin: 0 0 16px; font-size: 20px; color: #111827; font-family: 'Raleway', sans-serif; font-weight: 600;">How Might We</h3>
-            <p style="margin: 0 0 10px; font-size: 15px; color: #374151; line-height: 1.6;">
-              These research insights shaped the actionable prompt for all design work:
-            </p>
-            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: 12px; border-left: 4px solid #3b82f6; margin-bottom: 16px;">
-              <p style="margin: 0; font-size: 16px; color: #1e40af; font-weight: 500; line-height: 1.6;">
-                "How might we design a personalized productivity app that integrates task management, goal-setting, and AI-driven smart scheduling—without overwhelming users?"
-              </p>
-            </div>
-            <p style="margin: 0; font-size: 15px; color: #374151; line-height: 1.6;">
-              Every design decision aimed to create a single, intuitive platform that adapts to individual needs while solving these real, validated pain points.
-            </p>
+<!-- How Might We Section -->
+<div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);">
+<h3 style="margin: 0 0 16px; font-size: 20px; color: #111827; font-family: 'Raleway', sans-serif; font-weight: 600;">How Might We</h3>
+<p style="margin: 0 0 10px; font-size: 15px; color: #374151; line-height: 1.6;">
+Our research revealed that 65% of shoppers struggle with food labels while 72% want clearer ingredient information. These insights shaped our design challenge:
+</p>
+<div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: 12px; border-left: 4px solid #22c55e; margin-bottom: 16px;">
+<p style="margin: 0; font-size: 16px; color: #0f766e; font-weight: 500; line-height: 1.6;">
+"How might we transform complex food labels into instant, personalized health insights that help shoppers—especially those with dietary restrictions—make confident, informed decisions in seconds rather than minutes?"
+</p>
+</div>
+<p style="margin: 0; font-size: 15px; color: #374151; line-height: 1.6;">
+This question guided every design decision, focusing on creating transparency, building trust through scientific backing, and delivering personalized recommendations that adapt to individual health needs and family sensitivities.
+</p>
+</div>  
+</div>
+</div>
+</div>
+</section>
+
+ <!-- Main Content Split Layout ENDS -->
+
+<!-- Split Content Responsive CSS Starts -->
+<style>
+    @media (max-width: 1024px) {
+      #project-overview [style*="grid-template-columns: 1fr 1.8fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      #project-overview [style*="position: sticky"] {
+        position: static !important;
+      }
+    }
+    @media (max-width: 768px) {
+      #project-overview {
+        padding: 32px 20px !important;
+      }
+      #project-overview [style*="padding: 28px"] {
+        padding: 20px !important;
+      }
+      #project-overview [style*="gap: 32px"] {
+        gap: 24px !important;
+      }
+    }
+    </style>
+    <!-- Split Content Responsive CSS Ends -->
+  
+
+        
+
+<!-- Orbit Scan – Process Section (no horizontal scroll) -->
+<section id="process" style="padding:60px 20px;background:linear-gradient(135deg,#fefefe 0%,#f8fafc 100%);">
+    <div style="
+         max-width:1100px;margin:0 auto;padding:40px 30px;background:#fff;border-radius:16px;
+         box-shadow:0 4px 20px rgba(16,24,40,.1);border:1px solid #e5e7eb;">
+  
+      <!-- Section Title -->
+      <h2 style="
+          text-align:center;color:#B1D73B;font:700 28px/1 'Raleway',sans-serif;letter-spacing:1px;
+          margin-bottom:12px;">PROCESS: Scan-to-Insight Loop</h2>
+  
+      <!-- Subtitle -->
+      <p style="
+          text-align:center;font-size:15px;color:#64748b;margin:0 auto 40px;
+          max-width:640px;">Adapting the Double Diamond for rapid, evidence-based health-tech design.</p>
+  
+      <!-- Phase Cards Grid -->
+      <div style="
+          display:grid;gap:32px;
+          grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+  
+        <!-- Discover -->
+        <article style="
+            text-align:center;padding:28px 20px;background:#fff;border:1px solid #e5e7eb;
+            border-radius:16px;box-shadow:0 2px 8px rgba(16,24,40,.06);position:relative;">
+          <span style="
+              position:absolute;top:12px;right:12px;width:26px;height:26px;background:#f1f5f9;
+              color:#64748b;border-radius:50%;display:flex;align-items:center;justify-content:center;
+              font:600 12px/26px 'Raleway',sans-serif;">01</span>
+          <div style="
+              width:60px;height:60px;margin:0 auto 16px;border-radius:12px;
+              display:flex;align-items:center;justify-content:center;
+              background:linear-gradient(135deg,#f0f9ff 0%,#dbeafe 100%);">
+            <img src="https://img.icons8.com/ios-filled/50/3b82f6/search-in-cloud.png"
+                 alt="Discover" style="width:28px;height:28px;">
           </div>
-        </div>
+          <h3 style="margin:0 0 8px;font:700 18px 'Raleway',sans-serif;color:#111827;">Discover</h3>
+          <p style="margin:0;font-size:14px;color:#64748b;">Surveys • Interviews • Competitive Scan</p>
+        </article>
+  
+        <!-- Define -->
+        <article style="
+            text-align:center;padding:28px 20px;background:#fff;border:1px solid #e5e7eb;
+            border-radius:16px;box-shadow:0 2px 8px rgba(16,24,40,.06);position:relative;">
+          <span style="
+              position:absolute;top:12px;right:12px;width:26px;height:26px;background:#f1f5f9;
+              color:#64748b;border-radius:50%;display:flex;align-items:center;justify-content:center;
+              font:600 12px/26px 'Raleway',sans-serif;">02</span>
+          <div style="
+              width:60px;height:60px;margin:0 auto 16px;border-radius:12px;
+              display:flex;align-items:center;justify-content:center;
+              background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);">
+            <img src="https://img.icons8.com/ios-filled/50/10b981/define-location.png"
+                 alt="Define" style="width:28px;height:28px;">
+          </div>
+          <h3 style="margin:0 0 8px;font:700 18px 'Raleway',sans-serif;color:#111827;">Define</h3>
+          <p style="margin:0;font-size:14px;color:#64748b;">Affinity Map • Personas • Problem Statement</p>
+        </article>
+  
+        <!-- Develop -->
+        <article style="
+            text-align:center;padding:28px 20px;background:#fff;border:1px solid #e5e7eb;
+            border-radius:16px;box-shadow:0 2px 8px rgba(16,24,40,.06);position:relative;">
+          <span style="
+              position:absolute;top:12px;right:12px;width:26px;height:26px;background:#f1f5f9;
+              color:#64748b;border-radius:50%;display:flex;align-items:center;justify-content:center;
+              font:600 12px/26px 'Raleway',sans-serif;">03</span>
+          <div style="
+              width:60px;height:60px;margin:0 auto 16px;border-radius:12px;
+              display:flex;align-items:center;justify-content:center;
+              background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);">
+            <img src="https://img.icons8.com/ios-filled/50/f59e0b/design.png"
+                 alt="Develop" style="width:28px;height:28px;">
+          </div>
+          <h3 style="margin:0 0 8px;font:700 18px 'Raleway',sans-serif;color:#111827;">Develop</h3>
+          <p style="margin:0;font-size:14px;color:#64748b;">Wireframes • Prototypes • Usability Tests</p>
+        </article>
+  
+        <!-- Deliver -->
+        <article style="
+            text-align:center;padding:28px 20px;background:#fff;border:1px solid #e5e7eb;
+            border-radius:16px;box-shadow:0 2px 8px rgba(16,24,40,.06);position:relative;">
+          <span style="
+              position:absolute;top:12px;right:12px;width:26px;height:26px;background:#f1f5f9;
+              color:#64748b;border-radius:50%;display:flex;align-items:center;justify-content:center;
+              font:600 12px/26px 'Raleway',sans-serif;">04</span>
+          <div style="
+              width:60px;height:60px;margin:0 auto 16px;border-radius:12px;
+              display:flex;align-items:center;justify-content:center;
+              background:linear-gradient(135deg,#fdf2f8 0%,#fce7f3 100%);">
+            <img src="https://img.icons8.com/ios-filled/50/ec4899/task-completed.png"
+                 alt="Deliver" style="width:28px;height:28px;">
+          </div>
+          <h3 style="margin:0 0 8px;font:700 18px 'Raleway',sans-serif;color:#111827;">Deliver</h3>
+          <p style="margin:0;font-size:14px;color:#64748b;">Hi-Fi Designs • Launch Prep • Metrics</p>
+        </article>
+  
+      </div>
+  
+      <!-- Process Description -->
+      <div style="
+          background:#f8fafc;padding:20px;border-radius:12px;border-left:4px solid #B1D73B;
+          margin-top:32px;">
+        <p style="
+            margin:0;font-size:15px;color:#374151;line-height:1.6;text-align:center;
+            max-width:820px;margin:0 auto;">
+          Using Discover → Define → Develop → Deliver keeps Orbit Scan grounded in real user pain points while propelling each iteration toward a launch-ready solution.
+        </p>
       </div>
     </div>
   </section>
   
- <!-- Main Content Split Layout ENDS -->
-        
+<!-- Orbit Scan – Process Section ENDS-->  
+  
+<!-- ===============  DISCOVER STARTS =============== -->
 
-        <section id="background" class="overview" style="scroll-margin-top: 80px;">
-            <h2 style="font-size: 36px;">BACKGROUND</h2>
-            
-            <section style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+<section id="project-overview" style="padding: 48px 20px; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);">
+<div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 4px 20px rgba(16,24,40,.1);">
 
-              <!-- Text Left -->
-              <div style="flex: 1 1 300px; min-width: 280px;">
-              <p class="read-more-paragraph">
-                  According to a 2023 report by the Food Marketing Institute, 65% of U.S. shoppers say they struggle to interpret food labels, and 72% want clearer ingredient information when buying groceries. Meanwhile, apps like Yuka and MyFitnessPal have seen a 30% increase in user engagement, reflecting growing demand for tools that simplify healthy decision-making.
-            
-              <span class="dots">...</span>
-              <span class="more-text">
-              Last year, I watched a friend try to switch to a gluten-free diet for health reasons. Every grocery run became a frustrating guessing game — scanning labels, Googling additives, and trying to interpret vague health claims. That experience sparked a question in my mind:
-              Why isn’t there a faster, more personalized way to shop smarter?
-              </span>
-              <button class="read-more-btn">Read more</button>
-              </p>
-              </div>
-            
-              <!-- Image Right -->
-              <div style="flex: 1 1 300px; min-width: 280px; text-align: right;">
-              <img src="assets/img/Orbit/Background.jpg" loading="lazy" alt="Approach Diagram" style="width: 100%; max-width: 350px; height: auto;" loading="lazy">
-              </div>
-            
-            </section>
-            
-
-            <section id="problem" class="the-problem" style="scroll-margin-top: 80px;">
-            <h2 style="font-size: 36px;">PROBLEM</h2>
-        
-              
-          <h4 style="font-size: 30px;">Ever stood in a grocery aisle, feeling overwhelmed by:</h4> 
-          <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
-          <li>Confusing ingredient lists? </li>
-          <li>Hard-to-read nutrition labels?</li>
-          <li>Spent time Googling food additives, but still unsure if a product is right for you or your family?</li>
-          <li>For many shoppers especially those with dietary restrictions, making informed choices quickly is a daily challenge.</li>
-          </ul>
-
-<p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">OrbitScan was created to solve this problem by:</p> 
-<ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">  
-<li>Allowing users to scan any food product.</li>
-<li>Instantly delivering clear, easy-to-understand health insights and recommendations</li>
-<li>The app turns complex nutritional data into simple, actionable guidance.</li>
-</ul>
-                
-        </section>
-
-        <section id="approach" class="our-approach" style="scroll-margin-top: 80px;">
-            <h2 style="font-size: 36px;">🔷 🔷 Double Diamond Design Process</h2>
-
-            <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">I used the Double Diamond approach to keep my design process user-focused and aligned with solving actual user pain points.</p>
-            <div class="header-image">
-              <img src="assets/img/Orbit/Double Diamond Design.png" loading="lazy" alt="Approach Diagram">
-          </div>
-
-                  
-            <br>
-            
-        </section>
-
-        <section id="discover" style="scroll-margin-top: 80px;"></section>
-        <h1 style="color: grey;">DISCOVER</h1>
-
-        <h2 style="font-size: 36px;">QUANTITATIVE RESEARCH (Survey Insights)</h2>
-        
-        <section style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;">
-
-          <!-- Text Left -->
-          <div style="flex: 1 1 300px; min-width: 280px;">
-            <div class="read-more-paragraph">
-              <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"><strong>Google Forms | 22 Responses</strong></p>
-              <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">The goal of this survey was to understand users’ grocery shopping behavior, challenges with reading food labels, and openness to using apps for health-related product decisions. I distributed the survey among classmates, friends, and online forums with a focus on users with dietary goals or food sensitivities.</p>
-              <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">📋 Sample Interview Questions</p>
-              <span class="dots">...</span>
-              <span class="more-text">
-              <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
-                  <li>How often do you read nutrition labels or ingredient lists while shopping?</li>
-                  <li>Have you ever used a mobile app to check food product health ratings or ingredients?</li>
-                  <li>What factors influence your decision when choosing food products? (e.g., brand, price, nutrition, ingredients)</li>
-                  <li>How confident do you feel when identifying whether a product is healthy for you?</li>
-                  <li>Would you find value in personalized recommendations based on your dietary needs (e.g., gluten-free, low-sugar)?</li>
-                  <li>Do you usually compare multiple products before deciding what to buy?</li>
-          </ul>
+  
+      <!-- Section Header -->
+      <h2 style="text-align:center;color:#B1D73B;
+                 font:700 28px 'Raleway',sans-serif;letter-spacing:1px;margin:0 0 32px;">
+        01 / Discover – Exploring the Shopper’s Reality
+      </h2>
+  
+  
+      <!-- ░░░░░░  RESEARCH METHODOLOGY  ░░░░░░ -->
+      <article style="border:1px solid #e5e7eb;border-radius:12px;padding:22px;
+                      box-shadow:0 1px 2px rgba(16,24,40,.04);margin-bottom:40px;">
+        <span style="display:inline-block;font:600 12px 'Raleway',sans-serif;
+                     background:#fef3c7;color:#f59e0b;padding:4px 10px;
+                     border-radius:8px;text-transform:uppercase;letter-spacing:.5px;">
+          Research Methodology
+        </span>
+  
+        <h3 style="font:700 18px 'Raleway',sans-serif;color:#111827;margin:14px 0 6px;">
+          Participant Recruitment
+        </h3>
+        <p style="font-size:14px;color:#374151;line-height:1.6;margin:0 0 18px;">
+          22 grocery shoppers (ages 19–52; 40 % dietary restrictions) recruited via
+          Reddit nutrition forums and campus bulletin boards. Pre-screen ensured frequent
+          label reading and smartphone use in-store.
+        </p>
+  
+        <h3 style="font:700 18px 'Raleway',sans-serif;color:#111827;margin:0 0 6px;">
+          Methods Used
+        </h3>
+        <ul style="margin:0 0 18px 18px;font-size:14px;color:#374151;line-height:1.7;">
+          <li>Google Forms survey – Likert, multi-choice & open-ended</li>
+          <li>4 semi-structured interviews (Zoom + in-store shadowing)</li>
+          <li>Competitive audit – Yuka, Fooducate, Think Dirty, Trash Panda</li>
+        </ul>
+  
+        <h3 style="font:700 18px 'Raleway',sans-serif;color:#111827;margin:0 0 6px;">
+          Limitations & Protocol
+        </h3>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;margin:0;">
+          Convenience sample; small n provides direction, not prediction.  
+          Example interview prompt: “Show me the moment a label confused you—what did you do next?”
+        </p>
+      </article>
+  
+  
+      <!-- ░░░░░░  SURVEY FINDINGS  ░░░░░░ -->
+      <h3 style="font:600 22px 'Raleway',sans-serif;color:#111827;margin:0 0 24px;">
+        Key Findings from Survey
+      </h3>
+  
+      <!-- Theme Cards -->
+      <div style="display:grid;gap:16px;margin-bottom:48px;
+                  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
+  
+        <!-- Overwhelmed by Labels -->
+        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:18px;
+                    box-shadow:0 1px 2px rgba(16,24,40,.04);display:flex;flex-direction:column;gap:6px;">
+          <span style="font:600 12px 'Raleway',sans-serif;background:#eff6ff;color:#2563eb;
+                       padding:3px 10px;border-radius:999px;width:max-content;">Theme</span>
+          <strong style="font:700 15px 'Raleway',sans-serif;color:#111827;">Decision Fatigue</strong>
+          <em style="font-size:13px;color:#334155;">“Everything claims it’s healthy—who do I trust?”</em>
+          <span style="font:600 12px 'Raleway',sans-serif;background:#ecfdf5;color:#047857;
+                       padding:3px 10px;border-radius:999px;width:max-content;">Opportunity</span>
+          <span style="font-size:13px;color:#065f46;">Instant, trusted health scores</span>
+          <span style="font-size:12px;color:#64748b;margin-top:4px;">15 / 22 report confusion</span>
+        </div>
+  
+        <!-- Transparency -->
+        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:18px;
+                    box-shadow:0 1px 2px rgba(16,24,40,.04);display:flex;flex-direction:column;gap:6px;">
+          <span style="font:600 12px 'Raleway',sans-serif;background:#eff6ff;color:#2563eb;
+                       padding:3px 10px;border-radius:999px;width:max-content;">Theme</span>
+          <strong style="font:700 15px 'Raleway',sans-serif;color:#111827;">Ingredient Skepticism</strong>
+          <em style="font-size:13px;color:#334155;">“Natural? Organic? Marketing buzz?”</em>
+          <span style="font:600 12px 'Raleway',sans-serif;background:#ecfdf5;color:#047857;
+                       padding:3px 10px;border-radius:999px;width:max-content;">Opportunity</span>
+          <span style="font-size:13px;color:#065f46;">Plain-language additive facts</span>
+          <span style="font-size:12px;color:#64748b;margin-top:4px;">68 % doubt label terms</span>
+        </div>
+  
+        <!-- Personalization -->
+        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:18px;
+                    box-shadow:0 1px 2px rgba(16,24,40,.04);display:flex;flex-direction:column;gap:6px;">
+          <span style="font:600 12px 'Raleway',sans-serif;background:#eff6ff;color:#2563eb;
+                       padding:3px 10px;border-radius:999px;width:max-content;">Theme</span>
+          <strong style="font:700 15px 'Raleway',sans-serif;color:#111827;">Need for Personalization</strong>
+          <em style="font-size:13px;color:#334155;">“I’m low-sugar—show me better swaps.”</em>
+          <span style="font:600 12px 'Raleway',sans-serif;background:#ecfdf5;color:#047857;
+                       padding:3px 10px;border-radius:999px;width:max-content;">Opportunity</span>
+          <span style="font-size:13px;color:#065f46;">Diet-aware product swaps</span>
+          <span style="font-size:12px;color:#64748b;margin-top:4px;">59 % want tailored tips</span>
+        </div>
+      </div>
+  
+  
+      <!-- ░░░░░░  SURVEY HIGHLIGHTS BAR CHART  ░░░░░░ -->
+      <h3 style="font:600 22px 'Raleway',sans-serif;color:#111827;margin:0 0 12px;">
+        Survey Highlights
+      </h3>
+      <p style="font-size:14px;color:#64748b;margin:0 0 18px;">
+        Multiple-choice questions (respondents could select more than one option).
+      </p>
+  
+      <!-- Bar Chart Wrapper -->
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:48px;">
+  
+        <!-- Row Template -->
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="flex:0 0 220px;min-width:140px;font-size:14px;color:#0f172a;">
+            Read labels regularly
           </span>
-          <button class="read-more-btn">Read more</button>
+          <div style="flex:1;background:#f6f7f9;border-radius:999px;overflow:hidden;">
+            <div style="width:70%;background:#3b82f6;color:#fff;
+                        font-size:12px;text-align:right;padding:8px 10px;">70 %</div>
           </div>
-          </div>
-        
-          </section>
-        
-            
-          <!-- Image Right -->
-          <div>
-          <img src="assets/img/Orbit/Takeaways Surveys.png" loading="lazy" alt="Approach Diagram" style="width: 100%; height: 400px;" loading="lazy">
-          </div>
-            
-          </section>
-
-        <h2 style="font-size: 36px;">COMPETITIVE ANALYSIS</h2>
-            
-        <section style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;">
-
-          <!-- Text Left -->
-          <div style="flex: 1 1 300px; min-width: 280px;">
-          <div class="read-more-paragraph">
-          <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">Here are some insights I found from the competitor analysis on the current market. </p>
-          <span class="dots">...</span>
-          <span class="more-text">
-          <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
-          <li><strong>Limited Personalization:</strong> Most apps offer generic scores but lack tailored recommendations based on specific dietary needs, allergies, or health goals.</li>
-          <li><strong>Overwhelming Data Presentation:</strong> Nutrition details are often displayed in a technical or cluttered format, making it hard for everyday users to interpret at a glance.</li>
-          <li><strong>Inconsistent Ingredient Transparency:</strong> Some apps rely on crowdsourced data, leading to incomplete or outdated product information.</li>
-          <li><strong>No Guidance for New Shoppers:</strong> First-time users or those transitioning to a specific diet (e.g., gluten-free, keto) are left without onboarding, tips, or guided flows.</li>
-          </ul>
+        </div>
+  
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="flex:0 0 220px;min-width:140px;font-size:14px;color:#0f172a;">
+            Compare products in-aisle
           </span>
-          <button class="read-more-btn">Read more</button>
+          <div style="flex:1;background:#f6f7f9;border-radius:999px;overflow:hidden;">
+            <div style="width:62%;background:#06b6d4;color:#fff;
+                        font-size:12px;text-align:right;padding:8px 10px;">62 %</div>
           </div>
+        </div>
+  
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="flex:0 0 220px;min-width:140px;font-size:14px;color:#0f172a;">
+            Struggle understanding additives
+          </span>
+          <div style="flex:1;background:#f6f7f9;border-radius:999px;overflow:hidden;">
+            <div style="width:65%;background:#22c55e;color:#0f172a;
+                        font-size:12px;text-align:right;padding:8px 10px;">65 %</div>
           </div>
-        
-          </section>
-        
-            
-              <!-- Image Right -->
-              
-<h4 style="font-size: 30px;">Competitive Feature Analysis</h4>
-              <div>
-                <img src="assets/img/Orbit/Competitive Analysis.png" loading="lazy" alt="Approach Diagram" style="width: 100%; height: 500px;" loading="lazy">
-              </div>
-            
-            </section>
-
-        <section class="visual-exploration">
-            <h2 style="font-size: 36px;">QUALITATIVE RESEARCH (User Interviews)</h2>
-            <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"><strong>Zoom Remote & In-person | 4 Participants</strong></p>
-
-       <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">The goal was to gain a deeper understanding of how users shop for groceries, what challenges they face when interpreting product information, and how they make health-related decisions in the store. All participants shop for groceries regularly, and at least two have dietary restrictions that impact their buying choices.</p>
-       <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">📋 Sample Interview Questions</p>
-
-<div class="read-more-paragraph">
-  <span class="dots">...</span>
-  <div class="more-text">
-    <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
-        <li>Q: Think about the last time you went grocery shopping—how do you decide whether a product is healthy or safe for you?</li> 
-        <li>Q: Do you use any tools, apps, or websites to check ingredients or nutrition before making a purchase? What’s your experience with them?</li> 
-        <li>Q: Have you ever felt confused or overwhelmed while trying to understand food labels or health claims on packaging?</li> 
-        <li>What would make your decision-making process easier while shopping—more visuals, clear scoring, or recommendations?</li>
-        <li>How do you currently compare similar products? What factors do you look for first (e.g., price, ingredients, brand)?</li>
-        <li>Would you find it helpful if an app suggested products tailored to your health needs (e.g., low sodium, allergen-free)?</li>
-    </ul>
-  </div>
-  <button class="read-more-btn">Read more</button>
-</div>
-
-
-        <br>
-
-        <h4 style="font-size: 30px;"> Affinity Mapping</h4>
-
-        <section>
-          <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">
-            Based on 4 semi-structured interviews, I synthesized themes using affinity mapping. The insights below are organized into core themes that emerged repeatedly: decision-making, transparency, and personalization.
+        </div>
+  
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="flex:0 0 220px;min-width:140px;font-size:14px;color:#0f172a;">
+            Want tailored recommendations
+          </span>
+          <div style="flex:1;background:#f6f7f9;border-radius:999px;overflow:hidden;">
+            <div style="width:59%;background:#f59e0b;color:#0f172a;
+                        font-size:12px;text-align:right;padding:8px 10px;">59 %</div>
+          </div>
+        </div>
+  
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="flex:0 0 220px;min-width:140px;font-size:14px;color:#0f172a;">
+            Doubt marketing claims
+          </span>
+          <div style="flex:1;background:#f6f7f9;border-radius:999px;overflow:hidden;">
+            <div style="width:68%;background:#8b5cf6;color:#fff;
+                        font-size:12px;text-align:right;padding:8px 10px;">68 %</div>
+          </div>
+        </div>
+  
+        <p style="font-size:12px;color:#64748b;margin:10px 0 0;">
+          Bars show share of respondents; totals exceed 100 % due to multi-select questions.
+        </p>
+      </div>
+  
+  
+      <!-- ░░░░░░  INTERVIEW SNAPSHOT  ░░░░░░ -->
+      <h3 style="font:600 22px 'Raleway',sans-serif;color:#111827;margin:0 0 12px;">
+        Interview Snapshot
+      </h3>
+      <p style="font-size:14px;color:#475569;margin:0 0 24px;">
+        4 interviews → recurring pain points around trust, clarity & personalization.
+      </p>
+  
+      <!-- Two-Column Grid -->
+      <div style="display:grid;gap:18px;margin-bottom:48px;
+                  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+  
+        <!-- Persona Summary -->
+        <article style="border:1px solid #e5e7eb;border-radius:12px;padding:20px;
+                        box-shadow:0 1px 2px rgba(16,24,40,.04);">
+          <span style="font:700 12px 'Raleway',sans-serif;background:#eff6ff;color:#3b82f6;
+                       padding:4px 12px;border-radius:999px;width:max-content;display:inline-block;">
+            Research Persona
+          </span>
+          <h4 style="font:700 16px 'Raleway',sans-serif;color:#111827;margin:10px 0 6px;">
+            Health-conscious, time-pressed shoppers
+          </h4>
+          <p style="font-size:14px;color:#374151;line-height:1.6;margin:0;">
+            Parents and young professionals balancing budgets, children, and dietary goals.
           </p>
-        
-          <div class="sticky-grid">
-        
-            <!-- Decision-Making Challenges -->
-            <div class="sticky-cluster">
-              <h4 class="sticky-title">🧠 Decision-Making Challenge</h4>
-              <div class="sticky-note">“I get overwhelmed by all the packaging—everything says it’s healthy.”</div>
-              <div class="sticky-note">“I compare products for so long, but still leave unsure.”</div>
+        </article>
+  
+        <!-- Quotes & Tools -->
+        <article style="border:1px solid #e5e7eb;border-radius:12px;padding:20px;
+                        box-shadow:0 1px 2px rgba(16,24,40,.04);">
+          <span style="font:700 12px 'Raleway',sans-serif;background:#eff6ff;color:#3b82f6;
+                       padding:4px 12px;border-radius:999px;width:max-content;display:inline-block;">
+            Real Quotes
+          </span>
+          <p style="font-size:14px;color:#334155;font-style:italic;line-height:1.6;margin:10px 0 0;">
+            “Labels feel like a foreign language.”<br>
+            “I spend ages googling E-numbers in the aisle.”<br>
+            “An app that just says ‘safe’ or ‘avoid’ would save me.”
+          </p>
+        </article>
+      </div>
+  
+ <!-- ==========  COMPETITIVE ANALYSIS (Orbit Scan)  ========== -->
+
+<!-- Competitive Analysis Header & Chips -->
+    <!-- Heading -->
+    <div style="max-width:1100px;margin:0 auto;">
+        <h3 style="font:600 22px 'Raleway',sans-serif;color:#111827;margin:0 0 12px;">
+        Competitive Analysis
+      </h2>
+      <p style="margin:0;font-size:14px;color:#475569;">
+        We benchmarked Orbit Scan against three popular label-scanning apps to uncover strengths we should keep
+        and gaps we can close around transparency, personalization, and shopper trust.
+      </p>
+    </div>
+  
+    <!-- Key Takeaways Chips -->
+    <div style="max-width:1100px;margin:16px auto 24px;display:flex;flex-wrap:wrap;gap:8px;">
+      <span style="padding:6px 10px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+        Instant traffic-light health scores
+      </span>
+      <span style="padding:6px 10px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+        Plain-language additive facts
+      </span>
+      <span style="padding:6px 10px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+        Personalized allergy & diet filters
+      </span>
+      <span style="padding:6px 10px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+        U.S. FDA regulation alignment
+      </span>
+      <span style="padding:6px 10px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+        Rewards to sustain engagement
+      </span>
+    </div>
+  
+  
+    <div style="max-width:1100px;margin:0 auto;">
+
+  
+      <!-- Cards Grid -->
+      <div style="
+          display:grid;gap:16px;
+          grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+  
+        <!-- Yuka Card -->
+        <article style="border:1px solid #e5e7eb;border-radius:12px;background:#fff;
+                        box-shadow:0 1px 2px rgba(16,24,40,.04);">
+          <div style="padding:16px;display:flex;align-items:center;gap:12px;">
+            <div style="width:32px;height:32px;border-radius:6px;background:#16a34a;
+                        display:flex;align-items:center;justify-content:center;
+                        color:#fff;font:700 12px 'Raleway',sans-serif;">YK</div>
+            <div>
+              <h4 style="margin:0;font:600 16px 'Raleway',sans-serif;color:#111827;">Yuka</h4>
+              <p style="margin:0;font-size:12px;color:#64748b;">Food + cosmetic scanner</p>
             </div>
-        
-            <!-- Transparency -->
-            <div class="sticky-cluster">
-              <h4 class="sticky-title">🔍 Transparency & Trust</h4>
-              <div class="sticky-note">“I don’t trust those labels... what even counts as ‘natural’?”</div>
-              <div class="sticky-note">“Nutrition panels are so cluttered—it’s hard to read anything in a hurry.”</div>
-            </div>
-        
-            <!-- Personalization -->
-            <div class="sticky-cluster">
-              <h4 class="sticky-title">🎯 Personalization Needs</h4>
-              <div class="sticky-note">“I’m only looking for low-sugar options, but I have to check each product manually.”</div>
-              <div class="sticky-note">“I wish it knew I avoid gluten or recommended better options for me.”</div>
-            </div>
-        
           </div>
-        </section>
+  
+          <div style="padding:0 16px 16px;">
+            <div style="margin:8px 0;font-size:12px;color:#0f172a;">
+              <strong>Strengths</strong>
+              <ul style="margin:6px 0 0 18px;line-height:1.5;">
+                <li>Simple traffic-light scores (nutrition + additives).</li>
+                <li>Auto suggests healthier swaps.</li>
+                <li>Large EU-centric product DB.</li>
+              </ul>
+            </div>
+            <div style="font-size:12px;color:#0f172a;">
+              <strong>Gaps</strong>
+              <ul style="margin:6px 0 0 18px;line-height:1.5;">
+                <li>Limited personalization (allergies, diets).</li>
+                <li>Lacks U.S.-specific ingredient regs.</li>
+                <li>No reward/loyalty system.</li>
+              </ul>
+            </div>
+            <div style="margin-top:12px;padding:10px;border:1px dashed #e5e7eb;border-radius:8px;background:#f8fafc;">
+              <span style="font-size:12px;color:#ef4444;">
+                User Pain: “Great at warnings, but can’t remember my gluten allergy.”
+              </span>
+            </div>
+            <div style="margin-top:6px;font-size:12px;color:#64748b;">
+              Review Snap: 4.7★ App Store – praised for clarity, criticized for U.S. gaps.
+            </div>
+          </div>
+        </article>
+  
+        <!-- Fooducate Card -->
+        <article style="border:1px solid #e5e7eb;border-radius:12px;background:#fff;
+                        box-shadow:0 1px 2px rgba(16,24,40,.04);">
+          <div style="padding:16px;display:flex;align-items:center;gap:12px;">
+            <div style="width:32px;height:32px;border-radius:6px;background:#0ea5e9;
+                        display:flex;align-items:center;justify-content:center;
+                        color:#fff;font:700 12px 'Raleway',sans-serif;">FD</div>
+            <div>
+              <h4 style="margin:0;font:600 16px 'Raleway',sans-serif;color:#111827;">Fooducate</h4>
+              <p style="margin:0;font-size:12px;color:#64748b;">A–F food grades</p>
+            </div>
+          </div>
+  
+          <div style="padding:0 16px 16px;">
+            <div style="margin:8px 0;font-size:12px;color:#0f172a;">
+              <strong>Strengths</strong>
+              <ul style="margin:6px 0 0 18px;line-height:1.5;">
+                <li>Easy-to-read letter grades.</li>
+                <li>Community recipe ideas.</li>
+                <li>Integrates calorie tracking.</li>
+              </ul>
+            </div>
+            <div style="font-size:12px;color:#0f172a;">
+              <strong>Gaps</strong>
+              <ul style="margin:6px 0 0 18px;line-height:1.5;">
+                <li>Paywall hides allergy filters.</li>
+                <li>User-generated DB = inconsistent data.</li>
+                <li>No additive risk explanations.</li>
+              </ul>
+            </div>
+            <div style="margin-top:12px;padding:10px;border:1px dashed #e5e7eb;border-radius:8px;background:#f8fafc;">
+              <span style="font-size:12px;color:#ef4444;">
+                User Pain: “Grades are nice, but I still Google every unfamiliar additive.”
+              </span>
+            </div>
+            <div style="margin-top:6px;font-size:12px;color:#64748b;">
+              Review Snap: 4.6★ Play Store – common feedback: “Data gaps & ads.”
+            </div>
+          </div>
+        </article>
+  
+        <!-- Open Food Facts Card -->
+        <article style="border:1px solid #e5e7eb;border-radius:12px;background:#fff;
+                        box-shadow:0 1px 2px rgba(16,24,40,.04);">
+          <div style="padding:16px;display:flex;align-items:center;gap:12px;">
+            <div style="width:32px;height:32px;border-radius:6px;background:#6366f1;
+                        display:flex;align-items:center;justify-content:center;
+                        color:#fff;font:700 12px 'Raleway',sans-serif;">OFF</div>
+            <div>
+              <h4 style="margin:0;font:600 16px 'Raleway',sans-serif;color:#111827;">Open Food Facts</h4>
+              <p style="margin:0;font-size:12px;color:#64748b;">Crowd-sourced database</p>
+            </div>
+          </div>
+  
+          <div style="padding:0 16px 16px;">
+            <div style="margin:8px 0;font-size:12px;color:#0f172a;">
+              <strong>Strengths</strong>
+              <ul style="margin:6px 0 0 18px;line-height:1.5;">
+                <li>4 M+ products, open API.</li>
+                <li>Nutri-Score & NOVA processing indexes.</li>
+                <li>Transparency-first ethos.</li>
+              </ul>
+            </div>
+            <div style="font-size:12px;color:#0f172a;">
+              <strong>Gaps</strong>
+              <ul style="margin:6px 0 0 18px;line-height:1.5;">
+                <li>UI feels dated; steep learn-curve.</li>
+                <li>No personalization or alternative suggestions.</li>
+                <li>Quality depends on user-submitted photos.</li>
+              </ul>
+            </div>
+            <div style="margin-top:12px;padding:10px;border:1px dashed #e5e7eb;border-radius:8px;background:#f8fafc;">
+              <span style="font-size:12px;color:#ef4444;">
+                User Pain: “Great data, but too much scrolling to get quick answers.”
+              </span>
+            </div>
+            <div style="margin-top:6px;font-size:12px;color:#64748b;">
+              Review Snap: 4.4★ GitHub stars – loved by power users, not casual shoppers.
+            </div>
+          </div>
+        </article>
+  
+      </div> <!-- /cards grid -->
+  
+  
+      <!-- Quick Feature Matrix -->
+      <div style="margin:24px 0;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <tr style="background:#f8fafc;">
+            <th style="padding:6px;border:1px solid #e5e7eb;">Key Feature</th>
+            <th style="padding:6px;border:1px solid #e5e7eb;">Yuka</th>
+            <th style="padding:6px;border:1px solid #e5e7eb;">Fooducate</th>
+            <th style="padding:6px;border:1px solid #e5e7eb;">Open Food Facts</th>
+          </tr>
+          <tr>
+            <td style="padding:6px;border:1px solid #e5e7eb;">Personalized allergy filters</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">✗</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">Paywall</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">✗</td>
+          </tr>
+          <tr>
+            <td style="padding:6px;border:1px solid #e5e7eb;">Alternative product suggestions</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">✓</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">Partial</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">✗</td>
+          </tr>
+          <tr>
+            <td style="padding:6px;border:1px solid #e5e7eb;">Reward / loyalty system</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">✗</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">✗</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">✗</td>
+          </tr>
+          <tr>
+            <td style="padding:6px;border:1px solid #e5e7eb;">U.S. regulatory alignment (FDA)</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">Limited</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">Partial</td>
+            <td style="padding:6px;border:1px solid #e5e7eb;">✓* (data only)</td>
+          </tr>
+        </table>
+        <p style="margin:4px 0 0;font-size:12px;color:#64748b;">
+          ✓ = fully supported &nbsp;•&nbsp; ✗ = missing &nbsp;•&nbsp; Partial = basic or paywalled
+        </p>
+      </div>
+  
+      <!-- Key Takeaways Chips -->
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;">
+        <span style="padding:6px 12px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+          Need for U.S.-specific ingredient regs
+        </span>
+        <span style="padding:6px 12px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+          Allergy & diet personalization gap
+        </span>
+        <span style="padding:6px 12px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+          Clear additive explanations are missing
+        </span>
+        <span style="padding:6px 12px;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc;">
+          No rewards to sustain user engagement
+        </span>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <br>
+
+ 
+
+  
+  
+<!-- ===============  DISCOVER ENDS =============== -->  
+
+<!-- ===============  DEFINE STARTS =============== -->  
         
                 <br>
                 <section id="define" style="scroll-margin-top: 80px; margin-top: 4rem;"></section></section>
