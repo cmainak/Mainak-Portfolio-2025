@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+    <link rel="stylesheet" href="assets/css/case-study-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/img/Orbit/OrbitScanLogo.png" type="image/png">
+    
+    
+    <style>
+      /* === CONSOLIDATED INLINE CSS === */
+      html { 
+        scroll-behavior: smooth; 
+      }
+      
+      body {
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+        background-color: #fff;
+        color: #111;
+      }
+
+      /* === LIGHTBOX STYLES === */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox:target { display: flex; }
+
+.lightbox-content { text-align: center; }
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 30px;
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+/* === NAVIGATION PILLS === */
+.jump-pill {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 9px 22px;
+  border-radius: 2em;
+  background: transparent;
+  transition: background .17s, color .17s;
+}
+
+.jump-pill:hover,
+.jump-pill:focus {
+  background: #B1D73B !important;
+  color: #000 !important;
+  outline: none;
+}
+
+.jump-pill.active {
+  background: #B1D73B !important;
+  color: #fff !important;
+}
+
+/* === JUMP NAVIGATION RESPONSIVE === */
+
+/* Base styles for jump pills */
+.jump-pill {
+  display: block;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 8px;
+  border-radius: 1.8em;
+  text-decoration: none;
+  color: #000;
+  background: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jump-pill:hover, .jump-pill.active {
+  background: #B1D73B;
+  color: #000;
+  font-weight: 600;
+}
+
+/* Large screens (desktop) */
+@media (min-width: 1025px) {
+  .jump-nav {
+    width: 430px !important;
+    max-width: 430px !important;
+  }
+  .jump-pill {
+    font-size: 1rem !important;
+    padding: 12px 16px !important;
+  }
+}
+
+/* Medium screens (tablet) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .jump-nav {
+    width: calc(100vw - 60px) !important;
+    max-width: 400px !important;
+  }
+  .jump-pill {
+    font-size: 0.95rem !important;
+    padding: 10px 12px !important;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .jump-nav {
+    width: calc(100vw - 32px) !important;
+    max-width: 360px !important;
+    padding: 6px !important;
+  }
+  
+  .jump-nav ul {
+    gap: 4px !important;
+  }
+  
+  .jump-pill {
+    font-size: 0.9rem !important;
+    padding: 8px 6px !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .jump-nav {
+    width: calc(100vw - 24px) !important;
+    max-width: 320px !important;
+    bottom: 12px !important;
+  }
+  
+  .jump-nav ul {
+    gap: 3px !important;
+  }
+  
+  .jump-pill {
+    font-size: 0.85rem !important;
+    padding: 8px 4px !important;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .jump-pill {
+    font-size: 0.8rem !important;
+    padding: 6px 3px !important;
+  }
+}
+/* === JUMP NAVIGATION RESPONSIVE ENDS === */
+
+
+/* === FLOATING BUTTONS === */
+
+.home-button {
+  position: fixed;
+  top: 20px; /* Distance from top */
+  right: 20px; /* Stick to the right instead of left */
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Remove transform used for centering */
+.home-button:hover {
+  transform: scale(1.1); /* Only scale now */
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-button i {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+}
+
+        
+          /*Floating Up Arrow Button */
+          .floating-up-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+          }
+        
+          .floating-up-button i {
+              color: #333;
+              font-size: 1.4rem;
+          } 
+        
+          .floating-up-button:hover {
+            transform: scale(1.1);
+            background: white;  
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          }
+
+          /* === MAIN CONTENT STRUCTURE === */
+.top-center-image {
+  display: flex;
+  justify-content: center;
+  margin: 60px 0 30px;
+}
+
+.top-center-image img {
+  max-width: 180px;
+  height: auto;
+}
+
+.title-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title-section h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.title-section h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  color: #B1D73B;
+  margin-top: 10px;
+}
+
+.content-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0 20px 60px;
+}
+
+.left-column {
+  flex: 1 1 300px;
+  max-width: 320px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.left-column p {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.left-column em {
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #B1D73B;
+  color: #000;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.right-column {
+  flex: 2 1 600px;
+}
+
+.right-column .section {
+  margin-bottom: 40px;
+}
+
+.right-column h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.right-column p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+        
+</style>
+</head>
+
+<body>
+
+
+  <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: flex; align-items: center; justify-content: center; z-index: 9999;">
+    <p style="font-size: 18px; color: #333;">Loading awesome work... hang tight 🚀</p>
+  </div>
+  
+    <a href="work.html" class="home-button">
+        <i class="fas fa-home"></i>
+      </a>
+    
+      <a href="orbitscan.html" class="floating-up-button">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+
+      <!-- Bottom-Fixed Jump Navigation Pills STARTS-->
+
+<nav aria-label="Case Study Navigation" class="jump-nav"
+style="
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: calc(100vw - 40px);
+  max-width: 430px;
+  min-width: 280px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
+  border-radius: 2.2em;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+">
+<ul style="
+  margin: 0; padding: 0; list-style: none;
+  display: flex; gap: 6px; align-items: center; 
+  width: 100%; justify-content: space-between;
+">
+  <li style="flex: 1;"><a href="#discover" class="jump-pill">Discover</a></li>
+  <li style="flex: 1;"><a href="#define" class="jump-pill">Define</a></li>
+  <li style="flex: 1;"><a href="#design" class="jump-pill">Design</a></li>
+  <li style="flex: 1;"><a href="#deliver" class="jump-pill">Deliver</a></li>
+</ul>
+</nav>
+
+  <!-- Bottom-Fixed Jump Navigation Pills ENDS-->
+
+
+  <!-- Main Content Section -->
+  <section id="intro" style="padding: 60px 20px; background-color: #ffffff;">
+    
+    <!--HERO IMAGE STARTS ORBIT COVER-->
+<!-- MAXIMUM WIDTH HERO VERSION -->
+<div class="hero-cover-section" style="text-align: center; padding: 40px 20px 32px; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%); margin-bottom: 24px;">
+  <div style="max-width: 1100px; width: 98%; margin: 0 auto;">
+    
+    <!-- Cover Image -->
+    <div class="cover-image-container" style="position: relative; display: inline-block; margin-bottom: 20px; width: 100%;">
+      <img src="assets/img/Orbit/Orbit Scan Cover.png" loading="lazy"
+           alt="ManageWise App Cover" 
+           style="width: 100%; max-width: 800px; height: auto; border-radius: 20px; box-shadow: 0 12px 50px rgba(0, 0, 0, 0.18); transition: all 0.3s ease;">
+      
+      <!-- Glow effect -->
+      <div style="position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px; background: linear-gradient(135deg, rgba(255, 205, 41, 0.15) 0%, rgba(255, 205, 41, 0.08) 100%); border-radius: 35px; z-index: -1;"></div>
+    </div>
+    
+    <!-- Title and Tagline -->
+    <h1 style="margin: 20px 0 8px; font-size: 36px; font-weight: 700; color: #111827; font-family: 'Raleway', sans-serif;">Orbit Scan</h1>
+    <p style="margin: 0 0 24px; font-size: 20px; color: #B1D73B; font-weight: 600; font-family: 'Raleway', sans-serif;">Helping shoppers make smarter food choices with a quick barcode scan.</p>
+    
+  </div>
+</div>
+
+<!--HERO IMAGE ENDS-->
+
+ <!-- Main Content Split Layout STARTS -->
+<!-- Enhanced Project Overview Section -->
+<section id="project-overview" style="padding: 48px 20px; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 40px; align-items: start;">
+        <!-- Left Overview Card -->
+        <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08); position: sticky; top: 80px;">
+          <div style="margin-bottom: 24px;">
+            <div style="margin-bottom: 16px;">
+              <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Role</span>
+              <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500;">Product Design (UX/UI)</p>
+            </div>
+            <div style="margin-bottom: 16px;">
+              <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Timeline</span>
+              <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500;">10 Weeks</p>
+            </div>
+            <div style="margin-bottom: 16px;">
+              <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Tools</span>
+              <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500;">Figma, FigJam, Google Forms, Zoom</p>
+            </div>
+            <div style="margin-bottom: 16px;">
+              <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Team</span>
+              <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500;">Solo (peer testers)</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <span style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Scope</span>
+              <p style="margin: 4px 0 0; font-size: 14px; color: #111827; font-weight: 500; line-height: 1.5;">
+                Concept-to-prototype of a productivity app with AI-assisted scheduling and goals
+              </p>
+            </div>
+          </div>
+          <div style="padding: 12px; background: #f8fafc; border-radius: 8px; margin-bottom: 24px; border-left: 3px solid #B1D73B;">
+            <p style="margin: 0; font-size: 12px; color: #64748b; font-style: italic; line-height: 1.4;">
+              This project is a fictitious scenario, completed as part of a graduate program.
+            </p>
+          </div>
+          <a href="#final-prototype" style="display: block; text-align: center; padding: 12px 20px; background: #B1D73B; color: #000; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; transition: all 0.2s ease; border: 2px solid #B1D73B;" onmouseover="this.style.background='#fff'; this.style.color='#FFCD29'" onmouseout="this.style.background='#FFCD29'; this.style.color='#000'">
+            View High-Fidelity Prototype →
+          </a>
+        </div>
+        <!-- Right Content Sections -->
+        <div style="display: flex; flex-direction: column; gap: 32px;">
+          <!-- Background Section -->
+          <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);">
+            <h3 style="margin: 0 0 16px; font-size: 20px; color: #111827; font-family: 'Raleway', sans-serif; font-weight: 600;">Background</h3>
+            <p style="margin: 0 0 16px; font-size: 15px; color: #374151; line-height: 1.6;">
+                According to a 2023 report by the Food Marketing Institute, 65% of U.S. shoppers say they struggle to interpret food labels, and 72% want clearer ingredient information when buying groceries. <br>
+                Meanwhile, apps like Yuka and MyFitnessPal have seen a 30% increase in user engagement, reflecting growing demand for tools that simplify healthy decision-making. Last year, I watched a friend try to switch to a gluten-free diet for health reasons. <br>
+                Every grocery run became a frustrating guessing game — scanning labels, Googling additives, and trying to interpret vague health claims. That experience sparked a question in my mind: Why isn’t there a faster, more personalized way to shop smarter?
+            </p>
+            <div style="padding: 20px; background: linear-gradient(135deg, #fffbf0 0%, #fef3c7 100%); border-radius: 12px; border-left: 4px solid #B1D73B; margin: 16px 0;">
+              <p style="margin: 0; font-size: 16px; color: #1f2937; font-style: italic; line-height: 1.6;">
+                "Users don't need more tools. <span style="background: #B1D73B; padding: 2px 6px; border-radius: 4px; color: #000; font-weight: 600;">They need personalized support</span> — one system that integrates tasks, goals, and progress insights without overwhelming them."
+              </p>
+            </div>
+          </div>
+          <!-- Problem Section -->
+          <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);">
+            <h3 style="margin: 0 0 16px; font-size: 20px; color: #111827; font-family: 'Raleway', sans-serif; font-weight: 600;">Problem</h3>
+            <p style="margin: 0 0 20px; font-size: 15px; color: #374151; line-height: 1.6;">
+              Through interviews (n=3) and targeted surveys (n=20) with students and professionals, I found users consistently feel overwhelmed by long task lists, struggle to prioritize, and face friction when managing multiple apps. Fragmentation leads to lost momentum, unfinished goals, and declining motivation.
+            </p>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb;">
+              <h4 style="margin: 0 0 12px; font-size: 14px; color: #111827; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Key Research Stats (n=20)</h4>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; flex-shrink: 0;"></div>
+                  <span style="font-size: 14px; color: #374151;">14/20 use at least one productivity app daily</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%; flex-shrink: 0;"></div>
+                  <span style="font-size: 14px; color: #374151;">8/20 still find procrastination is a major barrier despite app use</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 6px; height: 6px; background: #ef4444; border-radius: 50%; flex-shrink: 0;"></div>
+                  <span style="font-size: 14px; color: #374151;">Most say apps focus only on to-dos, missing personalization & goal-tracking</span>
+                </div>
+              </div>
+              <p style="margin: 10px 0 0; font-size: 13px; color: #747c8a;">
+                *Note: Sample size is limited (n=20), so these findings are indicative, not statistically robust.
+              </p>
+            </div>
+          </div>
+          <!-- How Might We Section -->
+          <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);">
+            <h3 style="margin: 0 0 16px; font-size: 20px; color: #111827; font-family: 'Raleway', sans-serif; font-weight: 600;">How Might We</h3>
+            <p style="margin: 0 0 10px; font-size: 15px; color: #374151; line-height: 1.6;">
+              These research insights shaped the actionable prompt for all design work:
+            </p>
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: 12px; border-left: 4px solid #3b82f6; margin-bottom: 16px;">
+              <p style="margin: 0; font-size: 16px; color: #1e40af; font-weight: 500; line-height: 1.6;">
+                "How might we design a personalized productivity app that integrates task management, goal-setting, and AI-driven smart scheduling—without overwhelming users?"
+              </p>
+            </div>
+            <p style="margin: 0; font-size: 15px; color: #374151; line-height: 1.6;">
+              Every design decision aimed to create a single, intuitive platform that adapts to individual needs while solving these real, validated pain points.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+ <!-- Main Content Split Layout ENDS -->
+        
+
+        <section id="background" class="overview" style="scroll-margin-top: 80px;">
+            <h2 style="font-size: 36px;">BACKGROUND</h2>
+            
+            <section style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+
+              <!-- Text Left -->
+              <div style="flex: 1 1 300px; min-width: 280px;">
+              <p class="read-more-paragraph">
+                  According to a 2023 report by the Food Marketing Institute, 65% of U.S. shoppers say they struggle to interpret food labels, and 72% want clearer ingredient information when buying groceries. Meanwhile, apps like Yuka and MyFitnessPal have seen a 30% increase in user engagement, reflecting growing demand for tools that simplify healthy decision-making.
+            
+              <span class="dots">...</span>
+              <span class="more-text">
+              Last year, I watched a friend try to switch to a gluten-free diet for health reasons. Every grocery run became a frustrating guessing game — scanning labels, Googling additives, and trying to interpret vague health claims. That experience sparked a question in my mind:
+              Why isn’t there a faster, more personalized way to shop smarter?
+              </span>
+              <button class="read-more-btn">Read more</button>
+              </p>
+              </div>
+            
+              <!-- Image Right -->
+              <div style="flex: 1 1 300px; min-width: 280px; text-align: right;">
+              <img src="assets/img/Orbit/Background.jpg" loading="lazy" alt="Approach Diagram" style="width: 100%; max-width: 350px; height: auto;" loading="lazy">
+              </div>
+            
+            </section>
+            
+
+            <section id="problem" class="the-problem" style="scroll-margin-top: 80px;">
+            <h2 style="font-size: 36px;">PROBLEM</h2>
+        
+              
+          <h4 style="font-size: 30px;">Ever stood in a grocery aisle, feeling overwhelmed by:</h4> 
+          <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
+          <li>Confusing ingredient lists? </li>
+          <li>Hard-to-read nutrition labels?</li>
+          <li>Spent time Googling food additives, but still unsure if a product is right for you or your family?</li>
+          <li>For many shoppers especially those with dietary restrictions, making informed choices quickly is a daily challenge.</li>
+          </ul>
+
+<p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">OrbitScan was created to solve this problem by:</p> 
+<ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">  
+<li>Allowing users to scan any food product.</li>
+<li>Instantly delivering clear, easy-to-understand health insights and recommendations</li>
+<li>The app turns complex nutritional data into simple, actionable guidance.</li>
+</ul>
+                
+        </section>
+
+        <section id="approach" class="our-approach" style="scroll-margin-top: 80px;">
+            <h2 style="font-size: 36px;">🔷 🔷 Double Diamond Design Process</h2>
+
+            <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">I used the Double Diamond approach to keep my design process user-focused and aligned with solving actual user pain points.</p>
+            <div class="header-image">
+              <img src="assets/img/Orbit/Double Diamond Design.png" loading="lazy" alt="Approach Diagram">
+          </div>
+
+                  
+            <br>
+            
+        </section>
+
+        <section id="discover" style="scroll-margin-top: 80px;"></section>
+        <h1 style="color: grey;">DISCOVER</h1>
+
+        <h2 style="font-size: 36px;">QUANTITATIVE RESEARCH (Survey Insights)</h2>
+        
+        <section style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+
+          <!-- Text Left -->
+          <div style="flex: 1 1 300px; min-width: 280px;">
+            <div class="read-more-paragraph">
+              <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"><strong>Google Forms | 22 Responses</strong></p>
+              <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">The goal of this survey was to understand users’ grocery shopping behavior, challenges with reading food labels, and openness to using apps for health-related product decisions. I distributed the survey among classmates, friends, and online forums with a focus on users with dietary goals or food sensitivities.</p>
+              <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">📋 Sample Interview Questions</p>
+              <span class="dots">...</span>
+              <span class="more-text">
+              <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
+                  <li>How often do you read nutrition labels or ingredient lists while shopping?</li>
+                  <li>Have you ever used a mobile app to check food product health ratings or ingredients?</li>
+                  <li>What factors influence your decision when choosing food products? (e.g., brand, price, nutrition, ingredients)</li>
+                  <li>How confident do you feel when identifying whether a product is healthy for you?</li>
+                  <li>Would you find value in personalized recommendations based on your dietary needs (e.g., gluten-free, low-sugar)?</li>
+                  <li>Do you usually compare multiple products before deciding what to buy?</li>
+          </ul>
+          </span>
+          <button class="read-more-btn">Read more</button>
+          </div>
+          </div>
+        
+          </section>
+        
+            
+          <!-- Image Right -->
+          <div>
+          <img src="assets/img/Orbit/Takeaways Surveys.png" loading="lazy" alt="Approach Diagram" style="width: 100%; height: 400px;" loading="lazy">
+          </div>
+            
+          </section>
+
+        <h2 style="font-size: 36px;">COMPETITIVE ANALYSIS</h2>
+            
+        <section style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+
+          <!-- Text Left -->
+          <div style="flex: 1 1 300px; min-width: 280px;">
+          <div class="read-more-paragraph">
+          <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">Here are some insights I found from the competitor analysis on the current market. </p>
+          <span class="dots">...</span>
+          <span class="more-text">
+          <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
+          <li><strong>Limited Personalization:</strong> Most apps offer generic scores but lack tailored recommendations based on specific dietary needs, allergies, or health goals.</li>
+          <li><strong>Overwhelming Data Presentation:</strong> Nutrition details are often displayed in a technical or cluttered format, making it hard for everyday users to interpret at a glance.</li>
+          <li><strong>Inconsistent Ingredient Transparency:</strong> Some apps rely on crowdsourced data, leading to incomplete or outdated product information.</li>
+          <li><strong>No Guidance for New Shoppers:</strong> First-time users or those transitioning to a specific diet (e.g., gluten-free, keto) are left without onboarding, tips, or guided flows.</li>
+          </ul>
+          </span>
+          <button class="read-more-btn">Read more</button>
+          </div>
+          </div>
+        
+          </section>
+        
+            
+              <!-- Image Right -->
+              
+<h4 style="font-size: 30px;">Competitive Feature Analysis</h4>
+              <div>
+                <img src="assets/img/Orbit/Competitive Analysis.png" loading="lazy" alt="Approach Diagram" style="width: 100%; height: 500px;" loading="lazy">
+              </div>
+            
+            </section>
+
+        <section class="visual-exploration">
+            <h2 style="font-size: 36px;">QUALITATIVE RESEARCH (User Interviews)</h2>
+            <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"><strong>Zoom Remote & In-person | 4 Participants</strong></p>
+
+       <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">The goal was to gain a deeper understanding of how users shop for groceries, what challenges they face when interpreting product information, and how they make health-related decisions in the store. All participants shop for groceries regularly, and at least two have dietary restrictions that impact their buying choices.</p>
+       <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">📋 Sample Interview Questions</p>
+
+<div class="read-more-paragraph">
+  <span class="dots">...</span>
+  <div class="more-text">
+    <ul style="font-size: 18px; max-width: auto; margin-bottom: 1rem;"> 
+        <li>Q: Think about the last time you went grocery shopping—how do you decide whether a product is healthy or safe for you?</li> 
+        <li>Q: Do you use any tools, apps, or websites to check ingredients or nutrition before making a purchase? What’s your experience with them?</li> 
+        <li>Q: Have you ever felt confused or overwhelmed while trying to understand food labels or health claims on packaging?</li> 
+        <li>What would make your decision-making process easier while shopping—more visuals, clear scoring, or recommendations?</li>
+        <li>How do you currently compare similar products? What factors do you look for first (e.g., price, ingredients, brand)?</li>
+        <li>Would you find it helpful if an app suggested products tailored to your health needs (e.g., low sodium, allergen-free)?</li>
+    </ul>
+  </div>
+  <button class="read-more-btn">Read more</button>
+</div>
+
+
+        <br>
+
+        <h4 style="font-size: 30px;"> Affinity Mapping</h4>
+
+        <section>
+          <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">
+            Based on 4 semi-structured interviews, I synthesized themes using affinity mapping. The insights below are organized into core themes that emerged repeatedly: decision-making, transparency, and personalization.
+          </p>
+        
+          <div class="sticky-grid">
+        
+            <!-- Decision-Making Challenges -->
+            <div class="sticky-cluster">
+              <h4 class="sticky-title">🧠 Decision-Making Challenge</h4>
+              <div class="sticky-note">“I get overwhelmed by all the packaging—everything says it’s healthy.”</div>
+              <div class="sticky-note">“I compare products for so long, but still leave unsure.”</div>
+            </div>
+        
+            <!-- Transparency -->
+            <div class="sticky-cluster">
+              <h4 class="sticky-title">🔍 Transparency & Trust</h4>
+              <div class="sticky-note">“I don’t trust those labels... what even counts as ‘natural’?”</div>
+              <div class="sticky-note">“Nutrition panels are so cluttered—it’s hard to read anything in a hurry.”</div>
+            </div>
+        
+            <!-- Personalization -->
+            <div class="sticky-cluster">
+              <h4 class="sticky-title">🎯 Personalization Needs</h4>
+              <div class="sticky-note">“I’m only looking for low-sugar options, but I have to check each product manually.”</div>
+              <div class="sticky-note">“I wish it knew I avoid gluten or recommended better options for me.”</div>
+            </div>
+        
+          </div>
+        </section>
+        
+                <br>
+                <section id="define" style="scroll-margin-top: 80px; margin-top: 4rem;"></section></section>
+                <h1 style="color: grey;">DEFINE</h1>
+                <h2 style="font-size: 36px;"> WHO ARE WE DESIGNING FOR? </h2>
+                <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">The individuals I interviewed are graduate students as well as parents managing household grocery shopping. Each of them shops for groceries at least once a week and has experience using apps such as MyFitnessPal or Google to research food products. Most shared challenges around reading food labels, interpreting nutrition data, and making confident product decisions—especially when managing allergies, switching diets, or trying to eat healthier on a student budget.</p>
+                <p style="font-size: 18px; max-width: auto; margin-bottom: 1rem;">One key persona that emerged is Stephanie — a busy, health-conscious mom juggling family needs, limited time, and a desire to make informed food choices.</p>
+
+<h4 style="font-size: 30px;">Persona</h4>
+                <div class="header-image">
+                    <img src="assets/img/Orbit/User Persona3.png" loading="lazy" alt="Persona Diagram">
+                </div>
+            <div class="header-image">
+                <img src="assets/img/Orbit/SCENARIO.png" loading="lazy" alt="Persona Diagram">
+            </div>
+        </section>
+
+        <br>
+        <section id="develop" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+        <h1 style="color: grey;"> DEVELOP </h1>
+        <section class="user-flow">
+            <h2 style="font-size: 36px;">USER FLOW DIAGRAM</h2>
+            <br>
+            <div class="header-image">
+                <img src="assets/img/Orbit/userflow_os.png" loading="lazy" alt="User Flow">
+        </section>
+
+
+        <br>
+
+    
+        <section class="logo-iteration">
+        <h2 style="font-size: 36px;"> MID-FIDELITY WIREFRAME </h2>
+        <div class="header-image">
+          <img src="assets/img/Orbit/Low-fi.png" loading="lazy" alt="Low Fidelity Ideation">
+
+
+          <section>
+            <h2 style="font-size: 36px; margin-top: 4rem;">USABILITY TESTING</h2>
+            <p style="font-size: 18px; max-width: auto; margin-bottom: 2rem;">
+              I conducted moderated usability testing with 4 participants who matched my target users. Each session lasted 20–30 minutes and was based on a mid-fidelity black & white prototype. I asked them to complete tasks such as scanning a product, interpreting its health information, and exploring the rewards section. Below is a summary of key insights and the resulting design decisions:
+            </p>
+
+            <img src="assets/img/Orbit/Interaction Final Prototype.png" loading="lazy" alt="Interaction Final Prototype">
+          <br>
+            <table style="width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.6;">
+              <thead>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding: 12px; text-align: left;">🧠 Problem</th>
+                  <th style="padding: 12px; text-align: left;">💬 Participant Feedback</th>
+                  <th style="padding: 12px; text-align: left;">🔧 Design Decision</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px;">Health score bar lacked meaning</td>
+                  <td style="padding: 12px;">“I don’t understand what this bar means.”</td>
+                  <td style="padding: 12px;">Planned to add explanatory text + icon system in high-fidelity version.</td>
+                </tr>
+
+                <tr style="background-color: #fafafa;">
+                  <td style="padding: 12px;">Scanner results were overwhelming</td>
+                  <td style="padding: 12px;">“There’s a lot of info. I don’t know what to focus on.”</td>
+                  <td style="padding: 12px;">Reorganized product scan results into clearer sections: Score, Warnings, and Alternatives.</td>
+                </tr>
+                
+                <tr>
+                  <td style="padding: 12px;">Missing context for reward points</td>
+                  <td style="padding: 12px;">“How do I get these points?”</td>
+                  <td style="padding: 12px;">Clarified labels. <em>Future plan:</em> add onboarding instructions to explain point earning system.</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </section>
+          
+
+         <section id="deliver" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+<h1 style="color: grey;">DELIVER</h1>
+<section class="visual-exploration">
+        <h2 style="font-size: 36px;">FINAL UI SCREENS</h2>
+
+<h3 style="font-size: 24px;">ONBOARDING SCREENS</h3>
+
+<p style="font-size: 18px; max-width: 600px; margin-bottom: 1.5rem;">
+    Orbit Scan's onboarding introduces the app's core functionalities across four screens. It highlights instant health insights through product scanning, identification of harmful additives, and a reward system for making smart choices, encouraging users to begin.
+</p>
+
+<div style="text-align: right;  align-items: center;">
+  <img src="assets/img/Orbit/Onboarding (1).png" loading="lazy" alt="Onboarding Screens" style="width: 1000px; max-width: 100%; height: auto;">
+</div>
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin: 2rem 0; flex-wrap: nowrap;">
+  
+  <!-- Image FIRST to keep it on the LEFT -->
+  <img src="assets/img/Orbit/Home.png" loading="lazy" alt="Home Screen"
+       style="width: 500px; max-width: 90%; height: auto; flex-shrink: 0;">
+  
+  <!-- Text on the RIGHT -->
+  <div style="max-width: 400px;">
+    <h3 style="font-size: 24px;">HOME SCREEN</h3>
+    <p style="font-size: 18px;">
+      The Discover home screen presents users with personalized <strong>'Products you may like'</strong> alongside <strong>'E Gift Vouchers'</strong>. It also features an <strong>'Articles'</strong> section offering informative content on healthy eating, packaging swaps, gut health, and clean bread options.
+    </p>
+  </div>
+</div>
+
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 6rem; margin: 4rem 0; flex-wrap: wrap;">
+
+          <!-- TEXT: LEFT -->
+          <div style="flex: 1; min-width: 300px; max-width: 500px;">
+            <h3 style="font-size: 24px;">SCANNER</h3>
+            <p style="font-size: 18px;">
+              <strong>Left Screen:</strong> The left screen shows the detailed health information for a product after a scan. It highlights both positive and negative attributes of its ingredients. <br><br>
+              <strong>Right Screen:</strong> The right screen shows the options to <strong>"Add to Favorites"</strong>, view the <strong>"Scoring method"</strong>, and offers <strong>"Recommendations"</strong> for similar products.
+            </p>
+          </div>
+        
+          <!-- IMAGE: RIGHT -->
+          <div style="flex: 1; min-width: 300px; max-width: 600px; padding-left: 2rem;">
+            <img src="assets/img/Orbit/Scanner.png" loading="lazy" alt="Scanner Screen of OrbitScan"
+                 style="width: 100%; height: auto;">
+          </div>
+        
+        </div>
+        
+
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
+
+            <!-- IMAGE: LEFT -->
+            <div style="flex: 1; min-width: 300px; max-width: 600px;">
+              <img src="assets/img/Orbit/Additive analysis.png" loading="lazy" alt="Additive Analysis Screen of OrbitScan"
+                   style="width: 100%; height: auto;">
+            </div>
+          
+            <!-- TEXT: RIGHT -->
+            <div style="flex: 1; min-width: 300px; max-width: 500px;">
+              <h3 style="font-size: 24px;">ADDITIVE ANALYSIS</h3>
+              <p style="font-size: 18px;">
+                <strong>Left Screen:</strong> The left screen shows the detailed health information for a product after a scan. It highlights both positive and negative attributes of its ingredients. <br><br>
+                <strong>Right Screen:</strong> The right screen shows the options to <strong>"Add to Favorites"</strong>, view the <strong>"Scoring method"</strong>, and offers <strong>"Recommendations"</strong> for similar products.
+              </p>
+            </div>
+          
+          </div>
+          
+        <caption><strong>Before:</strong>
+            The health bar was color-coded (green, yellow, red) to indicate product quality, but lacked any labels or context. Users were unsure what the colors meant or how to interpret the bar.</caption>
+            <br>
+           <caption> <strong>After:</strong>
+            We added intuitive icons (✔️, ⚠️, ❌) along with descriptive text labels like “Healthy,” “Moderate,” and “Avoid.” This provided immediate clarity on the product's health score.</caption>
+            <br>
+            <caption> <strong>Reason:</strong>
+            During usability testing, 4 out of 5 users expressed confusion about the color meaning. After adding visual indicators and text, comprehension increased by 60%.</caption>
+
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
+
+  <!-- TEXT: LEFT -->
+  <div style="flex: 1; min-width: 300px; max-width: 500px;">
+    <h3 style="font-size: 24px;">CATEGORIES</h3>
+    <p style="font-size: 18px;">
+      The List of Categories screen allows users to easily browse top food product categories, such as Milk, Coffee, Juices, and Chocolates. Each category is visually supported with intuitive icons to enhance quick recognition and ease of navigation.
+    </p>
+    <p style="font-size: 18px;">
+      The purpose of this screen is to streamline product discovery by organizing items into familiar categories, helping users quickly find and scan items of interest. This design supports faster decision-making while maintaining a clean and user-friendly browsing experience.
+    </p>
+  </div>
+
+  <!-- IMAGE: RIGHT -->
+  <div style="flex: 1; min-width: 300px; max-width: 600px;">
+    <img src="assets/img/Orbit/List Nav.png" loading="lazy" alt="Categories Screen of OrbitScan"
+         style="width: 100%; height: auto;">
+  </div>
+
+</div>
+
+
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
+
+              <!-- IMAGE: LEFT -->
+              <div style="flex: 1; min-width: 300px; max-width: 600px;">
+                <img src="assets/img/Orbit/Rewards.png" loading="lazy" alt="Rewards Screen of OrbitScan"
+                     style="width: 100%; height: auto;">
+              </div>
+            
+              <!-- TEXT: RIGHT -->
+              <div style="flex: 1; min-width: 300px; max-width: 500px;">
+                <h3 style="font-size: 24px;">REWARDS</h3>
+               
+                <p style="font-size: 18px;"> <strong>Left Screen:</strong> Users can explore featured rewards and browse categories like Retail, Health, and Fashion. This screen motivates users by showcasing a range of options they can unlock with their earned points.
+                <p style="font-size: 18px;">  <strong>Right Screen:</strong> After selecting a reward, users choose the reward amount based on their available points. A clear, simple layout helps users quickly understand the redemption process and complete their reward claim with confidence. </p>
+
+              </div>
+            
+            </div>
+
+
+            <section id="result" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+          <h2 style="font-size: 36px;">Result</h2>
+
+          <section id="result" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+<p style="font-size: 18px;">
+    OrbitScan resulted in a fully designed and interactive high-fidelity prototype, showcasing a seamless barcode scanning experience and personalized nutritional insights. I prepared detailed screens, user flows, and export-ready assets to guide future development efforts.
+</p>
+
+
+          <h2 style="font-size: 36px;">View Prototype</h2>
+          <section id="prototype" style="scroll-margin-top: 80px; margin-top: 4rem;"></section>
+        <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+            <iframe 
+              style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+              width="1000" 
+              height="600" 
+              src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <br>
+
+        <div class="more-projects-section">
+            <div class="more-projects-header">
+                <h3>MORE PROJECTS <span class="dots"></span></h3>
+                <a href="work.html" class="view-all">View All <svg viewBox="0 0 24 24" fill="currentColor" style="width:1em;height:1em;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg></a>
+            </div>
+            <div class="project-cards-container">
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">UX Case Study</span>
+                        <span class="tag">Mobile App IOS</span>
+                        <span class="tag">Figma</span>
+                    </div>
+                    <div class="project-image">
+                        <a href="ManageW.html" target="_blank">
+                        <img src="assets/img/Manage Wise/ManageWise Cover.png" loading="lazy" alt="ManageWise Cover">
+                    </div>
+                </div>
+                
+             
+        <div class="project-card">
+        <div class="project-tags">
+        <span class="tag">Web Redesign</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JS</span>
+        </div>
+        <div class="project-image">
+        <a href="MC copy.html" target="_blank">
+        <img src="assets/img/Projects/Cover/MC.png" loading="lazy" alt="Portfolio Redesign"></a>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <script>
+        document.querySelectorAll('.read-more-btn').forEach(function(btn) {btn.addEventListener('click', function() 
+        {const parent = btn.closest('.read-more-paragraph');const dots = parent.querySelector('.dots');
+        const moreText = parent.querySelector('.more-text');
+          
+                if (moreText.style.display === "inline") {
+                  moreText.style.display = "none";
+                  dots.style.display = "inline";
+                  btn.textContent = "Read more";
+                } else {
+                  moreText.style.display = "inline";
+                  dots.style.display = "none";
+                  btn.textContent = "Read less";
+                }
+              });
+            });
+          </script>
+
+<script>
+  window.addEventListener("load", function () {
+    // Force the loader to stay for 2 seconds even if the page loads faster
+    setTimeout(function () {
+      document.getElementById("loader").style.display = "none";
+    }, 2000); // 2000ms = 2 seconds
+  });
+</script>
+          
+
+    
+
+</body>
+</html>
