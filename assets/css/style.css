@@ -698,55 +698,7 @@ logo-slider:after {
   border-radius: 8px;
 }
 
-/* ========== TEXT CONTENT ========== */
-.tile-text {
-  padding: 24px;
-}
 
-.tile-category {
-  font-size: 0.85rem;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.tile-text h3 {
-  font-size: 1.6rem;
-  margin: 0.5rem 0;
-}
-
-.tile-text p {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-}
-
-.tile-tags {
-  color: #666;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-}
-
-.view-btn {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 10px 18px;
-  font-family: 'Jura', sans-serif;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 14px;
-  background: #FFF;
-  border: 2px solid #02437D;
-  color: #02437D;
-  text-decoration: none;
-  border-radius: 50px;
-  transition: background-color 0.3s;
-}
-
-.view-btn:hover {
-  background: #02437D;
-  border: 2px solid #FF9933;
-  color: #fff;
-}
 
 /* ========== RESPONSIVE + LAYOUT ADJUSTMENTS ========== */
 @media (min-width: 768px) {
