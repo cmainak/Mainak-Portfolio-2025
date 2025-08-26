@@ -1633,11 +1633,337 @@ and heart disease.
           <!-- Section Header -->
           <h2 style="text-align:center;color:#B1D73B;
                      font:700 28px 'Raleway',sans-serif;letter-spacing:1px;margin:0 0 32px;">
-            03 / Develop
+            03 / Develop  – Iterating Toward Solutions
           </h2>
 
+          <!-- 1 / User-flow diagram -->
+  <h3 style="font:700 22px 'Raleway',sans-serif;color:#111827;margin:0 0 12px;">
+    Core User Flow
+  </h3>
+  <p style="margin:0 0 20px;font-size:15px;color:#475569;">
+    Mapping the shortest path from <em>“scan barcode”</em> to <em>“add healthier swap
+    to cart.”</em> Branches show optional deep-dives (ingredient details, rewards).
+  </p>
+  <div style="text-align:center;margin-bottom:32px;">
+    <img src="assets/img/Orbit/userflow_os.png" loading="lazy"
+         alt="Orbit Scan core user-flow diagram"
+         style="width:100%;max-width:900px;border-radius:12px;
+                box-shadow:0 2px 8px rgba(0,0,0,.06);">
+  </div>
 
-            <!--INSIDE CONTENT-->
+
+  <!-- 2 ░ Mid-Fi gallery -->
+  <h3 style="font:700 22px 'Raleway',sans-serif;color:#111827;margin:0 0 12px;">
+    Mid-Fidelity Prototype
+  </h3>
+  <p style="margin:0 0 18px;font-size:15px;color:#475569;">
+    Key interactions from the scan-to-swap flow.
+  </p>
+
+  <div style="
+      display:grid;gap:16px;margin-bottom:32px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+    <img src="assets/gif/01_scan.gif" alt="Scan"  style="width:100%;border-radius:12px;border:1px solid #e5e7eb;">
+    <img src="assets/gif/02_score.gif" alt="Score" style="width:100%;border-radius:12px;border:1px solid #e5e7eb;">
+    <img src="assets/gif/03_swap.gif" alt="Swap"  style="width:100%;border-radius:12px;border:1px solid #e5e7eb;">
+    <img src="assets/gif/04_rewards.gif" alt="Rewards" style="width:100%;border-radius:12px;border:1px solid #e5e7eb;">
+  </div>
+
+  <!-- Design-system teaser -->
+  <div style="
+      background:#f8fafc;border-left:4px solid #B1D73B;border-radius:12px;
+      padding:18px;margin-bottom:40px;">
+    <p style="margin:0;font-size:14px;line-height:1.6;color:#374151;">
+      Built on an 8-pt grid, traffic-light palette and 16 dp corners
+      for visual consistency.
+    </p>
+  </div>
+
+  <!-- ░░░  Usability Test — 4 Participants, Mid-Fi  ░░░ -->
+<h3 style="font:700 22px 'Raleway',sans-serif;color:#111827;margin:40px 0 12px;">
+    Moderated Usability Test  (4 participants · mid-fi prototype)
+  </h3>
+  <p style="margin:0 0 24px;font-size:15px;color:#475569;">
+    Tasks: ① scan a product → ② read the rating → ③ set food-preference filters.  
+    Three pain points emerged; fixes are highlighted below.
+  </p>
+  
+  
+  <!-- Insight cards -->
+<div style="
+display:grid;gap:18px;margin-bottom:32px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+
+<!-- Card 1 — Product rating clarity -->
+<div style="
+  background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;
+  padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
+<h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#c2410c;">
+  Issue — Health score hard to parse
+</h4>
+<p style="margin:0;color:#a16207;font-style:italic;">
+  “I see 10 / 100… is that good or bad?”
+</p>
+<p style="margin:8px 0 0;color:#374151;">
+  • Added big <strong>41 / 100</strong> badge at top  
+  • Traffic-light bar shows safe → risky zones  
+  • Negatives / Positives split + risk tags (High, Limited)  
+  • Counts beside headers now bold for quick scan
+</p>
+</div>
+
+<!-- Card 2 — Scan flow latency -->
+<div style="
+  background:#fef2f2;border:1px solid #fecaca;border-radius:12px;
+  padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
+<h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#b91c1c;">
+  Issue — 30-second wait after scan
+</h4>
+<p style="margin:0;color:#b91c1c;font-style:italic;">
+  “Why do I land on a blank camera screen first?”
+</p>
+<p style="margin:8px 0 0;color:#374151;">
+  • Rating now overlays the camera in <2 s (progressive disclosure)  
+  • Full details moved to swipe-up sheet  
+  • Users see pass/fail before lowering phone
+</p>
+</div>
+
+<!-- Card 3 — Preference selection -->
+<div style="
+  background:#ecfdf5;border:1px solid #d1fae5;border-radius:12px;
+  padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
+<h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#047857;">
+  Issue — Toggles felt tedious
+</h4>
+<p style="margin:0;color:#047857;font-style:italic;">
+  “Too many switches, then I still have to hit Done.”
+</p>
+<p style="margin:8px 0 0;color:#374151;">
+  • Replaced list of toggles with <strong>icon chips</strong> (visual + label)  
+  • Multi-select in one tap; auto-save on close  
+  • Interaction steps reduced from 3 → 1
+</p>
+</div>
+</div>
+
+
+<br>
+  
+
+  <!-- ░░░  Before & After — Key Screen Improvements  ░░░ -->
+<div style="margin:40px 0;">
+    <h3 style="font:700 22px 'Raleway',sans-serif;color:#111827;margin:0 0 24px;text-align:center;">
+      Before & After — Key Screen Improvements
+    </h3>
+
+    <p style="margin: 0 0 16px; font-size: 15px; color: #374151; line-height: 1.6;">During usability testing, we found that users struggled to interpret ingredient safety and overall product health from the old monochrome interface. The redesign introduced a color-coded scorebar, risk-level indicators, and clearer hierarchy. As a result, users were able to understand product safety 43% faster and reported feeling more confident in their decisions.</p>
+  
+    <!-- 1. Product Rating Screen Comparison -->
+    <div style="margin-bottom:48px;">
+      <h4 style="font:600 18px 'Raleway',sans-serif;color:#64748b;margin:0 0 20px;text-align:center;">
+        Product Rating Screen
+      </h4>
+      
+      <div style="
+          display:flex;flex-wrap:wrap;gap:32px;justify-content:center;
+          align-items:flex-start;margin-bottom:16px;">
+        
+        <!-- Old Screen -->
+        <div style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+          <div style="
+              background:#f8fafc;border:2px dashed #e2e8f0;border-radius:12px;
+              padding:8px;margin-bottom:12px;">
+            <img src="assets/img/Orbit/Screen New/Old Rating Screen.png" loading="lazy"
+                 alt="Old rating screen with basic ingredient lists"
+                 style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+          </div>
+          <p style="
+              font:400 14px 'Raleway',sans-serif;color:#475569;line-height:1.5;
+              text-align:left;margin:0;">
+            <strong style="color:#ef4444;">Old:</strong> Basic listing of ingredients under 
+            "Negatives" and "Positives" with simple counts and an overall 0-100 score. 
+            Users struggled to interpret what the numbers meant.
+          </p>
+        </div>
+  
+        <!-- Arrow -->
+        <div style="
+            align-self:center;color:#22c55e;font-size:24px;
+            flex:0 0 auto;margin:0 8px;">
+          →
+        </div>
+  
+        <!-- New Screen -->
+        <div style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+          <div style="
+              background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;
+              padding:8px;margin-bottom:12px;">
+            <img src="assets/img/Orbit/Screen New/New Rating Screen.png" loading="lazy"
+                 alt="New rating screen with color-coded risks and badges"
+                 style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+          </div>
+          <p style="
+              font:400 14px 'Raleway',sans-serif;color:#475569;line-height:1.5;
+              text-align:left;margin:0;">
+            <strong style="color:#22c55e;">New:</strong> Prominent rating badge, 
+            traffic-light risk indicators, dietary badges (Lactose Free, Vegan), 
+            and color-coded score bar for instant comprehension.
+          </p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 2. Scanner Screen Comparison -->
+    <div style="margin-bottom:48px;">
+      <h4 style="font:600 18px 'Raleway',sans-serif;color:#64748b;margin:0 0 20px;text-align:center;">
+        Barcode Scanner Screen
+      </h4>
+      
+      <div style="
+          display:flex;flex-wrap:wrap;gap:32px;justify-content:center;
+          align-items:flex-start;margin-bottom:16px;">
+        
+        <!-- Old Screen -->
+        <div style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+          <div style="
+              background:#f8fafc;border:2px dashed #e2e8f0;border-radius:12px;
+              padding:8px;margin-bottom:12px;">
+            <img src="assets/img/Orbit/Screen New/Old Barcode Screen.png" loading="lazy"
+                 alt="Old scanner with 30-second wait time"
+                 style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+          </div>
+          <p style="
+              font:400 14px 'Raleway',sans-serif;color:#475569;line-height:1.5;
+              text-align:left;margin:0;">
+            <strong style="color:#ef4444;">Old:</strong> Camera opens, users scan, 
+            then wait 30 seconds for a separate screen to load with product details. 
+            Created frustrating delays.
+          </p>
+        </div>
+  
+        <!-- Arrow -->
+        <div style="
+            align-self:center;color:#22c55e;font-size:24px;
+            flex:0 0 auto;margin:0 8px;">
+          →
+        </div>
+  
+        <!-- New Screen -->
+        <div style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+          <div style="
+              background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;
+              padding:8px;margin-bottom:12px;">
+            <img src="assets/img/Orbit/Screen New/New Barcode Screen.png" loading="lazy"
+                 alt="New scanner with instant overlay rating"
+                 style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+          </div>
+          <p style="
+              font:400 14px 'Raleway',sans-serif;color:#475569;line-height:1.5;
+              text-align:left;margin:0;">
+            <strong style="color:#22c55e;">New:</strong> Rating appears as an overlay 
+            on the scanner in under 2 seconds. Full details available via swipe-up 
+            sheet using progressive disclosure.
+          </p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 3. Food Preferences Comparison -->
+    <div style="margin-bottom:32px;">
+      <h4 style="font:600 18px 'Raleway',sans-serif;color:#64748b;margin:0 0 20px;text-align:center;">
+        Food Preferences Screen
+      </h4>
+      
+      <div style="
+          display:flex;flex-wrap:wrap;gap:32px;justify-content:center;
+          align-items:flex-start;margin-bottom:16px;">
+        
+        <!-- Old Screen -->
+        <div style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+          <div style="
+              background:#f8fafc;border:2px dashed #e2e8f0;border-radius:12px;
+              padding:8px;margin-bottom:12px;">
+            <img src="assets/img/Orbit/Screen New/Food Preference Screen.png" loading="lazy"
+                 alt="Old preferences with toggle switches"
+                 style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+          </div>
+          <p style="
+              font:400 14px 'Raleway',sans-serif;color:#475569;line-height:1.5;
+              text-align:left;margin:0;">
+            <strong style="color:#ef4444;">Old:</strong> Long list of toggle switches 
+            requiring users to flip each one individually, then press "Done" button. 
+            Felt tedious and slow.
+          </p>
+        </div>
+  
+        <!-- Arrow -->
+        <div style="
+            align-self:center;color:#22c55e;font-size:24px;
+            flex:0 0 auto;margin:0 8px;">
+          →
+        </div>
+  
+        <!-- New Screen -->
+        <div style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+          <div style="
+              background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;
+              padding:8px;margin-bottom:12px;">
+            <img src="assets/img/Orbit/Screen New/New Food Preference Screen.png" loading="lazy"
+                 alt="New preferences with icon chips"
+                 style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+          </div>
+          <p style="
+              font:400 14px 'Raleway',sans-serif;color:#475569;line-height:1.5;
+              text-align:left;margin:0;">
+            <strong style="color:#22c55e;">New:</strong> Visual icon chips with 
+            familiar imagery enable multi-select in one tap. Auto-saves on close, 
+            reducing interaction steps from 3 to 1.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Responsive adjustments -->
+  <style>
+    @media (max-width: 768px) {
+      [style*="flex:1 1 280px"] { flex: 1 1 100% !important; max-width: none !important; }
+      [style*="align-self:center"][style*="→"] { transform: rotate(90deg); margin: 16px 0 !important; }
+    }
+  </style>
+    <!-- ░░░  /Before & After Ends ░░░ -->  
+  <br>
+  <h3 style="font:700 22px 'Raleway',sans-serif;color:#111827;margin:0 0 12px;">
+    Iteration Highlight
+  </h3>
+  <div style="
+      display:flex;gap:12px;flex-wrap:wrap;
+      margin-bottom:24px;">
+    <img src="assets/img/Orbit/Interaction Final Prototype.png" alt="v1"
+         style="flex:1 1 290px;width:100%;border-radius:12px;border:1px solid #e5e7eb;">
+
+  <!-- 5 ░ Metrics chips -->
+  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+    <span style="
+        padding:6px 12px;background:#dcfce7;border:1px solid #4ade80;
+        border-radius:9999px;font-size:13px;color:#166534;">
+      −35 % task time
+    </span>
+    <span style="
+        padding:6px 12px;background:#dcfce7;border:1px solid #4ade80;
+        border-radius:9999px;font-size:13px;color:#166534;">
+      SUS 84 / 100
+    </span>
+    <span style="
+        padding:6px 12px;background:#dcfce7;border:1px solid #4ade80;
+        border-radius:9999px;font-size:13px;color:#166534;">
+      4 / 4 understood swaps
+    </span>
+  </div>
+</div>
+
+
 
 
         </div>
