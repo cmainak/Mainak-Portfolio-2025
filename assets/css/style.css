@@ -453,160 +453,122 @@ logo-slider:after {
 
 
 
-/* About Us Section
---------------------------------*/
+/* ===== About Section ===== */
 #about {
-  padding: 90px 0;
-  background: #ffffff;
+  padding: 100px 0;
+  background: #F9FAFA
+}
+
+.about-avatar {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.about-avatar img {
+  max-width: 85%;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease-in-out;
+}
+.about-avatar img:hover {
+  transform: scale(1.03);
+}
+
+/* Headings */
+.about-title {
+  font-size: 34px;
+  font-weight: 700;
+  font-family: "Chakra Petch", sans-serif;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.about-subtitle {
+  font-size: 22px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 20px;
+}
+
+/* Highlight text */
+.highlight {
+  color: #2563eb;
+}
+
+/* Body Text */
+.about-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 15px;
   text-align: justify;
 }
 
-@media (max-width: 768px) {
-  #about{
-    padding:0;
-  }
-}
-
-
-.about-avatar{
-  padding: 30px !important;
-}
-
-.about-avatar img{
-  max-width: 80%;
-  vertical-align: middle;
-}
-
-
-
-@media (max-width: 768px) {
-  .about-avatar img{
-    max-width: 100% !important;
-    align-items: center !important;
-  }
-}
-
-.about-text h2 {
-  color: #000 !important;
-  font-family: "Chakra Petch", system-ui;
-  font-size: 30px !important;
-  line-height: 1.6;
-}
-
-.circled-text {
+/* Swoosh underline */
+.swoosh {
   position: relative;
   display: inline-block;
-}
-
-.circled-text::before {
-  content: "";
-  position: absolute;
-  top: -4px;  /* adjust vertical placement */
-  left: -8px; /* adjust horizontal placement */
-  width: calc(100% + 16px);
-  height: calc(100% + 8px);
-  border: 3px solid red;
-  border-radius: 50%;
-  pointer-events: none; /* keeps text selectable */
-}
-
-.about-lead{
-  font-family: "Chakra Petch", system-ui;
-  line-height: 1.4;
-  color: #000;
-}
-
-/* The highlighted phrase */
-.swoosh{
-  position: relative;
-  display: inline-block;       /* keeps the swoosh only under this phrase */
-  padding: 0 .15em;            /* tiny side breathing room */
+  padding: 0 .15em;
   z-index: 0;
 }
-
-/* Curved yellow shape behind the text */
-.swoosh::before{
+.swoosh::before {
   content: "";
   position: absolute;
   left: -0.1em;
   right: -0.1em;
-  bottom: 0.1em;               /* raise/lower the shape */
-  height: 0.9em;               /* thickness of the swoosh */
-  background: #FFC83A;         /* your yellow */
-  z-index: -1;
-
-  /* curve the rectangle into a pill-like arc */
-  clip-path: ellipse(70% 85% at 50% 100%);
-  /*   ^ horizontal radius, vertical radius, positioned at bottom center */
-}
-
-/* Optional: a soft shadow for depth */
-.swoosh::after{
-  content: "";
-  position: absolute;
-  left: -0.1em; right: -0.1em; bottom: 0.05em;
+  bottom: 0.1em;
   height: 0.9em;
-  background: rgba(0,0,0,.06);
-  z-index: -2;
+  background: #ffc83a;
+  z-index: -1;
   clip-path: ellipse(70% 85% at 50% 100%);
-  filter: blur(2px);
 }
 
-
-.about-text p{
-  color: #000 !important;
-  font-family: 'Chakra Petch',;
-  font-size: 18px;
-}
-
-.front, .back {
-  max-width: 100% !important;
-}
-.flip-container {
-  width: 100%;
-}
-
-
-@media (max-width: 768px) {
-  .about-text h2{
-    font-size: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .about-text p{
-    font-size: 16px;
-  }
- 
-}
-
+/* Button */
 #about .btn-get-started {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
-  display: inline-block;
-  padding: 8px 28px;
+  padding: 10px 28px;
   border-radius: 50px;
-  transition: 0.5s;
-  margin-top: 50px !important;
-  border: 2px solid #02437D;
-  color: #02437D;
+  transition: 0.3s;
+  margin-top: 20px;
+  border: 2px solid #02437d;
+  color: #02437d;
+  display: inline-block;
 }
-
 #about .btn-get-started:hover {
-  background: #02437D;
-  border: 2px solid #FF9933;
+  background: #02437d;
   color: #fff;
+  border: 2px solid #ff9933;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   #about {
-    padding: 80px 20px !important;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 28px;
+  }
+
+  .about-subtitle {
+    font-size: 18px;
+  }
+
+  .about-description {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .about-avatar img {
+    max-width: 70%;
   }
 }
-
 
 
 /*--------------------------------------------------------------
