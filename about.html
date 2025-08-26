@@ -17,7 +17,7 @@
 
 
 
-  <title>About Mainak Chakraborty – UX Researcher/Designer</title>
+  <title>About Mainak Chakraborty – UX Designer</title>
 
   <meta property="og:title" content="About Mainak Chakraborty – UX/UI Designer">
 <meta property="og:image" content="https://mainakc.netlify.app/assets/img/Mainak%20Art/Mountain.JPG">
@@ -34,156 +34,522 @@
   <link href="assets/css/style.css" rel="stylesheet">
   
   <style>
-
-    /*Floating Up Arrow Bitton */
+    /* Floating Up Arrow Button */
     .floating-up-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-
-  .floating-up-button i {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .floating-up-button i {
       color: #333;
-      font-size: 1.4rem;
-  } 
+      font-size: 1.5rem;
+    } 
+    
+    .floating-up-button:hover {
+      transform: translateY(-4px) scale(1.05);
+      background: white;  
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* About Section Responsive Styles */
+    @media screen and (max-width: 1200px) {
+      .about-main-container {
+        padding: 80px 40px !important;
+      }
+    }
+    
+    @media screen and (max-width: 768px) {
+      .about-main-container {
+        padding: 60px 20px !important;
+      }
+      
+      .about-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+      
+      .about-hero-title {
+        font-size: 32px !important;
+      }
+      
+      .about-section-title {
+        font-size: 20px !important;
+      }
+      
+      .value-item {
+        padding: 20px !important;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .about-main-container {
+        padding: 40px 16px !important;
+      }
+      
+      .about-hero-title {
+        font-size: 28px !important;
+      }
+      
+      .about-content-card,
+      .about-sidebar-card {
+        padding: 24px !important;
+      }
+    }
+    </style>
+    
+    <link rel="icon" href="assets/img/Logo2.svg" alt="Mainak Chakraborty Logo Fav icon" type="image/svg" loading="lazy">
+    </head>
+    
+    <body>
+      <!-- ======= Header ======= -->
+      <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex justify-content-between align-items-center">
+          <div id="logo">
+            <a href="index.html" class="logo-link">
+              <img src="assets/img/Logo2.svg" loading="lazy" alt="Mainak Chakraborty Logo" class="logo-img">
+              &nbsp;&nbsp; <span class="logo-text">MAINAK CHAKRABORTY</span>
+              <img src="assets/img/home.svg" alt="Home" class="home-icon">
+            </a>
+          </div>
+    
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="active" href="#about">About</a></li>
+              <li><a class="nav-link scrollto" href="work.html">Work</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+        </div>
+      </header>
+    
+      <!-- ======= Enhanced About Section ======= -->
+      <section id="about" class="about-main-container" style="
+        padding: 120px 60px;
+        font-family: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #fafafa 0%, #f0f2f5 100%);
+        color: #1e293b;
+        min-height: 100vh;
+        position: relative;">
+        
+        <!-- Background Elements -->
+        <div style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22grain%22%20width%3D%22100%22%20height%3D%22100%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%221%22%20fill%3D%22%23000%22%20opacity%3D%220.02%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22url(%23grain)%22/%3E%3C/svg%3E');
+          pointer-events: none;">
+        </div>
+    
+        <!-- Main Content Container -->
+        <div style="max-width: 1200px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1">
+    
+          <!-- Section Header -->
+          <div style="text-align: center; margin-bottom: 60px;">
+            <div style="
+              display: inline-block;
+              color: #2563eb;
+            text-align: left;
+              font-size: 12px;
+              font-weight: 600;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              margin-bottom: 16px;
+              border: 0px solid ;">
+              A Little About Me
+            </div>
+            <h1 class="about-hero-title" style="
+              font-size: 40px;
+              font-weight: 700;
+              color: #0f172a;
+              margin: 0;
+              line-height: 1.2;">
+              Hello, I'm <span style="color: #2563eb;">Mainak!</span> 
+              <span style="
+    font-size: 16px;
+    font-style: italic;
+    color: #64748b;
+    font-weight: 400;
+    vertical-align: middle;
+    margin-left: 6px;">
+    (MY-nuk)
+  </span>
+            </h1>
+          </div>
+    
+          <!-- Main Grid -->
+          <div class="about-grid" style="
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            align-items: start;">
+    
+            <!-- Left Column: Main Content -->
+            <div class="about-content-card" style="
+              background: #fff;
+              padding: 40px;
+              border-radius: 20px;
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+              border: 1px solid rgba(255, 255, 255, 0.8);">
+    
+              <!-- Main Story -->
+              <div style="margin-bottom: 32px;">
+                <p style="
+                  font-size: 18px;
+                  line-height: 1.7;
+                  color: #374151;
+                  margin-bottom: 20px;
+                  font-weight: 400;">
+                  <p>
+                    I grew up in Mumbai and did my undergrad in <strong>Mass Media</strong>. After graduation, I worked at a few companies exploring design, strategy, and consumer insights.
+                </p>
+    
+                <p style="
+                  font-size: 16px;
+                  line-height: 1.6;
+                  color: #4b5563;
+                  margin-bottom: 20px;">
+                  My UX journey started while I was working at a <strong>market research and consumer insights organization.</strong> I spent a lot of time watching how people interacted with different products and campaigns, and one thing became super clear — even the most well-planned strategies can fail if the user experience isn’t seamless. That’s when it clicked: <em>this is the problem I want to solve.<em>
+                 
+                </p>
+    
+                <p style="
+                  font-size: 16px;
+                  line-height: 1.6;
+                  color: #4b5563;
+                  margin-bottom: 20px;">
+                   I’ve always been the kind of person who loves <strong>digging into problems</strong> and finding creative ways around them. That curiosity naturally pulled me toward <strong>UX and interaction design</strong>, where I get to merge my research background with my passion for <strong>problem-solving, creativity, and technology.</strong>
+                </p>
+    
+              </div>
+              
 
-  .floating-up-button:hover {
-    transform: scale(1.1);
-    background: white;  
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  }
+              <!-- Currently / Random Facts Section -->
+        <div style="
+        background: #f9fafb;
+        padding: 32px;
+        border-radius: 20px;
+        border: 1px solid rgba(229, 231, 235, 0.8);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;">
+        <h3 style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 24px;">Outside of work, I like</h3>
 
-/* About container fix for yellow background issues */
-.about-container {
-  max-width: 1100px;
-  margin: auto;
+        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 16px; color: #4b5563;">
+          
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 20px;">🛠️</span>
+            <span>Currently obsessed with: AI-assisted design tools and their impact on creativity</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 20px;">🌄</span>
+            <span>Outdoor adventures: trekking, hiking, and camping</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 20px;">☕</span>
+            <span>Black coffee (my morning fuel!)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 20px;">🎮</span>
+            <span>Playing: FIFA, and story mode games like Far Cry</span>
+          </div>
+
+
+        </div>
+      </div>
+
+      <br>
+    
+      <!-- Contact CTA -->
+<div style="
+background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+padding: 24px;
+border-radius: 16px;
+border: 1px solid #e2e8f0;
+display: flex;
+flex-direction: column;
+gap: 12px;">
+
+<p style="
+  font-size: 16px;
+  color: #374151;
+  margin: 0;
+  font-weight: 500;">
+  Feel free to reach out. I'm open for collaboration or conversations.
+</p>
+
+<p style="
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 40px; /* reduced gap */
-  padding: 20px; /* extra padding so text doesn't hit the curve */
-  box-sizing: border-box;
-}
+  align-items: center;
+  gap: 8px;">
+  <span style="
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;">
+  </span>
+  Avg response time: 2 days
+</p>
 
+<!-- LinkedIn Button -->
+<a href="https://www.linkedin.com/in/mainakc98/" target="_blank" style="
+display: inline-block;
+margin-top: 12px;
+padding: 10px 18px;
+background: #0a66c2;
+color: #ffffff;
+font-weight: 600;
+font-size: 14px;
+text-decoration: none;
+border-radius: 12px;
+text-align: center;
+transition: background 0.2s ease;">
+Connect on LinkedIn
+</a>
 
-  @media screen and (max-width: 768px) {
-    .about-container {
-      flex-direction: column;
-      padding: 60px 20px;
-    }
+<!-- Calendly Button -->
+<a href="https://calendly.com/mainak-chak04/30min" target="_blank" style="
+  display: inline-block;
+  padding: 10px 16px;
+  background: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  text-align: center;
+  transition: background 0.2s ease;">
+  <i class="fas fa-calendar" style="margin-right: 6px;"></i> Book a time
+</a>
 
-    .about-container > div {
-      width: 100% !important;
-    }
+</div>
 
-    .about-container img {
-      max-width: 100%;
-      height: auto;
-    }
+            </div>
+    
+            <!-- Right Column: Image & Values -->
+            <div class="about-sidebar-card" style="
+              background: #fff;
+              padding: 32px;
+              border-radius: 20px;
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+              border: 1px solid rgba(255, 255, 255, 0.8);
+              position: sticky;
+              top: 120px;">
+    
+              <!-- Profile Image -->
+              <div style="text-align: center; margin-bottom: 32px;">
+                <div style="position: relative; display: inline-block;">
+                  <img src="assets/img/Mainak Art/Mountain.JPG" 
+                       alt="Mainak Chakraborty - Mountain Photo"
+                       style="
+                         width: 100%;
+                         max-width: 280px;
+                         height: 280px;
+                         object-fit: cover;
+                         border-radius: 16px;
+                         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);"
+                       loading="lazy">
+                  <!-- Location Badge -->
+                  <div style="
+                    position: absolute;
+                    bottom: 12px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 6px 12px;
+                    border-radius: 20px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: #374151;
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255, 255, 255, 0.3);">
+                    📍 Stowe, VT
+                  </div>
+                </div>
+              </div>
+    
+             <!-- Values Section (Toned Down) -->
+<div>
+  <h3 class="about-section-title" style="
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+    text-align: center;">
+    My Values
+  </h3>
 
-    .about-container ul {
-      padding-left: 0;
-    }
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    <!-- Value Item 1 -->
+    <div class="value-item" style="
+      padding: 18px;
+      background: #fafafa;
+      border-radius: 12px;
+      border-left: 3px solid #e2e8f0;
+      transition: all 0.2s ease;
+      border: 1px solid #f1f5f9;">
+      <div style="
+        font-weight: 600;
+        color: #374151;
+        font-size: 15px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;">
+        <span style="font-size: 16px;">💛</span>
+        <span>Passion is everything.</span>
+      </div>
+      <p style="
+        font-size: 14px;
+        color: #64748b;
+        margin: 0;
+        line-height: 1.5;
+        padding-left: 26px;">
+        I design with joy and purpose, driven by creativity.
+      </p>
+    </div>
+
+    <!-- Value Item 2 -->
+    <div class="value-item" style="
+      padding: 18px;
+      background: #fafafa;
+      border-radius: 12px;
+      border-left: 3px solid #e2e8f0;
+      transition: all 0.2s ease;
+      border: 1px solid #f1f5f9;">
+      <div style="
+        font-weight: 600;
+        color: #374151;
+        font-size: 15px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;">
+        <span style="font-size: 16px;">📒</span>
+        <span>Embracing Growth.</span>
+      </div>
+      <p style="
+        font-size: 14px;
+        color: #64748b;
+        margin: 0;
+        line-height: 1.5;
+        padding-left: 26px;">
+        I embrace growth through feedback, research, and practice.
+      </p>
+    </div>
+
+    <!-- Value Item 3 -->
+    <div class="value-item" style="
+      padding: 18px;
+      background: #fafafa;
+      border-radius: 12px;
+      border-left: 3px solid #e2e8f0;
+      transition: all 0.2s ease;
+      border: 1px solid #f1f5f9;">
+      <div style="
+        font-weight: 600;
+        color: #374151;
+        font-size: 15px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;">
+        <span style="font-size: 16px;">⛰</span>
+        <span>Embrace the journey.</span>
+      </div>
+      <p style="
+        font-size: 14px;
+        color: #64748b;
+        margin: 0;
+        line-height: 1.5;
+        padding-left: 26px;">
+        Challenges shape better work—and better designers.
+      </p>
+    </div>
+
+    <!-- Value Item 4 -->
+    <div class="value-item" style="
+      padding: 18px;
+      background: #fafafa;
+      border-radius: 12px;
+      border-left: 3px solid #e2e8f0;
+      transition: all 0.2s ease;
+      border: 1px solid #f1f5f9;">
+      <div style="
+        font-weight: 600;
+        color: #374151;
+        font-size: 15px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;">
+        <span style="font-size: 16px;">🤝</span>
+        <span>Be human.</span>
+      </div>
+      <p style="
+        font-size: 14px;
+        color: #64748b;
+        margin: 0;
+        line-height: 1.5;
+        padding-left: 26px;">
+        Empathy and humility always come first.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Updated hover effect for the toned-down version -->
+<style>
+  .value-item:hover {
+    transform: translateY(-2px);
+    background: #ffffff !important;
+    border-left-color: #94a3b8 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 </style>
 
-
-
-<link rel="icon" href="assets/img/Logo2.svg" alt="Mainak Chakraborty Logo Fav icon" type="image/svg" loading="lazy">
-
-</head>
-
-<body>
-
-    <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-    <div class="container d-flex justify-content-between align-items-center">
-
-      <div id="logo">
-        <a href="index.html" class="logo-link">
-          <img src="assets/img/Logo2.svg" loading="lazy" alt="Mainak Chakraborty Logo" class="logo-img">
-          &nbsp;&nbsp; <span class="logo-text">MAINAK CHAKRABORTY</span>
-          <img src="assets/img/home.svg" alt="Home" class="home-icon">
-        </a>
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-       
-          <li><a class="active" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="work.html">Work</a></li>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- Navbar -->
-    </div>
-  </header><!-- End Header -->
-  
-  <!-- ======= About Section ======= -->
-  <section id="about" style="padding: 100px 100px; font-family: 'Open Sans', sans-serif; background: #fff; color: #000;">
-    <div class="about-container">
-
-      
-      <!-- Left Column -->
-      <div style="flex: 1 1 55%; min-width: 300px;">
-        <br>
-        <br>
-        <p style="text-transform: uppercase; font-size: 12px; letter-spacing: 2px; margin-bottom: 10px;">A Little About Me</p>
-        <h2 style="font-size: 28px; margin-bottom: 20px; color: #000;">Hello, I’m <span class="swoosh">Mainak!</span> <em>(MY-nuk)</em> </h2>
-        <p class="about-lead">
-          I’m a human-centered practitioner with a background in media, advertising and consumer insights, which helps me approach design from multiple perspectives.</p>
- 
-          <p class="about-lead">In my past roles, I built a foundation in both qualitative and quantitative research, which I now use to inform design decisions. Skilled in design thinking, wireframing, prototyping, and usability testing, I focus on creating web and mobile experiences that are intuitive, accessible, and aligned with business goals.</p>
-          <p class="about-lead">I thrive in fast-paced projects, collaborating across teams, and translating complex research findings into actionable design solutions. What drives me is asking the right questions and ensuring I design with real users in mind.</p>
-  
-  <p class="about-lead"> Outside of work, you’ll find me gaming, playing football, or exploring the outdoors.</p>
-  
-  <p class="about-lead"> Feel free to reach out. I am open for collaboration or conversations. <br> <p class="about-lead">Avg response time 2 days.</p>
-        </p>
-
-
-  
-        <div style="margin-top: 30px;">
-           
-            <h2 style="font-size: 18px; margin-bottom: 15px;"></h2>
-            
-        </div>
-        
-      </div>
-
-      
-  
-      <!-- Right Column -->
-      
-
-        <div style="flex: 1 1 20%; min-width: 280px;">
-          <div style="text-align: center;">
-              <br>
-            <img src="assets/img/Mainak Art/Mountain.JPG" alt="Mainak Chakraborty - Mountain Photo" style="width: 100%; max-width: 350px; height: auto; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" loading="lazy">
-            <p style="font-size: 12px; margin-top: 10px; color: #666;">Stowe, VT</p>
-          </div>
-  
-        <div style="margin-top: 40px;">
-          <h3 style="font-size: 18px; margin-bottom: 15px;">My Values</h3>
-          <ul style="list-style: none; padding-left: 0; font-size: 15px; line-height: 1.8;">
-            <li><strong>💛 Passion is everything.</strong><br>I design with joy and purpose, driven by creativity.</li>
-            <li><strong>📒 Embracing Growth.</strong><br>I embrace growth through feedback, research, and practice.</li>
-            <li><strong>⛰ Embrace the journey.</strong><br>Challenges shape better work—and better designers.</li>
-            <li><strong>🤝 Be human.</strong><br>Empathy and humility always come first.</li>
-          </ul>
-        </div>
-      </div>
-  
-    </div>
-  </section>
+      </section>
+    
+      <!-- Add CSS animations -->
+      <style>
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+    
+        .value-item:hover {
+          transform: translateY(-2px);
+        }
+    
+        /* Smooth scrolling */
+        html {
+          scroll-behavior: smooth;
+        }
+      </style>
+    
 
  
 
