@@ -456,7 +456,7 @@ logo-slider:after {
 /* ===== About Section ===== */
 #about {
   padding: 100px 0;
-  background: #F9FAFA
+  background: #F9FAFA;
 }
 
 .about-avatar {
@@ -468,7 +468,8 @@ logo-slider:after {
 .about-avatar img {
   max-width: 85%;
   border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  background-color: #F9FAFA;
+
   transition: transform 0.3s ease-in-out;
 }
 .about-avatar img:hover {
@@ -644,8 +645,6 @@ logo-slider:after {
   }
 }
 
-
-
 /* ========== PORTFOLIO TILE STARTS ========== */
 
 
@@ -686,7 +685,6 @@ logo-slider:after {
   object-fit: contain;
   border-radius: 8px;
 }
-
 
 
 /* ========== RESPONSIVE + LAYOUT ADJUSTMENTS ========== */
