@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ManageWise Personalizing Productivity Through AI</title>
+  <link rel="stylesheet" href="assets/css/case-study-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="MW/assets/" type="image/png">
+
+<style>
+/* === CONSOLIDATED INLINE CSS === */
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #fff;
+  color: #111;
+}
+
+/* === LIGHTBOX STYLES === */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox:target { display: flex; }
+
+.lightbox-content { text-align: center; }
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 30px;
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+/* === FLOATING BUTTONS === */
+.home-button {
+  position: fixed;
+  top: 20px; right: 20px;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.home-button:hover {
+  transform: scale(1.1);
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-button i {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+}
+
+.floating-up-button {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.floating-up-button:hover {
+  transform: scale(1.1);
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.floating-up-button i {
+  color: #333;
+  font-size: 1.4rem;
+}
+
+/* === NAVIGATION PILLS === */
+.jump-pill {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 9px 22px;
+  border-radius: 2em;
+  background: transparent;
+  transition: background .17s, color .17s;
+}
+
+.jump-pill:hover,
+.jump-pill:focus {
+  background: #FFCD29 !important;
+  color: #000 !important;
+  outline: none;
+}
+
+.jump-pill.active {
+  background: #FFCD29 !important;
+  color: #fff !important;
+}
+
+/* === MAIN CONTENT STRUCTURE === */
+.top-center-image {
+  display: flex;
+  justify-content: center;
+  margin: 60px 0 30px;
+}
+
+.top-center-image img {
+  max-width: 180px;
+  height: auto;
+}
+
+.title-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title-section h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.title-section h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  color: #FFCD29;
+  margin-top: 10px;
+}
+
+.content-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0 20px 60px;
+}
+
+.left-column {
+  flex: 1 1 300px;
+  max-width: 320px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.left-column p {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.left-column em {
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #FFCD29;
+  color: #000;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.right-column {
+  flex: 2 1 600px;
+}
+
+.right-column .section {
+  margin-bottom: 40px;
+}
+
+.right-column h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.right-column p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* === RESPONSIVE JUMP LINKS BREAKPOINTS === */
+/* === JUMP NAVIGATION RESPONSIVE === */
+
+/* Base styles for jump pills */
+.jump-pill {
+  display: block;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 8px;
+  border-radius: 1.8em;
+  text-decoration: none;
+  color: #000;
+  background: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jump-pill:hover, .jump-pill.active {
+  background: #FFCD29;
+  color: #000;
+  font-weight: 600;
+}
+
+/* Large screens (desktop) */
+@media (min-width: 1025px) {
+  .jump-nav {
+    width: 430px !important;
+    max-width: 430px !important;
+  }
+  .jump-pill {
+    font-size: 1rem !important;
+    padding: 12px 16px !important;
+  }
+}
+
+/* Medium screens (tablet) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .jump-nav {
+    width: calc(100vw - 60px) !important;
+    max-width: 400px !important;
+  }
+  .jump-pill {
+    font-size: 0.95rem !important;
+    padding: 10px 12px !important;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .jump-nav {
+    width: calc(100vw - 32px) !important;
+    max-width: 360px !important;
+    padding: 6px !important;
+  }
+  
+  .jump-nav ul {
+    gap: 4px !important;
+  }
+  
+  .jump-pill {
+    font-size: 0.9rem !important;
+    padding: 8px 6px !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .jump-nav {
+    width: calc(100vw - 24px) !important;
+    max-width: 320px !important;
+    bottom: 12px !important;
+  }
+  
+  .jump-nav ul {
+    gap: 3px !important;
+  }
+  
+  .jump-pill {
+    font-size: 0.85rem !important;
+    padding: 8px 4px !important;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .jump-pill {
+    font-size: 0.8rem !important;
+    padding: 6px 3px !important;
+  }
+}
+/* === JUMP NAVIGATION RESPONSIVE ENDS === */
+
+
+/* === DISCOVER SECTION STYLES === */
+
+/* Discover section responsive rules */
+@media (max-width: 720px) {
+  [data-grid="insights"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  .interview-card {
+    grid-template-columns: 1fr !important;
+  }
+  .interview-divider {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  [data-grid="insights"] {
+    grid-template-columns: 1fr !important;
+  }
+  .survey-bar-label {
+    flex-basis: 44% !important;
+    min-width: 44% !important;
+    font-size: 13px !important;
+  }
+  .discover-section h2 {
+    font-size: 18px !important;
+  }
+}
+
+/* === COMPETITIVE CARDS RESPONSIVE RULES === */
+
+@media (max-width: 768px) {
+  .competitive-cards {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .competitive-cards {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+  }
+}
+/* === COMPETITIVE CARDS RESPONSIVE RULES ENDS === */
+
+
+
+/* === AFFINITY RESPONSIVE RULES STARTS === */
+@media (min-width: 901px) {
+  [data-grid="themes"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important; /* Force 2 equal-height rows */
+    gap: 24px !important;
+    align-items: stretch !important; /* Ensure equal heights in each row */
+  }
+}
+
+@media (max-width: 900px) {
+  [data-grid="themes"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important; /* Reset rows for tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  [data-grid="themes"] {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important; /* Reset rows for mobile */
+  }
+}
+/* === AFFINITY RESPONSIVE RULES ENDS=== */
+
+/* Persona responsive rules Starts */
+/* Replace your entire persona responsive section with this consolidated version */
+@media (max-width: 900px) {
+  [data-block="persona"] {
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    padding: 18px !important; /* Consistent padding */
+  }
+  [data-block="persona"] > div,
+  [data-block="persona"] > aside {
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-right: 0 !important; /* Remove right padding that might cause overflow */
+  }
+  [data-grid="persona-cards"] {
+    display: flex !important; /* Change from grid to flex */
+    flex-direction: column !important;
+    gap: 18px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  [data-grid="persona-cards"] > div {
+    grid-column: unset !important; /* Remove grid-column spans */
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important; /* Ensure cards don't exceed container width */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 16px !important; /* More padding for better readability */
+    box-sizing: border-box !important;
+  }
+  .persona-image {
+    height: 200px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  [data-grid="persona-cards"] > div {
+    padding: 18px !important; /* Even more padding on small screens */
+  }
+  [data-grid="persona-cards"] ul {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    padding-left: 16px !important; /* Reduce bullet indent slightly */
+  }
+}
+/* Persona responsive rules Ends */
+
+/* Define section responsive rules Ends */
+
+
+
+/* Design section responsive rules */
+@media (max-width: 1000px) {
+  .midfi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .midfi-changes-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-highlights-grid,
+  .findings-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .midfi-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Design section responsive rules Ends */
+
+
+</style>
+</head>
+
+<body>
+<!-- ▸▸ Outcomes Banner -->
+<section style="max-width:1100px;margin:16px auto 12px;padding:0 20px;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div style="flex:1 1 240px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc;padding:12px;">
+        <div style="font-size:12px;color:#64748b;margin-bottom:4px;">Add Task</div>
+        <div style="font-size:16px;color:#111827;font-weight:700;">Success —/3 • −—% time</div>
+        <div style="font-size:12px;color:#475569;">Optional date/time + priority chips</div>
+      </div>
+      <div style="flex:1 1 240px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc;padding:12px;">
+        <div style="font-size:12px;color:#64748b;margin-bottom:4px;">Ask AI</div>
+        <div style="font-size:16px;color:#111827;font-weight:700;">Clarity —/5 • Success —/3</div>
+        <div style="font-size:12px;color:#475569;">Prompt → preview → confirm</div>
+      </div>
+      <div style="flex:1 1 240px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc;padding:12px;">
+        <div style="font-size:12px;color:#64748b;margin-bottom:4px;">Usability</div>
+        <div style="font-size:16px;color:#111827;font-weight:700;">SUS — • Issues ↓</div>
+        <div style="font-size:12px;color:#475569;">Post-iteration verification</div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+<!-- ▸▸ Tasks → Flows Ribbon ─────────────────────────────── -->
+
+<section style="max-width:1100px;margin:8px auto 16px;padding:0 20px;">
+    <div style="padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fcfcfd;font-size:12px;">
+      <strong style="color:#111827;">Usability tasks → screens shown</strong>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+        <span style="padding:6px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;">Task 1 Onboarding → Onboarding mid-fi</span>
+        <span style="padding:6px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;">Task 2 Add “Buy groceries” → Add-Task</span>
+        <span style="padding:6px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;">Task 3 Ask AI (cake) → Planner + Ask AI</span>
+        <span style="padding:6px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;">Task 4 Delete scheduled → Planner list</span>
+        <span style="padding:6px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;">Task 5 Set goal → Goals</span>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ▸▸ Tasks → Flows Ribbon END -->
+  
+
+<!-- ▸▸ Quick Highlights ─────────────────────────────────── -->
+<section style="max-width:1100px; margin:0 auto 16px; padding:0 20px;">
+    <div style="border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:12px 14px;">
+      <h3 style="margin:0 0 8px; font-family:'Raleway',sans-serif; font-size:16px; color:#111827;">Quick highlights</h3>
+      <ul style="margin:6px 0 0 18px; padding:0; font-size:13px; line-height:1.7; color:#0f172a;">
+        <li>Save tasks without mandatory date/time reduced capture friction.</li>
+        <li>“Plan My Day” renamed **Ask AI**; preview → confirm improved trust.</li>
+        <li>Optional ‘More options’ button now visible at capture.</li>
+        <li>“Goal Categories” + “Add New Category” matched mental models.</li>
+        <li>Onboarding now includes verification + feature-aligned art.</li>
+      </ul>
+    </div>
+  </section>
+  <!-- ▸▸ Quick Highlights END -->
+  
+
+<!-- ▸▸ Findings → Change → Impact ───────────────────────── -->
+<section style="max-width:1100px; margin:12px auto 0; padding:0 20px;">
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+      <!-- Card 1 -->
+      <div style="border:1px dashed #e5e7eb; border-radius:12px; background:#f8fafc; padding:12px;">
+        <div style="font-size:12px; color:#64748b;">Finding</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">Date/time required slowed capture.</div>
+        <div style="height:6px;"></div>
+        <div style="font-size:12px; color:#64748b;">Change</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">Date/time optional in “More options”.</div>
+        <div style="height:6px;"></div>
+        <div style="font-size:12px; color:#64748b;">Impact</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">Median add-task time −—%; success —/3.</div>
+      </div>
+      <!-- Card 2 -->
+      <div style="border:1px dashed #e5e7eb; border-radius:12px; background:#f8fafc; padding:12px;">
+        <div style="font-size:12px; color:#64748b;">Finding</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">“Plan My Day” label mismatched expectations.</div>
+        <div style="height:6px;"></div>
+        <div style="font-size:12px; color:#64748b;">Change</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">Rename to “Ask AI”; add preview → confirm.</div>
+        <div style="height:6px;"></div>
+        <div style="font-size:12px; color:#64748b;">Impact</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">AI clarity —/5; success —/3.</div>
+      </div>
+      <!-- Card 3 -->
+      <div style="border:1px dashed #e5e7eb; border-radius:12px; background:#f8fafc; padding:12px;">
+        <div style="font-size:12px; color:#64748b;">Finding</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">Dashboard label unclear.</div>
+        <div style="height:6px;"></div>
+        <div style="font-size:12px; color:#64748b;">Change</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">“Goal Categories” + “Add New Category”.</div>
+        <div style="height:6px;"></div>
+        <div style="font-size:12px; color:#64748b;">Impact</div>
+        <div style="font-size:13px; color:#0f172a; margin-top:2px;">Goal creation time ↓; discoverability ↑.</div>
+      </div>
+    </div>
+  </section>
+  <!-- ▸▸ Findings → Change → Impact END -->
+  
+<div style="margin-top:10px; padding:10px; border:1px dashed #e5e7eb; border-radius:8px; background:#f8fafc; font-size:12px; color:#0f172a;">
+    So we will: <strong>surface priority chips, keep capture low-friction, and use transparent Ask AI (preview → confirm).</strong>
+  </div>
+  
+
+
+
+</body>
+</html>
