@@ -842,6 +842,33 @@ style="
 
   <!-- Process Section Ends -->
 
+<!-- ❶  GLOBAL UTILITIES  -->
+<style>
+  /* Shared gutter for every major band */
+  .section-gutter {
+    padding-inline:20px;           /* phones */
+    padding-block:60px;            /* keep existing 60-px top & bottom */
+  }
+  @media (min-width:640px){
+    .section-gutter{padding-inline:32px;}  /* tablets & up */
+  }
+
+  /* White “card” wrapper: vertical space only */
+  .card {
+    max-width:960px;               /* matches your design */
+    margin-inline:auto;            /* centers card */
+    padding-block:40px;
+    background:#fff;
+  }
+
+  /* Simple helper for any bento-style box */
+  .bento {
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    background:#fff;
+    box-shadow:0 1px 2px rgba(16,24,40,.04);
+  }
+</style>
 
 <!-- Discover Section Starts -->
 <section id="discover" style="padding: 60px 20px; margin: 8px auto 12px; background-color: #ffffff;">
@@ -1204,6 +1231,7 @@ style="
 </div>
 
   </section>
+
   <!--Competitve Analysis Ends-->
 
 <!-- DISCOVER SECTION ENDS -->  
@@ -1438,8 +1466,7 @@ style="
         </div>
       </div>
   
-    </div>
-  </section>
+
       <!-- Affinity Maps End -->
 
 
@@ -1581,9 +1608,7 @@ style="
     </div>
   </div>
 </div>
-
-
-
+</section>
 <!--INFORMATION ARCHITECTURE ENDS-->
 
       
@@ -1593,8 +1618,7 @@ style="
     
     
     <!--DEVELOP SECTION STARTS-->
-    
-    <!-- DEVELOP Section -->
+
 <section id="develop" style="padding: 60px 20px; background-color: #ffffff;">
     <div style="padding: 40px 30px; max-width: 960px; margin: 32px auto; background: #fff;">
       
@@ -1667,11 +1691,6 @@ style="
   </div>
 <br>
   
-</div>
-
-
-  </div>
-</section>
 
 <!-- Responsive CSS -->
 <style>
@@ -2085,12 +2104,12 @@ style="
   }
 }
 </style>
-</div> 
+
+</div>
 </section>
+    <!--DEVELOP SECTION ENDS-->
 
 
-
-    <!--DESIGN SECTION ENDS-->
 
    <!--DELIVER SECTION STARTS-->
 <section id="deliver" style="padding: 60px 20px; background-color: #ffffff;">
@@ -2299,7 +2318,6 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
     </div>
   </div>
 
-</section>
 
 
 <!-- Responsive CSS -->
@@ -2321,6 +2339,7 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
 </style>
 
 </div>
+</section>
 <!--DELIVER SECTION ENDS-->
 
     
