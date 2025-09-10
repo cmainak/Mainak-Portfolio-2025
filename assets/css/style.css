@@ -644,6 +644,12 @@ logo-slider:after {
     height: 40px !important;
   }
 }
+/* Fix unwanted italics in footer */
+#footer,
+#footer * {
+  font-style: normal !important;
+}
+
 
 /* ========== PORTFOLIO TILE STARTS ========== */
 
