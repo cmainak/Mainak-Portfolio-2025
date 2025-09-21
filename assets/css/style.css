@@ -1,5 +1,5 @@
 body {
-  background: #FAFAFA;
+  background: #FFF;
   color: #666666;
   font-family: 'Chakra Petch', sans-serif;
 }
@@ -456,7 +456,7 @@ logo-slider:after {
 /* ===== About Section ===== */
 #about {
   padding: 100px 0;
-  background: #F9FAFA;
+  background: #FFF;
 }
 
 .about-avatar {
@@ -468,7 +468,7 @@ logo-slider:after {
 .about-avatar img {
   max-width: 85%;
   border-radius: 20px;
-  background-color: #F9FAFA;
+  background-color: #fcfcfc;
 
   transition: transform 0.3s ease-in-out;
 }
