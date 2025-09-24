@@ -209,7 +209,7 @@ position: relative;">
     <!-- Profile Image -->
    <!-- Enhanced Photo Grid Section -->
 <div style="margin-bottom: 40px;">
-  <div style="
+  <div class="photo-grid" style="
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 180px 180px;
@@ -227,21 +227,6 @@ position: relative;">
       background-position: center;
       position: relative;
       overflow: hidden;">
-      <!-- Optional overlay for better text readability if needed -->
-      <div style="
-        position: absolute;
-        bottom: 12px;
-        left: 12px;
-        background: rgba(0,0,0,0.6);
-        color: white;
-        padding: 6px 12px;
-        border-radius: 16px;
-        font-size: 12px;
-        font-weight: 600;
-        backdrop-filter: blur(8px);
-        display: none;">
-        Designer
-      </div>
     </div>
     
     <!-- Photography/camera image -->
@@ -255,7 +240,7 @@ position: relative;">
     
     <!-- Hiking/outdoor image -->
     <div style="
-      background-image: url('assets/img/Mainak Art/Mainak_DoubleExposure_white.jpg');
+      background-image: url('assets/img/Mainak Art/NY.JPG');
       background-size: cover;
       background-position: center;
       position: relative;
@@ -273,23 +258,29 @@ position: relative;">
     
     <!-- Travel/lifestyle image -->
     <div style="
-    background-image: url('assets/img/Mainak Art/Coding.jpg');
-    background-size: cover;
-    background-position: center;
-    width: 250px;         /* grid column width */
-    height: 250px;        /* adjust to your image's vertical aspect ratio */
-    overflow: hidden;">
-  </div>
-  
+      background-image: url('assets/img/Mainak Art/Coding.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;">
+    </div>
   </div>
 </div>
 
 <!-- Mobile Responsive Styles -->
 <style>
+/* Tablet responsiveness */
+@media screen and (max-width: 968px) {
+  .photo-grid {
+    grid-template-rows: 160px 160px !important;
+  }
+}
+
+/* Mobile responsiveness */
 @media screen and (max-width: 768px) {
   .photo-grid {
     grid-template-columns: 1fr 1fr !important;
-    grid-template-rows: 200px 120px 120px !important;
+    grid-template-rows: 180px 140px 140px !important;
     gap: 6px !important;
   }
   
@@ -299,15 +290,26 @@ position: relative;">
   }
 }
 
+/* Small mobile responsiveness */
 @media screen and (max-width: 480px) {
   .photo-grid {
     grid-template-columns: 1fr !important;
-    grid-template-rows: 200px 120px 120px 120px 120px !important;
+    grid-template-rows: 200px 150px 150px 150px 150px !important;
+    gap: 8px !important;
   }
   
   .photo-grid > div:first-child {
     grid-column: span 1 !important;
     grid-row: span 1 !important;
+  }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 360px) {
+  .photo-grid {
+    grid-template-rows: 180px 130px 130px 130px 130px !important;
+    gap: 6px !important;
+    margin: 0 -4px;
   }
 }
 </style>
