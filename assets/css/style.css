@@ -100,7 +100,7 @@ h6 {
 }
 
 #header.header-transparent {
-  background:#fafafa;
+  background:#fff;
   
 }
 
@@ -244,91 +244,265 @@ h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Ultra-Minimal Name-Only Hero Section
+--------------------------------------------------------------*/
+:root {
+  --text-primary: #1a202c;
+  --text-secondary: #64748b;
+  --accent-primary: #02437D;
+  --accent-secondary: #f59e0b;
+  --surface: #ffffff;
+  --surface-light: #f8fafc;
+}
+
 #hero {
-  width: 100%;
-  height: 100vh;
-  background: url(../img/Background.png) top center;
-  background-size: cover;
-  position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 1024px) {
-  #hero {
-    background-attachment: fixed;
-  }
-}
-
-#hero:before {
-  content: "";
-  background: rgba(255, 255, 255, 0.6); /* semi-transparent */
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2; /* slightly above hero background */
-}
-
-#hero .hero-container {
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
+  min-height: 100vh;
+  background-color: var(--surface);
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1rem;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
   text-align: center;
-  z-index: 3; /* content should be on top of overlay */
+  max-width: 800px;
 }
 
-#hero .header-text{
-  margin: 30px 0 50px 0;
+.hero-content {
+  position: relative;
 }
 
-#hero h1 {
-  font-size: 80px;
-  font-weight: 500;
-  line-height: 56px;
-  text-transform: uppercase;
-  color: #000;
+/* Typography - Clean and Conversational */
+.greeting {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.025em;
+  /* System fonts for performance */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
+.hero-name {
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  /* Subtle gradient effect */
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Fallback for unsupported browsers */
+  color: var(--text-primary);
+}
+
+.name-accent {
+  width: 80px;
+  height: 4px;
+  background: var(--accent-primary);
+  border-radius: 2px;
+  margin: 1.5rem auto 0;
+}
+
+/* Simple decorative shapes - minimal and lightweight */
+.hero-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.shape-1 {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  opacity: 0.08;
+  top: 20%;
+  right: 15%;
+  animation: float-gentle 8s ease-in-out infinite;
+}
+
+.shape-2 {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--accent-secondary);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  opacity: 0.1;
+  bottom: 25%;
+  left: 20%;
+  animation: float-gentle 6s ease-in-out infinite reverse;
+}
+
+/* Subtle floating animation */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --accent-primary: #02437D;
+  }
+  
+  .hero-name {
+    background: none;
+    -webkit-text-fill-color: var(--text-primary);
+    color: var(--text-primary);
+  }
+  
+  .shape-1,
+  .shape-2 {
+    display: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .shape-1,
+  .shape-2 {
+    animation: none;
+  }
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  #hero h1 {
-    font-size: 50px;
-    line-height: 38px;
-    background-attachment: scroll !important;
+  .greeting {
+    font-size: 1.5rem;
   }
+  
+  .hero-name {
+    font-size: 3.5rem;
+  }
+  
+  .name-accent {
+    width: 60px;
+    height: 3px;
+  }
+  
+  .shape-1 {
+    width: 80px;
+    height: 80px;
+    top: 15%;
+    right: 10%;
+  }
+  
+  .shape-2 {
+    width: 60px;
+    height: 60px;
+    bottom: 20%;
+    left: 15%;
+  }
+}
+
+@media (max-width: 480px) {
   #hero {
-    background-size: cover;
-    background-attachment: scroll !important;
+    padding: 1rem 0.5rem;
+  }
+  
+  .greeting {
+    font-size: 1.25rem;
+  }
+  
+  .hero-name {
+    font-size: 2.75rem;
+  }
+  
+  .name-accent {
+    width: 50px;
+    margin-top: 1rem;
   }
 }
 
-
-#hero .btn-get-started {
-  font-family: 'Jura', sans-serif;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 8px 28px;
-  border-radius: 50px;
-  transition: 0.5s;
-  margin: 10px;
-  border: 2px solid #02437D;
-  color: #02437D;
+/* Print styles */
+@media print {
+  #hero {
+    background: white;
+    min-height: auto;
+    padding: 2rem 0;
+  }
+  
+  .hero-name {
+    background: none;
+    -webkit-text-fill-color: black;
+    color: black;
+  }
+  
+  .hero-shapes {
+    display: none;
+  }
 }
 
-#hero .btn-get-started:hover {
-  background: #02437D;
-  border: 2px solid #FF9933;
-  color:#fff;
+/* Focus management (though no focusable elements in this minimal version) */
+#hero:focus-within {
+  outline: none;
 }
+
+
+/* Alternative playful version */
+.greeting {
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin: 0 0 0.25rem 0;
+  /* More casual positioning */
+  text-align: left;
+  margin-left: 0.5rem;
+}
+
+.hero-name {
+  font-size: 6rem;
+  font-weight: 800;
+  /* Mix of lowercase like Cam's style */
+  text-transform: lowercase;
+  /* Slightly playful letter spacing */
+  letter-spacing: -0.03em;
+  /* Optional: fun color variation */
+  background: linear-gradient(135deg, #02437D 0%, #1E5F8F 40%, #d4a237 100%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Animation for gradient shift */
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Hero Section Ends
+--------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------
 # Sections
