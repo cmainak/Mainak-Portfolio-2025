@@ -628,11 +628,13 @@ logo-slider:after {
 
 
 /* ===== About Section ===== */
+/* ===== About Section ===== */
 #about {
   padding: 100px 0;
   background: #FFF;
 }
 
+/* Clean, Modern Profile Image Layout */
 .about-avatar {
   display: flex;
   justify-content: center;
@@ -642,15 +644,15 @@ logo-slider:after {
 .about-avatar img {
   max-width: 85%;
   border-radius: 20px;
-  background-color: #fcfcfc;
-
-  transition: transform 0.3s ease-in-out;
 }
+
 .about-avatar img:hover {
   transform: scale(1.03);
+  /* Enhanced shadow on hover - still clean and minimal */
+
 }
 
-/* Headings */
+/* Keep all your existing text styles exactly as they were */
 .about-title {
   font-size: 34px;
   font-weight: 700;
@@ -666,12 +668,10 @@ logo-slider:after {
   margin-bottom: 20px;
 }
 
-/* Highlight text */
 .highlight {
   color: #02437D;
 }
 
-/* Body Text */
 .about-description {
   font-size: 16px;
   line-height: 1.7;
@@ -680,13 +680,13 @@ logo-slider:after {
   text-align: justify;
 }
 
-/* Swoosh underline */
 .swoosh {
   position: relative;
   display: inline-block;
   padding: 0 .15em;
   z-index: 0;
 }
+
 .swoosh::before {
   content: "";
   position: absolute;
@@ -699,7 +699,6 @@ logo-slider:after {
   clip-path: ellipse(70% 85% at 50% 100%);
 }
 
-/* Button */
 #about .btn-get-started {
   font-family: "Jura", sans-serif;
   text-transform: uppercase;
@@ -714,6 +713,7 @@ logo-slider:after {
   color: #02437d;
   display: inline-block;
 }
+
 #about .btn-get-started:hover {
   background: #02437d;
   color: #fff;
@@ -744,6 +744,7 @@ logo-slider:after {
     max-width: 70%;
   }
 }
+
 
 
 /*--------------------------------------------------------------
