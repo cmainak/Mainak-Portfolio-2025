@@ -278,6 +278,28 @@ h6 {
   position: relative;
 }
 
+#hero .btn-get-started {
+  font-family: 'Chakra Petch';
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin-top: 50px !important;
+  border: 2px solid #000;
+  color: #000;
+}
+
+#hero .btn-get-started:hover {
+  background: #02437D;
+  border: 2px solid #FF9933;
+  color: #fff;
+}
+
+
 /* Typography - Clean and Conversational */
 .greeting {
   font-size: 2rem;
