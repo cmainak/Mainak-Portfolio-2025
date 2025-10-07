@@ -1,0 +1,3304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Orbit Scan - Case Study</title>
+  <link rel="stylesheet" href="assets/css/case-study-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="assets/img/Orbit/OrbitScanLogo.png" type="image/png">
+    
+  
+  <style>
+    /* === RESET === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0A0A0A;
+      color: #E5E5E5;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* === NAVIGATION === */
+
+
+    /* === NAVIGATION PILLS === */
+.jump-pill {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 9px 22px;
+  border-radius: 2em;
+  background: transparent;
+  transition: background .17s, color .17s;
+}
+
+.jump-pill:hover,
+.jump-pill:focus {
+  background: #B1D73B !important;
+  color: #000 !important;
+  outline: none;
+}
+
+.jump-pill.active {
+  background: #B1D73B !important;
+  color: #fff !important;
+}
+
+/* === JUMP NAVIGATION RESPONSIVE === */
+
+/* Base styles for jump pills */
+.jump-pill {
+  display: block;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 8px;
+  border-radius: 1.8em;
+  text-decoration: none;
+  color: #000;
+  background: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jump-pill:hover, .jump-pill.active {
+  background: #B1D73B;
+  color: #000;
+  font-weight: 600;
+}
+
+/* Large screens (desktop) */
+@media (min-width: 1025px) {
+  .jump-nav {
+    width: 430px !important;
+    max-width: 430px !important;
+  }
+  .jump-pill {
+    font-size: 1rem !important;
+    padding: 12px 16px !important;
+  }
+}
+
+/* Medium screens (tablet) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .jump-nav {
+    width: calc(100vw - 60px) !important;
+    max-width: 400px !important;
+  }
+  .jump-pill {
+    font-size: 0.95rem !important;
+    padding: 10px 12px !important;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .jump-nav {
+    width: calc(100vw - 32px) !important;
+    max-width: 360px !important;
+    padding: 6px !important;
+  }
+  
+  .jump-nav ul {
+    gap: 4px !important;
+  }
+  
+  .jump-pill {
+    font-size: 0.9rem !important;
+    padding: 8px 6px !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .jump-nav {
+    width: calc(100vw - 24px) !important;
+    max-width: 320px !important;
+    bottom: 12px !important;
+  }
+  
+  .jump-nav ul {
+    gap: 3px !important;
+  }
+  
+  .jump-pill {
+    font-size: 0.85rem !important;
+    padding: 8px 4px !important;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .jump-pill {
+    font-size: 0.8rem !important;
+    padding: 6px 3px !important;
+  }
+}
+/* === JUMP NAVIGATION RESPONSIVE ENDS === */
+/* === FLOATING BUTTONS === */
+
+.home-button {
+  position: fixed;
+  top: 20px; /* Distance from top */
+  right: 20px; /* Stick to the right instead of left */
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Remove transform used for centering */
+.home-button:hover {
+  transform: scale(1.1); /* Only scale now */
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-button i {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+}
+/* === FLOATING BUTTONS ENDS === */
+
+
+
+    /* === HERO SECTION === */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 140px 80px 80px;
+      background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(177, 215, 59, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 8px 18px;
+      background: rgba(177, 215, 59, 0.12);
+      border: 1px solid rgba(177, 215, 59, 0.3);
+      border-radius: 24px;
+      color: #B1D73B;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #B1D73B 0%, #8FB830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(20px, 2.5vw, 32px);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 900px;
+      line-height: 1.5;
+      margin-bottom: 48px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 60px;
+      margin-top: 60px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 600;
+    }
+
+    .meta-value {
+      font-size: 16px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* === SECTION HEADERS === */
+    .section-header {
+      text-align: center;
+      padding: 120px 80px 60px;
+      background: #0A0A0A;
+    }
+
+    .section-tag {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #B1D73B;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #fff;
+      max-width: 1000px;
+      margin: 0 auto 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .section-title .highlight {
+      color: #B1D73B;
+      font-weight: 900;
+    }
+
+    .section-description {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* === FULL WIDTH IMAGE SECTION === */
+    .full-image-section {
+      width: 100%;
+      padding: 80px 0;
+      background: #000;
+    }
+
+    .full-image-wrapper {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    .full-image-wrapper img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    }
+
+    /* === CONTENT SECTION === */
+    .content-section {
+      padding: 80px 80px;
+      background: #0A0A0A;
+    }
+
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 80px;
+    }
+
+    .content-block h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .content-block p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 16px;
+    }
+
+    .highlight-box {
+      background: rgba(177, 215, 59, 0.08);
+      border-left: 4px solid #B1D73B;
+      padding: 32px;
+      border-radius: 12px;
+      margin: 32px 0;
+    }
+
+    .highlight-box p {
+      font-size: 18px;
+      font-weight: 500;
+      color: #B1D73B;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* === STAT BOX === */
+    .stat-box {
+      background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 48px;
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .stat-number {
+      font-size: 72px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #B1D73B 0%, #8FB830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .stat-label {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+
+    /* === PROCESS CARDS === */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin: 80px 0;
+    }
+
+    .process-card {
+      background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px 32px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #B1D73B 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .process-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(177, 215, 59, 0.3);
+    }
+
+    .process-card:hover::before {
+      opacity: 1;
+    }
+
+    .process-number {
+      font-size: 14px;
+      color: #B1D73B;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .process-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .process-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    /* === TABLE === */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 40px 0;
+      background: #0F0F0F;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 20px 24px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    th {
+      background: rgba(177, 215, 59, 0.08);
+      color: #B1D73B;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* === INSIGHTS GRID === */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 60px 0;
+    }
+
+    .insight-card {
+      background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .insight-number {
+      font-size: 56px;
+      font-weight: 900;
+      color: #B1D73B;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .insight-label {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    /* === QUOTE === */
+    .quote-section {
+      padding: 100px 80px;
+      background: #0A0A0A;
+      text-align: center;
+    }
+
+    .quote-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .quote-text {
+      font-size: clamp(24px, 3vw, 42px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: #fff;
+      margin-bottom: 32px;
+      letter-spacing: -0.5px;
+    }
+
+    .quote-author {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+      font-style: italic;
+    }
+
+    /* === LIST ITEMS === */
+    .bullet-list {
+      list-style: none;
+      margin: 32px 0;
+    }
+
+    .bullet-list li {
+      padding-left: 32px;
+      margin-bottom: 16px;
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+    }
+
+    .bullet-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      background: #B1D73B;
+      border-radius: 50%;
+    }
+
+    /* === FOOTER === */
+    .footer-section {
+      padding: 80px 80px 60px;
+      background: #000;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-cta {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 32px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 18px 48px;
+      background: linear-gradient(135deg, #B1D73B 0%, #8FB830 100%);
+      color: #000;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(177, 215, 59, 0.3);
+    }
+
+    /* === BACK TO TOP === */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 56px;
+      height: 56px;
+      background: rgba(177, 215, 59, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 999;
+      text-decoration: none;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      background: #B1D73B;
+      box-shadow: 0 12px 30px rgba(177, 215, 59, 0.3);
+    }
+
+    .back-to-top i {
+      color: #000;
+      font-size: 20px;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1200px) {
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .insights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 20px 24px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero-section {
+        padding: 100px 24px 60px;
+      }
+      .hero-meta {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .section-header {
+        padding: 80px 24px 40px;
+      }
+      .content-section {
+        padding: 60px 24px;
+      }
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+      .full-image-wrapper {
+        padding: 0 24px;
+      }
+      .quote-section {
+        padding: 60px 24px;
+      }
+      .footer-section {
+        padding: 60px 24px 40px;
+      }
+    }
+
+    /* === SMOOTH ANIMATIONS === */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    /* === PERSONA RESPONSIVE STYLES === */
+    
+    /* Tablet (≤ 1024px) */
+    @media (max-width: 1024px) {
+      .persona-container-responsive {
+        padding: 48px 40px !important;
+      }
+      
+      .persona-grid-responsive {
+        gap: 40px !important;
+      }
+      
+      .persona-title {
+        font-size: 28px !important;
+        margin-bottom: 40px !important;
+      }
+      
+      .persona-subtitle {
+        font-size: 16px !important;
+      }
+    }
+    
+    /* Tablet Portrait & Mobile Landscape (≤ 768px) */
+    @media (max-width: 768px) {
+      .persona-container-responsive {
+        padding: 40px 32px !important;
+        margin-bottom: 40px !important;
+      }
+      
+      .persona-title {
+        font-size: 26px !important;
+        margin-bottom: 32px !important;
+      }
+      
+      .persona-subtitle {
+        font-size: 15px !important;
+      }
+      
+      /* Stack persona grid */
+      .persona-grid-responsive {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      
+      /* Center photo on mobile */
+      .persona-photo-wrapper {
+        justify-self: center;
+      }
+      
+      .persona-photo {
+        width: 180px !important;
+        height: 180px !important;
+      }
+      
+      .persona-bio {
+        font-size: 15px !important;
+        text-align: center !important;
+      }
+      
+      /* Stack quick facts */
+      .quick-facts-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      
+      /* Center chips */
+      .chips-responsive {
+        justify-content: center !important;
+      }
+      
+      /* Stack bottom cards */
+      .bottom-cards-responsive {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+    }
+    
+    /* Mobile Portrait (≤ 480px) */
+    @media (max-width: 480px) {
+      .persona-container-responsive {
+        padding: 32px 24px !important;
+        border-radius: 20px !important;
+      }
+      
+      .persona-title {
+        font-size: 24px !important;
+        margin-bottom: 28px !important;
+      }
+      
+      .persona-subtitle {
+        font-size: 14px !important;
+      }
+      
+      .persona-grid-responsive {
+        gap: 28px !important;
+      }
+      
+      /* Smaller photo on small screens */
+      .persona-photo {
+        width: 160px !important;
+        height: 160px !important;
+      }
+      
+      .persona-bio {
+        font-size: 14px !important;
+        margin-bottom: 24px !important;
+      }
+      
+      /* Smaller chips */
+      .chips-responsive span {
+        font-size: 12px !important;
+        padding: 8px 14px !important;
+      }
+      
+      .chips-responsive svg {
+        width: 12px !important;
+        height: 12px !important;
+      }
+      
+      /* Tighter bottom cards */
+      .bottom-cards-responsive > div {
+        padding: 20px !important;
+      }
+      
+      .bottom-cards-responsive h5 {
+        font-size: 12px !important;
+      }
+      
+      .bottom-cards-responsive p {
+        font-size: 13px !important;
+      }
+    }
+    
+    /* Extra Small (≤ 360px) */
+    @media (max-width: 360px) {
+      .persona-container-responsive {
+        padding: 24px 20px !important;
+      }
+      
+      .persona-title {
+        font-size: 22px !important;
+      }
+      
+      .persona-photo {
+        width: 140px !important;
+        height: 140px !important;
+      }
+      
+      .quick-facts-grid > div {
+        padding: 14px 16px !important;
+      }
+    }
+     /* === PERSONA RESPONSIVE STYLES ENDS === */
+
+    /* === COMPETITIVE ANALYSIS RESPONSIVE STYLES === */
+    
+    /* Tablet (≤ 1024px) */
+    @media (max-width: 1024px) {
+      .competitive-analysis-responsive {
+        padding: 48px 40px !important;
+      }
+      
+      .comp-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+      }
+      
+      .comp-cards-grid article:last-child {
+        grid-column: 1 / -1;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .comp-title {
+        font-size: 28px !important;
+      }
+    }
+    
+    /* Tablet Portrait (≤ 768px) */
+    @media (max-width: 768px) {
+      .competitive-analysis-responsive {
+        padding: 40px 32px !important;
+        margin-bottom: 40px !important;
+      }
+      
+      .comp-title {
+        font-size: 26px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .comp-description {
+        font-size: 15px !important;
+        margin-bottom: 28px !important;
+      }
+      
+      .comp-cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      
+      .comp-cards-grid article:last-child {
+        grid-column: auto;
+        max-width: 100%;
+      }
+      
+      .comp-chips-responsive,
+      .takeaway-chips-responsive {
+        justify-content: center !important;
+      }
+      
+      .table-responsive {
+        margin: 0 -32px;
+        padding: 0 32px;
+      }
+    }
+    
+    /* Mobile (≤ 480px) */
+    @media (max-width: 480px) {
+      .competitive-analysis-responsive {
+        padding: 32px 24px !important;
+        border-radius: 20px !important;
+      }
+      
+      .comp-title {
+        font-size: 24px !important;
+      }
+      
+      .comp-description {
+        font-size: 14px !important;
+      }
+      
+      .comp-cards-grid article {
+        padding: 24px !important;
+      }
+      
+      .comp-chips-responsive span,
+      .takeaway-chips-responsive span {
+        font-size: 12px !important;
+        padding: 8px 14px !important;
+      }
+      
+      .table-responsive {
+        margin: 0 -24px;
+        padding: 0 24px;
+      }
+      
+      .table-responsive table {
+        font-size: 12px !important;
+      }
+      
+      .table-responsive th,
+      .table-responsive td {
+        padding: 10px 8px !important;
+      }
+    }
+    
+    /* Extra Small (≤ 360px) */
+    @media (max-width: 360px) {
+      .competitive-analysis-responsive {
+        padding: 24px 20px !important;
+      }
+      
+      .comp-title {
+        font-size: 22px !important;
+      }
+      
+      .comp-cards-grid article {
+        padding: 20px !important;
+      }
+    }
+    
+    /* Card Hover Effect (Desktop only) */
+    @media (min-width: 1025px) {
+      .comp-cards-grid article:hover {
+        transform: translateY(-4px);
+        border-color: rgba(177, 215, 59, 0.3);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+      /* === COMPETITIVE ANALYSIS RESPONSIVE STYLES ENDS === */
+
+  
+    /* === AFFINITY MAPPING RESPONSIVE STYLES === */
+    
+    /* Tablet (≤ 1024px) */
+    @media (max-width: 1024px) {
+      .affinity-mapping-responsive {
+        padding: 48px 40px !important;
+      }
+      
+      .affinity-title {
+        font-size: 28px !important;
+      }
+      
+      .sticky-notes-grid {
+        gap: 20px !important;
+      }
+    }
+    
+    /* Tablet Portrait (≤ 768px) */
+    @media (max-width: 768px) {
+      .affinity-mapping-responsive {
+        padding: 40px 32px !important;
+        margin-bottom: 40px !important;
+      }
+      
+      .affinity-title {
+        font-size: 26px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .affinity-description {
+        font-size: 15px !important;
+        margin-bottom: 32px !important;
+      }
+      
+      .sticky-notes-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+    }
+    
+    /* Mobile (≤ 480px) */
+    @media (max-width: 480px) {
+      .affinity-mapping-responsive {
+        padding: 32px 24px !important;
+        border-radius: 20px !important;
+      }
+      
+      .affinity-title {
+        font-size: 24px !important;
+      }
+      
+      .affinity-description {
+        font-size: 14px !important;
+      }
+      
+      .sticky-notes-grid article {
+        padding: 24px !important;
+      }
+      
+      .sticky-notes-grid h4 {
+        font-size: 16px !important;
+      }
+      
+      .sticky-notes-grid p {
+        font-size: 13px !important;
+      }
+    }
+    
+    /* Extra Small (≤ 360px) */
+    @media (max-width: 360px) {
+      .affinity-mapping-responsive {
+        padding: 24px 20px !important;
+      }
+      
+      .affinity-title {
+        font-size: 22px !important;
+      }
+      
+      .sticky-notes-grid article {
+        padding: 20px !important;
+      }
+    }
+    
+    /* Hover effect (desktop only) - NO ROTATION */
+    @media (min-width: 769px) {
+      .sticky-notes-grid article:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      }
+    }
+        /* === AFFINITY MAPPING RESPONSIVE STYLES ENDS === */
+    
+
+
+
+
+  </style>
+</head>
+
+<body>
+
+     <!-- Bottom-Fixed Jump Navigation Pills STARTS-->
+<nav aria-label="Case Study Navigation" class="jump-nav"
+style="
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: calc(100vw - 40px);
+  max-width: 430px;
+  min-width: 280px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
+  border-radius: 2.2em;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+">
+<ul style="
+  margin: 0; padding: 0; list-style: none;
+  display: flex; gap: 6px; align-items: center; 
+  width: 100%; justify-content: space-between;
+">
+  <li style="flex: 1;"><a href="#discover" class="jump-pill">Discover</a></li>
+  <li style="flex: 1;"><a href="#define" class="jump-pill">Define</a></li>
+  <li style="flex: 1;"><a href="#develop" class="jump-pill">Develop</a></li>
+  <li style="flex: 1;"><a href="#deliver" class="jump-pill">Deliver</a></li>
+</ul>
+</nav>
+<!-- Bottom-Fixed Jump Navigation Pills ENDS-->
+    
+
+<!-- Floating Home Button -->
+      <a href="work.html" class="home-button">
+        <i class="fas fa-home"></i>
+      </a>
+    <!-- Floating Home Button Ends -->
+    
+ 
+  <!-- Hero Section -->
+  <section class="hero-section" id="overview">
+    <div class="hero-content">
+      <div class="project-tag">UX/UI Design • Mobile App</div>
+      <h1 class="hero-title">
+        <span class="highlight">Orbit Scan:</span><br>
+        Smarter, Healthier<br>
+        Product Choices
+      </h1>
+      <p class="hero-subtitle">
+        Helping shoppers make confident, informed food decisions in seconds through personalized health insights and instant barcode scanning.
+      </p>
+      
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Product Design (UX/UI)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">10 Weeks</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Tools</span>
+          <span class="meta-value">Figma, FigJam, Google Forms, Zoom</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Team</span>
+          <span class="meta-value">Solo (peer testers)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cover Image -->
+  <section class="full-image-section">
+    <div class="full-image-wrapper">
+      <img src="assets/img/Orbit/Orbit Scan Cover.png" alt="Orbit Scan App Interface" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Background -->
+  <section class="content-section">
+    <div class="content-container">
+      <div class="content-grid">
+        <div class="content-block">
+          <h3>Background</h3>
+          <p>Orbit Scan is designed to empower shoppers to make healthier, more informed food choices in seconds by decoding complex product labels and providing clear, personalized health insights.</p>
+          <p>The inspiration came from observing a friend with dietary restrictions—struggling to decipher ingredient lists and marketing claims during routine grocery shopping.</p>
+        </div>
+        <div class="content-block">
+          <div class="highlight-box">
+            <p>In the U.S., 65% of shoppers report difficulty interpreting food labels, and 72% want clearer ingredient information.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="content-block">
+          <h3>Problem</h3>
+          <p>Shoppers—especially those with dietary restrictions—routinely encounter confusing labels, unclear ingredient lists, and product health claims that complicate their buying decisions.</p>
+          <ul class="bullet-list">
+            <li>Confusing ingredient lists</li>
+            <li>Hard-to-read nutrition labels</li>
+            <li>Time spent Googling food additives</li>
+            <li>Lack of confidence in product choices</li>
+          </ul>
+        </div>
+        <div class="content-block">
+          <h3>Design Challenge</h3>
+          <div class="highlight-box">
+            <p>"How might we transform complex food labels into instant, personalized health insights that help shoppers make confident decisions at the aisle in seconds?"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section-header">
+    <div class="section-tag">Process</div>
+    <h2 class="section-title">
+      The <span class="highlight">Double Diamond</span> Approach
+    </h2>
+    <p class="section-description">
+      Evidence-based design methodology grounding each iteration in real user pain points
+    </p>
+  </section>
+
+  <section class="content-section">
+    <div class="content-container">
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-number">01</div>
+          <h3>Discover</h3>
+          <p>Surveys, interviews, competitive analysis, and desk research to understand shopper pain points.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">02</div>
+          <h3>Define</h3>
+          <p>Affinity mapping, persona development, and problem statement refinement.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">03</div>
+          <h3>Develop</h3>
+          <p>Wireframes, prototypes, and iterative usability testing with target users.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">04</div>
+          <h3>Deliver</h3>
+          <p>High-fidelity designs, design system, and launch-ready solution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discover -->
+  <section class="section-header" id="discover">
+    <div class="section-tag">01 / Discover</div>
+    <h2 class="section-title">
+      Exploring the <span class="highlight">Shopper's Reality</span>
+    </h2>
+  </section>
+
+  <section class="content-section">
+    <div class="content-container">
+      <div class="content-block">
+        <h3>Research Methodology</h3>
+        <p><strong>Participant Recruitment:</strong> 22 grocery shoppers (ages 19–52; 40% dietary restrictions) recruited via Reddit nutrition forums and campus bulletin boards.</p>
+        
+        <p><strong>Methods Used:</strong></p>
+        <ul class="bullet-list">
+          <li>Google Forms survey – Likert Scale, multi-choice & open-ended</li>
+          <li>4 semi-structured interviews (Zoom + in-store shadowing)</li>
+          <li>Competitive audit – Yuka, Fooducate, Open Food Facts</li>
+          <li>Desk research (FDA guidelines, regulatory shifts)</li>
+        </ul>
+
+        <p><strong>Key Market & Regulatory Insights:</strong> In 2024–25, the FDA spotlighted clearer nutrition labeling and warnings for high-risk nutrients. European studies affirm that traffic-light color cues reduce calorie purchases and accelerate decision-making.</p>
+
+        <p><strong> Color-cue proofs:</strong> Meta-analyses of European “traffic-light” labels show a 6-7 % drop in calorie purchases and faster decision speed when green/yellow/ red nutrient cues are present, validating the power of at-a-glance visuals.</p>
+      </div>
+
+<br>
+<br>
+
+      
+      <!-- Competitive Analysis Container -->
+      <div class="competitive-analysis-responsive" style="
+        background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 56px 48px;
+        margin-bottom: 56px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
+
+        <!-- Section Label -->
+        <div style="
+          display: inline-block;
+          padding: 6px 14px;
+          background: rgba(177, 215, 59, 0.12);
+          border: 1px solid rgba(177, 215, 59, 0.3);
+          border-radius: 20px;
+          margin-bottom: 24px;">
+          <span style="
+            color: #B1D73B;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-family: 'Inter', sans-serif;">
+            Competitive Analysis
+          </span>
+        </div>
+
+        <!-- Header -->
+        <h3 class="comp-title" style="
+          font-family: 'Inter', sans-serif;
+          font-size: 32px;
+          font-weight: 800;
+          color: #fff;
+          margin: 0 0 16px;
+          letter-spacing: -1px;
+          line-height: 1.2;">
+          Learning from the Competition
+        </h3>
+
+        <p class="comp-description" style="
+          margin: 0 0 32px;
+          font-size: 16px;
+          line-height: 1.7;
+          color: rgba(255, 255, 255, 0.7);
+          max-width: 800px;">
+          We benchmarked Orbit Scan against three popular label-scanning apps to uncover strengths 
+          we should keep and gaps we can close around transparency, personalization, and shopper trust.
+        </p>
+
+        <!-- Key Opportunities Chips -->
+        <div class="comp-chips-responsive" style="
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-bottom: 40px;">
+          
+          <span style="
+            padding: 8px 16px;
+            font-size: 13px;
+            border: 1px solid rgba(177, 215, 59, 0.3);
+            border-radius: 24px;
+            background: rgba(177, 215, 59, 0.08);
+            color: #B1D73B;
+            font-weight: 500;
+            letter-spacing: 0.3px;">
+            Instant traffic-light health scores
+          </span>
+          
+          <span style="
+            padding: 8px 16px;
+            font-size: 13px;
+            border: 1px solid rgba(177, 215, 59, 0.3);
+            border-radius: 24px;
+            background: rgba(177, 215, 59, 0.08);
+            color: #B1D73B;
+            font-weight: 500;
+            letter-spacing: 0.3px;">
+            Plain-language additive facts
+          </span>
+          
+          <span style="
+            padding: 8px 16px;
+            font-size: 13px;
+            border: 1px solid rgba(177, 215, 59, 0.3);
+            border-radius: 24px;
+            background: rgba(177, 215, 59, 0.08);
+            color: #B1D73B;
+            font-weight: 500;
+            letter-spacing: 0.3px;">
+            Personalized allergy & diet filters
+          </span>
+          
+          <span style="
+            padding: 8px 16px;
+            font-size: 13px;
+            border: 1px solid rgba(177, 215, 59, 0.3);
+            border-radius: 24px;
+            background: rgba(177, 215, 59, 0.08);
+            color: #B1D73B;
+            font-weight: 500;
+            letter-spacing: 0.3px;">
+            U.S. FDA regulation alignment
+          </span>
+          
+          <span style="
+            padding: 8px 16px;
+            font-size: 13px;
+            border: 1px solid rgba(177, 215, 59, 0.3);
+            border-radius: 24px;
+            background: rgba(177, 215, 59, 0.08);
+            color: #B1D73B;
+            font-weight: 500;
+            letter-spacing: 0.3px;">
+            Rewards to sustain engagement
+          </span>
+        </div>
+
+        <!-- Competitor Cards Grid -->
+        <div class="comp-cards-grid" style="
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          margin-bottom: 48px;">
+
+          <!-- Yuka Card -->
+          <article style="
+            background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;">
+
+            <!-- App Header -->
+            <div style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 24px;">
+              <div style="
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font: 700 18px 'Inter', sans-serif;">
+                YK
+              </div>
+              <div>
+                <h4 style="
+                  margin: 0 0 4px;
+                  font: 700 18px 'Inter', sans-serif;
+                  color: #fff;
+                  letter-spacing: -0.3px;">
+                  Yuka
+                </h4>
+                <p style="
+                  margin: 0;
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.5);">
+                  Food + cosmetic scanner
+                </p>
+              </div>
+            </div>
+
+            <!-- Strengths -->
+            <div style="margin-bottom: 20px;">
+              <h5 style="
+                margin: 0 0 10px;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #4ade80;
+                font-weight: 700;">
+                Strengths
+              </h5>
+              <ul style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 14px;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.75);">
+                <li>Simple traffic-light scores (nutrition + additives)</li>
+                <li>Auto suggests healthier swaps</li>
+                <li>Large EU-centric product DB</li>
+              </ul>
+            </div>
+
+            <!-- Gaps -->
+            <div style="margin-bottom: 20px;">
+              <h5 style="
+                margin: 0 0 10px;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #ef4444;
+                font-weight: 700;">
+                Gaps
+              </h5>
+              <ul style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 14px;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.75);">
+                <li>Limited personalization (allergies, diets)</li>
+                <li>Lacks U.S.-specific ingredient regs</li>
+                <li>No reward/loyalty system</li>
+              </ul>
+            </div>
+
+            <!-- User Pain -->
+            <div style="
+              padding: 16px;
+              background: rgba(239, 68, 68, 0.08);
+              border: 1px dashed rgba(239, 68, 68, 0.3);
+              border-left: 3px solid #ef4444;
+              border-radius: 10px;
+              margin-bottom: 12px;">
+              <p style="
+                margin: 0;
+                font-size: 13px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;">
+                "Great at warnings, but can't remember my gluten allergy."
+              </p>
+            </div>
+
+            <!-- Rating -->
+            <div style="
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.5);
+              padding-top: 12px;
+              border-top: 1px solid rgba(255, 255, 255, 0.06);">
+              <span style="color: #fbbf24;">★ 4.7</span> App Store – praised for clarity, criticized for U.S. gaps
+            </div>
+          </article>
+
+          <!-- Fooducate Card -->
+          <article style="
+            background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;">
+
+            <!-- App Header -->
+            <div style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 24px;">
+              <div style="
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font: 700 18px 'Inter', sans-serif;">
+                FD
+              </div>
+              <div>
+                <h4 style="
+                  margin: 0 0 4px;
+                  font: 700 18px 'Inter', sans-serif;
+                  color: #fff;
+                  letter-spacing: -0.3px;">
+                  Fooducate
+                </h4>
+                <p style="
+                  margin: 0;
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.5);">
+                  A–F food grades
+                </p>
+              </div>
+            </div>
+
+            <!-- Strengths -->
+            <div style="margin-bottom: 20px;">
+              <h5 style="
+                margin: 0 0 10px;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #4ade80;
+                font-weight: 700;">
+                Strengths
+              </h5>
+              <ul style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 14px;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.75);">
+                <li>Easy-to-read letter grades</li>
+                <li>Community recipe ideas</li>
+                <li>Integrates calorie tracking</li>
+              </ul>
+            </div>
+
+            <!-- Gaps -->
+            <div style="margin-bottom: 20px;">
+              <h5 style="
+                margin: 0 0 10px;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #ef4444;
+                font-weight: 700;">
+                Gaps
+              </h5>
+              <ul style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 14px;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.75);">
+                <li>Paywall hides allergy filters</li>
+                <li>User-generated DB = inconsistent data</li>
+                <li>No additive risk explanations</li>
+              </ul>
+            </div>
+
+            <!-- User Pain -->
+            <div style="
+              padding: 16px;
+              background: rgba(239, 68, 68, 0.08);
+              border: 1px dashed rgba(239, 68, 68, 0.3);
+              border-left: 3px solid #ef4444;
+              border-radius: 10px;
+              margin-bottom: 12px;">
+              <p style="
+                margin: 0;
+                font-size: 13px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;">
+                "Grades are nice, but I still Google every unfamiliar additive."
+              </p>
+            </div>
+
+            <!-- Rating -->
+            <div style="
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.5);
+              padding-top: 12px;
+              border-top: 1px solid rgba(255, 255, 255, 0.06);">
+              <span style="color: #fbbf24;">★ 4.6</span> Play Store – common feedback: "Data gaps & ads"
+            </div>
+          </article>
+
+          <!-- Open Food Facts Card -->
+          <article style="
+            background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;">
+
+            <!-- App Header -->
+            <div style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 24px;">
+              <div style="
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font: 700 16px 'Inter', sans-serif;">
+                OFF
+              </div>
+              <div>
+                <h4 style="
+                  margin: 0 0 4px;
+                  font: 700 18px 'Inter', sans-serif;
+                  color: #fff;
+                  letter-spacing: -0.3px;">
+                  Open Food Facts
+                </h4>
+                <p style="
+                  margin: 0;
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.5);">
+                  Crowd-sourced database
+                </p>
+              </div>
+            </div>
+
+            <!-- Strengths -->
+            <div style="margin-bottom: 20px;">
+              <h5 style="
+                margin: 0 0 10px;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #4ade80;
+                font-weight: 700;">
+                Strengths
+              </h5>
+              <ul style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 14px;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.75);">
+                <li>4 M+ products, open API</li>
+                <li>Nutri-Score & NOVA processing indexes</li>
+                <li>Transparency-first ethos</li>
+              </ul>
+            </div>
+
+            <!-- Gaps -->
+            <div style="margin-bottom: 20px;">
+              <h5 style="
+                margin: 0 0 10px;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #ef4444;
+                font-weight: 700;">
+                Gaps
+              </h5>
+              <ul style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 14px;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.75);">
+                <li>UI feels dated; steep learn-curve</li>
+                <li>No personalization or alternative suggestions</li>
+                <li>Quality depends on user-submitted photos</li>
+              </ul>
+            </div>
+
+            <!-- User Pain -->
+            <div style="
+              padding: 16px;
+              background: rgba(239, 68, 68, 0.08);
+              border: 1px dashed rgba(239, 68, 68, 0.3);
+              border-left: 3px solid #ef4444;
+              border-radius: 10px;
+              margin-bottom: 12px;">
+              <p style="
+                margin: 0;
+                font-size: 13px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;">
+                "Great data, but too much scrolling to get quick answers."
+              </p>
+            </div>
+
+            <!-- Rating -->
+            <div style="
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.5);
+              padding-top: 12px;
+              border-top: 1px solid rgba(255, 255, 255, 0.06);">
+              <span style="color: #fbbf24;">★ 4.4</span> GitHub – loved by power users, not casual shoppers
+            </div>
+          </article>
+
+        </div><!-- /comp-cards-grid -->
+
+        <!-- Feature Comparison Table -->
+        <div style="margin-bottom: 40px;">
+          <h4 style="
+            margin: 0 0 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.3px;">
+            Feature Comparison Matrix
+          </h4>
+
+          <div class="table-responsive" style="overflow-x: auto;">
+            <table style="
+              width: 100%;
+              min-width: 600px;
+              border-collapse: collapse;
+              background: rgba(0, 0, 0, 0.3);
+              border-radius: 12px;
+              overflow: hidden;">
+              <thead>
+                <tr style="background: rgba(177, 215, 59, 0.08);">
+                  <th style="
+                    padding: 16px;
+                    text-align: left;
+                    font-size: 13px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    color: #B1D73B;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Key Feature
+                  </th>
+                  <th style="
+                    padding: 16px;
+                    text-align: center;
+                    font-size: 13px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    color: #B1D73B;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Yuka
+                  </th>
+                  <th style="
+                    padding: 16px;
+                    text-align: center;
+                    font-size: 13px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    color: #B1D73B;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Fooducate
+                  </th>
+                  <th style="
+                    padding: 16px;
+                    text-align: center;
+                    font-size: 13px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    color: #B1D73B;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Open Food Facts
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="
+                    padding: 14px 16px;
+                    color: rgba(255, 255, 255, 0.8);
+                    font-size: 14px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Personalized allergy filters
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: #ef4444;
+                    font-size: 18px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    ✗
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: rgba(255, 255, 255, 0.6);
+                    font-size: 13px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Paywall
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: #ef4444;
+                    font-size: 18px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    ✗
+                  </td>
+                </tr>
+                <tr>
+                  <td style="
+                    padding: 14px 16px;
+                    color: rgba(255, 255, 255, 0.8);
+                    font-size: 14px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Alternative product suggestions
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: #4ade80;
+                    font-size: 18px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    ✓
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: rgba(255, 255, 255, 0.6);
+                    font-size: 13px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Partial
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: #ef4444;
+                    font-size: 18px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    ✗
+                  </td>
+                </tr>
+                <tr>
+                  <td style="
+                    padding: 14px 16px;
+                    color: rgba(255, 255, 255, 0.8);
+                    font-size: 14px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Reward / loyalty system
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: #ef4444;
+                    font-size: 18px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    ✗
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: #ef4444;
+                    font-size: 18px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    ✗
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: #ef4444;
+                    font-size: 18px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    ✗
+                  </td>
+                </tr>
+                <tr>
+                  <td style="
+                    padding: 14px 16px;
+                    color: rgba(255, 255, 255, 0.8);
+                    font-size: 14px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    U.S. regulatory alignment (FDA)
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: rgba(255, 255, 255, 0.6);
+                    font-size: 13px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Limited
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: rgba(255, 255, 255, 0.6);
+                    font-size: 13px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    Partial
+                  </td>
+                  <td style="
+                    padding: 14px 16px;
+                    text-align: center;
+                    color: rgba(255, 255, 255, 0.6);
+                    font-size: 13px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);">
+                    ✓* (data only)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="
+            margin: 12px 0 0;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            font-style: italic;">
+            ✓ = fully supported  •  ✗ = missing  •  Partial = basic or paywalled
+          </p>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div>
+          <h4 style="
+            margin: 0 0 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.3px;">
+            Key Takeaways
+          </h4>
+
+          <div class="takeaway-chips-responsive" style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;">
+            
+            <span style="
+              padding: 10px 18px;
+              font-size: 13px;
+              border: 1px solid rgba(239, 68, 68, 0.3);
+              border-radius: 24px;
+              background: rgba(239, 68, 68, 0.08);
+              color: #ef4444;
+              font-weight: 500;
+              letter-spacing: 0.3px;">
+              Need for U.S.-specific ingredient regs
+            </span>
+            
+            <span style="
+              padding: 10px 18px;
+              font-size: 13px;
+              border: 1px solid rgba(239, 68, 68, 0.3);
+              border-radius: 24px;
+              background: rgba(239, 68, 68, 0.08);
+              color: #ef4444;
+              font-weight: 500;
+              letter-spacing: 0.3px;">
+              Allergy & diet personalization gap
+            </span>
+            
+            <span style="
+              padding: 10px 18px;
+              font-size: 13px;
+              border: 1px solid rgba(239, 68, 68, 0.3);
+              border-radius: 24px;
+              background: rgba(239, 68, 68, 0.08);
+              color: #ef4444;
+              font-weight: 500;
+              letter-spacing: 0.3px;">
+              Clear additive explanations are missing
+            </span>
+            
+            <span style="
+              padding: 10px 18px;
+              font-size: 13px;
+              border: 1px solid rgba(239, 68, 68, 0.3);
+              border-radius: 24px;
+              background: rgba(239, 68, 68, 0.08);
+              color: #ef4444;
+              font-weight: 500;
+              letter-spacing: 0.3px;">
+              No rewards to sustain user engagement
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+
+  <!-- AFFINITY MAPPING SECTION -->
+
+      
+      <!-- Affinity Mapping Container -->
+      <div class="affinity-mapping-responsive" style="
+        background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 56px 48px;
+        margin-bottom: 56px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
+
+        <!-- Section Label -->
+        <div style="
+          display: inline-block;
+          padding: 6px 14px;
+          background: rgba(177, 215, 59, 0.12);
+          border: 1px solid rgba(177, 215, 59, 0.3);
+          border-radius: 20px;
+          margin-bottom: 24px;">
+          <span style="
+            color: #B1D73B;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-family: 'Inter', sans-serif;">
+            Affinity Mapping
+          </span>
+        </div>
+
+        <!-- Header -->
+        <h3 class="affinity-title" style="
+          font-family: 'Inter', sans-serif;
+          font-size: 32px;
+          font-weight: 800;
+          color: #fff;
+          margin: 0 0 16px;
+          letter-spacing: -1px;
+          line-height: 1.2;">
+          Emerging Themes
+        </h3>
+
+        <p class="affinity-description" style="
+          margin: 0 0 40px;
+          font-size: 16px;
+          line-height: 1.7;
+          color: rgba(255, 255, 255, 0.7);
+          max-width: 800px;">
+          Clustering 120+ qualitative notes revealed three recurring pain-point clusters 
+          that shaped our design direction.
+        </p>
+
+        <!-- Sticky Notes Grid - NO ROTATION -->
+        <div class="sticky-notes-grid" style="
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          margin-bottom: 40px;">
+
+          <!-- Decision-Making Overload -->
+          <article style="
+            background: linear-gradient(135deg, rgba(254, 249, 195, 0.15) 0%, rgba(254, 240, 138, 0.08) 100%);
+            border: 1px solid rgba(254, 240, 138, 0.3);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;">
+            
+            <!-- Icon -->
+            <div style="
+              width: 48px;
+              height: 48px;
+              background: rgba(254, 240, 138, 0.2);
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 16px;
+              font-size: 24px;">
+              🧠
+            </div>
+
+            <h4 style="
+              margin: 0 0 16px;
+              font-family: 'Inter', sans-serif;
+              font-size: 18px;
+              font-weight: 700;
+              color: #fbbf24;
+              letter-spacing: -0.3px;">
+              Decision-Making Overload
+            </h4>
+
+            <div style="
+              display: flex;
+              flex-direction: column;
+              gap: 12px;">
+              <p style="
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;
+                padding-left: 12px;
+                border-left: 2px solid rgba(254, 240, 138, 0.4);">
+                "I get overwhelmed—everything claims it's healthy."
+              </p>
+              <p style="
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;
+                padding-left: 12px;
+                border-left: 2px solid rgba(254, 240, 138, 0.4);">
+                "I compare products forever and still leave unsure."
+              </p>
+            </div>
+          </article>
+
+          <!-- Transparency & Trust -->
+          <article style="
+            background: linear-gradient(135deg, rgba(219, 234, 254, 0.15) 0%, rgba(191, 219, 254, 0.08) 100%);
+            border: 1px solid rgba(191, 219, 254, 0.3);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;">
+            
+            <!-- Icon -->
+            <div style="
+              width: 48px;
+              height: 48px;
+              background: rgba(191, 219, 254, 0.2);
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 16px;
+              font-size: 24px;">
+              🔍
+            </div>
+
+            <h4 style="
+              margin: 0 0 16px;
+              font-family: 'Inter', sans-serif;
+              font-size: 18px;
+              font-weight: 700;
+              color: #60a5fa;
+              letter-spacing: -0.3px;">
+              Transparency & Trust
+            </h4>
+
+            <div style="
+              display: flex;
+              flex-direction: column;
+              gap: 12px;">
+              <p style="
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;
+                padding-left: 12px;
+                border-left: 2px solid rgba(191, 219, 254, 0.4);">
+                "I don't trust 'natural' labels—what does it mean?"
+              </p>
+              <p style="
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;
+                padding-left: 12px;
+                border-left: 2px solid rgba(191, 219, 254, 0.4);">
+                "Nutrition panels are cluttered; hard to read in a hurry."
+              </p>
+            </div>
+          </article>
+
+          <!-- Personalization Gaps -->
+          <article style="
+            background: linear-gradient(135deg, rgba(220, 252, 231, 0.15) 0%, rgba(187, 247, 208, 0.08) 100%);
+            border: 1px solid rgba(187, 247, 208, 0.3);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;">
+            
+            <!-- Icon -->
+            <div style="
+              width: 48px;
+              height: 48px;
+              background: rgba(187, 247, 208, 0.2);
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 16px;
+              font-size: 24px;">
+              🎯
+            </div>
+
+            <h4 style="
+              margin: 0 0 16px;
+              font-family: 'Inter', sans-serif;
+              font-size: 18px;
+              font-weight: 700;
+              color: #4ade80;
+              letter-spacing: -0.3px;">
+              Personalization Gaps
+            </h4>
+
+            <div style="
+              display: flex;
+              flex-direction: column;
+              gap: 12px;">
+              <p style="
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;
+                padding-left: 12px;
+                border-left: 2px solid rgba(187, 247, 208, 0.4);">
+                "I'm only looking for low-sugar—but check each item manually."
+              </p>
+              <p style="
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                font-style: italic;
+                padding-left: 12px;
+                border-left: 2px solid rgba(187, 247, 208, 0.4);">
+                "Wish something knew I avoid gluten and suggested swaps."
+              </p>
+            </div>
+          </article>
+
+        </div><!-- /sticky-notes-grid -->
+
+        <!-- Key Insight Banner -->
+        <div style="
+          background: rgba(177, 215, 59, 0.08);
+          border-left: 4px solid #B1D73B;
+          border-radius: 16px;
+          padding: 28px;">
+          <p style="
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);">
+            <strong style="
+              color: #B1D73B;
+              font-weight: 700;
+              letter-spacing: 0.3px;">
+              Key Insight →
+            </strong>
+            Shoppers crave an instant, credible signal they can trust and a way to 
+            filter options to their personal health needs without scanning every label.
+          </p>
+        </div>
+
+      </div>
+      
+      <!-- /affinity-mapping-responsive ENDS -->
+      
+
+  
+  
+  
+      
+
+
+
+      <div class="insights-grid">
+        <div class="insight-card">
+          <div class="insight-number">68%</div>
+          <div class="insight-label">Experience decision fatigue when shopping</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-number">68%</div>
+          <div class="insight-label">Express skepticism about ingredients</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-number">59%</div>
+          <div class="insight-label">Need personalized product recommendations</div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Theme</th>
+            <th>Opportunity</th>
+            <th>% Respondents</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Decision Fatigue</td>
+            <td>Instant, trustworthy scores</td>
+            <td>68</td>
+          </tr>
+          <tr>
+            <td>Ingredient Skepticism</td>
+            <td>Plain-language additive facts</td>
+            <td>68</td>
+          </tr>
+          <tr>
+            <td>Need for Personalization</td>
+            <td>Diet-aware product swaps</td>
+            <td>59</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <div class="quote-content">
+      <p class="quote-text">"Labels feel like a foreign language. I wish there was just a safe/avoid answer."</p>
+      <p class="quote-author">— Research Participant</p>
+    </div>
+  </section>
+
+  <!-- Define -->
+<!-- Define Section -->
+<section class="section-header" id="define">
+    <div class="section-tag">02 / Define</div>
+    <h2 class="section-title">
+      Framing the <span class="highlight">Opportunity</span>
+    </h2>
+  </section>
+
+  <section class="content-section">
+    <div class="content-container">
+      
+      <!-- PRIMARY PERSONA - Fully Responsive -->
+      <div class="persona-container-responsive" style="
+        background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 56px 48px;
+        margin-bottom: 56px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
+
+        <!-- Section Label -->
+        <div style="
+          display: inline-block;
+          padding: 6px 14px;
+          background: rgba(177, 215, 59, 0.12);
+          border: 1px solid rgba(177, 215, 59, 0.3);
+          border-radius: 20px;
+          margin-bottom: 24px;">
+          <span style="
+            color: #B1D73B;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-family: 'Inter', sans-serif;">
+            Primary Persona
+          </span>
+        </div>
+
+        <!-- Header -->
+        <h3 class="persona-title" style="
+          font-family: 'Inter', sans-serif;
+          font-size: 32px;
+          font-weight: 800;
+          color: #fff;
+          margin: 0 0 48px;
+          letter-spacing: -1px;
+          line-height: 1.2;">
+          Meet Stephanie
+          <span class="persona-subtitle" style="
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
+            letter-spacing: 0.3px;">
+            24 · Graduate Student · Health-Conscious Shopper
+          </span>
+        </h3>
+
+        <!-- Persona Grid - RESPONSIVE -->
+        <div class="persona-grid-responsive" style="
+          display: grid;
+          gap: 48px;
+          margin-bottom: 48px;
+          grid-template-columns: 200px 1fr;
+          align-items: start;">
+
+          <!-- Photo with Decorative Elements -->
+          <div class="persona-photo-wrapper" style="position: relative;">
+            <div style="
+              position: absolute;
+              top: -8px;
+              left: -8px;
+              right: -8px;
+              bottom: -8px;
+              background: linear-gradient(135deg, rgba(177, 215, 59, 0.3) 0%, rgba(177, 215, 59, 0) 100%);
+              border-radius: 20px;
+              filter: blur(16px);
+              z-index: 0;"></div>
+            
+            <div class="persona-photo" style="
+              position: relative;
+              z-index: 1;
+              width: 200px;
+              height: 200px;
+              border-radius: 20px;
+              overflow: hidden;
+              border: 2px solid rgba(177, 215, 59, 0.4);
+              box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);">
+              <img src="assets/img/Orbit/Stephanie.jpg"
+                   alt="Portrait of Stephanie, a 24-year-old grad student"
+                   style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
+
+          <!-- Bio & Details -->
+          <div class="persona-details">
+            <!-- Quote Block -->
+            <div style="
+              background: rgba(177, 215, 59, 0.06);
+              border-left: 4px solid #B1D73B;
+              padding: 20px 24px;
+              border-radius: 12px;
+              margin-bottom: 32px;">
+              <p style="
+                margin: 0;
+                font-size: 17px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.9);
+                font-style: italic;
+                font-weight: 400;">
+                "I just want a quick yes-or-no so I can get out of the aisle. Why is reading labels harder than my grad school textbooks?"
+              </p>
+            </div>
+
+            <!-- Bio Text -->
+            <p class="persona-bio" style="
+              margin: 0 0 32px;
+              font-size: 16px;
+              line-height: 1.8;
+              color: rgba(255, 255, 255, 0.75);">
+              Newly diagnosed with <strong style="color: #B1D73B; font-weight: 600;">gluten sensitivity</strong>, 
+              Stephanie balances classes, part-time barista shifts, and an active social life. Every grocery run 
+              becomes a research project—scanning labels, googling additives, and second-guessing choices. 
+              She shares an apartment with two roommates and values efficiency and trust in her food decisions.
+            </p>
+
+            <!-- Quick Facts Grid - RESPONSIVE -->
+            <div class="quick-facts-grid" style="
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 20px;
+              margin-bottom: 32px;">
+              
+              <div style="
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 12px;
+                padding: 16px 20px;">
+                <div style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  color: rgba(255, 255, 255, 0.4);
+                  font-weight: 600;
+                  margin-bottom: 6px;">
+                  Income
+                </div>
+                <div style="
+                  font-size: 16px;
+                  color: #fff;
+                  font-weight: 600;">
+                  ~$1,800/month
+                </div>
+              </div>
+
+              <div style="
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 12px;
+                padding: 16px 20px;">
+                <div style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  color: rgba(255, 255, 255, 0.4);
+                  font-weight: 600;
+                  margin-bottom: 6px;">
+                  Shopping Frequency
+                </div>
+                <div style="
+                  font-size: 16px;
+                  color: #fff;
+                  font-weight: 600;">
+                  2× per week
+                </div>
+              </div>
+
+              <div style="
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 12px;
+                padding: 16px 20px;">
+                <div style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  color: rgba(255, 255, 255, 0.4);
+                  font-weight: 600;
+                  margin-bottom: 6px;">
+                  Preferred Stores
+                </div>
+                <div style="
+                  font-size: 16px;
+                  color: #fff;
+                  font-weight: 600;">
+                  Trader Joe's, Target
+                </div>
+              </div>
+
+              <div style="
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 12px;
+                padding: 16px 20px;">
+                <div style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  color: rgba(255, 255, 255, 0.4);
+                  font-weight: 600;
+                  margin-bottom: 6px;">
+                  Device
+                </div>
+                <div style="
+                  font-size: 16px;
+                  color: #fff;
+                  font-weight: 600;">
+                  iPhone 13
+                </div>
+              </div>
+            </div>
+
+            <!-- Goals & Pain Points -->
+            <div style="margin-bottom: 32px;">
+              <h4 style="
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 1.2px;
+                color: rgba(255, 255, 255, 0.5);
+                font-weight: 700;
+                margin: 0 0 16px;">
+                Goals & Pain Points
+              </h4>
+              
+              <div class="chips-responsive" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <!-- Goals -->
+                <span style="
+                  padding: 10px 18px;
+                  border-radius: 24px;
+                  background: linear-gradient(135deg, rgba(177, 215, 59, 0.15) 0%, rgba(177, 215, 59, 0.08) 100%);
+                  border: 1px solid rgba(177, 215, 59, 0.4);
+                  color: #B1D73B;
+                  font-weight: 600;
+                  font-size: 13px;
+                  letter-spacing: 0.3px;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink: 0;">
+                    <circle cx="7" cy="7" r="6" stroke="#B1D73B" stroke-width="2"/>
+                    <path d="M4 7.5L6 9.5L10 5" stroke="#B1D73B" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Shop in &lt; 25 min
+                </span>
+
+                <span style="
+                  padding: 10px 18px;
+                  border-radius: 24px;
+                  background: linear-gradient(135deg, rgba(177, 215, 59, 0.15) 0%, rgba(177, 215, 59, 0.08) 100%);
+                  border: 1px solid rgba(177, 215, 59, 0.4);
+                  color: #B1D73B;
+                  font-weight: 600;
+                  font-size: 13px;
+                  letter-spacing: 0.3px;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink: 0;">
+                    <circle cx="7" cy="7" r="6" stroke="#B1D73B" stroke-width="2"/>
+                    <path d="M4 7.5L6 9.5L10 5" stroke="#B1D73B" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Avoid hidden gluten
+                </span>
+
+                <!-- Pains -->
+                <span style="
+                  padding: 10px 18px;
+                  border-radius: 24px;
+                  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.08) 100%);
+                  border: 1px solid rgba(239, 68, 68, 0.4);
+                  color: #EF4444;
+                  font-weight: 600;
+                  font-size: 13px;
+                  letter-spacing: 0.3px;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink: 0;">
+                    <circle cx="7" cy="7" r="6" stroke="#EF4444" stroke-width="2"/>
+                    <path d="M7 4V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="7" cy="10.5" r="0.75" fill="#EF4444"/>
+                  </svg>
+                  Label overwhelm
+                </span>
+
+                <span style="
+                  padding: 10px 18px;
+                  border-radius: 24px;
+                  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.08) 100%);
+                  border: 1px solid rgba(239, 68, 68, 0.4);
+                  color: #EF4444;
+                  font-weight: 600;
+                  font-size: 13px;
+                  letter-spacing: 0.3px;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink: 0;">
+                    <circle cx="7" cy="7" r="6" stroke="#EF4444" stroke-width="2"/>
+                    <path d="M7 4V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="7" cy="10.5" r="0.75" fill="#EF4444"/>
+                  </svg>
+                  Ingredient distrust
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decision Drivers -->
+        <div style="margin-bottom: 40px;">
+          <h4 style="
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 700;
+            margin: 0 0 24px;">
+            Decision Drivers
+          </h4>
+          
+          <div style="
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 32px;
+            display: grid;
+            gap: 24px;">
+            
+            <!-- Health -->
+            <div>
+              <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 12px;">
+                <span style="
+                  font-size: 15px;
+                  color: #fff;
+                  font-weight: 600;">
+                  Health Consciousness
+                </span>
+                <span style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.5);
+                  font-weight: 600;">
+                  Very High
+                </span>
+              </div>
+              <div style="
+                height: 10px;
+                background: rgba(255, 255, 255, 0.06);
+                border-radius: 6px;
+                overflow: hidden;">
+                <div style="
+                  height: 100%;
+                  width: 85%;
+                  background: linear-gradient(90deg, #B1D73B 0%, #8FB830 100%);
+                  border-radius: 6px;
+                  box-shadow: 0 0 12px rgba(177, 215, 59, 0.4);"></div>
+              </div>
+            </div>
+
+            <!-- Price Sensitivity -->
+            <div>
+              <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 12px;">
+                <span style="
+                  font-size: 15px;
+                  color: #fff;
+                  font-weight: 600;">
+                  Price Sensitivity
+                </span>
+                <span style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.5);
+                  font-weight: 600;">
+                  Moderate
+                </span>
+              </div>
+              <div style="
+                height: 10px;
+                background: rgba(255, 255, 255, 0.06);
+                border-radius: 6px;
+                overflow: hidden;">
+                <div style="
+                  height: 100%;
+                  width: 45%;
+                  background: linear-gradient(90deg, #EF4444 0%, #DC2626 100%);
+                  border-radius: 6px;
+                  box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);"></div>
+              </div>
+            </div>
+
+            <!-- Convenience -->
+            <div>
+              <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 12px;">
+                <span style="
+                  font-size: 15px;
+                  color: #fff;
+                  font-weight: 600;">
+                  Convenience Preference
+                </span>
+                <span style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.5);
+                  font-weight: 600;">
+                  High
+                </span>
+              </div>
+              <div style="
+                height: 10px;
+                background: rgba(255, 255, 255, 0.06);
+                border-radius: 6px;
+                overflow: hidden;">
+                <div style="
+                  height: 100%;
+                  width: 70%;
+                  background: linear-gradient(90deg, #B1D73B 0%, #8FB830 100%);
+                  border-radius: 6px;
+                  box-shadow: 0 0 12px rgba(177, 215, 59, 0.4);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Cards Row - RESPONSIVE -->
+        <div class="bottom-cards-responsive" style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;">
+          
+          <!-- Scenario -->
+          <div style="
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-left: 4px solid #fbbf24;
+            border-radius: 16px;
+            padding: 28px;">
+            <h5 style="
+              margin: 0 0 12px;
+              font-size: 13px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              color: #fbbf24;
+              font-weight: 700;">
+              Typical Scenario
+            </h5>
+            <p style="
+              margin: 0;
+              font-size: 14px;
+              line-height: 1.7;
+              color: rgba(255, 255, 255, 0.8);">
+              Wednesday 6 PM — rushing home from class, Stephanie stops at Trader Joe's for a quick 
+              grab-and-go. She needs dinner ingredients and gluten-free snacks for an 8 PM study group.
+            </p>
+          </div>
+
+          <!-- Key Insight -->
+          <div style="
+            background: rgba(177, 215, 59, 0.08);
+            border: 1px solid rgba(177, 215, 59, 0.25);
+            border-left: 4px solid #B1D73B;
+            border-radius: 16px;
+            padding: 28px;">
+            <h5 style="
+              margin: 0 0 12px;
+              font-size: 13px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              color: #B1D73B;
+              font-weight: 700;">
+              Key Insight
+            </h5>
+            <p style="
+              margin: 0;
+              font-size: 14px;
+              line-height: 1.7;
+              color: rgba(255, 255, 255, 0.8);">
+              Younger shoppers crave <strong style="color: #B1D73B;">instant, trustworthy signals</strong> 
+              and personalized swap suggestions to stick to dietary rules without derailing tight schedules.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- /PERSONA -->
+      
+
+
+
+      <!-- CURRENT JOURNEY (Dark Theme Adapted) -->
+      <div class="journey-container" style="
+        background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 48px 40px;
+        margin-bottom: 48px;">
+
+        <h3 style="
+          font: 700 28px 'Inter', sans-serif;
+          color: #fff;
+          margin: 0 0 32px;
+          letter-spacing: -0.5px;">
+          Stephanie's Journey – "Quick grocery run after class"
+        </h3>
+
+        <!-- Desktop Journey Table -->
+        <div class="desktop-journey" style="overflow-x: auto; margin-bottom: 32px;">
+          <table style="
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            overflow: hidden;">
+            <tr style="background: rgba(177, 215, 59, 0.08);">
+              <th style="
+                padding: 16px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                width: 25%;
+                font-weight: 700;
+                color: #B1D73B;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;">
+                Starting
+              </th>
+              <th style="
+                padding: 16px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                width: 25%;
+                font-weight: 700;
+                color: #B1D73B;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;">
+                Trying
+              </th>
+              <th style="
+                padding: 16px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                width: 25%;
+                font-weight: 700;
+                color: #B1D73B;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;">
+                Conflicting
+              </th>
+              <th style="
+                padding: 16px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                width: 25%;
+                font-weight: 700;
+                color: #B1D73B;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;">
+                Quitting
+              </th>
+            </tr>
+            <tr>
+              <td style="
+                padding: 20px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                vertical-align: top;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 1.6;">
+                Decides to shop healthy food<br>
+                <em style="color: #4ade80; font-size: 13px; font-style: italic;">
+                  "Hopeful and determined, but slightly anxious."
+                </em>
+              </td>
+              <td style="
+                padding: 20px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                vertical-align: top;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 1.6;">
+                Reads labels, compares items<br>
+                <em style="color: #4ade80; font-size: 13px; font-style: italic;">
+                  "Motivated but increasingly confused by scientific terms."
+                </em>
+              </td>
+              <td style="
+                padding: 20px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                vertical-align: top;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 1.6;">
+                Research time crunch, stress<br>
+                <em style="color: #fbbf24; font-size: 13px; font-style: italic;">
+                  "Don't have time to research every ingredient."
+                </em>
+              </td>
+              <td style="
+                padding: 20px 14px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                vertical-align: top;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 1.6;">
+                Grabs familiar brands, unsure<br>
+                <em style="color: #ef4444; font-size: 13px; font-style: italic;">
+                  "I'll just stick with what I know. Disappointed."
+                </em>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Mobile Journey Cards (Hidden on Desktop) -->
+        <div class="mobile-journey" style="display: none;">
+          <div style="display: grid; gap: 16px;">
+            <!-- Stage 1 -->
+            <div style="
+              background: rgba(177, 215, 59, 0.08);
+              border: 1px solid rgba(177, 215, 59, 0.2);
+              border-radius: 12px;
+              padding: 20px;">
+              <h4 style="
+                margin: 0 0 10px;
+                font-weight: 700;
+                color: #B1D73B;
+                font-size: 15px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;">
+                1. Starting
+              </h4>
+              <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.8);">
+                Decides to shop healthy food
+              </p>
+              <em style="color: #4ade80; font-size: 13px;">
+                "Hopeful and determined, but slightly anxious."
+              </em>
+            </div>
+            
+            <!-- Stage 2 -->
+            <div style="
+              background: rgba(177, 215, 59, 0.08);
+              border: 1px solid rgba(177, 215, 59, 0.2);
+              border-radius: 12px;
+              padding: 20px;">
+              <h4 style="
+                margin: 0 0 10px;
+                font-weight: 700;
+                color: #B1D73B;
+                font-size: 15px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;">
+                2. Trying
+              </h4>
+              <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.8);">
+                Reads labels, compares items
+              </p>
+              <em style="color: #4ade80; font-size: 13px;">
+                "Motivated but increasingly confused by scientific terms."
+              </em>
+            </div>
+            
+            <!-- Stage 3 -->
+            <div style="
+              background: rgba(251, 191, 36, 0.08);
+              border: 1px solid rgba(251, 191, 36, 0.3);
+              border-radius: 12px;
+              padding: 20px;">
+              <h4 style="
+                margin: 0 0 10px;
+                font-weight: 700;
+                color: #fbbf24;
+                font-size: 15px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;">
+                3. Conflicting
+              </h4>
+              <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.8);">
+                Research time crunch, stress
+              </p>
+              <em style="color: #fbbf24; font-size: 13px;">
+                "Don't have time to research every ingredient."
+              </em>
+            </div>
+            
+            <!-- Stage 4 -->
+            <div style="
+              background: rgba(239, 68, 68, 0.08);
+              border: 1px solid rgba(239, 68, 68, 0.3);
+              border-radius: 12px;
+              padding: 20px;">
+              <h4 style="
+                margin: 0 0 10px;
+                font-weight: 700;
+                color: #ef4444;
+                font-size: 15px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;">
+                4. Quitting
+              </h4>
+              <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.8);">
+                Grabs familiar brands, unsure
+              </p>
+              <em style="color: #ef4444; font-size: 13px;">
+                "I'll just stick with what I know. Disappointed."
+              </em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emotion line (Responsive) -->
+        <div class="emotion-chart" style="margin-top: 32px;">
+          <svg viewBox="0 0 100 16" preserveAspectRatio="none"
+               style="width: 100%; height: 80px;">
+            <defs>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#fbbf24;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <polyline points="0,12 25,6 50,10 75,4 100,12"
+                      fill="none" stroke="url(#lineGradient)" stroke-width="3"/>
+            <circle cx="25" cy="6" r="4" fill="#fbbf24"/>
+            <circle cx="50" cy="10" r="4" fill="#fbbf24"/>
+            <circle cx="75" cy="4" r="4" fill="#ef4444"/>
+          </svg>
+
+          <p style="
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 12px 0 0;
+            text-align: right;
+            font-style: italic;">
+            Peaks mark rising stress moments
+          </p>
+        </div>
+      </div>
+      <!-- /JOURNEY -->
+      <div class="content-block">
+        <h3>Problem Statement</h3>
+        <div class="highlight-box">
+          <p>Gluten-sensitive shoppers need a fast, trustable tool to confirm product safety and discover alternatives in the aisle, as current apps and labeling demand too much time, causing frustration and suboptimal choices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Develop -->
+  <section class="section-header" id="develop">
+    <div class="section-tag">03 / Develop</div>
+    <h2 class="section-title">
+      Ideation & <span class="highlight">Testing</span>
+    </h2>
+  </section>
+
+  <section class="content-section">
+    <div class="content-container">
+      <div class="content-block">
+        <h3>Solution Ideation</h3>
+        <p><strong>Core User Flow:</strong> Scan → Immediate health score + ingredient breakdown → Personalized swap suggestions</p>
+      </div>
+
+       <!-- Cover Image -->
+  <section class="full-image-section">
+    <div class="full-image-wrapper">
+      <img src="assets/img/Orbit/userflow_os.png" alt="Orbit Scan core user-flow diagram" loading="lazy">
+    </div>
+  </section>
+
+      <div class="content-block">
+        <h3>Usability Testing</h3>
+        <ul class="bullet-list">
+          <li><strong>Participants:</strong> 4 target users (20–30 minutes each)</li>
+          <li><strong>Tasks Observed:</strong> Scanning, interpreting product ratings, and setting food preferences</li>
+        </ul>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Solution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Score interpretation</td>
+            <td>Added color-coded badge, split positives/risks</td>
+          </tr>
+          <tr>
+            <td>Scan feedback delay</td>
+            <td>Overlaid results instantly, added swipe-up details</td>
+          </tr>
+          <tr>
+            <td>Tedious filter toggling</td>
+            <td>Visual icon chips, single-tap interactions</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Deliver -->
+  <section class="section-header" id="deliver">
+    <div class="section-tag">04 / Deliver</div>
+    <h2 class="section-title">
+      Final Design <span class="highlight">Solutions</span>
+    </h2>
+  </section>
+
+  <section class="content-section">
+    <div class="content-container">
+      <div class="content-block">
+        <h3>Final Design Solutions</h3>
+        <ul class="bullet-list">
+          <li><strong>Onboarding:</strong> Quickly introduces barcode scanning, instant scores, and rewards mechanics</li>
+          <li><strong>Barcode Scanner:</strong> Results overlay within 2 seconds with progressive disclosure</li>
+          <li><strong>Health Analysis:</strong> Color-coded scores, expanded ingredient details, risk indicators</li>
+          <li><strong>Preference Management:</strong> Dietary filters with accessible iconography and auto-save</li>
+          <li><strong>Reward System:</strong> Engagement through points and redeemable rewards</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>Design System</h3>
+        <p>Developed a robust color palette meeting WCAG 2.1 AA/AAA standards for contrast, with three green hues for primary, energetic, and trust-based UI states. Typography follows iOS native best practices for readability, clarity, and accessibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="section-header">
+    <div class="section-tag">Results & Impact</div>
+    <h2 class="section-title">
+      <span class="highlight">Lessons</span> Learned
+    </h2>
+  </section>
+
+  <section class="content-section">
+    <div class="content-container">
+      <div class="content-grid">
+        <div class="content-block">
+          <h3>User Understanding</h3>
+          <p>Participants reported faster, more confident decisions in usability tests.</p>
+        </div>
+        <div class="content-block">
+          <h3>Personalization</h3>
+          <p>Customized dietary filters and actionable swaps matched users' unique needs—addressing the gap left by major competitors.</p>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h3>Reflection</h3>
+        <p>Orbit Scan demonstrates that blending regulatory best practices, user-driven research, and rapid prototyping can ease shopper anxiety and improve nutritional decision-making—especially in time-sensitive, real-world scenarios. Strategic design and ethical research underpin the entire project, ensuring both usability and trustworthiness.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="footer-section">
+    <p class="footer-cta">Interested in learning more about this project?</p>
+    <a href="mailto:your.email@example.com" class="btn-primary">Get in Touch</a>
+  </section>
+
+  <!-- Back to Top -->
+  <a href="#overview" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Fade in on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.content-block, .process-card, .insight-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
