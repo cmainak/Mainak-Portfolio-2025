@@ -228,7 +228,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      padding: 140px 80px 80px;
+      padding: 120px 8vw 80px; /* uses relative padding */
       background: #0C4700;
       position: relative;
       overflow: hidden;
@@ -271,10 +271,12 @@
     .hero-title {
       font-size: clamp(48px, 7vw, 96px);
       font-weight: 900;
-      line-height: 1.05;
+      line-height: 1.15; /* slightly more breathing room */
       color: #fff;
       margin-bottom: 24px;
-      letter-spacing: -2px;
+      letter-spacing: -1.5px; /* slightly loosened */
+      word-break: break-word;
+      hyphens: auto;
     }
 
     .hero-title .highlight {
@@ -318,6 +320,8 @@
       color: #fff;
       font-weight: 500;
     }
+
+    
 
     /* === SECTION HEADERS === */
     .section-header {
@@ -674,6 +678,8 @@
       }
     }
 
+    
+
     @media (max-width: 768px) {
       .top-nav {
         padding: 20px 24px;
@@ -682,8 +688,17 @@
         display: none;
       }
       .hero-section {
-        padding: 100px 24px 60px;
+        padding: 100px 6vw 60px;
+    align-items: center; /* centers content */
+    text-align: center;
       }
+      .hero-title {
+    line-height: 1.3;
+    letter-spacing: -0.1px;
+  }
+  .hero-subtitle {
+    text-align: center;
+  }
       .hero-meta {
         flex-direction: column;
         gap: 32px;
