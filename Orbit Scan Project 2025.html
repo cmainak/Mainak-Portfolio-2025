@@ -27,7 +27,7 @@
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #FFFFFF;
-      color: #1F2937;
+      color: rgba(0, 0, 0, 0.955);
       line-height: 1.65;
       overflow-x: hidden;
     }
@@ -80,7 +80,7 @@
 }
 
 .jump-pill:hover, .jump-pill.active {
-  background: #B1D73B;
+  background: linear-gradient(135deg, #096e00 0%, #42ca15 100%);
   color: #000;
   font-weight: 600;
 }
@@ -154,12 +154,13 @@
   }
 }
 /* === JUMP NAVIGATION RESPONSIVE ENDS === */
+
 /* === FLOATING BUTTONS === */
 
 .home-button {
   position: fixed;
   top: 20px; /* Distance from top */
-  right: 20px; /* Stick to the right instead of left */
+  right: 40px; /* Stick to the right instead of left */
   z-index: 1001;
   background: rgba(255, 255, 255, 0.2);
   width: 50px;
@@ -184,6 +185,38 @@
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.4rem;
 }
+
+
+/* === BACK TO TOP === */
+.back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 56px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      text-decoration: none;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      background: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top i {
+      color: #000;
+      font-size: 20px;
+    }
+    /* === BACK TO TOP ENDS === */
 /* === FLOATING BUTTONS ENDS === */
 
 
@@ -196,7 +229,7 @@
       justify-content: center;
       align-items: flex-start;
       padding: 140px 80px 80px;
-      background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+      background: #0C4700;
       position: relative;
       overflow: hidden;
     }
@@ -227,7 +260,7 @@
       background: rgba(177, 215, 59, 0.12);
       border: 1px solid rgba(177, 215, 59, 0.3);
       border-radius: 24px;
-      color: #B1D73B;
+      color:#FFF;
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -245,7 +278,7 @@
     }
 
     .hero-title .highlight {
-      background: linear-gradient(135deg, #B1D73B 0%, #8FB830 100%);
+      background: #B1D73B;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -273,10 +306,10 @@
     }
 
     .meta-label {
-      font-size: 11px;
+      font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 1.2px;
-      color: rgba(255, 255, 255, 0.4);
+      color: #FFF;
       font-weight: 600;
     }
 
@@ -290,14 +323,14 @@
     .section-header {
       text-align: center;
       padding: 120px 80px 60px;
-      background: #0A0A0A;
+      background: #ffffff;
     }
 
     .section-tag {
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: #B1D73B;
+      color: #0C4700;
       font-weight: 700;
       margin-bottom: 20px;
     }
@@ -306,7 +339,7 @@
       font-size: clamp(32px, 5vw, 56px);
       font-weight: 800;
       line-height: 1.2;
-      color: #fff;
+      color: #0C4700;
       max-width: 1000px;
       margin: 0 auto 24px;
       letter-spacing: -1.5px;
@@ -319,7 +352,7 @@
 
     .section-description {
       font-size: 18px;
-      color: rgba(255, 255, 255, 0.6);
+      color:rgba(0, 0, 0, 0.955);
       max-width: 800px;
       margin: 0 auto;
       line-height: 1.7;
@@ -329,7 +362,6 @@
     .full-image-section {
       width: 100%;
       padding: 80px 0;
-      background: #000;
     }
 
     .full-image-wrapper {
@@ -342,19 +374,19 @@
       width: 100%;
       height: auto;
       border-radius: 16px;
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
     }
 
     /* === CONTENT SECTION === */
     .content-section {
       padding: 80px 80px;
-      background: #0A0A0A;
+      background: #FFF;
     }
 
     .content-container {
       max-width: 1200px;
       margin: 0 auto;
     }
+
 
     .content-grid {
       display: grid;
@@ -363,10 +395,11 @@
       margin-bottom: 80px;
     }
 
+
     .content-block h3 {
       font-size: 24px;
       font-weight: 700;
-      color: #fff;
+      color: #000;
       margin-bottom: 20px;
       letter-spacing: -0.5px;
     }
@@ -374,13 +407,13 @@
     .content-block p {
       font-size: 16px;
       line-height: 1.8;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.955);
       margin-bottom: 16px;
     }
 
     .highlight-box {
       background: rgba(177, 215, 59, 0.08);
-      border-left: 4px solid #B1D73B;
+      border-left: 4px solid #0C4700;
       padding: 32px;
       border-radius: 12px;
       margin: 32px 0;
@@ -389,15 +422,15 @@
     .highlight-box p {
       font-size: 18px;
       font-weight: 500;
-      color: #B1D73B;
+      color: #0C4700;
       line-height: 1.7;
       margin: 0;
     }
 
     /* === STAT BOX === */
     .stat-box {
-      background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, #1A1A1A 0%, #0C4700 100%);
+      border: 1px solid rgba(0, 0, 0, 0.955);
       border-radius: 20px;
       padding: 48px;
       text-align: center;
@@ -407,7 +440,7 @@
     .stat-number {
       font-size: 72px;
       font-weight: 900;
-      background: linear-gradient(135deg, #B1D73B 0%, #8FB830 100%);
+      background: rgba(0, 0, 0, 0.955);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -417,7 +450,7 @@
 
     .stat-label {
       font-size: 18px;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(0, 0, 0, 0.955);
       font-weight: 500;
     }
 
@@ -430,8 +463,8 @@
     }
 
     .process-card {
-      background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #FFF;
+      border: 1px solid #000;
       border-radius: 20px;
       padding: 40px 32px;
       transition: all 0.4s ease;
@@ -446,14 +479,14 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #B1D73B 0%, transparent 100%);
+      background: #0C4700;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
     .process-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(177, 215, 59, 0.3);
+      border-color: #0C4700;
     }
 
     .process-card:hover::before {
@@ -462,7 +495,7 @@
 
     .process-number {
       font-size: 14px;
-      color: #B1D73B;
+      color: #0C4700;
       font-weight: 700;
       margin-bottom: 20px;
     }
@@ -470,14 +503,14 @@
     .process-card h3 {
       font-size: 22px;
       font-weight: 700;
-      color: #fff;
+      color: rgba(0, 0, 0, 0.955);
       margin-bottom: 12px;
       letter-spacing: -0.5px;
     }
 
     .process-card p {
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(0, 0, 0, 0.955);
       line-height: 1.6;
     }
 
@@ -486,7 +519,7 @@
       width: 100%;
       border-collapse: collapse;
       margin: 40px 0;
-      background: #0F0F0F;
+      background: #FFF;
       border-radius: 12px;
       overflow: hidden;
     }
@@ -494,12 +527,12 @@
     th, td {
       padding: 20px 24px;
       text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid #000;
     }
 
     th {
       background: rgba(177, 215, 59, 0.08);
-      color: #B1D73B;
+      color: #000;
       font-weight: 700;
       font-size: 13px;
       text-transform: uppercase;
@@ -507,7 +540,7 @@
     }
 
     td {
-      color: rgba(255, 255, 255, 0.8);
+      color: #000;
       font-size: 15px;
     }
 
@@ -524,8 +557,8 @@
     }
 
     .insight-card {
-      background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #FFF;
+      border: 1px solid #000;
       border-radius: 20px;
       padding: 40px;
       text-align: center;
@@ -534,21 +567,21 @@
     .insight-number {
       font-size: 56px;
       font-weight: 900;
-      color: #B1D73B;
+      color: #0C4700;
       line-height: 1;
       margin-bottom: 16px;
     }
 
     .insight-label {
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(0, 0, 0, 0.955);
       line-height: 1.6;
     }
 
     /* === QUOTE === */
     .quote-section {
       padding: 100px 80px;
-      background: #0A0A0A;
+      background: #FFF;
       text-align: center;
     }
 
@@ -561,14 +594,14 @@
       font-size: clamp(24px, 3vw, 42px);
       font-weight: 700;
       line-height: 1.4;
-      color: #fff;
+      color: rgba(0, 0, 0, 0.955);
       margin-bottom: 32px;
       letter-spacing: -0.5px;
     }
 
     .quote-author {
       font-size: 16px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(0, 0, 0, 0.955);
       font-style: italic;
     }
 
@@ -582,7 +615,7 @@
       padding-left: 32px;
       margin-bottom: 16px;
       position: relative;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.955);
       line-height: 1.8;
     }
 
@@ -593,21 +626,21 @@
       top: 10px;
       width: 8px;
       height: 8px;
-      background: #B1D73B;
+      background: #0C4700;
       border-radius: 50%;
     }
 
     /* === FOOTER === */
     .footer-section {
       padding: 80px 80px 60px;
-      background: #000;
+      background: #fff;
       text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid #000
     }
 
     .footer-cta {
       font-size: 18px;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(0, 0, 0, 0.955);
       margin-bottom: 32px;
     }
 
@@ -629,34 +662,7 @@
       box-shadow: 0 12px 40px rgba(177, 215, 59, 0.3);
     }
 
-    /* === BACK TO TOP === */
-    .back-to-top {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 56px;
-      height: 56px;
-      background: rgba(177, 215, 59, 0.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 999;
-      text-decoration: none;
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-4px);
-      background: #B1D73B;
-      box-shadow: 0 12px 30px rgba(177, 215, 59, 0.3);
-    }
-
-    .back-to-top i {
-      color: #000;
-      font-size: 20px;
-    }
+    
 
     /* === RESPONSIVE === */
     @media (max-width: 1200px) {
@@ -1095,7 +1101,6 @@
     @media (min-width: 769px) {
       .sticky-notes-grid article:hover {
         transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
       }
     }
         /* === AFFINITY MAPPING RESPONSIVE STYLES ENDS === */
@@ -1276,7 +1281,7 @@ style="
           font-family: 'Inter', sans-serif;
           font-size: 32px;
           font-weight: 800;
-          color: #fff;
+          color: #000;
           margin: 0 0 16px;
           letter-spacing: -1px;
           line-height: 1.2;">
@@ -1305,10 +1310,10 @@ style="
 <!-- Collapsible sample questions -->
 <div style="margin-bottom:32px;">
   <details style="border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
-    <summary style="cursor:pointer;font-weight:700;color:#fff;font-family:'Inter',sans-serif;">
+    <summary style="cursor:pointer;font-weight:700;color:#000;font-family:'Inter',sans-serif;">
       📋  Sample Interview Questions
     </summary>
-    <ul style="margin:16px 0 0 20px;font-size:16px;line-height:1.7;color:rgba(255, 255, 255, 0.7);font-family:'Inter',sans-serif;">
+    <ul style="margin:16px 0 0 20px;font-size:16px;line-height:1.7;color:rgba(0, 0, 0, 0.955);font-family:'Inter',sans-serif;">
       <li>What tools or apps if any, do you use to check ingredients before purchase?</li>
       <li>Describe a moment when a food label felt confusing or misleading.</li>
       <li>What would make that decision easier: clear scoring, visual cues, or tailored suggestions?</li>
@@ -1329,7 +1334,7 @@ style="
         <div style="
           display: inline-block;
           padding: 6px 14px;
-          background: rgba(177, 215, 59, 0.12);
+          background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
           border: 1px solid rgba(177, 215, 59, 0.3);
           border-radius: 20px;
           margin-bottom: 24px;">
@@ -1349,7 +1354,7 @@ style="
           font-family: 'Inter', sans-serif;
           font-size: 32px;
           font-weight: 800;
-          color: #fff;
+          color: #000;
           margin: 0 0 16px;
           letter-spacing: -1px;
           line-height: 1.2;">
@@ -1360,7 +1365,7 @@ style="
           margin: 0 0 32px;
           font-size: 16px;
           line-height: 1.7;
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(0, 0, 0, 0.955);
           max-width: 800px;">
           We benchmarked Orbit Scan against three popular label-scanning apps to uncover strengths 
           we should keep and gaps we can close around transparency, personalization, and shopper trust.
@@ -1376,10 +1381,10 @@ style="
           <span style="
             padding: 8px 16px;
             font-size: 13px;
-            border: 1px solid rgba(177, 215, 59, 0.3);
+            border: 1px solid #000;
             border-radius: 24px;
-            background: rgba(177, 215, 59, 0.08);
-            color: #B1D73B;
+            background: #FFF;
+            color: #0C4700;
             font-weight: 500;
             letter-spacing: 0.3px;">
             Instant traffic-light health scores
@@ -1388,10 +1393,10 @@ style="
           <span style="
             padding: 8px 16px;
             font-size: 13px;
-            border: 1px solid rgba(177, 215, 59, 0.3);
+            border: 1px solid #000;
             border-radius: 24px;
-            background: rgba(177, 215, 59, 0.08);
-            color: #B1D73B;
+            background: #FFF;
+            color: #0C4700;
             font-weight: 500;
             letter-spacing: 0.3px;">
             Plain-language additive facts
@@ -1400,10 +1405,10 @@ style="
           <span style="
             padding: 8px 16px;
             font-size: 13px;
-            border: 1px solid rgba(177, 215, 59, 0.3);
+            border: 1px solid #000;
             border-radius: 24px;
-            background: rgba(177, 215, 59, 0.08);
-            color: #B1D73B;
+            background: #FFF;
+            color: #0C4700;
             font-weight: 500;
             letter-spacing: 0.3px;">
             Personalized allergy & diet filters
@@ -1412,10 +1417,10 @@ style="
           <span style="
             padding: 8px 16px;
             font-size: 13px;
-            border: 1px solid rgba(177, 215, 59, 0.3);
+            border: 1px solid #000;
             border-radius: 24px;
-            background: rgba(177, 215, 59, 0.08);
-            color: #B1D73B;
+            background: #FFF;
+            color: #0C4700;
             font-weight: 500;
             letter-spacing: 0.3px;">
             U.S. FDA regulation alignment
@@ -1424,10 +1429,10 @@ style="
           <span style="
             padding: 8px 16px;
             font-size: 13px;
-            border: 1px solid rgba(177, 215, 59, 0.3);
+            border: 1px solid #000;
             border-radius: 24px;
-            background: rgba(177, 215, 59, 0.08);
-            color: #B1D73B;
+            background: #FFF;
+            color: #0C4700;
             font-weight: 500;
             letter-spacing: 0.3px;">
             Rewards to sustain engagement
@@ -1443,8 +1448,8 @@ style="
 
           <!-- Yuka Card -->
           <article style="
-            background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FFF;
+            border: 1px solid #000;
             border-radius: 16px;
             padding: 28px;
             transition: all 0.3s ease;">
@@ -1459,11 +1464,11 @@ style="
                 width: 48px;
                 height: 48px;
                 border-radius: 12px;
-                background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+                background:#FF8C38;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #fff;
+                color: #000;
                 font: 700 18px 'Inter', sans-serif;">
                 YK
               </div>
@@ -1471,14 +1476,14 @@ style="
                 <h4 style="
                   margin: 0 0 4px;
                   font: 700 18px 'Inter', sans-serif;
-                  color: #fff;
+                  color: #000;
                   letter-spacing: -0.3px;">
                   Yuka
                 </h4>
                 <p style="
                   margin: 0;
                   font-size: 13px;
-                  color: rgba(255, 255, 255, 0.5);">
+                  color: #000;">
                   Food + cosmetic scanner
                 </p>
               </div>
@@ -1491,7 +1496,7 @@ style="
                 font-size: 12px;
                 text-transform: uppercase;
                 letter-spacing: 1px;
-                color: #4ade80;
+                color: #000;
                 font-weight: 700;">
                 Strengths
               </h5>
@@ -1500,7 +1505,7 @@ style="
                 padding-left: 18px;
                 font-size: 14px;
                 line-height: 1.7;
-                color: rgba(255, 255, 255, 0.75);">
+                color: #000;">
                 <li>Simple traffic-light scores (nutrition + additives)</li>
                 <li>Auto suggests healthier swaps</li>
                 <li>Large EU-centric product DB</li>
@@ -1523,7 +1528,7 @@ style="
                 padding-left: 18px;
                 font-size: 14px;
                 line-height: 1.7;
-                color: rgba(255, 255, 255, 0.75);">
+                color: #000;">
                 <li>Limited personalization (allergies, diets)</li>
                 <li>Lacks U.S.-specific ingredient regs</li>
                 <li>No reward/loyalty system</li>
@@ -1542,7 +1547,7 @@ style="
                 margin: 0;
                 font-size: 13px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: #000;
                 font-style: italic;">
                 "Great at warnings, but can't remember my gluten allergy."
               </p>
@@ -1551,7 +1556,7 @@ style="
             <!-- Rating -->
             <div style="
               font-size: 12px;
-              color: rgba(255, 255, 255, 0.5);
+              color: #000;
               padding-top: 12px;
               border-top: 1px solid rgba(255, 255, 255, 0.06);">
               <span style="color: #fbbf24;">★ 4.7</span> App Store – praised for clarity, criticized for U.S. gaps
@@ -1560,8 +1565,8 @@ style="
 
           <!-- Fooducate Card -->
           <article style="
-            background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FFF;
+            border: 1px solid #000;
             border-radius: 16px;
             padding: 28px;
             transition: all 0.3s ease;">
@@ -1580,7 +1585,7 @@ style="
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #fff;
+                color: #FFF;
                 font: 700 18px 'Inter', sans-serif;">
                 FD
               </div>
@@ -1588,14 +1593,14 @@ style="
                 <h4 style="
                   margin: 0 0 4px;
                   font: 700 18px 'Inter', sans-serif;
-                  color: #fff;
+                  color: #000;
                   letter-spacing: -0.3px;">
                   Fooducate
                 </h4>
                 <p style="
                   margin: 0;
                   font-size: 13px;
-                  color: rgba(255, 255, 255, 0.5);">
+                  color: #000;">
                   A–F food grades
                 </p>
               </div>
@@ -1608,7 +1613,7 @@ style="
                 font-size: 12px;
                 text-transform: uppercase;
                 letter-spacing: 1px;
-                color: #4ade80;
+                color: #000;
                 font-weight: 700;">
                 Strengths
               </h5>
@@ -1617,7 +1622,7 @@ style="
                 padding-left: 18px;
                 font-size: 14px;
                 line-height: 1.7;
-                color: rgba(255, 255, 255, 0.75);">
+                color: #000;">
                 <li>Easy-to-read letter grades</li>
                 <li>Community recipe ideas</li>
                 <li>Integrates calorie tracking</li>
@@ -1640,7 +1645,7 @@ style="
                 padding-left: 18px;
                 font-size: 14px;
                 line-height: 1.7;
-                color: rgba(255, 255, 255, 0.75);">
+                color: #000;">
                 <li>Paywall hides allergy filters</li>
                 <li>User-generated DB = inconsistent data</li>
                 <li>No additive risk explanations</li>
@@ -1659,7 +1664,7 @@ style="
                 margin: 0;
                 font-size: 13px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: #000;
                 font-style: italic;">
                 "Grades are nice, but I still Google every unfamiliar additive."
               </p>
@@ -1668,17 +1673,17 @@ style="
             <!-- Rating -->
             <div style="
               font-size: 12px;
-              color: rgba(255, 255, 255, 0.5);
+              color: #000;
               padding-top: 12px;
-              border-top: 1px solid rgba(255, 255, 255, 0.06);">
+              border-top: 1px solid #FFF;">
               <span style="color: #fbbf24;">★ 4.6</span> Play Store – common feedback: "Data gaps & ads"
             </div>
           </article>
 
           <!-- Open Food Facts Card -->
           <article style="
-            background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FFF;
+            border: 1px solid #000;
             border-radius: 16px;
             padding: 28px;
             transition: all 0.3s ease;">
@@ -1697,7 +1702,7 @@ style="
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #fff;
+                color: #FFF;
                 font: 700 16px 'Inter', sans-serif;">
                 OFF
               </div>
@@ -1705,14 +1710,14 @@ style="
                 <h4 style="
                   margin: 0 0 4px;
                   font: 700 18px 'Inter', sans-serif;
-                  color: #fff;
+                  color: #000;
                   letter-spacing: -0.3px;">
                   Open Food Facts
                 </h4>
                 <p style="
                   margin: 0;
                   font-size: 13px;
-                  color: rgba(255, 255, 255, 0.5);">
+                  color: #000;">
                   Crowd-sourced database
                 </p>
               </div>
@@ -1734,7 +1739,7 @@ style="
                 padding-left: 18px;
                 font-size: 14px;
                 line-height: 1.7;
-                color: rgba(255, 255, 255, 0.75);">
+                color: #000;">
                 <li>4 M+ products, open API</li>
                 <li>Nutri-Score & NOVA processing indexes</li>
                 <li>Transparency-first ethos</li>
@@ -1757,7 +1762,7 @@ style="
                 padding-left: 18px;
                 font-size: 14px;
                 line-height: 1.7;
-                color: rgba(255, 255, 255, 0.75);">
+                color: #000;">
                 <li>UI feels dated; steep learn-curve</li>
                 <li>No personalization or alternative suggestions</li>
                 <li>Quality depends on user-submitted photos</li>
@@ -1776,7 +1781,7 @@ style="
                 margin: 0;
                 font-size: 13px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: #000;
                 font-style: italic;">
                 "Great data, but too much scrolling to get quick answers."
               </p>
@@ -1785,7 +1790,7 @@ style="
             <!-- Rating -->
             <div style="
               font-size: 12px;
-              color: rgba(255, 255, 255, 0.5);
+              color: #000;
               padding-top: 12px;
               border-top: 1px solid rgba(255, 255, 255, 0.06);">
               <span style="color: #fbbf24;">★ 4.4</span> GitHub – loved by power users, not casual shoppers
@@ -1800,7 +1805,7 @@ style="
     font-family:'Inter',sans-serif;
     font-size:clamp(20px,4vw,32px);
     font-weight:800;
-    color:#fff;
+    color:#000;
     margin:0 0 16px;
     letter-spacing:-1px;
     line-height:1.2;">
@@ -1812,58 +1817,57 @@ style="
       width:100%;
       min-width:480px;
       border-collapse:collapse;
-      background:rgba(0,0,0,0.3);
-      border-radius:12px;
+      border-radius:0px;
       overflow:hidden;
       font-family:'Inter',sans-serif;">
       <thead>
         <tr style="background:rgba(177,215,59,0.08);">
-          <th style="padding:12px 10px;text-align:left;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#B1D73B;border:1px solid rgba(255,255,255,0.06);">
+          <th style="padding:12px 10px;text-align:left;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#0C4700;border:1px solid #000;">
             Key Feature
           </th>
-          <th style="padding:12px 10px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#B1D73B;border:1px solid rgba(255,255,255,0.06);">
+          <th style="padding:12px 10px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#0C4700;border:1px solid #000">
             Yuka
           </th>
-          <th style="padding:12px 10px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#B1D73B;border:1px solid rgba(255,255,255,0.06);">
+          <th style="padding:12px 10px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#0C4700;border:1px solid #000;">
             Fooducate
           </th>
-          <th style="padding:12px 10px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#B1D73B;border:1px solid rgba(255,255,255,0.06);">
+          <th style="padding:12px 10px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#0C4700;border:1px solid #000">
             Open Food Facts
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="padding:12px 10px;color:rgba(255,255,255,0.85);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">
+          <td style="padding:12px 10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">
             Personalized allergy filters
           </td>
-          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid rgba(255,255,255,0.06);">✗</td>
-          <td style="padding:12px 10px;text-align:center;color:rgba(255,255,255,0.7);font-size:13px;border:1px solid rgba(255,255,255,0.06);">Paywall</td>
-          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid rgba(255,255,255,0.06);">✗</td>
+          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid #000;">✗</td>
+          <td style="padding:12px 10px;text-align:center;color:rgba(0, 0, 0, 0.955);font-size:13px;border:1px solid #000">Paywall</td>
+          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid #000;">✗</td>
         </tr>
         <tr>
-          <td style="padding:12px 10px;color:rgba(255,255,255,0.85);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">
+          <td style="padding:12px 10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">
             Alternative product suggestions
           </td>
-          <td style="padding:12px 10px;text-align:center;color:#4ade80;font-size:18px;border:1px solid rgba(255,255,255,0.06);">✓</td>
-          <td style="padding:12px 10px;text-align:center;color:rgba(255,255,255,0.7);font-size:13px;border:1px solid rgba(255,255,255,0.06);">Partial</td>
-          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid rgba(255,255,255,0.06);">✗</td>
+          <td style="padding:12px 10px;text-align:center;color:#4ade80;font-size:18px;border:1px solid #000;">✓</td>
+          <td style="padding:12px 10px;text-align:center;color:rgba(0, 0, 0, 0.955);font-size:13px;border:1px solid #000;">Partial</td>
+          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid #000;">✗</td>
         </tr>
         <tr>
-          <td style="padding:12px 10px;color:rgba(255,255,255,0.85);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">
+          <td style="padding:12px 10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">
             Reward / loyalty system
           </td>
-          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid rgba(255,255,255,0.06);">✗</td>
-          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid rgba(255,255,255,0.06);">✗</td>
-          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid rgba(255,255,255,0.06);">✗</td>
+          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid #000;">✗</td>
+          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid #000;">✗</td>
+          <td style="padding:12px 10px;text-align:center;color:#ef4444;font-size:18px;border:1px solid #000;">✗</td>
         </tr>
         <tr>
-          <td style="padding:12px 10px;color:rgba(255,255,255,0.85);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">
+          <td style="padding:12px 10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">
             U.S. regulatory alignment (FDA)
           </td>
-          <td style="padding:12px 10px;text-align:center;color:rgba(255,255,255,0.7);font-size:13px;border:1px solid rgba(255,255,255,0.06);">Limited</td>
-          <td style="padding:12px 10px;text-align:center;color:rgba(255,255,255,0.7);font-size:13px;border:1px solid rgba(255,255,255,0.06);">Partial</td>
-          <td style="padding:12px 10px;text-align:center;color:rgba(255,255,255,0.7);font-size:13px;border:1px solid rgba(255,255,255,0.06);">✓* (data only)</td>
+          <td style="padding:12px 10px;text-align:center;color:rgba(0, 0, 0, 0.955);font-size:13px;border:1px solid #000;">Limited</td>
+          <td style="padding:12px 10px;text-align:center;color:rgba(0, 0, 0, 0.955);font-size:13px;border:1px solid #000;">Partial</td>
+          <td style="padding:12px 10px;text-align:center;color:rgba(0, 0, 0, 0.955);font-size:13px;border:1px solid #000;">✓* (data only)</td>
         </tr>
       </tbody>
     </table>
@@ -1876,7 +1880,7 @@ style="
           font-family: 'Inter', sans-serif;
           font-size: 32px;
           font-weight: 800;
-          color: #fff;
+          color: #000;
           margin: 0 0 16px;
           letter-spacing: -1px;
           line-height: 1.2;">
@@ -1895,7 +1899,7 @@ style="
               font-size: 13px;
               border: 1px solid rgba(239, 68, 68, 0.3);
               border-radius: 24px;
-              background: rgba(239, 68, 68, 0.08);
+              background: #FFF;
               color: #ef4444;
               font-weight: 500;
               letter-spacing: 0.3px;">
@@ -1907,7 +1911,7 @@ style="
               font-size: 13px;
               border: 1px solid rgba(239, 68, 68, 0.3);
               border-radius: 24px;
-              background: rgba(239, 68, 68, 0.08);
+              background: #FFF;
               color: #ef4444;
               font-weight: 500;
               letter-spacing: 0.3px;">
@@ -1919,7 +1923,7 @@ style="
               font-size: 13px;
               border: 1px solid rgba(239, 68, 68, 0.3);
               border-radius: 24px;
-              background: rgba(239, 68, 68, 0.08);
+              background: #FFF;
               color: #ef4444;
               font-weight: 500;
               letter-spacing: 0.3px;">
@@ -1931,7 +1935,7 @@ style="
               font-size: 13px;
               border: 1px solid rgba(239, 68, 68, 0.3);
               border-radius: 24px;
-              background: rgba(239, 68, 68, 0.08);
+              background: #FFF;
               color: #ef4444;
               font-weight: 500;
               letter-spacing: 0.3px;">
@@ -1952,7 +1956,7 @@ style="
         <div style="
           display: inline-block;
           padding: 6px 14px;
-          background: rgba(177, 215, 59, 0.12);
+          background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
           border: 1px solid rgba(177, 215, 59, 0.3);
           border-radius: 20px;
           margin-bottom: 24px;">
@@ -1972,7 +1976,7 @@ style="
           font-family: 'Inter', sans-serif;
           font-size: 32px;
           font-weight: 800;
-          color: #fff;
+          color: #000;
           margin: 0 0 16px;
           letter-spacing: -1px;
           line-height: 1.2;">
@@ -1983,7 +1987,7 @@ style="
           margin: 0 0 40px;
           font-size: 16px;
           line-height: 1.7;
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(0, 0, 0, 0.955);
           max-width: 800px;">
           Clustering 120+ qualitative notes revealed three recurring pain-point clusters 
           that shaped our design direction.
@@ -2036,7 +2040,7 @@ style="
                 margin: 0;
                 font-size: 14px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 font-style: italic;
                 padding-left: 12px;
                 border-left: 2px solid rgba(254, 240, 138, 0.4);">
@@ -2046,7 +2050,7 @@ style="
                 margin: 0;
                 font-size: 14px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 font-style: italic;
                 padding-left: 12px;
                 border-left: 2px solid rgba(254, 240, 138, 0.4);">
@@ -2095,7 +2099,7 @@ style="
                 margin: 0;
                 font-size: 14px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 font-style: italic;
                 padding-left: 12px;
                 border-left: 2px solid rgba(191, 219, 254, 0.4);">
@@ -2105,7 +2109,7 @@ style="
                 margin: 0;
                 font-size: 14px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 font-style: italic;
                 padding-left: 12px;
                 border-left: 2px solid rgba(191, 219, 254, 0.4);">
@@ -2154,7 +2158,7 @@ style="
                 margin: 0;
                 font-size: 14px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 font-style: italic;
                 padding-left: 12px;
                 border-left: 2px solid rgba(187, 247, 208, 0.4);">
@@ -2164,7 +2168,7 @@ style="
                 margin: 0;
                 font-size: 14px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 font-style: italic;
                 padding-left: 12px;
                 border-left: 2px solid rgba(187, 247, 208, 0.4);">
@@ -2178,16 +2182,16 @@ style="
         <!-- Key Insight Banner -->
         <div style="
           background: rgba(177, 215, 59, 0.08);
-          border-left: 4px solid #B1D73B;
+          border-left: 4px solid #0C4700;
           border-radius: 16px;
           padding: 28px;">
           <p style="
             margin: 0;
             font-size: 16px;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.85);">
+            color: rgba(0, 0, 0, 0.955);">
             <strong style="
-              color: #B1D73B;
+              color: #0C4700;
               font-weight: 700;
               letter-spacing: 0.3px;">
               Key Insight →
@@ -2229,32 +2233,32 @@ style="
           width:100%;
           min-width:400px;
           border-collapse:collapse;
-          background:rgba(0,0,0,0.3);
-          border-radius:12px;
+          background:#FFF;
+          border-radius:0px;
           overflow:hidden;
           font-family:'Inter',sans-serif;">
           <thead>
             <tr style="background:rgba(177,215,59,0.08);">
-              <th style="padding:12px 10px;text-align:left;font-size:clamp(12px,2vw,14px);font-weight:700;color:#B1D73B;border:1px solid rgba(255,255,255,0.06);">Theme</th>
-              <th style="padding:12px 10px;text-align:left;font-size:clamp(12px,2vw,14px);font-weight:700;color:#B1D73B;border:1px solid rgba(255,255,255,0.06);">Opportunity</th>
-              <th style="padding:12px 10px;text-align:center;font-size:clamp(12px,2vw,14px);font-weight:700;color:#B1D73B;border:1px solid rgba(255,255,255,0.06);">% Respondents</th>
+              <th style="padding:12px 10px;text-align:left;font-size:clamp(12px,2vw,14px);font-weight:700;color:#0C4700;border:1px solid #000;">Theme</th>
+              <th style="padding:12px 10px;text-align:left;font-size:clamp(12px,2vw,14px);font-weight:700;color:#0C4700;border:1px solid #000;">Opportunity</th>
+              <th style="padding:12px 10px;text-align:center;font-size:clamp(12px,2vw,14px);font-weight:700;color:#0C4700;border:1px solid #000;">% Respondents</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="padding:10px;color:rgba(255,255,255,0.85);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">Decision Fatigue</td>
-              <td style="padding:10px;color:rgba(255,255,255,0.8);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">Instant, trustworthy scores</td>
-              <td style="padding:10px;text-align:center;color:rgba(255,255,255,0.8);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">68%</td>
+              <td style="padding:10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">Decision Fatigue</td>
+              <td style="padding:10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">Instant, trustworthy scores</td>
+              <td style="padding:10px;text-align:center;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">68%</td>
             </tr>
             <tr>
-              <td style="padding:10px;color:rgba(255,255,255,0.85);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">Ingredient Skepticism</td>
-              <td style="padding:10px;color:rgba(255,255,255,0.8);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">Plain-language additive facts</td>
-              <td style="padding:10px;text-align:center;color:rgba(255,255,255,0.8);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">68%</td>
+              <td style="padding:10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">Ingredient Skepticism</td>
+              <td style="padding:10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">Plain-language additive facts</td>
+              <td style="padding:10px;text-align:center;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">68%</td>
             </tr>
             <tr>
-              <td style="padding:10px;color:rgba(255,255,255,0.85);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">Need for Personalization</td>
-              <td style="padding:10px;color:rgba(255,255,255,0.8);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">Diet-aware product swaps</td>
-              <td style="padding:10px;text-align:center;color:rgba(255,255,255,0.8);font-size:clamp(13px,2vw,15px);border:1px solid rgba(255,255,255,0.06);">59%</td>
+              <td style="padding:10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">Need for Personalization</td>
+              <td style="padding:10px;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">Diet-aware product swaps</td>
+              <td style="padding:10px;text-align:center;color:rgba(0, 0, 0, 0.955);font-size:clamp(13px,2vw,15px);border:1px solid #000;">59%</td>
             </tr>
           </tbody>
         </table>
@@ -2283,7 +2287,7 @@ style="
         <div style="
           display: inline-block;
           padding: 6px 14px;
-          background: rgba(177, 215, 59, 0.12);
+          background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
           border: 1px solid rgba(177, 215, 59, 0.3);
           border-radius: 20px;
           margin-bottom: 24px;">
@@ -2303,7 +2307,7 @@ style="
           font-family: 'Inter', sans-serif;
           font-size: 32px;
           font-weight: 800;
-          color: #fff;
+          color: #000;
           margin: 0 0 48px;
           letter-spacing: -1px;
           line-height: 1.2;">
@@ -2312,7 +2316,7 @@ style="
             display: block;
             font-size: 18px;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(0, 0, 0, 0.955);
             margin-top: 8px;
             letter-spacing: 0.3px;">
             24 · Graduate Student · Health-Conscious Shopper
@@ -2360,7 +2364,7 @@ style="
             <!-- Quote Block -->
             <div style="
               background: rgba(177, 215, 59, 0.06);
-              border-left: 4px solid #B1D73B;
+              border-left: 4px solid #0C4700;
               padding: 20px 24px;
               border-radius: 12px;
               margin-bottom: 32px;">
@@ -2368,7 +2372,7 @@ style="
                 margin: 0;
                 font-size: 17px;
                 line-height: 1.6;
-                color: rgba(255, 255, 255, 0.9);
+                color: rgba(0, 0, 0, 0.955);
                 font-style: italic;
                 font-weight: 400;">
                 "I just want a quick yes-or-no so I can get out of the aisle. Why is reading labels harder than my grad school textbooks?"
@@ -2380,8 +2384,8 @@ style="
               margin: 0 0 32px;
               font-size: 16px;
               line-height: 1.8;
-              color: rgba(255, 255, 255, 0.75);">
-              Newly diagnosed with <strong style="color: #B1D73B; font-weight: 600;">gluten sensitivity</strong>, 
+              color: rgba(0, 0, 0, 0.955);">
+              Newly diagnosed with <strong style="color: #0C4700;font-weight: 600;">gluten sensitivity</strong>, 
               Stephanie balances classes, part-time barista shifts, and an active social life. Every grocery run 
               becomes a research project—scanning labels, googling additives, and second-guessing choices. 
               She shares an apartment with two roommates and values efficiency and trust in her food decisions.
@@ -2396,21 +2400,21 @@ style="
               
               <div style="
                 background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 border-radius: 12px;
                 padding: 16px 20px;">
                 <div style="
                   font-size: 11px;
                   text-transform: uppercase;
                   letter-spacing: 1px;
-                  color: rgba(255, 255, 255, 0.4);
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;
                   margin-bottom: 6px;">
                   Income
                 </div>
                 <div style="
                   font-size: 16px;
-                  color: #fff;
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   ~$1,800/month
                 </div>
@@ -2418,21 +2422,21 @@ style="
 
               <div style="
                 background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 border-radius: 12px;
                 padding: 16px 20px;">
                 <div style="
                   font-size: 11px;
                   text-transform: uppercase;
                   letter-spacing: 1px;
-                  color: rgba(255, 255, 255, 0.4);
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;
                   margin-bottom: 6px;">
                   Shopping Frequency
                 </div>
                 <div style="
                   font-size: 16px;
-                  color: #fff;
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   2× per week
                 </div>
@@ -2440,21 +2444,21 @@ style="
 
               <div style="
                 background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 border-radius: 12px;
                 padding: 16px 20px;">
                 <div style="
                   font-size: 11px;
                   text-transform: uppercase;
                   letter-spacing: 1px;
-                  color: rgba(255, 255, 255, 0.4);
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;
                   margin-bottom: 6px;">
                   Preferred Stores
                 </div>
                 <div style="
                   font-size: 16px;
-                  color: #fff;
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   Trader Joe's, Target
                 </div>
@@ -2462,21 +2466,21 @@ style="
 
               <div style="
                 background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 border-radius: 12px;
                 padding: 16px 20px;">
                 <div style="
                   font-size: 11px;
                   text-transform: uppercase;
                   letter-spacing: 1px;
-                  color: rgba(255, 255, 255, 0.4);
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;
                   margin-bottom: 6px;">
                   Device
                 </div>
                 <div style="
                   font-size: 16px;
-                  color: #fff;
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   iPhone 13
                 </div>
@@ -2489,7 +2493,7 @@ style="
                 font-size: 14px;
                 text-transform: uppercase;
                 letter-spacing: 1.2px;
-                color: rgba(255, 255, 255, 0.5);
+                color: rgba(0, 0, 0, 0.955);
                 font-weight: 700;
                 margin: 0 0 16px;">
                 Goals & Pain Points
@@ -2501,8 +2505,8 @@ style="
                   padding: 10px 18px;
                   border-radius: 24px;
                   background: linear-gradient(135deg, rgba(177, 215, 59, 0.15) 0%, rgba(177, 215, 59, 0.08) 100%);
-                  border: 1px solid rgba(177, 215, 59, 0.4);
-                  color: #B1D73B;
+                  border: 1px solid #000;
+                  color: #0C4700;
                   font-weight: 600;
                   font-size: 13px;
                   letter-spacing: 0.3px;
@@ -2520,8 +2524,8 @@ style="
                   padding: 10px 18px;
                   border-radius: 24px;
                   background: linear-gradient(135deg, rgba(177, 215, 59, 0.15) 0%, rgba(177, 215, 59, 0.08) 100%);
-                  border: 1px solid rgba(177, 215, 59, 0.4);
-                  color: #B1D73B;
+                  border: 1px solid #000;
+                  color: #0C4700;
                   font-weight: 600;
                   font-size: 13px;
                   letter-spacing: 0.3px;
@@ -2586,15 +2590,15 @@ style="
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1.2px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(0, 0, 0, 0.955);
             font-weight: 700;
             margin: 0 0 24px;">
             Decision Drivers
           </h4>
           
           <div style="
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #FFF;
+            border: 1px solid #000;
             border-radius: 16px;
             padding: 32px;
             display: grid;
@@ -2609,20 +2613,20 @@ style="
                 margin-bottom: 12px;">
                 <span style="
                   font-size: 15px;
-                  color: #fff;
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   Health Consciousness
                 </span>
                 <span style="
                   font-size: 13px;
-                  color: rgba(255, 255, 255, 0.5);
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   Very High
                 </span>
               </div>
               <div style="
                 height: 10px;
-                background: rgba(255, 255, 255, 0.06);
+                background: rgba(229, 229, 229, 0.955);
                 border-radius: 6px;
                 overflow: hidden;">
                 <div style="
@@ -2643,20 +2647,20 @@ style="
                 margin-bottom: 12px;">
                 <span style="
                   font-size: 15px;
-                  color: #fff;
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   Price Sensitivity
                 </span>
                 <span style="
                   font-size: 13px;
-                  color: rgba(255, 255, 255, 0.5);
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   Moderate
                 </span>
               </div>
               <div style="
                 height: 10px;
-                background: rgba(255, 255, 255, 0.06);
+                background: rgba(229, 229, 229, 0.955);
                 border-radius: 6px;
                 overflow: hidden;">
                 <div style="
@@ -2677,20 +2681,20 @@ style="
                 margin-bottom: 12px;">
                 <span style="
                   font-size: 15px;
-                  color: #fff;
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   Convenience Preference
                 </span>
                 <span style="
                   font-size: 13px;
-                  color: rgba(255, 255, 255, 0.5);
+                  color: rgba(0, 0, 0, 0.955);
                   font-weight: 600;">
                   High
                 </span>
               </div>
               <div style="
                 height: 10px;
-                background: rgba(255, 255, 255, 0.06);
+                background: rgba(229, 229, 229, 0.955);
                 border-radius: 6px;
                 overflow: hidden;">
                 <div style="
@@ -2730,7 +2734,7 @@ style="
               margin: 0;
               font-size: 14px;
               line-height: 1.7;
-              color: rgba(255, 255, 255, 0.8);">
+              color: rgba(0, 0, 0, 0.955);">
               Wednesday 6 PM — rushing home from class, Stephanie stops at Trader Joe's for a quick 
               grab-and-go. She needs dinner ingredients and gluten-free snacks for an 8 PM study group.
             </p>
@@ -2740,7 +2744,7 @@ style="
           <div style="
             background: rgba(177, 215, 59, 0.08);
             border: 1px solid rgba(177, 215, 59, 0.25);
-            border-left: 4px solid #B1D73B;
+            border-left: 4px solid #0C4700;
             border-radius: 16px;
             padding: 28px;">
             <h5 style="
@@ -2748,7 +2752,7 @@ style="
               font-size: 13px;
               text-transform: uppercase;
               letter-spacing: 1px;
-              color: #B1D73B;
+              color: #0C4700;
               font-weight: 700;">
               Key Insight
             </h5>
@@ -2756,8 +2760,8 @@ style="
               margin: 0;
               font-size: 14px;
               line-height: 1.7;
-              color: rgba(255, 255, 255, 0.8);">
-              Younger shoppers crave <strong style="color: #B1D73B;">instant, trustworthy signals</strong> 
+              color: rgba(0, 0, 0, 0.955);">
+              Younger shoppers crave <strong style="color: #0C4700;">instant, trustworthy signals</strong> 
               and personalized swap suggestions to stick to dietary rules without derailing tight schedules.
             </p>
           </div>
@@ -2779,15 +2783,15 @@ style="
 
       <!-- CURRENT JOURNEY (Dark Theme Adapted) -->
       <div class="journey-container" style="
-        background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: #FFF;
+        border: 1px solid #000;
         border-radius: 20px;
         padding: 48px 40px;
         margin-bottom: 48px;">
 
         <h3 style="
           font: 700 28px 'Inter', sans-serif;
-          color: #fff;
+          color: rgba(0, 0, 0, 0.955);
           margin: 0 0 32px;
           letter-spacing: -0.5px;">
           Stephanie's Journey – "Quick grocery run after class"
@@ -2801,16 +2805,16 @@ style="
             border-collapse: collapse;
             font-size: 14px;
             text-align: left;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
+            background: #FFF;
+            border-radius: 0px;
             overflow: hidden;">
             <tr style="background: rgba(177, 215, 59, 0.08);">
               <th style="
                 padding: 16px 14px;
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 width: 25%;
                 font-weight: 700;
-                color: #B1D73B;
+                color: #0C4700;
                 font-size: 13px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;">
@@ -2818,10 +2822,10 @@ style="
               </th>
               <th style="
                 padding: 16px 14px;
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 width: 25%;
                 font-weight: 700;
-                color: #B1D73B;
+                color: #0C4700;
                 font-size: 13px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;">
@@ -2829,10 +2833,10 @@ style="
               </th>
               <th style="
                 padding: 16px 14px;
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 width: 25%;
                 font-weight: 700;
-                color: #B1D73B;
+                color: #0C4700;
                 font-size: 13px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;">
@@ -2840,10 +2844,10 @@ style="
               </th>
               <th style="
                 padding: 16px 14px;
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 width: 25%;
                 font-weight: 700;
-                color: #B1D73B;
+                color: #0C4700;
                 font-size: 13px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;">
@@ -2853,42 +2857,42 @@ style="
             <tr>
               <td style="
                 padding: 20px 14px;
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 vertical-align: top;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 line-height: 1.6;">
                 Decides to shop healthy food<br>
-                <em style="color: #4ade80; font-size: 13px; font-style: italic;">
+                <em style="color: #0C4700; font-size: 13px; font-style: italic;">
                   "Hopeful and determined, but slightly anxious."
                 </em>
               </td>
               <td style="
                 padding: 20px 14px;
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 vertical-align: top;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 line-height: 1.6;">
                 Reads labels, compares items<br>
-                <em style="color: #4ade80; font-size: 13px; font-style: italic;">
+                <em style="color: #0C4700; font-size: 13px; font-style: italic;">
                   "Motivated but increasingly confused by scientific terms."
                 </em>
               </td>
               <td style="
                 padding: 20px 14px;
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 vertical-align: top;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 line-height: 1.6;">
                 Research time crunch, stress<br>
-                <em style="color: #fbbf24; font-size: 13px; font-style: italic;">
+                <em style="color: #d99c00; font-size: 13px; font-style: italic;">
                   "Don't have time to research every ingredient."
                 </em>
               </td>
               <td style="
                 padding: 20px 14px;
-                border: 1px solid rgba(255, 255, 255, 0.06);
+                border: 1px solid #000;
                 vertical-align: top;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.955);
                 line-height: 1.6;">
                 Grabs familiar brands, unsure<br>
                 <em style="color: #ef4444; font-size: 13px; font-style: italic;">
@@ -2905,7 +2909,7 @@ style="
             <!-- Stage 1 -->
             <div style="
               background: rgba(177, 215, 59, 0.08);
-              border: 1px solid rgba(177, 215, 59, 0.2);
+              border: 1px solid #000;
               border-radius: 12px;
               padding: 20px;">
               <h4 style="
@@ -3006,14 +3010,6 @@ style="
     </div>
   </section>
 
-        <!-- Problem Statement -->
-        <section class="quote-section">
-          <div class="quote-content">
-            <p class="quote-text">"Gluten-sensitive shoppers need a fast, trustable tool to confirm product safety and discover alternatives in the aisle, as current apps and labeling demand too much time, causing frustration and suboptimal choices."</p>
-            
-          </div>
-        </section>
-      
 
   <!-- Develop -->
   <section class="section-header" id="develop">
@@ -3048,9 +3044,9 @@ style="
       </div>
         <!-- Usability Testing Summary -->
   
-      <p style="margin: 0 0 16px; font-size: 15px; color: rgba(255, 255, 255, 0.75); line-height: 1.6;">I conducted moderated usability testing with 4 participants who matched my target users. Each session lasted 20–30 minutes and was based on a mid-fidelity black & white prototype. I asked them to complete tasks such as scanning a product, interpreting its health information, and exploring the rewards section. During usability testing, we found that users struggled to interpret ingredient safety and overall product health in the old design. The redesign introduced a color-coded scorebar, risk-level indicators, and a clearer hierarchy.</p>
+      <p style="margin: 0 0 16px; font-size: 15px; color: rgba(0, 0, 0, 0.955); line-height: 1.6;">I conducted moderated usability testing with 4 participants who matched my target users. Each session lasted 20–30 minutes and was based on a mid-fidelity black & white prototype. I asked them to complete tasks such as scanning a product, interpreting its health information, and exploring the rewards section. During usability testing, we found that users struggled to interpret ingredient safety and overall product health in the old design. The redesign introduced a color-coded scorebar, risk-level indicators, and a clearer hierarchy.</p>
   
-      <p style="margin:0 0 24px;font-size:15px;color:rgba(255, 255, 255, 0.75);">
+      <p style="margin:0 0 24px;font-size:15px;color:rgba(0, 0, 0, 0.955);">
         Tasks: ① scan a product → ② read the rating → ③ set food-preference filters.  
         Three pain points emerged; fixes are highlighted below.
       </p>
@@ -3070,7 +3066,7 @@ style="
           <p style="margin:0;color:#a16207;font-style:italic;">
             "I see 10 / 100… is that good or bad?"
           </p>
-          <p style="margin:8px 0 0;color:#374151;">
+          <p style="margin:8px 0 0;color:rgba(0, 0, 0, 0.955);">
             • Added big <strong>41 / 100</strong> badge at top  
             • Traffic-light bar shows safe → risky zones  
             • Negatives / Positives split + risk tags (High, Limited)  
@@ -3115,13 +3111,13 @@ style="
   
       <!-- ░░░  Before & After — Key Screen Improvements  ░░░ -->
       <div style="margin:40px 0;">
-        <h3 style="font:700 22px 'Inter',sans-serif;color:#FFF;margin:0 0 24px;text-align:left;">
+        <h3 style="font:700 22px 'Inter',sans-serif;color:#000;margin:0 0 24px;text-align:left;">
           Before & After — Key Screen Improvements
         </h3>
     
         <!-- 1. Product Rating Screen Comparison -->
         <div style="margin-bottom:48px;">
-          <h4 style="font:600 18px 'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);margin:0 0 20px;text-align:center;">
+          <h4 style="font:600 18px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 20px;text-align:center;">
             Product Rating Screen
           </h4>
 
@@ -3141,7 +3137,7 @@ style="
                      style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
               </div>
               <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);line-height:1.5;
+                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
                   text-align:left;margin:0;">
                 <strong style="color:#ef4444;">Old:</strong> Basic listing of ingredients under 
                 "Negatives" and "Positives" with simple counts and an overall 0-100 score. 
@@ -3166,7 +3162,7 @@ style="
                      style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
               </div>
               <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);line-height:1.5;
+                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
                   text-align:left;margin:0;">
                 <strong style="color:#22c55e;">New:</strong> Prominent rating badge, 
                 traffic-light risk indicators, dietary badges (Lactose Free, Vegan), 
@@ -3178,7 +3174,7 @@ style="
     
         <!-- 2. Scanner Screen Comparison -->
         <div style="margin-bottom:48px;">
-          <h4 style="font:600 18px 'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);margin:0 0 20px;text-align:center;">
+          <h4 style="font:600 18px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 20px;text-align:center;">
             Barcode Scanner Screen
           </h4>
 
@@ -3198,7 +3194,7 @@ style="
                      style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
               </div>
               <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);line-height:1.5;
+                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
                   text-align:left;margin:0;">
                 <strong style="color:#ef4444;">Old:</strong> Camera opens, users scan, 
                 then wait 30 seconds for a separate screen to load with product details. 
@@ -3223,7 +3219,7 @@ style="
                      style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
               </div>
               <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);line-height:1.5;
+                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
                   text-align:left;margin:0;">
                 <strong style="color:#22c55e;">New:</strong> Rating appears as an overlay 
                 on the scanner in under 2 seconds. Full details available via swipe-up 
@@ -3235,7 +3231,7 @@ style="
     
         <!-- 3. Food Preferences Comparison -->
         <div style="margin-bottom:32px;">
-          <h4 style="font:600 18px 'Raleway',sans-serif;color:rgba(255, 255, 255, 0.75);margin:0 0 20px;text-align:center;">
+          <h4 style="font:600 18px 'Raleway',sans-serif;color:rgba(0, 0, 0, 0.955);;margin:0 0 20px;text-align:center;">
             Food Preferences Screen
           </h4>
           <br>
@@ -3253,7 +3249,7 @@ style="
                      style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
               </div>
               <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);line-height:1.5;
+                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
                   text-align:left;margin:0;">
                 <strong style="color:#ef4444;">Old:</strong> Long list of toggle switches 
                 requiring users to flip each one individually, then press "Done" button. 
@@ -3278,7 +3274,7 @@ style="
                      style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
               </div>
               <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);line-height:1.5;
+                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
                   text-align:left;margin:0;">
                 <strong style="color:#22c55e;">New:</strong> Visual icon chips with 
                 familiar imagery enable multi-select in one tap. Auto-saves on close, 
@@ -3341,11 +3337,11 @@ style="
 <section style="padding:60px 20px;margin:48px 0;">
     <div style="max-width:1200px;margin:0 auto;text-align:center;">
       
-        <h3 style="font:700 22px 'Inter',sans-serif;color:#FFF;margin:0 0 12px;">
+        <h3 style="font:700 22px 'Inter',sans-serif;color:#000;margin:0 0 12px;">
         Complete Product Overview
       </h3>
       
-      <p style="font-size:16px'Inter',sans-serif;color:rgba(255, 255, 255, 0.75);max-width:700px;margin:0 auto 32px;line-height:1.6;">
+      <p style="font-size:16px'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);max-width:700px;margin:0 auto 32px;line-height:1.6;">
         Here's the full scope of Orbit Scan—
         from onboarding → scanning → rating → rewards. This map guided every 
         research question and design decision that follows.
@@ -3359,7 +3355,7 @@ style="
              style="width:100%;height:auto;border-radius:12px;" loading="lazy">
       </div>
       
-      <p style="font-size:14px;color:rgba(255, 255, 255, 0.75);margin:16px 0 0;max-width:600px;margin:16px auto 0;">
+      <p style="font-size:14px;color:rgba(0, 0, 0, 0.955);margin:16px 0 0;max-width:600px;margin:16px auto 0;">
         <strong>Flow highlights:</strong> Onboarding → Camera scan → Health rating → 
         Swap suggestions → Rewards system → Lists & preferences management.
       </p>
@@ -3377,10 +3373,10 @@ Final Design Solutions - Detailed Screens & Features
   </h2>
   <!-- Onboarding Screens -->
   <div style="margin-bottom:48px;">
-    <h3 style="font:700 22px 'Raleway',sans-serif;color:#FFF;margin:0 0 16px;">
+    <h3 style="font:700 22px 'Raleway',sans-serif;color:#000;margin:0 0 16px;">
       Onboarding Experience
     </h3>
-    <p style="margin:0 0 24px;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+    <p style="margin:0 0 24px;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
       Orbit Scan's onboarding introduces core functionalities across four screens, highlighting 
       instant health insights, additive identification, and reward systems to encourage user engagement.
     </p>
@@ -3410,14 +3406,14 @@ Final Design Solutions - Detailed Screens & Features
       
       <!-- Content -->
       <div>
-        <h3 style="font:700 22px 'Raleway',sans-serif;color:#FFF;margin:0 0 16px;">
+        <h3 style="font:700 22px 'Raleway',sans-serif;color:#000;margin:0 0 16px;">
           Discover Home Screen
         </h3>
-        <p style="margin:0 0 16px;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+        <p style="margin:0 0 16px;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
           The Discover home screen presents users with personalized <strong>"Products you may like"</strong> 
           alongside <strong>"E Gift Vouchers"</strong>.
         </p>
-        <p style="margin:0;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+        <p style="margin:0;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
           Features an <strong>"Articles"</strong> section offering informative content on healthy eating, 
           packaging swaps, gut health, and clean bread options.
         </p>
@@ -3434,23 +3430,23 @@ Final Design Solutions - Detailed Screens & Features
       
       <!-- Content -->
       <div>
-        <h3 style="font:700 22px 'Raleway',sans-serif;color:#FFF;margin:0 0 16px;">
+        <h3 style="font:700 22px 'Raleway',sans-serif;color:#000;margin:0 0 16px;">
           Intelligent Scanner
         </h3>
         <div style="margin-bottom:16px;">
-          <h4 style="font:600 16px 'Raleway',sans-serif;color:rgba(255, 255, 255, 0.75);margin:0 0 8px;">
+          <h4 style="font:600 16px 'Raleway',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 8px;">
             Health Analysis Screen
           </h4>
-          <p style="margin:0 0 16px;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+          <p style="margin:0 0 16px;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
             Displays detailed health information after scanning, highlighting both positive 
             and negative ingredient attributes with clear visual indicators.
           </p>
         </div>
         <div>
-          <h4 style="font:600 16px 'Raleway',sans-serif;color:#FFF;margin:0 0 8px;">
+          <h4 style="font:600 16px 'Raleway',sans-serif;color:#000;margin:0 0 8px;">
             Action Options Screen
           </h4>
-          <p style="margin:0;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+          <p style="margin:0;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
             Offers <strong>"Add to Favorites"</strong>, <strong>"Scoring method"</strong> details, 
             and <strong>"Recommendations"</strong> for healthier alternatives.
           </p>
@@ -3484,14 +3480,14 @@ Final Design Solutions - Detailed Screens & Features
       
       <!-- Content -->
       <div>
-        <h3 style="font:700 22px 'Raleway',sans-serif;color:#FFF;margin:0 0 16px;">
+        <h3 style="font:700 22px 'Raleway',sans-serif;color:#000;margin:0 0 16px;">
           Additive Analysis Deep-Dive
         </h3>
-        <p style="margin:0 0 16px;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+        <p style="margin:0 0 16px;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
           Comprehensive ingredient analysis with detailed health impact information, 
           risk assessments, and alternative recommendations.
         </p>
-        <p style="margin:0;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+        <p style="margin:0;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
           Users can explore scoring methodology and access personalized suggestions 
           based on their dietary preferences and restrictions.
         </p>
@@ -3531,14 +3527,14 @@ Final Design Solutions - Detailed Screens & Features
       
       <!-- Content -->
       <div>
-        <h3 style="font:700 22px 'Raleway',sans-serif;color:#FFF;margin:0 0 16px;">
+        <h3 style="font:700 22px 'Raleway',sans-serif;color:#000;margin:0 0 16px;">
           Product Categories
         </h3>
-        <p style="margin:0 0 16px;font-size:15px;color:rgba(255, 255, 255, 0.75);;line-height:1.6;">
+        <p style="margin:0 0 16px;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
           Streamlined category browsing allows users to explore top food product categories 
           like Milk, Coffee, Juices, and Chocolates with intuitive visual icons.
         </p>
-        <p style="margin:0;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+        <p style="margin:0;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
           Organized structure supports faster product discovery and decision-making while 
           maintaining a clean, user-friendly browsing experience.
         </p>
@@ -3570,23 +3566,23 @@ Final Design Solutions - Detailed Screens & Features
       
       <!-- Content -->
       <div>
-        <h3 style="font:700 22px 'Raleway',sans-serif;color:#FFF;margin:0 0 16px;">
+        <h3 style="font:700 22px 'Raleway',sans-serif;color:#000;margin:0 0 16px;">
           Gamified Rewards System
         </h3>
         <div style="margin-bottom:16px;">
-          <h4 style="font:600 16px 'Raleway',sans-serif;color:rgba(255, 255, 255, 0.75);;margin:0 0 8px;">
+          <h4 style="font:600 16px 'Raleway',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 8px;">
             Rewards Discovery
           </h4>
-          <p style="margin:0 0 16px;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+          <p style="margin:0 0 16px;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
             Users explore featured rewards across categories like Retail, Health, and Fashion, 
             motivating continued engagement with clear value propositions.
           </p>
         </div>
         <div>
-          <h4 style="font:600 16px 'Raleway',sans-serif;color:#FFF;margin:0 0 8px;">
+          <h4 style="font:600 16px 'Raleway',sans-serif;color:#000;margin:0 0 8px;">
             Simple Redemption Flow
           </h4>
-          <p style="margin:0;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+          <p style="margin:0;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
             Clean, intuitive interface allows users to select reward amounts based on 
             available points with transparent redemption process.
           </p>
@@ -3698,7 +3694,7 @@ Final Design Solutions - Detailed Screens & Features
 
   <!-- Call-to-Action -->
   <div style="text-align: center; margin-top: 24px;">
-    <p style="font-size: 12px; color: #9ca3af; margin-bottom: 16px;">
+    <p style="font-size: 12px; color: color:rgba(0, 0, 0, 0.955); margin-bottom: 16px;">
       💡 <strong>Tip:</strong> Try the complete scan-to-recommendation flow to see how we addressed usability testing feedback
     </p>
 
@@ -3757,16 +3753,16 @@ Final Design Solutions - Detailed Screens & Features
 
        <!-- ░░░ ORBIT SCAN COLOR PALETTE - RESPONSIVE ░░░ -->
        <div style="margin:40px 0;">
-        <h3 class="section-heading" style="font:700 22px 'Raleway',sans-serif;color:#FFF;margin:0 0 12px;">
+        <h3 class="section-heading" style="font:700 22px 'Raleway',sans-serif;color:#000;margin:0 0 12px;">
           Color Palette
         </h3>
-        <p style="margin:0 0 24px;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+        <p style="margin:0 0 24px;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
           Comprehensive green system with accessibility ratings, designed specifically for Orbit Scan's health-focused interface.
         </p>
 
         <!-- Primary & Branding Colors - Mobile Responsive -->
         <div style="margin-bottom:32px;">
-          <h4 class="subsection-heading" style="font:600 16px 'Raleway',sans-serif;color:rgba(255, 255, 255, 0.75);margin:0 0 16px;">
+          <h4 class="subsection-heading" style="font:600 16px 'Raleway',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 16px;">
             Primary & Branding Colors
           </h4>
           
@@ -3790,14 +3786,14 @@ Final Design Solutions - Detailed Screens & Features
         </div>
 
         <!-- All Colors Section - Responsive Grid -->
-        <h4 class="subsection-heading" style="font:600 16px 'Raleway',sans-serif;color:rgba(255, 255, 255, 0.75);margin:0 0 24px;">
+        <h4 class="subsection-heading" style="font:600 16px 'Raleway',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 24px;">
           All Colors
         </h4>
 
         <div class="color-grid" style="display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));">
            <!-- Green Column 1 - Standard Green Tones -->
            <div>
-            <h5 style="font:600 14px 'Raleway',sans-serif;color:rgba(255, 255, 255, 0.75);margin:0 0 12px;">Green (Standard)</h5>
+            <h5 style="font:600 14px 'Raleway',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 12px;">Green (Standard)</h5>
             <div style="display:flex;flex-direction:column;gap:4px;">
               <div style="height:40px;background:#E8F6E6;border-radius:6px;
                           display:flex;align-items:center;justify-content:space-between;padding:0 12px;
@@ -4004,10 +4000,10 @@ Final Design Solutions - Detailed Screens & Features
 
     <!-- ░░░ TYPOGRAPHY SYSTEM - MOBILE RESPONSIVE ░░░ -->
     <div style="margin:40px 0;">
-        <h3 class="section-heading" style="font:700 22px 'Raleway',sans-serif;color:#FFF;margin:0 0 12px;">
+        <h3 class="section-heading" style="font:700 22px 'Raleway',sans-serif;color:#000;margin:0 0 12px;">
           iOS Mobile Typography System
         </h3>
-        <p style="margin:0 0 32px;font-size:15px;color:rgba(255, 255, 255, 0.75);line-height:1.6;">
+        <p style="margin:0 0 32px;font-size:15px;color:rgba(0, 0, 0, 0.955);line-height:1.6;">
           SF Pro typography specifications for <strong>iOS mobile devices only</strong>. 
           These point sizes are optimized for iPhone screens and iOS accessibility guidelines.
         </p>
@@ -4017,7 +4013,7 @@ Final Design Solutions - Detailed Screens & Features
           <!-- Typography Guidelines Table - Mobile Responsive -->
           <div class="typography-section">
 
-            <p style="font-size:13px;color:rgba(255, 255, 255, 0.75);margin:0 0 16px;line-height:1.5;">
+            <p style="font-size:13px;color:rgba(0, 0, 0, 0.955);margin:0 0 16px;line-height:1.5;">
               <strong>Mobile Rule:</strong> SF Pro Display for 20pt+, SF Pro Text for 19pt and below. 
               Sizes shown are for iPhone devices with standard resolution.
             </p>
@@ -4026,7 +4022,7 @@ Final Design Solutions - Detailed Screens & Features
             <div class="responsive-table-container" style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:24px;">
               <table class="typography-table" style="width:100%;min-width:600px;border-collapse:collapse;font-size:12px;border:1px solid #e5e7eb;">
                 <thead>
-                    <tr style="background:#000">
+                    <tr style="background:rgba(177, 215, 59, 0.3);">
                     <th style="padding:12px 8px;border:1px solid #e5e7eb;text-align:left;font-weight:600;white-space:nowrap;">iOS Text Style</th>
                     <th style="padding:12px 8px;border:1px solid #e5e7eb;text-align:left;font-weight:600;white-space:nowrap;">Font Family</th>
                     <th style="padding:12px 8px;border:1px solid #e5e7eb;text-align:left;font-weight:600;white-space:nowrap;">Size (pt)</th>
@@ -4044,7 +4040,7 @@ Final Design Solutions - Detailed Screens & Features
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Regular</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;">App name, main titles</td>
                   </tr>
-                  <tr style="background:#000">
+                  <tr style="background:#fff;">
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Title 1</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">SF Pro Display</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;"><strong>28pt</strong></td>
@@ -4060,7 +4056,7 @@ Final Design Solutions - Detailed Screens & Features
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Regular</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;">Section headers</td>
                   </tr>
-                  <tr style="background:#000">
+                  <tr style="background:#fff;">
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Title 3</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">SF Pro Display</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;"><strong>20pt</strong></td>
@@ -4076,7 +4072,7 @@ Final Design Solutions - Detailed Screens & Features
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Semibold</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;">Important content</td>
                   </tr>
-                  <tr style="background:#000">
+                  <tr style="background:#fff;">
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Body</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">SF Pro Text</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;"><strong>17pt</strong></td>
@@ -4092,7 +4088,7 @@ Final Design Solutions - Detailed Screens & Features
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Regular</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;">Emphasized info</td>
                   </tr>
-                  <tr style="background:#000">
+                  <tr style="background:#fff;">
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Subhead</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">SF Pro Text</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;"><strong>15pt</strong></td>
@@ -4108,7 +4104,7 @@ Final Design Solutions - Detailed Screens & Features
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Regular</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;">Labels, metadata</td>
                   </tr>
-                  <tr style="background:#000">
+                  <tr style="background:#fff;">
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">Caption 1</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;">SF Pro Text</td>
                     <td style="padding:10px 8px;border:1px solid #e5e7eb;white-space:nowrap;"><strong>12pt</strong></td>
@@ -4128,16 +4124,16 @@ Final Design Solutions - Detailed Screens & Features
               </table>
             </div>
 
-            <p style="font-size:11px;color:rgba(255, 255, 255, 0.75);margin:0;">
+            <p style="font-size:11px;color:rgba(0, 0, 0, 0.955);margin:0;">
               <strong>iOS Mobile Only:</strong> These sizes are for iPhone devices. 11pt is the minimum accessible size.
             </p>
           </div>
 
         <!-- Mobile Typography Notes -->
         <div style="
-            background:#f0fdf4;border-left:4px solid #22c55e;border-radius:12px;
+            background:#f0fdf4;border-left:4px solid #0C4700;border-radius:12px;
             padding:20px;margin-top:32px;">
-          <p style="margin:0;font-size:14px;line-height:1.6;color:#065f46;">
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#0C4700;">
             <strong>iOS Mobile Specification:</strong> These point sizes are exclusively for iPhone devices. 
             SF Pro Display for 20pt+, SF Pro Text for 19pt and below. All sizes support Dynamic Type 
             and meet iOS accessibility standards with 11pt minimum size requirement.
@@ -4186,10 +4182,10 @@ Final Design Solutions - Detailed Screens & Features
    <!-- Section Header -->
    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 16px;">
     <div>
-      <h2 style="margin: 0 0 8px; font-size: 28px; color: #FFF; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
+      <h2 style="margin: 0 0 8px; font-size: 28px; color: #000; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
         MORE PROJECTS
       </h2>
-      <p style="margin: 0; font-size: 14px; color: #64748b;">
+      <p style="margin: 0; font-size: 14px; color: rgba(0, 0, 0, 0.955);">
         Explore additional case studies and design work
       </p>
     </div>
