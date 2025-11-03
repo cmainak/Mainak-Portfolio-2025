@@ -36,6 +36,11 @@
 
 
     /* === NAVIGATION PILLS === */
+
+    html {
+  scroll-behavior: smooth;
+}
+
 .jump-pill {
   display: inline-block;
   text-decoration: none;
@@ -4360,7 +4365,7 @@ Final Design Solutions - Detailed Screens & Features
   </a>
 
   <script>
-    // Smooth scroll
+    // Smooth scroll (handles the click)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -4370,23 +4375,26 @@ Final Design Solutions - Detailed Screens & Features
         }
       });
     });
-
-    // Fade in on scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
+  
+    // Jump nav active state (handles the highlighting on scroll)
+    const sections = document.querySelectorAll('section[id]');
+    const navPills = document.querySelectorAll('.jump-pill');
+  
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+          current = section.getAttribute('id');
         }
       });
-    }, observerOptions);
-
-    document.querySelectorAll('.content-block, .process-card, .insight-card').forEach(el => {
-      observer.observe(el);
+  
+      navPills.forEach(pill => {
+        pill.classList.remove('active');
+        if (pill.getAttribute('href') === `#${current}`) {
+          pill.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
