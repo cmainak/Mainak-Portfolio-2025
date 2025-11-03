@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Glassmorphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Animated spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Transition for hourly forecast */
+        #hourly-forecast-container {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #hourly-forecast-container.open {
+            max-height: 500px; /* Adjust as needed */
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 transition-all duration-500">
+
+    <!-- Main Application Container -->
+    <div id="app-container" class="max-w-7xl mx-auto p-4 md:p-6 min-h-screen">
+
+        <!-- API Key Modal (Initially hidden) -->
+        <div id="api-key-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4 hidden">
+            <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
+                <h2 class="text-2xl font-bold mb-4">Welcome!</h2>
+                <p class="mb-4 text-gray-700">Please enter your OpenWeatherMap API key to use the dashboard. You can get a free key (with One Call API 3.0 access) from <a href="https://openweathermap.org/price" target="_blank" class="text-blue-600 hover:underline">OpenWeatherMap</a>.</p>
+                <div class="mb-4">
+                    <label for="api-key-input" class="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+                    <input type="password" id="api-key-input" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your API key">
+                </div>
+                <button id="save-api-key-btn" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">Save and Start</button>
+                <p id="api-key-error" class="text-red-500 text-sm mt-2"></p>
+            </div>
+        </div>
+
+        <!-- Main Loading Spinner (Initially hidden) -->
+        <div id="main-loader" class="fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-40 hidden">
+            <div class="loader"></div>
+            <p class="ml-4 text-lg font-medium text-gray-700">Loading Weather Data...</p>
+        </div>
+
+        <!-- General Error Message -->
+        <div id="error-message" class="hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-4" role="alert">
+            <p class="font-bold">Error</p>
+            <p id="error-text">Something went wrong. Please try again.</p>
+        </div>
+
+        <!-- Main Dashboard Layout (Hidden until API key is set) -->
+        <div id="dashboard-content" class="hidden">
+            <!-- Header: Search and Settings -->
+            <header class="flex flex-col md:flex-row justify-between items-center mb-4 md:mb-6 gap-4">
+                <h1 class="text-3xl font-bold text-gray-800">Weather Dashboard</h1>
+                
+                <!-- Search Form -->
+                <form id="search-form" class="flex-grow max-w-lg w-full md:w-auto">
+                    <div class="relative">
+                        <input type="text" id="search-input" class="w-full py-2 px-4 pr-10 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search for a city (e.g., London, New York, 40.71,-74.01)">
+                        <button type="submit" class="absolute right-0 top-0 h-full px-4 text-gray-500 hover:text-blue-600" aria-label="Search">
+                            <i data-lucide="search" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Settings & Geolocation -->
+                <div class="flex items-center gap-2">
+                    <button id="geolocation-btn" class="p-2 bg-white rounded-full shadow border border-gray-300 hover:bg-gray-100" aria-label="Use current location">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-blue-600"></i>
+                    </button>
+
+                    <!-- Unit Toggle (C/F) -->
+                    <div class="relative bg-white rounded-full shadow border border-gray-300 p-1">
+                        <button id="unit-c-btn" class="px-3 py-1 rounded-full text-sm font-medium focus:outline-none">°C</button>
+                        <button id="unit-f-btn" class="px-3 py-1 rounded-full text-sm font-medium focus:outline-none">°F</button>
+                    </div>
+
+                    <!-- Time Format Toggle (12/24) -->
+                    <div class="relative bg-white rounded-full shadow border border-gray-300 p-1">
+                        <button id="time-12-btn" class="px-3 py-1 rounded-full text-sm font-medium focus:outline-none">12h</button>
+                        <button id="time-24-btn" class="px-3 py-1 rounded-full text-sm font-medium focus:outline-none">24h</button>
+                    </div>
+
+                    <button id="edit-api-key-btn" class="p-2 bg-white rounded-full shadow border border-gray-300 hover:bg-gray-100" aria-label="Edit API Key">
+                        <i data-lucide="key-round" class="w-5 h-5 text-gray-600"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 md:gap-6">
+
+                <!-- Left Column: History & Details -->
+                <aside class="lg:col-span-1 flex flex-col gap-4 md:gap-6">
+                    <!-- Location History -->
+                    <div class="glass-card rounded-lg shadow-lg p-4">
+                        <h2 class="text-xl font-semibold mb-3">Location History</h2>
+                        <ul id="history-list" class="space-y-2">
+                            <!-- History items will be injected by JS -->
+                            <li id="history-placeholder" class="text-gray-600 italic text-sm">No locations searched yet.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Sunrise & Sunset -->
+                    <div class="glass-card rounded-lg shadow-lg p-4">
+                        <h2 class="text-xl font-semibold mb-4">Sunrise & Sunset</h2>
+                        <div class="flex justify-between items-center text-sm mb-2">
+                            <span class="flex items-center gap-1"><i data-lucide="sunrise" class="w-5 h-5 text-yellow-500"></i> Sunrise</span>
+                            <span id="sunrise-time" class="font-medium">--:--</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="flex items-center gap-1"><i data-lucide="sunset" class="w-5 h-5 text-orange-500"></i> Sunset</span>
+                            <span id="sunset-time" class="font-medium">--:--</span>
+                        </div>
+                        <!-- Simple visual indicator -->
+                        <div class="w-full bg-gray-200 rounded-full h-2 mt-4 relative overflow-hidden">
+                             <div id="sun-path-night" class="absolute inset-0 bg-gradient-to-r from-blue-800 to-indigo-900"></div>
+                             <div id="sun-path" class="h-2 bg-gradient-to-r from-yellow-400 to-orange-500" style="width: 0%;"></div>
+                             <div id="sun-marker" class="absolute top-1/2 -mt-2 -ml-2 w-4 h-4 rounded-full bg-yellow-300 border-2 border-white shadow-lg" style="left: 0%;">
+                                <i data-lucide="sun" class="w-full h-full text-yellow-600 p-0.5"></i>
+                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Air Quality -->
+                    <div class="glass-card rounded-lg shadow-lg p-4">
+                        <h2 class="text-xl font-semibold mb-3">Air Quality (AQI)</h2>
+                        <div class="flex items-center justify-between">
+                            <span id="aqi-value" class="text-4xl font-bold">--</span>
+                            <span id="aqi-label" class="text-lg font-medium px-3 py-1 rounded-full">--</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mt-2">Components (μg/m³):</p>
+                        <div id="aqi-components" class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs mt-1">
+                            <!-- AQI components injected by JS -->
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Right Column: Main Weather Info -->
+                <main class="lg:col-span-3 flex flex-col gap-4 md:gap-6">
+                    
+                    <!-- Severe Weather Alerts -->
+                    <div id="alerts-container" class="hidden">
+                        <!-- Alerts injected by JS -->
+                    </div>
+
+                    <!-- Current Weather -->
+                    <div class="glass-card rounded-lg shadow-xl p-6 relative overflow-hidden">
+                        <div class="flex flex-col md:flex-row justify-between items-start">
+                            <!-- Main Info -->
+                            <div>
+                                <h2 id="current-location" class="text-3xl font-bold">Loading...</h2>
+                                <p id="current-time" class="text-lg mb-4">--:--</p>
+                                <p id="current-temp" class="text-7xl font-bold tracking-tighter -ml-1">--°</p>
+                                <p class="text-xl">Feels like <span id="current-feels-like" class="font-semibold">--°</span></p>
+                                <p id="current-description" class="text-xl capitalize font-medium">--</p>
+                            </div>
+                            <!-- Icon -->
+                            <div class="flex-shrink-0 w-32 h-32 md:w-40 md:h-40" id="current-icon">
+                                <!-- Weather icon SVG injected by JS -->
+                            </div>
+                        </div>
+                        
+                        <!-- Detailed Grid -->
+                        <div class="mt-6 pt-6 border-t border-white border-opacity-30 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="wind" class="w-6 h-6 text-blue-100"></i>
+                                <div>
+                                    <span class="text-sm">Wind</span>
+                                    <p id="current-wind" class="font-semibold">--</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="droplets" class="w-6 h-6 text-blue-100"></i>
+                                <div>
+                                    <span class="text-sm">Humidity</span>
+                                    <p id="current-humidity" class="font-semibold">--%</p>
+                                </div>
+                            </div>
+                             <div class="flex items-center gap-2">
+                                <i data-lucide="sun" class="w-6 h-6 text-yellow-300"></i>
+                                <div>
+                                    <span class="text-sm">UV Index</span>
+                                    <p id="current-uvi" class="font-semibold">--</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="gauge" class="w-6 h-6 text-gray-100"></i>
+                                <div>
+                                    <span class="text-sm">Pressure</span>
+                                    <p id="current-pressure" class="font-semibold">-- hPa</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="cloud-rain" class="w-6 h-6 text-blue-100"></i>
+                                <div>
+                                    <span class="text-sm">Precipitation</span>
+                                    <p id="current-pop" class="font-semibold">--%</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="eye" class="w-6 h-6 text-gray-100"></i>
+                                <div>
+                                    <span class="text-sm">Visibility</span>
+                                    <p id="current-visibility" class="font-semibold">-- km</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5-Day Forecast -->
+                    <div class="glass-card rounded-lg shadow-lg p-4">
+                        <h2 class="text-xl font-semibold mb-3">5-Day Forecast</h2>
+                        <div id="forecast-daily-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                            <!-- Daily forecast cards injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Hourly Forecast (Expandable) -->
+                    <div id="hourly-forecast-container" class="glass-card rounded-lg shadow-lg p-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 id="hourly-forecast-title" class="text-xl font-semibold">Hourly Forecast</h2>
+                            <button id="close-hourly-btn" class="p-1 rounded-full hover:bg-white hover:bg-opacity-20" aria-label="Close hourly forecast">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <div id="hourly-forecast-inner" class="flex gap-4 pb-2">
+                            <!-- Hourly forecast items injected by JS -->
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { 
+            getAuth, 
+            signInAnonymously, 
+            signInWithCustomToken, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { 
+            getFirestore, 
+            doc, 
+            getDoc, 
+            setDoc, 
+            onSnapshot, 
+            setLogLevel 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- GLOBAL STATE ---
+        let db, auth, userId;
+        let appConfig = {
+            apiKey: null,
+            units: 'metric', // 'metric' for C, 'imperial' for F
+            timeFormat: '12h' // '12h' or '24h'
+        };
+        let lastFetchedLocation = null; // { lat, lon, name }
+        let currentWeatherData = null; // To store the full API response
+        let historyUpdateInProgress = false; // Flag to prevent snapshot loops
+
+        // --- DOM Elements ---
+        const $ = (selector) => document.querySelector(selector);
+        const $$ = (selector) => document.querySelectorAll(selector);
+
+        const elements = {
+            apiKeyModal: $('#api-key-modal'),
+            apiKeyInput: $('#api-key-input'),
+            saveApiKeyBtn: $('#save-api-key-btn'),
+            apiKeyError: $('#api-key-error'),
+            editApiKeyBtn: $('#edit-api-key-btn'),
+            dashboardContent: $('#dashboard-content'),
+            mainLoader: $('#main-loader'),
+            errorMessage: $('#error-message'),
+            errorText: $('#error-text'),
+            searchForm: $('#search-form'),
+            searchInput: $('#search-input'),
+            geolocationBtn: $('#geolocation-btn'),
+            unitCBtn: $('#unit-c-btn'),
+            unitFBtn: $('#unit-f-btn'),
+            time12Btn: $('#time-12-btn'),
+            time24Btn: $('#time-24-btn'),
+            current: {
+                location: $('#current-location'),
+                time: $('#current-time'),
+                temp: $('#current-temp'),
+                feelsLike: $('#current-feels-like'),
+                description: $('#current-description'),
+                icon: $('#current-icon'),
+                wind: $('#current-wind'),
+                humidity: $('#current-humidity'),
+                uvi: $('#current-uvi'),
+                pressure: $('#current-pressure'),
+                pop: $('#current-pop'),
+                visibility: $('#current-visibility'),
+            },
+            sunrise: $('#sunrise-time'),
+            sunset: $('#sunset-time'),
+            sunPath: $('#sun-path'),
+            sunMarker: $('#sun-marker'),
+            aqi: {
+                value: $('#aqi-value'),
+                label: $('#aqi-label'),
+                components: $('#aqi-components')
+            },
+            alertsContainer: $('#alerts-container'),
+            dailyForecastContainer: $('#forecast-daily-container'),
+            hourly: {
+                container: $('#hourly-forecast-container'),
+                title: $('#hourly-forecast-title'),
+                inner: $('#hourly-forecast-inner'),
+                closeBtn: $('#close-hourly-btn')
+            },
+            history: {
+                list: $('#history-list'),
+                placeholder: $('#history-placeholder')
+            }
+        };
+
+        // --- FIREBASE INITIALIZATION ---
+        
+        function initializeFirebase() {
+            try {
+                // DO NOT prompt user for this.
+                const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+                // DO NOT prompt user for this.
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+                if (!firebaseConfig.apiKey) {
+                    console.error("Firebase config is missing.");
+                    showError("Failed to initialize app. Firebase config is missing.");
+                    return;
+                }
+
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                
+                // Enable debug logging for Firestore
+                setLogLevel('debug');
+
+                setupAuthListener(appId);
+
+            } catch (error) {
+                console.error("Error initializing Firebase:", error);
+                showError(`Firebase initialization failed: ${error.message}. Please reload.`);
+            }
+        }
+
+        async function setupAuthListener(appId) {
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    console.log("User is signed in:", user.uid);
+                    userId = user.uid;
+                    const privateDataPath = `/artifacts/${appId}/users/${userId}`;
+                    
+                    // Start listening for config and history changes
+                    setupConfigListener(privateDataPath);
+                    setupHistoryListener(privateDataPath);
+
+                } else {
+                    console.log("User is not signed in. Attempting to sign in.");
+                    try {
+                        // DO NOT prompt user for this.
+                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                            console.log("Signing in with custom token...");
+                            await signInWithCustomToken(auth, __initial_auth_token);
+                        } else {
+                            console.log("Signing in anonymously...");
+                            await signInAnonymously(auth);
+                        }
+                        // The onAuthStateChanged listener will fire again with the new user.
+                    } catch (error) {
+                        console.error("Error signing in:", error);
+                        showError(`Authentication failed: ${error.message}`);
+                    }
+                }
+            });
+        }
+        
+        function getConfigDocRef(privateDataPath) {
+             return doc(db, privateDataPath, 'weatherApp', 'config');
+        }
+
+        function getHistoryDocRef(privateDataPath) {
+            return doc(db, privateDataPath, 'weatherApp', 'history');
+        }
+
+        // Listen for config changes (API key, units)
+        function setupConfigListener(privateDataPath) {
+            const configDocRef = getConfigDocRef(privateDataPath);
+            
+            onSnapshot(configDocRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    console.log("Config data received:", docSnap.data());
+                    const config = docSnap.data();
+                    appConfig.apiKey = config.apiKey || null;
+                    appConfig.units = config.units || 'metric';
+                    appConfig.timeFormat = config.timeFormat || '12h';
+                } else {
+                    console.log("No config doc. Using defaults.");
+                    // Doc doesn't exist, appConfig retains defaults
+                    appConfig.apiKey = null;
+                }
+                // Update UI based on new config
+                handleConfigUpdate();
+            }, (error) => {
+                console.error("Error listening to config:", error);
+                showError(`Failed to load app config: ${error.message}`);
+            });
+        }
+
+        // Listen for history changes
+        function setupHistoryListener(privateDataPath) {
+            const historyDocRef = getHistoryDocRef(privateDataPath);
+
+            onSnapshot(historyDocRef, (docSnap) => {
+                if (historyUpdateInProgress) {
+                    console.log("Skipping history snapshot update, local update in progress.");
+                    return; // Avoid loop
+                }
+                if (docSnap.exists()) {
+                    const history = docSnap.data();
+                    console.log("History data received:", history.locations);
+                    updateHistoryUI(history.locations || []);
+                } else {
+                    console.log("No history doc.");
+                    updateHistoryUI([]);
+                }
+            }, (error) => {
+                console.error("Error listening to history:", error);
+                showError(`Failed to load location history: ${error.message}`);
+            });
+        }
+
+        // --- CONFIG & API KEY MANAGEMENT ---
+
+        async function saveConfig() {
+            if (!userId) {
+                showError("User not authenticated. Cannot save config.");
+                return;
+            }
+            // DO NOT prompt user for this.
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            const privateDataPath = `/artifacts/${appId}/users/${userId}`;
+            const configDocRef = getConfigDocRef(privateDataPath);
+            
+            try {
+                console.log("Saving config:", appConfig);
+                await setDoc(configDocRef, appConfig, { merge: true });
+            } catch (error) {
+                console.error("Error saving config:", error);
+                showError(`Failed to save settings: ${error.message}`);
+            }
+        }
+        
+        function handleConfigUpdate() {
+            if (!appConfig.apiKey) {
+                // No API key, show modal
+                elements.apiKeyModal.classList.remove('hidden');
+                elements.dashboardContent.classList.add('hidden');
+                elements.apiKeyInput.value = ''; // Clear input
+            } else {
+                // API key exists, hide modal, show dashboard
+                elements.apiKeyModal.classList.add('hidden');
+                elements.dashboardContent.classList.remove('hidden');
+                lucide.createIcons(); // Initialize icons now that dashboard is visible
+
+                // Fetch weather if we have a last location, otherwise prompt user (e.g., via geolocation)
+                if (lastFetchedLocation) {
+                    fetchWeather(lastFetchedLocation.lat, lastFetchedLocation.lon, lastFetchedLocation.name);
+                } else {
+                    // This is the first load with a key. Try geolocation.
+                    getUserLocation();
+                }
+            }
+            // Update UI toggles
+            updateUnitToggleUI();
+            updateTimeToggleUI();
+        }
+
+        elements.saveApiKeyBtn.addEventListener('click', async () => {
+            const key = elements.apiKeyInput.value.trim();
+            if (!key) {
+                elements.apiKeyError.textContent = "API key cannot be empty.";
+                return;
+            }
+            
+            // Optimistically set config and save
+            elements.apiKeyError.textContent = "";
+            appConfig.apiKey = key;
+            await saveConfig();
+            // The onSnapshot listener will handle hiding the modal
+        });
+
+        elements.editApiKeyBtn.addEventListener('click', () => {
+            elements.apiKeyModal.classList.remove('hidden');
+            elements.apiKeyInput.value = appConfig.apiKey || '';
+        });
+
+        // --- LOCATION & SEARCH ---
+
+        elements.geolocationBtn.addEventListener('click', getUserLocation);
+
+        function getUserLocation() {
+            if ('geolocation' in navigator) {
+                showLoader("Getting your location...");
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    console.log("Geolocation success:", latitude, longitude);
+                    // We have coords, now get city name
+                    await fetchReverseGeocoding(latitude, longitude);
+                }, (error) => {
+                    console.error("Geolocation error:", error);
+                    hideLoader();
+                    showError("Could not get your location. Please use the search bar.");
+                }, { timeout: 10000 });
+            } else {
+                showError("Geolocation is not supported by your browser.");
+            }
+        }
+
+        elements.searchForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const query = elements.searchInput.value.trim();
+            if (!query) return;
+            
+            showLoader("Searching...");
+            
+            // Check if query is lat,lon
+            const latLonMatch = query.match(/^(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)$/);
+            if (latLonMatch) {
+                const lat = parseFloat(latLonMatch[1]);
+                const lon = parseFloat(latLonMatch[2]);
+                console.log("Searching by coordinates:", lat, lon);
+                await fetchReverseGeocoding(lat, lon); // Get name for history
+            } else {
+                console.log("Searching by city name:", query);
+                await fetchGeocoding(query);
+            }
+            elements.searchInput.value = ''; // Clear input
+        });
+
+        // --- API CALLS ---
+
+        async function fetchWithRetry(url, options = {}, retries = 3, backoff = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`API Error (${response.status}): ${errorData.message || 'Unknown error'}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.warn(`API call failed (Attempt ${i + 1}/${retries}): ${error.message}`);
+                    if (i === retries - 1) throw error; // Re-throw last error
+                    await new Promise(res => setTimeout(res, backoff * (i + 1))); // Exponential backoff
+                }
+            }
+        }
+
+        // Search city name -> lat,lon
+        async function fetchGeocoding(city) {
+            const url = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=1&appid=${appConfig.apiKey}`;
+            try {
+                const data = await fetchWithRetry(url);
+                if (data && data.length > 0) {
+                    const { lat, lon, name, state, country } = data[0];
+                    const locationName = `${name}, ${state ? state + ', ' : ''}${country}`;
+                    console.log("Geocoding result:", locationName, lat, lon);
+                    await fetchWeather(lat, lon, locationName);
+                    addLocationToHistory(locationName, lat, lon);
+                } else {
+                    hideLoader();
+                    showError(`Could not find location: "${city}"`);
+                }
+            } catch (error) {
+                hideLoader();
+                console.error("Geocoding error:", error);
+                showError(`Failed to search for location: ${error.message}`);
+            }
+        }
+
+        // Search lat,lon -> city name
+        async function fetchReverseGeocoding(lat, lon) {
+            const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${appConfig.apiKey}`;
+            try {
+                const data = await fetchWithRetry(url);
+                 if (data && data.length > 0) {
+                    const { name, state, country } = data[0];
+                    const locationName = `${name}, ${state ? state + ', ' : ''}${country}`;
+                    console.log("Reverse Geocoding result:", locationName);
+                    await fetchWeather(lat, lon, locationName); // Fetch weather with the new name
+                    addLocationToHistory(locationName, lat, lon);
+                } else {
+                    // Fallback if reverse geocoding fails but we have coords
+                    console.warn("Reverse geocoding empty. Using coords.");
+                    await fetchWeather(lat, lon, `${lat.toFixed(2)}, ${lon.toFixed(2)}`);
+                    addLocationToHistory(`${lat.toFixed(2)}, ${lon.toFixed(2)}`, lat, lon);
+                }
+            } catch (error) {
+                hideLoader();
+                console.error("Reverse Geocoding error:", error);
+                // Fallback: fetch weather with coords as name
+                await fetchWeather(lat, lon, `${lat.toFixed(2)}, ${lon.toFixed(2)}`);
+                addLocationToHistory(`${lat.toFixed(2)}, ${lon.toFixed(2)}`, lat, lon);
+            }
+        }
+
+        // Fetch Weather and AQI
+        async function fetchWeather(lat, lon, name) {
+            showLoader("Fetching weather data...");
+            lastFetchedLocation = { lat, lon, name }; // Store last location
+            
+            // 1. OneCall API for weather
+            const weatherUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=${appConfig.units}&exclude=minutely&appid=${appConfig.apiKey}`;
+            // 2. AQI API
+            const aqiUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${appConfig.apiKey}`;
+
+            try {
+                // Fetch in parallel
+                const [weatherData, aqiData] = await Promise.all([
+                    fetchWithRetry(weatherUrl),
+                    fetchWithRetry(aqiUrl)
+                ]);
+                
+                console.log("Weather Data:", weatherData);
+                console.log("AQI Data:", aqiData);
+
+                currentWeatherData = weatherData; // Save for hourly forecast
+                
+                // Update all UI components
+                updateCurrentUI(weatherData, name);
+                updateDetailsUI(weatherData);
+                updateAlertsUI(weatherData.alerts);
+                updateDailyForecastUI(weatherData.daily);
+                updateAQIUI(aqiData);
+                updateBackground(weatherData.current);
+
+                // Close hourly forecast on new location load
+                closeHourlyForecast();
+                
+                hideLoader();
+                hideError(); // Hide any previous errors
+            } catch (error) {
+                hideLoader();
+                console.error("Failed to fetch weather data:", error);
+                showError(`Failed to fetch weather: ${error.message}`);
+                if (error.message.includes("401")) {
+                    showError("Invalid API key. Please check your key.");
+                    // Clear the bad API key
+                    appConfig.apiKey = null;
+                    await saveConfig();
+                }
+            }
+        }
+        
+        // --- HISTORY MANAGEMENT ---
+
+        async function addLocationToHistory(name, lat, lon) {
+            if (!userId) return;
+            
+            historyUpdateInProgress = true; // Set flag
+            
+            // DO NOT prompt user for this.
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            const privateDataPath = `/artifacts/${appId}/users/${userId}`;
+            const historyDocRef = getHistoryDocRef(privateDataPath);
+
+            const newLocation = { name, lat, lon, id: `${lat},${lon}` };
+
+            try {
+                const docSnap = await getDoc(historyDocRef);
+                let locations = [];
+                if (docSnap.exists()) {
+                    locations = docSnap.data().locations || [];
+                }
+
+                // Remove duplicates
+                locations = locations.filter(loc => loc.id !== newLocation.id);
+                // Add to the front
+                locations.unshift(newLocation);
+                // Limit to 5
+                locations = locations.slice(0, 5);
+
+                await setDoc(historyDocRef, { locations });
+                console.log("History updated in Firestore.");
+                // UI will be updated by snapshot listener, but we can also update it immediately
+                updateHistoryUI(locations);
+
+            } catch (error) {
+                console.error("Error adding to history:", error);
+                // Don't show user-facing error for this
+            } finally {
+                // Release flag after a short delay
+                setTimeout(() => {
+                    historyUpdateInProgress = false;
+                }, 500);
+            }
+        }
+        
+        function updateHistoryUI(locations) {
+            if (!locations || locations.length === 0) {
+                elements.history.placeholder.classList.remove('hidden');
+                elements.history.list.innerHTML = ''; // Clear list
+                elements.history.list.appendChild(elements.history.placeholder);
+                return;
+            }
+            
+            elements.history.placeholder.classList.add('hidden');
+            elements.history.list.innerHTML = ''; // Clear list
+            
+            locations.forEach(location => {
+                const li = document.createElement('li');
+                const button = document.createElement('button');
+                button.className = "w-full text-left px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-30 transition duration-200";
+                button.textContent = location.name;
+                button.onclick = () => {
+                    console.log("Loading from history:", location.name);
+                    fetchWeather(location.lat, location.lon, location.name);
+                };
+                li.appendChild(button);
+                elements.history.list.appendChild(li);
+            });
+        }
+
+        // --- UI UPDATE FUNCTIONS ---
+
+        function updateCurrentUI(data, name) {
+            const { current } = data;
+            const unitSymbol = appConfig.units === 'metric' ? 'C' : 'F';
+            const windSymbol = appConfig.units === 'metric' ? 'm/s' : 'mph';
+
+            elements.current.location.textContent = name;
+            elements.current.time.textContent = `Updated: ${formatTime(current.dt, data.timezone_offset, 'long')}`;
+            elements.current.temp.textContent = `${Math.round(current.temp)}°${unitSymbol}`;
+            elements.current.feelsLike.textContent = `${Math.round(current.feels_like)}°${unitSymbol}`;
+            elements.current.description.textContent = current.weather[0].description;
+            
+            // Icon
+            elements.current.icon.innerHTML = getWeatherIcon(current.weather[0].icon, 'w-full h-full');
+            
+            // Details
+            elements.current.wind.textContent = `${Math.round(current.wind_speed)} ${windSymbol} ${getWindDirection(current.wind_deg)}`;
+            elements.current.humidity.textContent = `${current.humidity}%`;
+            elements.current.uvi.textContent = `${Math.round(current.uvi)} (${getUVILabel(current.uvi)})`;
+            elements.current.pressure.textContent = `${current.pressure} hPa`;
+            elements.current.visibility.textContent = `${(current.visibility / 1000).toFixed(1)} km`;
+            
+            // Precipitation (from hourly data)
+            const pop = data.hourly[0].pop || 0;
+            elements.current.pop.textContent = `${Math.round(pop * 100)}%`;
+        }
+        
+        function updateDetailsUI(data) {
+            const { current, daily } = data;
+            const today = daily[0];
+            
+            // Sunrise/Sunset
+            elements.sunrise.textContent = formatTime(today.sunrise, data.timezone_offset);
+            elements.sunset.textContent = formatTime(today.sunset, data.timezone_offset);
+            
+            // Sun path visualization
+            const now = current.dt;
+            const { sunrise, sunset } = today;
+            const totalDaylight = sunset - sunrise;
+            const timeSinceSunrise = now - sunrise;
+            
+            let percentOfDay = (timeSinceSunrise / totalDaylight) * 100;
+            if (now < sunrise) percentOfDay = 0; // Before sunrise
+            if (now > sunset) percentOfDay = 100; // After sunset
+
+            elements.sunPath.style.width = `${percentOfDay}%`;
+            elements.sunMarker.style.left = `${percentOfDay}%`;
+            
+            // Change sun icon to moon if night
+            const sunIcon = elements.sunMarker.querySelector('i');
+            if (now < sunrise || now > sunset) {
+                sunIcon.setAttribute('data-lucide', 'moon');
+                sunIcon.className = 'w-full h-full text-blue-300 p-0.5';
+            } else {
+                sunIcon.setAttribute('data-lucide', 'sun');
+                sunIcon.className = 'w-full h-full text-yellow-600 p-0.5';
+            }
+            lucide.createIcons({
+                nodes: [sunIcon]
+            });
+        }
+        
+        function updateAlertsUI(alerts) {
+            if (!alerts || alerts.length === 0) {
+                elements.alertsContainer.classList.add('hidden');
+                elements.alertsContainer.innerHTML = '';
+                return;
+            }
+            
+            elements.alertsContainer.classList.remove('hidden');
+            elements.alertsContainer.innerHTML = ''; // Clear old alerts
+            
+            alerts.forEach(alert => {
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-lg shadow-md mb-2';
+                alertDiv.innerHTML = `
+                    <p class="font-bold flex items-center gap-2"><i data-lucide="alert-triangle" class="w-5 h-5"></i> ${alert.event}</p>
+                    <p class="text-sm">From: ${alert.sender_name}</p>
+                    <p class="mt-2 text-sm">${alert.description}</p>
+                    <p class="text-xs mt-1">Starts: ${formatTime(alert.start, currentWeatherData.timezone_offset, 'short')}</p>
+                    <p class="text-xs">Ends: ${formatTime(alert.end, currentWeatherData.timezone_offset, 'short')}</p>
+                `;
+                elements.alertsContainer.appendChild(alertDiv);
+            });
+            lucide.createIcons({
+                nodes: elements.alertsContainer.querySelectorAll('[data-lucide]')
+            });
+        }
+
+        function updateDailyForecastUI(dailyData) {
+            elements.dailyForecastContainer.innerHTML = ''; // Clear old
+            // We only want the next 5 days (index 1 to 5)
+            const forecastDays = dailyData.slice(1, 6); 
+
+            forecastDays.forEach((day, index) => {
+                const dayCard = document.createElement('button');
+                dayCard.className = 'flex flex-col items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-30 transition duration-200 focus:outline-none focus:ring-2 focus:ring-white';
+                dayCard.setAttribute('data-day-index', index + 1); // Store index (1-5)
+                
+                dayCard.innerHTML = `
+                    <p class="font-semibold text-sm">${formatDay(day.dt, currentWeatherData.timezone_offset)}</p>
+                    <div class="w-12 h-12 my-1">${getWeatherIcon(day.weather[0].icon, 'w-full h-full')}</div>
+                    <p class="font-bold">${Math.round(day.temp.max)}° / ${Math.round(day.temp.min)}°</p>
+                    <p class="text-xs capitalize">${day.weather[0].description}</p>
+                    <p class="text-xs mt-1 flex items-center gap-1"><i data-lucide="cloud-rain" class="w-3 h-3"></i> ${Math.round(day.pop * 100)}%</p>
+                `;
+                
+                dayCard.addEventListener('click', () => {
+                    openHourlyForecast(day.dt, index + 1);
+                });
+                
+                elements.dailyForecastContainer.appendChild(dayCard);
+            });
+            lucide.createIcons({
+                nodes: elements.dailyForecastContainer.querySelectorAll('[data-lucide]')
+            });
+        }
+        
+        function openHourlyForecast(dt, dayIndex) {
+            if (!currentWeatherData) return;
+            
+            const dayName = formatDay(dt, currentWeatherData.timezone_offset, 'long');
+            elements.hourly.title.textContent = `Hourly for ${dayName}`;
+            elements.hourly.inner.innerHTML = ''; // Clear old
+            
+            // Find the 24 hourly data points for the selected day
+            // The API returns 48h. We need to find the correct 24h block.
+            // We can't just use the dayIndex, we need to match by date.
+            const selectedDate = new Date((dt + currentWeatherData.timezone_offset) * 1000).getUTCDate();
+            
+            const hourlyForDay = currentWeatherData.hourly.filter(hour => {
+                const hourDate = new Date((hour.dt + currentWeatherData.timezone_offset) * 1000).getUTCDate();
+                return hourDate === selectedDate;
+            });
+            
+            // Fallback if filter fails (e.g. timezone issues) - use the index
+            let finalHourlyData = hourlyForDay;
+            if(hourlyForDay.length === 0 && dayIndex === 1) { // Tomorrow
+                 finalHourlyData = currentWeatherData.hourly.slice(24, 48);
+            }
+            // Note: This logic is tricky. OpenWeather's OneCall 3.0 returns 48 hours.
+            // For simplicity, we'll show the *next 48 hours* if "Today" (index 0) or "Tomorrow" (index 1) is clicked,
+            // but this request asks for a breakdown *for each day*.
+            // Let's stick to the filtered data.
+            
+            if (finalHourlyData.length === 0) {
+                 // Try to get *some* data if filter failed
+                 const startIndex = (dayIndex - 1) * 24; // This is a guess
+                 finalHourlyData = currentWeatherData.hourly.slice(startIndex, startIndex + 24);
+            }
+            
+            // If it's *still* empty (e.g. for day 3-5), we can't show hourly data
+            if (finalHourlyData.length === 0 || dayIndex > 1) {
+                // The free OneCall 3.0 only provides 48h of hourly.
+                // We must use the 'daily' data for days 3-5. This is a limitation.
+                // Let's adjust the UI logic. We can only show hourly for "Today" (index 0) and "Tomorrow" (index 1)
+                
+                // Let's re-do the daily forecast to pass the *actual* index
+                elements.dailyForecastContainer.innerHTML = '';
+                const dailyDays = currentWeatherData.daily.slice(0, 6); // Get Today + 5 days
+                dailyDays.forEach((day, index) => {
+                     const dayCard = document.createElement('button');
+                     dayCard.className = 'flex flex-col items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-30 transition duration-200 focus:outline-none focus:ring-2 focus:ring-white';
+                     dayCard.setAttribute('data-day-index', index); // Store index (0-5)
+                     
+                     dayCard.innerHTML = `
+                        <p class="font-semibold text-sm">${formatDay(day.dt, currentWeatherData.timezone_offset)}</p>
+                        <div class="w-12 h-12 my-1">${getWeatherIcon(day.weather[0].icon, 'w-full h-full')}</div>
+                        <p class="font-bold">${Math.round(day.temp.max)}° / ${Math.round(day.temp.min)}°</p>
+                        <p class="text-xs capitalize">${day.weather[0].description}</p>
+                        <p class="text-xs mt-1 flex items-center gap-1"><i data-lucide="cloud-rain" class="w-3 h-3"></i> ${Math.round(day.pop * 100)}%</p>
+                    `;
+                    
+                    if(index > 1) { // Only days 0 and 1 have hourly data
+                        dayCard.disabled = true;
+                        dayCard.classList.add('opacity-50', 'cursor-not-allowed');
+                        dayCard.title = "Hourly data only available for Today and Tomorrow";
+                    } else {
+                        dayCard.addEventListener('click', () => {
+                            openHourlyForecast(day.dt, index); // Pass index 0 or 1
+                        });
+                    }
+                    elements.dailyForecastContainer.appendChild(dayCard);
+                });
+                 lucide.createIcons({
+                    nodes: elements.dailyForecastContainer.querySelectorAll('[data-lucide]')
+                });
+                
+                // Now, re-run *this* function with the correct index (0 or 1)
+                if (dayIndex > 1) {
+                    showError("Hourly data is only available for Today and Tomorrow with the free API.");
+                    return;
+                }
+                
+                // Re-call with the first day if the user clicked one by mistake
+                openHourlyForecast(currentWeatherData.daily[dayIndex].dt, dayIndex);
+                return;
+            }
+
+            // We have hourly data! (for index 0 or 1)
+            const startIndex = dayIndex === 0 ? 0 : 24;
+            const relevantHourly = currentWeatherData.hourly.slice(startIndex, startIndex + 24);
+
+            relevantHourly.forEach(hour => {
+                const hourItem = document.createElement('div');
+                hourItem.className = 'flex-shrink-0 flex flex-col items-center w-20 p-2 rounded-lg';
+                hourItem.innerHTML = `
+                    <p class="text-sm font-medium">${formatTime(hour.dt, currentWeatherData.timezone_offset)}</p>
+                    <div class="w-10 h-10 my-1">${getWeatherIcon(hour.weather[0].icon, 'w-full h-full')}</div>
+                    <p class="font-bold text-lg">${Math.round(hour.temp)}°</p>
+                    <p class="text-xs mt-1 flex items-center gap-1"><i data-lucide="cloud-rain" class="w-3 h-3"></i> ${Math.round(hour.pop * 100)}%</p>
+                `;
+                elements.hourly.inner.appendChild(hourItem);
+            });
+            
+            elements.hourly.container.classList.add('open');
+            lucide.createIcons({
+                nodes: elements.hourly.inner.querySelectorAll('[data-lucide]')
+            });
+            
+            // Scroll to it
+            elements.hourly.container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        function closeHourlyForecast() {
+            elements.hourly.container.classList.remove('open');
+        }
+        elements.hourly.closeBtn.addEventListener('click', closeHourlyForecast);
+
+        function updateAQIUI(aqiData) {
+            if (!aqiData || !aqiData.list || aqiData.list.length === 0) {
+                elements.aqi.value.textContent = 'N/A';
+                elements.aqi.label.textContent = 'Unknown';
+                elements.aqi.label.className = 'text-lg font-medium px-3 py-1 rounded-full bg-gray-200 text-gray-700';
+                elements.aqi.components.innerHTML = '<p class="text-xs col-span-2">No data available.</p>';
+                return;
+            }
+            
+            const aqi = aqiData.list[0].main.aqi;
+            const components = aqiData.list[0].components;
+            
+            const { label, colorClass } = getAQILabel(aqi);
+            
+            elements.aqi.value.textContent = aqi;
+            elements.aqi.label.textContent = label;
+            elements.aqi.label.className = `text-lg font-medium px-3 py-1 rounded-full ${colorClass}`;
+            
+            elements.aqi.components.innerHTML = `
+                <span>PM₂.₅: <strong>${components.pm2_5.toFixed(1)}</strong></span>
+                <span>O₃: <strong>${components.o3.toFixed(1)}</strong></span>
+                <span>PM₁₀: <strong>${components.pm10.toFixed(1)}</strong></span>
+                <span>NO₂: <strong>${components.no2.toFixed(1)}</strong></span>
+                <span>SO₂: <strong>${components.so2.toFixed(1)}</strong></span>
+                <span>CO: <strong>${components.co.toFixed(1)}</strong></span>
+            `;
+        }
+        
+        function updateBackground(current) {
+            const icon = current.weather[0].icon;
+            const isDay = icon.endsWith('d');
+            let bgClass = '';
+
+            // Simple background logic
+            if (isDay) {
+                // Day
+                if (['01d', '02d'].includes(icon)) bgClass = 'from-blue-400 to-cyan-300'; // Clear
+                else if (['03d', '04d'].includes(icon)) bgClass = 'from-blue-300 to-gray-400'; // Clouds
+                else if (['09d', '10d', '11d'].includes(icon)) bgClass = 'from-gray-500 to-blue-400'; // Rain/Thunder
+                else if (['13d'].includes(icon)) bgClass = 'from-blue-200 to-gray-300'; // Snow
+                else if (['50d'].includes(icon)) bgClass = 'from-gray-400 to-gray-200'; // Mist
+                else bgClass = 'from-blue-400 to-cyan-300'; // Default Day
+            } else {
+                // Night
+                 if (['01n', '02n'].includes(icon)) bgClass = 'from-blue-900 to-indigo-900'; // Clear Night
+                else if (['03n', '04n'].includes(icon)) bgClass = 'from-gray-800 to-indigo-800'; // Clouds Night
+                else if (['09n', '10n', '11n'].includes(icon)) bgClass = 'from-gray-900 to-blue-800'; // Rain/Thunder Night
+                else if (['13n'].includes(icon)) bgClass = 'from-blue-800 to-gray-700'; // Snow Night
+                else if (['50n'].includes(icon)) bgClass = 'from-gray-800 to-gray-600'; // Mist Night
+                else bgClass = 'from-blue-900 to-indigo-900'; // Default Night
+            }
+            
+            // Apply gradient and text color
+            document.body.className = `bg-gradient-to-br ${bgClass} text-white transition-all duration-500`;
+            
+            // Adjust card text for dark backgrounds
+            if (!isDay || ['09d', '10d', '11d', '50d'].includes(icon)) {
+                $$('.glass-card, .glass-card h2, .glass-card p, .glass-card span, .glass-card li button').forEach(el => {
+                     el.classList.add('text-white');
+                     el.classList.remove('text-gray-900', 'text-gray-800', 'text-gray-700', 'text-gray-600');
+                });
+                $$('.glass-card input, .glass-card button').forEach(el => {
+                    el.classList.add('text-white');
+                });
+                $('#dashboard-content > header h1').classList.add('text-white');
+            } else {
+                 $$('.glass-card, .glass-card h2, .glass-card p, .glass-card span, .glass-card li button').forEach(el => {
+                     el.classList.remove('text-white');
+                     el.classList.add('text-gray-900');
+                 });
+                 // Reset specific elements
+                 $$('.glass-card h2').forEach(el => el.classList.add('text-gray-900'));
+                 $$('.glass-card p, .glass-card span, .glass-card li button').forEach(el => el.classList.add('text-gray-800'));
+                 $('#dashboard-content > header h1').classList.remove('text-white');
+            }
+        }
+        
+        // --- SETTINGS TOGGLES ---
+        
+        function updateUnitToggleUI() {
+            if (appConfig.units === 'metric') {
+                elements.unitCBtn.classList.add('bg-blue-600', 'text-white');
+                elements.unitCBtn.classList.remove('text-gray-700');
+                elements.unitFBtn.classList.remove('bg-blue-600', 'text-white');
+                elements.unitFBtn.classList.add('text-gray-700');
+            } else {
+                elements.unitFBtn.classList.add('bg-blue-600', 'text-white');
+                elements.unitFBtn.classList.remove('text-gray-700');
+                elements.unitCBtn.classList.remove('bg-blue-600', 'text-white');
+                elements.unitCBtn.classList.add('text-gray-700');
+            }
+        }
+        
+        function updateTimeToggleUI() {
+            if (appConfig.timeFormat === '12h') {
+                elements.time12Btn.classList.add('bg-blue-600', 'text-white');
+                elements.time12Btn.classList.remove('text-gray-700');
+                elements.time24Btn.classList.remove('bg-blue-600', 'text-white');
+                elements.time24Btn.classList.add('text-gray-700');
+            } else {
+                elements.time24Btn.classList.add('bg-blue-600', 'text-white');
+                elements.time24Btn.classList.remove('text-gray-700');
+                elements.time12Btn.classList.remove('bg-blue-600', 'text-white');
+                elements.time12Btn.classList.add('text-gray-700');
+            }
+        }
+
+        elements.unitCBtn.addEventListener('click', () => {
+            if (appConfig.units === 'metric') return;
+            appConfig.units = 'metric';
+            updateUnitToggleUI();
+            saveConfig(); // This will trigger onSnapshot, which re-fetches weather
+        });
+        
+        elements.unitFBtn.addEventListener('click', () => {
+            if (appConfig.units === 'imperial') return;
+            appConfig.units = 'imperial';
+            updateUnitToggleUI();
+            saveConfig();
+        });
+        
+        elements.time12Btn.addEventListener('click', () => {
+            if (appConfig.timeFormat === '12h') return;
+            appConfig.timeFormat = '12h';
+            updateTimeToggleUI();
+            saveConfig(); // Re-renders time, no fetch needed
+            // Manually re-render if data exists
+            if (currentWeatherData) {
+                 updateCurrentUI(currentWeatherData, lastFetchedLocation.name);
+                 updateDetailsUI(currentWeatherData);
+            }
+        });
+        
+        elements.time24Btn.addEventListener('click', () => {
+            if (appConfig.timeFormat === '24h') return;
+            appConfig.timeFormat = '24h';
+            updateTimeToggleUI();
+            saveConfig();
+            if (currentWeatherData) {
+                 updateCurrentUI(currentWeatherData, lastFetchedLocation.name);
+                 updateDetailsUI(currentWeatherData);
+            }
+        });
+
+        // --- UI HELPERS ---
+
+        function showLoader(message) {
+            elements.mainLoader.classList.remove('hidden');
+            elements.mainLoader.querySelector('p').textContent = message || 'Loading...';
+        }
+
+        function hideLoader() {
+            elements.mainLoader.classList.add('hidden');
+        }
+
+        function showError(message) {
+            elements.errorText.textContent = message;
+            elements.errorMessage.classList.remove('hidden');
+        }
+
+        function hideError() {
+            elements.errorMessage.classList.add('hidden');
+        }
+
+        // --- FORMATTING & DATA HELPERS ---
+
+        function formatTime(utcTimestamp, offsetSeconds, style = 'short') {
+            const date = new Date((utcTimestamp + offsetSeconds) * 1000);
+            const options = {
+                timeZone: 'UTC', // We've already applied the offset
+            };
+            
+            if(style === 'long') {
+                options.dateStyle = 'medium';
+                options.timeStyle = 'short';
+            } else {
+                 options.timeStyle = 'short';
+            }
+            
+            if(appConfig.timeFormat === '24h') {
+                options.hour12 = false;
+            } else {
+                options.hour12 = true;
+            }
+
+            return date.toLocaleString('en-US', options);
+        }
+        
+        function formatDay(utcTimestamp, offsetSeconds, style = 'short') {
+            const date = new Date((utcTimestamp + offsetSeconds) * 1000);
+            const options = {
+                timeZone: 'UTC',
+                weekday: style, // 'short' (e.g., Wed) or 'long' (e.g., Wednesday)
+            };
+            
+            // Check if it's today
+            const today = new Date();
+            // Apply offset to "today" to compare in the same timezone
+            const todayInTz = new Date(today.getTime() + (today.getTimezoneOffset() * 60000) + (offsetSeconds * 1000));
+            
+            if (date.getUTCDate() === todayInTz.getUTCDate()) {
+                return 'Today';
+            }
+            
+            return date.toLocaleString('en-US', options);
+        }
+
+        function getWindDirection(deg) {
+            const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+            return directions[Math.round(deg / 22.5) % 16];
+        }
+
+        function getUVILabel(uvi) {
+            uvi = Math.round(uvi);
+            if (uvi <= 2) return 'Low';
+            if (uvi <= 5) return 'Moderate';
+            if (uvi <= 7) return 'High';
+            if (uvi <= 10) return 'Very High';
+            return 'Extreme';
+        }
+        
+        function getAQILabel(aqi) {
+            switch(aqi) {
+                case 1: return { label: 'Good', colorClass: 'bg-green-500 text-white' };
+                case 2: return { label: 'Fair', colorClass: 'bg-yellow-500 text-black' };
+                case 3: return { label: 'Moderate', colorClass: 'bg-orange-500 text-white' };
+                case 4: return { label: 'Poor', colorClass: 'bg-red-500 text-white' };
+                case 5: return { label: 'Very Poor', colorClass: 'bg-purple-700 text-white' };
+                default: return { label: 'Unknown', colorClass: 'bg-gray-200 text-gray-700' };
+            }
+        }
+        
+        function getWeatherIcon(iconCode, classes) {
+            const iconMap = {
+                '01d': 'sun',
+                '01n': 'moon',
+                '02d': 'cloud-sun',
+                '02n': 'cloud-moon',
+                '03d': 'cloud',
+                '03n': 'cloud',
+                '04d': 'cloudy',
+                '04n': 'cloudy',
+                '09d': 'cloud-rain',
+                '09n': 'cloud-rain',
+                '10d': 'cloud-drizzle', // Using drizzle for 'light rain' day
+                '10n': 'cloud-drizzle', // Using drizzle for 'light rain' night
+                '11d': 'cloud-lightning',
+                '11n': 'cloud-lightning',
+                '13d': 'cloud-snow',
+                '13n': 'cloud-snow',
+                '50d': 'wind', // Using wind for mist
+                '50n': 'wind', // Using wind for mist
+            };
+            const lucideIcon = iconMap[iconCode] || 'sun-off'; // Default icon
+            return `<i data-lucide="${lucideIcon}" class="${classes}"></i>`;
+        }
+
+
+        // --- STARTUP ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeFirebase();
+            
+            // Immediately replace all [data-lucide] attributes with SVGs
+            // This is crucial for icons visible on load (like settings)
+            lucide.createIcons();
+        });
+
+    </script>
+</body>
+</html>
+
