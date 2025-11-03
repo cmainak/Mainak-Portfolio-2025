@@ -2115,7 +2115,7 @@ style="
               <div style="
                   background:#ffe4e6;border:2px dashed #ef4444;border-radius:12px;
                   padding:8px;margin-bottom:12px;">
-                <img src="https://placehold.co/600x400/9ca3af/ffffff?text=Before:+Blank+Form" loading="lazy"
+                <img src="assets/img/Advanced To App/Old Task creation_1.png" loading="lazy"
                      alt="Old task creation screen with a blank form"
                      style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
               </div>
@@ -2138,7 +2138,7 @@ style="
               <div style="
                   background:#f5f3ff;border:2px solid #7c3aed;border-radius:12px;
                   padding:8px;margin-bottom:12px;">
-                <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=After:+Smart+Add+Prompt" loading="lazy"
+                <img src="assets/img/Advanced To App/Smart Add.png" loading="lazy"
                      alt="New 'Smart Add' prompt screen"
                      style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
               </div>
@@ -2151,59 +2151,7 @@ style="
           </div>
         </div>
       
-        <!-- 2. Complex Task Comparison -->
-        <div style="margin-bottom:48px;">
-          <h4 style="font:600 18px 'Inter',sans-serif;color:#374151;margin:0 0 20px;text-align:center;">
-            Complex Task Planning
-          </h4>
-
-          <br>
-          
-          <div class="comparison-container" style="
-              display:flex;flex-wrap:wrap;gap:32px;justify-content:center;
-              align-items:flex-start;margin-bottom:16px;">
-            
-            <!-- Old Screen -->
-            <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
-              <div style="
-                  background:#ffe4e6;border:2px dashed #ef4444;border-radius:12px;
-                  padding:8px;margin-bottom:12px;">
-                <img src="https://placehold.co/600x400/9ca3af/ffffff?text=Before:+Blank+Description" loading="lazy"
-                     alt="Old task with a blank description field"
-                     style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
-              </div>
-              <p style="
-                  font:400 14px 'Inter',sans-serif;color:#374151;line-height:1.5;
-                  text-align:left;margin:0;">
-                <strong style="color:#ef4444;">Old:</strong> A large, complex task like "Plan Party" sits with a blank description, causing overwhelm and procrastination.
-              </p>
-            </div>
-      
-            <!-- Arrow -->
-            <div class="comparison-arrow" style="
-                align-self:center;color:#22c55e;font-size:24px;
-                flex:0 0 auto;margin:0 8px;">
-              →
-            </div>
-      
-            <!-- New Screen -->
-            <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
-              <div style="
-                  background:#f5f3ff;border:2px solid #7c3aed;border-radius:12px;
-                  padding:8px;margin-bottom:12px;">
-                <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=After:+AI-Generated+Sub-Tasks" loading="lazy"
-                     alt="New task with AI-generated sub-tasks"
-                     style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
-              </div>
-              <p style="
-                  font:400 14px 'Inter',sans-serif;color:#374151;line-height:1.5;
-                  text-align:left;margin:0;">
-                <strong style="color:#166534;">New:</strong> Clicking "✨ Break Down Task" has the AI instantly populate the description with actionable sub-tasks, turning overwhelm into a clear plan.
-              </p>
-            </div>
-          </div>
-        </div>
-      
+       
       </div>
       <!-- ░░░  /Before & After Ends ░░░ -->  
 
@@ -2232,27 +2180,82 @@ style="
 
 
         <!-- ░░░ PRODUCT OVERVIEW & USER FLOWS ░░░ -->
+<!-- Drop-in replacement for your current 'Final Prototype' image block -->
 <section style="padding:60px 20px;margin:48px 0;">
-    <div style="max-width:1200px;margin:0 auto;text-align:center;">
-      
-        <h3 style="font:700 22px 'Inter',sans-serif;color:#111827;margin:0 0 12px;">
-        Final Prototype
-      </h3>
-      
-      <p style="font-size:16px 'Inter',sans-serif;color:#4b5563;max-width:700px;margin:0 auto 32px;line-height:1.6;">
-        This is the final, functional prototype built with HTML, Tailwind CSS, and vanilla JavaScript, fully integrating the Gemini API.
-      </p>
-      
-      <div style="
-          border:1px solid #e5e7eb;border-radius:16px;padding:20px;
-          box-shadow:0 4px 20px rgba(16,24,40,.08);background:#fafafa;">
-        <img src="https://placehold.co/1200x800/4b5563/e5e7eb?text=Final+Smart+To-Do+App+Prototype" 
-             alt="Final Smart To-Do App Prototype"
-             style="width:100%;height:auto;border-radius:12px;" loading="lazy">
-      </div>
-      
+  <div style="max-width:1200px;margin:0 auto;text-align:center;">
+    <h3 style="font:700 22px Inter, sans-serif;color:#111827;margin:0 0 12px;">Final Prototype</h3>
+    <p style="font-size:16px;color:#4b5563;max-width:700px;margin:0 auto 16px;line-height:1.6;">
+      Interactive embed below. If blocked, use the button to open it in a new tab.
+    </p>
+
+    <!-- Controls -->
+    <div style="display:flex;gap:12px;justify-content:center;margin-bottom:12px;">
+      <a href="TodoApp.html" target="_blank" rel="noopener"
+         class="btn-primary" aria-label="Open live To-Do app prototype in a new tab">▶ Open in new tab</a>
+      <button type="button" id="proto-reload"
+        style="padding:12px 20px;border-radius:50px;border:1px solid #e5e7eb;background:#fff;
+               font-weight:600;cursor:pointer;">↻ Reload</button>
     </div>
-  </section>
+
+    <!-- Responsive iframe wrapper -->
+    <div style="position:relative;width:100%;max-width:1100px;margin:0 auto;border:1px solid #e5e7eb;
+                border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(16,24,40,.08);background:#fff;">
+      <!-- Use aspect-ratio for initial layout; height is upgraded by JS if same-origin -->
+      <div style="aspect-ratio: 16 / 10; width:100%; background:#f8fafc;">
+        <iframe
+          id="proto-frame"
+          src="TodoApp.html"
+          title="Smart To-Do App live prototype"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          sandbox="allow-forms allow-scripts allow-same-origin allow-downloads allow-popups"
+          style="border:0;width:100%;height:100%;display:block;"
+        ></iframe>
+      </div>
+    </div>
+
+    <noscript>
+      <p style="margin-top:12px;color:#6b7280;">JavaScript is disabled. Use the “Open in new tab” button above.</p>
+    </noscript>
+  </div>
+</section>
+
+<script>
+  // Optional: if the prototype is same-origin (e.g., ToDo.html in the same site),
+  // auto-grow the iframe height for nicer scrolling-free interaction.
+  (function () {
+    const frame = document.getElementById('proto-frame');
+    const reloadBtn = document.getElementById('proto-reload');
+
+    // Reload button
+    if (reloadBtn && frame) {
+      reloadBtn.addEventListener('click', () => frame.contentWindow?.location.reload());
+    }
+
+    // Same-origin height sync
+    function resize() {
+      try {
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        if (!doc) return;
+        const html = doc.documentElement;
+        const body = doc.body;
+        const h = Math.max(
+          body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight, html.offsetHeight
+        );
+        // If you want full page height instead of aspect-ratio box:
+        frame.style.height = h + 'px';
+        frame.style.width = '100%';
+      } catch (e) {
+        // Cross-origin: ignore. The aspect-ratio wrapper still keeps layout tidy.
+      }
+    }
+
+    if (frame) {
+      frame.addEventListener('load', resize);
+      // Resize again after async assets render
+      setTimeout(resize, 800);
+</script>
 
   
 
@@ -2273,7 +2276,7 @@ Final Design Solutions - Detailed Screens
     
     <div style="text-align:center;border-radius:12px;overflow:hidden;
             border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,.06);">
-      <img src="https://placehold.co/1000x400/8b5cf6/ffffff?text=Smart+Add+Modal+and+Task+Breakdown+Feature" loading="lazy" 
+      <img src="assets/img/Advanced To App/Smart Add.png" loading="lazy" 
            alt="Smart Add and Task Breakdown features"
            style="width:100%;max-width:1000px;height:auto;">
     </div>
@@ -2288,7 +2291,7 @@ Final Design Solutions - Detailed Screens
       
       <!-- Image -->
       <div style="text-align:center;">
-        <img src="https://placehold.co/400x600/111827/ffffff?text=App+Dark+Mode" loading="lazy" 
+        <img src="assets/img/Advanced To App/Resposnsive Screen.png" loading="lazy" 
              alt="App in Dark Mode"
              style="width:100%;max-width:400px;border-radius:12px;
                    border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,.06);">
