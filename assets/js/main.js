@@ -218,8 +218,8 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 
 /**
  * ===================================================================
- * NEW THEME TOGGLE SCRIPT (v8 - With localStorage)
- * This script now saves the theme preference.
+ * NEW THEME TOGGLE SCRIPT (v9 - Final)
+ * This script now saves the theme preference and handles story text.
  * ===================================================================
  */
 document.addEventListener('DOMContentLoaded', () => {
@@ -249,6 +249,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const expLine = document.getElementById('experience-line');
   const toolsTitle = document.getElementById('tools-title');
   const toolsLine = document.getElementById('tools-line');
+  // ▼▼▼ ADDED STORY PARAGRAPHS ▼▼▼
+  const storyP1 = document.getElementById('story-p1');
+  const storyP2 = document.getElementById('story-p2');
+  const storyP3 = document.getElementById('story-p3');
+  const storyP4 = document.getElementById('story-p4');
 
   /**
    * --- 2. Create the Master SetTheme Function ---
@@ -299,6 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (expLine) expLine.style.background = '#E0E0E0';
       if (toolsTitle) toolsTitle.style.color = '#E0E0E0';
       if (toolsLine) toolsLine.style.background = '#E0E0E0';
+      // ▼▼▼ ADDED STORY PARAGRAPHS ▼▼▼
+      if (storyP1) storyP1.style.color = '#E0E0E0';
+      if (storyP2) storyP2.style.color = '#E0E0E0';
+      if (storyP3) storyP3.style.color = '#E0E0E0';
+      if (storyP4) storyP4.style.color = '#E0E0E0';
 
     } else {
       // --- SET ALL ELEMENTS TO LIGHT MODE ---
@@ -339,11 +349,16 @@ document.addEventListener('DOMContentLoaded', () => {
          aboutSection.style.color = '#1e293b';
       }
       if (aboutCard) aboutCard.style.background = '#ffffff';
-      if (aboutTitle) aboutTitle.style.color = '#0f172a';
+      if (aboutTitle) aboutTitle.style.color = '#0f1Toa';
       if (expTitle) expTitle.style.color = '#0f172a';
       if (expLine) expLine.style.background = '#0f172a';
       if (toolsTitle) toolsTitle.style.color = '#0f172a';
       if (toolsLine) toolsLine.style.background = '#0f172a';
+      // ▼▼▼ ADDED STORY PARAGRAPHS ▼▼▼
+      if (storyP1) storyP1.style.color = '#4b5563';
+      if (storyP2) storyP2.style.color = '#4b5563';
+      if (storyP3) storyP3.style.color = '#4b5563';
+      if (storyP4) storyP4.style.color = '#4b5563';
     }
   }
 
