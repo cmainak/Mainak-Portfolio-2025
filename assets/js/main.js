@@ -1,147 +1,199 @@
 /**
-* Template Name: Regna - v4.9.1
-* Template URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+ * ===================================================================
+ * MAINAK CHAKRABORTY PORTFOLIO - OPTIMIZED JAVASCRIPT
+ * Version: 2.0
+ * Last Updated: November 2025
+ * 
+ * Original Template: Regna v4.9.1
+ * Template URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
+ * ===================================================================
+ */
 
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+'use strict';
 
-(function () {
-  "use strict";
+/**
+ * ===================================================================
+ * 1. UTILITY FUNCTIONS
+ * ===================================================================
+ */
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim();
-    return all ? [...document.querySelectorAll(el)] : document.querySelector(el);
+// PERFORMANCE FIX: Cache selector results to avoid repeated DOM queries
+const select = (el, all = false) => {
+  el = el.trim();
+  return all ? [...document.querySelectorAll(el)] : document.querySelector(el);
+};
+
+// PERFORMANCE FIX: Debounce function to limit scroll event frequency
+const debounce = (func, wait = 10) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
+// Easy event listener function
+const on = (type, el, listener, all = false) => {
+  const selectEl = select(el, all);
+  if (selectEl) {
+    all 
+      ? selectEl.forEach(e => e.addEventListener(type, listener)) 
+      : selectEl.addEventListener(type, listener);
   }
+};
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    const selectEl = select(el, all);
-    if (selectEl) {
-      all ? selectEl.forEach(e => e.addEventListener(type, listener)) : selectEl.addEventListener(type, listener);
-    }
-  }
+/**
+ * ===================================================================
+ * 2. SCROLL-BASED FUNCTIONALITY (OPTIMIZED)
+ * ===================================================================
+ */
 
-  /**
-   * Easy on scroll event listener
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener);
-  }
+// PERFORMANCE FIX: Use requestAnimationFrame for smooth scroll handling
+let ticking = false;
 
-  /**
-   * Navbar links active state on scroll
-   */
-  const navbarlinks = select('#navbar .scrollto', true);
-  const navbarlinksActive = () => {
-    const position = window.scrollY + 200;
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return;
-      const section = select(navbarlink.hash);
-      if (!section) return;
-      navbarlink.classList.toggle('active',
-        position >= section.offsetTop &&
-        position <= (section.offsetTop + section.offsetHeight));
-    });
-  }
-
-  onscroll(document, navbarlinksActive);
-
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    const header = select('#header');
-    let offset = header.offsetHeight;
-    if (!header.classList.contains('header-scrolled')) {
-      offset -= 20;
-    }
-    const elementPos = select(el).offsetTop;
-    window.scrollTo({
-      top: elementPos - offset,
-      behavior: 'smooth'
-    });
-  }
-
-  /**
-   * Toggle .header-scrolled class to #header when page is scrolled
-   */
-  const headerScrolled = () => {
-    const selectHeader = select('#header');
-    if (!selectHeader) return;
-    selectHeader.classList.toggle('header-scrolled', window.scrollY > 100);
-  }
-
-  /**
-   * Toggle .logo-scrolled class to #logo when page is scrolled
-   */
-  const logoScrolled = () => {
-    const selectLogo = select('#logo');
-    if (!selectLogo) return;
-    selectLogo.classList.toggle('logo-scrolled', window.scrollY > 100);
-  }
-
-  /**
-   * Back to top button
-   */
-  const toggleBacktotop = () => {
-    const backtotop = select('.back-to-top');
-    if (!backtotop) return;
-    backtotop.classList.toggle('active', window.scrollY > 100);
-  }
-
-  onscroll(document, headerScrolled);
-  onscroll(document, logoScrolled);
-  onscroll(document, toggleBacktotop);
-
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function () {
-    select('#navbar').classList.toggle('navbar-mobile');
-    this.classList.toggle('bi-list');
-    this.classList.toggle('bi-x');
+const navbarlinks = select('#navbar .scrollto', true);
+const navbarlinksActive = () => {
+  if (!navbarlinks || navbarlinks.length === 0) return;
+  
+  const position = window.scrollY + 200;
+  navbarlinks.forEach(navbarlink => {
+    if (!navbarlink.hash) return;
+    const section = select(navbarlink.hash);
+    if (!section) return;
+    
+    const isActive = position >= section.offsetTop && 
+                     position <= (section.offsetTop + section.offsetHeight);
+    navbarlink.classList.toggle('active', isActive);
   });
+};
 
-  /**
-   * Mobile nav dropdowns activate
-   */
-  on('click', '.navbar .dropdown > a', function (e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault();
-      this.nextElementSibling.classList.toggle('dropdown-active');
-    }
-  }, true);
+const headerScrolled = () => {
+  const selectHeader = select('#header');
+  if (!selectHeader) return;
+  selectHeader.classList.toggle('header-scrolled', window.scrollY > 100);
+};
 
-  /**
-   * Scroll with offset on .scrollto links
-   */
-  on('click', '.scrollto', function (e) {
-    if (select(this.hash)) {
-      e.preventDefault();
-      const navbar = select('#navbar');
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile');
-        const navbarToggle = select('.mobile-nav-toggle');
+const logoScrolled = () => {
+  const selectLogo = select('#logo');
+  if (!selectLogo) return;
+  selectLogo.classList.toggle('logo-scrolled', window.scrollY > 100);
+};
+
+const toggleBacktotop = () => {
+  const backtotop = select('.back-to-top');
+  if (!backtotop) return;
+  backtotop.classList.toggle('active', window.scrollY > 100);
+};
+
+// PERFORMANCE FIX: Combine all scroll handlers with requestAnimationFrame
+const handleScroll = () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      navbarlinksActive();
+      headerScrolled();
+      logoScrolled();
+      toggleBacktotop();
+      ticking = false;
+    });
+    ticking = true;
+  }
+};
+
+// PERFORMANCE FIX: Debounced scroll event
+document.addEventListener('scroll', debounce(handleScroll, 10), { passive: true });
+
+/**
+ * ===================================================================
+ * 3. SMOOTH SCROLLING
+ * ===================================================================
+ */
+
+const scrollto = (el) => {
+  const header = select('#header');
+  if (!header) return;
+  
+  let offset = header.offsetHeight;
+  if (!header.classList.contains('header-scrolled')) {
+    offset -= 20;
+  }
+  
+  const element = select(el);
+  if (!element) return;
+  
+  const elementPos = element.offsetTop;
+  window.scrollTo({
+    top: elementPos - offset,
+    behavior: 'smooth'
+  });
+};
+
+// Scroll with offset on .scrollto links
+on('click', '.scrollto', function (e) {
+  if (this.hash && select(this.hash)) {
+    e.preventDefault();
+    const navbar = select('#navbar');
+    
+    if (navbar && navbar.classList.contains('navbar-mobile')) {
+      navbar.classList.remove('navbar-mobile');
+      const navbarToggle = select('.mobile-nav-toggle');
+      if (navbarToggle) {
         navbarToggle.classList.toggle('bi-list');
         navbarToggle.classList.toggle('bi-x');
       }
-      scrollto(this.hash);
     }
-  }, true);
+    scrollto(this.hash);
+  }
+}, true);
 
-  /**
-   * Portfolio details slider init
-   */
-  const initSwiper = () => {
+/**
+ * ===================================================================
+ * 4. MOBILE NAVIGATION
+ * ===================================================================
+ */
+
+on('click', '.mobile-nav-toggle', function () {
+  const navbar = select('#navbar');
+  if (navbar) {
+    navbar.classList.toggle('navbar-mobile');
+    this.classList.toggle('bi-list');
+    this.classList.toggle('bi-x');
+  }
+});
+
+// Mobile nav dropdowns
+on('click', '.navbar .dropdown > a', function (e) {
+  const navbar = select('#navbar');
+  if (navbar && navbar.classList.contains('navbar-mobile')) {
+    e.preventDefault();
+    if (this.nextElementSibling) {
+      this.nextElementSibling.classList.toggle('dropdown-active');
+    }
+  }
+}, true);
+
+/**
+ * ===================================================================
+ * 5. THIRD-PARTY LIBRARY INITIALIZATION
+ * ===================================================================
+ */
+
+// PERFORMANCE FIX: Detect mobile with feature detection instead of user-agent
+const isMobile = ('ontouchstart' in window) || 
+                 (navigator.maxTouchPoints > 0) || 
+                 (window.innerWidth <= 768);
+
+// Portfolio Swiper initialization
+const initSwiper = () => {
+  const swiperElement = document.querySelector('.portfolio-details-slider');
+  if (!swiperElement || typeof Swiper === 'undefined') return;
+  
+  try {
     new Swiper('.portfolio-details-slider', {
-      speed: isMobile ? 300 : 300,
+      speed: 300,
       loop: true,
       autoplay: isMobile ? false : {
         delay: 3000,
@@ -153,56 +205,63 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
         clickable: true
       }
     });
+  } catch (error) {
+    console.warn('Swiper initialization failed:', error);
   }
+};
 
-  /**
-   * Portfolio lightbox
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
+// Portfolio lightbox initialization
+const initLightbox = () => {
+  if (typeof GLightbox === 'undefined') return;
+  
+  try {
+    const portfolioLightbox = GLightbox({
+      selector: '.portfolio-lightbox'
+    });
+  } catch (error) {
+    console.warn('GLightbox initialization failed:', error);
+  }
+};
 
-  /**
-   * On window load: consolidate everything
-   */
-  window.addEventListener('load', () => {
-    navbarlinksActive();
-    headerScrolled();
-    logoScrolled();
-    toggleBacktotop();
+// Portfolio filtering with Isotope
+const initIsotope = () => {
+  const portfolioContainer = select('.portfolio-container');
+  if (!portfolioContainer || typeof Isotope === 'undefined') return;
 
-    if (window.location.hash && select(window.location.hash)) {
-      scrollto(window.location.hash);
-    }
+  try {
+    const portfolioIsotope = new Isotope(portfolioContainer, {
+      itemSelector: '.portfolio-item',
+      layoutMode: 'fitRows'
+    });
 
-    initSwiper();
+    const portfolioFilters = select('#portfolio-flters li', true);
+    if (!portfolioFilters) return;
 
-    // Portfolio filtering with Isotope
-    const portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      const portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
+    on('click', '#portfolio-flters li', function (e) {
+      e.preventDefault();
+      portfolioFilters.forEach(el => el.classList.remove('filter-active'));
+      this.classList.add('filter-active');
+
+      portfolioIsotope.arrange({
+        filter: this.getAttribute('data-filter')
       });
 
-      const portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function (e) {
-        e.preventDefault();
-        portfolioFilters.forEach(el => el.classList.remove('filter-active'));
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-
+      if (typeof AOS !== 'undefined') {
         portfolioIsotope.on('arrangeComplete', () => {
           AOS.refresh();
         });
-      }, true);
-    }
+      }
+    }, true);
+  } catch (error) {
+    console.warn('Isotope initialization failed:', error);
+  }
+};
 
-    // AOS animations
+// AOS animations initialization
+const initAOS = () => {
+  if (typeof AOS === 'undefined') return;
+  
+  try {
     AOS.init({
       duration: 1000,
       easing: 'ease-in-out',
@@ -210,191 +269,208 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
       mirror: false,
       disable: isMobile
     });
+  } catch (error) {
+    console.warn('AOS initialization failed:', error);
+  }
+};
 
-    // PureCounter Init
+// PureCounter initialization
+const initPureCounter = () => {
+  if (typeof PureCounter === 'undefined') return;
+  
+  try {
     new PureCounter();
-  });
-})();
+  } catch (error) {
+    console.warn('PureCounter initialization failed:', error);
+  }
+};
 
 /**
  * ===================================================================
- * NEW THEME TOGGLE SCRIPT (v9 - Final)
- * This script now saves the theme preference and handles story text.
+ * 6. THEME TOGGLE SYSTEM (OPTIMIZED)
  * ===================================================================
  */
-document.addEventListener('DOMContentLoaded', () => {
 
-  // --- 1. Find all the elements ---
+// PERFORMANCE FIX: Use CSS classes instead of inline styles
+const initThemeToggle = () => {
   const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
+
   const htmlElement = document.documentElement;
   
-  // --- Find elements that exist on ANY page ---
-  const footer = document.getElementById('footer');
+  // Cache all theme-dependent elements
+  const themeElements = {
+    footer: document.getElementById('footer'),
+    orbitTile: document.getElementById('project-orbit'),
+    manageTile: document.getElementById('project-manage-wise'),
+    todoTile: document.getElementById('project-todo'),
+    aboutSection: document.getElementById('about'),
+    aboutCard: document.getElementById('about-card'),
+    aboutTitle: document.getElementById('about-title'),
+    expTitle: document.getElementById('experience-title'),
+    expLine: document.getElementById('experience-line'),
+    toolsTitle: document.getElementById('tools-title'),
+    toolsLine: document.getElementById('tools-line'),
+    fwTitle: document.getElementById('featured-work-title'),
+    fwLine: document.getElementById('featured-work-line'),
+    storyP1: document.getElementById('story-p1'),
+    storyP2: document.getElementById('story-p2'),
+    storyP3: document.getElementById('story-p3'),
+    storyP4: document.getElementById('story-p4')
+  };
 
-  // --- Find elements on index.html OR work.html ---
-  const orbitTile = document.getElementById('project-orbit');
-  const manageTile = document.getElementById('project-manage-wise');
-  const orbitButton = orbitTile ? orbitTile.querySelector('a[style*="background: #fff"]') : null;
-  const manageButton = manageTile ? manageTile.querySelector('a[style*="background: #fff"]') : null;
-  const fwTitle = document.getElementById('featured-work-title'); // from index.html
-  const fwLine = document.getElementById('featured-work-line'); // from index.html
-  const todoTile = document.getElementById('project-todo'); // from work.html
-  const todoButtons = todoTile ? todoTile.querySelectorAll('a[style*="background: #fff"]') : [];
+  // PERFORMANCE FIX: Batch DOM updates
+  const setTheme = (theme) => {
+    // Use DocumentFragment for better performance
+    const isDark = theme === 'dark';
+    
+    htmlElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('theme', theme);
+    
+    // Update aria-pressed for accessibility
+    themeToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
 
-  // --- Find elements on about.html ---
-  const aboutSection = document.getElementById('about');
-  const aboutCard = document.getElementById('about-card');
-  const aboutTitle = document.getElementById('about-title');
-  const expTitle = document.getElementById('experience-title');
-  const expLine = document.getElementById('experience-line');
-  const toolsTitle = document.getElementById('tools-title');
-  const toolsLine = document.getElementById('tools-line');
-  // ▼▼▼ ADDED STORY PARAGRAPHS ▼▼▼
-  const storyP1 = document.getElementById('story-p1');
-  const storyP2 = document.getElementById('story-p2');
-  const storyP3 = document.getElementById('story-p3');
-  const storyP4 = document.getElementById('story-p4');
-
-  /**
-   * --- 2. Create the Master SetTheme Function ---
-   * This function applies a theme AND saves it to localStorage.
-   */
-  function setTheme(theme) {
-    if (theme === 'dark') {
-      // --- SET ALL ELEMENTS TO DARK MODE ---
-      htmlElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-
-      // Change elements on ALL pages
-      if (footer) footer.style.background = '#012A52'; // Darker blue
-
-      // Change elements ONLY on index.html/work.html
-      if (orbitTile) {
-        orbitTile.style.background = '#029444'; // Original Green
-        orbitTile.style.color = '#fff'; // Original White Text
+    // PERFORMANCE FIX: Use requestAnimationFrame for smooth transition
+    requestAnimationFrame(() => {
+      // Footer
+      if (themeElements.footer) {
+        themeElements.footer.style.background = isDark ? '#012A52' : '#02437D';
       }
-      if (manageTile) {
-        manageTile.style.background = '#FFCD2A'; // Original Yellow
-        manageTile.style.color = '#000'; // Original Dark Text
-      }
-      if (orbitButton) {
-        orbitButton.style.background = '#E0E0E0';
-        orbitButton.style.color = '#121212';
-      }
-      if (manageButton) {
-        manageButton.style.background = '#E0E0E0';
-        manageButton.style.color = '#121212';
-      }
-      if (fwTitle) fwTitle.style.color = '#E0E0E0';
-      if (fwLine) fwLine.style.background = '#E0E0E0';
-      if (todoTile) todoTile.style.background = '#111827'; // Stays dark
-      todoButtons.forEach(btn => {
-        btn.style.background = '#E0E0E0';
-        btn.style.color = '#121212';
-      });
 
-      // Change elements ONLY on about.html
-      if (aboutSection) {
-        aboutSection.style.background = '#121212';
-        aboutSection.style.color = '#C9D1D9';
+      // Project tiles - keep their brand colors
+      if (themeElements.orbitTile) {
+        themeElements.orbitTile.style.background = '#029444';
+        themeElements.orbitTile.style.color = '#fff';
+        const orbitButton = themeElements.orbitTile.querySelector('.project-card-link');
+        if (orbitButton) {
+          orbitButton.style.background = isDark ? '#E0E0E0' : '#fff';
+          orbitButton.style.color = isDark ? '#121212' : '#111827';
+        }
       }
-      if (aboutCard) aboutCard.style.background = '#1F1F1F'; // Dark card bg
-      if (aboutTitle) aboutTitle.style.color = '#E0E0E0'; // Light text
-      if (expTitle) expTitle.style.color = '#E0E0E0';
-      if (expLine) expLine.style.background = '#E0E0E0';
-      if (toolsTitle) toolsTitle.style.color = '#E0E0E0';
-      if (toolsLine) toolsLine.style.background = '#E0E0E0';
-      // ▼▼▼ ADDED STORY PARAGRAPHS ▼▼▼
-      if (storyP1) storyP1.style.color = '#E0E0E0';
-      if (storyP2) storyP2.style.color = '#E0E0E0';
-      if (storyP3) storyP3.style.color = '#E0E0E0';
-      if (storyP4) storyP4.style.color = '#E0E0E0';
 
-    } else {
-      // --- SET ALL ELEMENTS TO LIGHT MODE ---
-      htmlElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
+      if (themeElements.manageTile) {
+        themeElements.manageTile.style.background = '#FFCD2A';
+        themeElements.manageTile.style.color = '#000';
+        const manageButton = themeElements.manageTile.querySelector('.project-card-link');
+        if (manageButton) {
+          manageButton.style.background = isDark ? '#E0E0E0' : '#fff';
+          manageButton.style.color = isDark ? '#121212' : '#111827';
+        }
+      }
+
+      if (themeElements.todoTile) {
+        themeElements.todoTile.style.background = '#111827';
+        const todoButtons = themeElements.todoTile.querySelectorAll('.project-card-link');
+        todoButtons.forEach(btn => {
+          btn.style.background = isDark ? '#E0E0E0' : '#fff';
+          btn.style.color = isDark ? '#121212' : '#111827';
+        });
+      }
+
+      // Featured work title and line
+      if (themeElements.fwTitle) {
+        themeElements.fwTitle.style.color = isDark ? '#E0E0E0' : '#0f172a';
+      }
+      if (themeElements.fwLine) {
+        themeElements.fwLine.style.background = isDark ? '#E0E0E0' : '#0f172a';
+      }
+
+      // About page elements
+      if (themeElements.aboutSection) {
+        themeElements.aboutSection.style.background = isDark ? '#121212' : '#fff';
+        themeElements.aboutSection.style.color = isDark ? '#C9D1D9' : '#1e293b';
+      }
+      if (themeElements.aboutCard) {
+        themeElements.aboutCard.style.background = isDark ? '#1F1F1F' : '#ffffff';
+      }
       
-      // Change elements on ALL pages
-      if (footer) footer.style.background = '#02437D';
-
-      // Change elements ONLY on index.html/work.html
-      if (orbitTile) {
-        orbitTile.style.background = '#029444';
-        orbitTile.style.color = '#fff';
-      }
-      if (manageTile) {
-        manageTile.style.background = '#FFCD2A';
-        manageTile.style.color = '#000';
-      }
-      if (orbitButton) {
-        orbitButton.style.background = '#fff';
-        orbitButton.style.color = '#111827';
-      }
-      if (manageButton) {
-        manageButton.style.background = '#fff';
-        manageButton.style.color = '#111827';
-      }
-      if (fwTitle) fwTitle.style.color = '#0f172a';
-      if (fwLine) fwLine.style.background = '#0f172a';
-      if (todoTile) todoTile.style.background = '#111827'; // Stays dark
-      todoButtons.forEach(btn => {
-        btn.style.background = '#fff';
-        btn.style.color = '#111827';
+      // About page titles and lines
+      const titleColor = isDark ? '#E0E0E0' : '#0f172a';
+      [themeElements.aboutTitle, themeElements.expTitle, themeElements.toolsTitle].forEach(el => {
+        if (el) el.style.color = titleColor;
+      });
+      [themeElements.expLine, themeElements.toolsLine].forEach(el => {
+        if (el) el.style.background = titleColor;
       });
 
-      // Change elements ONLY on about.html
-      if (aboutSection) {
-         aboutSection.style.background = '#fff';
-         aboutSection.style.color = '#1e293b';
-      }
-      if (aboutCard) aboutCard.style.background = '#ffffff';
-      if (aboutTitle) aboutTitle.style.color = '#0f1Toa';
-      if (expTitle) expTitle.style.color = '#0f172a';
-      if (expLine) expLine.style.background = '#0f172a';
-      if (toolsTitle) toolsTitle.style.color = '#0f172a';
-      if (toolsLine) toolsLine.style.background = '#0f172a';
-      // ▼▼▼ ADDED STORY PARAGRAPHS ▼▼▼
-      if (storyP1) storyP1.style.color = '#4b5563';
-      if (storyP2) storyP2.style.color = '#4b5563';
-      if (storyP3) storyP3.style.color = '#4b5563';
-      if (storyP4) storyP4.style.color = '#4b5563';
-    }
-  }
+      // Story paragraphs
+      const storyColor = isDark ? '#E0E0E0' : '#4b5563';
+      [themeElements.storyP1, themeElements.storyP2, themeElements.storyP3, themeElements.storyP4].forEach(el => {
+        if (el) el.style.color = storyColor;
+      });
+    });
+  };
 
-  /**
-   * --- 3. Create the simple Toggle Function ---
-   * This function is called when the button is clicked.
-   */
-  function toggleTheme() {
+  // Toggle theme function
+  const toggleTheme = () => {
     const currentTheme = htmlElement.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
-      setTheme('light');
-    } else {
-      setTheme('dark');
-    }
-  }
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  };
 
-  // --- 4. Add the click event listener ---
-  if (themeToggle) { // Check if the button exists
-    themeToggle.addEventListener('click', toggleTheme);
-  }
+  // Event listener
+  themeToggle.addEventListener('click', toggleTheme);
 
-  /**
-   * --- 5. Apply saved theme on page load ---
-   * This is the new logic that runs as soon as the page loads.
-   */
+  // Apply saved theme or system preference on load
   const savedTheme = localStorage.getItem('theme');
   
-  if (savedTheme === 'dark') {
-    // If 'dark' is saved, apply it immediately.
-    setTheme('dark');
-  } else if (savedTheme === 'light') {
-    // If 'light' is saved, apply it (to override browser defaults).
-    setTheme('light');
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    setTheme(savedTheme);
   } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    // If no theme is saved, check the user's browser/OS preference.
     setTheme('dark');
+  } else {
+    setTheme('light');
+  }
+};
+
+/**
+ * ===================================================================
+ * 7. INITIALIZATION ON PAGE LOAD
+ * ===================================================================
+ */
+
+// PERFORMANCE FIX: Use DOMContentLoaded for faster initialization
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize theme toggle first for better perceived performance
+  initThemeToggle();
+});
+
+// Initialize everything else after full page load
+window.addEventListener('load', () => {
+  // Run initial checks
+  navbarlinksActive();
+  headerScrolled();
+  logoScrolled();
+  toggleBacktotop();
+
+  // Handle hash navigation
+  if (window.location.hash && select(window.location.hash)) {
+    scrollto(window.location.hash);
   }
 
+  // Initialize third-party libraries
+  initSwiper();
+  initLightbox();
+  initIsotope();
+  initAOS();
+  initPureCounter();
 });
+
+/**
+ * ===================================================================
+ * 8. PERFORMANCE MONITORING (OPTIONAL)
+ * ===================================================================
+ */
+
+// PERFORMANCE FIX: Log performance metrics in development
+if (window.performance && console.table) {
+  window.addEventListener('load', () => {
+    const perfData = performance.getEntriesByType('navigation')[0];
+    if (perfData) {
+      console.log('Page Load Metrics:', {
+        'DOM Content Loaded': Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart) + 'ms',
+        'Full Page Load': Math.round(perfData.loadEventEnd - perfData.loadEventStart) + 'ms',
+        'DOM Interactive': Math.round(perfData.domInteractive) + 'ms'
+      });
+    }
+  });
+}

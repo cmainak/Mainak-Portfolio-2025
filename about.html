@@ -5,35 +5,49 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&display=swap" media="all">
-
+  <!-- PERFORMANCE FIX: Preconnect to external domains -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
+  <!-- PERFORMANCE FIX: Optimized font loading -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&display=swap"></noscript>
 
-
-  <!-- Google Fonts -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-
 
   <title>About Mainak Chakraborty – UX Designer</title>
 
-<meta property="og:title" content="About Mainak Chakraborty – UX/UI Designer">
-<meta property="og:image" content="https://mainakc.netlify.app/assets/img/Mainak%20Art/Mountain.JPG">
-<meta property="og:description" content="Get to know Mainak Chakraborty – UX/UI Designer passionate about intuitive, human-centered design.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta property="og:title" content="About Mainak Chakraborty – UX/UI Designer">
+  <meta property="og:image" content="https://mainakc.netlify.app/assets/img/Mainak%20Art/Mountain.JPG">
+  <meta property="og:description" content="Get to know Mainak Chakraborty – UX/UI Designer passionate about intuitive, human-centered design.">
 
-
-
-
-   <!-- Vendor CSS Files -->
-   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   
   <style>
+    /* ACCESSIBILITY FIX: Skip navigation link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px 16px;
+      text-decoration: none;
+      z-index: 10000;
+      font-weight: 600;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #FF9933;
+    }
+
     /* Floating Up Arrow Button */
     .floating-up-button {
       position: fixed;
@@ -57,7 +71,14 @@
     .floating-up-button i {
       color: #333;
       font-size: 1.5rem;
-    } 
+    }
+    
+    /* ACCESSIBILITY FIX: Visible focus indicator */
+    .floating-up-button:focus {
+      outline: 3px solid #FF9933;
+      outline-offset: 2px;
+      transform: translateY(-4px) scale(1.05);
+    }
     
     .floating-up-button:hover {
       transform: translateY(-4px) scale(1.05);
@@ -109,921 +130,785 @@
         padding: 24px !important;
       }
     }
-    </style>
-    
-    <link rel="icon" href="assets/img/Logo2.svg" alt="Mainak Chakraborty Logo Fav icon" type="image/svg" loading="lazy">
-    </head>
-    
-    <body>
-      <!-- ======= Header ======= -->
+  </style>
+  
+  <link rel="icon" href="assets/img/Logo2.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+  <!-- ACCESSIBILITY FIX: Skip navigation link -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
     <div class="container d-flex justify-content-between align-items-center">
 
       <div id="logo">
-        <a href="index.html" class="logo-link">
-          <img src="assets/img/Logo2.svg" loading="lazy" alt="Mainak Chakraborty Logo" class="logo-img">
+        <a href="index.html" class="logo-link" aria-label="Mainak Chakraborty - Go to homepage">
+          <img src="assets/img/Logo2.svg" loading="lazy" alt="Mainak Chakraborty Logo" class="logo-img" width="50" height="50">
           &nbsp;&nbsp; <span class="logo-text">MAINAK CHAKRABORTY</span>
-          <img src="assets/img/home.svg" alt="Home" class="home-icon">
+          <img src="assets/img/home.svg" alt="" class="home-icon" width="20" height="20" aria-hidden="true">
         </a>
       </div>
-      
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar" aria-label="Main navigation">
         <ul>
           <li><a class="nav-link scrollto" href="index.html">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="work.html">Work</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          
         </ul>
 
-        <button id="theme-toggle" aria-label="Toggle light and dark mode">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <!-- ACCESSIBILITY FIX: Improved theme toggle -->
+        <button id="theme-toggle" aria-label="Toggle between light and dark mode" aria-pressed="false">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
         </button>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-
-      </nav><!-- Navbar -->
+        <i class="bi bi-list mobile-nav-toggle" aria-label="Toggle mobile menu"></i>
+      </nav>
     </div>
-  </header><!-- End Header -->
+  </header>
+
+  <!-- ACCESSIBILITY FIX: Added id="main" and role="main" -->
+  <main id="main" role="main">
     
+    <!-- ======= Enhanced About Section ======= -->
+    <section id="about" class="about-main-container" aria-labelledby="about-title" style="
+      padding: 120px 60px;
+      font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: #1e293b;
+      min-height: 100vh;
+      position: relative;">
 
-    
-        <!-- ======= Enhanced About Section ======= -->
-<section id="about" class="about-main-container" style="
-padding: 120px 60px;
-font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif;
-background: #fff;
-color: #1e293b;
-min-height: 100vh;
-position: relative;">
-
-<!-- Background Elements -->
-<div style="
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22grain%22%20width%3D%22100%22%20height%3D%22100%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%221%22%20fill%3D%22%23000%22%20opacity%3D%220.02%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22url(%23grain)%22/%3E%3C/svg%3E');
-  pointer-events: none;">
-</div>
-
-<!-- Main Content Container -->
-<div style="max-width: 1100px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1">
-
-  <!-- Section Header -->
-  <div style="text-align: center; margin-bottom: 60px;">
-    <div style="
-      display: inline-block;
-      color: #2563eb;
-      text-align: left;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
-      border: 0px solid ;">
-      A Little About Me
-    </div>
-    <h1 id="about-title" class="about-hero-title" style="
-      font-size: 40px;
-      font-weight: 700;
-      color: #0f172a;
-      margin: 0;
-      line-height: 1.2;">
-      Hello, I'm <span style="color: #2563eb;">Mainak!</span> 
-      <span style="
-        font-size: 16px;
-        font-style: italic;
-        color: #64748b;
-        font-weight: 400;
-        vertical-align: middle;
-        margin-left: 6px;">
-        (MY-nuk)
-      </span>
-    </h1>
-  </div>
-
-  <!-- Single Column Layout -->
-  <div id="about-card" class="about-content-card" style="
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.8);">
-
-    <!-- Profile Image -->
-   <!-- Enhanced Photo Grid Section -->
-<div style="margin-bottom: 40px;">
-  <div class="photo-grid" style="
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 180px 180px;
-    gap: 8px;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    background: #f8f9fa;">
-    
-    <!-- Main portrait image (spans 2 rows) -->
-    <div style="
-      grid-row: span 2;
-      background-image: url('assets/img/Mainak Art/Mountain.jpg');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      overflow: hidden;">
-    </div>
-    
-    <!-- Photography/camera image -->
-    <div style="
-      background-image: url('assets/img/Mainak Art/Autumn_1.png');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      overflow: hidden;">
-    </div>
-    
-    <!-- Times Square/outdoor image -->
-    <div style="
-  background-image: url('assets/img/Mainak Art/Times Square.png');
-  background-size: cover;
-  background-position: top center; /* focus on hair/upper body */
-  width: 300px;
-  height: 400px;
-  overflow: hidden;">
-</div>
-
-    
-    <!-- Sports/football image -->
-    <div style="
-      background-image: url('assets/img/Mainak Art/Football.png');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      overflow: hidden;">
-    </div>
-    
-    <!-- Travel/lifestyle image -->
-    <div style="
-      background-image: url('assets/img/Mainak Art/Coding.jpg');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      overflow: hidden;">
-    </div>
-  </div>
-</div>
-
-<!-- Mobile Responsive Styles -->
-<style>
-/* Tablet responsiveness */
-@media screen and (max-width: 968px) {
-  .photo-grid {
-    grid-template-rows: 160px 160px !important;
-  }
-}
-
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-  .photo-grid {
-    grid-template-columns: 1fr 1fr !important;
-    grid-template-rows: 180px 140px 140px !important;
-    gap: 6px !important;
-  }
-  
-  .photo-grid > div:first-child {
-    grid-column: span 2 !important;
-    grid-row: span 1 !important;
-  }
-}
-
-/* Small mobile responsiveness */
-@media screen and (max-width: 480px) {
-  .photo-grid {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: 200px 150px 150px 150px 150px !important;
-    gap: 8px !important;
-  }
-  
-  .photo-grid > div:first-child {
-    grid-column: span 1 !important;
-    grid-row: span 1 !important;
-  }
-}
-
-/* Extra small screens */
-@media screen and (max-width: 360px) {
-  .photo-grid {
-    grid-template-rows: 180px 130px 130px 130px 130px !important;
-    gap: 6px !important;
-    margin: 0 -4px;
-  }
-}
-</style>
-
-
-    <!-- Main Story -->
-    <div style="margin-bottom: 32px;">
-      <p id="story-p1" style="
-        font-size: 16px;
-        line-height: 1.6;
-        color: #4b5563;
-        margin-bottom: 20px;">
-        Born and raised in Mumbai, India. I began my career in creative roles, working in multimedia design and marketing, where I learned content creation, creative direction, Visual Design, and managing campaigns.
-      </p>
-
-      <p id="story-p2" style="
-        font-size: 16px;
-        line-height: 1.6;
-        color: #4b5563;
-        margin-bottom: 20px;">
-        My shift to UX began while I was working at a research organization. Over the course of a consumer research and product testing projects and studies, I gained hands-on experience designing surveys, by scripting surveys, cleaning data, coding open-ended responses, performing basic analysis, and preparing reports to ensure accuracy and clarity in research findings.
-      </p>
-
-      <p id="story-p3" style="
-        font-size: 16px;
-        line-height: 1.6;
-        color: #4b5563;
-        margin-bottom: 20px;">
-        Through that work, I became deeply curious about not just what users want, but how those consumer insights could directly shape better experiences and product decisions. That curiosity is what inspired me to pursue advanced studies in design. So I could understand the design side of the process and apply research across the full product journey, from discovery and user needs to prototyping and testing.
-      </p>
-
-      <p id="story-p4" style="
-        font-size: 16px;
-        line-height: 1.6;
-        color: #4b5563;
-        margin-bottom: 20px;">
-       Outside of work, I love exploring new AI tools that can help teams move faster and think deeper. I’m also actively learning about AI ethics, accessibility best practices, adaptive and responsive design across devices, and emerging concepts like Agentic AI and advanced prompting areas I see as essential for building responsible, inclusive products in the years ahead.
-      </p>
-
-      <br>
-
-
-    <!-- Work Experience Section -->
-<!-- Work Experience Section -->
-<div class="section-header" style="margin-bottom: 24px;"></div>
-<h2 id="experience-title" class="section-title" style="
-  margin: 0 0 12px;
-  font-size: 32px;
-  font-weight: 700;
-  text-align: center;
-  color: #0f172a;">
-  EXPERIENCE
-</h2>
-<div id="experience-line" class="bottomline" style="
-  width: 80px;
-  height: 2px;
-  background: #0f172a;
-  margin: 0 auto 32px;">
-</div> <!-- added bottom margin here for space -->
-
-</div>
-
-<p><center>Some brands I've worked with…</center></p>
-
-<div style="
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:16px;
-  align-items:stretch;">
-
-  <!-- KeelWorks Foundation -->
-  <div style="
-  border:1px solid #e5e7eb; 
-  border-radius:14px; 
-  background:#fff; 
-  padding:18px; 
-  box-shadow:0 1px 2px rgba(16,24,40,.04);
-  display:flex; 
-  flex-direction:column; 
-  justify-content:flex-start;
-  align-items:center;
-  flex:1;">
-
-   <img src="assets/img/Brand I have Worked With/KW.png" 
-   alt="KeelWorks Foundation Logo" 
-        style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
-
-   <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
-    KeelWorks Foundation
-   </h3>
-
-   <h4 style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
-     <a href="https://keelworks.org" target="_blank" style="color:#475569; text-decoration:none;">
-       UX Researcher
-     </a>
-   </h4>
-   
-   <span style="font-size:14px; color:#94a3b8; text-align:center;">
-     February 2025 – Present
-   </span>
- </div>
-
-  <!-- Touro University -->
-  <div style="
-  border:1px solid #e5e7eb; 
-  border-radius:14px; 
-  background:#fff; 
-  padding:18px; 
-  box-shadow:0 1px 2px rgba(16,24,40,.04);
-  display:flex; 
-  flex-direction:column; 
-  justify-content:flex-start;
-  align-items:center;
-  flex:1;">
-
-    <img src="assets/img/Brand I have Worked With/GST.png" 
-    alt="Touro University Logo" 
-         style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
-
-    <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
-      Touro University New York, NY
-    </h3>
-    
-    <h4 style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
-      <a href="https://your-university-link-here.com" target="_blank" style="color:#475569; text-decoration:none;">
-        Graduate Assistant
-      </a>
-    </h4>
-    
-    <span style="font-size:14px; color:#94a3b8; text-align:center;">
-      June 2023 – December 2024
-    </span>
-  </div>
-
-  <!-- Ipsos Research Pvt Ltd -->
-  <div style="
-  border:1px solid #e5e7eb; 
-  border-radius:14px; 
-  background:#fff; 
-  padding:18px; 
-  box-shadow:0 1px 2px rgba(16,24,40,.04);
-  display:flex; 
-  flex-direction:column; 
-  justify-content:flex-start;
-  align-items:center;
-  flex:1;">
-
-    <img src="assets/img/Brand I have Worked With/Ipsos Logo.jpg" 
-         alt="Ipsos Research Pvt Ltd Logo" 
-         style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
-    
-    <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
-      Ipsos Research Pvt Ltd
-    </h3>
-    
-    <h4 style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
-      <a href="https://www.ipsos.com/en" target="_blank" style="color:#475569; text-decoration:none;">
-        Associate User Researcher
-      </a>
-    </h4>
-    
-    <span style="font-size:14px; color:#94a3b8; text-align:center;">
-      January 2022 – July 2022
-    </span>
-  </div>
-
-  <!-- Rapt Reels Productions -->
-  <div style="
-  border:1px solid #e5e7eb; 
-  border-radius:14px; 
-  background:#fff; 
-  padding:18px; 
-  box-shadow:0 1px 2px rgba(16,24,40,.04);
-  display:flex; 
-  flex-direction:column; 
-  justify-content:flex-start;
-  align-items:center;
-  flex:1;">
-    
-    <img src="assets/img/Brand I have Worked With/RR Productions.png" 
-         alt="Rapt Reels Productions Logo" 
-         style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
-    
-    <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
-      Rapt Reels Productions
-    </h3>
-    
-    <h4 style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
-      <a href="https://www.instagram.com/raptreels/?hl=en" target="_blank" style="color:#475569; text-decoration:none;">
-        Visual Coordinator
-      </a>
-    </h4>
-    
-    <span style="font-size:14px; color:#94a3b8; text-align:center;">
-      2021
-    </span>
-  </div>
-
-  <!-- Zee Entertainment -->
-  <div style="
-  border:1px solid #e5e7eb; 
-  border-radius:14px; 
-  background:#fff; 
-  padding:18px; 
-  box-shadow:0 1px 2px rgba(16,24,40,.04);
-  display:flex; 
-  flex-direction:column; 
-  justify-content:flex-start;
-  align-items:center;
-  flex:1;">
-    
-    <img src="assets/img/Brand I have Worked With/ZEEBZINGA.png" 
-         alt="Zee Entertainment Enterprises Bzinga Logo" 
-         style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
-    
-    <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
-      Zee Entertainment Enterprises
-    </h3>
-    
-    <h4 style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
-      <a href="https://www.zee.com/" target="_blank" style="color:#475569; text-decoration:none;">
-        Product Marketing Intern
-      </a>
-    </h4>
-    
-    <span style="font-size:14px; color:#94a3b8; text-align:center;">
-      April 2020 - June 2020
-    </span>
-  </div>
-
-  <!-- RGBA Studios -->
-  <div style="
-  border:1px solid #e5e7eb; 
-  border-radius:14px; 
-  background:#fff; 
-  padding:18px; 
-  box-shadow:0 1px 2px rgba(16,24,40,.04);
-  display:flex; 
-  flex-direction:column; 
-  justify-content:flex-start;
-  align-items:center;
-  flex:1;">
-    
-    <img src="assets/img/Brand I have Worked With/RGBA Studios Logo.png" 
-         alt="RGBA Studios Logo" 
-         style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
-    
-    <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
-      RGBA Studios Pvt. Ltd
-    </h3>
-    
-    <h4 style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
-      <a href="https://rgbastudios.com/" target="_blank" style="color:#475569; text-decoration:none;">
-        Production Coordinator
-      </a>
-    </h4>
-    
-    <span style="font-size:14px; color:#94a3b8; text-align:center;">
-      October 2019 - January 2020
-    </span>
-  </div>
-
-</div>
-
-
-    <!-- Work Experience Section Ends -->
-
-    <br>
-    <br>
-
-<!-- Tools Section -->
-<div class="section-header" style="margin-bottom: 24px;"></div>
-<h2 id="tools-title" class="section-title" style="
-  margin: 0 0 12px;
-  font-size: 32px;
-  font-weight: 700;
-  text-align: center;
-  color: #0f172a;">
-  TOOLS I USE
-</h2>
-<div id="tools-line" class="bottomline" style="
-  width: 80px;
-  height: 2px;
-  background: #0f172a;
-  margin: 0 auto 32px;">
-</div> <!-- added bottom margin here for space -->
-
-<p><center>Commitment to staying updated with the latest design trends and techniques.</center></p>
-
-<br>
-
-<div style="
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-  gap:18px;
-  align-items:center;
-  width:100%;
-">
-
-  <!-- Tool Card -->
-  <div style="
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    background:#fff;
-    padding:14px 18px;
-    display:flex;
-    align-items:center;
-    box-shadow:0 1px 2px rgba(16,24,40,.04);
-    gap:14px;
-    width:100%;
-  ">
-    <img src="assets/img/Tools/Figma.png" alt="Figma Logo"
-         style="width:50px; height:50px; object-fit:contain; border-radius:8px; flex-shrink:0;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">Figma</span>
-      <span style="font-size:14px; color:#475569;">Design & Prototyping</span>
-    </div>
-  </div>
-
-  <div style="
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    background:#fff;
-    padding:14px 18px;
-    display:flex;
-    align-items:center;
-    box-shadow:0 1px 2px rgba(16,24,40,.04);
-    gap:14px;
-    width:100%;
-  ">
-    <img src="assets/img/Tools/ACC.png" alt="Adobe Creative Cloud Logo"
-         style="width:50px; height:50px; object-fit:contain; border-radius:8px; flex-shrink:0;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">Adobe Creative Cloud</span>
-      <span style="font-size:14px; color:#475569;">Design, Editing & Creative Tools</span>
-    </div>
-  </div>
-
-  <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
-    <img src="assets/img/Tools/Perplexity.png" alt="Perplexity Logo" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">Perplexity AI</span>
-      <span style="font-size:14px; color:#475569;">Research & Brainstorming</span>
-    </div>
-  </div>
-
-  <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
-    <img src="assets/img/Tools/Miro.png" alt="Miro Logo" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">Miro</span>
-      <span style="font-size:14px; color:#475569;">Brainstorming & Ideation</span>
-    </div>
-  </div>
-
-  <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
-    <img src="assets/img/Tools/Notion.png" alt="Notion Logo" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">Notion</span>
-      <span style="font-size:14px; color:#475569;">Notes & Documentation</span>
-    </div>
-  </div>
-
-  <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
-    <img src="assets/img/Tools/Framer.png" alt="Framer Logo" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">Framer</span>
-      <span style="font-size:14px; color:#475569;">Website Builder</span>
-    </div>
-  </div>
-
-  <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
-    <img src="assets/img/Tools/VS Code.jpeg" alt="VS Code Logo" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">VS Code</span>
-      <span style="font-size:14px; color:#475569;">Code Editor & Development</span>
-    </div>
-  </div>
-
-  <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
-    <img src="assets/img/Tools/HTML.png" alt="HTML Logo" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">HTML</span>
-      <span style="font-size:14px; color:#475569;">Development</span>
-    </div>
-  </div>
-
-  <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
-    <img src="assets/img/Tools/CSS.png" alt="CSS Logo" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
-    <div style="display:flex; flex-direction:column; line-height:1.4;">
-      <span style="font-weight:700; font-size:16px; color:#0f172a;">CSS</span>
-      <span style="font-size:14px; color:#475569;">Development</span>
-    </div>
-  </div>
-
-</div>
-
-</div>
-<!-- Tools Section Ends -->
-
-  </div>
-
-
-</section>
-
-     
-
- <!-- ======= Footer ======= -->
-
- <section id="contact">
-  <footer id="footer" style="
-    background: #02437D;
-    padding: 60px 20px 40px;
-    margin-top: 120px;
-    position: relative;
-    overflow: hidden;">
-    
-    <!-- Subtle Pattern Background -->
-    <div style="
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: 
-        linear-gradient(rgba(247, 250, 252, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(247, 250, 252, 0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.3;">
-    </div>
-    
-    <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-      
-      <!-- Header -->
-      <div style="text-align: center; margin-bottom: 50px;">
-        <h3 style="
-          font-family: 'Chakra Petch', sans-serif;
-          font-size: 28px;
-          font-weight: 700;
-          color: #F7FAFC;
-          margin-bottom: 12px;
-          text-transform: uppercase;
-          letter-spacing: 2px;">
-          Let's Work Together
-        </h3>
-     
-      </div>
-      
-      <!-- Contact Links -->
+      <!-- Background Elements -->
       <div style="
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        margin-bottom: 40px;">
-        
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" 
-           class="footer-link-card" style="
-           display: flex;
-           align-items: center;
-           gap: 16px;
-           padding: 20px;
-           background: rgba(247, 250, 252, 0.08);
-           border: 1px solid rgba(247, 250, 252, 0.15);
-           border-radius: 12px;
-           text-decoration: none;
-           transition: all 0.3s ease;
-           backdrop-filter: blur(10px);">
-          
-          <div style="
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #0077b5, #005582);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;">
-            <i class="fab fa-linkedin-in" style="color: white; font-size: 20px;"></i>
-          </div>
-          
-          <div style="flex: 1;">
-            <div style="
-              font-family: 'Chakra Petch', sans-serif;
-              font-size: 16px;
-              font-weight: 600;
-              color: #F7FAFC;
-              margin-bottom: 4px;
-              text-transform: uppercase;
-              letter-spacing: 1px;">
-              LinkedIn
-            </div>
-            <div style="
-              font-family: 'Chakra Petch', sans-serif;
-              font-size: 14px;
-              color: rgba(247, 250, 252, 0.7);">
-              in/mainakc98
-            </div>
-          </div>
-        </a>
-        
-        <!-- Email -->
-        <a href="mailto:mainak.chak04@gmail.com" 
-           class="footer-link-card" style="
-           display: flex;
-           align-items: center;
-           gap: 16px;
-           padding: 20px;
-           background: rgba(247, 250, 252, 0.08);
-           border: 1px solid rgba(247, 250, 252, 0.15);
-           border-radius: 12px;
-           text-decoration: none;
-           transition: all 0.3s ease;
-           backdrop-filter: blur(10px);">
-          
-          <div style="
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;">
-            <i class="fas fa-envelope" style="color: white; font-size: 18px;"></i>
-          </div>
-          
-          <div style="flex: 1;">
-            <div style="
-              font-family: 'Chakra Petch', sans-serif;
-              font-size: 16px;
-              font-weight: 600;
-              color: #F7FAFC;
-              margin-bottom: 4px;
-              text-transform: uppercase;
-              letter-spacing: 1px;">
-              Email
-            </div>
-            <div style="
-              font-family: 'Chakra Petch', sans-serif;
-              font-size: 13px;
-              color: rgba(247, 250, 252, 0.7);
-              word-break: break-all;">
-              mainak.chak04@gmail.com
-            </div>
-          </div>
-        </a>
-        
-        <!-- Resume -->
-        <a href="https://drive.google.com/file/d/1gUW7U4_s-PD1x1v7d0oTc6ZbRKpIqKAv/view?usp=sharing" target="_blank" 
-           class="footer-link-card" style="
-           display: flex;
-           align-items: center;
-           gap: 16px;
-           padding: 20px;
-           background: rgba(247, 250, 252, 0.08);
-           border: 1px solid rgba(247, 250, 252, 0.15);
-           border-radius: 12px;
-           text-decoration: none;
-           transition: all 0.3s ease;
-           backdrop-filter: blur(10px);">
-          
-          <div style="
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;">
-            <i class="fas fa-file-pdf" style="color: white; font-size: 18px;"></i>
-          </div>
-          
-          <div style="flex: 1;">
-            <div style="
-              font-family: 'Chakra Petch', sans-serif;
-              font-size: 16px;
-              font-weight: 600;
-              color: #F7FAFC;
-              margin-bottom: 4px;
-              text-transform: uppercase;
-              letter-spacing: 1px;">
-              Resume
-            </div>
-            <div style="
-              font-family: 'Chakra Petch', sans-serif;
-              font-size: 14px;
-              color: rgba(247, 250, 252, 0.7);">
-              Download PDF
-            </div>
-          </div>
-        </a>
-        
-        <!-- Calendar -->
-        <a href="https://calendly.com/mainak-chak04/30min" target="_blank" 
-           class="footer-link-card" style="
-           display: flex;
-           align-items: center;
-           gap: 16px;
-           padding: 20px;
-           background: rgba(247, 250, 252, 0.08);
-           border: 1px solid rgba(247, 250, 252, 0.15);
-           border-radius: 12px;
-           text-decoration: none;
-           transition: all 0.3s ease;
-           backdrop-filter: blur(10px);">
-          
-          <div style="
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;">
-            <i class="fas fa-calendar" style="color: white; font-size: 18px;"></i>
-          </div>
-          
-          <div style="flex: 1;">
-            <div style="
-              font-family: 'Chakra Petch', sans-serif;
-              font-size: 16px;
-              font-weight: 600;
-              color: #F7FAFC;
-              margin-bottom: 4px;
-              text-transform: uppercase;
-              letter-spacing: 1px;">
-              Meeting
-            </div>
-            <div style="
-              font-family: 'Chakra Petch', sans-serif;
-              font-size: 14px;
-              color: rgba(247, 250, 252, 0.7);">
-              Book a time
-            </div>
-          </div>
-        </a>
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22grain%22%20width%3D%22100%22%20height%3D%22100%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%221%22%20fill%3D%22%23000%22%20opacity%3D%220.02%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22url(%23grain)%22/%3E%3C/svg%3E');
+        pointer-events: none;"
+        aria-hidden="true">
       </div>
+
+      <!-- Main Content Container -->
+      <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1">
+
+        <!-- Section Header -->
+        <div style="text-align: center; margin-bottom: 60px;">
+          <div style="
+            display: inline-block;
+            color: #2563eb;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;">
+            A Little About Me
+          </div>
+          <h1 id="about-title" class="about-hero-title" style="
+            font-size: 40px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0;
+            line-height: 1.2;">
+            Hello, I'm <span style="color: #2563eb;">Mainak!</span> 
+            <span style="
+              font-size: 16px;
+              font-style: italic;
+              color: #64748b;
+              font-weight: 400;
+              vertical-align: middle;
+              margin-left: 6px;">
+              (MY-nuk)
+            </span>
+          </h1>
+        </div>
+
+        <!-- Single Column Layout -->
+        <div id="about-card" class="about-content-card" style="
+          background: #ffffff;
+          padding: 40px;
+          border-radius: 20px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.8);">
+
+          <!-- ACCESSIBILITY FIX: Photo grid with proper alt text -->
+          <!-- Enhanced Photo Grid Section -->
+          <div style="margin-bottom: 40px;">
+            <figure class="photo-grid" style="
+              display: grid;
+              grid-template-columns: 2fr 1fr 1fr;
+              grid-template-rows: 180px 180px;
+              gap: 8px;
+              border-radius: 24px;
+              overflow: hidden;
+              box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+              background: #f8f9fa;
+              margin: 0;">
+              
+              <!-- ACCESSIBILITY FIX: Using actual img tags instead of background images -->
+              <img src="assets/img/Mainak Art/Mountain.jpg" 
+                   alt="Mainak standing on a mountain overlook" 
+                   loading="lazy"
+                   style="grid-row: span 2; width: 100%; height: 100%; object-fit: cover;">
+              
+              <img src="assets/img/Mainak Art/Autumn_1.png" 
+                   alt="Mainak with camera during autumn season" 
+                   loading="lazy"
+                   style="width: 100%; height: 100%; object-fit: cover;">
+              
+              <img src="assets/img/Mainak Art/Times Square.png" 
+                   alt="Mainak at Times Square in New York" 
+                   loading="lazy"
+                   style="width: 100%; height: 100%; object-fit: cover; object-position: top center;">
+              
+              <img src="assets/img/Mainak Art/Football.png" 
+                   alt="Mainak playing football" 
+                   loading="lazy"
+                   style="width: 100%; height: 100%; object-fit: cover;">
+              
+              <img src="assets/img/Mainak Art/Coding.jpg" 
+                   alt="Mainak coding on laptop" 
+                   loading="lazy"
+                   style="width: 100%; height: 100%; object-fit: cover;">
+            </figure>
+          </div>
+
+          <!-- Mobile Responsive Styles -->
+          <style>
+            /* Tablet responsiveness */
+            @media screen and (max-width: 968px) {
+              .photo-grid {
+                grid-template-rows: 160px 160px !important;
+              }
+            }
+
+            /* Mobile responsiveness */
+            @media screen and (max-width: 768px) {
+              .photo-grid {
+                grid-template-columns: 1fr 1fr !important;
+                grid-template-rows: 180px 140px 140px !important;
+                gap: 6px !important;
+              }
+              
+              .photo-grid img:first-child {
+                grid-column: span 2 !important;
+                grid-row: span 1 !important;
+              }
+            }
+
+            /* Small mobile responsiveness */
+            @media screen and (max-width: 480px) {
+              .photo-grid {
+                grid-template-columns: 1fr !important;
+                grid-template-rows: 200px 150px 150px 150px 150px !important;
+                gap: 8px !important;
+              }
+              
+              .photo-grid img:first-child {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+              }
+            }
+
+            /* Extra small screens */
+            @media screen and (max-width: 360px) {
+              .photo-grid {
+                grid-template-rows: 180px 130px 130px 130px 130px !important;
+                gap: 6px !important;
+                margin: 0 -4px;
+              }
+            }
+          </style>
+
+          <!-- Main Story -->
+          <div style="margin-bottom: 32px;">
+            <p id="story-p1" style="
+              font-size: 16px;
+              line-height: 1.6;
+              color: #4b5563;
+              margin-bottom: 20px;">
+              Born and raised in Mumbai, India. I began my career in creative roles, working in multimedia design and marketing, where I learned content creation, creative direction, Visual Design, and managing campaigns.
+            </p>
+
+            <p id="story-p2" style="
+              font-size: 16px;
+              line-height: 1.6;
+              color: #4b5563;
+              margin-bottom: 20px;">
+              My shift to UX began while I was working at a research organization. Over the course of a consumer research and product testing projects and studies, I gained hands-on experience designing surveys, by scripting surveys, cleaning data, coding open-ended responses, performing basic analysis, and preparing reports to ensure accuracy and clarity in research findings.
+            </p>
+
+            <p id="story-p3" style="
+              font-size: 16px;
+              line-height: 1.6;
+              color: #4b5563;
+              margin-bottom: 20px;">
+              Through that work, I became deeply curious about not just what users want, but how those consumer insights could directly shape better experiences and product decisions. That curiosity is what inspired me to pursue advanced studies in design. So I could understand the design side of the process and apply research across the full product journey, from discovery and user needs to prototyping and testing.
+            </p>
+
+            <p id="story-p4" style="
+              font-size: 16px;
+              line-height: 1.6;
+              color: #4b5563;
+              margin-bottom: 20px;">
+              Outside of work, I love exploring new AI tools that can help teams move faster and think deeper. I'm also actively learning about AI ethics, accessibility best practices, adaptive and responsive design across devices, and emerging concepts like Agentic AI and advanced prompting areas I see as essential for building responsible, inclusive products in the years ahead.
+            </p>
+          </div>
+
+          <br>
+
+          <!-- Work Experience Section -->
+          <div class="section-header" style="margin-bottom: 24px;"></div>
+          <h2 id="experience-title" class="section-title" style="
+            margin: 0 0 12px;
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            color: #0f172a;">
+            EXPERIENCE
+          </h2>
+          <div id="experience-line" class="bottomline" style="
+            width: 80px;
+            height: 2px;
+            background: #0f172a;
+            margin: 0 auto 32px;">
+          </div>
+
+          <p style="text-align: center;">Some brands I've worked with…</p>
+
+          <div style="
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+            gap:16px;
+            align-items:stretch;">
+
+            <!-- KeelWorks Foundation -->
+            <article style="
+              border:1px solid #e5e7eb; 
+              border-radius:14px; 
+              background:#fff; 
+              padding:18px; 
+              box-shadow:0 1px 2px rgba(16,24,40,.04);
+              display:flex; 
+              flex-direction:column; 
+              justify-content:flex-start;
+              align-items:center;
+              flex:1;">
+
+              <img src="assets/img/Brand I have Worked With/KW.png" 
+                   alt="KeelWorks Foundation Logo" 
+                   loading="lazy"
+                   width="120"
+                   height="80"
+                   style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
+
+              <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
+                KeelWorks Foundation
+              </h3>
+
+              <p style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
+                <a href="https://keelworks.org" target="_blank" rel="noopener noreferrer" style="color:#475569; text-decoration:none;">
+                  UX Researcher
+                </a>
+              </p>
+              
+              <span style="font-size:14px; color:#94a3b8; text-align:center;">
+                February 2025 – Present
+              </span>
+            </article>
+
+            <!-- Touro University -->
+            <article style="
+              border:1px solid #e5e7eb; 
+              border-radius:14px; 
+              background:#fff; 
+              padding:18px; 
+              box-shadow:0 1px 2px rgba(16,24,40,.04);
+              display:flex; 
+              flex-direction:column; 
+              justify-content:flex-start;
+              align-items:center;
+              flex:1;">
+
+              <img src="assets/img/Brand I have Worked With/GST.png" 
+                   alt="Touro University Logo" 
+                   loading="lazy"
+                   width="120"
+                   height="80"
+                   style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
+
+              <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
+                Touro University New York, NY
+              </h3>
+              
+              <p style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
+                <a href="https://gse.touro.edu/" target="_blank" rel="noopener noreferrer" style="color:#475569; text-decoration:none;">
+                  Graduate Assistant
+                </a>
+              </p>
+              
+              <span style="font-size:14px; color:#94a3b8; text-align:center;">
+                June 2023 – December 2024
+              </span>
+            </article>
+
+            <!-- Ipsos Research Pvt Ltd -->
+            <article style="
+              border:1px solid #e5e7eb; 
+              border-radius:14px; 
+              background:#fff; 
+              padding:18px; 
+              box-shadow:0 1px 2px rgba(16,24,40,.04);
+              display:flex; 
+              flex-direction:column; 
+              justify-content:flex-start;
+              align-items:center;
+              flex:1;">
+
+              <img src="assets/img/Brand I have Worked With/Ipsos Logo.jpg" 
+                   alt="Ipsos Research Logo" 
+                   loading="lazy"
+                   width="120"
+                   height="80"
+                   style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
+              
+              <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
+                Ipsos Research Pvt Ltd
+              </h3>
+              
+              <p style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
+                <a href="https://www.ipsos.com/en" target="_blank" rel="noopener noreferrer" style="color:#475569; text-decoration:none;">
+                  Associate User Researcher
+                </a>
+              </p>
+              
+              <span style="font-size:14px; color:#94a3b8; text-align:center;">
+                January 2022 – July 2022
+              </span>
+            </article>
+
+            <!-- Rapt Reels Productions -->
+            <article style="
+              border:1px solid #e5e7eb; 
+              border-radius:14px; 
+              background:#fff; 
+              padding:18px; 
+              box-shadow:0 1px 2px rgba(16,24,40,.04);
+              display:flex; 
+              flex-direction:column; 
+              justify-content:flex-start;
+              align-items:center;
+              flex:1;">
+              
+              <img src="assets/img/Brand I have Worked With/RR Productions.png" 
+                   alt="Rapt Reels Productions Logo" 
+                   loading="lazy"
+                   width="120"
+                   height="80"
+                   style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
+              
+              <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
+                Rapt Reels Productions
+              </h3>
+              
+              <p style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
+                <a href="https://www.instagram.com/raptreels/?hl=en" target="_blank" rel="noopener noreferrer" style="color:#475569; text-decoration:none;">
+                  Visual Coordinator
+                </a>
+              </p>
+              
+              <span style="font-size:14px; color:#94a3b8; text-align:center;">
+                2021
+              </span>
+            </article>
+
+            <!-- Zee Entertainment -->
+            <article style="
+              border:1px solid #e5e7eb; 
+              border-radius:14px; 
+              background:#fff; 
+              padding:18px; 
+              box-shadow:0 1px 2px rgba(16,24,40,.04);
+              display:flex; 
+              flex-direction:column; 
+              justify-content:flex-start;
+              align-items:center;
+              flex:1;">
+              
+              <img src="assets/img/Brand I have Worked With/ZEEBZINGA.png" 
+                   alt="Zee Entertainment Logo" 
+                   loading="lazy"
+                   width="120"
+                   height="80"
+                   style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
+              
+              <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
+                Zee Entertainment Enterprises
+              </h3>
+              
+              <p style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
+                <a href="https://www.zee.com/" target="_blank" rel="noopener noreferrer" style="color:#475569; text-decoration:none;">
+                  Product Marketing Intern
+                </a>
+              </p>
+              
+              <span style="font-size:14px; color:#94a3b8; text-align:center;">
+                April 2020 - June 2020
+              </span>
+            </article>
+
+            <!-- RGBA Studios -->
+            <article style="
+              border:1px solid #e5e7eb; 
+              border-radius:14px; 
+              background:#fff; 
+              padding:18px; 
+              box-shadow:0 1px 2px rgba(16,24,40,.04);
+              display:flex; 
+              flex-direction:column; 
+              justify-content:flex-start;
+              align-items:center;
+              flex:1;">
+              
+              <img src="assets/img/Brand I have Worked With/RGBA Studios Logo.png" 
+                   alt="RGBA Studios Logo" 
+                   loading="lazy"
+                   width="120"
+                   height="80"
+                   style="max-width:120px; max-height:80px; width:100%; height:auto; margin-bottom:12px; border-radius:8px;">
+              
+              <h3 style="margin:0 0 6px; font-size:20px; font-weight:700; color:#0f172a; text-align:center;">
+                RGBA Studios Pvt. Ltd
+              </h3>
+              
+              <p style="margin:0 0 6px; font-size:16px; font-weight:500; text-align:center;">
+                <a href="https://rgbastudios.com/" target="_blank" rel="noopener noreferrer" style="color:#475569; text-decoration:none;">
+                  Production Coordinator
+                </a>
+              </p>
+              
+              <span style="font-size:14px; color:#94a3b8; text-align:center;">
+                October 2019 - January 2020
+              </span>
+            </article>
+
+          </div>
+
+          <br><br>
+
+          <!-- Tools Section -->
+          <div class="section-header" style="margin-bottom: 24px;"></div>
+          <h2 id="tools-title" class="section-title" style="
+            margin: 0 0 12px;
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            color: #0f172a;">
+            TOOLS I USE
+          </h2>
+          <div id="tools-line" class="bottomline" style="
+            width: 80px;
+            height: 2px;
+            background: #0f172a;
+            margin: 0 auto 32px;">
+          </div>
+
+          <p style="text-align: center;">Commitment to staying updated with the latest design trends and techniques.</p>
+
+          <br>
+
+          <div style="
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+            gap:18px;
+            align-items:center;
+            width:100%;">
+
+            <!-- Tool Cards -->
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/Figma.png" alt="Figma Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px; flex-shrink:0;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">Figma</span>
+                <span style="font-size:14px; color:#475569;">Design & Prototyping</span>
+              </div>
+            </div>
+
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/ACC.png" alt="Adobe Creative Cloud Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px; flex-shrink:0;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">Adobe Creative Cloud</span>
+                <span style="font-size:14px; color:#475569;">Design, Editing & Creative Tools</span>
+              </div>
+            </div>
+
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/Perplexity.png" alt="Perplexity AI Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">Perplexity AI</span>
+                <span style="font-size:14px; color:#475569;">Research & Brainstorming</span>
+              </div>
+            </div>
+
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/Miro.png" alt="Miro Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">Miro</span>
+                <span style="font-size:14px; color:#475569;">Brainstorming & Ideation</span>
+              </div>
+            </div>
+
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/Notion.png" alt="Notion Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">Notion</span>
+                <span style="font-size:14px; color:#475569;">Notes & Documentation</span>
+              </div>
+            </div>
+
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/Framer.png" alt="Framer Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">Framer</span>
+                <span style="font-size:14px; color:#475569;">Website Builder</span>
+              </div>
+            </div>
+
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/VS Code.jpeg" alt="VS Code Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">VS Code</span>
+                <span style="font-size:14px; color:#475569;">Code Editor & Development</span>
+              </div>
+            </div>
+
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/HTML.png" alt="HTML Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">HTML</span>
+                <span style="font-size:14px; color:#475569;">Development</span>
+              </div>
+            </div>
+
+            <div style="border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:14px 18px; display:flex; align-items:center; box-shadow:0 1px 2px rgba(16,24,40,.04); gap:14px; width:100%;">
+              <img src="assets/img/Tools/CSS.png" alt="CSS Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+              <div style="display:flex; flex-direction:column; line-height:1.4;">
+                <span style="font-weight:700; font-size:16px; color:#0f172a;">CSS</span>
+                <span style="font-size:14px; color:#475569;">Development</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <section id="contact">
+    <footer id="footer" style="
+      background: #02437D;
+      padding: 60px 20px 40px;
+      margin-top: 120px;
+      position: relative;
+      overflow: hidden;">
+    
+      <!-- Subtle Pattern Background -->
+      <div style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          linear-gradient(rgba(247, 250, 252, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(247, 250, 252, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.3;"
+        aria-hidden="true">
+      </div>
+    
+      <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
       
-<!-- Bottom Section -->
-<div style="
-border-top: 1px solid rgba(247, 250, 252, 0.2);
-padding-top: 24px;
-text-align: center;">
-  <p style="
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 14px;
-    color: rgba(247, 250, 252, 0.6);
-    margin: 0;
-    letter-spacing: 1px;">
-    © 2025 Mainak Chakraborty • Designed & Coded with 
-    <img src="assets/img/Icon Badges/Heart Brain2.png" alt="Heart and Brain" style="height:2em; vertical-align:middle;"> 
-    sleepless nights, and lots of coffee.
-  </p>
-</div>
-
-  
-  <!-- End Footer -->
-
-
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 50px;">
+          <h2 style="
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #F7FAFC;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;">
+            Let's Work Together
+          </h2>
+        </div>
+      
+        <!-- Contact Links -->
+        <nav aria-label="Contact information">
+          <div style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;">
+          
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/mainakc98/" 
+               target="_blank"
+               rel="noopener noreferrer"
+               class="footer-link-card" 
+               style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(247, 250, 252, 0.08); border: 1px solid rgba(247, 250, 252, 0.15); border-radius: 12px; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px);">
+            
+              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #0077b5, #005582); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="fab fa-linkedin-in" style="color: white; font-size: 20px;" aria-hidden="true"></i>
+              </div>
+            
+              <div style="flex: 1;">
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 16px; font-weight: 600; color: #F7FAFC; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                  LinkedIn
+                </div>
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 14px; color: rgba(247, 250, 252, 0.7);">
+                  in/mainakc98
+                </div>
+              </div>
+            </a>
+          
+            <!-- Email -->
+            <a href="mailto:mainak.chak04@gmail.com" 
+               class="footer-link-card" 
+               style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(247, 250, 252, 0.08); border: 1px solid rgba(247, 250, 252, 0.15); border-radius: 12px; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px);">
+            
+              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #ef4444, #dc2626); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="fas fa-envelope" style="color: white; font-size: 18px;" aria-hidden="true"></i>
+              </div>
+            
+              <div style="flex: 1;">
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 16px; font-weight: 600; color: #F7FAFC; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                  Email
+                </div>
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 13px; color: rgba(247, 250, 252, 0.7); word-break: break-all;">
+                  mainak.chak04@gmail.com
+                </div>
+              </div>
+            </a>
+          
+            <!-- Resume -->
+            <a href="https://drive.google.com/file/d/1gUW7U4_s-PD1x1v7d0oTc6ZbRKpIqKAv/view?usp=sharing" 
+               target="_blank"
+               rel="noopener noreferrer"
+               class="footer-link-card" 
+               style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(247, 250, 252, 0.08); border: 1px solid rgba(247, 250, 252, 0.15); border-radius: 12px; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px);">
+            
+              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="fas fa-file-pdf" style="color: white; font-size: 18px;" aria-hidden="true"></i>
+              </div>
+            
+              <div style="flex: 1;">
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 16px; font-weight: 600; color: #F7FAFC; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                  Resume
+                </div>
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 14px; color: rgba(247, 250, 252, 0.7);">
+                  Download PDF
+                </div>
+              </div>
+            </a>
+          
+            <!-- Calendar -->
+            <a href="https://calendly.com/mainak-chak04/30min" 
+               target="_blank"
+               rel="noopener noreferrer"
+               class="footer-link-card" 
+               style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(247, 250, 252, 0.08); border: 1px solid rgba(247, 250, 252, 0.15); border-radius: 12px; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px);">
+            
+              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="fas fa-calendar" style="color: white; font-size: 18px;" aria-hidden="true"></i>
+              </div>
+            
+              <div style="flex: 1;">
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 16px; font-weight: 600; color: #F7FAFC; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                  Meeting
+                </div>
+                <div style="font-family: 'Chakra Petch', sans-serif; font-size: 14px; color: rgba(247, 250, 252, 0.7);">
+                  Book a time
+                </div>
+              </div>
+            </a>
+          </div>
+        </nav>
+      
+        <!-- Bottom Section -->
+        <div style="border-top: 1px solid rgba(247, 250, 252, 0.2); padding-top: 24px; text-align: center;">
+          <p style="font-family: 'Chakra Petch', sans-serif; font-size: 14px; color: rgba(247, 250, 252, 0.6); margin: 0; letter-spacing: 1px;">
+            © 2025 Mainak Chakraborty • Designed & Coded with 
+            <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain icon" style="height:2em; vertical-align:middle;" width="32" height="32"> 
+            sleepless nights, and lots of coffee.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </section>
 
   <!-- BOTTOMNAV -->
   <div class="container bottomnav">
     <div class="row">
       <div class="col-12">
-
-        <ul class="nav nav-pills nav-fill d-flex d-lg-none fixed-bottom bottomnav">
-
-          <li class="nav-item">
-            <a class="nav-link mybottomnav" href="index.html#hero">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mybottomnav" href="index.html#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active mybottomnav" href="work.html">Work</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mybottomnav" href="index.html#contact">Contact</a>
-          </li>
-        </ul>
+        <nav aria-label="Mobile navigation">
+          <ul class="nav nav-pills nav-fill d-flex d-lg-none fixed-bottom bottomnav">
+            <li class="nav-item">
+              <a class="nav-link mybottomnav" href="index.html#hero">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mybottomnav" href="index.html#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active mybottomnav" href="work.html">Work</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mybottomnav" href="index.html#contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
   
-    <!-- Floating Up Arrow Button -->
- <a href="#" class="floating-up-button">
-    <i class="fas fa-arrow-up"></i>
+  <!-- Floating Up Arrow Button -->
+  <a href="#about" class="floating-up-button" aria-label="Back to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </a>
 
-
+  <!-- Scripts -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js" defer></script>
-<script src="assets/vendor/aos/aos.js" defer></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js" defer></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js" defer></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-<script src="assets/vendor/php-email-form/validate.js" defer></script>
+  <script src="assets/vendor/aos/aos.js" defer></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js" defer></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js" defer></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
+  <script src="assets/vendor/php-email-form/validate.js" defer></script>
+  
   <!-- Template Main JS File -->
   <script src="assets/js/main.js" defer></script>
-
 
 </body>
 

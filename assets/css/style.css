@@ -1,7 +1,14 @@
 /*
 ==============================================
+// MAINAK CHAKRABORTY PORTFOLIO - OPTIMIZED STYLES
+// Version: 2.0
+// Last Updated: November 2025
+==============================================
+*/
+
+/*
+==============================================
 // 1. THEME COLOR PALETTE
-// This is the new section for all theme colors
 ==============================================
 */
 :root {
@@ -12,7 +19,7 @@
   --bg-header-transparent: #FFFFFF;
 
   /* -- Base Text -- */
-  --text-primary: #1a202c; /* Was #000, #1a202c is a softer black */
+  --text-primary: #1a202c;
   --text-secondary: #666666;
   --text-tertiary: #555555;
   --text-inverted: #FFFFFF;
@@ -56,8 +63,8 @@
   --text-subtitle: #C9D1D9;
 
   /* -- Accents -- */
-  --accent-primary: #00AFFF; /* Brighter blue for dark bg */
-  --accent-secondary: #F5B85A; /* Softer orange */
+  --accent-primary: #00AFFF;
+  --accent-secondary: #F5B85A;
   --accent-tertiary: #38E0B0;
   --accent-tertiary-hover: #5AF0C0;
   --accent-swoosh: #E0B033;
@@ -78,22 +85,25 @@
 
 /*
 ==============================================
-// 2. YOUR EXISTING STYLES (NOW USING VARIABLES)
+// 2. BASE STYLES
 ==============================================
 */
 
+/* PERFORMANCE FIX: Use system fonts as fallback */
 body {
   background: var(--bg-primary);
   color: var(--text-secondary);
-  font-family: 'Chakra Petch', sans-serif;
-  
-  /* Add smooth transition for all colors */
+  font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   color: var(--accent-tertiary);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover,
@@ -102,6 +112,13 @@ a:focus {
   color: var(--accent-tertiary-hover);
   outline: none;
   text-decoration: none;
+}
+
+/* ACCESSIBILITY FIX: Better focus states */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent-secondary);
+  outline-offset: 2px;
 }
 
 p {
@@ -115,66 +132,37 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Chakra Petch', sans-serif;
-  font-weight: 100;
+  font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
   margin: 0 0 20px 0;
   padding: 0;
   color: var(--text-primary);
+  line-height: 1.3;
 }
 
-/*--------------------------------------------------------------
-# Back to top button
---------------------------------------------------------------*/
-.back-to-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right: 15px;
-  bottom: 15px;
-  z-index: 996;
-  background: var(--accent-tertiary);
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  transition: all 0.4s;
+/* ACCESSIBILITY FIX: Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.back-to-top i {
-  font-size: 28px;
-  color: var(--text-inverted);
-  line-height: 0;
-}
+/*
+==============================================
+// 3. HEADER & NAVIGATION
+==============================================
+*/
 
-.back-to-top:hover {
-  background: var(--accent-tertiary-hover);
-  color: var(--text-inverted);
-}
-
-.back-to-top.active {
-  visibility: visible;
-  opacity: 1;
-}
-
-/*--------------------------------------------------------------
-# Disable AOS delay on mobile
---------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  [data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
 #header {
   height: 100px;
   transition: all 0.5s;
   z-index: 997;
-  /* Note: Your original 'background: rgba(52, 59, 64, 0.9);' was being overridden
-     by header-transparent. I'm using the var for transparency. */
   background: var(--bg-header-transparent);
 }
 
@@ -182,6 +170,7 @@ h6 {
   padding: 0;
   margin: 0;
   width: 50px !important;
+  height: 50px !important;
 }
 
 #header.header-transparent {
@@ -190,7 +179,7 @@ h6 {
 
 #header.header-scrolled {
   background: var(--bg-header);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Added subtle shadow for scrolled state */
+  box-shadow: 0 2px 15px var(--shadow-color);
   transition: all 0.5s;
 }
 
@@ -198,12 +187,7 @@ h6 {
   margin-top: 90px;
 }
 
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/**
-* Desktop Navigation 
-*/
+/* Desktop Navigation */
 .navbar {
   padding: 0;
 }
@@ -220,7 +204,7 @@ h6 {
   position: relative;
 }
 
-.navbar>ul>li {
+.navbar > ul > li {
   white-space: nowrap;
   padding: 10px 0 10px 24px;
 }
@@ -248,7 +232,8 @@ h6 {
   margin-left: 5px;
 }
 
-.navbar>ul>li>a:before {
+/* PERFORMANCE FIX: Use transform instead of width change */
+.navbar > ul > li > a:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -262,7 +247,7 @@ h6 {
 }
 
 .navbar a:hover:before,
-.navbar li:hover>a:before,
+.navbar li:hover > a:before,
 .navbar .active:before {
   visibility: visible;
   transform: scaleX(1);
@@ -271,12 +256,12 @@ h6 {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover>a {
+.navbar li:hover > a {
   color: var(--text-primary);
 }
 
-/* Logo Home Hover*/
 
+/* Logo Home Hover */
 #logo {
   display: inline-flex;
   align-items: center;
@@ -290,23 +275,28 @@ h6 {
   position: relative;
 }
 
+/* Main logo */
 .logo-img {
-  height: 62px; /* Adjust */
-  margin-right: 8px;
+  height: 50px !important;
+  width: 50px !important;
+  margin-right: 12px; /* Space between logo and text */
 }
 
 .logo-text {
   font-weight: bold;
   transition: opacity 0.3s ease;
   color: var(--text-primary);
+  margin-right: 8px; /* ADD THIS - Space after text before icon */
 }
 
-/* Home icon initially hidden */
+/* Home icon */
 .home-icon {
-  height: 20px; /* Adjust */
-  margin-left: 6px;
+  height: 20px !important;
+  width: 20px !important;
+  max-height: 20px !important;
+  max-width: 20px !important;
   opacity: 0;
-  transform: translateX(-5px);
+  transform: translateX(-8px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -316,82 +306,58 @@ h6 {
   transform: translateX(0);
 }
 
-/* Logo Home Hover Ends*/
 
-/*
-==============================================
-// 3. NEW THEME TOGGLE BUTTON CSS
-==============================================
-*/
+
+
+/* Theme Toggle Button */
 #theme-toggle {
   background-color: var(--button-bg);
   border: none;
   padding: 8px;
   border-radius: 10px;
   cursor: pointer;
-  margin-left: 15px; /* Adds space between nav links and button */
-  
-  /* Smooth transitions for background and icon color */
-  transition: background-color 0.3s ease;
+  margin-left: 15px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Style for both icons inside the button */
+#theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+#theme-toggle:focus-visible {
+  outline: 3px solid var(--accent-secondary);
+  outline-offset: 2px;
+}
+
 #theme-toggle svg {
   width: 24px;
   height: 24px;
-  stroke: var(--button-icon-color); /* Use 'stroke' for line-art icons */
-  
-  /* Smooth transition for icon color */
+  stroke: var(--button-icon-color);
   transition: stroke 0.3s ease;
 }
 
-/* --- The Icon-Swapping Logic --- */
-
-/* By default (light mode), hide the moon icon */
+/* Icon Swapping Logic */
 #theme-toggle .icon-moon {
   display: none;
 }
 
-/* When in dark mode, hide the sun icon */
 [data-theme='dark'] #theme-toggle .icon-sun {
   display: none;
 }
 
-/* When in dark mode, show the moon icon */
 [data-theme='dark'] #theme-toggle .icon-moon {
   display: block;
 }
 
-
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
-/* ... (Your existing Hero variables are great and already 
-   integrated, so I'm leaving them as-is) ... */
-:root {
-  --text-primary: #1a202c;
-  --text-secondary: #64748b;
-  --accent-primary: #02437D;
-  --accent-secondary: #f59e0b;
-  --surface: #ffffff;
-  --surface-light: #f8fafc;
-}
-
-/* We must re-declare the dark-mode versions of these
-   specific variables inside the [data-theme='dark'] selector */
-[data-theme='dark'] {
-  --text-primary: #E0E0E0;
-  --text-secondary: #B0B0B0;
-  --accent-primary: #00AFFF;
-  --accent-secondary: #F5B85A;
-  --surface: #121212;
-  --surface-light: #1F1F1F;
-}
-
+/*
+==============================================
+// 4. HERO SECTION
+==============================================
+*/
 
 #hero {
   min-height: 100vh;
-  background-color: var(--surface); /* USES VAR */
+  background-color: var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -412,7 +378,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: 'Chakra Petch';
+  font-family: 'Chakra Petch', sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
@@ -420,51 +386,57 @@ h6 {
   display: inline-block;
   padding: 8px 28px;
   border-radius: 50px;
-  transition: 0.5s;
+  transition: all 0.3s ease;
   margin-top: 50px !important;
-  border: 2px solid var(--border-color); /* USES VAR */
-  color: var(--text-primary); /* USES VAR */
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
 }
 
-#hero .btn-get-started:hover {
-  background: var(--accent-primary); /* USES VAR */
-  border: 2px solid var(--accent-secondary); /* USES VAR */
-  color: var(--text-inverted); /* USES VAR */
+#hero .btn-get-started:hover,
+#hero .btn-get-started:focus {
+  background: var(--accent-primary);
+  border: 2px solid var(--accent-secondary);
+  color: var(--text-inverted);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-/* Typography - Clean and Conversational */
+/* Typography */
 .greeting {
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--text-secondary); /* USES VAR */
-  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin: 0 0 0.25rem 0;
+  text-align: center;
   letter-spacing: -0.025em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
 .hero-name {
-  font-size: 5rem;
-  font-weight: 700;
+  font-size: 6rem;
+  font-weight: 800;
+  text-transform: lowercase;
+  letter-spacing: -0.03em;
   margin: 0;
   line-height: 0.9;
-  letter-spacing: -0.05em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%); /* USES VARS */
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #1E5F8F 40%, #d4a237 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: var(--text-primary); /* USES VAR */
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease-in-out infinite;
 }
 
 .name-accent {
   width: 80px;
   height: 4px;
-  background: var(--accent-primary); /* USES VAR */
+  background: var(--accent-primary);
   border-radius: 2px;
   margin: 1.5rem auto 0;
 }
 
-/* Simple decorative shapes - minimal and lightweight */
+/* Decorative shapes */
 .hero-shapes {
   position: absolute;
   top: 0;
@@ -479,28 +451,30 @@ h6 {
   position: absolute;
   width: 120px;
   height: 120px;
-  background: var(--accent-primary); /* USES VAR */
+  background: var(--accent-primary);
   border-radius: 50%;
   opacity: 0.08;
   top: 20%;
   right: 15%;
   animation: float-gentle 8s ease-in-out infinite;
+  /* PERFORMANCE FIX: Use will-change for smoother animations */
+  will-change: transform;
 }
 
 .shape-2 {
   position: absolute;
   width: 80px;
   height: 80px;
-  background: var(--accent-secondary); /* USES VAR */
+  background: var(--accent-secondary);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   opacity: 0.1;
   bottom: 25%;
   left: 20%;
   animation: float-gentle 6s ease-in-out infinite reverse;
+  will-change: transform;
 }
 
-/* ... (Rest of Hero animations and media queries are fine) ... */
-/* ... (Skipping to next section) ... */
+/* Animations */
 @keyframes float-gentle {
   0%, 100% {
     transform: translateY(0px);
@@ -508,63 +482,6 @@ h6 {
   50% {
     transform: translateY(-15px);
   }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  /* This section is fine */
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .shape-1,
-  .shape-2 {
-    animation: none;
-  }
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  /* This section is fine */
-}
-
-@media (max-width: 480px) {
-  /* This section is fine */
-}
-
-/* Print styles */
-@media print {
-  /* This section is fine */
-}
-
-/* Focus management */
-#hero:focus-within {
-  outline: none;
-}
-
-
-/* Alternative playful version */
-.greeting {
-  font-size: 1.75rem;
-  font-weight: 300;
-  color: var(--text-secondary);
-  margin: 0 0 0.25rem 0;
-  text-align: left;
-  margin-left: 0.5rem;
-}
-
-.hero-name {
-  font-size: 6rem;
-  font-weight: 800;
-  text-transform: lowercase;
-  letter-spacing: -0.03em;
-  /* Updated gradient with vars */
-  background: linear-gradient(135deg, var(--accent-primary) 0%, #1E5F8F 40%, #d4a237 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% 200%;
-  animation: gradient-shift 4s ease-in-out infinite;
 }
 
 @keyframes gradient-shift {
@@ -576,41 +493,98 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Hero Section Ends
---------------------------------------------------------------*/
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .shape-1,
+  .shape-2,
+  .hero-name {
+    animation: none;
+  }
+}
 
+/* Hero Responsive */
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 4rem;
+  }
+  .greeting {
+    font-size: 1.5rem;
+  }
+}
 
-/*--------------------------------------------------------------
-# Sections
---------------------------------------------------------------*/
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 3rem;
+  }
+  .greeting {
+    font-size: 1.25rem;
+  }
+}
+
+/*
+==============================================
+// 5. SECTIONS
+==============================================
+*/
+
 section {
   overflow: hidden;
 }
 
-/* Sections Header
---------------------------------*/
 .section-header .section-title {
   font-size: 60px;
-  color: var(--text-primary); /* USES VAR */
+  color: var(--text-primary);
   text-transform: uppercase;
   text-align: center;
   font-weight: 500;
   padding-bottom: 50px !important;
 }
 
-
-.section-header{
+.section-header {
   padding-bottom: 50px !important;
 }
 
+.bottomline {
+  margin: auto;
+  max-width: 1080px;
+  height: 1px;
+  border-top: 1px solid var(--border-color);
+}
 
-/* Work Section
---------------------------------*/
+/*
+==============================================
+// 6. WORK SECTION
+==============================================
+*/
+
 #work {
   padding: 90px 0;
-  background: var(--bg-primary); /* USES VAR */
+  background: var(--bg-primary);
   text-align: center;
+}
+
+#work .btn-get-started {
+  font-family: 'Chakra Petch', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  margin-top: 8px !important;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+#work .btn-get-started:hover,
+#work .btn-get-started:focus {
+  background: var(--accent-primary);
+  border: 2px solid var(--accent-secondary);
+  color: var(--text-inverted);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 @media (max-width: 768px) {
@@ -619,46 +593,17 @@ section {
   }
 }
 
-.bottomline{
-  margin: auto;
-  max-width: 1080px;
-  height: 1px;
-  border-top: 1px solid var(--border-color); /* USES VAR */
-}
+/*
+==============================================
+// 7. ABOUT SECTION
+==============================================
+*/
 
-/* ... (Skipping slideshow) ... */
-
-
-#work .btn-get-started {
-  font-family: 'Chakra Petch',;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 8px 28px;
-  border-radius: 50px;
-  transition: 0.5s;
-  margin-top: 8px !important;
-  border: 2px solid var(--border-color); /* USES VAR */
-  color: var(--text-primary); /* USES VAR */
-}
-
-#work .btn-get-started:hover {
-  background: var(--accent-primary); /* USES VAR */
-  border: 2px solid var(--accent-secondary); /* USES VAR */
-  color: var(--text-inverted); /* USES VAR */
-}
-
-
-
-/* ===== About Section ===== */
 #about {
   padding: 100px 0;
-  background: var(--bg-primary); /* USES VAR */
+  background: var(--bg-primary);
 }
 
-/* ... (Avatar styles are fine) ... */
 .about-avatar {
   display: flex;
   justify-content: center;
@@ -668,6 +613,7 @@ section {
 .about-avatar img {
   max-width: 85%;
   border-radius: 20px;
+  transition: transform 0.3s ease;
 }
 
 .about-avatar img:hover {
@@ -678,25 +624,25 @@ section {
   font-size: 34px;
   font-weight: 700;
   font-family: "Chakra Petch", sans-serif;
-  color: var(--text-primary); /* USES VAR */
+  color: var(--text-primary);
   margin-bottom: 10px;
 }
 
 .about-subtitle {
   font-size: 22px;
   font-weight: 500;
-  color: var(--text-subtitle); /* USES VAR */
+  color: var(--text-subtitle);
   margin-bottom: 24px;
 }
 
 .highlight {
-  color: var(--accent-primary); /* USES VAR */
+  color: var(--accent-primary);
 }
 
 .about-description {
   font-size: 16px;
-  line-height: 1.3;
-  color: var(--text-description); /* USES VAR */
+  line-height: 1.6;
+  color: var(--text-description);
   margin-bottom: 16px;
   text-align: justify;
 }
@@ -715,33 +661,35 @@ section {
   right: -0.1em;
   bottom: 0.1em;
   height: 0.9em;
-  background: var(--accent-swoosh); /* USES VAR */
+  background: var(--accent-swoosh);
   z-index: -1;
   clip-path: ellipse(70% 85% at 50% 100%);
 }
 
 #about .btn-get-started {
-  font-family: "Jura", sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
   padding: 10px 28px;
   border-radius: 50px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   margin-top: 20px;
-  border: 2px solid var(--accent-primary); /* USES VAR */
-  color: var(--accent-primary); /* USES VAR */
+  border: 2px solid var(--accent-primary);
+  color: var(--accent-primary);
   display: inline-block;
 }
 
-#about .btn-get-started:hover {
-  background: var(--accent-primary); /* USES VAR */
-  color: var(--text-inverted); /* USES VAR */
-  border: 2px solid var(--accent-secondary); /* USES VAR */
+#about .btn-get-started:hover,
+#about .btn-get-started:focus {
+  background: var(--accent-primary);
+  color: var(--text-inverted);
+  border: 2px solid var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-/* ... (About responsive styles are fine) ... */
 @media (max-width: 768px) {
   #about {
     padding: 60px 20px;
@@ -753,51 +701,32 @@ section {
   .about-avatar img { max-width: 70%; }
 }
 
-
-/*--------------------------------------------------------------
-# Enhanced Footer with Brand Colors
---------------------------------------------------------------*/
-/* NOTE: Your footer is styled with INLINE STYLES in your HTML.
-  The JavaScript file will handle changing its background color.
+/*
+==============================================
+// 8. PORTFOLIO SECTION
+==============================================
 */
-#footer {
-  font-family: 'Chakra Petch', sans-serif;
-  transition: background-color 0.3s ease;
-}
 
-/* ... (Footer hover effects are fine) ... */
-.footer-link-card:hover {
-  background: rgba(247, 250, 252, 0.15) !important;
-  border-color: rgba(247, 250, 252, 0.3) !important;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-/* ... (Rest of footer CSS is fine) ... */
-
-
-/* ========== PORTFOLIO TILE STARTS ========== */
-/* NOTE: Your project tiles are styled with INLINE STYLES in your HTML.
-  The JavaScript file will handle changing their background/text colors.
-*/
 .portfolio-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 80px; /* space between multiple tiles */
+  gap: 80px;
 }
 
-/* This is a new style to make the tiles transition smoothly */
+/* PERFORMANCE FIX: Add transition for theme switching */
 #project-orbit,
-#project-manage-wise {
+#project-manage-wise,
+#project-todo {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .portfolio-tile {
   display: flex;
   flex-direction: column;
-  background-color: transparent; /* Was #f9f9f900 */
+  background-color: transparent;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px var(--shadow-color); /* USES VAR */
+  box-shadow: 0 4px 20px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
 }
@@ -814,75 +743,109 @@ section {
   border-radius: 8px;
 }
 
-/* ... (Rest of portfolio tile CSS is fine) ... */
 @media (min-width: 768px) {
-  .portfolio-tile { flex-direction: row; align-items: center; gap: 40px; }
-  .tile-image { flex: 0.9; padding: 24px; }
-  .tile-text { flex: 1.1; padding: 24px; }
-  .tile-image img { height: auto; }
+  .portfolio-tile { 
+    flex-direction: row; 
+    align-items: center; 
+    gap: 40px; 
+  }
+  .tile-image { 
+    flex: 0.9; 
+    padding: 24px; 
+  }
+  .tile-text { 
+    flex: 1.1; 
+    padding: 24px; 
+  }
+  .tile-image img { 
+    height: auto; 
+  }
 }
+
 @media (min-width: 1024px) {
-  #portfolio { padding: 100px 40px; }
-  .tile-text h3 { font-size: 2rem; }
-  .tile-text p { font-size: 1.1rem; }
+  #portfolio { 
+    padding: 100px 40px; 
+  }
+  .tile-text h3 { 
+    font-size: 2rem; 
+  }
+  .tile-text p { 
+    font-size: 1.1rem; 
+  }
 }
-  
 
-  /* ========== CALENDLY STARTS ========== */
-  .contact-section {
-    padding: 60px 20px;
-    background-color: var(--bg-primary); /* USES VAR */
-  }
-  
-  .section-header {
-    max-width: 900px;
-    text-align: center;
-  }
-  
-  
-  .section-header p {
-    font-size: 28px;
-    color: var(--text-tertiary); /* USES VAR */
-    margin-top: 10px;
-  }
+/*
+==============================================
+// 9. FOOTER
+==============================================
+*/
 
-  .calendly-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 60px;
-  }
-  
-  .calendly-inline-widget {
-    width: 100%;
-    max-width: 800px;
-    height: 700px;
-    border: 1px solid var(--border-light); /* USES VAR */
-    border-radius: 12px;
-    overflow: hidden;
-  }
-    /* ========== CALENDLY ENDS ========== */
-  .social-links {
-    margin-top: 20px;
-  }
-  
-  .social-links a {
-    font-size: 20px;
-    margin: 0 10px;
-    color: var(--text-tertiary); /* USES VAR */
-  }
-  
-  .social-links a:hover {
-    color: var(--text-primary); /* USES VAR */
-  }
+#footer {
+  font-family: 'Chakra Petch', sans-serif;
+  transition: background-color 0.3s ease;
+}
 
-  /* Mobile Navigation */
+.footer-link-card {
+  transition: all 0.3s ease;
+}
+
+.footer-link-card:hover,
+.footer-link-card:focus-visible {
+  background: rgba(247, 250, 252, 0.15) !important;
+  border-color: rgba(247, 250, 252, 0.3) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/*
+==============================================
+// 10. BACK TO TOP BUTTON
+==============================================
+*/
+
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: var(--accent-tertiary);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: var(--text-inverted);
+  line-height: 0;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: var(--accent-tertiary-hover);
+  color: var(--text-inverted);
+  transform: translateY(-2px);
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*
+==============================================
+// 11. MOBILE NAVIGATION
+==============================================
+*/
 
 @media (max-width: 768px) {
   .mobile-nav-toggle {
     display: none;
   }
   
-  /* Hides the new toggle button on mobile */
   #theme-toggle {
     display: none;
   }
@@ -891,40 +854,40 @@ section {
     display: none;
   }
 
- .back-to-top{
-  display: none !important;
- }
+  .back-to-top {
+    display: none !important;
+  }
 }
 
-/* BOTTOMNAV */
-.bottomnav{
+/* Bottom Navigation */
+.bottomnav {
   width: 100% !important;
 }
 
-.mybottomnav{
-  background: var(--mobile-nav-bg) !important; /* USES VAR */
-  transition: all 0.1s;
+.mybottomnav {
+  background: var(--mobile-nav-bg) !important;
+  transition: all 0.3s ease;
   font-family: 'Chakra Petch', sans-serif;
   padding: 10px 0 !important;
-  color: var(--text-inverted); /* USES VAR */
+  color: var(--text-inverted);
   font-size: 18px;
   border-radius: 0 !important;
 }
 
-.mybottomnav:hover{
-  background: var(--mobile-nav-bg-hover) !important; /* USES VAR */
-  color: var(--text-inverted) !important; /* USES VAR */
+.mybottomnav:hover,
+.mybottomnav:focus-visible {
+  background: var(--mobile-nav-bg-hover) !important;
+  color: var(--text-inverted) !important;
   border-radius: 0 !important;
 }
 
-
-.mybottomnav.active{
-  background: var(--mobile-nav-bg-hover) !important; /* USES VAR */
-  color: var(--text-inverted) !important; /* USES VAR */
+.mybottomnav.active {
+  background: var(--mobile-nav-bg-hover) !important;
+  color: var(--text-inverted) !important;
   border-radius: 0 !important;
 }
 
-
+/* Mobile Menu Overlay */
 .navbar-mobile {
   position: fixed;
   overflow: hidden;
@@ -951,17 +914,17 @@ section {
   bottom: 15px;
   left: 15px;
   padding: 10px 0;
-  background-color: var(--bg-primary); /* USES VAR */
+  background-color: var(--bg-primary);
   overflow-y: auto;
   transition: 0.3s;
 }
 
-.navbar-mobile>ul>li {
+.navbar-mobile > ul > li {
   padding: 0;
 }
 
 .navbar-mobile a:hover:before,
-.navbar-mobile li:hover>a:before,
+.navbar-mobile li:hover > a:before,
 .navbar-mobile .active:before {
   visibility: hidden;
 }
@@ -970,13 +933,13 @@ section {
 .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
-  color: var(--text-secondary); /* USES VAR */
+  color: var(--text-secondary);
 }
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover>a {
-  color: var(--accent-tertiary); /* USES VAR */
+.navbar-mobile li:hover > a {
+  color: var(--accent-tertiary);
 }
 
 .navbar-mobile .getstarted,
@@ -984,26 +947,103 @@ section {
   margin: 15px;
 }
 
-/* ... (Rest of CSS is fine) ... */
+/*
+==============================================
+// 12. CALENDLY INTEGRATION
+==============================================
+*/
 
-/* Nav Bar Ends */
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .section-header h2 {
-      font-size: 26px;
-    }
-  
-    .section-header p {
-      font-size: 16px;
-      padding: 0 10px;
-    }
-  
-    .calendly-inline-widget {
-      height: 900px;
-    }
+.contact-section {
+  padding: 60px 20px;
+  background-color: var(--bg-primary);
+}
+
+.calendly-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.calendly-inline-widget {
+  width: 100%;
+  max-width: 800px;
+  height: 700px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links a {
+  font-size: 20px;
+  margin: 0 10px;
+  color: var(--text-tertiary);
+  transition: color 0.2s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .calendly-inline-widget {
+    height: 900px;
+  }
+}
+
+/*
+==============================================
+// 13. PERFORMANCE OPTIMIZATIONS
+==============================================
+*/
+
+/* PERFORMANCE FIX: Disable AOS animations on mobile for better performance */
+@media screen and (max-width: 768px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* PERFORMANCE FIX: GPU acceleration for animations */
+.navbar a:before,
+.hero-name,
+.shape-1,
+.shape-2,
+.portfolio-tile,
+.footer-link-card {
+  will-change: transform;
+}
+
+/* Remove will-change after animation completes to free resources */
+.navbar a:not(:hover):before,
+.portfolio-tile:not(:hover) {
+  will-change: auto;
+}
+
+/*
+==============================================
+// 14. PRINT STYLES
+==============================================
+*/
+
+@media print {
+  #header,
+  #theme-toggle,
+  .back-to-top,
+  .floating-up-button,
+  .bottomnav,
+  .hero-shapes {
+    display: none !important;
   }
   
-    /* Calendly Link End */
-
-
+  body {
+    background: white;
+    color: black;
+  }
+}
