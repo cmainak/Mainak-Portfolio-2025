@@ -116,26 +116,36 @@
     
     <body>
       <!-- ======= Header ======= -->
-      <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-        <div class="container d-flex justify-content-between align-items-center">
-          <div id="logo">
-            <a href="index.html" class="logo-link">
-              <img src="assets/img/Logo2.svg" loading="lazy" alt="Mainak Chakraborty Logo" class="logo-img">
-              &nbsp;&nbsp; <span class="logo-text">MAINAK CHAKRABORTY</span>
-              <img src="assets/img/home.svg" alt="Home" class="home-icon">
-            </a>
-          </div>
-    
-          <nav id="navbar" class="navbar">
-            <ul>
-              <li><a class="active" href="#about">About</a></li>
-              <li><a class="nav-link scrollto" href="work.html">Work</a></li>
-              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-          </nav>
-        </div>
-      </header>
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div id="logo">
+        <a href="index.html" class="logo-link">
+          <img src="assets/img/Logo2.svg" loading="lazy" alt="Mainak Chakraborty Logo" class="logo-img">
+          &nbsp;&nbsp; <span class="logo-text">MAINAK CHAKRABORTY</span>
+          <img src="assets/img/home.svg" alt="Home" class="home-icon">
+        </a>
+      </div>
+      
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="work.html">Work</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          
+        </ul>
+
+        <button id="theme-toggle" aria-label="Toggle light and dark mode">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+
+      </nav><!-- Navbar -->
+    </div>
+  </header><!-- End Header -->
     
 
     
@@ -179,7 +189,7 @@ position: relative;">
       border: 0px solid ;">
       A Little About Me
     </div>
-    <h1 class="about-hero-title" style="
+    <h1 id="about-title" class="about-hero-title" style="
       font-size: 40px;
       font-weight: 700;
       color: #0f172a;
@@ -199,7 +209,7 @@ position: relative;">
   </div>
 
   <!-- Single Column Layout -->
-  <div class="about-content-card" style="
+  <div id="about-card" class="about-content-card" style="
     background: #ffffff;
     padding: 40px;
     border-radius: 20px;
@@ -357,7 +367,7 @@ position: relative;">
     <!-- Work Experience Section -->
 <!-- Work Experience Section -->
 <div class="section-header" style="margin-bottom: 24px;"></div>
-<h2 class="section-title" style="
+<h2 id="experience-title" class="section-title" style="
   margin: 0 0 12px;
   font-size: 32px;
   font-weight: 700;
@@ -365,7 +375,7 @@ position: relative;">
   color: #0f172a;">
   EXPERIENCE
 </h2>
-<div class="bottomline" style="
+<div id="experience-line" class="bottomline" style="
   width: 80px;
   height: 2px;
   background: #0f172a;
@@ -584,7 +594,7 @@ position: relative;">
 
 <!-- Tools Section -->
 <div class="section-header" style="margin-bottom: 24px;"></div>
-<h2 class="section-title" style="
+<h2 id="tools-title" class="section-title" style="
   margin: 0 0 12px;
   font-size: 32px;
   font-weight: 700;
@@ -592,7 +602,7 @@ position: relative;">
   color: #0f172a;">
   TOOLS I USE
 </h2>
-<div class="bottomline" style="
+<div id="tools-line" class="bottomline" style="
   width: 80px;
   height: 2px;
   background: #0f172a;
@@ -1004,7 +1014,13 @@ text-align: center;">
   </a>
 
 
-  
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js" defer></script>
+<script src="assets/vendor/aos/aos.js" defer></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js" defer></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js" defer></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
+<script src="assets/vendor/php-email-form/validate.js" defer></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js" defer></script>
 

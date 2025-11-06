@@ -72,8 +72,8 @@
   --button-icon-color: #FFFFFF;
   
   /* -- Mobile Nav -- */
-  --mobile-nav-bg: rgba(35, 35, 35, 0.9);
-  --mobile-nav-bg-hover: linear-gradient(to right, #00AFFF, #222222);
+  --mobile-nav-bg: rgba(255, 255, 255, 0.9);
+  --mobile-nav-bg-hover: linear-gradient(to right, #FF9933, #222222);
 }
 
 /*

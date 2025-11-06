@@ -214,9 +214,13 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
     // PureCounter Init
     new PureCounter();
   });
-  /**
- * Theme Toggle Dark/Light Mode
- * (With specific overrides for inline styles)
+})();
+
+/**
+ * ===================================================================
+ * NEW THEME TOGGLE SCRIPT (v7)
+ * This new code runs separately and handles all pages.
+ * ===================================================================
  */
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -224,26 +228,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const htmlElement = document.documentElement;
   
-  // Find the elements with inline styles
+  // --- Find elements that exist on ANY page ---
+  const footer = document.getElementById('footer');
+
+  // --- Find elements on index.html OR work.html ---
   const orbitTile = document.getElementById('project-orbit');
   const manageTile = document.getElementById('project-manage-wise');
-  const footer = document.getElementById('footer');
+  const orbitButton = orbitTile ? orbitTile.querySelector('a[style*="background: #fff"]') : null;
+  const manageButton = manageTile ? manageTile.querySelector('a[style*="background: #fff"]') : null;
+  const fwTitle = document.getElementById('featured-work-title'); // from index.html
+  const fwLine = document.getElementById('featured-work-line'); // from index.html
   
-  // Find the "View Case Study" buttons inside the tiles
-  // We use querySelector to find the <a> tag with a specific inline style
-  const orbitButton = document.querySelector('#project-orbit a[style*="background: #fff"]');
-  const manageButton = document.querySelector('#project-manage-wise a[style*="background: #fff"]');
+  // ▼▼▼ ADDED FOR 'SMART TO-DO' TILE (from work.html) ▼▼▼
+  const todoTile = document.getElementById('project-todo');
+  const todoButtons = todoTile ? todoTile.querySelectorAll('a[style*="background: #fff"]') : [];
+
+  // --- Find elements on about.html ---
+  const aboutSection = document.getElementById('about');
+  const aboutCard = document.getElementById('about-card');
+  const aboutTitle = document.getElementById('about-title');
+  const expTitle = document.getElementById('experience-title');
+  const expLine = document.getElementById('experience-line');
+  const toolsTitle = document.getElementById('tools-title');
+  const toolsLine = document.getElementById('tools-line');
 
   // --- 2. Create the toggle function ---
   function toggleTheme() {
-    // Check what the current theme is
     const currentTheme = htmlElement.getAttribute('data-theme');
 
     if (currentTheme === 'dark') {
       // --- SWITCH TO LIGHT MODE ---
       htmlElement.removeAttribute('data-theme');
       
-      // Change inline styles back to light mode
+      // Change elements on ALL pages
+      if (footer) footer.style.background = '#02437D';
+
+      // Change elements ONLY on index.html/work.html
       if (orbitTile) {
         orbitTile.style.background = '#029444';
         orbitTile.style.color = '#fff';
@@ -252,43 +272,80 @@ document.addEventListener('DOMContentLoaded', () => {
         manageTile.style.background = '#FFCD2A';
         manageTile.style.color = '#000';
       }
-      if (footer) {
-        footer.style.background = '#02437D';
-      }
       if (orbitButton) {
         orbitButton.style.background = '#fff';
         orbitButton.style.color = '#111827';
       }
-       if (manageButton) {
+      if (manageButton) {
         manageButton.style.background = '#fff';
         manageButton.style.color = '#111827';
       }
+      if (fwTitle) fwTitle.style.color = '#0f172a';
+      if (fwLine) fwLine.style.background = '#0f172a';
+      // ▼▼▼ ADDED FOR 'SMART TO-DO' TILE (from work.html) ▼▼▼
+      if (todoTile) todoTile.style.background = '#111827'; // Stays dark
+      todoButtons.forEach(btn => {
+        btn.style.background = '#fff';
+        btn.style.color = '#111827';
+      });
+
+      // Change elements ONLY on about.html
+      if (aboutSection) {
+         aboutSection.style.background = '#fff';
+         aboutSection.style.color = '#1e293b';
+      }
+      if (aboutCard) aboutCard.style.background = '#ffffff';
+      if (aboutTitle) aboutTitle.style.color = '#0f172a';
+      if (expTitle) expTitle.style.color = '#0f172a';
+      if (expLine) expLine.style.background = '#0f172a';
+      if (toolsTitle) toolsTitle.style.color = '#0f172a';
+      if (toolsLine) toolsLine.style.background = '#0f172a';
+
 
     } else {
       // --- SWITCH TO DARK MODE ---
       htmlElement.setAttribute('data-theme', 'dark');
 
-      // Change inline styles to new dark mode colors
+      // Change elements on ALL pages
+      if (footer) footer.style.background = '#012A52'; // Darker blue
+
+      // Change elements ONLY on index.html/work.html
       if (orbitTile) {
-        orbitTile.style.background = '#013D20'; // Darker green
-        orbitTile.style.color = '#E0E0E0';
+        orbitTile.style.background = '#029444'; // Original Green
+        orbitTile.style.color = '#fff'; // Original White Text
       }
       if (manageTile) {
-        manageTile.style.background = '#4D3E00'; // Darker yellow/brown
-        manageTile.style.color = '#E0E0E0';
+        manageTile.style.background = '#FFCD2A'; // Original Yellow
+        manageTile.style.color = '#000'; // Original Dark Text
       }
-      if (footer) {
-        footer.style.background = '#012A52'; // Darker blue
-      }
-      // Also change the "View Case Study" buttons
       if (orbitButton) {
-        orbitButton.style.background = '#E0E0E0'; // Light gray
-        orbitButton.style.color = '#121212';   // Dark text
+        orbitButton.style.background = '#E0E0E0';
+        orbitButton.style.color = '#121212';
       }
       if (manageButton) {
-        manageButton.style.background = '#E0E0E0'; // Light gray
-        manageButton.style.color = '#121212';   // Dark text
+        manageButton.style.background = '#E0E0E0';
+        manageButton.style.color = '#121212';
       }
+      if (fwTitle) fwTitle.style.color = '#E0E0E0';
+      if (fwLine) fwLine.style.background = '#E0E0E0';
+      // ▼▼▼ ADDED FOR 'SMART TO-DO' TILE (from work.html) ▼▼▼
+      if (todoTile) todoTile.style.background = '#111827'; // Stays dark
+      todoButtons.forEach(btn => {
+        btn.style.background = '#E0E0E0';
+        btn.style.color = '#121212';
+      });
+
+      // Change elements ONLY on about.html
+      if (aboutSection) {
+        aboutSection.style.background = '#121212';
+        aboutSection.style.color = '#C9D1D9';
+      }
+      if (aboutCard) aboutCard.style.background = '#1F1F1F'; // Dark card bg
+      if (aboutTitle) aboutTitle.style.color = '#E0E0E0'; // Light text
+      if (expTitle) expTitle.style.color = '#E0E0E0';
+      if (expLine) expLine.style.background = '#E0E0E0';
+      if (toolsTitle) toolsTitle.style.color = '#E0E0E0';
+      if (toolsLine) toolsLine.style.background = '#E0E0E0';
     }
   }
 
@@ -296,7 +353,4 @@ document.addEventListener('DOMContentLoaded', () => {
   if (themeToggle) { // Check if the button exists
     themeToggle.addEventListener('click', toggleTheme);
   }
-
 });
-
-})();
