@@ -153,6 +153,27 @@ h6 {
   border: 0;
 }
 
+/* ACCESSIBILITY FIX: Skip navigation link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 10000;
+  font-weight: 600;
+  display: none; /* ADD THIS - Hide it completely when not focused */
+}
+
+.skip-link:focus {
+  top: 0;
+  display: block; /* ADD THIS - Only show when focused */
+  outline: 3px solid #FF9933;
+}
+
+
 /*
 ==============================================
 // 3. HEADER & NAVIGATION
@@ -164,6 +185,9 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   background: var(--bg-header-transparent);
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 #header #logo img {
@@ -181,6 +205,8 @@ h6 {
   background: var(--bg-header);
   box-shadow: 0 2px 15px var(--shadow-color);
   transition: all 0.5s;
+  border: none !important;
+  border-bottom: none !important;
 }
 
 .scrolled-offset {
@@ -190,6 +216,8 @@ h6 {
 /* Desktop Navigation */
 .navbar {
   padding: 0;
+  border: none !important;
+  border-bottom: none !important;
 }
 
 .navbar ul {
@@ -261,10 +289,22 @@ h6 {
 }
 
 
-/* Logo Home Hover */
+/* Logo Home Hover - COMPLETE FIX */
 #logo {
   display: inline-flex;
   align-items: center;
+}
+
+/* Remove ALL possible underlines and borders from logo */
+#logo a,
+#logo a:before,
+#logo a:after,
+.logo-link,
+.logo-link:before,
+.logo-link:after {
+  text-decoration: none !important;
+  border: none !important;
+  background: none !important;
 }
 
 .logo-link {
@@ -275,21 +315,28 @@ h6 {
   position: relative;
 }
 
+/* Force remove any before/after pseudo elements */
+.logo-link::before,
+.logo-link::after {
+  display: none !important;
+  content: none !important;
+}
+
 /* Main logo */
 .logo-img {
   height: 50px !important;
   width: 50px !important;
-  margin-right: 12px; /* Space between logo and text */
+  margin-right: 12px;
 }
 
 .logo-text {
   font-weight: bold;
   transition: opacity 0.3s ease;
   color: var(--text-primary);
-  margin-right: 8px; /* ADD THIS - Space after text before icon */
+  margin-right: 8px;
 }
 
-/* Home icon */
+/* Home icon - UPDATED TO 20px */
 .home-icon {
   height: 20px !important;
   width: 20px !important;
@@ -306,7 +353,13 @@ h6 {
   transform: translateX(0);
 }
 
-
+/* CRITICAL: Override navbar underline rules for logo */
+#logo > a:before,
+#logo > a:hover:before,
+#logo > a:focus:before {
+  visibility: hidden !important;
+  display: none !important;
+}
 
 
 /* Theme Toggle Button */
