@@ -214,5 +214,89 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
     // PureCounter Init
     new PureCounter();
   });
+  /**
+ * Theme Toggle Dark/Light Mode
+ * (With specific overrides for inline styles)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+
+  // --- 1. Find all the elements ---
+  const themeToggle = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+  
+  // Find the elements with inline styles
+  const orbitTile = document.getElementById('project-orbit');
+  const manageTile = document.getElementById('project-manage-wise');
+  const footer = document.getElementById('footer');
+  
+  // Find the "View Case Study" buttons inside the tiles
+  // We use querySelector to find the <a> tag with a specific inline style
+  const orbitButton = document.querySelector('#project-orbit a[style*="background: #fff"]');
+  const manageButton = document.querySelector('#project-manage-wise a[style*="background: #fff"]');
+
+  // --- 2. Create the toggle function ---
+  function toggleTheme() {
+    // Check what the current theme is
+    const currentTheme = htmlElement.getAttribute('data-theme');
+
+    if (currentTheme === 'dark') {
+      // --- SWITCH TO LIGHT MODE ---
+      htmlElement.removeAttribute('data-theme');
+      
+      // Change inline styles back to light mode
+      if (orbitTile) {
+        orbitTile.style.background = '#029444';
+        orbitTile.style.color = '#fff';
+      }
+      if (manageTile) {
+        manageTile.style.background = '#FFCD2A';
+        manageTile.style.color = '#000';
+      }
+      if (footer) {
+        footer.style.background = '#02437D';
+      }
+      if (orbitButton) {
+        orbitButton.style.background = '#fff';
+        orbitButton.style.color = '#111827';
+      }
+       if (manageButton) {
+        manageButton.style.background = '#fff';
+        manageButton.style.color = '#111827';
+      }
+
+    } else {
+      // --- SWITCH TO DARK MODE ---
+      htmlElement.setAttribute('data-theme', 'dark');
+
+      // Change inline styles to new dark mode colors
+      if (orbitTile) {
+        orbitTile.style.background = '#013D20'; // Darker green
+        orbitTile.style.color = '#E0E0E0';
+      }
+      if (manageTile) {
+        manageTile.style.background = '#4D3E00'; // Darker yellow/brown
+        manageTile.style.color = '#E0E0E0';
+      }
+      if (footer) {
+        footer.style.background = '#012A52'; // Darker blue
+      }
+      // Also change the "View Case Study" buttons
+      if (orbitButton) {
+        orbitButton.style.background = '#E0E0E0'; // Light gray
+        orbitButton.style.color = '#121212';   // Dark text
+      }
+      if (manageButton) {
+        manageButton.style.background = '#E0E0E0'; // Light gray
+        manageButton.style.color = '#121212';   // Dark text
+      }
+    }
+  }
+
+  // --- 3. Add the click event listener ---
+  if (themeToggle) { // Check if the button exists
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+
+});
 
 })();
