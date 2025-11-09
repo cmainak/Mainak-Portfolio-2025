@@ -1,1183 +1,1575 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Todo App</title>
-    
-    <!-- Load Tailwind CSS FIRST -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Configure Tailwind CSS SECOND -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class', // This is the fix
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
 
-    <!-- Load Inter font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Icons from Lucide -->
-    <script src="https://unpkg.com/lucide@0.395.0/dist/umd/lucide.min.js"></script>
+<meta charset="UTF-8" />
 
-    <style>
-        /* Base styles */
-        body {
-            font-family: 'Inter', sans-serif; /* This is still good as a fallback */
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        /* Task list item transition */
-        .task-item {
-            transition: all 0.3s ease-in-out;
-            max-height: 200px; /* Set a max-height for collapse animation */
-            opacity: 1;
-            transform: scale(1);
-            overflow: hidden;
-        }
+<title>Advanced Todo App</title>
 
-        /* Animation for removing a task */
-        .task-item.removing {
-            opacity: 0;
-            transform: scale(0.95);
-            max-height: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
 
-        /* Styles for completed tasks */
-        .task-item.completed {
-            opacity: 0.6;
-        }
 
-        .task-item.completed .task-title,
-        .task-item.completed .task-description {
-            text-decoration: line-through;
-            color: #6b7280; /* gray-500 */
-        }
-        
-        .dark .task-item.completed .task-title,
-        .dark .task-item.completed .task-description {
-            color: #9ca3af; /* dark:gray-400 */
-        }
-        
-        /* Drag and drop styles */
-        .task-item.dragging {
-            opacity: 0.5;
-            background: #e0e7ff; /* indigo-100 */
-            border: 2px dashed #6366f1; /* indigo-500 */
-        }
-        
-        .dark .task-item.dragging {
-            background: #3730a3; /* dark:indigo-800 */
-        }
+<!-- Optional: inject this safely at build-time or via server template -->
 
-        /* Style native date picker icon */
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            cursor: pointer;
-            filter: invert(0.5);
-        }
-        
-        .dark input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(1);
-        }
-        
-        /* Custom modal transition */
-        .modal {
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s 0.3s, opacity 0.3s ease;
-        }
-        
-        .modal.open {
-            visibility: visible;
-            opacity: 1;
-            transition: visibility 0s, opacity 0.3s ease;
-        }
-        
-        .modal-content {
-            transform: scale(0.95);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .modal.open .modal-content {
-            transform: scale(1);
-            opacity: 1;
-        }
-        
-        /* Custom notification toast */
-        #notification-toast {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            transform: translateX(200%);
-            transition: transform 0.5s ease-in-out;
-            z-index: 100;
-        }
-        
-        #notification-toast.show {
-            transform: translateX(0);
-        }
+<!-- <script>window.ENV = { GEMINI_API_KEY: "YOUR_KEY" };</script> -->
 
-        /* Spinning loader */
-        .animate-spin {
-            animation: spin 1s linear infinite;
-        }
 
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+
+tailwind.config = {
+
+darkMode: 'class',
+
+theme: {
+
+extend: {
+
+fontFamily: { sans: ['Inter','sans-serif'] }
+
+}
+
+}
+
+}
+
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<script src="https://unpkg.com/lucide@0.395.0/dist/umd/lucide.min.js"></script>
+
+
+
+<style>
+
+body { font-family: 'Inter', sans-serif; }
+
+.task-item { transition: all .3s ease-in-out; max-height:200px; opacity:1; transform:scale(1); overflow:hidden; }
+
+.task-item.removing { opacity:0; transform:scale(.95); max-height:0; padding-top:0; padding-bottom:0; margin-top:0; margin-bottom:0; }
+
+.task-item.completed { opacity:.6; }
+
+.task-item.completed .task-title, .task-item.completed .task-description { text-decoration:line-through; color:#6b7280; }
+
+.dark .task-item.completed .task-title, .dark .task-item.completed .task-description { color:#9ca3af; }
+
+.task-item.dragging { opacity:.5; background:#e0e7ff; border:2px dashed #6366f1; }
+
+.dark .task-item.dragging { background:#3730a3; }
+
+input[type="date"]::-webkit-calendar-picker-indicator { cursor:pointer; filter:invert(.5); }
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(1); }
+
+
+
+.modal { visibility:hidden; opacity:0; transition:visibility 0s .3s, opacity .3s ease; }
+
+.modal.open { visibility:visible; opacity:1; transition:visibility 0s, opacity .3s ease; }
+
+.modal-content { transform:scale(.95); opacity:0; transition:all .3s ease; }
+
+.modal.open .modal-content { transform:scale(1); opacity:1; }
+
+
+
+#notification-toast { position:fixed; top:1.5rem; right:1.5rem; transform:translateX(200%); transition:transform .5s ease-in-out; z-index:100; }
+
+#notification-toast.show { transform:translateX(0); }
+
+.animate-spin { animation:spin 1s linear infinite; }
+
+@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+
+
+/* Floating Home Button */
+
+.home-button{position:fixed;top:20px;right:40px;z-index:1001;background:rgba(255,255,255,.2);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:all .3s ease;text-decoration:none;}
+
+.home-button:hover{transform:scale(1.1);background:#fff;box-shadow:0 4px 15px rgba(0,0,0,.2);}
+
+.home-button i{color:rgba(0,0,0,.6);font-size:1.4rem;}
+
+</style>
+
 </head>
+
 <body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-    <!-- Main App Container -->
-    <div id="app" class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
-
-        <!-- Header -->
-        <header class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-400 dark:to-purple-500">
-                My Tasks
-            </h1>
-            <div class="flex items-center gap-4">
-                <button id="add-task-btn" class="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-all duration-200 flex items-center gap-2">
-                    <i data-lucide="plus-circle" class="w-5 h-5"></i>
-                    <span class="hidden sm:inline">Add Task</span>
-                </button>
-                <button id="smart-add-btn" class="bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-all duration-200 flex items-center gap-2">
-                    <i data-lucide="wand-2" class="w-5 h-5"></i>
-                    <span class="hidden sm:inline">Smart Add</span>
-                </button>
-                <button id="theme-toggle-btn" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200">
-                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-                </button>
-            </div>
-        </header>
-
-        <!-- Filters & Search Section -->
-        <div class="mb-6 p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                <!-- Search -->
-                <div class="sm:col-span-2 lg:col-span-3 xl:col-span-1">
-                    <label for="search-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Search</label>
-                    <div class="relative">
-                        <input type="text" id="search-input" placeholder="Search tasks..." class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                        <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"></i>
-                    </div>
-                </div>
-                
-                <!-- Filter by Status -->
-                <div>
-                    <label for="filter-status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status</label>
-                    <select id="filter-status" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                        <option value="all">All</option>
-                        <option value="active">Active</option>
-                        <option value="completed">Completed</option>
-                    </select>
-                </div>
-
-                <!-- Filter by Category -->
-                <div>
-                    <label for="filter-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Category</label>
-                    <select id="filter-category" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                        <option value="all">All</option>
-                        <option value="work">Work</option>
-                        <option value="personal">Personal</option>
-                        <option value="shopping">Shopping</option>
-                        <option value="study">Study</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <!-- Filter by Priority -->
-                <div>
-                    <label for="filter-priority" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Priority</label>
-                    <select id="filter-priority" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                        <option value="all">All</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                </div>
-
-                <!-- Filter by Date Range -->
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label for="filter-date-start" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">From</label>
-                        <input type="date" id="filter-date-start" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                    </div>
-                    <div>
-                        <label for="filter-date-end" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">To</label>
-                        <input type="date" id="filter-date-end" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Task List -->
-        <ul id="task-list" class="space-y-4">
-            <!-- Task items will be injected here by JS -->
-        </ul>
-        
-        <!-- Empty State -->
-        <div id="empty-state" class="text-center p-12 bg-white dark:bg-gray-900 rounded-lg shadow-md hidden">
-             <i data-lucide="clipboard-check" class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-600 mb-4"></i>
-             <h3 class="text-xl font-medium text-gray-700 dark:text-gray-300">All caught up!</h3>
-             <p class="text-gray-500 dark:text-gray-400 mt-2">You have no tasks. Add one to get started.</p>
-        </div>
-
-    </div>
-
-    <!-- Add/Edit Task Modal -->
-    <div id="task-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4">
-        <!-- Modal Backdrop -->
-        <div id="modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        
-        <!-- Modal Content -->
-        <div class="modal-content relative w-full max-w-lg bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-6 sm:p-8">
-            <h2 id="modal-title" class="text-2xl font-bold mb-6">Add New Task</h2>
-            <button id="modal-close-btn" class="absolute top-4 right-4 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            
-            <form id="task-form">
-                <input type="hidden" id="task-id">
-                <div class="space-y-5">
-                    <!-- Task Title -->
-                    <div>
-                        <div class="flex justify-between items-center mb-1">
-                            <label for="task-title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Title <span class="text-red-500">*</span></label>
-                            <button type="button" id="breakdown-btn" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1 disabled:opacity-50 disabled:no-underline" title="Uses Gemini to break this task into sub-tasks in the description">
-                                ✨ Break Down Task
-                                <span id="breakdown-loader" class="hidden w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin"></span>
-                            </button>
-                        </div>
-                        <input type="text" id="task-title" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500" required>
-                    </div>
-                    
-                    <!-- Task Description -->
-                    <div>
-                        <label for="task-description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
-                        <textarea id="task-description" rows="3" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500"></textarea>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                        <!-- Task Category -->
-                        <div>
-                            <label for="task-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Category</label>
-                            <select id="task-category" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                                <option value="personal">Personal</option>
-                                <option value="work">Work</option>
-                                <option value="shopping">Shopping</option>
-                                <option value="study">Study</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Task Priority -->
-                        <div>
-                            <label for="task-priority" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Priority</label>
-                            <select id="task-priority" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Task Due Date -->
-                        <div>
-                            <label for="task-due-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Due Date</label>
-                            <input type="date" id="task-due-date" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Form Buttons -->
-                <div class="mt-8 flex justify-end gap-4">
-                    <button type="button" id="modal-cancel-btn" class="py-2 px-5 rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 font-medium transition-colors">
-                        Cancel
-                    </button>
-                    <button type="submit" class="py-2 px-5 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 font-medium transition-colors shadow-md">
-                        Save Task
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <!-- Smart Add Modal -->
-    <div id="smart-add-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4">
-        <!-- Modal Backdrop -->
-        <div id="smart-modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        
-        <!-- Modal Content -->
-        <div class="modal-content relative w-full max-w-lg bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-6 sm:p-8">
-            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 dark:from-purple-400 dark:to-pink-500">
-                <i data-lucide="wand-2" class="w-6 h-6"></i>
-                Smart Add Task
-            </h2>
-            <button id="smart-modal-close-btn" class="absolute top-4 right-4 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-5">Type a natural language request, and Gemini will create the task for you. <br> e.g., "Remind me to buy milk, eggs, and bread for this weekend, it's high priority."</p>
-            
-            <form id="smart-add-form">
-                <div class="space-y-5">
-                    <div>
-                        <label for="smart-prompt" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Request</label>
-                        <textarea id="smart-prompt" rows="3" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:border-purple-500" placeholder="Type your task here..."></textarea>
-                    </div>
-                </div>
-                <div class="mt-8 flex justify-end gap-4">
-                    <button type="button" id="smart-modal-cancel-btn" class="py-2 px-5 rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 font-medium transition-colors">
-                        Cancel
-                    </button>
-                    <button type="submit" id="smart-modal-submit-btn" class="py-2 px-5 rounded-lg text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 font-medium transition-colors shadow-md flex items-center justify-center gap-2 w-36 disabled:opacity-50">
-                        <span id="smart-submit-text">Create</span>
-                        <span id="smart-submit-loader" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Notification Toast -->
-    <div id="notification-toast" class="w-full max-w-sm p-4 bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700">
-        <div class="flex items-start">
-            <div class="flex-shrink-0 pt-0.5">
-                <i data-lucide="bell-ring" class="w-6 h-6 text-indigo-500 dark:text-indigo-400"></i>
-            </div>
-            <div class="ml-3 w-0 flex-1">
-                <p id="notification-title" class="text-sm font-bold text-gray-900 dark:text-white">Task Reminder</p>
-                <p id="notification-message" class="mt-1 text-sm text-gray-600 dark:text-gray-300">Task is due soon!</p>
-            </div>
-            <div class="ml-4 flex-shrink-0 flex">
-                <button id="notification-close-btn" class="inline-flex rounded-md p-1 text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <span class="sr-only">Close</span>
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Task Item Template -->
-    <template id="task-template">
-        <li class="task-item flex items-start gap-3 p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md cursor-grab" draggable="true">
-            <!-- Priority Indicator -->
-            <div class="priority-indicator w-1.5 h-full-self-stretch rounded-full flex-shrink-0">&nbsp;</div>
-            <!-- Checkbox -->
-            <input type="checkbox" class="task-toggle mt-1 flex-shrink-0 w-5 h-5 text-indigo-600 dark:text-indigo-500 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:ring-offset-gray-900 focus:ring-2">
-            <!-- Task Content -->
-            <div class="flex-1 min-w-0">
-                <p class="task-title text-lg font-medium text-gray-900 dark:text-gray-100 truncate"></p>
-                <p class="task-description text-sm text-gray-600 dark:text-gray-400"></p>
-                <!-- Task Meta -->
-                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-3 text-sm">
-                    <!-- Due Date -->
-                    <div class="task-due-date-display flex items-center gap-1 text-gray-500 dark:text-gray-400">
-                        <i data-lucide="calendar" class="w-4 h-4"></i>
-                        <span class="due-date-text"></span>
-                    </div>
-                    <!-- Category -->
-                    <span class="task-category-tag inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"></span>
-                </div>
-            </div>
-            <!-- Action Buttons -->
-            <div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 ml-4">
-                <button class="task-edit p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                    <i data-lucide="pencil" class="w-5 h-5"></i>
-                </button>
-                <button class="task-delete p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-red-600 dark:hover:text-red-500 transition-colors">
-                    <i data-lucide="trash-2" class="w-5 h-5"></i>
-                </button>
-            </div>
-        </li>
-    </template>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- STATE ---
-            let tasks = [];
-            let filters = {
-                search: '',
-                status: 'all',
-                category: 'all',
-                priority: 'all',
-                dateStart: '',
-                dateEnd: ''
-            };
-            let draggedItem = null;
-            let notificationTimeout = null;
-
-            // --- SELECTORS ---
-            const taskList = document.getElementById('task-list');
-            const taskTemplate = document.getElementById('task-template');
-            const emptyState = document.getElementById('empty-state');
-            
-            // Modal
-            const taskModal = document.getElementById('task-modal');
-            const modalBackdrop = document.getElementById('modal-backdrop');
-            const modalCloseBtn = document.getElementById('modal-close-btn');
-            const modalCancelBtn = document.getElementById('modal-cancel-btn');
-            const modalTitle = document.getElementById('modal-title');
-            const addTaskBtn = document.getElementById('add-task-btn');
-            const smartAddBtn = document.getElementById('smart-add-btn');
-
-            // Smart Add Modal
-            const smartAddModal = document.getElementById('smart-add-modal');
-            const smartModalBackdrop = document.getElementById('smart-modal-backdrop');
-            const smartModalCloseBtn = document.getElementById('smart-modal-close-btn');
-            const smartModalCancelBtn = document.getElementById('smart-modal-cancel-btn');
-            const smartAddForm = document.getElementById('smart-add-form');
-            const smartPromptInput = document.getElementById('smart-prompt');
-            const smartModalSubmitBtn = document.getElementById('smart-modal-submit-btn');
-            const smartSubmitText = document.getElementById('smart-submit-text');
-            const smartSubmitLoader = document.getElementById('smart-submit-loader');
-
-            // Form
-            const taskForm = document.getElementById('task-form');
-            const taskIdInput = document.getElementById('task-id');
-            const taskTitleInput = document.getElementById('task-title');
-            const taskDescriptionInput = document.getElementById('task-description');
-            const taskCategoryInput = document.getElementById('task-category');
-            const taskPriorityInput = document.getElementById('task-priority');
-            const taskDueDateInput = document.getElementById('task-due-date');
-            const breakdownBtn = document.getElementById('breakdown-btn');
-            const breakdownLoader = document.getElementById('breakdown-loader');
-            
-            // Filters
-            const searchInput = document.getElementById('search-input');
-            const filterStatus = document.getElementById('filter-status');
-            const filterCategory = document.getElementById('filter-category');
-            const filterPriority = document.getElementById('filter-priority');
-            const filterDateStart = document.getElementById('filter-date-start');
-            const filterDateEnd = document.getElementById('filter-date-end');
-            
-            // Theme
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-
-            // Notification
-            const notificationToast = document.getElementById('notification-toast');
-            const notificationTitle = document.getElementById('notification-title');
-            const notificationMessage = document.getElementById('notification-message');
-            const notificationCloseBtn = document.getElementById('notification-close-btn');
-
-            // --- CONSTANTS ---
-            const CATEGORY_COLORS = {
-                personal: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-                work: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-                shopping: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-                study: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-                other: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
-            };
-            
-            const PRIORITY_COLORS = {
-                low: 'bg-green-500',
-                medium: 'bg-yellow-500',
-                high: 'bg-red-500'
-            };
-
-            // --- GEMINI API FUNCTIONS ---
-
-            const API_KEY = ""; // Leave as-is, will be populated by the environment
-            const TEXT_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
-            
-            /**
-             * Calls the Gemini API for text generation.
-             * @param {string} userQuery - The user's prompt.
-             * @param {string} systemPrompt - The system instruction.
-             * @param {number} retries - Number of retries for exponential backoff.
-             * @returns {Promise<string>} - The generated text.
-             */
-            async function callGeminiApi(userQuery, systemPrompt, retries = 3, delay = 1000) {
-                const payload = {
-                    contents: [{ parts: [{ text: userQuery }] }],
-                    systemInstruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                };
-
-                try {
-                    const response = await fetch(TEXT_API_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        if (response.status === 429 && retries > 0) {
-                            // Exponential backoff
-                            await new Promise(resolve => setTimeout(resolve, delay));
-                            return callGeminiApi(userQuery, systemPrompt, retries - 1, delay * 2);
-                        }
-                        throw new Error(`API Error: ${response.status} ${response.statusText}`);
-                    }
-
-                    const result = await response.json();
-                    const candidate = result.candidates?.[0];
-
-                    if (candidate && candidate.content?.parts?.[0]?.text) {
-                        return candidate.content.parts[0].text;
-                    } else {
-                        throw new Error("Invalid API response structure.");
-                    }
-                } catch (error) {
-                    console.error("Gemini API call failed:", error);
-                    showNotification("Gemini Error", error.message || "Failed to get a response.");
-                    return null;
-                }
-            }
-            
-            /**
-             * Calls the Gemini API for structured JSON generation.
-             * @param {string} userQuery - The user's prompt.
-             * @param {object} schema - The JSON schema for the response.
-             * @param {number} retries - Number of retries for exponential backoff.
-             * @returns {Promise<object>} - The generated JSON object.
-             */
-            async function callGeminiJsonApi(userQuery, schema, retries = 3, delay = 1000) {
-                const payload = {
-                    contents: [{ parts: [{ text: userQuery }] }],
-                    generationConfig: {
-                        responseMimeType: "application/json",
-                        responseSchema: schema,
-                    }
-                };
-                
-                try {
-                    const response = await fetch(TEXT_API_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) {
-                        if (response.status === 429 && retries > 0) {
-                            // Exponential backoff
-                            await new Promise(resolve => setTimeout(resolve, delay));
-                            return callGeminiJsonApi(userQuery, schema, retries - 1, delay * 2);
-                        }
-                        throw new Error(`API Error: ${response.status} ${response.statusText}`);
-                    }
-                    
-                    const result = await response.json();
-                    const candidate = result.candidates?.[0];
-
-                    if (candidate && candidate.content?.parts?.[0]?.text) {
-                        return JSON.parse(candidate.content.parts[0].text);
-                    } else {
-                        throw new Error("Invalid API response structure.");
-                    }
-                } catch (error) {
-                    console.error("Gemini JSON API call failed:", error);
-                    showNotification("Gemini Error", error.message || "Failed to get a response.");
-                    return null;
-                }
-            }
 
 
-            // --- CORE FUNCTIONS ---
+<div id="app" class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
 
-            /**
-             * Main render function. Filters, sorts, and displays tasks.
-             */
-            function renderTasks() {
-                // 1. Get tasks from state
-                let tasksToRender = [...tasks];
+<a href="work.html" class="home-button"><i class="fas fa-home"></i></a>
 
-                // 2. Apply Filters
-                tasksToRender = tasksToRender.filter(task => {
-                    const searchMatch = task.title.toLowerCase().includes(filters.search) || task.description.toLowerCase().includes(filters.search);
-                    const statusMatch = filters.status === 'all' || (filters.status === 'completed' ? task.completed : !task.completed);
-                    const categoryMatch = filters.category === 'all' || task.category === filters.category;
-                    const priorityMatch = filters.priority === 'all' || task.priority === filters.priority;
-                    
-                    // Date range matching
-                    const taskDate = task.dueDate ? new Date(task.dueDate) : null;
-                    const startDate = filters.dateStart ? new Date(filters.dateStart) : null;
-                    const endDate = filters.dateEnd ? new Date(filters.dateEnd) : null;
-                    
-                    // Adjust dates for inclusive comparison
-                    if (taskDate) taskDate.setHours(0, 0, 0, 0);
-                    if (startDate) startDate.setHours(0, 0, 0, 0);
-                    if (endDate) endDate.setHours(23, 59, 59, 999);
-                    
-                    const dateMatch = (!startDate || (taskDate && taskDate >= startDate)) &&
-                                      (!endDate || (taskDate && taskDate <= endDate));
 
-                    return searchMatch && statusMatch && categoryMatch && priorityMatch && dateMatch;
-                });
 
-                // 3. Sort by 'order' property
-                tasksToRender.sort((a, b) => a.order - b.order);
+<header class="flex justify-between items-center mb-6">
 
-                // 4. Clear current list
-                taskList.innerHTML = '';
-                
-                // 5. Check for empty state
-                if (tasksToRender.length === 0) {
-                    emptyState.classList.remove('hidden');
-                } else {
-                    emptyState.classList.add('hidden');
-                }
+<h1 class="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-400 dark:to-purple-500">My Tasks</h1>
 
-                // 6. Render new list
-                tasksToRender.forEach(task => {
-                    const taskElement = createTaskElement(task);
-                    taskList.appendChild(taskElement);
-                });
-                
-                // Re-initialize icons for any newly added elements
-                // Note: We will call createIcons in createTaskElement to be more efficient
-            }
+<div class="flex items-center gap-4">
 
-            /**
-             * Creates a task DOM element from a task object
-             * @param {object} task - The task object
-             * @returns {HTMLElement} - The task list item element
-             */
-            function createTaskElement(task) {
-                const templateClone = taskTemplate.content.cloneNode(true);
-                const taskElement = templateClone.querySelector('.task-item');
-                
-                taskElement.dataset.id = task.id;
+<button id="add-task-btn" class="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-all duration-200 flex items-center gap-2">
 
-                // Set content
-                taskElement.querySelector('.task-title').textContent = task.title;
-                const taskDescription = taskElement.querySelector('.task-description');
-                if (task.description) {
-                    taskDescription.textContent = task.description;
-                } else {
-                    taskDescription.remove();
-                }
+<i data-lucide="plus-circle" class="w-5 h-5"></i><span class="hidden sm:inline">Add Task</span>
 
-                // Set checkbox
-                const checkbox = taskElement.querySelector('.task-toggle');
-                checkbox.checked = task.completed;
-                if (task.completed) {
-                    taskElement.classList.add('completed');
-                }
+</button>
 
-                // Set priority
-                taskElement.querySelector('.priority-indicator').classList.add(PRIORITY_COLORS[task.priority] || 'bg-gray-300');
+<button id="smart-add-btn" class="bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-all duration-200 flex items-center gap-2">
 
-                // Set category
-                const categoryTag = taskElement.querySelector('.task-category-tag');
-                categoryTag.textContent = task.category.charAt(0).toUpperCase() + task.category.slice(1);
-                categoryTag.className += ` ${CATEGORY_COLORS[task.category] || CATEGORY_COLORS['other']}`;
+<i data-lucide="wand-2" class="w-5 h-5"></i><span class="hidden sm:inline">Smart Add</span>
 
-                // Set due date
-                const dueDateContainer = taskElement.querySelector('.task-due-date-display');
-                if (task.dueDate) {
-                    const date = new Date(task.dueDate);
-                    const today = new Date();
-                    today.setHours(0, 0, 0, 0);
-                    date.setHours(0, 0, 0, 0); // Compare dates only
-                    
-                    const dueDateText = taskElement.querySelector('.due-date-text');
-                    dueDateText.textContent = new Date(task.dueDate).toLocaleDateString(undefined, { timeZone: 'UTC', month: 'short', day: 'numeric', year: 'numeric' });
-                    
-                    // Add color for overdue tasks
-                    if (!task.completed && date < today) {
-                        dueDateContainer.classList.add('text-red-600', 'dark:text-red-500', 'font-medium');
-                    }
-                } else {
-                    dueDateContainer.remove();
-                }
-                
-                // --- Add Event Listeners for the new task element ---
-                
-                // Toggle complete
-                checkbox.addEventListener('change', () => toggleTaskComplete(task.id));
-                
-                // Edit task
-                taskElement.querySelector('.task-edit').addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent drag from firing
-                    openModal(task.id);
-                });
-                
-                // Delete task
-                taskElement.querySelector('.task-delete').addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent drag from firing
-                    deleteTask(task.id, taskElement);
-                });
-                
-                // Drag and Drop
-                taskElement.addEventListener('dragstart', handleDragStart);
-                taskElement.addEventListener('dragover', handleDragOver);
-                taskElement.addEventListener('drop', handleDrop);
-                taskElement.addEventListener('dragend', handleDragEnd);
+</button>
 
-                // Process icons *only* for this new element
-                lucide.createIcons({ elements: [taskElement] });
+<button id="theme-toggle-btn" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200">
 
-                return taskElement;
-            }
+<i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
 
-            /**
-             * Saves the current tasks array to localStorage.
-             */
-            function saveTasks() {
-                localStorage.setItem('todoAppTasks', JSON.stringify(tasks));
-            }
-            
-            /**
-             * Renormalizes the 'order' property for all tasks.
-             * Call this after any re-ordering or deletion.
-             */
-            function renormalizeOrder() {
-                 // First, sort by the current order
-                const sortedTasks = [...tasks].sort((a, b) => a.order - b.order);
-                // Then, re-assign order from 0...n
-                tasks = sortedTasks.map((task, index) => {
-                    task.order = index;
-                    return task;
-                });
-                saveTasks();
-            }
+<i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
 
-            // --- EVENT HANDLERS ---
+</button>
 
-            /**
-             * Handles form submission for adding or editing a task.
-             */
-            function handleFormSubmit(e) {
-                e.preventDefault();
-                
-                const id = taskIdInput.value;
-                const taskData = {
-                    title: taskTitleInput.value,
-                    description: taskDescriptionInput.value,
-                    category: taskCategoryInput.value,
-                    priority: taskPriorityInput.value,
-                    dueDate: taskDueDateInput.value
-                };
+</div>
 
-                if (id) {
-                    // Editing existing task
-                    tasks = tasks.map(task => 
-                        task.id === id ? { ...task, ...taskData } : task
-                    );
-                } else {
-                    // Adding new task
-                    const newTask = {
-                        ...taskData,
-                        id: `task-${Date.now()}`,
-                        completed: false,
-                        order: tasks.length // Add to the end
-                    };
-                    tasks.push(newTask);
-                }
-                
-                saveTasks();
-                renderTasks();
-                closeModal();
-            }
-            
-            /**
-             * Toggles the completion status of a task.
-             * @param {string} id - The ID of the task to toggle.
-             */
-            function toggleTaskComplete(id) {
-                tasks = tasks.map(task => 
-                    task.id === id ? { ...task, completed: !task.completed } : task
-                );
-                saveTasks();
-                renderTasks(); // Re-render to apply 'completed' styles and filters
-            }
-            
-            /**
-             * Deletes a task.
-             * @param {string} id - The ID of the task to delete.
-             * @param {HTMLElement} element - The task element to animate.
-             */
-            function deleteTask(id, element) {
-                // Add animation class
-                element.classList.add('removing');
-                
-                // Wait for animation to finish before removing from state
-                element.addEventListener('transitionend', () => {
-                    tasks = tasks.filter(task => task.id !== id);
-                    renormalizeOrder(); // Re-index order after deletion
-                    renderTasks();
-                }, { once: true });
-            }
-            
-            /**
-             * Handles updates from any filter input.
-             */
-            function handleFilterChange() {
-                filters.search = searchInput.value.toLowerCase();
-                filters.status = filterStatus.value;
-                filters.category = filterCategory.value;
-                filters.priority = filterPriority.value;
-                filters.dateStart = filterDateStart.value;
-                filters.dateEnd = filterDateEnd.value;
-                renderTasks();
-            }
+</header>
 
-            // --- MODAL ---
 
-            /**
-             * Opens the task modal.
-             * @param {string | null} id - The ID of the task to edit, or null to add.
-             */
-            function openModal(id = null) {
-                taskForm.reset();
-                // Reset breakdown button state
-                breakdownBtn.disabled = false;
-                breakdownLoader.classList.add('hidden');
-                
-                if (id) {
-                    // Edit mode
-                    const task = tasks.find(t => t.id === id);
-                    if (task) {
-                        modalTitle.textContent = 'Edit Task';
-                        taskIdInput.value = task.id;
-                        taskTitleInput.value = task.title;
-                        taskDescriptionInput.value = task.description;
-                        taskCategoryInput.value = task.category;
-                        taskPriorityInput.value = task.priority;
-                        taskDueDateInput.value = task.dueDate;
-                    }
-                } else {
-                    // Add mode
-                    modalTitle.textContent = 'Add New Task';
-                    taskIdInput.value = '';
-                }
-                taskModal.classList.add('open');
-            }
 
-            /**
-             * Closes the task modal.
-             */
-            function closeModal() {
-                taskModal.classList.remove('open');
-            }
-            
-            // --- SMART ADD MODAL ---
+<!-- Filters -->
 
-            /**
-             * Opens the Smart Add modal.
-             */
-            function openSmartAddModal() {
-                smartAddForm.reset();
-                smartModalSubmitBtn.disabled = false;
-                smartSubmitText.classList.remove('hidden');
-                smartSubmitLoader.classList.add('hidden');
-                smartAddModal.classList.add('open');
-                smartPromptInput.focus();
-            }
+<div class="mb-6 p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md">
 
-            /**
-             * Closes the Smart Add modal.
-             */
-            function closeSmartAddModal() {
-                smartAddModal.classList.remove('open');
-            }
-            
-            /**
-             * Handles form submission for Smart Add.
-             */
-            async function handleSmartAddSubmit(e) {
-                e.preventDefault();
-                const prompt = smartPromptInput.value;
-                if (!prompt) return;
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
 
-                // Show loader, disable button
-                smartModalSubmitBtn.disabled = true;
-                smartSubmitText.classList.add('hidden');
-                smartSubmitLoader.classList.remove('hidden');
-                
-                const today = new Date().toISOString().split('T')[0];
+<div class="sm:col-span-2 lg:col-span-3 xl:col-span-1">
 
-                const taskSchema = {
-                    type: "OBJECT",
-                    properties: {
-                        "title": { "type": "STRING", "description": "The concise title of the task." },
-                        "description": { "type": "STRING", "description": "A detailed description or sub-tasks, if any. Use markdown for lists." },
-                        "category": {
-                            "type": "STRING",
-                            "description": "The category of the task.",
-                            "enum": ["work", "personal", "shopping", "study", "other"]
-                        },
-                        "priority": {
-                            "type": "STRING",
-                            "description": "The priority of the task.",
-                            "enum": ["low", "medium", "high"]
-                        },
-                        "dueDate": {
-                            "type": "STRING",
-                            "description": `The due date in YYYY-MM-DD format. If no date is mentioned, use null. Today is ${today}.`
-                        }
-                    },
-                    required: ["title", "category", "priority"]
-                };
-                
-                const systemPrompt = "You are a helpful to-do list assistant. Parse the user's request into a structured task object according to the schema. Infer category, priority, and due date. Default to 'personal', 'medium', and null for dueDate if not specified.";
-                const userQuery = `${systemPrompt}\n\nUser request: "${prompt}"`;
+<label for="search-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Search</label>
 
-                const taskData = await callGeminiJsonApi(userQuery, taskSchema);
+<div class="relative">
 
-                // Hide loader, enable button
-                smartModalSubmitBtn.disabled = false;
-                smartSubmitText.classList.remove('hidden');
-                smartSubmitLoader.classList.add('hidden');
-                
-                if (taskData) {
-                    // Add new task
-                    const newTask = {
-                        ...taskData,
-                        id: `task-${Date.now()}`,
-                        completed: false,
-                        order: tasks.length,
-                        dueDate: taskData.dueDate || "" // Ensure it's not null
-                    };
-                    tasks.push(newTask);
-                    
-                    saveTasks();
-                    renderTasks();
-                    closeSmartAddModal();
-                    showNotification("Task Created", `✨ '${taskData.title}' was added.`);
-                } else {
-                    showNotification("Smart Add Failed", "Could not create the task. Please try again.");
-                }
-            }
-            
-            /**
-             * Handles click on the Task Breakdown button.
-             */
-            async function handleTaskBreakdown() {
-                const title = taskTitleInput.value;
-                if (!title) {
-                    showNotification("No Title", "Please enter a title to break down.");
-                    return;
-                }
-                
-                // Show loader
-                breakdownBtn.disabled = true;
-                breakdownLoader.classList.remove('hidden');
-                
-                const systemPrompt = "You are a task breakdown assistant. The user will provide a task title. Your job is to break it down into a list of smaller, actionable sub-tasks. Respond *only* with the list of sub-tasks, formatted as a markdown bulleted list (e.g., '- Sub-task 1\n- Sub-task 2'). Do not add any conversational text or greetings.";
-                
-                const result = await callGeminiApi(title, systemPrompt);
-                
-                // Hide loader
-                breakdownBtn.disabled = false;
-                breakdownLoader.classList.add('hidden');
-                
-                if (result) {
-                    // Append to existing description or set new one
-                    const currentDescription = taskDescriptionInput.value;
-                    if (currentDescription) {
-                        taskDescriptionInput.value = `${currentDescription}\n\n${result}`;
-                    } else {
-                        taskDescriptionInput.value = result;
-                    }
-                    showNotification("Task Breakdown", "✨ Sub-tasks added to description.");
-                }
-            }
+<input id="search-input" type="text" placeholder="Search tasks..." class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500"/>
 
-            // --- THEME ---
+<i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"></i>
 
-            /**
-             * Toggles the dark/light theme.
-             */
-            function toggleTheme() {
-                const isDark = document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            }
-            
-            /**
-             * Initializes the theme based on preference or system setting.
-             */
-            function initTheme() {
-                const savedTheme = localStorage.getItem('theme');
-                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+</div>
 
-                if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-                    document.documentElement.classList.add('dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                }
-            }
+</div>
 
-            // --- DRAG & DROP HANDLERS ---
-            
-            function handleDragStart(e) {
-                draggedItem = this;
-                e.dataTransfer.effectAllowed = 'move';
-                e.dataTransfer.setData('text/plain', this.dataset.id);
-                
-                // Use setTimeout to allow browser to snapshot element before adding class
-                setTimeout(() => {
-                    this.classList.add('dragging');
-                }, 0);
-            }
-            
-            function handleDragOver(e) {
-                e.preventDefault();
-                e.dataTransfer.dropEffect = 'move';
-                
-                if (this !== draggedItem) {
-                    // Simple visual indicator by temporarily moving element
-                    const targetRect = this.getBoundingClientRect();
-                    const isAfter = (e.clientY - targetRect.top) > (targetRect.height / 2);
-                    
-                    if (isAfter) {
-                        this.after(draggedItem);
-                    } else {
-                        this.before(draggedItem);
-                    }
-                }
-            }
-            
-            function handleDrop(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const draggedId = e.dataTransfer.getData('text/plain');
-                const targetId = this.dataset.id;
-                
-                if (draggedId === targetId) return;
 
-                const draggedTask = tasks.find(t => t.id === draggedId);
-                const targetTask = tasks.find(t => t.id === targetId);
 
-                // Swap 'order' properties
-                const tempOrder = draggedTask.order;
-                draggedTask.order = targetTask.order;
-                targetTask.order = tempOrder;
-                
-                renormalizeOrder();
-                renderTasks();
-            }
-            
-            function handleDragEnd() {
-                this.classList.remove('dragging');
-                draggedItem = null;
-                // Re-render to ensure correct order in case of partial drags
-                renderTasks();
-            }
-            
-            // --- NOTIFICATIONS ---
-            
-            /**
-             * Shows the notification toast.
-             * @param {string} title - The title for the notification.
-             * @param {string} message - The message body.
-             */
-            function showNotification(title, message) {
-                if (notificationTimeout) {
-                    clearTimeout(notificationTimeout);
-                }
-                
-                notificationTitle.textContent = title;
-                notificationMessage.textContent = message;
-                notificationToast.classList.add('show');
-                
-                notificationTimeout = setTimeout(() => {
-                    notificationToast.classList.remove('show');
-                    notificationTimeout = null;
-                }, 5000);
-            }
-            
-            /**
-             * Checks for tasks that are due soon.
-             */
-            function checkReminders() {
-                const now = new Date();
-                const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                
-                tasks.forEach(task => {
-                    if (!task.completed && task.dueDate) {
-                        const dueDate = new Date(task.dueDate);
-                        dueDate.setHours(0, 0, 0, 0); // Compare dates only
-                        
-                        if (dueDate.getTime() === today.getTime()) {
-                            // Only show reminder once per session (simple check)
-                            if (!task.reminderShown) {
-                                showNotification(
-                                    `'${task.title}' is due today!`,
-                                    'Don\'t forget to complete your task.'
-                                );
-                                task.reminderShown = true; // Flag to prevent spamming
-                            }
-                        }
-                    }
-                });
-            }
+<div>
 
-            // --- INITIALIZATION ---
+<label for="filter-status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status</label>
 
-            function init() {
-                // Set up theme
-                initTheme();
-                themeToggleBtn.addEventListener('click', toggleTheme);
-                
-                // Load tasks from localStorage
-                tasks = JSON.parse(localStorage.getItem('todoAppTasks')) || [];
-                
-                // Initial render
-                renderTasks();
-                
-                // Set up modal listeners
-                addTaskBtn.addEventListener('click', () => openModal());
-                modalCloseBtn.addEventListener('click', closeModal);
-                modalCancelBtn.addEventListener('click', closeModal);
-                modalBackdrop.addEventListener('click', closeModal);
-                taskForm.addEventListener('submit', handleFormSubmit);
-                breakdownBtn.addEventListener('click', handleTaskBreakdown);
-                
-                // Set up Smart Add modal listeners
-                smartAddBtn.addEventListener('click', openSmartAddModal);
-                smartModalCloseBtn.addEventListener('click', closeSmartAddModal);
-                smartModalCancelBtn.addEventListener('click', closeSmartAddModal);
-                smartModalBackdrop.addEventListener('click', closeSmartAddModal);
-                smartAddForm.addEventListener('submit', handleSmartAddSubmit);
-                
-                // Set up filter listeners
-                searchInput.addEventListener('input', handleFilterChange);
-                filterStatus.addEventListener('change', handleFilterChange);
-                filterCategory.addEventListener('change', handleFilterChange);
-                filterPriority.addEventListener('change', handleFilterChange);
-                filterDateStart.addEventListener('change', handleFilterChange);
-                filterDateEnd.addEventListener('change', handleFilterChange);
-                
-                // Set up notification listeners
-                notificationCloseBtn.addEventListener('click', () => {
-                    if (notificationTimeout) clearTimeout(notificationTimeout);
-                    notificationToast.classList.remove('show');
-                });
-                
-                // Check for reminders periodically (e.g., every 5 minutes)
-                checkReminders(); // Check once on load
-                setInterval(checkReminders, 300000); // 5 minutes
-                
-                // Load Lucide icons
-                lucide.createIcons();
-            }
+<select id="filter-status" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
 
-            // Run the app
-            init();
-        });
-    </script>
+<option value="all">All</option><option value="active">Active</option><option value="completed">Completed</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label for="filter-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Category</label>
+
+<select id="filter-category" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
+
+<option value="all">All</option><option value="work">Work</option><option value="personal">Personal</option><option value="shopping">Shopping</option><option value="study">Study</option><option value="other">Other</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label for="filter-priority" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Priority</label>
+
+<select id="filter-priority" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
+
+<option value="all">All</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option>
+
+</select>
+
+</div>
+
+
+
+<div class="grid grid-cols-2 gap-2">
+
+<div>
+
+<label for="filter-date-start" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">From</label>
+
+<input id="filter-date-start" type="date" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500"/>
+
+</div>
+
+<div>
+
+<label for="filter-date-end" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">To</label>
+
+<input id="filter-date-end" type="date" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500"/>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Task List -->
+
+<ul id="task-list" class="space-y-4"></ul>
+
+
+
+<!-- Empty State -->
+
+<div id="empty-state" class="text-center p-12 bg-white dark:bg-gray-900 rounded-lg shadow-md hidden">
+
+<i data-lucide="clipboard-check" class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-600 mb-4"></i>
+
+<h3 class="text-xl font-medium text-gray-700 dark:text-gray-300">All caught up!</h3>
+
+<p class="text-gray-500 dark:text-gray-400 mt-2">You have no tasks. Add one to get started.</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Add/Edit Task Modal -->
+
+<div id="task-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4">
+
+<div id="modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+<div class="modal-content relative w-full max-w-lg bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-6 sm:p-8">
+
+<h2 id="modal-title" class="text-2xl font-bold mb-6">Add New Task</h2>
+
+<button id="modal-close-btn" class="absolute top-4 right-4 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+
+<i data-lucide="x" class="w-6 h-6"></i>
+
+</button>
+
+
+
+<form id="task-form">
+
+<input type="hidden" id="task-id"/>
+
+<div class="space-y-5">
+
+<div>
+
+<div class="flex justify-between items-center mb-1">
+
+<label for="task-title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Title <span class="text-red-500">*</span></label>
+
+<button type="button" id="breakdown-btn" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1 disabled:opacity-50" title="Uses Gemini to break this task into sub-tasks in the description">
+
+✨ Break Down Task
+
+<span id="breakdown-loader" class="hidden w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin"></span>
+
+</button>
+
+</div>
+
+<input id="task-title" type="text" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500" required/>
+
+</div>
+
+
+
+<div>
+
+<label for="task-description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+
+<textarea id="task-description" rows="3" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500"></textarea>
+
+</div>
+
+
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+<div>
+
+<label for="task-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Category</label>
+
+<select id="task-category" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
+
+<option value="personal">Personal</option><option value="work">Work</option><option value="shopping">Shopping</option><option value="study">Study</option><option value="other">Other</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label for="task-priority" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Priority</label>
+
+<select id="task-priority" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500">
+
+<option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label for="task-due-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Due Date</label>
+
+<input id="task-due-date" type="date" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:border-indigo-500"/>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="mt-8 flex justify-end gap-4">
+
+<button type="button" id="modal-cancel-btn" class="py-2 px-5 rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 font-medium">Cancel</button>
+
+<button type="submit" class="py-2 px-5 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 font-medium shadow-md">Save Task</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- Smart Add Modal -->
+
+<div id="smart-add-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4">
+
+<div id="smart-modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+<div class="modal-content relative w-full max-w-lg bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-6 sm:p-8">
+
+<h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 dark:from-purple-400 dark:to-pink-500">
+
+<i data-lucide="wand-2" class="w-6 h-6"></i> Smart Add Task
+
+</h2>
+
+<button id="smart-modal-close-btn" class="absolute top-4 right-4 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+
+<i data-lucide="x" class="w-6 h-6"></i>
+
+</button>
+
+<p class="text-sm text-gray-600 dark:text-gray-400 mb-5">
+
+Type a natural language request, and Gemini (or the local parser) will create the task.<br/>
+
+e.g., “Remind me to buy milk and eggs this weekend, high priority.”
+
+</p>
+
+<form id="smart-add-form">
+
+<div class="space-y-5">
+
+<div>
+
+<label for="smart-prompt" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Request</label>
+
+<textarea id="smart-prompt" rows="3" class="w-full py-2 px-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:border-purple-500" placeholder="Type your task here..."></textarea>
+
+</div>
+
+</div>
+
+<div class="mt-8 flex justify-end gap-4">
+
+<button type="button" id="smart-modal-cancel-btn" class="py-2 px-5 rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 font-medium">Cancel</button>
+
+<button type="submit" id="smart-modal-submit-btn" class="py-2 px-5 rounded-lg text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 font-medium shadow-md flex items-center justify-center gap-2 w-36 disabled:opacity-50">
+
+<span id="smart-submit-text">Create</span>
+
+<span id="smart-submit-loader" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- Notification Toast -->
+
+<div id="notification-toast" class="w-full max-w-sm p-4 bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700">
+
+<div class="flex items-start">
+
+<div class="flex-shrink-0 pt-0.5">
+
+<i data-lucide="bell-ring" class="w-6 h-6 text-indigo-500 dark:text-indigo-400"></i>
+
+</div>
+
+<div class="ml-3 w-0 flex-1">
+
+<p id="notification-title" class="text-sm font-bold text-gray-900 dark:text-white">Task Reminder</p>
+
+<p id="notification-message" class="mt-1 text-sm text-gray-600 dark:text-gray-300">Task is due soon!</p>
+
+</div>
+
+<div class="ml-4 flex-shrink-0 flex">
+
+<button id="notification-close-btn" class="inline-flex rounded-md p-1 text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+
+<span class="sr-only">Close</span><i data-lucide="x" class="w-5 h-5"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Task Template -->
+
+<template id="task-template">
+
+<li class="task-item flex items-start gap-3 p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md cursor-grab" draggable="true">
+
+<div class="priority-indicator w-1.5 h-full-self-stretch rounded-full flex-shrink-0">&nbsp;</div>
+
+<input type="checkbox" class="task-toggle mt-1 flex-shrink-0 w-5 h-5 text-indigo-600 dark:text-indigo-500 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:ring-offset-gray-900 focus:ring-2">
+
+<div class="flex-1 min-w-0">
+
+<p class="task-title text-lg font-medium text-gray-900 dark:text-gray-100 truncate"></p>
+
+<p class="task-description text-sm text-gray-600 dark:text-gray-400"></p>
+
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-3 text-sm">
+
+<div class="task-due-date-display flex items-center gap-1 text-gray-500 dark:text-gray-400">
+
+<i data-lucide="calendar" class="w-4 h-4"></i>
+
+<span class="due-date-text"></span>
+
+</div>
+
+<span class="task-category-tag inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"></span>
+
+</div>
+
+</div>
+
+<div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 ml-4">
+
+<button class="task-edit p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+
+<i data-lucide="pencil" class="w-5 h-5"></i>
+
+</button>
+
+<button class="task-delete p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+
+<i data-lucide="trash-2" class="w-5 h-5"></i>
+
+</button>
+
+</div>
+
+</li>
+
+</template>
+
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+// --- STATE ---
+
+let tasks = [];
+
+let filters = { search:'', status:'all', category:'all', priority:'all', dateStart:'', dateEnd:'' };
+
+let draggedItem = null;
+
+let notificationTimeout = null;
+
+
+
+// --- SELECTORS ---
+
+const taskList = document.getElementById('task-list');
+
+const taskTemplate = document.getElementById('task-template');
+
+const emptyState = document.getElementById('empty-state');
+
+
+
+const taskModal = document.getElementById('task-modal');
+
+const modalBackdrop = document.getElementById('modal-backdrop');
+
+const modalCloseBtn = document.getElementById('modal-close-btn');
+
+const modalCancelBtn = document.getElementById('modal-cancel-btn');
+
+const modalTitle = document.getElementById('modal-title');
+
+const addTaskBtn = document.getElementById('add-task-btn');
+
+const smartAddBtn = document.getElementById('smart-add-btn');
+
+
+
+const smartAddModal = document.getElementById('smart-add-modal');
+
+const smartModalBackdrop = document.getElementById('smart-modal-backdrop');
+
+const smartModalCloseBtn = document.getElementById('smart-modal-close-btn');
+
+const smartModalCancelBtn = document.getElementById('smart-modal-cancel-btn');
+
+const smartAddForm = document.getElementById('smart-add-form');
+
+const smartPromptInput = document.getElementById('smart-prompt');
+
+const smartModalSubmitBtn = document.getElementById('smart-modal-submit-btn');
+
+const smartSubmitText = document.getElementById('smart-submit-text');
+
+const smartSubmitLoader = document.getElementById('smart-submit-loader');
+
+
+
+const taskForm = document.getElementById('task-form');
+
+const taskIdInput = document.getElementById('task-id');
+
+const taskTitleInput = document.getElementById('task-title');
+
+const taskDescriptionInput = document.getElementById('task-description');
+
+const taskCategoryInput = document.getElementById('task-category');
+
+const taskPriorityInput = document.getElementById('task-priority');
+
+const taskDueDateInput = document.getElementById('task-due-date');
+
+const breakdownBtn = document.getElementById('breakdown-btn');
+
+const breakdownLoader = document.getElementById('breakdown-loader');
+
+
+
+const searchInput = document.getElementById('search-input');
+
+const filterStatus = document.getElementById('filter-status');
+
+const filterCategory = document.getElementById('filter-category');
+
+const filterPriority = document.getElementById('filter-priority');
+
+const filterDateStart = document.getElementById('filter-date-start');
+
+const filterDateEnd = document.getElementById('filter-date-end');
+
+
+
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+
+
+
+const notificationToast = document.getElementById('notification-toast');
+
+const notificationTitle = document.getElementById('notification-title');
+
+const notificationMessage = document.getElementById('notification-message');
+
+const notificationCloseBtn = document.getElementById('notification-close-btn');
+
+
+
+// --- CONSTANTS ---
+
+const CATEGORY_COLORS = {
+
+personal:'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+
+work:'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+
+shopping:'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+
+study:'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+
+other:'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
+
+};
+
+const PRIORITY_COLORS = { low:'bg-green-500', medium:'bg-yellow-500', high:'bg-red-500' };
+
+
+
+// --- GEMINI CONFIG (stable model + optional key injection) ---
+
+const MODEL = "gemini-1.5-flash";
+
+const API_KEY = (window.ENV && window.ENV.GEMINI_API_KEY) || ""; // leave blank safely; fallback will handle it
+
+const TEXT_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
+
+
+
+// --- AI HELPERS ---
+
+
+
+async function callGeminiApi(userQuery, systemPrompt, retries = 3, delay = 1000) {
+
+const payload = {
+
+contents: [{ parts: [{ text: userQuery }] }],
+
+systemInstruction: { parts: [{ text: systemPrompt }] }
+
+};
+
+try {
+
+const response = await fetch(TEXT_API_URL, {
+
+method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+
+});
+
+if (!response.ok) {
+
+if (response.status === 429 && retries > 0) {
+
+await new Promise(r => setTimeout(r, delay));
+
+return callGeminiApi(userQuery, systemPrompt, retries - 1, delay * 2);
+
+}
+
+throw new Error(`API Error: ${response.status} ${response.statusText}`);
+
+}
+
+const result = await response.json();
+
+const candidate = result.candidates?.[0];
+
+if (candidate && candidate.content?.parts?.[0]?.text) return candidate.content.parts[0].text;
+
+throw new Error("Invalid API response structure.");
+
+} catch (err) {
+
+console.error("Gemini API call failed:", err);
+
+showNotification("Gemini Error", err.message || "Failed to get a response.");
+
+return null;
+
+}
+
+}
+
+
+
+async function callGeminiJsonApi(userQuery, schema, retries = 3, delay = 1000) {
+
+const payload = {
+
+contents: [{ parts: [{ text: userQuery }] }],
+
+generationConfig: { responseMimeType: "application/json", responseSchema: schema }
+
+};
+
+try {
+
+const response = await fetch(TEXT_API_URL, {
+
+method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+
+});
+
+if (!response.ok) {
+
+if (response.status === 429 && retries > 0) {
+
+await new Promise(r => setTimeout(r, delay));
+
+return callGeminiJsonApi(userQuery, schema, retries - 1, delay * 2);
+
+}
+
+throw new Error(`API Error: ${response.status} ${response.statusText}`);
+
+}
+
+const result = await response.json();
+
+const candidate = result.candidates?.[0];
+
+if (candidate && candidate.content?.parts?.[0]?.text) return JSON.parse(candidate.content.parts[0].text);
+
+throw new Error("Invalid API response structure.");
+
+} catch (err) {
+
+console.error("Gemini JSON API call failed:", err);
+
+showNotification("Gemini Error", err.message || "Failed to get a response.");
+
+return null;
+
+}
+
+}
+
+
+
+// --- LOCAL FALLBACK (Smart Add Lite) ---
+
+
+
+function naiveParseSmartAdd(prompt) {
+
+const p = (prompt || "").toLowerCase();
+
+
+
+// priority
+
+let priority = "medium";
+
+if (/\b(high|urgent|asap|critical|important)\b/.test(p)) priority = "high";
+
+else if (/\b(low|later|someday|nice to have)\b/.test(p)) priority = "low";
+
+
+
+// category
+
+let category = "personal";
+
+if (/\b(shop|buy|grocer|order|cart|checkout)\b/.test(p)) category = "shopping";
+
+else if (/\b(study|learn|read|class|exam|homework|assignment)\b/.test(p)) category = "study";
+
+else if (/\b(meeting|interview|deck|report|client|jira|sprint|work)\b/.test(p)) category = "work";
+
+
+
+// due date
+
+const today = new Date();
+
+const fmt = d => d.toISOString().slice(0,10);
+
+let dueDate = "";
+
+
+
+if (/\btoday\b/.test(p)) dueDate = fmt(today);
+
+else if (/\btomorrow\b/.test(p)) { const d = new Date(today); d.setDate(d.getDate()+1); dueDate = fmt(d); }
+
+else if (/in (\d{1,2}) (day|days)\b/.test(p)) {
+
+const n = +p.match(/in (\d{1,2}) (day|days)/)[1]; const d = new Date(today); d.setDate(d.getDate()+n); dueDate = fmt(d);
+
+} else if (/\bnext week\b/.test(p)) { const d = new Date(today); d.setDate(d.getDate()+7); dueDate = fmt(d); }
+
+else {
+
+// ISO date if present
+
+const m = p.match(/(\d{4})-(\d{2})-(\d{2})/);
+
+if (m) dueDate = m[0];
+
+}
+
+
+
+// title cleanup
+
+let title = (prompt || "").trim()
+
+.replace(/^remind me to\s*/i, "")
+
+.replace(/^add\s*/i, "")
+
+.replace(/^create\s*/i, "")
+
+.replace(/\bthis (week|weekend|month)\b/gi, "")
+
+.replace(/\s+/g, " ")
+
+.trim();
+
+
+
+if (!title) title = "New Task";
+
+return { title, description: "", category, priority, dueDate };
+
+}
+
+
+
+// --- CORE RENDERING ---
+
+
+
+function renderTasks() {
+
+let tasksToRender = [...tasks];
+
+tasksToRender = tasksToRender.filter(task => {
+
+const searchMatch = task.title.toLowerCase().includes(filters.search) || (task.description||"").toLowerCase().includes(filters.search);
+
+const statusMatch = filters.status === 'all' || (filters.status === 'completed' ? task.completed : !task.completed);
+
+const categoryMatch = filters.category === 'all' || task.category === filters.category;
+
+const priorityMatch = filters.priority === 'all' || task.priority === filters.priority;
+
+
+
+const taskDate = task.dueDate ? new Date(task.dueDate) : null;
+
+const startDate = filters.dateStart ? new Date(filters.dateStart) : null;
+
+const endDate = filters.dateEnd ? new Date(filters.dateEnd) : null;
+
+if (taskDate) taskDate.setHours(0,0,0,0);
+
+if (startDate) startDate.setHours(0,0,0,0);
+
+if (endDate) endDate.setHours(23,59,59,999);
+
+
+
+const dateMatch = (!startDate || (taskDate && taskDate >= startDate)) && (!endDate || (taskDate && taskDate <= endDate));
+
+return searchMatch && statusMatch && categoryMatch && priorityMatch && dateMatch;
+
+});
+
+
+
+tasksToRender.sort((a,b) => a.order - b.order);
+
+taskList.innerHTML = '';
+
+
+
+if (tasksToRender.length === 0) emptyState.classList.remove('hidden');
+
+else emptyState.classList.add('hidden');
+
+
+
+tasksToRender.forEach(task => taskList.appendChild(createTaskElement(task)));
+
+}
+
+
+
+function createTaskElement(task) {
+
+const templateClone = taskTemplate.content.cloneNode(true);
+
+const el = templateClone.querySelector('.task-item');
+
+el.dataset.id = task.id;
+
+
+
+el.querySelector('.task-title').textContent = task.title;
+
+const descEl = el.querySelector('.task-description');
+
+if (task.description) descEl.textContent = task.description; else descEl.remove();
+
+
+
+const checkbox = el.querySelector('.task-toggle');
+
+checkbox.checked = task.completed;
+
+if (task.completed) el.classList.add('completed');
+
+
+
+el.querySelector('.priority-indicator').classList.add(PRIORITY_COLORS[task.priority] || 'bg-gray-300');
+
+
+
+const categoryTag = el.querySelector('.task-category-tag');
+
+categoryTag.textContent = task.category.charAt(0).toUpperCase() + task.category.slice(1);
+
+categoryTag.className += ` ${CATEGORY_COLORS[task.category] || CATEGORY_COLORS['other']}`;
+
+
+
+const dueContainer = el.querySelector('.task-due-date-display');
+
+if (task.dueDate) {
+
+const date = new Date(task.dueDate), today = new Date();
+
+today.setHours(0,0,0,0); date.setHours(0,0,0,0);
+
+el.querySelector('.due-date-text').textContent =
+
+new Date(task.dueDate).toLocaleDateString(undefined, { timeZone: 'UTC', month: 'short', day: 'numeric', year: 'numeric' });
+
+if (!task.completed && date < today) dueContainer.classList.add('text-red-600','dark:text-red-500','font-medium');
+
+} else {
+
+dueContainer.remove();
+
+}
+
+
+
+checkbox.addEventListener('change', () => toggleTaskComplete(task.id));
+
+el.querySelector('.task-edit').addEventListener('click', e => { e.stopPropagation(); openModal(task.id); });
+
+el.querySelector('.task-delete').addEventListener('click', e => { e.stopPropagation(); deleteTask(task.id, el); });
+
+
+
+el.addEventListener('dragstart', handleDragStart);
+
+el.addEventListener('dragover', handleDragOver);
+
+el.addEventListener('drop', handleDrop);
+
+el.addEventListener('dragend', handleDragEnd);
+
+
+
+lucide.createIcons({ elements: [el] });
+
+return el;
+
+}
+
+
+
+function saveTasks(){ localStorage.setItem('todoAppTasks', JSON.stringify(tasks)); }
+
+
+
+function renormalizeOrder(){
+
+const sorted = [...tasks].sort((a,b)=>a.order-b.order);
+
+tasks = sorted.map((t,i)=>({ ...t, order:i }));
+
+saveTasks();
+
+}
+
+
+
+// --- EVENTS ---
+
+
+
+function handleFormSubmit(e){
+
+e.preventDefault();
+
+const id = taskIdInput.value;
+
+const taskData = {
+
+title: taskTitleInput.value,
+
+description: taskDescriptionInput.value,
+
+category: taskCategoryInput.value,
+
+priority: taskPriorityInput.value,
+
+dueDate: taskDueDateInput.value
+
+};
+
+if (id) tasks = tasks.map(t => t.id === id ? { ...t, ...taskData } : t);
+
+else tasks.push({ ...taskData, id:`task-${Date.now()}`, completed:false, order:tasks.length });
+
+saveTasks(); renderTasks(); closeModal();
+
+}
+
+
+
+function toggleTaskComplete(id){
+
+tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+
+saveTasks(); renderTasks();
+
+}
+
+
+
+function deleteTask(id, element){
+
+element.classList.add('removing');
+
+element.addEventListener('transitionend', () => {
+
+tasks = tasks.filter(t => t.id !== id);
+
+renormalizeOrder(); renderTasks();
+
+}, { once:true });
+
+}
+
+
+
+function handleFilterChange(){
+
+filters.search = searchInput.value.toLowerCase();
+
+filters.status = filterStatus.value;
+
+filters.category = filterCategory.value;
+
+filters.priority = filterPriority.value;
+
+filters.dateStart = filterDateStart.value;
+
+filters.dateEnd = filterDateEnd.value;
+
+renderTasks();
+
+}
+
+
+
+// --- MODALS ---
+
+
+
+function openModal(id=null){
+
+taskForm.reset();
+
+breakdownBtn.disabled = false; breakdownLoader.classList.add('hidden');
+
+
+
+if (id){
+
+const t = tasks.find(x=>x.id===id);
+
+if (t){
+
+modalTitle.textContent = 'Edit Task';
+
+taskIdInput.value = t.id;
+
+taskTitleInput.value = t.title;
+
+taskDescriptionInput.value = t.description || '';
+
+taskCategoryInput.value = t.category;
+
+taskPriorityInput.value = t.priority;
+
+taskDueDateInput.value = t.dueDate || '';
+
+}
+
+} else {
+
+modalTitle.textContent = 'Add New Task';
+
+taskIdInput.value = '';
+
+}
+
+taskModal.classList.add('open');
+
+}
+
+
+
+function closeModal(){ taskModal.classList.remove('open'); }
+
+
+
+function openSmartAddModal(){
+
+smartAddForm.reset();
+
+smartModalSubmitBtn.disabled = false;
+
+smartSubmitText.classList.remove('hidden');
+
+smartSubmitLoader.classList.add('hidden');
+
+smartAddModal.classList.add('open');
+
+smartPromptInput.focus();
+
+}
+
+function closeSmartAddModal(){ smartAddModal.classList.remove('open'); }
+
+
+
+async function handleSmartAddSubmit(e){
+
+e.preventDefault();
+
+const prompt = smartPromptInput.value;
+
+if (!prompt) return;
+
+
+
+smartModalSubmitBtn.disabled = true;
+
+smartSubmitText.classList.add('hidden');
+
+smartSubmitLoader.classList.remove('hidden');
+
+
+
+const today = new Date().toISOString().split('T')[0];
+
+const taskSchema = {
+
+type:"OBJECT",
+
+properties:{
+
+title:{type:"STRING",description:"The concise title of the task."},
+
+description:{type:"STRING",description:"A detailed description or sub-tasks, markdown allowed."},
+
+category:{type:"STRING",description:"Task category.",enum:["work","personal","shopping","study","other"]},
+
+priority:{type:"STRING",description:"Task priority.",enum:["low","medium","high"]},
+
+dueDate:{type:"STRING",description:`YYYY-MM-DD or null. Today is ${today}.`}
+
+},
+
+required:["title","category","priority"]
+
+};
+
+
+
+const systemPrompt = "You are a helpful to-do assistant. Parse the user's request into a JSON task object matching the schema. Infer category, priority, and dueDate. Default: personal, medium, null dueDate.";
+
+const userQuery = `${systemPrompt}\n\nUser request: "${prompt}"`;
+
+
+
+const hasKey = !!API_KEY;
+
+let taskData = null;
+
+
+
+if (hasKey) taskData = await callGeminiJsonApi(userQuery, taskSchema);
+
+
+
+// fallback if no key or API failed
+
+if (!taskData) {
+
+taskData = naiveParseSmartAdd(prompt);
+
+showNotification("Smart Add (Lite)", "No API available. Used local parser.");
+
+}
+
+
+
+smartModalSubmitBtn.disabled = false;
+
+smartSubmitText.classList.remove('hidden');
+
+smartSubmitLoader.classList.add('hidden');
+
+
+
+const newTask = {
+
+...taskData,
+
+id:`task-${Date.now()}`,
+
+completed:false,
+
+order:tasks.length,
+
+dueDate: taskData.dueDate || ""
+
+};
+
+tasks.push(newTask);
+
+saveTasks(); renderTasks(); closeSmartAddModal();
+
+showNotification("Task Created", `✨ '${newTask.title}' was added.`);
+
+}
+
+
+
+async function handleTaskBreakdown(){
+
+const title = taskTitleInput.value;
+
+if (!title){ showNotification("No Title","Please enter a title to break down."); return; }
+
+
+
+breakdownBtn.disabled = true; breakdownLoader.classList.remove('hidden');
+
+
+
+let result = null;
+
+if (API_KEY) {
+
+const systemPrompt = "Break the given task title into actionable sub-tasks. Respond only as a markdown bulleted list.";
+
+result = await callGeminiApi(title, systemPrompt);
+
+}
+
+if (!result) {
+
+// simple local breakdown if AI missing
+
+result = ["Plan","Do","Review"].map(s=>`- ${s}: ${title}`).join("\n");
+
+showNotification("Breakdown (Lite)", "No API available. Used local template.");
+
+}
+
+
+
+breakdownBtn.disabled = false; breakdownLoader.classList.add('hidden');
+
+
+
+if (result){
+
+const current = taskDescriptionInput.value || "";
+
+taskDescriptionInput.value = current ? `${current}\n\n${result}` : result;
+
+showNotification("Task Breakdown", "✨ Sub-tasks added to description.");
+
+}
+
+}
+
+
+
+// --- THEME ---
+
+function toggleTheme(){
+
+const isDark = document.documentElement.classList.toggle('dark');
+
+localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+}
+
+function initTheme(){
+
+const saved = localStorage.getItem('theme');
+
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+
+else document.documentElement.classList.remove('dark');
+
+}
+
+
+
+// --- DRAG & DROP ---
+
+function handleDragStart(e){
+
+draggedItem = this;
+
+e.dataTransfer.effectAllowed = 'move';
+
+e.dataTransfer.setData('text/plain', this.dataset.id);
+
+setTimeout(()=> this.classList.add('dragging'), 0);
+
+}
+
+function handleDragOver(e){
+
+e.preventDefault();
+
+e.dataTransfer.dropEffect = 'move';
+
+if (this !== draggedItem){
+
+const rect = this.getBoundingClientRect();
+
+const isAfter = (e.clientY - rect.top) > (rect.height/2);
+
+if (isAfter) this.after(draggedItem); else this.before(draggedItem);
+
+}
+
+}
+
+function handleDrop(e){
+
+e.preventDefault(); e.stopPropagation();
+
+const draggedId = e.dataTransfer.getData('text/plain');
+
+const targetId = this.dataset.id;
+
+if (draggedId === targetId) return;
+
+
+
+const dt = tasks.find(t=>t.id===draggedId);
+
+const tt = tasks.find(t=>t.id===targetId);
+
+const temp = dt.order; dt.order = tt.order; tt.order = temp;
+
+renormalizeOrder(); renderTasks();
+
+}
+
+function handleDragEnd(){
+
+this.classList.remove('dragging');
+
+draggedItem = null;
+
+renderTasks();
+
+}
+
+
+
+// --- NOTIFICATIONS ---
+
+function showNotification(title, message){
+
+if (notificationTimeout) clearTimeout(notificationTimeout);
+
+notificationTitle.textContent = title;
+
+notificationMessage.textContent = message;
+
+notificationToast.classList.add('show');
+
+notificationTimeout = setTimeout(()=> {
+
+notificationToast.classList.remove('show');
+
+notificationTimeout = null;
+
+}, 5000);
+
+}
+
+
+
+function checkReminders(){
+
+const now = new Date();
+
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+tasks.forEach(t=>{
+
+if (!t.completed && t.dueDate){
+
+const d = new Date(t.dueDate); d.setHours(0,0,0,0);
+
+if (d.getTime() === today.getTime() && !t.reminderShown){
+
+showNotification(`'${t.title}' is due today!`,"Don't forget to complete your task.");
+
+t.reminderShown = true;
+
+}
+
+}
+
+});
+
+}
+
+
+
+// --- INIT ---
+
+function init(){
+
+initTheme();
+
+themeToggleBtn.addEventListener('click', toggleTheme);
+
+
+
+tasks = JSON.parse(localStorage.getItem('todoAppTasks')) || [];
+
+renderTasks();
+
+
+
+addTaskBtn.addEventListener('click', () => openModal());
+
+modalCloseBtn.addEventListener('click', closeModal);
+
+modalCancelBtn.addEventListener('click', closeModal);
+
+modalBackdrop.addEventListener('click', closeModal);
+
+taskForm.addEventListener('submit', handleFormSubmit);
+
+breakdownBtn.addEventListener('click', handleTaskBreakdown);
+
+
+
+smartAddBtn.addEventListener('click', openSmartAddModal);
+
+smartModalCloseBtn.addEventListener('click', closeSmartAddModal);
+
+smartModalCancelBtn.addEventListener('click', closeSmartAddModal);
+
+smartModalBackdrop.addEventListener('click', closeSmartAddModal);
+
+smartAddForm.addEventListener('submit', handleSmartAddSubmit);
+
+
+
+searchInput.addEventListener('input', handleFilterChange);
+
+filterStatus.addEventListener('change', handleFilterChange);
+
+filterCategory.addEventListener('change', handleFilterChange);
+
+filterPriority.addEventListener('change', handleFilterChange);
+
+filterDateStart.addEventListener('change', handleFilterChange);
+
+filterDateEnd.addEventListener('change', handleFilterChange);
+
+
+
+notificationCloseBtn.addEventListener('click', ()=>{
+
+if (notificationTimeout) clearTimeout(notificationTimeout);
+
+notificationToast.classList.remove('show');
+
+});
+
+
+
+checkReminders();
+
+setInterval(checkReminders, 300000);
+
+
+
+lucide.createIcons();
+
+}
+
+
+
+init();
+
+});
+
+</script>
+
 </body>
+
 </html>
