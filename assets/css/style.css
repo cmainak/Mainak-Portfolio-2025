@@ -288,6 +288,101 @@ h6 {
   color: var(--text-primary);
 }
 
+/* ===================================
+   Portfolio Theme Dropdown
+   =================================== */
+
+/* Parent Container */
+.navbar .dropdown {
+  position: relative;
+}
+
+/* The Dropdown Box */
+.navbar .dropdown ul {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 20px); /* Spacing from header */
+  margin: 0;
+  padding: 12px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  
+  /* MATCHING YOUR THEME: */
+  background: #ffffff; 
+  box-shadow: 0 4px 20px rgba(16, 24, 40, 0.15); /* Soft shadow like your cards */
+  border-radius: 12px; /* Rounded corners like your project cards */
+  min-width: 220px;
+  
+  transition: all 0.3s ease-in-out;
+  transform: translateY(10px); /* For slide-up animation */
+}
+
+/* Show Dropdown on Hover */
+.navbar .dropdown:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  top: 100%;
+  transform: translateY(0);
+}
+
+/* List Items */
+.navbar .dropdown ul li {
+  min-width: 200px;
+  position: relative;
+  list-style: none;
+}
+
+/* Dropdown Links */
+.navbar .dropdown ul a {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  
+  /* MATCHING YOUR THEME: */
+  color: #111827; /* Dark text to contrast with white bg */
+  
+  display: block;
+  transition: 0.2s ease;
+}
+
+/* Hover State for Dropdown Links */
+.navbar .dropdown ul a:hover {
+  /* MATCHING YOUR THEME: */
+  color: #FF9933; /* Your Orange Brand Color */
+  background-color: #f9fafb; /* Very light grey for subtle interaction */
+  padding-left: 28px; /* Slight slide right animation */
+}
+
+/* Rotate the chevron arrow on hover */
+.navbar .dropdown:hover > a .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* Mobile Adjustment (Optional - keeps it clean on phone) */
+@media (max-width: 991px) {
+  .navbar .dropdown ul {
+    position: static;
+    display: none;
+    padding: 10px;
+    margin: 10px 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border-left: 2px solid #FF9933; /* Orange line indicator */
+  }
+  .navbar .dropdown:hover > ul {
+    display: block;
+  }
+  .navbar .dropdown ul a {
+    color: inherit; /* Use default mobile menu color */
+  }
+}
+
 
 /* Logo Home Hover - COMPLETE FIX */
 #logo {
