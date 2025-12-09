@@ -129,7 +129,7 @@ body {
 
 .jump-pill.active {
   background: #FFCD29 !important;
-  color: #fff !important;
+  color: #000 !important;
 }
 
 /* === MAIN CONTENT STRUCTURE === */
@@ -3113,6 +3113,46 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
         }, 2000); // 2000ms = 2 seconds
       });
     </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Select only the sections linked in your nav
+    // We specifically look for the sections that match your nav hrefs
+    const sections = document.querySelectorAll('section#discover, section#define, section#develop, section#deliver');
+    
+    // 2. Select the navigation pills
+    const navLinks = document.querySelectorAll('.jump-nav .jump-pill');
+  
+    // 3. Create the Observer
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Active triggers when section is near the middle of screen
+      threshold: 0
+    };
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Get the ID of the section currently in view
+          const currentId = entry.target.getAttribute('id');
+  
+          // Loop through links to add/remove class
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+  
+    // 4. Start observing
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+  </script>
       
       
     </body>
