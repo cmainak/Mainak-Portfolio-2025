@@ -173,6 +173,71 @@ h6 {
   outline: 3px solid #FF9933;
 }
 
+/* 1. Ensure the parent container stacks items vertically */
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Keep this for your decorative shapes */
+  /* If you want the whole section to be full screen, add height to the parent #hero instead */
+}
+
+/* 2. Update the scroll indicator to flow naturally */
+.scroll-indicator {
+  /* REMOVED: position: absolute; bottom: ... */
+  position: relative; 
+  display: block; /* Ensures it behaves like a block element */
+  margin-top: 60px; /* This is your "Standard Spacing" below the black line */
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 10;
+}
+
+/* 3. Keep your existing mouse styles */
+.mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid #333; 
+  border-radius: 20px;
+  position: relative;
+  margin: 0 auto; /* Centers the mouse box itself */
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background-color: #333; 
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-animation 2s infinite;
+}
+
+.arrow-scroll {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #333; 
+  border-bottom: 2px solid #333; 
+  transform: rotate(45deg);
+  margin: 10px auto 0; /* Adds a little space between mouse and arrow */
+  animation: arrow-fade 2s infinite;
+}
+
+/* Animations remain the same */
+@keyframes scroll-animation {
+  0% { opacity: 1; top: 6px; }
+  100% { opacity: 0; top: 24px; }
+}
+
+@keyframes arrow-fade {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 
 /*
 ==============================================
