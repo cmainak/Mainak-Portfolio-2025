@@ -131,16 +131,20 @@
             </a>
           
             <ul>
+              <!-- Public Project -->
               <li><a href="Orbit Scan Project 2025.html">Orbit Scan</a></li>
               <li><a href="Habit Boost.html">Habit Boost</a></li>
-              <li><a href="ManageW.html">Manage Wise</a></li>
-              <li><a href="ToDo.html">Smart To-Do</a></li>
-              <li><a href="DS.html">Design System</a></li>
+             <li><a href="Todo.html">Smart To-Do</a></li>
+
+              <!-- Protected Projects -->
+              <li><a href="#" onclick="event.preventDefault(); showModal('password','ManageW.html');">Manage Wise</a></li>
+              <li><a href="#" onclick="event.preventDefault(); showModal('password', 'DS.html');">Design System</a></li>
+              
+              
             </ul>
           </li>
-          
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          </ul>
+        </ul>
           
           <!-- ACCESSIBILITY FIX: Improved theme toggle with state indication -->
           <button id="theme-toggle" aria-label="Toggle between light and dark mode" aria-pressed="false">
@@ -1126,6 +1130,86 @@ text-align: center;">
       }, 500);
     });
   </script>
+
+  <!-- Lightweight Modal for All Projects -->
+<div id="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.95);z-index:9999;align-items:center;justify-content:center;" onclick="if(event.target===this)closeModal()">
+  <div style="background:#fff;border-radius:16px;padding:48px;max-width:400px;width:90%;box-shadow:0 10px 40px rgba(0,0,0,0.1);border:1px solid #e5e7eb;">
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+
+  <!-- Password Protect-->
+  <script>
+    const cfg = {
+      pwd: '5665', // CHANGE THIS TO YOUR PASSWORD
+      email: 'mainak.chak04@gmail.com', // CHANGE THIS TO YOUR EMAIL
+      currentUrl: '' // This will store which page to open
+    };
+    
+    function showModal(type, data) {
+      const m = document.getElementById('modal');
+      const c = document.getElementById('modalContent');
+      
+      if (type === 'password') {
+        cfg.currentUrl = data; // Store the URL to open
+        c.innerHTML = `
+          <h2 style="margin:0 0 8px;font-size:28px;font-weight:700;">PROTECTED CASE STUDY</h2>
+          <p style="margin:0 0 32px;font-size:15px;color:#6b7280;">Enter passcode to continue</p>
+          <input type="password" id="pwd" placeholder="Enter passcode" style="width:100%;padding:14px 16px;border:2px solid #e5e7eb;border-radius:8px;font-size:16px;margin-bottom:16px;box-sizing:border-box;" onkeypress="if(event.key==='Enter')unlock()">
+          <button onclick="unlock()" style="width:100%;padding:14px;background:#3b82f6;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-bottom:12px;">Unlock</button>
+          <button onclick="closeModal()" style="width:100%;padding:14px;background:transparent;color:#6b7280;border:none;font-size:14px;cursor:pointer;">Cancel</button>
+          <p style="margin:24px 0 0;font-size:13px;color:#9ca3af;">Don't have access? <a href="#" onclick="event.preventDefault();showModal('request','${data.replace(/\.html$/, '')}');" style="color:#3b82f6;text-decoration:none;font-weight:600;">Request it here</a></p>`;
+        setTimeout(() => document.getElementById('pwd').focus(), 50);
+      } else {
+        const projectName = data;
+        c.innerHTML = `
+          <h2 style="margin:0 0 8px;font-size:28px;font-weight:700;">REQUEST ACCESS</h2>
+          <p style="margin:0 0 32px;font-size:15px;color:#6b7280;">I'll send you the passcode within 24 hours</p>
+          <input type="text" id="name" placeholder="Your Name" style="width:100%;padding:14px 16px;border:2px solid #e5e7eb;border-radius:8px;font-size:16px;margin-bottom:12px;box-sizing:border-box;">
+          <input type="email" id="email" placeholder="Your Email" style="width:100%;padding:14px 16px;border:2px solid #e5e7eb;border-radius:8px;font-size:16px;margin-bottom:12px;box-sizing:border-box;">
+          <input type="text" id="reason" placeholder="Reason (optional)" style="width:100%;padding:14px 16px;border:2px solid #e5e7eb;border-radius:8px;font-size:16px;margin-bottom:16px;box-sizing:border-box;">
+          <button onclick="submitRequest('${projectName}')" style="width:100%;padding:14px;background:#3b82f6;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-bottom:12px;">Send Request</button>
+          <button onclick="closeModal()" style="width:100%;padding:14px;background:transparent;color:#6b7280;border:none;font-size:14px;cursor:pointer;">Cancel</button>`;
+        setTimeout(() => document.getElementById('name').focus(), 50);
+      }
+      
+      m.style.display = 'flex';
+    }
+    
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+    
+    function unlock() {
+      if (document.getElementById('pwd').value === cfg.pwd) {
+        window.location.href = cfg.currentUrl;
+      } else {
+        alert('Incorrect passcode. Try again or request access.');
+        document.getElementById('pwd').value = '';
+      }
+    }
+    
+    function submitRequest(projectName) {
+      const n = document.getElementById('name').value;
+      const e = document.getElementById('email').value;
+      const r = document.getElementById('reason').value;
+      
+      if (!n || !e) {
+        alert('Please fill in your name and email.');
+        return;
+      }
+      
+      const subj = encodeURIComponent(`Access Request: ${projectName} Case Study`);
+      const body = encodeURIComponent(`Name: ${n}\nEmail: ${e}\nReason: ${r || 'Not provided'}\n\nRequesting access to view the ${projectName} case study.`);
+      
+      window.location.href = `mailto:${cfg.email}?subject=${subj}&body=${body}`;
+      closeModal();
+      alert("Thank you! I'll respond within 24 hours with the passcode.");
+    }
+    </script>
+
+    <!--Password Protect Ends-->
 
   <!-- GDPR Cookie Consent Banner 
 <div id="cookie-banner" style="
