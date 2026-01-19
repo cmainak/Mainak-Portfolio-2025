@@ -298,6 +298,19 @@ const initThemeToggle = () => {
 
   const htmlElement = document.documentElement;
   
+  // ADD THIS SECTION - Detect mobile/touch devices
+  const isMobileDevice = ('ontouchstart' in window) || 
+                         (navigator.maxTouchPoints > 0) || 
+                         (window.innerWidth <= 768);
+  
+  // Force light mode on mobile devices
+  if (isMobileDevice) {
+    htmlElement.setAttribute('data-theme', 'light');
+    localStorage.removeItem('theme'); // Clear any saved preference
+    return; // Exit - no theme toggle on mobile
+  }
+  // END OF NEW SECTION
+  
   // Cache all theme-dependent elements
   const themeElements = {
     footer: document.getElementById('footer'),
@@ -318,6 +331,7 @@ const initThemeToggle = () => {
     storyP3: document.getElementById('story-p3'),
     storyP4: document.getElementById('story-p4')
   };
+
 
   // PERFORMANCE FIX: Batch DOM updates
   const setTheme = (theme) => {
