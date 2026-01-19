@@ -415,8 +415,7 @@ const initThemeToggle = () => {
   
   if (savedTheme === 'dark' || savedTheme === 'light') {
     setTheme(savedTheme);
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    setTheme('dark');
+  // Always default to light mode on first visit
   } else {
     setTheme('light');
   }
