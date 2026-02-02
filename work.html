@@ -172,18 +172,15 @@
             <ul>
               <!-- Public Project -->
               <li><a href="Orbit Scan Project 2025.html">Orbit Scan</a></li>
-             <li><a href="Todo.html">Smart To-Do</a></li>
-
-              <!-- Protected Projects -->
-              <li><a href="#" onclick="event.preventDefault(); showModal('password','Habit Boost.html');">Habit Boost</a></li>
-              <li><a href="#" onclick="event.preventDefault(); showModal('password','ManageW.html');">Manage Wise</a></li>
-              <li><a href="#" onclick="event.preventDefault(); showModal('password', 'DS.html');">Design System</a></li>
-              
-              
+              <li><a href="Habit Boost.html">Habit Boost</a></li>
+              <li><a href="ManageW.html">ManageWise</a></li>
+              <li><a href="DS.html">Design System</a></li>
+              <li><a href="Todo.html">Smart To-Do</a></li> 
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
+          
         
         <button id="theme-toggle" aria-label="Toggle between light and dark mode" aria-pressed="false">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -439,11 +436,10 @@ align-items: center;">
     </div>
     
 <!-- Replace your current button div with this: -->
-<div style="display: flex; gap: 12px; flex-wrap: wrap;">
-  <button onclick="showModal('password', 'Habit Boost.html')" 
-          style="padding: 12px 28px; background: #F3E5F5; color: #684571; border-radius: 8px; font-weight: 600; border: none; cursor: pointer;">
-    View Case Study
-  </button>
+ <!-- ACCESSIBILITY FIX: Removed inline hover JS, using CSS class -->
+ <a href="Habit Boost.html" class="project-card-link">
+  View case study
+</a>
 </div>
 </article>
 
@@ -567,13 +563,11 @@ align-items: center;">
               </div>
    
               <!-- ACCESSIBILITY FIX: Removed inline hover JS -->
-              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <button onclick="showModal('password', 'ManageW.html')" 
-                        style="padding: 12px 28px; background: #000; color: #FFCD2A; border-radius: 8px; font-weight: 600; border: none; cursor: pointer;">
-                  View Case Study
-                </button>
-    
-              </div>
+               <!-- ACCESSIBILITY FIX: Removed inline hover JS, using CSS class -->
+               <a href="ManageW.html" class="project-card-link">
+                View case study
+              </a>
+            </div>
           </article>
 
           <!-- Tile 4: Smart To-Do App -->
@@ -828,13 +822,11 @@ align-items: center;">
     </div>
 
     <!-- Links -->
-    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-      <button onclick="showModal('password', 'DS.html')" 
-              style="padding: 12px 28px; background: #F3E5F5; color: #684571; border-radius: 8px; font-weight: 600; border: none; cursor: pointer;">
-        View Case Study
-      </button>
-
-    </div>
+   <!-- ACCESSIBILITY FIX: Removed inline hover JS, using CSS class -->
+   <a href="DS.html" class="project-card-link">
+    View case study
+  </a>
+</div>
 </article>
 
         <!-- Card 6 Video Editing & Graphic Design Card -->
