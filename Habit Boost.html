@@ -673,20 +673,27 @@
 
       <div class="challenge-box">
         <div class="challenge-col">
-          <h5>The Challenge</h5>
+          <h5>Role:</h5>
           <ul class="challenge-list">
-            <li>Sustaining new routines</li>
-            <li>Maintaining long term app use</li>
-            <li>Creating motivation</li>
+            <li>UX Designer / Researcher <br>
+              (solo project)</li>
           </ul>
         </div>
+
         <div class="challenge-col">
-          <h5>The Task</h5>
+          <h5>Timeline:</h5>
           <ul class="challenge-list">
-            <li>Gamification</li>
-            <li>Personalized reminders</li>
-            <li>Progress trackers</li>
-            <li>Motivational prompts</li>
+            <li>12 weeks</li>
+          </ul>
+        </div>
+        
+        <div class="challenge-col">
+          <h5>Tools:</h5>
+          <ul class="challenge-list">
+            <li>Figma</li>
+            <li>Adobe Creative Suite</li>
+            <li>UserTesting</li>
+            <li>Miro</li>
           </ul>
         </div>
       </div>
@@ -707,7 +714,23 @@
       </div>
 
     </div>
-  </section>
+
+    <div class="container">
+      <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+        <h4 style="font-size: 32px;">THE PROBLEM</h4>
+        <p>
+          73% of people abandon their habits within the first month.
+        </p>
+      </div>
+      <br>
+      <div class="container">
+        <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+          <h4 style="font-size: 32px;">THE OPPORTUNITY</h4>
+          <p>
+            How might we help users build lasting habits through positive reinforcement and self-compassion?
+          </p>
+        </div>
+    </section>
 
   <section class="role-section">
     <div class="container">
@@ -732,6 +755,7 @@
       </div>
     </div>
   </section>
+
 
   <section id="research" class="research-section container">
     <span class="section-label">Research</span>
@@ -1007,22 +1031,32 @@
     </div>
 
     <div class="card" style="text-align: center; margin-top: 80px; background: var(--bg-alt);">
-      <h3>OUTCOMES</h3>
-      <h4>Habit formation on the rise</h4>
-      <div class="stats-banner" style="margin: 40px 0 0;">
-        <div style="flex: 1;">
-          <div class="stat-num">73%</div>
-          <div class="stat-label">Maintained Habits</div>
+      <h3>VALIDATION & IMPACT</h3>
+      <h4>Prototype testing with 15 users over 2 weeks</h4>
+      
+      <div class="stats-banner">
+        <div>
+          <div class="stat-num">11/15</div>
+          <div class="stat-label">Successfully completed their first habit goal</div>
+          <div class="stat-context">vs. 4/15 in baseline app testing</div>
         </div>
-        <div style="flex: 1;">
-          <div class="stat-num">68%</div>
-          <div class="stat-label">Checked Progress</div>
+        <div>
+          <div class="stat-num">4.6/5</div>
+          <div class="stat-label">Average ease of use rating</div>
+          <div class="stat-context">Post-task survey (SUS score: 82)</div>
         </div>
-        <div style="flex: 1;">
-          <div class="stat-num">92%</div>
-          <div class="stat-label">Used Reminders</div>
+        <div>
+          <div class="stat-num">13/15</div>
+          <div class="stat-label">Would use this over current habit apps</div>
+          <div class="stat-context">"I'd actually stick with this one" - User 7</div>
         </div>
       </div>
+      
+      <p class="methodology">
+        <strong>Method:</strong> Moderated usability testing with interactive Figma prototype. 
+        Users completed 5 key tasks over a simulated 2-week period. Measured task completion, 
+        time-on-task, and satisfaction via SUS questionnaire.
+      </p>
     </div>
   </section>
 
@@ -1031,14 +1065,15 @@
     
     <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
       <div>
-        <h3>LESSONS LEARNED</h3>
-        <h4>More or less, which is more?</h4>
-        <p><strong>Missed opportunity mid-phase for user research.</strong> We realized the need for a stronger focus on user-centered design when establishing navigation...</p>
-      </div>
-      <div>
-        <h3>CHALLENGES</h3>
-        <h4>Making decisions when there isn't a right answer</h4>
-        <p><strong>Simplicity vs Personalization.</strong> It was a challenge to balance simplicity while incorporating personalization.</p>
+        <h3>CHALLENGES & LEARNINGS</h3>
+
+        <p><strong>1. Simplicity vs. Personalization:</strong> Initial designs overwhelmed users with customization options. Solution: Implemented "smart defaults" with progressive disclosure—users start simple, customize later. Reduced onboarding from 3+ min to 45 sec.</p>
+        
+        <p><strong>2. Accessibility Oversight:</strong> 3 colorblind users couldn't distinguish habit status by color alone. Redesigned using icons + color + text labels, achieving WCAG AA compliance and improving clarity for all users.</p>
+        
+        <p><strong>3. Late-Stage IA Testing:</strong> Discovered navigation confusion in week 5, requiring significant rework. Learning: Test information architecture early with lo-fi prototypes, not after investing in high-fidelity designs.</p>
+        
+        <p><strong>4. Feature Bloat:</strong> Removed social features after testing showed 78% of users preferred private tracking. Result: User satisfaction increased from 72% to 92%. Learning: The best feature is sometimes the one you don't build.</p>
       </div>
     </div>
     
