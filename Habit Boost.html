@@ -46,36 +46,6 @@
 }
 
 
-/* === BACK TO TOP === */
-.back-to-top {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 56px;
-      height: 56px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 999;
-      text-decoration: none;
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-4px);
-      background: white;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .back-to-top i {
-      color: #000;
-      font-size: 20px;
-    }
-    /* === BACK TO TOP ENDS === */
 /* === FLOATING BUTTONS ENDS === */
 
     /* === 1. MODERN VARIABLES & RESET === */
@@ -122,7 +92,7 @@
       border-radius: var(--radius-sm);
     }
 
-    /* === 2. JUMP NAVIGATION (ORBIT STYLE) === */
+    /* === 2. JUMPLINKS START === */
     .jump-nav {
       position: fixed;
       bottom: 24px;
@@ -176,6 +146,78 @@
         font-size: 12px;
       }
     }
+
+
+    /* Inner layout */
+.jump-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Row of scrollable pills */
+.jump-links-row {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 0 2px;
+}
+
+/* Hide scrollbar if you want (optional) */
+.jump-links-row::-webkit-scrollbar {
+  display: none;
+}
+.jump-links-row {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* === BACK TO TOP === */
+
+.back-to-top-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-size: 18px;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.back-to-top-btn:hover {
+  background: var(--primary-strong, #5b21b6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.back-to-top-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.back-to-top-btn:hover .back-to-top-arrow {
+  transform: translateY(-2px);
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .back-to-top-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+}
+    /* === BACK TO TOP ENDS === */
+        /* === JUMPLINKS ENDS === */
 
 
     /* === 3. UTILITY CLASSES === */
@@ -635,13 +677,24 @@
 </head>
 <body>
 
-  <nav class="jump-nav">
-    <a href="#research" class="jump-link">Research</a>
-    <a href="#process" class="jump-link">Design Process</a>
-    <a href="#usability" class="jump-link">Usability Testing</a>
-    <a href="#results" class="jump-link">Results</a>
-    <a href="#reflections" class="jump-link">Reflections</a>
+  <nav class="jump-nav" aria-label="Case Study navigation">
+    <div class="jump-nav-inner">
+      <!-- Scrollable pills -->
+      <div class="jump-links-row">
+        <a href="#research" class="jump-link">Research</a>
+        <a href="#process" class="jump-link">Design Process</a>
+        <a href="#usability" class="jump-link">Usability Testing</a>
+        <a href="#results" class="jump-link">Results</a>
+        <a href="#reflections" class="jump-link">Reflections</a>
+      </div>
+  
+      <!-- Back to top button -->
+      <a href="#top" class="back-to-top-btn" aria-label="Back to top">
+        <span class="back-to-top-arrow">↑</span>
+      </a>
+    </div>
   </nav>
+  
 
   <!-- Floating Home Button -->
   <a href="work.html" class="home-button">
