@@ -24,138 +24,326 @@
       font-size: 16px;
     }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #FFFFFF;
-      color: rgba(0, 0, 0, 0.955);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #FFFFFF;
+  color: rgba(0, 0, 0, 0.955);
+  line-height: 1.5; /* ✅ WCAG minimum */
+  letter-spacing: 0.12em; /* ✅ WCAG minimum */
+  word-spacing: 0.16em; /* ✅ WCAG minimum */
+  overflow-x: hidden;
+}
 
     /* === NAVIGATION === */
 
 
-    /* === NAVIGATION PILLS === */
+   /* === 2026 MODERN JUMP NAVIGATION === */
 
-    html {
-  scroll-behavior: smooth;
+.jump-nav-2026 {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  
+  /* Responsive width - INCREASED for 6 buttons */
+  width: calc(100vw - 40px);
+  max-width: 640px;
+  min-width: 320px;
+  
+  /* Glassmorphism with dark theme */
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  
+  /* Modern shadow with glow */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 40px rgba(177, 215, 59, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  
+  border-radius: 32px;
+  padding: 6px;
+  
+  /* Smooth entrance */
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.jump-pill {
-  display: inline-block;
-  text-decoration: none;
-  color: #000;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Inner flex container */
+.jump-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Pills container */
+.jump-pills-container {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+}
+
+/* Individual pill base */
+.jump-pill-2026 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 14px 4px;
+  border-radius: 24px;
+  
+  font-size: 12px;
   font-weight: 600;
-  font-size: 1.08rem;
-  padding: 9px 22px;
-  border-radius: 2em;
-  background: transparent;
-  transition: background .17s, color .17s;
-}
-
-.jump-pill:hover,
-.jump-pill:focus {
-  background: #096e00 !important;
-  color: #000 !important;
-  outline: none;
-}
-
-.jump-pill.active {
-  background: #096e00 !important;
-  color: #fff !important;
-}
-
-/* === JUMP NAVIGATION RESPONSIVE === */
-
-/* Base styles for jump pills */
-.jump-pill {
-  display: block;
-  text-align: center;
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 10px 8px;
-  border-radius: 1.8em;
+  letter-spacing: 0.3px;
   text-decoration: none;
-  color: #000;
+  color: rgba(255, 255, 255, 0.6);
+  
   background: transparent;
-  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  
+  position: relative;
 }
 
-.jump-pill:hover, .jump-pill.active {
-  background: linear-gradient(135deg, #096e00 0%, #42ca15 100%);
+/* Hover state */
+.jump-pill-2026:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(177, 215, 59, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Active state - Green gradient */
+.jump-pill-2026.active {
+  background: linear-gradient(135deg, #0C4700 0%, #16a34a 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 
+    0 4px 20px rgba(177, 215, 59, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Active indicator dot */
+.jump-pill-2026.active::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 5px;
+  height: 5px;
+  background: #B1D73B;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(177, 215, 59, 0.8);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+/* Prototype pill - Special purple accent */
+.jump-pill-2026.prototype-pill {
+  position: relative;
+}
+
+.jump-pill-2026.prototype-pill::after {
+  content: '▶';
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8px;
+  color: rgba(168, 85, 247, 0.7);
+  transition: all 0.3s ease;
+}
+
+.jump-pill-2026.prototype-pill:hover::after {
+  color: #a855f7;
+  left: 3px;
+}
+
+.jump-pill-2026.prototype-pill.active {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+}
+
+.jump-pill-2026.prototype-pill.active::before {
+  background: #c084fc;
+  box-shadow: 0 0 8px rgba(192, 132, 252, 0.8);
+}
+
+/* Back to Top Button */
+.back-to-top-2026 {
+  width: 48px;
+  height: 48px;
+  
+  background: linear-gradient(135deg, #B1D73B 0%, #16a34a 100%);
+  border: 1px solid rgba(177, 215, 59, 0.3);
+  border-radius: 24px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  box-shadow: 
+    0 4px 16px rgba(177, 215, 59, 0.25),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  
+  text-decoration: none;
   color: #000;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
 }
 
-/* Large screens (desktop) */
-@media (min-width: 1025px) {
-  .jump-nav {
-    width: 430px !important;
-    max-width: 430px !important;
+.back-to-top-2026:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 24px rgba(177, 215, 59, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #c4e356 0%, #22c55e 100%);
+}
+
+.back-to-top-2026:active {
+  transform: translateY(-1px);
+}
+
+/* Arrow icon */
+.back-to-top-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.back-to-top-2026:hover .back-to-top-arrow {
+  transform: translateY(-2px);
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .jump-nav-2026 {
+    max-width: 680px;
   }
-  .jump-pill {
-    font-size: 1rem !important;
-    padding: 12px 16px !important;
+  
+  .jump-pill-2026 {
+    font-size: 13px;
+    padding: 14px 6px;
   }
 }
 
-/* Medium screens (tablet) */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .jump-nav {
-    width: calc(100vw - 60px) !important;
-    max-width: 400px !important;
+/* Desktop */
+@media (max-width: 1199px) and (min-width: 1025px) {
+  .jump-nav-2026 {
+    max-width: 640px;
   }
-  .jump-pill {
-    font-size: 0.95rem !important;
-    padding: 10px 12px !important;
+  
+  .jump-pill-2026 {
+    font-size: 12px;
+    padding: 13px 5px;
   }
 }
 
-/* Small screens (mobile) */
+/* Tablet */
+@media (max-width: 1024px) {
+  .jump-nav-2026 {
+    max-width: 580px;
+  }
+  
+  .jump-pill-2026 {
+    font-size: 11px;
+    padding: 12px 4px;
+  }
+  
+  .back-to-top-2026 {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-  .jump-nav {
-    width: calc(100vw - 32px) !important;
-    max-width: 360px !important;
-    padding: 6px !important;
+  .jump-nav-2026 {
+    max-width: calc(100vw - 32px);
+    bottom: 16px;
+    padding: 5px;
   }
   
-  .jump-nav ul {
-    gap: 4px !important;
+  .jump-nav-inner {
+    gap: 4px;
   }
   
-  .jump-pill {
-    font-size: 0.9rem !important;
-    padding: 8px 6px !important;
-    min-width: 0 !important;
+  .jump-pills-container {
+    gap: 3px;
+  }
+  
+  .jump-pill-2026 {
+    font-size: 10px;
+    padding: 10px 3px;
+  }
+  
+  .jump-pill-2026.prototype-pill::after {
+    font-size: 7px;
+    left: 3px;
+  }
+  
+  .back-to-top-2026 {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }
 
-/* Very small screens */
+/* Small Mobile */
 @media (max-width: 480px) {
-  .jump-nav {
-    width: calc(100vw - 24px) !important;
-    max-width: 320px !important;
-    bottom: 12px !important;
+  .jump-nav-2026 {
+    max-width: calc(100vw - 24px);
+    bottom: 12px;
   }
   
-  .jump-nav ul {
-    gap: 3px !important;
+  .jump-pill-2026 {
+    font-size: 9px;
+    padding: 9px 2px;
   }
   
-  .jump-pill {
-    font-size: 0.85rem !important;
-    padding: 8px 4px !important;
+  .jump-pill-2026.prototype-pill::after {
+    display: none; /* Hide play icon on very small screens */
+  }
+  
+  .back-to-top-2026 {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
   }
 }
 
-/* Extra small screens */
+/* Extra Small */
 @media (max-width: 360px) {
-  .jump-pill {
-    font-size: 0.8rem !important;
-    padding: 6px 3px !important;
+  .jump-pill-2026 {
+    font-size: 8px;
+    padding: 8px 1px;
   }
 }
 /* === JUMP NAVIGATION RESPONSIVE ENDS === */
@@ -191,37 +379,6 @@
   font-size: 1.4rem;
 }
 
-
-/* === BACK TO TOP === */
-.back-to-top {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 56px;
-      height: 56px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 999;
-      text-decoration: none;
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-4px);
-      background: white;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .back-to-top i {
-      color: #000;
-      font-size: 20px;
-    }
-    /* === BACK TO TOP ENDS === */
 /* === FLOATING BUTTONS ENDS === */
 
 
@@ -336,10 +493,10 @@
 
     .hero-title {
       font-size: clamp(48px, 8vw, 96px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
+  font-weight: 900;
+  line-height: 1.1; /* ✅ Large display text can be slightly tighter, but not below 1.1 */
+  letter-spacing: normal; /* ✅ Remove negative spacing */
+  margin-bottom: 48px; /* ✅ 2× spacing (doubled from 24px) */
       background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -426,79 +583,15 @@
       position: relative;
       border-radius: 24px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 20px;
       transition: all 0.4s ease;
     }
 
-    .hero-image-container:hover {
-      border-color: rgba(177, 215, 59, 0.3);
-      box-shadow: 0 20px 60px rgba(16, 185, 129, 0.15);
-    }
 
     .hero-image-container img {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 16px;
-      transition: transform 0.4s ease;
-    }
-
-    .hero-image-container:hover img {
-      transform: scale(1.02);
-    }
-
-    /* Scroll Indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      animation: bounce 2s ease-in-out infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-10px); }
-    }
-
-    .scroll-text {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    .scroll-icon {
-      width: 24px;
-      height: 36px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      position: relative;
-    }
-
-    .scroll-icon::before {
-      content: '';
-      position: absolute;
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 8px;
-      background: rgba(177, 215, 59, 0.8);
-      border-radius: 2px;
-      animation: scroll 2s ease-in-out infinite;
-    }
-
-    @keyframes scroll {
-      0% { transform: translateX(-50%) translateY(0); opacity: 1; }
-      100% { transform: translateX(-50%) translateY(12px); opacity: 0; }
     }
 
     
@@ -520,14 +613,14 @@
     }
 
     .section-title {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 800;
-      line-height: 1.2;
-      color: #0C4700;
-      max-width: 1000px;
-      margin: 0 auto 24px;
-      letter-spacing: -1.5px;
-    }
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.3; /* ✅ Improved from 1.2 */
+  color: #0C4700;
+  max-width: 1000px;
+  margin: 0 auto 48px; /* ✅ 2× spacing */
+  letter-spacing: normal; /* ✅ Remove negative spacing */
+}
 
     .section-title .highlight {
       color: #B1D73B;
@@ -589,11 +682,13 @@
     }
 
     .content-block p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(0, 0, 0, 0.955);
-      margin-bottom: 16px;
-    }
+  font-size: 16px;
+  line-height: 1.8; /* ✅ Already good */
+  color: rgba(0, 0, 0, 0.955);
+  letter-spacing: 0.12em; /* ✅ Add */
+  word-spacing: 0.16em; /* ✅ Add */
+  margin-bottom: 32px; /* ✅ 2× font size */
+}
 
     .highlight-box {
       background: rgba(177, 215, 59, 0.08);
@@ -709,10 +804,12 @@
     }
 
     th, td {
-      padding: 20px 24px;
-      text-align: left;
-      border-bottom: 1px solid #000;
-    }
+  padding: 24px 28px; /* ✅ Increased padding */
+  text-align: left;
+  border-bottom: 1px solid #000;
+  line-height: 1.6; /* ✅ Add */
+  letter-spacing: 0.05em; /* ✅ Add */
+}
 
     th {
       background: rgba(177, 215, 59, 0.08);
@@ -775,13 +872,13 @@
     }
 
     .quote-text {
-      font-size: clamp(24px, 3vw, 42px);
-      font-weight: 700;
-      line-height: 1.4;
-      color: rgba(0, 0, 0, 0.955);
-      margin-bottom: 32px;
-      letter-spacing: -0.5px;
-    }
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 700;
+  line-height: 1.5; /* ✅ WCAG minimum */
+  color: rgba(0, 0, 0, 0.955);
+  margin-bottom: 64px; /* ✅ 2× spacing (doubled) */
+  letter-spacing: normal; /* ✅ Remove negative */
+}
 
     .quote-author {
       font-size: 16px;
@@ -796,12 +893,14 @@
     }
 
     .bullet-list li {
-      padding-left: 32px;
-      margin-bottom: 16px;
-      position: relative;
-      color: rgba(0, 0, 0, 0.955);
-      line-height: 1.8;
-    }
+  padding-left: 32px;
+  margin-bottom: 24px; /* ✅ Increased spacing */
+  position: relative;
+  color: rgba(0, 0, 0, 0.955);
+  line-height: 1.8; /* ✅ Already compliant */
+  letter-spacing: 0.12em; /* ✅ Add */
+  word-spacing: 0.16em; /* ✅ Add */
+}
 
     .bullet-list li::before {
       content: '';
@@ -902,6 +1001,7 @@
       .hero-title {
         font-size: clamp(36px, 10vw, 56px);
         margin-bottom: 20px;
+        letter-spacing: normal;
       }
 
       .hero-subtitle {
@@ -919,10 +1019,6 @@
 
       .hero-image-container {
         padding: 12px;
-      }
-
-      .scroll-indicator {
-        display: none;
       }
     }
 
@@ -1336,43 +1432,28 @@
 <body>
 
      <!-- Bottom-Fixed Jump Navigation Pills STARTS-->
-<nav aria-label="Case Study Navigation" class="jump-nav"
-style="
-  position: fixed;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  width: calc(100vw - 40px);
-  max-width: 430px;
-  min-width: 280px;
-  z-index: 1000;
-  background: rgba(255,255,255,0.92);
-  box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
-  border-radius: 2.2em;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(12px);
-">
-<ul style="
-  margin: 0; padding: 0; list-style: none;
-  display: flex; gap: 6px; align-items: center; 
-  width: 100%; justify-content: space-between;
-">
-  <li style="flex: 1;"><a href="#discover" class="jump-pill">Discover</a></li>
-  <li style="flex: 1;"><a href="#define" class="jump-pill">Define</a></li>
-  <li style="flex: 1;"><a href="#develop" class="jump-pill">Develop</a></li>
-  <li style="flex: 1;"><a href="#deliver" class="jump-pill">Deliver</a></li>
-</ul>
+<!-- 2026 Modern Jump Navigation with Prototype -->
+<nav aria-label="Case Study Navigation" class="jump-nav-2026">
+  <div class="jump-nav-inner">
+    
+    <!-- Navigation Pills -->
+    <div class="jump-pills-container">
+      <a href="#overview" class="jump-pill-2026 active">Overview</a>
+      <a href="#discover" class="jump-pill-2026">Discover</a>
+      <a href="#define" class="jump-pill-2026">Define</a>
+      <a href="#develop" class="jump-pill-2026">Develop</a>
+      <a href="#deliver" class="jump-pill-2026">Deliver</a>
+      <a href="#prototype" class="jump-pill-2026 prototype-pill">Prototype</a>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <a href="#overview" class="back-to-top-2026" aria-label="Back to top">
+      <span class="back-to-top-arrow">↑</span>
+    </a>
+    
+  </div>
 </nav>
 <!-- Bottom-Fixed Jump Navigation Pills ENDS-->
-    
-
-<!-- Floating Home Button -->
-      <a href="work.html" class="home-button">
-        <i class="fas fa-home"></i>
-      </a>
-    <!-- Floating Home Button Ends -->
     
  
   <!-- Hero Section -->
@@ -1426,13 +1507,6 @@ style="
              alt="Orbit Scan App Interface showcasing health analysis screens" 
              loading="eager">
       </div>
-
-      <!-- Scroll Indicator -->
-      <div class="scroll-indicator">
-        <span class="scroll-text">Scroll</span>
-        <div class="scroll-icon"></div>
-      </div>
-
     </div>
   </section> 
   
@@ -2624,10 +2698,12 @@ style="
 
             <!-- Bio Text -->
             <p class="persona-bio" style="
-              margin: 0 0 32px;
-              font-size: 16px;
-              line-height: 1.8;
-              color: rgba(0, 0, 0, 0.955);">
+  margin: 0 0 32px;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+  word-spacing: 0.16em;
+  color: rgba(0, 0, 0, 0.955);">
               Newly diagnosed with <strong style="color: #0C4700;font-weight: 600;">gluten sensitivity</strong>, 
               Stephanie balances classes, part time barista shifts, and an active social life. Every grocery run 
               becomes a research project scanning labels, googling additives, and second guessing choices. 
@@ -3853,7 +3929,7 @@ Final Design Solutions - Detailed Screens & Features
 
 <!-- =============== INTERACTIVE PROTOTYPE STARTS =============== -->
 
-<section style="padding: 60px 20px; max-width: 1200px; margin: 0 auto; box-sizing: border-box;">
+<section id="prototype" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto; box-sizing: border-box;">
 
   <!-- Section Title -->
   <h3 class="comp-title" style="
@@ -4399,7 +4475,7 @@ Final Design Solutions - Detailed Screens & Features
     </h2>
   </section>
 
-  <section class="content-section">
+
     <div class="content-container">
       <div class="content-grid">
         <div class="content-block">
@@ -4421,204 +4497,109 @@ Final Design Solutions - Detailed Screens & Features
 
 
   <!-- Footer -->
-  <section class="footer-section">
-   <!-- Section Header -->
-   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 16px;">
-    <div>
-      <h2 style="margin: 0 0 8px; font-size: 28px; color: #000; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
-        MORE PROJECTS
-      </h2>
-      <p style="margin: 0; font-size: 14px; color: rgba(0, 0, 0, 0.955);">
-        Explore additional case studies and design work
-      </p>
-    </div>
+<!-- More Projects Section -->
+<!-- Navigation Buttons -->
+<section style="padding: 60px 20px;">
+  <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
     
-    <!-- View All Link -->
-    <a href="work.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; background: #fff; color: #111827; text-decoration: none; border: 1px solid #e5e7eb; border-radius: 8px; font-weight: 500; font-size: 14px; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(16, 24, 40, 0.04);" onmouseover="this.style.background='#FFCD29'; this.style.borderColor='#FFCD29'; this.style.color='#000'" onmouseout="this.style.background='#fff'; this.style.borderColor='#e5e7eb'; this.style.color='#111827'">
-      <span>View All</span>
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
-        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
-      </svg>
+    <!-- Previous Project Button -->
+    <a href="Habit Boost Project.html">
+      <button style="padding: 12px 24px; border: 1px solid #e5e7eb; background: #fff; border-radius: 8px; cursor: pointer; color: #111827; font-size: 15px; font-weight: 500; transition: all 0.2s ease;" onmouseover="this.style.background='#f9fafb'; this.style.borderColor='#0C4700'" onmouseout="this.style.background='#fff'; this.style.borderColor='#e5e7eb'">
+        ← Previous
+      </button>
     </a>
-  </div>
-
-  <!-- Enhanced More Projects Section ENDS -->
-
-  <!-- Project Cards Grid -->
- <div class="project-cards-grid" 
-     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 32px; width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 16px;">
-    
-    
-    <!-- Project Card 1: ManageWise -->
-
-<div class="project-card" style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(16,24,40,.08);transition:.3s ease;cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 25px rgba(16,24,40,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px rgba(16,24,40,.08)'">
-
-<!-- Cover Image -->
-<div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);">
-  <a href="ManageW.html" target="_blank" style="display:block;height:100%;">
-    <img src="assets/img/Manage Wise/ManageWise Cover.png" loading="lazy"
-         alt="ManageWise Productivity App Cover"
-         style="width:100%;height:100%;object-fit:fill;transition:transform .3s ease;"
-         onmouseover="this.style.transform='scale(1.05)'"
-         onmouseout="this.style.transform='scale(1)'">
-  </a>
-
-  <!-- Category Badge -->
-  <div style="position:absolute;top:12px;right:12px;background:rgba(34,197,94,.9);color:#fff;padding:4px 8px;border-radius:12px;font-size:11px;font-weight:600;backdrop-filter:blur(4px);">
-    Productivity
-  </div>
-</div>
-
-<!-- Card Content -->
-<div style="padding:24px;">
-
-  <!-- Tags -->
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
-    <span style="padding:4px 10px;background:#eff6ff;color:#1e40af;border-radius:16px;font-size:11px;font-weight:500;border:1px solid #dbeafe;">UX Research</span>
-    <span style="padding:4px 10px;background:#f0fdf4;color:#166534;border-radius:16px;font-size:11px;font-weight:500;border:1px solid #bbf7d0;">Mobile Design</span>
-    <span style="padding:4px 10px;background:#fef3c7;color:#92400e;border-radius:16px;font-size:11px;font-weight:500;border:1px solid #fed7aa;">AI Prototyping</span>
-  </div>
-
-  <!-- Title & Blurb -->
-  <h3 style="margin:0 0 8px;font-size:18px;color:#111827;font-weight:600;line-height:1.3;">
-    ManageWise
-  </h3>
-  <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.5;">
-    AI-powered productivity app that unifies tasks, smart scheduling, and goal tracking—helping busy users plan their day, stay focused, and measure real progress.
-  </p>
-
-  <!-- Stats & CTA -->
-  <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #f1f5f9;">
-    <div style="display:flex;gap:16px;">
-      <div style="text-align:center;">
-        <div style="font-size:16px;font-weight:600;color:#111827;">12</div>
-        <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;">Weeks</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:16px;font-weight:600;color:#22c55e;">Tech</div>
-        <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;">Focus</div>
-      </div>
-    </div>
-
-    <!-- Arrow -->
-    <div style="width:32px;height:32px;background:#f8fafc;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.2s ease;" onmouseover="this.style.background='#B1D73B'" onmouseout="this.style.background='#f8fafc'">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;color:#64748b;">
-        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-      </svg>
-    </div>
-  </div>
-</div>
-</div>
-<!-- End Project Card – ManageWise -->
-
-
-
-    <!-- Project Card 2: Portfolio Redesign -->
-    <!-- Project Card 2: Personal Portfolio Design -->
-<div class="project-card" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16, 24, 40, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 24, 40, 0.08)'">
-
-<!-- Project Image -->
-<div style="position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
-  <a href="MC copy.html" target="_blank" style="display: block; height: 100%;">
-    <img src="assets/img/Projects/Cover/MC.png" 
-         alt="Personal Portfolio Website Redesign" 
-         style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
-         onmouseover="this.style.transform='scale(1.05)'"
-         onmouseout="this.style.transform='scale(1)'">
-  </a>
   
-  <!-- Status Badge -->
-  <div style="position: absolute; top: 12px; right: 12px; background: rgba(59, 130, 246, 0.9); color: #fff; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; backdrop-filter: blur(4px);">
-    Web Design
-  </div>
-</div>
-
-<!-- Project Content -->
-<div style="padding: 24px;">
+    <!-- Next Project Button -->
+    <a href="DS.html">
+      <button style="padding: 12px 24px; border: none; background: #0C4700; color: #fff; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.2s ease;" onmouseover="this.style.background='#16a34a'" onmouseout="this.style.background='#0C4700'">
+        Next Project →
+      </button>
+    </a>
   
-  <!-- Project Tags -->
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <span style="padding: 4px 10px; background: #eff6ff; color: #1e40af; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #dbeafe;">Website Redesign</span>
-    <span style="padding: 4px 10px; background: #fef3c7; color: #92400e; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #fed7aa;">HTML</span>
-    <span style="padding: 4px 10px; background: #fee2e2; color: #991b1b; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #fecaca;">CSS</span>
-    <span style="padding: 4px 10px; background: #f3e8ff; color: #6b21a8; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #e9d5ff;">Figma</span>
   </div>
+</section>
 
-  <!-- Project Title & Description -->
-  <h3 style="margin: 0 0 8px; font-size: 18px; color: #111827; font-weight: 600; line-height: 1.3;">
-    Personal Portfolio Redesign
-  </h3>
-  <p style="margin: 0 0 16px; font-size: 14px; color: #64748b; line-height: 1.5;">
-    Complete redesign and development of a personal portfolio website featuring modern UI principles, responsive layouts, and enhanced user experience to showcase design work effectively.
-  </p>
-
-  <!-- Project Stats/Details -->
-  <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #f1f5f9;">
-    <div style="display: flex; gap: 16px;">
-      <div style="text-align: center;">
-        <div style="font-size: 16px; font-weight: 600; color: #111827;">6</div>
-        <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Weeks</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 16px; font-weight: 600; color: #111827;">Web</div>
-        <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Design</div>
-      </div>
+<!-- Footer -->
+<footer style="background: #111827; color: #fff; padding: 60px 20px; text-align: center;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #fff;">Let's Connect</h3>
+    
+    <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+      <a href="https://www.linkedin.com/in/mainakc98/" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="mailto:mainak.chak04@gmail.com" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a href="https://drive.google.com/file/d/1_l2CEcNTSOgdJuJh1EaovdHdRfeJlUXM/view?usp=drive_link" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+        <i class="fas fa-file-alt"></i> Resume
+      </a>
     </div>
     
-    <!-- View Project Arrow -->
-    <div style="width: 32px; height: 32px; background: #f8fafc; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;" onmouseover="this.style.background='#FFCD29'" onmouseout="this.style.background='#f8fafc'">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px; color: #64748b;">
-        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
-      </svg>
-    </div>
   </div>
-</div>
-</div>
+</footer>
 
-
-  <!-- End of Project Card 2 Portfolio Redesign -->
-
-  </section>
-
-
-  <!-- Back to Top -->
-  <a href="#overview" class="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-  </a>
 
   <script>
-    // Smooth scroll (handles the click)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 2026 Jump Navigation - Active State Handler
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navPills = document.querySelectorAll('.jump-pill-2026');
+      
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }
+        });
+      });
+      
+      // Update active state on scroll
+      function updateActiveNav() {
+        let current = '';
+        const scrollPos = window.pageYOffset;
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 200;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+          
+          if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+            current = sectionId;
+          }
+        });
+        
+        navPills.forEach(pill => {
+          pill.classList.remove('active');
+          if (pill.getAttribute('href') === `#${current}`) {
+            pill.classList.add('active');
+          }
+        });
+      }
+      
+      // Run on scroll with throttle
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            updateActiveNav();
+            ticking = false;
+          });
+          ticking = true;
         }
       });
-    });
-  
-    // Jump nav active state (handles the highlighting on scroll)
-    const sections = document.querySelectorAll('section[id]');
-    const navPills = document.querySelectorAll('.jump-pill');
-  
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 150) {
-          current = section.getAttribute('id');
-        }
-      });
-  
-      navPills.forEach(pill => {
-        pill.classList.remove('active');
-        if (pill.getAttribute('href') === `#${current}`) {
-          pill.classList.add('active');
-        }
-      });
+      
+      // Initial check
+      updateActiveNav();
     });
   </script>
+  
 </body>
 </html>
