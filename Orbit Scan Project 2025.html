@@ -4526,66 +4526,33 @@ Final Design Solutions - Detailed Screens & Features
   </div>
 </footer>
 
-
-  <script>
-    // 2026 Jump Navigation - Active State Handler
-    document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('section[id]');
-      const navPills = document.querySelectorAll('.jump-pill-2026');
-      
-      // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'start' 
-            });
-          }
-        });
-      });
-      
-      // Update active state on scroll
-      function updateActiveNav() {
-        let current = '';
-        const scrollPos = window.pageYOffset;
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 200;
-          const sectionHeight = section.offsetHeight;
-          const sectionId = section.getAttribute('id');
-          
-          if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-            current = sectionId;
-          }
-        });
-        
-        navPills.forEach(pill => {
-          pill.classList.remove('active');
-          if (pill.getAttribute('href') === `#${current}`) {
-            pill.classList.add('active');
-          }
-        });
-      }
-      
-      // Run on scroll with throttle
-      let ticking = false;
-      window.addEventListener('scroll', function() {
-        if (!ticking) {
-          window.requestAnimationFrame(function() {
-            updateActiveNav();
-            ticking = false;
-          });
-          ticking = true;
+// 2026 Jump Navigation - Active State Handler
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sections = document.querySelectorAll('section[id]');
+    const navPills = document.querySelectorAll('.jump-nav-2026 .jump-pill-2026');
+  
+    window.addEventListener('scroll', () => {
+      let current = '';
+  
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
         }
       });
-      
-      // Initial check
-      updateActiveNav();
+  
+      navPills.forEach(pill => {
+        pill.classList.remove('active');
+        if (pill.getAttribute('href') === '#' + current) {
+          pill.classList.add('active');
+        }
+      });
     });
+  });
   </script>
+  
+  
   
 </body>
 </html>
