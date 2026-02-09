@@ -25,12 +25,12 @@
     }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Lora', -apple-system, BlinkMacSystemFont, serif;
   background: #FFFFFF;
   color: rgba(0, 0, 0, 0.955);
   line-height: 1.5; /* ✅ WCAG minimum */
-  letter-spacing: 0.12em; /* ✅ WCAG minimum */
-  word-spacing: 0.16em; /* ✅ WCAG minimum */
+  letter-spacing: 0.06em; /* ✅ WCAG minimum */
+  word-spacing: 0.12em; /* ✅ WCAG minimum */
   overflow-x: hidden;
 }
 
@@ -599,7 +599,7 @@ body {
     /* === SECTION HEADERS === */
     .section-header {
       text-align: center;
-      padding: 120px 80px 60px;
+      padding: 100px 80px 16px; /* less bottom padding */
       background: #ffffff;
     }
 
@@ -655,7 +655,7 @@ body {
 
     /* === CONTENT SECTION === */
     .content-section {
-      padding: 80px 80px;
+      padding: 0px 80px 80px;  /* less top padding, keep bottom */
       background: #FFF;
     }
 
