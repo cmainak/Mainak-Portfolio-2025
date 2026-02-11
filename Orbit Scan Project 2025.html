@@ -1540,6 +1540,94 @@ body {
       }
     }
         /* === AFFINITY MAPPING RESPONSIVE STYLES ENDS === */
+
+        /* Add at the end of your <style> section */
+
+/* Tablet & Mobile: Content Sections */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 40px 24px 60px !important; /* Reduced from 80px */
+  }
+  
+  .section-header {
+    padding: 60px 24px 16px !important; /* Reduced from 100px/80px */
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr !important; /* Stack columns */
+    gap: 40px !important;
+  }
+  
+  .process-grid {
+    grid-template-columns: 1fr !important; /* Already has 2-col at 1200px, force 1-col */
+  }
+  
+  .insights-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Comparison sections */
+  .comparison-container {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  
+  .comparison-arrow {
+    transform: rotate(90deg);
+    margin: 16px 0 !important;
+  }
+
+  .comparison-item {
+    flex: 1 1 100% !important; /* Force full width */
+    max-width: 100% !important;
+  }
+
+  
+
+  /* Typography DS sections */
+  responsive-table-container {
+    margin: 0 -24px; /* Extend to edges */
+    padding: 0 24px;
+  }
+  
+  .typography-table {
+    font-size: 11px !important;
+  }
+  
+  .typography-table th,
+  .typography-table td {
+    padding: 8px 6px !important;
+  }
+
+  /* Color DS sections */
+  .color-grid {
+    grid-template-columns: 1fr !important; /* Stack color columns */
+  }
+  
+  .primary-colors-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+  }
+}
+
+/* Mobile: Typography adjustments */
+@media (max-width: 480px) {
+  .content-section {
+    padding: 32px 20px 48px !important;
+  }
+  
+  .section-header {
+    padding: 48px 20px 12px !important;
+  }
+  
+  .content-block h3 {
+    font-size: 20px !important;
+  }
+  
+  .content-block p,
+  .highlight-box p {
+    font-size: 15px !important;
+  }
+}
     
   </style>
 </head>
@@ -4694,7 +4782,7 @@ Final Design Solutions - Detailed Screens & Features
 
 
 <script>
-  // 2026 Jump Navigation - Active State Handler
+  // 2026 Jump Navigation - Active State Handler //
   document.addEventListener('DOMContentLoaded', function () {
     const sections = document.querySelectorAll('section[id]');
     const navPills = document.querySelectorAll('.jump-nav-2026 .jump-pill-2026');
