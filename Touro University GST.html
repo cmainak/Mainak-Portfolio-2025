@@ -52,48 +52,75 @@
             border-radius: var(--radius-sm);
         }
 
-        /* === JUMP NAVIGATION === */
-        .jump-nav {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 6px;
-            border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            z-index: 1000;
-            display: flex;
-            gap: 4px;
-            width: max-content;
-            max-width: 90%;
-            overflow-x: auto;
-        }
+       /* === UPDATED JUMP NAVIGATION === */
+.jump-nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 6px 8px; /* Slightly tighter padding */
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    z-index: 1000;
+    width: max-content;
+    max-width: 90%;
+}
 
-        .jump-link {
-            text-decoration: none;
-            color: var(--text-body);
-            font-size: 13px;
-            font-weight: 600;
-            padding: 10px 18px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
+.jump-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
-        .jump-link:hover {
-            color: var(--primary);
-            background: var(--primary-soft);
-        }
+.jump-link {
+    text-decoration: none;
+    color: var(--text-body);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 30px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .jump-link.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 2px 10px rgba(2, 67, 125, 0.2);
-        }
+.jump-link:hover {
+    color: var(--primary);
+    background: var(--primary-soft);
+}
+
+.jump-link.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(2, 67, 125, 0.25);
+}
+
+/* Vertical Divider Line */
+.jump-divider {
+    width: 1px;
+    height: 16px;
+    background-color: var(--border-light);
+    margin: 0 4px;
+}
+
+/* Back to Top Icon Style */
+.jump-link.icon-only {
+    padding: 8px; /* Square/Circle shape */
+    width: 36px;
+    height: 36px;
+    color: var(--text-body);
+}
+
+.jump-link.icon-only:hover {
+    background: var(--primary);
+    color: #FFF;
+}
+
 
         /* === HOME BUTTON === */
         .home-button {
@@ -120,39 +147,10 @@
         }
 
         .home-button i {
-            color: rgba(0, 0, 0, 0.6);
-            font-size: 1.4rem;
-        }
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.6rem; /* Increased from 1.4rem for better visibility */
+}
 
-        /* === BACK TO TOP === */
-        .back-to-top {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 56px;
-            height: 56px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-            text-decoration: none;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-4px);
-            background: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-to-top i {
-            color: #000;
-            font-size: 20px;
-        }
 
         /* === UTILITY CLASSES === */
         .container {
@@ -511,13 +509,21 @@
 <body>
 
     <nav class="jump-nav">
-        <a href="#videos" class="jump-link">Video Projects</a>
-        <a href="#academic" class="jump-link">Academic Projects</a>
-        <a href="#graphics" class="jump-link">Graphics Projects</a>
+        <div class="jump-nav-inner">
+            <a href="#videos" class="jump-link">Videos</a>
+            <a href="#academic" class="jump-link">Academic</a>
+            <a href="#graphics" class="jump-link">Graphics</a>
+            
+            <div class="jump-divider"></div>
+            
+            <a href="#" class="jump-link icon-only" aria-label="Back to Top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
     </nav>
 
     <a href="work.html" class="home-button">
-        <i class="fas fa-home"></i>
+        <i class="fas fa-times"></i>
     </a>
 
     <section class="hero" style="padding-bottom: 20px;">
@@ -785,9 +791,6 @@
         <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 
-    <a href="#videos" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
 
     <script>
         // Lightbox functionality
@@ -846,22 +849,25 @@
         const navLi = document.querySelectorAll('.jump-nav .jump-link');
 
         window.onscroll = () => {
-            let current = '';
+    let current = '';
+    const sections = document.querySelectorAll('section[id]');
+    // Select only text links, ignore the icon-only back-to-top
+    const navLi = document.querySelectorAll('.jump-nav .jump-link:not(.icon-only)');
 
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
 
-            navLi.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href') == '#' + current) {
-                    a.classList.add('active');
-                }
-            });
-        };
+    navLi.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') == '#' + current) {
+            a.classList.add('active');
+        }
+    });
+};
     </script>
 
 </body>
