@@ -3071,50 +3071,9 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
 
 </section>
 
-<!-- Responsive CSS for More Projects -->
-<style>
-@media (max-width: 768px) {
-  .project-cards-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  
-  #more-projects {
-    padding: 40px 20px !important;
-  }
-  
-  #more-projects h2 {
-    font-size: 24px !important;
-  }
-  
-  .project-card [style*="padding: 24px"] {
-    padding: 20px !important;
-  }
-}
 
-@media (max-width: 480px) {
-  .project-cards-grid {
-    gap: 20px !important;
-  }
+
   
-  #more-projects [style*="flex-wrap: wrap"] {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 20px !important;
-  }
-}
-</style>
-
-    <!--More Projects ENDS-->
-    <script>
-      window.addEventListener("load", function () {
-        // Force the loader to stay for 2 seconds even if the page loads faster
-        setTimeout(function () {
-          document.getElementById("loader").style.display = "none";
-        }, 2000); // 2000ms = 2 seconds
-      });
-    </script>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // 1. Select only the sections linked in your nav
