@@ -22,6 +22,19 @@ body {
   color: #111;
 }
 
+/* Add this to your style section */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    margin-bottom: 0 !important;
+    display: block;
+}
+
+
 /* === LIGHTBOX STYLES === */
 .lightbox {
   display: none;
@@ -81,56 +94,164 @@ body {
   font-size: 1.4rem;
 }
 
-.floating-up-button {
+
+
+/* === 2026 MODERN JUMP NAVIGATION === */
+/* === MANAGEWISE JUMP NAVIGATION (YELLOW THEME) === */
+.jump-nav-2026 {
   position: fixed;
-  bottom: 20px; right: 20px;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
   z-index: 1000;
+  
+  /* FIX: Restored width to match ManageWise style */
+  width: calc(100vw - 40px);
+  max-width: 500px; /* Wider bar like before */
+  min-width: 320px;
+  
+  /* Glassmorphism background */
   background: rgba(255, 255, 255, 0.9);
-  width: 50px; height: 50px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Shadow */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  
+  border-radius: 50px;
+  padding: 6px 8px;
+  
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(50px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.jump-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 4px;
+}
+
+.jump-pills-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly; /* Spreads buttons evenly */
+  gap: 2px;
+}
+
+/* Individual Pill */
+.jump-pill-2026 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #111827; /* Dark text */
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Hover State */
+.jump-pill-2026:hover {
+  background: #FFF8E1; /* Light yellow hover */
+  color: #000;
+}
+
+/* ACTIVE STATE - MANAGEWISE YELLOW */
+.jump-pill-2026.active {
+  background: #FFCD29; /* ManageWise Brand Yellow */
+  color: #000;
+  box-shadow: 0 2px 8px rgba(255, 205, 41, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Active Dot */
+.jump-pill-2026.active::before {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  background: #000;
+  border-radius: 50%;
+}
+
+/* Prototype Pill Styling */
+.jump-pill-2026.prototype-pill {
+  position: relative;
+  padding-left: 20px; /* Space for icon */
+}
+
+.jump-pill-2026.prototype-pill::after {
+  content: '▶';
+  position: absolute;
+  left: 8px;
+  font-size: 8px;
+  color: #000;
+  opacity: 0.5;
+}
+
+/* Prototype Active State */
+.jump-pill-2026.prototype-pill.active {
+  background: #000; /* Black background for contrast */
+  color: #FFCD29; /* Yellow text */
+}
+
+.jump-pill-2026.prototype-pill.active::after {
+  color: #FFCD29;
+  opacity: 1;
+}
+
+/* Back to Top Button */
+.back-to-top-2026 {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  margin-left: 6px;
   text-decoration: none;
+  color: #111;
+  font-weight: 700;
+  transition: all 0.2s ease;
 }
 
-.floating-up-button:hover {
-  transform: scale(1.1);
-  background: white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.back-to-top-2026:hover {
+  background: #f3f4f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.floating-up-button i {
-  color: #333;
-  font-size: 1.4rem;
+/* Responsive Mobile */
+@media (max-width: 600px) {
+  .jump-nav-2026 {
+    width: calc(100vw - 32px);
+    max-width: none;
+    padding: 5px;
+    bottom: 16px;
+  }
+  .jump-pill-2026 {
+    font-size: 11px;
+    padding: 8px 4px;
+  }
 }
 
-/* === NAVIGATION PILLS === */
-.jump-pill {
-  display: inline-block;
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  font-size: 1.08rem;
-  padding: 9px 22px;
-  border-radius: 2em;
-  background: transparent;
-  transition: background .17s, color .17s;
-}
-
-.jump-pill:hover,
-.jump-pill:focus {
-  background: #FFCD29 !important;
-  color: #000 !important;
-  outline: none;
-}
-
-.jump-pill.active {
-  background: #FFCD29 !important;
-  color: #000 !important;
-}
+/* === JUMP LINKS / Back To Top Button Ends === */
 
 /* === MAIN CONTENT STRUCTURE === */
 .top-center-image {
@@ -500,35 +621,21 @@ body {
 
   <!-- Bottom-Fixed Jump Navigation Pills STARTS-->
 
-<nav aria-label="Case Study Navigation" class="jump-nav"
-style="
-  position: fixed;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  width: calc(100vw - 40px);
-  max-width: 430px;
-  min-width: 280px;
-  z-index: 1000;
-  background: rgba(255,255,255,0.92);
-  box-shadow: 0 8px 32px 0 rgba(32,34,54,0.14), 0 0 0 1.6px #e1e1ec;
-  border-radius: 2.2em;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(12px);
-">
-<ul style="
-  margin: 0; padding: 0; list-style: none;
-  display: flex; gap: 6px; align-items: center; 
-  width: 100%; justify-content: space-between;
-">
-  <li style="flex: 1;"><a href="#discover" class="jump-pill">Discover</a></li>
-  <li style="flex: 1;"><a href="#define" class="jump-pill">Define</a></li>
-  <li style="flex: 1;"><a href="#develop" class="jump-pill">Develop</a></li>
-  <li style="flex: 1;"><a href="#deliver" class="jump-pill">Deliver</a></li>
-</ul>
-</nav>
+  <nav aria-label="Case Study Navigation" class="jump-nav-2026">
+    <div class="jump-nav-inner">
+      <div class="jump-pills-container">
+        <a href="#discover" class="jump-pill-2026">Discover</a>
+        <a href="#define" class="jump-pill-2026">Define</a>
+        <a href="#develop" class="jump-pill-2026">Develop</a>
+        <a href="#deliver" class="jump-pill-2026">Deliver</a>
+        <a href="#prototype" class="jump-pill-2026 prototype-pill">Prototype</a>
+      </div>
+  
+      <a href="#intro" class="back-to-top-2026" aria-label="Back to top">
+        <span class="back-to-top-arrow">↑</span>
+      </a>
+    </div>
+  </nav>
 
   <!-- Bottom-Fixed Jump Navigation Pills ENDS-->
 
@@ -696,7 +803,7 @@ style="
 <!-- Enhanced Process Section -->
 <section id="process" style="padding:60px 20px;background:#fff;">
   <div style="max-width:1100px;margin:0 auto;padding:40px 30px;background:#fff;border-radius:16px;
-       box-shadow:0 4px 20px rgba(16,24,40,.1);border:1px solid #e5e7eb;">
+      ">
     
     
     
@@ -787,9 +894,9 @@ style="
     </div>
 
     <!-- Process Description -->
-    <div style="background: #ffffff; padding: 20px; border-radius: 12px; border-left: 4px solid #FFCD29; margin-top: 32px;">
-      <p style="margin: 0; font-size: 15px; text-align: center; color: #374151; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
-        "This Agile-inspired <span style="background: #FFCD29; color: #000; padding: 2px 6px; border-radius: 4px; font-weight: 600;"> Double Diamond </span> process helped us explore the problem space broadly, converge on insights, and continuously refine solutions through rapid testing and iteration. Each phase informed the next — and sometimes sent us back — until we reached a validated outcome.”
+    <div style="background: #ffffff; padding: 20px; border-radius: 12px;  margin-top: 32px;">
+      <p style="margin: 0; font-size: 24px; text-align: center; color: #374151; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+        "Double Diamond </span> process helped us explore the problem space broadly, converge on insights, and continuously refine solutions through rapid testing and iteration. Each phase informed the next and sometimes sent us back until we reached a validated outcome.”
       </p>
     </div>
   </div>
@@ -804,7 +911,7 @@ style="
 </h2>
 
 <section id="discover" style="padding: 60px 20px; margin: 8px auto 12px; background-color: #ffffff;">
-<div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 4px 20px rgba(16,24,40,.1);">
+<div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;">
    
 
 
@@ -1288,7 +1395,7 @@ style="
   
   
    <section id="define" style="padding: 60px 20px; background-color: #ffffff;">
-    <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 4px 20px rgba(16,24,40,.1);">
+    <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;">
     
 
   
@@ -1296,7 +1403,9 @@ style="
 <div style="margin: 28px auto 0; color: #0f172a; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 0;">
   <h2 style="margin: 0 0 8px; color: #000; font-size: 20px;">User Persona</h2>
 
-  <div data-block="persona" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; border: 1px solid #e5e7eb; background: #fff; border-radius: 14px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); max-width: 980px; margin: 0 auto; padding: 20px;">
+
+
+  <div data-block="persona" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; max-width: 980px; margin: 0 auto; padding: 20px;">
     
     <!-- Left Content -->
     <div style="flex: 2 1 420px; min-width: 280px;">
@@ -1669,7 +1778,7 @@ style="
   03&nbsp;/&nbsp;Ideation & Design – Creating the Framework
 </h2>
 <section id="develop" style="padding: 60px 20px; background-color: #ffffff;">
-    <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 4px 20px rgba(16,24,40,.1);">
+    <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;">
       
      
 
@@ -1695,16 +1804,16 @@ style="
       </div>
       
       <p style="margin: 0 0 16px; font-size: 15px; color: #374151; line-height: 1.6;">
-        For the ideation phase, I utilized the Crazy 8 brainstorming exercise. Each session consisted of five minutes spent rapidly sketching as many ideas as possible—ideally eight per round—followed by an intentional 20–30 minute break. I didn't always complete eight sketches each round, but this approach pushed me to generate a wide range of concepts in a short time.
+        For the ideation phase, I utilized the Crazy 8 brainstorming exercise. Each session consisted of five minutes spent rapidly sketching as many ideas as possible ideally eight per round followed by an intentional 20–30 minute break. I didn't always complete eight sketches each round, but this approach pushed me to generate a wide range of concepts in a short time.
       </p>
       
       <p style="margin: 0; font-size: 15px; color: #374151; line-height: 1.6;">
-        After five Crazy 8 sessions, I compiled my sketches and organized them by theme. Every idea I kept was inspired by something users told me—they wanted things to be <span style="background: #FFCD29; color: #000; padding: 2px 6px; border-radius: 4px; font-weight: 500;">clear, quick, and give them a little nudge when they need it.</span>
+        After five Crazy 8 sessions, I compiled my sketches and organized them by theme. Every idea I kept was inspired by something users told me they wanted things to be clear, quick, and give them a little nudge when they need it.
       </p>
     </div>
 
     <!-- Crazy 8s Sketch Display -->
-    <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08);">
+    <div style=" padding: 28px;  ">
       
       <!-- Image Frame -->
       <figure style="margin: 0 0 20px; border: 4px solid #f1f5f9; border-radius: 12px; background: #fff; overflow: hidden;">
@@ -2297,8 +2406,8 @@ style="
  <h2 style="text-align: center; color: #FFCD29; font-size: 28px; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
   04&nbsp;/&nbsp;Deliver - Final Designs & Refinements
 </h2>
-<section id="deliver" style="padding:60px 20px;background:linear-gradient(135deg,#fefefe 0%,#f8fafc 100%);">
-  <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 4px 20px rgba(16,24,40,.1);">
+<section id="deliver" style="padding:60px 20px;">
+  <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;">
     
    
 
@@ -2529,8 +2638,8 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
  <h2 style="text-align: center; color: #FFCD29; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px; font-size: 28px; margin-bottom: 8px;">
   Interactive Prototype
 </h2>
-<section id="process" style="padding:60px 20px;background:linear-gradient(135deg,#fefefe 0%,#f8fafc 100%);">
-  <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 4px 20px rgba(16,24,40,.1);">
+<section id="prototype" style="padding:60px 20px;">
+  <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;">
 
    
 
@@ -2673,9 +2782,10 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
     <h2 style="margin: 0 0 8px; font-size: 28px; color: #FFCD29; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
       Key Takeaways & Reflections
     </h2>
+  </div>
     
-<section id="process" style="padding:60px 20px;background:linear-gradient(135deg,#fefefe 0%,#f8fafc 100%);">
-  <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 4px 20px rgba(16,24,40,.1);">
+<section id="process" style="padding:60px 20px;">
+  <div style="max-width: 1100px; margin: 0 auto; padding:40px 30px;">
     
   
       <p style="margin: 0; font-size: 14px; color: #64748b; max-width: 600px; margin-left: auto; margin-right: auto;">
@@ -2854,7 +2964,7 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
         The Biggest Takeaway
       </h3>
       <p style="margin: 0; font-size: 16px; font-weight: 500; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-        Great AI UX isn't about the technology—it's about building user trust through transparency, control, and clear mental models. The most sophisticated AI becomes useless if users don't understand or trust it.
+        Great AI UX isn't about the technology it's about building user trust through transparency, control, and clear mental models. The most sophisticated AI becomes useless if users don't understand or trust it.
       </p>
     </div>
 
@@ -2889,214 +2999,67 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
   }
 }
 </style>
- 
-
 <!-- Key Takeaways & Reflection Section ENDS -->
+
+<!-- More Projects Section -->
+<section style="padding: 60px 20px;">
+  <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
     
+    <!-- Previous Project Button -->
+    <a href="Orbit Scan Project 2025.html">
+      <button style="padding: 12px 24px; border: 1px solid #e5e7eb; background: #fff; border-radius: 8px; cursor: pointer; color: #111827; font-size: 15px; font-weight: 500; transition: all 0.2s ease;" onmouseover="this.style.background='#f9fafb'; this.style.borderColor='#0C4700'" onmouseout="this.style.background='#fff'; this.style.borderColor='#e5e7eb'">
+        ← Previous
+      </button>
+    </a>
+  
+    <!-- Next Project Button -->
+    <a href="Touro University GST.html">
+      <button style="padding: 12px 24px; border: none; background: #FFCD29; color: #000; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.2s ease;" onmouseover="this.style.background='#FFCD29'" onmouseout="this.style.background='#FFCD29'">
+        Next Project →
+      </button>
+    </a>
+  
+  </div>
+</section>
+<!-- More Projects Section Ends -->
+
+<!-- Footer -->
+<footer style="background: #111827; color: #fff; padding: 60px 20px; text-align: center;">
+  <div style="max-width: 1200px; margin: 0 auto;">
     
-    <!--More Projects-->
+    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #fff;">Let's Connect</h3>
     
-<!-- Enhanced More Projects Section -->
-<section id="more-projects" style="padding: 60px 20px; background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    
-    <!-- Section Header -->
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 16px;">
-      <div>
-        <h2 style="margin: 0 0 8px; font-size: 28px; color: #000; font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 1px;">
-          MORE PROJECTS
-        </h2>
-        <p style="margin: 0; font-size: 14px; color: #64748b;">
-          Explore additional case studies and design work
-        </p>
-      </div>
-      
-      <!-- View All Link -->
-      <a href="work.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; background: #fff; color: #111827; text-decoration: none; border: 1px solid #e5e7eb; border-radius: 8px; font-weight: 500; font-size: 14px; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(16, 24, 40, 0.04);" onmouseover="this.style.background='#FFCD29'; this.style.borderColor='#FFCD29'; this.style.color='#000'" onmouseout="this.style.background='#fff'; this.style.borderColor='#e5e7eb'; this.style.color='#111827'">
-        <span>View All</span>
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
-          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
-        </svg>
+    <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+      <a href="https://www.linkedin.com/in/mainakc98/" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="mailto:mainak.chak04@gmail.com" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a href="https://drive.google.com/file/d/1_l2CEcNTSOgdJuJh1EaovdHdRfeJlUXM/view?usp=drive_link" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+        <i class="fas fa-file-alt"></i> Resume
       </a>
     </div>
-
-    <!-- Enhanced More Projects Section ENDS -->
-
-    <!-- Project Cards Grid -->
-    <div class="project-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 32px;">
-      
-<!-- Project Card 1: Orbit Scan (Corrected) -->
-<div class="project-card" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16, 24, 40, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 24, 40, 0.08)'">
-  
-  <!-- Project Image -->
-  <div style="position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
-    <a href="orbitscan.html" target="_blank" style="display: block; height: 100%;">
-      <img src="assets/img/Projects/Cover/Orbit.png" 
-           alt="Orbit Scan Grocery Shopping App Cover" 
-           style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
-           onmouseover="this.style.transform='scale(1.05)'"
-           onmouseout="this.style.transform='scale(1)'">
-    </a>
     
-    <!-- Status Badge -->
-    <div style="position: absolute; top: 12px; right: 12px; background: rgba(34, 197, 94, 0.9); color: #fff; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; backdrop-filter: blur(4px);">
-      Health Tech
-    </div>
   </div>
+</footer>
 
-  <!-- Project Content -->
-  <div style="padding: 24px;">
-    
-    <!-- Project Tags -->
-    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-      <span style="padding: 4px 10px; background: #eff6ff; color: #1e40af; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #dbeafe;">UX Research</span>
-      <span style="padding: 4px 10px; background: #fef3c7; color: #92400e; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #fed7aa;">Visual Design</span>
-      <span style="padding: 4px 10px; background: #f3e8ff; color: #6b21a8; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #e9d5ff;">Figma</span>
-    </div>
-
-    <!-- Project Title & Description -->
-    <h3 style="margin: 0 0 8px; font-size: 18px; color: #111827; font-weight: 600; line-height: 1.3;">
-      Orbit Scan
-    </h3>
-    <p style="margin: 0 0 16px; font-size: 14px; color: #64748b; line-height: 1.5;">
-      Smart grocery shopping app that scans food barcodes to decode ingredients, interpret health claims, and provide personalized nutrition guidance for healthier shopping decisions.
-    </p>
-
-    <!-- Project Stats/Details -->
-    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #f1f5f9;">
-      <div style="display: flex; gap: 16px;">
-        <div style="text-align: center;">
-          <div style="font-size: 16px; font-weight: 600; color: #111827;">12</div>
-          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Weeks</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 16px; font-weight: 600; color: #111827;">Health</div>
-          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Tech</div>
-        </div>
-      </div>
-      
-      <!-- View Project Arrow -->
-      <div style="width: 32px; height: 32px; background: #f8fafc; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;" onmouseover="this.style.background='#FFCD29'" onmouseout="this.style.background='#f8fafc'">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px; color: #64748b;">
-          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
-        </svg>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- End of Project Card 1 Orbit Scan -->
-
-
-      <!-- Project Card 2: Portfolio Redesign -->
-      <!-- Project Card 2: Personal Portfolio Design -->
-<div class="project-card" style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16, 24, 40, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 24, 40, 0.08)'">
-  
-  <!-- Project Image -->
-  <div style="position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
-    <a href="MC copy.html" target="_blank" style="display: block; height: 100%;">
-      <img src="assets/img/Projects/Cover/MC.png" 
-           alt="Personal Portfolio Website Redesign" 
-           style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
-           onmouseover="this.style.transform='scale(1.05)'"
-           onmouseout="this.style.transform='scale(1)'">
-    </a>
-    
-    <!-- Status Badge -->
-    <div style="position: absolute; top: 12px; right: 12px; background: rgba(59, 130, 246, 0.9); color: #fff; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; backdrop-filter: blur(4px);">
-      Web Design
-    </div>
-  </div>
-
-  <!-- Project Content -->
-  <div style="padding: 24px;">
-    
-    <!-- Project Tags -->
-    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-      <span style="padding: 4px 10px; background: #eff6ff; color: #1e40af; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #dbeafe;">Website Redesign</span>
-      <span style="padding: 4px 10px; background: #fef3c7; color: #92400e; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #fed7aa;">HTML</span>
-      <span style="padding: 4px 10px; background: #fee2e2; color: #991b1b; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #fecaca;">CSS</span>
-      <span style="padding: 4px 10px; background: #f3e8ff; color: #6b21a8; border-radius: 16px; font-size: 11px; font-weight: 500; border: 1px solid #e9d5ff;">Figma</span>
-    </div>
-
-    <!-- Project Title & Description -->
-    <h3 style="margin: 0 0 8px; font-size: 18px; color: #111827; font-weight: 600; line-height: 1.3;">
-      Personal Portfolio Redesign
-    </h3>
-    <p style="margin: 0 0 16px; font-size: 14px; color: #64748b; line-height: 1.5;">
-      Complete redesign and development of a personal portfolio website featuring modern UI principles, responsive layouts, and enhanced user experience to showcase design work effectively.
-    </p>
-
-    <!-- Project Stats/Details -->
-    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #f1f5f9;">
-      <div style="display: flex; gap: 16px;">
-        <div style="text-align: center;">
-          <div style="font-size: 16px; font-weight: 600; color: #111827;">6</div>
-          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Weeks</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 16px; font-weight: 600; color: #111827;">Web</div>
-          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Design</div>
-        </div>
-      </div>
-      
-      <!-- View Project Arrow -->
-      <div style="width: 32px; height: 32px; background: #f8fafc; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;" onmouseover="this.style.background='#FFCD29'" onmouseout="this.style.background='#f8fafc'">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px; color: #64748b;">
-          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
-        </svg>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-    <!-- End of Project Card 2 Portfolio Redesign -->
-
-<!-- Additional CTA with LinkedIn -->
-<div style="text-align: center; margin-top: 48px; padding: 32px; background: #fff; border-radius: 16px; border: 1px solid #e5e7eb;">
-  <h3 style="margin: 0 0 8px; font-size: 20px; color: #111827; font-weight: 600;">
-    Interested in working together?
-  </h3>
-  <p style="margin: 0 0 20px; font-size: 14px; color: #64748b; max-width: 400px; margin-left: auto; margin-right: auto;">
-    I'm always open to discussing new opportunities, design challenges, and creative collaborations.
-  </p>
-  <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #FFCD29; color: #000; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; transition: all 0.2s ease;" onmouseover="this.style.background='#e6b800'" onmouseout="this.style.background='#FFCD29'">
-    <span>Connect on LinkedIn</span>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
-      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.78-1.75-1.75s.79-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.27h-3v-5.5c0-1.32-.5-2.22-1.75-2.22-1 0-1.5.68-1.75 1.33-.09.22-.11.52-.11.83v5.56h-3v-10h3v1.33c.4-.61 1.17-1.48 2.84-1.48 2.08 0 3.65 1.36 3.65 4.28v6.87z"/>
-    </svg>
-  </a>
-</div>
-
-</section>
-
-
-
-  
 <script>
+  window.addEventListener("load", function() {
+    setTimeout(function() {
+      const loader = document.getElementById("loader");
+      if(loader) loader.style.display = "none";
+    }, 1000);
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
-    // 1. Select only the sections linked in your nav
-    // We specifically look for the sections that match your nav hrefs
     const sections = document.querySelectorAll('section#discover, section#define, section#develop, section#deliver');
-    
-    // 2. Select the navigation pills
     const navLinks = document.querySelectorAll('.jump-nav .jump-pill');
-  
-    // 3. Create the Observer
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -60% 0px', // Active triggers when section is near the middle of screen
-      threshold: 0
-    };
-  
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Get the ID of the section currently in view
           const currentId = entry.target.getAttribute('id');
-  
-          // Loop through links to add/remove class
           navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${currentId}`) {
@@ -3105,15 +3068,55 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
           });
         }
       });
+    }, { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(section => observer.observe(section));
+  });
+
+
+  // 1. Loader Script
+  window.addEventListener("load", function() {
+    setTimeout(function() {
+      const loader = document.getElementById("loader");
+      if(loader) loader.style.display = "none";
+    }, 1000);
+  });
+
+  // 2. Jump Navigation Active State
+  document.addEventListener('DOMContentLoaded', () => {
+    // Select all sections including the new #prototype
+    const sections = document.querySelectorAll('section#discover, section#define, section#develop, section#deliver, section#prototype');
+    
+    // Select the new pill classes
+    const navLinks = document.querySelectorAll('.jump-nav-2026 .jump-pill-2026');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Triggers when section is in the middle of screen
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            // Check if the link href matches the current section ID
+            if (link.getAttribute('href') === `#${currentId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
     }, observerOptions);
-  
-    // 4. Start observing
+
     sections.forEach(section => {
       observer.observe(section);
     });
   });
-  </script>
-      
-      
-    </body>
-    </html>
+</script>
+
+</body>
+</html>
