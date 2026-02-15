@@ -1038,103 +1038,107 @@ section {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/*
-==============================================
-// 10. BACK TO TOP BUTTON
-==============================================
-*/
 
-.back-to-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right: 15px;
-  bottom: 15px;
-  z-index: 996;
-  background: var(--accent-tertiary);
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  transition: all 0.4s;
-}
-
-.back-to-top i {
-  font-size: 28px;
-  color: var(--text-inverted);
-  line-height: 0;
-}
-
-.back-to-top:hover,
-.back-to-top:focus-visible {
-  background: var(--accent-tertiary-hover);
-  color: var(--text-inverted);
-  transform: translateY(-2px);
-}
-
-.back-to-top.active {
-  visibility: visible;
-  opacity: 1;
-}
 
 /*
 ==============================================
-// FLOATING UP BUTTON (IMPROVED TOUCH TARGETS)
+// 10. FLOATING UP BUTTON (IMPROVED TOUCH TARGETS)
 ==============================================
 */
 
-.floating-up-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.95); /* FIXED - was 0.067, now opaque */
-  width: 56px !important; /* FIXED - consistent sizing */
-  height: 56px !important; /* FIXED - consistent sizing */
-  min-width: 48px; /* Ensures accessibility minimum */
-  min-height: 48px; /* Ensures accessibility minimum */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  backdrop-filter: blur(10px); /* ADDED - modern look */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* ADDED */
-}
+/* ===================================================================
+   REFINED MINIMAL BACK-TO-TOP BUTTON
+   Simple, elegant, matches your portfolio aesthetic
+   =================================================================== */
 
-.floating-up-button i {
-  color: #333;
-  font-size: 1.5rem; /* Slightly larger for better visibility */
-}
-
-/* ACCESSIBILITY FIX: Visible focus indicator */
-.floating-up-button:focus,
-.floating-up-button:focus-visible {
-  outline: 3px solid #FF9933;
-  outline-offset: 2px;
-  transform: translateY(-4px) scale(1.05); /* IMPROVED - smoother animation */
-}
-
-.floating-up-button:hover {
-  transform: translateY(-4px) scale(1.05); /* IMPROVED - consistent with focus */
-  background: white;  
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-}
-
-/* Dark mode support */
-[data-theme='dark'] .floating-up-button {
-  background: rgba(25, 25, 25, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-[data-theme='dark'] .floating-up-button i {
-  color: #E0E0E0;
-}
-
-[data-theme='dark'] .floating-up-button:hover {
-  background: rgba(45, 45, 45, 0.98);
-}
+   .floating-up-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    
+    /* Clean minimal styling */
+    background: #FFFFFF;
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+    border-radius: 16px; /* Soft rounded corners */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Elegant shadow */
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.05);
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .floating-up-button i {
+    color: #02437D; /* Your brand blue */
+    font-size: 22px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover: Lift with orange accent */
+  .floating-up-button:hover {
+    transform: translateY(-4px);
+    background: #FFFFFF;
+    border-color: rgba(255, 153, 51, 0.3);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.12),
+      0 2px 6px rgba(255, 153, 51, 0.2);
+  }
+  
+  .floating-up-button:hover i {
+    color: #FF9933; /* Orange on hover */
+    transform: translateY(-2px);
+  }
+  
+  /* Active state: subtle press */
+  .floating-up-button:active {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Focus state for accessibility */
+  .floating-up-button:focus-visible {
+    outline: 2px solid #FF9933;
+    outline-offset: 3px;
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      0 0 0 4px rgba(255, 153, 51, 0.1);
+  }
+  
+  /* Dark mode */
+  [data-theme='dark'] .floating-up-button {
+    background: #1F1F1F;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  [data-theme='dark'] .floating-up-button i {
+    color: #E0E0E0;
+  }
+  
+  [data-theme='dark'] .floating-up-button:hover {
+    border-color: rgba(255, 153, 51, 0.4);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.4),
+      0 2px 6px rgba(255, 153, 51, 0.3);
+  }
+  
+  [data-theme='dark'] .floating-up-button:hover i {
+    color: #FF9933;
+  }
+  
 
 
 /*
