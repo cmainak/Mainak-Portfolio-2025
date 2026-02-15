@@ -772,10 +772,21 @@ section {
   border: 1px solid var(--accent-primary);
   color: var(--accent-primary);
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   transition: all 0.2s ease;
+  white-space: nowrap; /* Prevents breaking */
+  padding: 8px 16px; /* Desktop */
 }
+
+
+@media (max-width: 576px) {
+  .skill-pill {
+    padding: 6px 10px; /* Mobile - smaller */
+    font-size: 11px;
+  }
+}
+
 
 
 
@@ -857,7 +868,7 @@ section {
 }
 
 .about-subtitle {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 500;
   color: var(--text-subtitle);
   margin-bottom: 24px;
@@ -868,7 +879,7 @@ section {
 }
 
 .about-description {
-  font-size: 1rem; /* CHANGED from 16px */
+  font-size: 16px; /* CHANGED from 16px */
   line-height: 1.6;
   color: var(--text-description);
   margin-bottom: 1rem; /* CHANGED from 16px */
