@@ -315,7 +315,7 @@ const initThemeToggle = () => {
   
   // Cache all theme-dependent elements
   const themeElements = {
-    footer: document.getElementById('footer'),
+    footer: document.getElementById('contact'),
     orbitTile: document.getElementById('project-orbit'),
     manageTile: document.getElementById('project-manage-wise'),
     todoTile: document.getElementById('project-todo'),
