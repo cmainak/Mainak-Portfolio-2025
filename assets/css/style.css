@@ -879,7 +879,7 @@ section {
   right: -0.1em;
   bottom: 0.1em;
   height: 0.9em;
-  background: var(--accent-swoosh);
+  background: #c1e1ff;
   z-index: -1;
   clip-path: ellipse(70% 85% at 50% 100%);
 }
@@ -922,13 +922,13 @@ section {
 /* Skill Pills */
 .skill-pill {
   display: inline-block;
-  padding: 6px 14px;
+  padding: 8px 16px;
   background: var(--bg-primary);
   border: 1px solid var(--accent-primary);
   color: #000;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   transition: all 0.2s ease;
   white-space: nowrap; /* Prevents breaking */
   padding: 8px 16px; /* Desktop */
