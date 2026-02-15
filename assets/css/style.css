@@ -769,19 +769,15 @@ section {
   display: inline-block;
   padding: 6px 14px;
   background: var(--bg-primary);
-  border: 2px solid var(--accent-primary);
+  border: 1px solid var(--accent-primary);
   color: var(--accent-primary);
-  border-radius: 20px;
+  border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
   transition: all 0.2s ease;
 }
 
-.skill-pill:hover {
-  background: var(--accent-primary);
-  color: white;
-  transform: translateY(-2px);
-}
+
 
 /*
 ==============================================
