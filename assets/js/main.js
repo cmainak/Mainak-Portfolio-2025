@@ -46,6 +46,8 @@ const on = (type, el, listener, all = false) => {
   }
 };
 
+
+
 /**
  * ===================================================================
  * 2. SCROLL-BASED FUNCTIONALITY (OPTIMIZED)
@@ -486,4 +488,32 @@ if (window.performance && console.table) {
       });
     }
   });
+
+  /**
+ * ===================================================================
+ * 9. SCROLL PROGRESS INDICATOR
+ * ===================================================================
+ */
+
+const updateProgressBar = () => {
+  const progressBar = document.getElementById('progress-bar');
+  if (!progressBar) return;
+  
+  const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (window.scrollY / windowHeight) * 100;
+  
+  requestAnimationFrame(() => {
+    progressBar.style.width = scrolled + '%';
+  });
+};
+
+// Add to your existing scroll handler
+document.addEventListener('scroll', debounce(() => {
+  handleScroll();
+  updateProgressBar();
+}, 10), { passive: true });
+
+// Initialize on load
+window.addEventListener('load', updateProgressBar);
+
 }

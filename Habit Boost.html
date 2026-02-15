@@ -641,6 +641,18 @@
 </head>
 <body>
 
+  <!-- Reading Progress Bar -->
+<div id="progress-bar" style="
+position: fixed;
+top: 0;
+left: 0;
+height: 3px;
+background: linear-gradient(to right,  #FFF, #6D29D9);
+width: 0%;
+z-index: 9998;
+transition: width 0.1s ease;">
+</div>
+
   <nav class="jump-nav" aria-label="Case Study navigation">
     <div class="jump-nav-inner">
       <!-- Scrollable pills -->
@@ -1114,9 +1126,11 @@
     </div>
   </footer>
 
-  <a href="#research" class="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-  </a>
+
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js" defer></script>
+
 
   <script>
     const sections = document.querySelectorAll('section[id]');

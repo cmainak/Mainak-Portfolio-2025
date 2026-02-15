@@ -98,6 +98,18 @@
 </head>
 
 <body>
+
+  <!-- Reading Progress Bar -->
+<div id="progress-bar" style="
+position: fixed;
+top: 0;
+left: 0;
+height: 3px;
+background: linear-gradient(to right,  #FFF, #02437D);
+width: 0%;
+z-index: 9998;
+transition: width 0.1s ease;">
+</div>
   
   <!-- ACCESSIBILITY FIX: Skip navigation link -->
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -941,81 +953,6 @@ text-align: center;">
 
     <!--Password Protect Ends-->
 
-  <!-- GDPR Cookie Consent Banner 
-<div id="cookie-banner" style="
-position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
-background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-color: white;
-padding: 24px 20px;
-text-align: center;
-z-index: 10000;
-display: none;
-box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-backdrop-filter: blur(10px);
-font-family: 'Chakra Petch', sans-serif;">
-
-<div style="max-width: 1200px; margin: 0 auto;">
-  <p style="margin: 0 0 16px; font-size: 15px; line-height: 1.5;">
-    We use cookies to improve your experience and analyze site traffic. 
-    <a href="cookie-policy.html" style="color: #FF9933; text-decoration: underline;">Learn more</a>
-  </p>
-  <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    <button onclick="acceptCookies()" style="
-      background: #FF9933;
-      color: white;
-      padding: 10px 24px;
-      border: none;
-      border-radius: 6px;
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;">
-      Accept All
-    </button>
-    <button onclick="rejectCookies()" style="
-      background: transparent;
-      color: white;
-      padding: 10px 24px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 6px;
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;">
-      Reject Non-Essential
-    </button>
-  </div>
-</div>
-</div>
-
-<script>
-function acceptCookies() {
-localStorage.setItem('cookieConsent', 'accepted');
-document.getElementById('cookie-banner').style.display = 'none';
-}
-
-function rejectCookies() {
-localStorage.setItem('cookieConsent', 'rejected');
-document.getElementById('cookie-banner').style.display = 'none';
-}
-
-// Show banner if no consent recorded
-if (!localStorage.getItem('cookieConsent')) {
-setTimeout(function() {
-  document.getElementById('cookie-banner').style.display = 'block';
-}, 1000); // Show after 1 second to not overwhelm users
-}
-</script>
--->
 
 </body>
 

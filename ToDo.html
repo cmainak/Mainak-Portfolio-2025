@@ -165,12 +165,12 @@
     /* Remove transform used for centering */
     .home-button:hover {
       transform: scale(1.1); /* Only scale now */
-      background: #5b21b6;
+      background: #c6b6f5;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .home-button i {
-      color: #ffffff;
+      color: #000;
       font-size: 1.4rem;
     }
 
@@ -1089,6 +1089,18 @@
 </head>
 
 <body>
+
+  <!-- Reading Progress Bar -->
+<div id="progress-bar" style="
+position: fixed;
+top: 0;
+left: 0;
+height: 3px;
+background: linear-gradient(to right,  #FFF, #7c3aed);
+width: 0%;
+z-index: 9998;
+transition: width 0.1s ease;">
+</div>
 
       <!-- Bottom-Fixed Jump Navigation Pills STARTS-->
       <nav aria-label="Case Study Navigation" class="jump-nav"
@@ -2543,6 +2555,10 @@ Final Design Solutions - Detailed Screens
   </div>
 </footer>
   <!-- Footer END -->
+
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js" defer></script>
 
 
   <script>

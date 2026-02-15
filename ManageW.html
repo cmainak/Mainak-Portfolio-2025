@@ -515,15 +515,25 @@ min-width: 320px;          /* Minimum width on small phones */
     <p style="font-size: 18px; color: #333;">Loading awesome work... hang tight 🚀</p>
   </div>
 
+  <!-- Reading Progress Bar -->
+<div id="progress-bar" style="
+position: fixed;
+top: 0;
+left: 0;
+height: 3px;
+background: linear-gradient(to right,  #FFF, #FFCD29);
+width: 0%;
+z-index: 9998;
+transition: width 0.1s ease;">
+</div>
+
     <!-- Floating Cross (Back) Button -->
     <a href="work.html" class="home-button">
       <i class="fas fa-times"></i>
   </a>
   <!-- Floating Cross (Back) Button Ends -->
 
-  <a href="#intro" class="floating-up-button">
-    <i class="fas fa-arrow-up"></i>
-  </a>
+
 
   <!-- Bottom-Fixed Jump Navigation Pills STARTS-->
 
@@ -2949,6 +2959,10 @@ onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12
     
   </div>
 </footer>
+
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js" defer></script>
 
 <script>
   window.addEventListener("load", function() {
