@@ -764,28 +764,7 @@ section {
   border-top: 1px solid var(--border-color);
 }
 
-/* Skill Pills */
-.skill-pill {
-  display: inline-block;
-  padding: 6px 14px;
-  background: var(--bg-primary);
-  border: 1px solid var(--accent-primary);
-  color: var(--accent-primary);
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  white-space: nowrap; /* Prevents breaking */
-  padding: 8px 16px; /* Desktop */
-}
 
-
-@media (max-width: 576px) {
-  .skill-pill {
-    padding: 6px 10px; /* Mobile - smaller */
-    font-size: 11px;
-  }
-}
 
 
 
@@ -938,6 +917,29 @@ section {
   .about-subtitle { font-size: 18px; }
   .about-description { font-size: 15px; text-align: center; }
   .about-avatar img { max-width: 70%; }
+}
+
+/* Skill Pills */
+.skill-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--accent-primary);
+  color: #000;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Prevents breaking */
+  padding: 8px 16px; /* Desktop */
+}
+
+
+@media (max-width: 576px) {
+  .skill-pill {
+    padding: 6px 10px; /* Mobile - smaller */
+    font-size: 11px;
+  }
 }
 
 /*
