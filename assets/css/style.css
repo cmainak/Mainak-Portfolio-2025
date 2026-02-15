@@ -850,7 +850,7 @@ section {
   font-size: 24px;
   font-weight: 500;
   color: var(--text-subtitle);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .highlight {
@@ -858,10 +858,10 @@ section {
 }
 
 .about-description {
-  font-size: 16px; /* CHANGED from 16px */
-  line-height: 1.6;
+  font-size: 16px; 
+  line-height: 1.4;
   color: var(--text-description);
-  margin-bottom: 1rem; /* CHANGED from 16px */
+  margin-bottom: 16px;
   text-align: justify;
 }
 
