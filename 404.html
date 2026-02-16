@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+<head>
+  <!-- Character Encoding & Viewport -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: Primary Meta Tags -->
+  <title>404 - Page Not Found | Mainak Chakraborty</title>
+  <meta name="title" content="404 - Page Not Found | Mainak Chakraborty">
+  <meta name="description" content="Oops! The page you're looking for doesn't exist.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/Logo2.svg" type="image/svg+xml">
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Chakra Petch', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              500: '#02437D',
+              600: '#023666',
+            },
+            accent: {
+              500: '#FF9933',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth scroll behavior */
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+
+    /* Floating animation for 404 number */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Glitch effect for 404 */
+    @keyframes glitch {
+      0% {
+        text-shadow: 2px 2px #02437D, -2px -2px #FF9933;
+      }
+      25% {
+        text-shadow: -2px 2px #FF9933, 2px -2px #02437D;
+      }
+      50% {
+        text-shadow: 2px -2px #02437D, -2px 2px #FF9933;
+      }
+      75% {
+        text-shadow: -2px -2px #FF9933, 2px 2px #02437D;
+      }
+      100% {
+        text-shadow: 2px 2px #02437D, -2px -2px #FF9933;
+      }
+    }
+
+    .glitch:hover {
+      animation: glitch 0.3s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans antialiased overflow-x-hidden">
+
+  <!-- 404 Error Section -->
+  <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 px-6 py-16 sm:py-20 overflow-hidden">
+
+
+    <!-- Animated Background Blobs (matching your hero section) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-400/20 dark:bg-blue-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-70"></div>
+      <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-orange-400/20 dark:bg-orange-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-70" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-400/10 dark:bg-purple-500/5 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-50" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center max-w-2xl">
+      
+      <!-- Logo -->
+      <a href="index.html" class="inline-block mb-8 hover:scale-110 transition-transform duration-300">
+        <img src="assets/img/Logo2.svg" alt="Mainak Chakraborty Logo" class="h-12 w-12 mx-auto">
+      </a>
+<!-- 404 Illustration -->
+<div class="mb-8">
+    <img src="assets/img/404/404 Cover.png" 
+         alt="404 Error Illustration - Page not found" 
+         class="w-full max-w-md mx-auto"
+         width="500"
+         height="400">
+  </div>
+  
+  <!-- 404 Number (Optional - Keep or Remove) -->
+  <div class="float-animation mb-6">
+    <h1 class="text-7xl sm:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-accent-500 to-primary-600 glitch">
+      404
+    </h1>
+  </div>
+  
+
+      <!-- Error Message -->
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+        Oops! Page Not Found
+      </h2>
+
+      <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-lg mx-auto">
+        The page you're looking for seems to have wandered off. Let's get you back on track.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        
+        <!-- Go Home Button -->
+        <a href="index.html" 
+           class="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-primary-500/50">
+          <i class="fas fa-home"></i>
+          Go Home
+        </a>
+
+        <!-- View Work Button -->
+        <a href="work.html" 
+           class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-semibold rounded-lg shadow hover:-translate-y-1 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-slate-500/50">
+          <i class="fas fa-briefcase"></i>
+          View My Work
+        </a>
+
+      </div>
+
+      <!-- Helpful Links -->
+      <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
+          Looking for something specific?
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center text-sm">
+          <a href="index.html#about" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 underline underline-offset-4 transition-colors">
+            About Me
+          </a>
+          <a href="index.html#work" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 underline underline-offset-4 transition-colors">
+            Projects
+          </a>
+          <a href="index.html#contact" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 underline underline-offset-4 transition-colors">
+            Contact
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Optional: Add theme toggle if you want dark mode on 404 page -->
+  <button onclick="document.documentElement.classList.toggle('dark')" 
+          class="fixed top-6 right-6 z-50 p-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          aria-label="Toggle dark mode">
+    <svg class="w-6 h-6 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/>
+      <line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/>
+      <line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+    <svg class="w-6 h-6 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+
+</body>
+</html>
