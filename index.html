@@ -339,94 +339,83 @@
   <!-- Main Content -->
   <main id="main-content" role="main">
 
-     <!-- Hero Section -->
-    <!-- Hero Section (Production Code + Original Visual Style) -->
+<!-- Hero Section -->
 <section id="hero" 
-class="relative min-h-screen flex items-center justify-center 
-       bg-gradient-to-br from-slate-50 via-white to-blue-50 
-       dark:from-slate-900 dark:via-slate-900 dark:to-slate-800" 
-aria-labelledby="hero-heading">
+         class="relative min-h-screen flex items-center justify-center 
+                bg-gradient-to-br from-slate-50 via-white to-blue-50 
+                dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 
+                pb-8 sm:pb-12 md:pb-16" 
+         aria-labelledby="hero-heading">
 
-<!-- Animated Background Blobs (Original Style) -->
-<div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-<!-- Left Blob -->
-<div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-400/20 dark:bg-blue-500/10 
-       rounded-full mix-blend-multiply filter blur-3xl 
-       animate-pulse opacity-70"></div>
-<!-- Right Blob -->
-<div class="absolute -bottom-40 -right-40 w-96 h-96 bg-orange-400/20 dark:bg-orange-500/10 
-       rounded-full mix-blend-multiply filter blur-3xl 
-       animate-pulse opacity-70" 
-style="animation-delay: 1s;"></div>
-<!-- Center Blob -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-       w-[500px] h-[500px] bg-purple-400/10 dark:bg-purple-500/5 
-       rounded-full mix-blend-multiply filter blur-3xl 
-       animate-pulse opacity-50" 
-style="animation-delay: 2s;"></div>
-</div>
+  <!-- Animated Background Blobs (Original Style) -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <!-- Left Blob -->
+    <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-400/20 dark:bg-blue-500/10 
+                rounded-full mix-blend-multiply filter blur-3xl 
+                animate-pulse opacity-70"></div>
+    <!-- Right Blob -->
+    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-orange-400/20 dark:bg-orange-500/10 
+                rounded-full mix-blend-multiply filter blur-3xl 
+                animate-pulse opacity-70" 
+         style="animation-delay: 1s;"></div>
+    <!-- Center Blob -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                w-[500px] h-[500px] bg-purple-400/10 dark:bg-purple-500/5 
+                rounded-full mix-blend-multiply filter blur-3xl 
+                animate-pulse opacity-50" 
+         style="animation-delay: 2s;"></div>
+  </div>
 
-<!-- Hero Content -->
-<div class="relative z-10 text-center px-6 sm:px-8">
+  <!-- Hero Content -->
+  <div class="relative z-10 text-center px-6 sm:px-8">
 
-<!-- Greeting -->
-<p class="text-base sm:text-lg md:text-xl 
-      text-slate-600 dark:text-slate-400 
-      font-medium tracking-wide
-      animate-fade-in mb-4 sm:mb-6">
-Hey there! 👋 I am
-</p>
+    <!-- Greeting -->
+    <p class="text-base sm:text-lg md:text-xl 
+              text-slate-600 dark:text-slate-400 
+              font-medium tracking-wide
+              animate-fade-in mb-4 sm:mb-6">
+      Hey there! 👋 I am
+    </p>
 
-<!-- Name (Balanced Size) -->
-<h1 id="hero-heading" 
-    class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem]
-           font-bold 
-           text-transparent bg-clip-text 
-           bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900
-           dark:from-white dark:via-blue-200 dark:to-white
-           lowercase 
-           leading-none tracking-tight
-           animate-fade-in-up
-           drop-shadow-2xl">
-  mainak
-</h1>
+    <!-- Name (Balanced Size) -->
+    <h1 id="hero-heading" 
+        class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem]
+               font-bold 
+               text-transparent bg-clip-text 
+               bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900
+               dark:from-white dark:via-blue-200 dark:to-white
+               lowercase 
+               leading-none tracking-tight
+               animate-fade-in-up
+               drop-shadow-2xl">
+      mainak
+    </h1>
+  </div>
 
+  <!-- Scroll Indicator (Original Mouse Design) -->
+  <a href="#about" 
+   class="absolute bottom-12 sm:bottom-16 md:bottom-20 left-1/2 -translate-x-1/2
+            flex flex-col items-center gap-3
+            text-slate-500 dark:text-slate-400 
+            hover:text-blue-600 dark:hover:text-blue-400
+            transition-colors duration-300
+            animate-bounce
+            focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-2" 
+     aria-label="Scroll down to about section">
 
-<!-- Decorative Line (Original Style) -->
-<div class="flex justify-center mt-6 sm:mt-8 mb-12">
-<div class="h-1 w-32 rounded-full 
-         bg-gradient-to-r from-transparent via-blue-600 to-transparent 
-         dark:via-blue-400
-         animate-pulse"></div>
-</div>
-</div>
+    <!-- Mouse Scroll Icon -->
+    <div class="w-7 h-11 rounded-full border-2 border-current 
+                flex justify-center pt-2 relative">
+      <div class="w-1 h-3 bg-current rounded-full 
+                  animate-scroll-wheel"></div>
+    </div>
 
-<!-- Scroll Indicator (Original Mouse Design) -->
-<!-- Scroll Indicator (Closer to Content) -->
-<a href="#about" 
-   class="absolute bottom-16 left-1/2 -translate-x-1/2
-          flex flex-col items-center gap-3
-          text-slate-500 dark:text-slate-400 
-          hover:text-blue-600 dark:hover:text-blue-400
-          transition-colors duration-300
-          animate-bounce
-          focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-2" 
-   aria-label="Scroll down to about section">
-
-
-<!-- Mouse Scroll Icon -->
-<div class="w-7 h-11 rounded-full border-2 border-current 
-       flex justify-center pt-2 relative">
-<div class="w-1 h-3 bg-current rounded-full 
-         animate-scroll-wheel"></div>
-</div>
-
-<!-- Arrow -->
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" 
-   d="M19 14l-7 7m0 0l-7-7"/>
-</svg>
-</a>
+    <!-- Arrow -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" 
+            d="M19 14l-7 7m0 0l-7-7"/>
+    </svg>
+  </a>
 </section>
 
 <style>
