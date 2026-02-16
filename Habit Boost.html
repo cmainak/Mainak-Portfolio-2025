@@ -19,7 +19,8 @@
     .home-button {
   position: fixed;
   top: 20px; /* Distance from top */
-  right: 40px; /* Stick to the right instead of left */
+  right: 16px; /* Reduced for mobile */
+  top: 16px;
   z-index: 1001;
   background: rgba(255, 255, 255, 0.2);
   width: 50px;
@@ -73,7 +74,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     html {
-      scroll-behavior: smooth; /* Enables smooth scrolling for jump links */
+      scroll-behavior: smooth; overflow-x: hidden; 
     }
 
     body {
@@ -700,7 +701,7 @@ transition: width 0.1s ease;">
         </div>
 
         <div class="flex-center">
-          <img src="assets/img/Projects/Habit Boost/Case Study/Hero Image.png" alt="Habit Boost App Preview" style="max-width: 100%; min-width: 280px;">
+          <img src="assets/img/Projects/Habit Boost/Case Study/Hero Image.png" alt="Habit Boost App Preview" style="max-width: 100%;">
         </div>
       </div>
 
