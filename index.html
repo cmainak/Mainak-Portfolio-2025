@@ -841,7 +841,7 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
 
       <!-- Image -->
       <figure>
-        <img src="assets/img/Projects/Habit Boost/Cover.png"
+        <img src="assets/img/Projects/Habit Boost/Card Cover/Cover.png"
              alt="Habit Boost mobile app displaying garden metaphor interface and habit tracking screens with gamification elements"
              width="480"
              height="400"
@@ -1063,6 +1063,36 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
     
     window.addEventListener('scroll', function() {
       updateProgressBar();
+    });
+ // Get mobile menu and all navigation links
+ const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+    const menuToggle = document.querySelector('[aria-controls="mobile-menu"]');
+
+    // Add click event to each link
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // Close the menu
+        mobileMenu.classList.add('hidden');
+        
+        // Update toggle button aria-expanded
+        if (menuToggle) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Optional: Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      const isClickInsideMenu = mobileMenu.contains(event.target);
+      const isClickOnToggle = menuToggle && menuToggle.contains(event.target);
+      
+      if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        if (menuToggle) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      }
     });
   </script>
 
