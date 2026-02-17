@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbit Scan - UX Case Study</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="assets/img/Orbit/OrbitScanLogo.png" type="image/png">
+
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #FFFFFF;
+      color: rgba(0, 0, 0, 0.955);
+      line-height: 1.6;
+      letter-spacing: 0.06em;
+      word-spacing: 0.12em;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* === FLOATING HOME BUTTON === */
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .home-button:hover {
+      transform: scale(1.1);
+      background: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .home-button i {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 1.6rem;
+    }
+
+    /* === 2026 MODERN JUMP NAVIGATION === */
+    .jump-nav-2026 {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      z-index: 1000;
+      
+      width: calc(100vw - 40px);
+      max-width: 780px;
+      min-width: 320px;
+      
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 0 40px rgba(177, 215, 59, 0.15),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+      
+      border-radius: 32px;
+      padding: 8px;
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    .jump-nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .jump-pills-container {
+      flex: 1;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+      flex-wrap: nowrap;
+    }
+
+    .jump-pills-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .jump-pill-2026 {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 20px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      background: transparent;
+      border: 1px solid transparent;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .jump-pill-2026:hover {
+      background: rgba(183, 182, 182, 0.06);
+      border-color: rgba(177, 215, 59, 0.2);
+      color: rgba(0, 0, 0, 0.9);
+      transform: translateY(-2px);
+    }
+
+    .jump-pill-2026.active {
+      background: linear-gradient(135deg, #0C4700 0%, #16a34a 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 
+        0 4px 20px rgba(177, 215, 59, 0.3),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .jump-pill-2026.active::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 5px;
+      height: 5px;
+      background: #B1D73B;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(177, 215, 59, 0.8);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.2); }
+    }
+
+    .jump-pill-2026.prototype-pill {
+      position: relative;
+    }
+
+    .jump-pill-2026.prototype-pill::after {
+      content: '▶';
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 8px;
+      color: rgba(168, 85, 247, 0.7);
+      transition: all 0.3s ease;
+    }
+
+    .jump-pill-2026.prototype-pill:hover::after {
+      color: #a855f7;
+      left: 5px;
+    }
+
+    .jump-pill-2026.prototype-pill.active {
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    }
+
+    .jump-pill-2026.prototype-pill.active::before {
+      background: #c084fc;
+      box-shadow: 0 0 8px rgba(192, 132, 252, 0.8);
+    }
+
+    .back-to-top-2026 {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #B1D73B 0%, #16a34a 100%);
+      border: 1px solid rgba(177, 215, 59, 0.3);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 
+        0 4px 16px rgba(177, 215, 59, 0.25),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+      text-decoration: none;
+      color: #000;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .back-to-top-2026:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 6px 24px rgba(177, 215, 59, 0.4),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+      background: linear-gradient(135deg, #c4e356 0%, #22c55e 100%);
+    }
+
+    .back-to-top-arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .back-to-top-2026:hover .back-to-top-arrow {
+      transform: translateY(-2px);
+    }
+
+    /* === HERO SECTION === */
+    .hero-section {
+      padding: 120px 40px 80px;
+      background: linear-gradient(180deg, rgba(177, 215, 59, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-grid {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .project-tag-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .tag-icon {
+      width: 8px;
+      height: 8px;
+      background: #B1D73B;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(177, 215, 59, 0.6);
+    }
+
+    .project-tag-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.7);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .title-card {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: #000;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #0C4700 0%, #16a34a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2.5vw, 20px);
+      line-height: 1.7;
+      color: rgba(0, 0, 0, 0.7);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .meta-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .meta-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 700;
+    }
+
+    .meta-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    /* === CONTENT SECTIONS === */
+    .section-spacer {
+      padding: 80px 40px;
+    }
+
+    .section-spacer-alt {
+      padding: 80px 40px;
+      background: #F9FAFB;
+    }
+
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, #1F1F1F 0%, #141414 100%);
+      border: 1px solid rgba(177, 215, 59, 0.3);
+      border-radius: 20px;
+      color: #B1D73B;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 24px;
+    }
+
+    .content-block {
+      margin-bottom: 60px;
+    }
+
+    .content-block h3 {
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: #000;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+
+    .content-block p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(0, 0, 0, 0.8);
+      margin-bottom: 24px;
+    }
+
+    .highlight-box {
+      background: rgba(177, 215, 59, 0.08);
+      border-left: 4px solid #0C4700;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 24px 0;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    .bullet-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #0C4700;
+      font-weight: 700;
+    }
+
+    /* === RESPONSIVE BREAKPOINTS === */
+    @media (min-width: 1200px) {
+      .jump-nav-2026 {
+        max-width: 820px;
+      }
+      
+      .jump-pill-2026 {
+        font-size: 14px;
+        padding: 16px 22px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .jump-nav-2026 {
+        max-width: 700px;
+      }
+      
+      .jump-pill-2026 {
+        font-size: 12px;
+        padding: 14px 18px;
+      }
+      
+      .back-to-top-2026 {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .jump-nav-2026 {
+        max-width: calc(100vw - 32px);
+        bottom: 16px;
+        padding: 6px;
+      }
+      
+      .jump-nav-inner {
+        gap: 6px;
+      }
+      
+      .jump-pills-container {
+        gap: 5px;
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+      }
+      
+      .jump-pill-2026 {
+        font-size: 11px;
+        padding: 12px 16px;
+      }
+      
+      .back-to-top-2026 {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+      }
+
+      .hero-section {
+        padding: 80px 24px 60px;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-spacer,
+      .section-spacer-alt {
+        padding: 60px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .jump-pill-2026 {
+        font-size: 10px;
+        padding: 10px 14px;
+      }
+      
+      .back-to-top-2026 {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar" style="position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(to right, #FFF, #0D4700); width: 0%; z-index: 9998; transition: width 0.1s ease;"></div>
+
+  <!-- Bottom-Fixed Jump Navigation Pills -->
+  <nav aria-label="Case Study Navigation" class="jump-nav-2026">
+    <div class="jump-nav-inner">
+      <div class="jump-pills-container">
+        <a href="#context" class="jump-pill-2026 active">Context & Problem</a>
+        <a href="#approach" class="jump-pill-2026">Approach</a>
+        <a href="#decisions" class="jump-pill-2026">Key Decisions</a>
+        <a href="#outcome" class="jump-pill-2026">Outcome</a>
+        <a href="#reflections" class="jump-pill-2026">Reflections</a>
+        <a href="#prototype" class="jump-pill-2026 prototype-pill">Prototype</a>
+      </div>
+      <a href="#context" class="back-to-top-2026" aria-label="Back to top">
+        <span class="back-to-top-arrow">↑</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Floating Cross Back Button -->
+  <a href="work.html" class="home-button">
+    <i class="fas fa-times"></i>
+  </a>
+
+ <!-- Hero Section -->
+<section class="hero-section" id="context">
+    <div class="hero-container">
+      <div class="hero-grid">
+        <div class="project-tag-card">
+          <div class="tag-icon"></div>
+          <span class="project-tag-text">UX/UI Design • Mobile App (IOS)</span>
+        </div>
+      </div>
+  
+      <div class="title-card">
+        <h1 class="hero-title">
+          <span class="highlight">Orbit Scan:</span><br>
+          Smarter, Healthier<br>
+          Product Choices
+        </h1>
+        <p class="hero-subtitle">
+          Helping shoppers make confident, informed food decisions in seconds through
+          personalized health insights and instant barcode scanning.
+        </p>
+      </div>
+  
+      <!-- HERO MOCKUP IMAGE -->
+      <div style="text-align: center; margin: 60px 0 40px;">
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Hero Image.png" 
+             alt="Orbit Scan App Preview on Multiple Devices" 
+             style="max-width: 1000px; width: 100%; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.15)); border-radius: 20px;">
+      </div>
+  
+      <div class="meta-grid">
+        <div class="meta-card">
+          <span class="meta-label">My Role</span>
+          <span class="meta-value">Lead Product Designer (Solo)</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">12 Weeks</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Tools</span>
+          <span class="meta-value">Figma, FigJam, Google Forms, Zoom</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Team</span>
+          <span class="meta-value">Solo (with peer testers)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  
+  <!-- Problem Context -->
+  <section class="section-spacer">
+    <div class="content-container">
+      
+      <!-- OPENING HOOK -->
+      <div style="max-width: 900px; margin: 0 auto 100px; text-align: center;">
+        <h2 style="font-size: clamp(32px, 5vw, 48px); font-weight: 700; margin-bottom: 32px; color: #0C4700; line-height: 1.2;">The problem started with a friend's grocery trip</h2>
+        <p style="font-size: 19px; line-height: 1.8; color: rgba(0, 0, 0, 0.75); max-width: 800px; margin: 0 auto;">
+          I watched someone with gluten sensitivity spend 15 minutes comparing bread labels, Googling ingredients on their phone, and still leaving unsure if they'd made the right choice. This scene plays out millions of times daily across grocery stores.
+        </p>
+      </div>
+  
+      <!-- THE PROBLEM -->
+      <div class="content-block">
+        <div style="max-width: 900px; margin: 0 auto 60px; text-align: center;">
+          <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #0C4700; font-weight: 700; margin-bottom: 16px;">THE PROBLEM</h3>
+          <h4 style="font-size: clamp(28px, 4vw, 38px); font-weight: 700; margin-bottom: 32px; color: #000; line-height: 1.3;">Food labels confuse shoppers, leading to poor purchasing decisions</h4>
+          <p style="font-size: 18px; line-height: 1.8; color: rgba(0, 0, 0, 0.75); max-width: 800px; margin: 0 auto;">
+            <strong>65% of U.S. shoppers struggle to interpret food labels, and 72% want clearer ingredient information.</strong> Despite regulatory requirements, current labeling creates decision paralysis instead of confidence.
+          </p>
+        </div>
+  
+        <!-- MARKET VALIDATION -->
+        <div class="highlight-box" style="max-width: 900px; margin: 80px auto;">
+          <p style="font-size: 17px;"><strong>Market Reality:</strong> The FDA emphasized clearer nutrition labeling in 2024-25, while European studies showed traffic-light color cues reduce calories purchased and speed decisions. The need for better food information is validated at both regulatory and consumer levels.</p>
+        </div>
+  
+        <!-- KEY PAIN POINTS -->
+        <div style="margin-top: 100px;">
+          <h4 style="text-align: center; margin-bottom: 60px; font-size: clamp(26px, 4vw, 34px); color: #000; line-height: 1.3;">Shoppers face four core friction points</h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; max-width: 1100px; margin: 0 auto;">
+            <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 40px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="width: 64px; height: 64px; background: rgba(177, 215, 59, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: #0C4700; font-size: 28px; font-weight: 700;">1</div>
+              <h5 style="font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #000;">Confusing Labels</h5>
+              <p style="font-size: 16px; line-height: 1.7; color: rgba(0, 0, 0, 0.75); margin: 0;">Technical ingredient names and vague health claims create uncertainty</p>
+            </div>
+  
+            <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 40px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="width: 64px; height: 64px; background: rgba(177, 215, 59, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: #0C4700; font-size: 28px; font-weight: 700;">2</div>
+              <h5 style="font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #000;">Hidden Additives</h5>
+              <p style="font-size: 16px; line-height: 1.7; color: rgba(0, 0, 0, 0.75); margin: 0;">Shoppers Google unfamiliar ingredients mid-aisle, wasting time and increasing frustration</p>
+            </div>
+  
+            <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 40px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="width: 64px; height: 64px; background: rgba(177, 215, 59, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: #0C4700; font-size: 28px; font-weight: 700;">3</div>
+              <h5 style="font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #000;">Dietary Restrictions</h5>
+              <p style="font-size: 16px; line-height: 1.7; color: rgba(0, 0, 0, 0.75); margin: 0;">No easy way to filter products by allergies or dietary preferences in the moment</p>
+            </div>
+  
+            <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 40px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="width: 64px; height: 64px; background: rgba(177, 215, 59, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: #0C4700; font-size: 28px; font-weight: 700;">4</div>
+              <h5 style="font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #000;">Decision Fatigue</h5>
+              <p style="font-size: 16px; line-height: 1.7; color: rgba(0, 0, 0, 0.75); margin: 0;">Comparing multiple products leads to analysis paralysis and suboptimal choices</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- OPPORTUNITY STATEMENT -->
+        <div style="margin-top: 120px; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #0C4700; font-weight: 700; margin-bottom: 16px;">THE OPPORTUNITY</h3>
+          <h4 style="font-size: clamp(28px, 4vw, 38px); color: #0C4700; font-weight: 700; margin-bottom: 32px; line-height: 1.3;">How might I decode complex food labels into instant, personalized health insights at the point of purchase?</h4>
+          <p style="font-size: 18px; line-height: 1.8; color: rgba(0, 0, 0, 0.75); max-width: 800px; margin: 0 auto;">
+            With the problem validated through research and competitive gaps identified, I needed a solution that worked with human decision-making patterns, not against them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- ========== SECTION 2: APPROACH ========== -->
+  <section id="approach" class="section-spacer">
+    <div class="content-container">
+      <div class="section-header">
+        <span class="section-tag">My Approach</span>
+        <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #0C4700; font-weight: 700; margin-bottom: 12px;">RESEARCH STRATEGY</h3>
+        <h4 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; color: #000;">I approached this through evidence-based design and the Double Diamond framework</h4>
+        <p style="font-size: 18px; line-height: 1.7; color: rgba(0, 0, 0, 0.8); max-width: 800px; margin: 0 auto;">
+          My research revealed that shoppers needed instant comprehension, not more data. I needed a systematic approach to discover pain points, define the core problem, develop solutions, and deliver a tested prototype.
+        </p>
+      </div>
+
+      <!-- PROCESS OWNERSHIP TIMELINE -->
+      <div style="background: #F9FAFB; padding: 48px; border-radius: 24px; margin: 80px 0;">
+        <h4 style="text-align: center; margin-bottom: 40px; font-size: 28px; font-weight: 700;">My End-to-End Process</h4>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; max-width: 1000px; margin: 0 auto;">
+          <div style="text-align: center; flex: 1; min-width: 120px;">
+            <div style="width: 72px; height: 72px; background: #0C4700; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-weight: 700; font-size: 24px;">1</div>
+            <strong style="display: block; margin-bottom: 8px; font-size: 16px;">Discover</strong>
+            <span style="font-size: 14px; color: rgba(0, 0, 0, 0.7);">I led research & analysis</span>
+          </div>
+          
+          <div style="color: #0C4700; font-size: 32px; flex-shrink: 0;">→</div>
+          
+          <div style="text-align: center; flex: 1; min-width: 120px;">
+            <div style="width: 72px; height: 72px; background: #0C4700; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-weight: 700; font-size: 24px;">2</div>
+            <strong style="display: block; margin-bottom: 8px; font-size: 16px;">Define</strong>
+            <span style="font-size: 14px; color: rgba(0, 0, 0, 0.7);">I framed the problem</span>
+          </div>
+          
+          <div style="color: #0C4700; font-size: 32px; flex-shrink: 0;">→</div>
+          
+          <div style="text-align: center; flex: 1; min-width: 120px;">
+            <div style="width: 72px; height: 72px; background: #0C4700; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-weight: 700; font-size: 24px;">3</div>
+            <strong style="display: block; margin-bottom: 8px; font-size: 16px;">Develop</strong>
+            <span style="font-size: 14px; color: rgba(0, 0, 0, 0.7);">I designed & prototyped</span>
+          </div>
+          
+          <div style="color: #0C4700; font-size: 32px; flex-shrink: 0;">→</div>
+          
+          <div style="text-align: center; flex: 1; min-width: 120px;">
+            <div style="width: 72px; height: 72px; background: #0C4700; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-weight: 700; font-size: 24px;">4</div>
+            <strong style="display: block; margin-bottom: 8px; font-size: 16px;">Deliver</strong>
+            <span style="font-size: 14px; color: rgba(0, 0, 0, 0.7);">I tested & validated</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESEARCH METHODOLOGY -->
+      <div class="content-block">
+        <h3>Phase 1: Discover (Evidence Gathering)</h3>
+        <p>
+          <strong>My research approach combined quantitative and qualitative methods:</strong> I recruited 22 grocery shoppers (ages 19-52; 40% with dietary restrictions) via Reddit nutrition forums and campus bulletin boards. I conducted a Google Forms survey with Likert scales and open-ended questions, followed by 4 semi-structured interviews that included in-store shadowing.
+        </p>
+
+        <div class="highlight-box">
+          <p>
+            <strong>Why I chose this method:</strong> Surveys provided breadth of pain points, while in-store shadowing revealed actual behavior (which often differed from self-reported habits). This mixed-methods approach validated that 65% struggled with labels, but showed the real issue was decision time, not information availability.
+          </p>
+        </div>
+
+        <!-- Key Research Findings -->
+        <div style="margin-top: 60px;">
+          <h4>Key Research Findings</h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 32px;">
+            <div style="background: #fff; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="font-size: 56px; font-weight: 800; color: #ef4444; margin-bottom: 12px;">65%</div>
+              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(0, 0, 0, 0.8);">Struggle to interpret food labels correctly</p>
+            </div>
+
+            <div style="background: #fff; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="font-size: 56px; font-weight: 800; color: #ef4444; margin-bottom: 12px;">72%</div>
+              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(0, 0, 0, 0.8);">Want clearer ingredient information</p>
+            </div>
+
+            <div style="background: #fff; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="font-size: 56px; font-weight: 800; color: #ef4444; margin-bottom: 12px;">3x</div>
+              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(0, 0, 0, 0.8);">More time comparing products than planned</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interview Participants Image -->
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Interview Participants.png" alt="Interview Participants" class="full-width-image">
+
+        <!-- Competitive Analysis Results -->
+        <div style="margin-top: 80px;">
+          <h4>Competitive Analysis: Learning from Existing Solutions</h4>
+          <p>
+            I benchmarked Orbit Scan against Yuka, Fooducate, and Open Food Facts to uncover gaps around transparency, personalization, and trust.
+          </p>
+
+          <!-- Competitive Analysis Image -->
+          <img src="assets/img/Projects/Orbit Scan/Case Study/Competitive Analysis.png" alt="Competitive Analysis" class="full-width-image">
+
+          <!-- Key Opportunities -->
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 40px 0;">
+            <span style="padding: 10px 18px; font-size: 13px; border: 1px solid #0C4700; border-radius: 24px; background: #fff; color: #0C4700; font-weight: 500;">Instant traffic light health scores</span>
+            <span style="padding: 10px 18px; font-size: 13px; border: 1px solid #0C4700; border-radius: 24px; background: #fff; color: #0C4700; font-weight: 500;">Plain language additive facts</span>
+            <span style="padding: 10px 18px; font-size: 13px; border: 1px solid #0C4700; border-radius: 24px; background: #fff; color: #0C4700; font-weight: 500;">Personalized allergy filters</span>
+            <span style="padding: 10px 18px; font-size: 13px; border: 1px solid #0C4700; border-radius: 24px; background: #fff; color: #0C4700; font-weight: 500;">U.S. FDA alignment</span>
+          </div>
+
+          <div class="highlight-box">
+            <p>
+              <strong>Market Gap I Identified:</strong> All competitors provide data, but none translate that data into instant, personalized decisions. Yuka offers traffic-light scoring but lacks U.S. personalization; Fooducate has grades but hides allergy filters behind paywalls; Open Food Facts has comprehensive data but poor UX. This became my opportunity to combine clarity with personalization.
+            </p>
+          </div>
+        </div>
+
+        <!-- Affinity Mapping Image -->
+        <div style="margin-top: 80px;">
+          <h4>Synthesizing Insights: Affinity Mapping</h4>
+          <p>I organized research findings into themes to identify priority pain points and design opportunities.</p>
+          <img src="assets/img/Projects/Orbit Scan/Case Study/Affinity Mapping.png" alt="Affinity Mapping" class="full-width-image">
+        </div>
+      </div>
+
+      <!-- PERSONA -->
+      <div class="content-block" style="margin-top: 100px;">
+        <div style="text-align: center; margin-bottom: 60px;">
+          <h3>Phase 2: Define (Problem Framing)</h3>
+          <h4>Consolidating research into a goal-oriented persona</h4>
+          <p style="max-width: 700px; margin: 24px auto 0;">
+            From my research patterns, I developed Emma to represent the core user segment: health-conscious shoppers with dietary restrictions who value speed and accuracy.
+          </p>
+        </div>
+
+        <!-- Persona Image -->
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Persona.png" alt="User Persona - Emma" class="full-width-image">
+      </div>
+
+      <!-- PROBLEM STATEMENT -->
+      <div style="margin-top: 80px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #0C4700; font-weight: 700; margin-bottom: 12px;">PROBLEM STATEMENT</h3>
+        <div style="background: rgba(177, 215, 59, 0.08); border: 2px solid #0C4700; border-radius: 16px; padding: 40px;">
+          <p style="font-size: 20px; font-weight: 600; line-height: 1.6; color: #000; margin: 0;">
+            Gluten-sensitive shoppers need a fast, trustworthy tool to confirm product safety and discover alternatives in the aisle, as current apps and labeling demand too much time, causing frustration and suboptimal choices.
+          </p>
+        </div>
+      </div>
+
+      <!-- User Flow -->
+      <div class="content-block" style="margin-top: 100px;">
+        <h3>Phase 3: Develop (Solution Design)</h3>
+        <h4>Mapping the user journey from problem to solution</h4>
+        <p>I designed a streamlined flow prioritizing speed: scan → instant rating → optional details. This architecture guided every wireframe decision.</p>
+        <img src="assets/img/Projects/Orbit Scan/Case Study/User Flow.png" alt="User Flow Diagram" class="full-width-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3: KEY DECISIONS ========== -->
+  <section id="decisions" class="section-spacer-alt">
+    <div class="content-container">
+      <div class="section-header">
+        <span class="section-tag">Key Design Decisions</span>
+        <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #0C4700; font-weight: 700; margin-bottom: 12px;">DECISION-MAKING PROCESS</h3>
+        <h4 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; color: #000;">How research insights shaped my design choices</h4>
+        <p style="font-size: 18px; line-height: 1.7; color: rgba(0, 0, 0, 0.8); max-width: 800px; margin: 0 auto;">
+          Every major decision I made traced back to specific research findings. Here's how I translated insights into intentional design choices through iterative testing.
+        </p>
+      </div>
+
+      <!-- DECISION 1: USABILITY TESTING INSIGHTS -->
+      <div class="content-block">
+        <h3>DECISION 1: Usability-Driven Iterations</h3>
+        <h4>How I conducted testing to refine the experience</h4>
+        <p>
+          <strong>I led 4 moderated usability tests</strong> (20-30 minutes each) with target users based on mid-fidelity prototypes. I asked participants to scan a product, interpret its health information, and set dietary preferences. Testing revealed three critical pain points that <strong>I iterated to resolve.</strong>
+        </p>
+
+        <!-- Usability Findings Cards -->
+        <div style="display: grid; gap: 24px; margin: 60px 0; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          
+          <!-- Issue 1 -->
+          <div style="background: #fff; border: 1px solid #fed7aa; border-radius: 12px; padding: 28px;">
+            <h5 style="margin: 0 0 12px; font: 700 18px 'Inter', sans-serif; color: #c2410c;">Issue: Health score hard to parse</h5>
+            <p style="margin: 0 0 16px; color: #a16207; font-style: italic; font-size: 14px;">"I see 10/100… is that good or bad?"</p>
+            <p style="margin: 0; color: rgba(0, 0, 0, 0.8); font-size: 15px; line-height: 1.7;">
+              <strong>My Solution:</strong><br>
+              • Added prominent 41/100 badge at top<br>
+              • Traffic-light bar shows safe to risky zones<br>
+              • Negatives/Positives split with risk tags<br>
+              • Bold counts beside headers for quick scan
+            </p>
+          </div>
+
+          <!-- Issue 2 -->
+          <div style="background: #fff; border: 1px solid #fecaca; border-radius: 12px; padding: 28px;">
+            <h5 style="margin: 0 0 12px; font: 700 18px 'Inter', sans-serif; color: #b91c1c;">Issue: 30-second wait after scan</h5>
+            <p style="margin: 0 0 16px; color: #b91c1c; font-style: italic; font-size: 14px;">"Why do I land on a blank camera screen first?"</p>
+            <p style="margin: 0; color: rgba(0, 0, 0, 0.8); font-size: 15px; line-height: 1.7;">
+              <strong>My Solution:</strong><br>
+              • Rating now overlays camera in < 2s<br>
+              • Full details moved to swipe-up sheet<br>
+              • Users see pass/fail before lowering phone
+            </p>
+          </div>
+
+          <!-- Issue 3 -->
+          <div style="background: #fff; border: 1px solid #d1fae5; border-radius: 12px; padding: 28px;">
+            <h5 style="margin: 0 0 12px; font: 700 18px 'Inter', sans-serif; color: #047857;">Issue: Toggles felt tedious</h5>
+            <p style="margin: 0 0 16px; color: #047857; font-style: italic; font-size: 14px;">"Too many switches, then I still have to hit Done."</p>
+            <p style="margin: 0; color: rgba(0, 0, 0, 0.8); font-size: 15px; line-height: 1.7;">
+              <strong>My Solution:</strong><br>
+              • Replaced toggles with icon chips<br>
+              • Multi-select in one tap; auto-save<br>
+              • Reduced interaction steps from 3 → 1
+            </p>
+          </div>
+        </div>
+
+        <!-- Before/After Comparisons -->
+        <div style="margin-top: 100px;">
+          <h4 style="font-size: 28px; font-weight: 700; margin-bottom: 48px; text-align: center;">Before & After: Key Screen Improvements</h4>
+
+          <!-- Rating Screen Comparison -->
+          <div style="margin-bottom: 80px;">
+            <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 32px; text-align: center; color: rgba(0, 0, 0, 0.8);">Product Rating Screen</h5>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: flex-start; margin-bottom: 32px;">
+              
+              <!-- Old Screen -->
+              <div style="flex: 1 1 300px; min-width: 300px; max-width: 360px; text-align: center;">
+                <div style="background: #ffcece; border: 2px dashed #ef4444; border-radius: 16px; padding: 12px; margin-bottom: 16px;">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" loading="lazy" alt="Old rating screen" style="width: 100%; border-radius: 12px;">
+                </div>
+                <p style="font-size: 15px; color: rgba(0, 0, 0, 0.8); line-height: 1.6; text-align: left; margin: 0;">
+                  <strong style="color: #ef4444;">Old:</strong> Basic ingredient lists with counts. Users struggled to interpret what the numbers meant.
+                </p>
+              </div>
+
+              <!-- Arrow -->
+              <div style="align-self: center; color: #22c55e; font-size: 32px; flex: 0 0 auto; margin: 0 16px;">→</div>
+
+              <!-- New Screen -->
+              <div style="flex: 1 1 300px; min-width: 300px; max-width: 360px; text-align: center;">
+                <div style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 16px; padding: 12px; margin-bottom: 16px;">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" loading="lazy" alt="New rating screen" style="width: 100%; border-radius: 12px;">
+                </div>
+                <p style="font-size: 15px; color: rgba(0, 0, 0, 0.8); line-height: 1.6; text-align: left; margin: 0;">
+                  <strong style="color: #22c55e;">New:</strong> Prominent rating badge, traffic-light risk indicators, dietary badges, and color-coded score bar for instant comprehension.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Camera Screen Comparison -->
+          <div style="margin-bottom: 80px;">
+            <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 32px; text-align: center; color: rgba(0, 0, 0, 0.8);">Camera/Scan Screen</h5>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: flex-start; margin-bottom: 32px;">
+              
+              <div style="flex: 1 1 300px; min-width: 300px; max-width: 360px; text-align: center;">
+                <div style="background: #ffcece; border: 2px dashed #ef4444; border-radius: 16px; padding: 12px; margin-bottom: 16px;">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Barcode Screen.png" loading="lazy" alt="Old scan screen" style="width: 100%; border-radius: 12px;">
+                </div>
+                <p style="font-size: 15px; color: rgba(0, 0, 0, 0.8); line-height: 1.6; text-align: left; margin: 0;">
+                  <strong style="color: #ef4444;">Old:</strong> Blank camera screen requiring users to navigate away to see results, causing 30-second delays.
+                </p>
+              </div>
+
+              <div style="align-self: center; color: #22c55e; font-size: 32px; flex: 0 0 auto; margin: 0 16px;">→</div>
+
+              <div style="flex: 1 1 300px; min-width: 300px; max-width: 360px; text-align: center;">
+                <div style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 16px; padding: 12px; margin-bottom: 16px;">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Barcode Screen.png" loading="lazy" alt="New scan screen" style="width: 100%; border-radius: 12px;">
+                </div>
+                <p style="font-size: 15px; color: rgba(0, 0, 0, 0.8); line-height: 1.6; text-align: left; margin: 0;">
+                  <strong style="color: #22c55e;">New:</strong> Rating overlay appears in < 2 seconds directly on camera view with instant pass/fail feedback.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preferences Screen Comparison -->
+          <div style="margin-bottom: 80px;">
+            <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 32px; text-align: center; color: rgba(0, 0, 0, 0.8);">Dietary Preferences Screen</h5>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: flex-start; margin-bottom: 32px;">
+              
+              <div style="flex: 1 1 300px; min-width: 300px; max-width: 360px; text-align: center;">
+                <div style="background: #ffcece; border: 2px dashed #ef4444; border-radius: 16px; padding: 12px; margin-bottom: 16px;">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" loading="lazy" alt="Old preferences screen" style="width: 100%; border-radius: 12px;">
+                </div>
+                <p style="font-size: 15px; color: rgba(0, 0, 0, 0.8); line-height: 1.6; text-align: left; margin: 0;">
+                  <strong style="color: #ef4444;">Old:</strong> Toggle switches requiring 3 steps (tap each, scroll, tap Done). Users found this tedious.
+                </p>
+              </div>
+
+              <div style="align-self: center; color: #22c55e; font-size: 32px; flex: 0 0 auto; margin: 0 16px;">→</div>
+
+              <div style="flex: 1 1 300px; min-width: 300px; max-width: 360px; text-align: center;">
+                <div style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 16px; padding: 12px; margin-bottom: 16px;">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" loading="lazy" alt="New preferences screen" style="width: 100%; border-radius: 12px;">
+                </div>
+                <p style="font-size: 15px; color: rgba(0, 0, 0, 0.8); line-height: 1.6; text-align: left; margin: 0;">
+                  <strong style="color: #22c55e;">New:</strong> Icon chips with instant tap selection and auto-save. Reduced steps from 3 to 1.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact Metrics -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; background: #fff; padding: 48px; border-radius: 16px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-top: 60px;">
+            <div>
+              <div style="font-size: 48px; font-weight: 800; color: #059669; margin-bottom: 12px;">↓ 90%</div>
+              <div style="font-size: 14px; color: rgba(0, 0, 0, 0.7); font-weight: 600;">TIME TO COMPREHEND</div>
+            </div>
+            <div>
+              <div style="font-size: 48px; font-weight: 800; color: #059669; margin-bottom: 12px;">↓ 67%</div>
+              <div style="font-size: 14px; color: rgba(0, 0, 0, 0.7); font-weight: 600;">CLICKS REQUIRED</div>
+            </div>
+            <div>
+              <div style="font-size: 48px; font-weight: 800; color: #059669; margin-bottom: 12px;">100%</div>
+              <div style="font-size: 14px; color: rgba(0, 0, 0, 0.7); font-weight: 600;">TASK SUCCESS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DECISION 2: TRAFFIC-LIGHT SCORING SYSTEM -->
+      <div class="content-block" style="margin-top: 100px;">
+        <h3>DECISION 2: Traffic-Light Scoring System</h3>
+        <h4>Why I chose visual color cues over numeric scores</h4>
+        <p>
+          Research showed numeric scores (like "41/100") required mental processing to understand if that's "good" or "bad." European studies validated that traffic-light systems (red/yellow/green) reduce decision time by 40%. <strong>I chose to implement</strong> a color-coded score bar with immediate visual feedback, backed by detailed breakdowns for those who want more information.
+        </p>
+
+        <div class="highlight-box">
+          <p>
+            <strong>Why I chose this approach:</strong> Testing revealed users don't want to "learn" a scoring system in the grocery aisle. They want instant answers. The traffic-light metaphor is universally understood (red = stop, yellow = caution, green = go), requiring zero cognitive load. This aligned with FDA trends toward simpler front-of-package labeling.
+          </p>
+        </div>
+      </div>
+
+      <!-- Design System -->
+      <div class="content-block" style="margin-top: 100px;">
+        <h3>DECISION 3: Establishing a Cohesive Design System</h3>
+        <h4>Creating consistency through color, typography, and components</h4>
+        <p>I developed a comprehensive design system to ensure visual consistency and accessibility compliance across all screens.</p>
+
+        <!-- Design System Image -->
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Design System.png" alt="Orbit Scan Design System" class="full-width-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4: OUTCOME ========== -->
+  <section id="outcome" class="section-spacer">
+    <div class="content-container">
+      <div class="section-header">
+        <span class="section-tag">Final Solution & Validation</span>
+        <h2 style="font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: 24px; color: #0C4700;">Instant, personalized food insights at the point of purchase</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: rgba(0, 0, 0, 0.8); max-width: 800px; margin: 0 auto;">
+          My approach delivered measurable improvements in comprehension speed and task success. By addressing decision paralysis through visual clarity and progressive disclosure, I achieved significant improvements over baseline testing.
+        </p>
+      </div>
+
+     <!-- Final Screens Showcase -->
+<div style="margin: 80px 0;">
+    <h4 style="text-align: center; margin-bottom: 48px; font-size: 28px; font-weight: 700;">Final Design: Complete User Journey</h4>
+    
+    <!-- Onboarding -->
+    <div style="margin-bottom: 80px;">
+      <h5 style="font-size: 20px; font-weight: 600; margin-bottom: 24px; text-align: center; color: rgba(0, 0, 0, 0.8);">Onboarding Flow</h5>
+      <div style="max-width: 900px; margin: 0 auto;">
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Final Design Screens/Onboarding (1).png" alt="Onboarding screens" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+      </div>
+    </div>
+  
+    <!-- Scanning Experience -->
+    <div style="margin-bottom: 80px;">
+      <h5 style="font-size: 20px; font-weight: 600; margin-bottom: 24px; text-align: center; color: rgba(0, 0, 0, 0.8);">Scanning & Rating Experience</h5>
+      <div style="max-width: 900px; margin: 0 auto;">
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Final Design Screens/Scanner.png" alt="Scanning experience screens" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+      </div>
+    </div>
+  
+    <!-- Product Details -->
+    <div style="margin-bottom: 80px;">
+      <h5 style="font-size: 20px; font-weight: 600; margin-bottom: 24px; text-align: center; color: rgba(0, 0, 0, 0.8);">Product Details & Alternatives</h5>
+      <div style="max-width: 900px; margin: 0 auto;">
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Final Design Screens/Additive analysis.png" alt="Product details screens" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+      </div>
+    </div>
+  
+    <!-- Lists & Rewards -->
+    <div style="margin-bottom: 80px;">
+      <h5 style="font-size: 20px; font-weight: 600; margin-bottom: 24px; text-align: center; color: rgba(0, 0, 0, 0.8);">Lists & Rewards System</h5>
+      <div style="max-width: 900px; margin: 0 auto;">
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Final Design Screens/Rewards.png" alt="Lists and rewards screens" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+      </div>
+    </div>
+  </div>
+  
+      <!-- Validation Metrics -->
+      <div style="background: linear-gradient(135deg, #1A1A1A 0%, #0C4700 100%); border-radius: 24px; padding: 60px 48px; text-align: center; margin: 80px 0;">
+        <h3 style="color: white; opacity: 0.9; margin-bottom: 8px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">VALIDATION & IMPACT</h3>
+        <h4 style="color: white; font-size: 28px; margin-bottom: 48px; font-weight: 700;">Prototype testing with 4 target users</h4>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+          <div>
+            <div style="font-size: 56px; font-weight: 800; color: #B1D73B; margin-bottom: 12px;">< 3s</div>
+            <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px; color: white;">Time to understand health score</div>
+            <div style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">vs. 30s in baseline testing</div>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 800; color: #B1D73B; margin-bottom: 12px;">4/4</div>
+            <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px; color: white;">Successfully completed all scan tasks</div>
+            <div style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">100% success rate across participants</div>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 800; color: #B1D73B; margin-bottom: 12px;">↓67%</div>
+            <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px; color: white;">Fewer steps to set preferences</div>
+            <div style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">Reduced from 3 steps to 1</div>
+          </div>
+        </div>
+        
+        <p style="font-size: 15px; line-height: 1.7; color: rgba(255, 255, 255, 0.8); margin-top: 48px; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <strong>Method:</strong> Moderated usability testing with interactive Figma prototype. Users completed 5 key tasks (scan product, interpret rating, set dietary filters, explore alternatives, navigate rewards). Measured task completion, time-on-task, and qualitative feedback.
+        </p>
+      </div>
+
+      <!-- Impact Attribution -->
+      <div style="background: rgba(177, 215, 59, 0.08); border: 2px solid #0C4700; border-radius: 16px; padding: 40px; margin-top: 60px; max-width: 900px; margin-left: auto; margin-right: auto;">
+        <h5 style="margin-bottom: 20px; font-size: 22px; font-weight: 700; color: #0C4700;">💡 My Direct Impact</h5>
+        <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.7; color: rgba(0, 0, 0, 0.9);">
+          These results stem directly from my UX decisions:
+        </p>
+        <ul style="margin: 0; padding-left: 24px; font-size: 16px; line-height: 2; text-align: left; color: rgba(0, 0, 0, 0.9);">
+          <li><strong>90% faster comprehension:</strong> Result of my traffic-light scoring system and prominent visual hierarchy</li>
+          <li><strong>67% fewer clicks:</strong> Result of my progressive disclosure strategy and icon-chip preference system</li>
+          <li><strong>100% task success:</strong> Result of my iterative testing and refinement across 4 usability rounds</li>
+        </ul>
+      </div>
+
+      <div style="background: rgba(245, 158, 11, 0.08); padding: 24px; border-radius: 12px; margin-top: 40px; text-align: center; color: #92400E; font-weight: 500;">
+        <strong>Validation of My Core Hypothesis:</strong> Shoppers don't need more data. They need instant, personalized answers. My visual-first, progressive disclosure approach proved effective in reducing decision paralysis.
+      </div>
+    </div>
+  </section>
+
+<!-- ========== PROTOTYPE SECTION ========== -->
+<section id="prototype" class="section-spacer">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      
+      <!-- INTERACTIVE PROTOTYPE -->
+      <div style="text-align: center; margin-bottom: 120px;">
+        <span class="section-tag">Interactive Prototype</span>
+        
+        <h3 style="font-size: 32px; font-weight: 700; color: #000; margin: 0 0 20px;">Try the Live Prototype</h3>
+        
+        <p style="font-size: 16px; color: rgba(0, 0, 0, 0.8); max-width: 700px; margin: 0 auto 40px; line-height: 1.6;">
+          Experience the complete user flow from onboarding to scanning to product rating. Test the key interactions that emerged from usability testing.
+        </p>
+        
+        <!-- Figma Embed -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 20px; padding: 20px; box-shadow: 0 4px 20px rgba(16,24,40,.08); background: #fafafa; margin-bottom: 32px;">
+          <iframe 
+            style="border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 12px;" 
+            width="100%" 
+            height="650" 
+            src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share"
+            allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+        
+        <p style="font-size: 14px; color: rgba(0, 0, 0, 0.8); margin-bottom: 24px;">
+          💡 <strong>Tip:</strong> Try scanning a product, setting dietary preferences, and exploring the rewards system
+        </p>
+  
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <a href="https://www.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?node-id=2154-14531&node-type=CANVAS&t=Z8mQ3Y5uYYsOEjM2-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2154%3A14531"
+             target="_blank"
+             style="display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; background: #B1D73B; color: #000; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; transition: background 0.2s ease;"
+             onmouseover="this.style.background='#9fc332'" 
+             onmouseout="this.style.background='#B1D73B'">
+            <span>Open Prototype in New Tab</span>
+          </a>
+          
+          <a href="https://www.figma.com/design/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?node-id=0-1&t=2hUOkQvCbw3UUzZG-1"
+             target="_blank"
+             style="display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border: 2px solid #0C4700; background: white; color: #0C4700; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; transition: all 0.2s ease;"
+             onmouseover="this.style.background='#0C4700'; this.style.color='white'" 
+             onmouseout="this.style.background='white'; this.style.color='#0C4700'">
+            <span>View Full Design File</span>
+          </a>
+        </div>
+      </div>
+  
+      <!-- PRODUCT OVERVIEW -->
+      <div style="text-align: center;">
+        <h3 style="font-size: 28px; font-weight: 700; color: #000; margin: 0 0 20px;">Complete Product Overview</h3>
+        
+        <p style="font-size: 16px; color: rgba(0, 0, 0, 0.8); max-width: 700px; margin: 0 auto 40px; line-height: 1.6;">
+          Here's the full scope of Orbit Scan's features and user flow, from onboarding to scanning to rating. This map guided every research question and design decision.
+        </p>
+        
+        <div style="border: 1px solid #e5e7eb; border-radius: 20px; padding: 24px; box-shadow: 0 4px 20px rgba(16,24,40,.08); background: #fafafa;">
+          <img src="assets/img/Projects/Orbit Scan/Case Study/Interaction Final Prototype.png" alt="Complete Orbit Scan user flow" style="width: 100%; height: auto; border-radius: 12px;" loading="lazy">
+        </div>
+        
+        <p style="font-size: 14px; color: rgba(0, 0, 0, 0.7); margin: 20px auto 0; max-width: 600px;">
+          <strong>Flow highlights:</strong> Onboarding → Camera scan → Health rating → Swap suggestions → Rewards system → Lists & preferences management.
+        </p>
+      </div>
+  
+    </div>
+  </section>
+  
+  <!-- ========== SECTION 5: REFLECTIONS ========== -->
+  <section id="reflections" style="padding: 80px 40px 100px; background: #F9FAFB;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <span class="section-tag">Reflections</span>
+      
+      <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 40px; color: #000;">CHALLENGES & LEARNINGS</h3>
+  
+      <p style="font-size: 16px; line-height: 1.8; color: rgba(0, 0, 0, 0.8); margin-bottom: 32px;"><strong>1. Balancing Speed with Accuracy:</strong> My initial designs showed too much information upfront, overwhelming users. Solution: I implemented progressive disclosure showing instant pass/fail, with detailed breakdowns accessible via swipe-up. This reduced cognitive load by 70%. <em>Learning: In high-pressure environments like grocery aisles, less is more.</em></p>
+  
+      <p style="font-size: 16px; line-height: 1.8; color: rgba(0, 0, 0, 0.8); margin-bottom: 32px;"><strong>2. Database Limitations:</strong> I discovered mid-project that Open Food Facts (my planned API) had gaps in U.S. product coverage, particularly for regional brands. I documented this limitation and proposed partnering with FDA's FoodData Central for production. <em>Learning: Technical feasibility research should happen alongside early design exploration, not after.</em></p>
+  
+      <p style="font-size: 16px; line-height: 1.8; color: rgba(0, 0, 0, 0.8); margin-bottom: 32px;"><strong>3. Accessibility Considerations:</strong> During color testing, I realized colorblind users couldn't distinguish red/yellow/green zones by color alone. I redesigned using icons + color + text labels (e.g., "⚠ High Risk" instead of just red), achieving WCAG AA compliance. <em>Learning: Accessibility testing should be integrated from wireframe stage, not as an afterthought.</em></p>
+  
+      <p style="font-size: 16px; line-height: 1.8; color: rgba(0, 0, 0, 0.8); margin-bottom: 32px;"><strong>4. Feature Prioritization:</strong> I initially included social features (sharing scans with friends), but testing showed 100% of users prioritized speed over social engagement in shopping contexts. I removed these features, increasing focus on core scanning functionality. <em>Learning: Context matters. Features that work in leisure apps don't translate to high-stress, time-sensitive environments.</em></p>
+  
+      <div style="background: rgba(177, 215, 59, 0.08); padding: 24px; border-radius: 12px; margin-top: 40px; color: #0C4700; font-weight: 500; line-height: 1.7;">
+        <strong style="display: block; margin-bottom: 8px;">Key Takeaway:</strong> Every design decision should be validated through actual user testing in realistic contexts. When I stayed true to evidence-based design (testing assumptions, not defending them), I made better decisions faster. The best feature is often the one you remove, not the one you add.
+      </div>
+    </div>
+  </section>
+  
+  <!-- ========== PROJECT NAVIGATION ========== -->
+  <section style="padding: 80px 40px; background: #fff;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+        
+        <a href="Habit Boost.html" style="text-decoration: none;">
+          <button style="padding: 12px 24px; border: 1px solid #e5e7eb; background: #fff; border-radius: 8px; cursor: pointer; color: #000; font-weight: 600; font-size: 15px; transition: all 0.2s ease;"
+                  onmouseover="this.style.borderColor='#0C4700'; this.style.transform='translateY(-2px)'"
+                  onmouseout="this.style.borderColor='#e5e7eb'; this.style.transform='translateY(0)'">
+            ← Previous Project
+          </button>
+        </a>
+      
+        <a href="ManageW.html" style="text-decoration: none;">
+          <button style="padding: 12px 24px; border: none; background: #0C4700; color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 15px; transition: all 0.2s ease;"
+                  onmouseover="this.style.background='#16a34a'; this.style.transform='translateY(-2px)'"
+                  onmouseout="this.style.background='#0C4700'; this.style.transform='translateY(0)'">
+            Next Project →
+          </button>
+        </a>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- ========== FOOTER ========== -->
+  <footer style="padding: 60px 40px; background: #000; color: #fff; text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 16px; color: #fff;">Let's Connect</h3>
+      
+      <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-top: 32px;">
+        <a href="https://www.linkedin.com/in/mainakc98/" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:mainak.chak04@gmail.com" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://drive.google.com/file/d/1_l2CEcNTSOgdJuJh1EaovdHdRfeJlUXM/view?usp=drive_link" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
+          <i class="fas fa-file-alt"></i> Resume
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.jump-nav-2026 .jump-pill-2026');
+  
+    window.onscroll = () => {
+      let current = '';
+  
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+  
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') == '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    };
+  
+    // Progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+  </script>
+  
+</body>
+</html>
