@@ -1667,8 +1667,8 @@ transition: width 0.1s ease;">
   <nav aria-label="Case Study Navigation" class="jump-nav-2026">
     <div class="jump-nav-inner">
       <div class="jump-pills-container">
-        <a href="#context" class="jump-pill-2026 active">Context</a>
-        <a href="#problem" class="jump-pill-2026">Problem</a>
+        <a href="#context" class="jump-pill-2026 active">Overview</a>
+        <a href="#problem" class="jump-pill-2026">Research</a>
         <a href="#approach" class="jump-pill-2026">Approach</a>
         <a href="#decisions" class="jump-pill-2026">Decisions</a>
         <a href="#outcome" class="jump-pill-2026">Outcome</a>
@@ -3634,353 +3634,276 @@ transition: width 0.1s ease;">
     </div>
   </section>
 
+<!-- 03 / DEVELOP: Ideation, Testing & Key Decisions -->
+<section class="section-header" id="decisions">
+  <div class="section-tag">03 / Develop</div>
+  <h2 class="section-title">
+    Ideation, Testing & <span class="highlight">Key Decisions</span>
+  </h2>
+</section>
 
-  <!-- Develop -->
-  <section class="section-header" id="decisions">
-    <div class="section-tag">03 / Develop</div>
-    <h2 class="section-title">
-      Ideation & <span class="highlight">Testing</span>
-    </h2>
-  </section>
-
-  <section class="content-section">
-    <div class="content-container">
-      <div class="content-block">
-        <h3>System Architecture</h3>
-        <p><strong>Focusing user flow on minimum steps and time:</strong> Scan → Immediate health score + ingredient breakdown → Personalized swap suggestions</p>
-      </div>
-
-       <!-- Cover Image -->
-  <section class="full-image-section">
-    <div class="full-image-wrapper">
-      <img src="assets/img/Projects/Orbit Scan/Case Study/User Flow.png" alt="Orbit Scan core user-flow diagram" loading="lazy">
+<section class="content-section">
+  <div class="content-container">
+    
+    <!-- System Architecture -->
+    <div class="content-block">
+      <h3>System Architecture</h3>
+      <p><strong>Focusing user flow on minimum steps and time:</strong> Scan → Immediate health score + ingredient breakdown → Personalized swap suggestions</p>
     </div>
-  </section>
 
-
-  <!-- ░░░  Usability Test — 4 Participants, Mid-Fi  ░░░ -->
-      <div class="content-block">
-        <h3>Usability Testing on the Intial Wireframes</h3>
-        <ul class="bullet-list">
-          <li><strong>Participants:</strong> 4 target users (20–30 minutes each)</li>
-          <li><strong>Tasks Observed:</strong> Scanning, interpreting product ratings, and setting food preferences</li>
-        </ul>
+    <!-- Cover Image -->
+    <div class="full-image-section" style="margin: 40px 0;">
+      <div class="full-image-wrapper">
+        <img src="assets/img/Projects/Orbit Scan/Case Study/User Flow.png" alt="Orbit Scan core user-flow diagram" loading="lazy">
       </div>
-        <!-- Usability Testing Summary -->
+    </div>
+
+    <!-- Usability Testing -->
+    <div class="content-block">
+      <h3>Usability Testing on Initial Wireframes</h3>
+      <ul class="bullet-list">
+        <li><strong>Participants:</strong> 4 target users (20–30 minutes each)</li>
+        <li><strong>Tasks Observed:</strong> Scanning, interpreting product ratings, and setting food preferences</li>
+      </ul>
+    </div>
+
+    <!-- Testing Summary -->
+    <p style="margin: 0 0 16px; font-size: 15px; color: rgba(0, 0, 0, 0.955); line-height: 1.6;">
+      I conducted moderated usability testing with 4 participants who matched my target users. Each session lasted 20–30 minutes and was based on a mid-fidelity black & white prototype. I asked them to complete tasks such as scanning a product, interpreting its health information, and exploring the rewards section. During usability testing, we found that users struggled to interpret ingredient safety and overall product health in the old design. The redesign introduced a color-coded scorebar, risk-level indicators, and a clearer hierarchy.
+    </p>
+
+    <p style="margin:0 0 24px;font-size:15px;color:rgba(0, 0, 0, 0.955);">
+      Tasks: ① scan a product → ② read the rating → ③ set food-preference filters.  
+      Three pain points emerged; fixes are highlighted below.
+    </p>
+      
+    <!-- Insight Cards -->
+    <div class="usability-cards" style="display:grid;gap:18px;margin-bottom:32px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+    
+      <!-- Card 1 — Product rating clarity -->
+      <div style="background:#ffffff;border:1px solid #fed7aa;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
+        <h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#c2410c;">
+          Issue — Health score hard to parse
+        </h4>
+        <p style="margin:0;color:#a16207;font-style:italic;">
+          "I see 10 / 100… is that good or bad?"
+        </p>
+        <p style="margin:8px 0 0;color:rgba(0, 0, 0, 0.955);">
+          • Added big <strong>41 / 100</strong> badge at top<br>
+          • Traffic-light bar shows safe → risky zones<br>
+          • Negatives / Positives split + risk tags (High, Limited)<br>
+          • Counts beside headers now bold for quick scan
+        </p>
+      </div>
+    
+      <!-- Card 2 — Scan flow latency -->
+      <div style="background:#ffffff;border:1px solid #fecaca;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
+        <h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#b91c1c;">
+          Issue — 30-second wait after scan
+        </h4>
+        <p style="margin:0;color:#b91c1c;font-style:italic;">
+          "Why do I land on a blank camera screen first?"
+        </p>
+        <p style="margin:8px 0 0;color:#374151;">
+          • Rating now overlays the camera in &lt;2 s (progressive disclosure)<br>
+          • Full details moved to swipe-up sheet<br>
+          • Users see pass/fail before lowering phone
+        </p>
+      </div>
+    
+      <!-- Card 3 — Preference selection -->
+      <div style="background:#ffffff;border:1px solid #d1fae5;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
+        <h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#047857;">
+          Issue — Toggles felt tedious
+        </h4>
+        <p style="margin:0;color:#047857;font-style:italic;">
+          "Too many switches, then I still have to hit Done."
+        </p>
+        <p style="margin:8px 0 0;color:#374151;">
+          • Replaced list of toggles with <strong>icon chips</strong> (visual + label)<br>
+          • Multi-select in one tap; auto-save on close<br>
+          • Interaction steps reduced from 3 → 1
+        </p>
+      </div>
+    </div>
+
+    <!-- Before & After Comparisons -->
+    <div style="margin:40px 0;">
+      <h3 style="font:700 22px 'Inter',sans-serif;color:#000;margin:0 0 24px;text-align:left;">
+        Before & After — Key Screen Improvements
+      </h3>
   
-      <p style="margin: 0 0 16px; font-size: 15px; color: rgba(0, 0, 0, 0.955); line-height: 1.6;">I conducted moderated usability testing with 4 participants who matched my target users. Each session lasted 20–30 minutes and was based on a mid-fidelity black & white prototype. I asked them to complete tasks such as scanning a product, interpreting its health information, and exploring the rewards section. During usability testing, we found that users struggled to interpret ingredient safety and overall product health in the old design. The redesign introduced a color-coded scorebar, risk-level indicators, and a clearer hierarchy.</p>
-  
-      <p style="margin:0 0 24px;font-size:15px;color:rgba(0, 0, 0, 0.955);">
-        Tasks: ① scan a product → ② read the rating → ③ set food-preference filters.  
-        Three pain points emerged; fixes are highlighted below.
-      </p>
+      <!-- 1. Product Rating Screen -->
+      <div style="margin-bottom:48px;">
+        <h4 style="font:600 18px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 20px;text-align:center;">
+          Product Rating Screen
+        </h4>
         
-      <!-- Insight cards - Mobile Responsive -->
-      <div class="usability-cards" style="
-        display:grid;gap:18px;margin-bottom:32px;
-        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
-      
-        <!-- Card 1 — Product rating clarity -->
-        <div style="
-          background:#ffffff;border:1px solid #fed7aa;border-radius:12px;
-          padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
-          <h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#c2410c;">
-            Issue — Health score hard to parse
-          </h4>
-          <p style="margin:0;color:#a16207;font-style:italic;">
-            "I see 10 / 100… is that good or bad?"
-          </p>
-          <p style="margin:8px 0 0;color:rgba(0, 0, 0, 0.955);">
-            • Added big <strong>41 / 100</strong> badge at top  
-            • Traffic-light bar shows safe → risky zones  
-            • Negatives / Positives split + risk tags (High, Limited)  
-            • Counts beside headers now bold for quick scan
-          </p>
-        </div>
-      
-        <!-- Card 2 — Scan flow latency -->
-        <div style="
-          background:#ffffff;border:1px solid #fecaca;border-radius:12px;
-          padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
-          <h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#b91c1c;">
-            Issue — 30-second wait after scan
-          </h4>
-          <p style="margin:0;color:#b91c1c;font-style:italic;">
-            "Why do I land on a blank camera screen first?"
-          </p>
-          <p style="margin:8px 0 0;color:#374151;">
-            • Rating now overlays the camera in <2 s (progressive disclosure)  
-            • Full details moved to swipe-up sheet  
-            • Users see pass/fail before lowering phone
-          </p>
-        </div>
-      
-        <!-- Card 3 — Preference selection -->
-        <div style="
-          background:#ffffff;border:1px solid #d1fae5;border-radius:12px;
-          padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:14px;">
-          <h4 style="margin:0 0 6px;font:700 15px 'Raleway',sans-serif;color:#047857;">
-            Issue — Toggles felt tedious
-          </h4>
-          <p style="margin:0;color:#047857;font-style:italic;">
-            "Too many switches, then I still have to hit Done."
-          </p>
-          <p style="margin:8px 0 0;color:#374151;">
-            • Replaced list of toggles with <strong>icon chips</strong> (visual + label)  
-            • Multi-select in one tap; auto-save on close  
-            • Interaction steps reduced from 3 → 1
-          </p>
+        <div class="comparison-container" style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;align-items:flex-start;margin-bottom:16px;">
+          
+          <!-- Old Screen -->
+          <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+            <div style="background:#ffcece;border:2px dashed #ef4444;border-radius:12px;padding:8px;margin-bottom:12px;">
+              <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" loading="lazy" alt="Old rating screen with basic ingredient lists" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+            </div>
+            <p style="font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;text-align:left;margin:0;">
+              <strong style="color:#ef4444;">Old:</strong> Basic listing of ingredients under "Negatives" and "Positives" with simple counts and an overall 0-100 score. Users struggled to interpret what the numbers meant.
+            </p>
+          </div>
+  
+          <!-- Arrow -->
+          <div class="comparison-arrow" style="align-self:center;color:#22c55e;font-size:24px;flex:0 0 auto;margin:0 8px;">
+            →
+          </div>
+  
+          <!-- New Screen -->
+          <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+            <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;padding:8px;margin-bottom:12px;">
+              <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" loading="lazy" alt="New rating screen with color-coded risks and badges" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+            </div>
+            <p style="font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;text-align:left;margin:0;">
+              <strong style="color:#22c55e;">New:</strong> Prominent rating badge, traffic-light risk indicators, dietary badges (Lactose Free, Vegan), and color-coded score bar for instant comprehension.
+            </p>
+          </div>
         </div>
       </div>
   
-      <!-- ░░░  Before & After — Key Screen Improvements  ░░░ -->
-      <div style="margin:40px 0;">
-        <h3 style="font:700 22px 'Inter',sans-serif;color:#000;margin:0 0 24px;text-align:left;">
-          Before & After — Key Screen Improvements
-        </h3>
-    
-        <!-- 1. Product Rating Screen Comparison -->
-        <div style="margin-bottom:48px;">
-          <h4 style="font:600 18px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 20px;text-align:center;">
-            Product Rating Screen
-          </h4>
-
-          <br>
+      <!-- 2. Scanner Screen -->
+      <div style="margin-bottom:48px;">
+        <h4 style="font:600 18px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 20px;text-align:center;">
+          Barcode Scanner Screen
+        </h4>
+        
+        <div class="comparison-container" style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;align-items:flex-start;margin-bottom:16px;">
           
-          <div class="comparison-container" style="
-              display:flex;flex-wrap:wrap;gap:32px;justify-content:center;
-              align-items:flex-start;margin-bottom:16px;">
-            
-            <!-- Old Screen -->
-            <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
-              <div style="
-                  background:#ffcece;border:2px dashed #ef4444;border-radius:12px;
-                  padding:8px;margin-bottom:12px;">
-                <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" loading="lazy"
-                     alt="Old rating screen with basic ingredient lists"
-                     style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
-              </div>
-              <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
-                  text-align:left;margin:0;">
-                <strong style="color:#ef4444;">Old:</strong> Basic listing of ingredients under 
-                "Negatives" and "Positives" with simple counts and an overall 0-100 score. 
-                Users struggled to interpret what the numbers meant.
-              </p>
+          <!-- Old Screen -->
+          <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+            <div style="background:#ffcece;border:2px dashed #ef4444;border-radius:12px;padding:8px;margin-bottom:12px;">
+              <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Barcode Screen.png" loading="lazy" alt="Old scanner with 30-second wait time" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
             </div>
-    
-            <!-- Arrow -->
-            <div class="comparison-arrow" style="
-                align-self:center;color:#22c55e;font-size:24px;
-                flex:0 0 auto;margin:0 8px;">
-              →
-            </div>
-    
-            <!-- New Screen -->
-            <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
-              <div style="
-                  background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;
-                  padding:8px;margin-bottom:12px;">
-                <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" loading="lazy"
-                     alt="New rating screen with color-coded risks and badges"
-                     style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
-              </div>
-              <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
-                  text-align:left;margin:0;">
-                <strong style="color:#22c55e;">New:</strong> Prominent rating badge, 
-                traffic-light risk indicators, dietary badges (Lactose Free, Vegan), 
-                and color-coded score bar for instant comprehension.
-              </p>
-            </div>
+            <p style="font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;text-align:left;margin:0;">
+              <strong style="color:#ef4444;">Old:</strong> Camera opens, users scan, then wait 30 seconds for a separate screen to load with product details. Created frustrating delays.
+            </p>
           </div>
-        </div>
-    
-        <!-- 2. Scanner Screen Comparison -->
-        <div style="margin-bottom:48px;">
-          <h4 style="font:600 18px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 20px;text-align:center;">
-            Barcode Scanner Screen
-          </h4>
-
-          <br>
-          
-          <div class="comparison-container" style="
-              display:flex;flex-wrap:wrap;gap:32px;justify-content:center;
-              align-items:flex-start;margin-bottom:16px;">
-            
-            <!-- Old Screen -->
-            <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
-              <div style="
-                  background:#ffcece;border:2px dashed #ef4444;border-radius:12px;
-                  padding:8px;margin-bottom:12px;">
-                <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Barcode Screen.png" loading="lazy"
-                     alt="Old scanner with 30-second wait time"
-                     style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
-              </div>
-              <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
-                  text-align:left;margin:0;">
-                <strong style="color:#ef4444;">Old:</strong> Camera opens, users scan, 
-                then wait 30 seconds for a separate screen to load with product details. 
-                Created frustrating delays.
-              </p>
-            </div>
-    
-            <!-- Arrow -->
-            <div class="comparison-arrow" style="
-                align-self:center;color:#22c55e;font-size:24px;
-                flex:0 0 auto;margin:0 8px;">
-              →
-            </div>
-    
-            <!-- New Screen -->
-            <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
-              <div style="
-                  background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;
-                  padding:8px;margin-bottom:12px;">
-                <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Barcode Screen.png" loading="lazy"
-                     alt="New scanner with instant overlay rating"
-                     style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
-              </div>
-              <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
-                  text-align:left;margin:0;">
-                <strong style="color:#22c55e;">New:</strong> Rating appears as an overlay 
-                on the scanner in under 2 seconds. Full details available via swipe-up 
-                sheet using progressive disclosure.
-              </p>
-            </div>
+  
+          <!-- Arrow -->
+          <div class="comparison-arrow" style="align-self:center;color:#22c55e;font-size:24px;flex:0 0 auto;margin:0 8px;">
+            →
           </div>
-        </div>
-    
-        <!-- 3. Food Preferences Comparison -->
-        <div style="margin-bottom:32px;">
-          <h4 style="font:600 18px 'Raleway',sans-serif;color:rgba(0, 0, 0, 0.955);;margin:0 0 20px;text-align:center;">
-            Food Preferences Screen
-          </h4>
-          <br>
-          <div class="comparison-container" style="
-              display:flex;flex-wrap:wrap;gap:32px;justify-content:center;
-              align-items:flex-start;margin-bottom:16px;">
-            
-            <!-- Old Screen -->
-            <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
-              <div style="
-                  background:#ffcece;border:2px dashed #ef4444; border-radius:12px;
-                  padding:8px;margin-bottom:12px;">
-                <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" loading="lazy"
-                     alt="Old preferences with toggle switches"
-                     style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
-              </div>
-              <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
-                  text-align:left;margin:0;">
-                <strong style="color:#ef4444;">Old:</strong> Long list of toggle switches 
-                requiring users to flip each one individually, then press "Done" button. 
-                Felt tedious and slow.
-              </p>
+  
+          <!-- New Screen -->
+          <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+            <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;padding:8px;margin-bottom:12px;">
+              <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Barcode Screen.png" loading="lazy" alt="New scanner with instant overlay rating" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
             </div>
-    
-            <!-- Arrow -->
-            <div class="comparison-arrow" style="
-                align-self:center;color:#22c55e;font-size:24px;
-                flex:0 0 auto;margin:0 8px;">
-              →
-            </div>
-    
-            <!-- New Screen -->
-            <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
-              <div style="
-                  background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;
-                  padding:8px;margin-bottom:12px;">
-                <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" loading="lazy"
-                     alt="New preferences with icon chips"
-                     style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
-              </div>
-              <p style="
-                  font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;
-                  text-align:left;margin:0;">
-                <strong style="color:#22c55e;">New:</strong> Visual icon chips with 
-                familiar imagery enable multi-select in one tap. Auto-saves on close, 
-                reducing interaction steps from 3 to 1.
-              </p>
-            </div>
+            <p style="font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;text-align:left;margin:0;">
+              <strong style="color:#22c55e;">New:</strong> Rating appears as an overlay on the scanner in under 2 seconds. Full details available via swipe-up sheet using progressive disclosure.
+            </p>
           </div>
         </div>
       </div>
-      <!-- ░░░  /Before & After Ends ░░░ -->  
-
-      <table>
-        <thead>
-          <tr>
-            <th>Issue</th>
-            <th>Solution</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Score interpretation</td>
-            <td>Added color-coded badge, split positives/risks</td>
-          </tr>
-          <tr>
-            <td>Scan feedback delay</td>
-            <td>Overlaid results instantly, added swipe-up details</td>
-          </tr>
-          <tr>
-            <td>Tedious filter toggling</td>
-            <td>Visual icon chips, single-tap interactions</td>
-          </tr>
-        </tbody>
-      </table>
+  
+      <!-- 3. Food Preferences -->
+      <div style="margin-bottom:32px;">
+        <h4 style="font:600 18px 'Raleway',sans-serif;color:rgba(0, 0, 0, 0.955);margin:0 0 20px;text-align:center;">
+          Food Preferences Screen
+        </h4>
+        
+        <div class="comparison-container" style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;align-items:flex-start;margin-bottom:16px;">
+          
+          <!-- Old Screen -->
+          <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+            <div style="background:#ffcece;border:2px dashed #ef4444;border-radius:12px;padding:8px;margin-bottom:12px;">
+              <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" loading="lazy" alt="Old preferences with toggle switches" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+            </div>
+            <p style="font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;text-align:left;margin:0;">
+              <strong style="color:#ef4444;">Old:</strong> Long list of toggle switches requiring users to flip each one individually, then press "Done" button. Felt tedious and slow.
+            </p>
+          </div>
+  
+          <!-- Arrow -->
+          <div class="comparison-arrow" style="align-self:center;color:#22c55e;font-size:24px;flex:0 0 auto;margin:0 8px;">
+            →
+          </div>
+  
+          <!-- New Screen -->
+          <div class="comparison-item" style="flex:1 1 280px;min-width:280px;max-width:320px;text-align:center;">
+            <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;padding:8px;margin-bottom:12px;">
+              <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" loading="lazy" alt="New preferences with icon chips" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);">
+            </div>
+            <p style="font:400 14px 'Inter',sans-serif;color:rgba(0, 0, 0, 0.955);line-height:1.5;text-align:left;margin:0;">
+              <strong style="color:#22c55e;">New:</strong> Visual icon chips with familiar imagery enable multi-select in one tap. Auto-saves on close, reducing interaction steps from 3 to 1.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <section class="section-header" id="decisions">
-    <div class="section-tag">Key Decisions</div>
-    <h2 class="section-title">
-      Critical <span class="highlight">Trade-offs</span> & Why
-    </h2>
-  </section>
-  
-  <section class="content-section">
-    <div class="content-container">
+    <!-- Issues & Solutions Table -->
+    <table style="margin-bottom: 60px;">
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Solution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Score interpretation</td>
+          <td>Added color-coded badge, split positives/risks</td>
+        </tr>
+        <tr>
+          <td>Scan feedback delay</td>
+          <td>Overlaid results instantly, added swipe-up details</td>
+        </tr>
+        <tr>
+          <td>Tedious filter toggling</td>
+          <td>Visual icon chips, single-tap interactions</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- KEY DECISIONS SECTION (Integrated) -->
+    <div style="margin-top: 60px; padding-top: 40px; border-top: 2px solid rgba(12, 71, 0, 0.1);">
+      <h3 style="font-size: 28px; color: #0C4700; margin: 0 0 32px; font-weight: 800;">Key Decisions: Critical Trade-offs & Why</h3>
       
       <!-- Decision 1 -->
       <div style="margin-bottom: 48px; border-left: 4px solid #0C4700; padding-left: 32px;">
-        <h3 style="font-size: 20px; color: #0C4700; margin: 0 0 12px;">Decision 1: Overlay vs. Separate Screen</h3>
-        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0 0 16px;">
+        <h4 style="font-size: 20px; color: #0C4700; margin: 0 0 12px; font-weight: 700;">Decision 1: Overlay vs. Separate Screen</h4>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0;">
           <strong>Constraint:</strong> Users waited 30 seconds for product details to load.<br>
           <strong>Option A:</strong> Optimize loading speed (technical limitation).<br>
           <strong>Option B:</strong> Show instant overlay with progressive disclosure.<br>
-          <strong>My Choice:</strong> Option B — reduced perceived wait time from 30s to <2s, increased task completion from 2/4 to 4/4 users.
+          <strong>My Choice:</strong> Option B — reduced perceived wait time from 30s to &lt;2s, increased task completion from 2/4 to 4/4 users.
         </p>
       </div>
-  
+
       <!-- Decision 2 -->
       <div style="margin-bottom: 48px; border-left: 4px solid #B1D73B; padding-left: 32px;">
-        <h3 style="font-size: 20px; color: #0C4700; margin: 0 0 12px;">Decision 2: Traffic Light vs. Numerical Score</h3>
-        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0 0 16px;">
+        <h4 style="font-size: 20px; color: #0C4700; margin: 0 0 12px; font-weight: 700;">Decision 2: Traffic Light vs. Numerical Score</h4>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0;">
           <strong>Constraint:</strong> Users couldn't interpret "41/100" — is that good or bad?<br>
           <strong>Option A:</strong> Add explanatory text to numerical score.<br>
           <strong>Option B:</strong> Replace with traffic light + risk tags (High/Limited).<br>
           <strong>My Choice:</strong> Option B — 60% improvement in comprehension during testing. Validated by FDA research on color-coded labeling reducing cognitive load.
         </p>
       </div>
-  
+
       <!-- Decision 3 -->
-      <div style="margin-bottom: 48px; border-left: 4px solid #000; padding-left: 32px;">
-        <h3 style="font-size: 20px; color: #0C4700; margin: 0 0 12px;">Decision 3: Toggle Switches vs. Icon Chips</h3>
-        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0 0 16px;">
+      <div style="margin-bottom: 0; border-left: 4px solid #000; padding-left: 32px;">
+        <h4 style="font-size: 20px; color: #0C4700; margin: 0 0 12px; font-weight: 700;">Decision 3: Toggle Switches vs. Icon Chips</h4>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0;">
           <strong>Constraint:</strong> Users found preference setting tedious (3 steps per item).<br>
           <strong>Option A:</strong> Keep toggles, add "Select All" button.<br>
           <strong>Option B:</strong> Replace with visual icon chips, auto-save on tap.<br>
-          <strong>My Choice:</strong> Option B — reduced interaction steps from 3 to 1. Aligned with WCAG 2.1 guideline 3.2.2 (On Input) — changes of context only on explicit request, but here the "context" is the preference itself, making auto-save appropriate.
+          <strong>My Choice:</strong> Option B — reduced interaction steps from 3 to 1. Aligned with WCAG 2.1 guideline 3.2.2 (On Input).
         </p>
       </div>
-  
     </div>
-  </section>
 
+  </div>
+</section>
+  
   <!-- Deliver -->
   <section class="section-header" id="outcome">
     <div class="section-tag">04 / Outcome</div>
