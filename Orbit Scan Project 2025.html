@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>Orbit Scan - Case Study</title>
+
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1725,16 +1726,34 @@ transition: width 0.1s ease;">
         </div>
         <div class="meta-card">
           <span class="meta-label">Team</span>
-          <span class="meta-value">Solo (peer testers)</span>
+          <span class="meta-value">Solo UX Researcher & Designer)</span>
         </div>
       </div>
-
       </div>
+
+      <!-- Add this after your hero-title -->
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 40px 0; max-width: 900px;">
+  <div style="text-align: center; padding: 24px; background: rgba(177, 215, 59, 0.1); border-radius: 16px; border: 1px solid rgba(177, 215, 59, 0.3);">
+    <div style="font-size: 48px; font-weight: 900; color: #B1D73B; line-height: 1;">60%</div>
+    <div style="font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 8px;">Faster decision-making in testing</div>
+  </div>
+  <div style="text-align: center; padding: 24px; background: rgba(177, 215, 59, 0.1); border-radius: 16px; border: 1px solid rgba(177, 215, 59, 0.3);">
+    <div style="font-size: 48px; font-weight: 900; color: #B1D73B; line-height: 1;">3→1</div>
+    <div style="font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 8px;">Interaction steps reduced</div>
+  </div>
+  <div style="text-align: center; padding: 24px; background: rgba(177, 215, 59, 0.1); border-radius: 16px; border: 1px solid rgba(177, 215, 59, 0.3);">
+    <div style="font-size: 48px; font-weight: 900; color: #B1D73B; line-height: 1;">4/4</div>
+    <div style="font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 8px;">Usability tasks completed</div>
+  </div>
+</div>
+        
   </section>
 
 
   <!--HERO SECTION ENDED-->
 
+
+  
   <!-- Background -->
   <section class="content-section">
     <div class="content-container">
@@ -1770,6 +1789,40 @@ transition: width 0.1s ease;">
         </div>
       </div>
     </div>
+
+    <!-- My Contributions Box -->
+<div style="background: linear-gradient(135deg, rgba(177, 215, 59, 0.08) 0%, rgba(12, 71, 0, 0.05) 100%); border: 2px solid #0C4700; border-radius: 20px; padding: 32px; margin: 40px 0; position: relative;">
+  <div style="position: absolute; top: -12px; left: 24px; background: #0C4700; color: #fff; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+    My Ownership
+  </div>
+  
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 16px;">
+    <div>
+      <h4 style="font-size: 14px; color: #0C4700; margin: 0 0 8px; font-weight: 700;">✓ End-to-End Design</h4>
+      <p style="font-size: 14px; color: rgba(0,0,0,0.8); margin: 0; line-height: 1.5;">Concept → Research → Prototype → Testing → Final UI</p>
+    </div>
+    <div>
+      <h4 style="font-size: 14px; color: #0C4700; margin: 0 0 8px; font-weight: 700;">✓ Primary Research</h4>
+      <p style="font-size: 14px; color: rgba(0,0,0,0.8); margin: 0; line-height: 1.5;">Conducted 4 interviews, 22 surveys, competitive audit</p>
+    </div>
+    <div>
+      <h4 style="font-size: 14px; color: #0C4700; margin: 0 0 8px; font-weight: 700;">✓ Usability Testing</h4>
+      <p style="font-size: 14px; color: rgba(0,0,0,0.8); margin: 0; line-height: 1.5;">Moderated 4 sessions, identified 3 critical issues, iterated</p>
+    </div>
+    <div>
+      <h4 style="font-size: 14px; color: #0C4700; margin: 0 0 8px; font-weight: 700;">✓ Design System</h4>
+      <p style="font-size: 14px; color: rgba(0,0,0,0.8); margin: 0; line-height: 1.5;">Created color tokens, typography scale, component library</p>
+    </div>
+  </div>
+  
+  <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(12, 71, 0, 0.2);">
+    <p style="font-size: 14px; color: rgba(0,0,0,0.7); margin: 0; font-style: italic;">
+      <strong>Collaborative elements:</strong> Peer feedback on visual design, advisor guidance on research methodology
+    </p>
+  </div>
+</div>
+
+
   </section>
 
   <!-- Process -->
@@ -3882,12 +3935,128 @@ transition: width 0.1s ease;">
     </div>
   </section>
 
+  <section class="section-header" id="decisions">
+    <div class="section-tag">Key Decisions</div>
+    <h2 class="section-title">
+      Critical <span class="highlight">Trade-offs</span> & Why
+    </h2>
+  </section>
+  
+  <section class="content-section">
+    <div class="content-container">
+      
+      <!-- Decision 1 -->
+      <div style="margin-bottom: 48px; border-left: 4px solid #0C4700; padding-left: 32px;">
+        <h3 style="font-size: 20px; color: #0C4700; margin: 0 0 12px;">Decision 1: Overlay vs. Separate Screen</h3>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0 0 16px;">
+          <strong>Constraint:</strong> Users waited 30 seconds for product details to load.<br>
+          <strong>Option A:</strong> Optimize loading speed (technical limitation).<br>
+          <strong>Option B:</strong> Show instant overlay with progressive disclosure.<br>
+          <strong>My Choice:</strong> Option B — reduced perceived wait time from 30s to <2s, increased task completion from 2/4 to 4/4 users.
+        </p>
+      </div>
+  
+      <!-- Decision 2 -->
+      <div style="margin-bottom: 48px; border-left: 4px solid #B1D73B; padding-left: 32px;">
+        <h3 style="font-size: 20px; color: #0C4700; margin: 0 0 12px;">Decision 2: Traffic Light vs. Numerical Score</h3>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0 0 16px;">
+          <strong>Constraint:</strong> Users couldn't interpret "41/100" — is that good or bad?<br>
+          <strong>Option A:</strong> Add explanatory text to numerical score.<br>
+          <strong>Option B:</strong> Replace with traffic light + risk tags (High/Limited).<br>
+          <strong>My Choice:</strong> Option B — 60% improvement in comprehension during testing. Validated by FDA research on color-coded labeling reducing cognitive load.
+        </p>
+      </div>
+  
+      <!-- Decision 3 -->
+      <div style="margin-bottom: 48px; border-left: 4px solid #000; padding-left: 32px;">
+        <h3 style="font-size: 20px; color: #0C4700; margin: 0 0 12px;">Decision 3: Toggle Switches vs. Icon Chips</h3>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.9); margin: 0 0 16px;">
+          <strong>Constraint:</strong> Users found preference setting tedious (3 steps per item).<br>
+          <strong>Option A:</strong> Keep toggles, add "Select All" button.<br>
+          <strong>Option B:</strong> Replace with visual icon chips, auto-save on tap.<br>
+          <strong>My Choice:</strong> Option B — reduced interaction steps from 3 to 1. Aligned with WCAG 2.1 guideline 3.2.2 (On Input) — changes of context only on explicit request, but here the "context" is the preference itself, making auto-save appropriate.
+        </p>
+      </div>
+  
+    </div>
+  </section>
+
   <!-- Deliver -->
   <section class="section-header" id="outcome">
-    <div class="section-tag">04 / Deliver</div>
+    <div class="section-tag">04 / Outcome</div>
     <h2 class="section-title">
-      Final Design <span class="highlight">Solutions</span>
+      Measurable <span class="highlight">Impact</span>
     </h2>
+  </section>
+  
+  <section class="content-section">
+    <div class="content-container">
+      
+  <!-- Impact Grid with Methodology -->
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 48px;">
+      
+    <div style="background: #fff; border: 2px solid #0C4700; border-radius: 20px; padding: 32px; text-align: center;">
+      <div style="font-size: 56px; font-weight: 900; color: #0C4700; line-height: 1; margin-bottom: 12px;">60%</div>
+      <div style="font-size: 16px; font-weight: 600; color: #000; margin-bottom: 8px;">Faster Decisions</div>
+      <div style="font-size: 14px; color: rgba(0,0,0,0.7); line-height: 1.5; margin-bottom: 12px;">
+        Reduced time to evaluate product from 5+ min to <2 min
+      </div>
+      <div style="font-size: 12px; color: #0C4700; background: rgba(177,215,59,0.1); padding: 8px; border-radius: 8px;">
+        <strong>Measured:</strong> Timed task completion in usability testing (n=4)
+      </div>
+    </div>
+
+    <div style="background: #fff; border: 2px solid #B1D73B; border-radius: 20px; padding: 32px; text-align: center;">
+      <div style="font-size: 56px; font-weight: 900; color: #B1D73B; line-height: 1; margin-bottom: 12px;">100%</div>
+      <div style="font-size: 16px; font-weight: 600; color: #000; margin-bottom: 8px;">Task Completion</div>
+      <div style="font-size: 14px; color: rgba(0,0,0,0.7); line-height: 1.5; margin-bottom: 12px;">
+        4/4 users completed all tasks vs. 2/4 in initial version
+      </div>
+      <div style="font-size: 12px; color: #0C4700; background: rgba(177,215,59,0.1); padding: 8px; border-radius: 8px;">
+        <strong>Measured:</strong> Success rate in moderated usability tests
+      </div>
+    </div>
+
+    <div style="background: #fff; border: 2px solid #000; border-radius: 20px; padding: 32px; text-align: center;">
+      <div style="font-size: 56px; font-weight: 900; color: #000; line-height: 1; margin-bottom: 12px;">3→1</div>
+      <div style="font-size: 16px; font-weight: 600; color: #000; margin-bottom: 8px;">Steps Reduced</div>
+      <div style="font-size: 14px; color: rgba(0,0,0,0.7); line-height: 1.5; margin-bottom: 12px;">
+        Preference setting: toggle+confirm+done → single tap
+      </div>
+      <div style="font-size: 12px; color: #0C4700; background: rgba(177,215,59,0.1); padding: 8px; border-radius: 8px;">
+        <strong>Measured:</strong> Interaction analysis via screen recordings
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Qualitative Outcomes -->
+  <div style="background: rgba(177, 215, 59, 0.08); border-radius: 20px; padding: 32px; margin-bottom: 32px;">
+    <h3 style="font-size: 20px; color: #0C4700; margin: 0 0 20px;">Qualitative Outcomes</h3>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      <li style="padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 16px; color: rgba(0,0,0,0.9);">
+        <strong style="color: #0C4700;">Confidence:</strong> 4/4 users reported feeling "confident" vs. "confused" in post-test interviews
+      </li>
+      <li style="padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 16px; color: rgba(0,0,0,0.9);">
+        <strong style="color: #0C4700;">Trust:</strong> Traffic light described as "instantly understandable" by all participants
+      </li>
+      <li style="padding: 12px 0; font-size: 16px; color: rgba(0,0,0,0.9);">
+        <strong style="color: #0C4700;">Efficiency:</strong> 3/4 users explicitly mentioned time savings unprompted
+      </li>
+    </ul>
+  </div>
+  
+      <!-- Next Steps -->
+      <div style="border: 2px dashed rgba(0,0,0,0.2); border-radius: 20px; padding: 32px;">
+        <h3 style="font-size: 20px; color: #000; margin: 0 0 16px;">Next Steps (If Continued)</h3>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.8); margin: 0;">
+          1. Validate scoring algorithm with registered dietitians<br>
+          2. Expand component library for future features (recipe suggestions, meal planning)<br>
+          3. Conduct longitudinal study to measure behavior change over 30 days
+        </p>
+      </div>
+  
+    </div>
   </section>
 
   <section class="content-section">
@@ -4571,6 +4740,17 @@ Final Design Solutions - Detailed Screens & Features
 
          
         </div>
+
+        <!-- Add after your color palette section -->
+<div style="background: #fff; border: 2px solid #ef4444; border-radius: 12px; padding: 20px; margin: 24px 0;">
+  <h4 style="color: #ef4444; margin: 0 0 12px; font-size: 16px;">⚠️ Action Required: Verify Contrast Ratios</h4>
+  <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(0,0,0,0.8);">
+    Your palette shows AAA ratings, but I recommend running actual tests with 
+    <a href="https://webaim.org/resources/contrastchecker/" style="color: #0C4700; text-decoration: underline;">WebAIM Contrast Checker</a> 
+    for your specific color combinations (e.g., #B1D73B on white, #0C4700 on light backgrounds). 
+    Update the case study with actual ratio numbers (e.g., "7.2:1 meets WCAG 2.1 AAA").
+  </p>
+</div>
 
 
     <!-- ░░░ TYPOGRAPHY SYSTEM - MOBILE RESPONSIVE ░░░ -->
