@@ -263,52 +263,99 @@
   <!-- Floating Back -->
   <a href="work.html" class="home-button"><i class="fas fa-times"></i></a>
 
-  <!-- ===================== OVERVIEW / HERO ===================== -->
-  <section id="overview" class="hero">
-    <div class="hero-container">
-      <div class="project-tag">
-        <div class="tag-dot"></div>
-        <span class="tag-text">UX/UI Design &middot; Mobile App &middot; iOS</span>
-      </div>
-      <h1 class="hero-title"><span class="highlight">Orbit Scan</span><br>Smarter, Healthier<br>Product Choices.</h1>
-      <p class="hero-subtitle">Helping shoppers make confident, informed food decisions in seconds through personalized health insights and instant barcode scanning.</p>
-      <div class="meta-grid">
-        <div class="meta-card"><span class="meta-label">Role</span><span class="meta-value">Product Design (UX/UI)</span></div>
-        <div class="meta-card"><span class="meta-label">Timeline</span><span class="meta-value">12 Weeks</span></div>
-        <div class="meta-card"><span class="meta-label">Tools</span><span class="meta-value">Figma &middot; FigJam &middot; Google Forms &middot; Zoom</span></div>
-        <div class="meta-card"><span class="meta-label">Team</span><span class="meta-value">Solo UX Researcher &amp; Designer</span></div>
+<!-- ===================== OVERVIEW / HERO ===================== -->
+<section id="overview" class="hero">
+  <div class="hero-container">
+
+    <style>
+      @media (max-width: 768px) {
+        .hero-two-col { grid-template-columns: 1fr !important; }
+        .hero-phone { display: none !important; }
+      }
+    </style>
+
+    <!-- Two-column: title + image only -->
+    <div class="hero-two-col" style="display: grid; grid-template-columns: 1fr 420px; gap: 24px; align-items: center; margin-bottom: 48px;">
+
+      <!-- LEFT: tag + title + subtitle -->
+      <div>
+        <div class="project-tag" style="margin-bottom: 28px;">
+          <div class="tag-dot"></div>
+          <span class="tag-text">UX/UI Design &middot; Mobile App &middot; iOS</span>
+        </div>
+        <h1 class="hero-title" style="margin-bottom: 20px;">
+          <span class="highlight">Orbit Scan</span><br>Smarter, Healthier<br>Product Choices.
+        </h1>
+        <p class="hero-subtitle" style="margin-bottom: 0;">
+          Helping shoppers make confident, informed food decisions in seconds through personalized health insights and instant barcode scanning.
+        </p>
       </div>
 
-      <!-- Double Diamond inside Overview -->
-      <div style="margin-top: 56px;">
-        <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--green-lime); font-weight: 700; margin-bottom: 12px;">Design Process</p>
-        <h2 style="font-size: clamp(22px,3vw,36px); font-weight: 800; color: #fff; margin-bottom: 8px;">The <span style="color: var(--green-lime);">Double Diamond</span> Approach</h2>
-        <p style="font-size: 16px; color: rgba(255,255,255,.65); margin-bottom: 32px;">Evidence-based design, with each iteration grounded in real shopper pain points.</p>
-        <div class="process-grid">
-          <div class="process-card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
-            <div class="process-num" style="color: var(--green-lime);">01</div>
-            <h3 style="color:#fff;">Discover</h3>
-            <p style="color:rgba(255,255,255,.7);">Surveys, interviews, competitive audit, and desk research to map real shopper pain points.</p>
-          </div>
-          <div class="process-card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
-            <div class="process-num" style="color: var(--green-lime);">02</div>
-            <h3 style="color:#fff;">Define</h3>
-            <p style="color:rgba(255,255,255,.7);">Affinity mapping, synthesis themes, primary persona, journey map, and a focused design challenge.</p>
-          </div>
-          <div class="process-card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
-            <div class="process-num" style="color: var(--green-lime);">03</div>
-            <h3 style="color:#fff;">Develop</h3>
-            <p style="color:rgba(255,255,255,.7);">Wireframes, system architecture, iterative usability testing, and key design decisions.</p>
-          </div>
-          <div class="process-card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
-            <div class="process-num" style="color: var(--green-lime);">04</div>
-            <h3 style="color:#fff;">Deliver</h3>
-            <p style="color:rgba(255,255,255,.7);">High-fidelity designs, measurable outcomes, lessons learned, and a launch-ready product story.</p>
-          </div>
-        </div>
+      <!-- RIGHT: cover image -->
+      <div class="hero-phone" style="display: flex; justify-content: flex-end; align-items: center;">
+        <img
+          src="assets/img/Projects/Orbit Scan/Case Study/CoverOS.png"
+          alt="Orbit Scan app preview"
+          style="width: 100%; max-width: 400px; height: auto; display: block;
+                 filter: drop-shadow(0 40px 60px rgba(0,0,0,.55));
+                 transform: translateY(16px);">
       </div>
+
+    </div>
+
+    <!-- Meta cards — full width below the grid -->
+    <div class="meta-grid">
+      <div class="meta-card"><span class="meta-label">Role</span><span class="meta-value">Product Design (UX/UI)</span></div>
+      <div class="meta-card"><span class="meta-label">Timeline</span><span class="meta-value">12 Weeks</span></div>
+      <div class="meta-card"><span class="meta-label">Tools</span><span class="meta-value">Figma &middot; FigJam &middot; Google Forms &middot; Zoom</span></div>
+      <div class="meta-card"><span class="meta-label">Team</span><span class="meta-value">Solo UX Researcher &amp; Designer</span></div>
+    </div>
+
     </div>
   </section>
+
+  <!-- ===================== DOUBLE DIAMOND ===================== -->
+<section style="background: #fff; padding: 72px 5vw 80px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+
+    <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
+              color: var(--green-dark); font-weight: 700; margin-bottom: 12px;">
+      Design Process
+    </p>
+    <h2 style="font-size: clamp(22px, 3vw, 36px); font-weight: 800;
+               color: #000; margin-bottom: 8px;">
+      The <span style="color: var(--green-dark);">Double Diamond</span> Approach
+    </h2>
+    <p style="font-size: 16px; color: rgba(0,0,0,.55); margin-bottom: 40px;">
+      Evidence-based design, with each iteration grounded in real shopper pain points.
+    </p>
+
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-num">01</div>
+        <h3>Discover</h3>
+        <p>Surveys, interviews, competitive audit, and desk research to map real shopper pain points.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">02</div>
+        <h3>Define</h3>
+        <p>Affinity mapping, synthesis themes, primary persona, journey map, and a focused design challenge.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">03</div>
+        <h3>Develop</h3>
+        <p>Wireframes, system architecture, iterative usability testing, and key design decisions.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">04</div>
+        <h3>Deliver</h3>
+        <p>High-fidelity designs, measurable outcomes, lessons learned, and a launch-ready product story.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 
   <!-- ===================== 01 / DISCOVER ===================== -->
