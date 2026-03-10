@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="assets/img/Projects/Orbit Scan/OrbitScanLogo.png" type="image/png">
   <style>
-    /* === RESET === */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
@@ -20,8 +19,6 @@
       word-spacing: .12em;
       overflow-x: hidden;
     }
-
-    /* === TOKENS === */
     :root {
       --green-dark:  #0C4700;
       --green-lime:  #B1D73B;
@@ -39,8 +36,7 @@
       background: rgba(255,255,255,.2);
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 2px 10px rgba(0,0,0,.1);
-      text-decoration: none;
-      transition: all .3s ease;
+      text-decoration: none; transition: all .3s ease;
     }
     .home-button:hover { transform: scale(1.1); background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,.2); }
     .home-button i { color: rgba(0,0,0,.6); font-size: 1.6rem; }
@@ -50,7 +46,7 @@
       position: fixed; left: 50%; bottom: 20px;
       transform: translateX(-50%);
       z-index: 1000;
-      width: calc(100vw - 40px); max-width: 640px; min-width: 320px;
+      width: calc(100vw - 40px); max-width: 700px; min-width: 320px;
       background: rgba(255,255,255,.75);
       backdrop-filter: blur(24px) saturate(180%);
       box-shadow: 0 8px 32px rgba(0,0,0,.4), 0 0 40px rgba(177,215,59,.15);
@@ -140,31 +136,12 @@
     }
     .highlight-box p { font-size: 17px; font-weight: 500; color: var(--green-dark); line-height: 1.7; margin: 0; }
 
-    /* === PROBLEM — PAIN POINT CARDS === */
+    /* === PAIN POINT CARDS === */
     .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 24px; margin-top: 40px; }
     .pain-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
     .pain-num { width: 48px; height: 48px; background: rgba(177,215,59,.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--green-dark); font-size: 20px; font-weight: 800; margin-bottom: 16px; }
     .pain-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .pain-card p  { font-size: 14px; line-height: 1.6; color: rgba(0,0,0,.7); margin: 0; }
-
-    /* === PERSONA === */
-    .persona-wrap { background: #fff; border: 1px solid #000; border-radius: var(--radius-lg); padding: 48px; margin-bottom: 64px; }
-    .persona-grid { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
-    .persona-photo { width: 200px; height: 200px; border-radius: 20px; overflow: hidden; border: 2px solid rgba(177,215,59,.4); }
-    .persona-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .persona-name { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
-    .persona-role { font-size: 16px; color: rgba(0,0,0,.6); margin-bottom: 24px; }
-    .persona-quote { background: rgba(177,215,59,.06); border-left: 4px solid var(--green-dark); padding: 16px 20px; border-radius: var(--radius-md); margin-bottom: 28px; font-style: italic; font-size: 16px; line-height: 1.6; }
-    .facts-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-bottom: 28px; }
-    .fact-box { border: 1px solid #000; border-radius: 10px; padding: 14px 18px; }
-    .fact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,.5); font-weight: 600; margin-bottom: 4px; }
-    .fact-val   { font-size: 15px; font-weight: 600; }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-    .chip-need, .chip-pain { padding: 9px 16px; border-radius: 24px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
-    .chip-need { background: rgba(177,215,59,.12); border: 1px solid #000; color: var(--green-dark); }
-    .chip-pain { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.4); color: var(--red); }
-    .design-implication { margin-top: 20px; font-size: 15px; color: rgba(0,0,0,.7); font-style: italic; }
-    .design-implication strong { color: var(--green-dark); font-style: normal; }
 
     /* === JOURNEY MAP === */
     .journey-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 24px; }
@@ -174,15 +151,6 @@
     .stage-label.s3 { color: #f97316; } .stage-label.s4 { color: var(--red); }
     .stage-emotion { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
     .stage-action  { font-size: 14px; color: rgba(0,0,0,.6); margin-bottom: 10px; }
-
-    /* === COMPETITIVE TABLE === */
-    table { width: 100%; border-collapse: collapse; margin: 40px 0; border-radius: var(--radius-md); overflow: hidden; }
-    th, td { padding: 20px 24px; text-align: left; border-bottom: 1px solid #000; line-height: 1.6; }
-    th { background: rgba(177,215,59,.08); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #000; }
-    td { font-size: 15px; color: #000; }
-    tr:last-child td { border-bottom: none; }
-    .check { color: #16a34a; font-size: 18px; }
-    .cross { color: var(--red); font-size: 18px; }
 
     /* === PROCESS CARDS === */
     .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; margin: 40px 0; }
@@ -208,7 +176,7 @@
     .comp-label strong.new { color: #16a34a; }
     .comp-arrow { align-self: center; font-size: 24px; color: #16a34a; flex: 0 0 auto; margin: 0 8px; }
 
-    /* === USABILITY TESTING CARDS === */
+    /* === USABILITY TESTING === */
     .usability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px; margin: 32px 0; }
     .ux-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
     .ux-card.warn { border: 1px solid #fecaca; }
@@ -242,8 +210,6 @@
     .next-steps li { font-size: 16px; line-height: 1.7; color: rgba(0,0,0,.8); margin-bottom: 10px; }
 
     /* === FOOTER === */
-    .footer { padding: 64px 5vw 48px; background: #fff; text-align: center; border-top: 1px solid #000; }
-    .footer p { font-size: 18px; color: rgba(0,0,0,.7); margin-bottom: 28px; }
     .btn-primary {
       display: inline-block; padding: 16px 44px;
       background: linear-gradient(135deg, #B1D73B 0%, #8FB830 100%);
@@ -257,7 +223,6 @@
       .process-grid  { grid-template-columns: repeat(2,1fr); }
       .metrics-grid  { grid-template-columns: repeat(2,1fr); }
       .journey-grid  { grid-template-columns: repeat(2,1fr); }
-      .persona-grid  { grid-template-columns: 1fr; }
       .ideation-inner { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 768px) {
@@ -265,7 +230,6 @@
       .process-grid  { grid-template-columns: 1fr; }
       .metrics-grid  { grid-template-columns: 1fr; }
       .journey-grid  { grid-template-columns: 1fr 1fr; }
-      .facts-grid    { grid-template-columns: 1fr; }
       .comparison    { flex-direction: column; }
       .comp-arrow    { transform: rotate(90deg); margin: 8px 0; }
       .ideation-inner { grid-template-columns: 1fr !important; }
@@ -281,26 +245,26 @@
   <!-- Reading Progress Bar -->
   <div id="progress-bar" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,#fff,#0D4700);width:0;z-index:9998;transition:width .1s ease;"></div>
 
-  <!-- Jump Nav -->
+  <!-- ===================== JUMP NAV ===================== -->
   <nav aria-label="Case Study Navigation" class="jump-nav">
     <div class="jump-nav-inner">
       <div class="jump-pills">
-        <a href="#context"   class="jump-pill active">Overview</a>
-        <a href="#problem"   class="jump-pill">Research</a>
-        <a href="#approach"  class="jump-pill">Approach</a>
-        <a href="#decisions" class="jump-pill">Develop</a>
-        <a href="#outcome"   class="jump-pill">Outcome</a>
-        <a href="#prototype" class="jump-pill prototype-pill">Prototype</a>
+        <a href="#overview"  class="jump-pill active">Overview</a>
+        <a href="#discover"  class="jump-pill">Discover</a>
+        <a href="#define"    class="jump-pill">Define</a>
+        <a href="#develop"   class="jump-pill">Develop</a>
+        <a href="#deliver"   class="jump-pill">Deliver</a>
+        <a href="#prototype" class="jump-pill">Prototype</a>
       </div>
-      <a href="#context" class="back-top" aria-label="Back to top">&#8593;</a>
+      <a href="#overview" class="back-top" aria-label="Back to top">&#8593;</a>
     </div>
   </nav>
 
   <!-- Floating Back -->
   <a href="work.html" class="home-button"><i class="fas fa-times"></i></a>
 
-  <!-- ===================== HERO ===================== -->
-  <section id="context" class="hero">
+  <!-- ===================== OVERVIEW / HERO ===================== -->
+  <section id="overview" class="hero">
     <div class="hero-container">
       <div class="project-tag">
         <div class="tag-dot"></div>
@@ -314,14 +278,44 @@
         <div class="meta-card"><span class="meta-label">Tools</span><span class="meta-value">Figma &middot; FigJam &middot; Google Forms &middot; Zoom</span></div>
         <div class="meta-card"><span class="meta-label">Team</span><span class="meta-value">Solo UX Researcher &amp; Designer</span></div>
       </div>
+
+      <!-- Double Diamond inside Overview -->
+      <div style="margin-top: 56px;">
+        <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--green-lime); font-weight: 700; margin-bottom: 12px;">Design Process</p>
+        <h2 style="font-size: clamp(22px,3vw,36px); font-weight: 800; color: #fff; margin-bottom: 8px;">The <span style="color: var(--green-lime);">Double Diamond</span> Approach</h2>
+        <p style="font-size: 16px; color: rgba(255,255,255,.65); margin-bottom: 32px;">Evidence-based design, with each iteration grounded in real shopper pain points.</p>
+        <div class="process-grid">
+          <div class="process-card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
+            <div class="process-num" style="color: var(--green-lime);">01</div>
+            <h3 style="color:#fff;">Discover</h3>
+            <p style="color:rgba(255,255,255,.7);">Surveys, interviews, competitive audit, and desk research to map real shopper pain points.</p>
+          </div>
+          <div class="process-card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
+            <div class="process-num" style="color: var(--green-lime);">02</div>
+            <h3 style="color:#fff;">Define</h3>
+            <p style="color:rgba(255,255,255,.7);">Affinity mapping, synthesis themes, primary persona, journey map, and a focused design challenge.</p>
+          </div>
+          <div class="process-card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
+            <div class="process-num" style="color: var(--green-lime);">03</div>
+            <h3 style="color:#fff;">Develop</h3>
+            <p style="color:rgba(255,255,255,.7);">Wireframes, system architecture, iterative usability testing, and key design decisions.</p>
+          </div>
+          <div class="process-card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
+            <div class="process-num" style="color: var(--green-lime);">04</div>
+            <h3 style="color:#fff;">Deliver</h3>
+            <p style="color:rgba(255,255,255,.7);">High-fidelity designs, measurable outcomes, lessons learned, and a launch-ready product story.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===================== PROBLEM ===================== -->
-  <section class="section-header" id="problem">
+
+  <!-- ===================== 01 / DISCOVER ===================== -->
+  <section id="discover" class="section-header">
     <div class="section-tag">01 / Discover</div>
-    <h2 class="section-title">The <span class="highlight">2-minute carton of milk</span></h2>
-<p class="section-desc">The problem started by watching a friend with a lactose intolerance scan a plant-based milk carton for 2 minutes, Googling ingredients mid-aisle, and still leaving unsure if it was safe.</p>
+    <h2 class="section-title">Why <span class="highlight">simple grocery decisions feel so hard</span></h2>
+    <p class="section-desc">The problem started by watching a friend with lactose intolerance scan a plant-based milk carton for 2 minutes, Googling ingredients mid-aisle, and still leaving unsure if it was safe.</p>
   </section>
 
   <section class="content-section">
@@ -332,24 +326,15 @@
       <div class="pain-grid">
         <div class="pain-card"><div class="pain-num">1</div><h4>Confusing Labels</h4><p>Technical ingredient names and vague health claims create uncertainty at the shelf.</p></div>
         <div class="pain-card"><div class="pain-num">2</div><h4>Hidden Additives</h4><p>Shoppers Google unfamiliar ingredients mid-aisle, wasting time and adding stress.</p></div>
-        <div class="pain-card"><div class="pain-num">3</div><h4>Dietary Restrictions</h4><p>No easy way to verify if plant-based or dairy-free claims are trustworthy without deep label reading.</p>
-    </div>
+        <div class="pain-card"><div class="pain-num">3</div><h4>Dietary Restrictions</h4><p>No easy way to verify if plant-based or dairy-free claims are trustworthy without deep label reading.</p></div>
         <div class="pain-card"><div class="pain-num">4</div><h4>Decision Fatigue</h4><p>Comparing multiple products leads to analysis paralysis and suboptimal choices.</p></div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===================== RESEARCH BRIDGE + PERSONA ===================== -->
-  <section class="content-section" style="padding-top: 0;">
-    <div class="container">
-
-      <!-- Research Methods Bridge -->
-      <div style="margin-bottom: 56px;">
-        <h3 style="font-size: 22px; font-weight: 800; color: #000; margin-bottom: 16px; letter-spacing: -0.5px;">
-          How I validated this at scale
-        </h3>
+      <!-- Research Methods -->
+      <div style="margin-top: 56px; margin-bottom: 56px;">
+        <h3 style="font-size: 22px; font-weight: 800; color: #000; margin-bottom: 16px; letter-spacing: -0.5px;">How I validated this at scale</h3>
         <p style="font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.75); max-width: 760px; margin-bottom: 32px;">
-            To move beyond a single anecdote, I ran a <strong>22-person survey</strong> (ages 19&ndash;52, 40% with dietary restrictions) recruited via Reddit nutrition forums and campus boards, followed by <strong>4 semi-structured interviews</strong> with in-store shadowing, including a session at a Trader Joe&rsquo;s dairy aisle. I then ran a <strong>competitive audit</strong> of Yuka, Fooducate, and Open Food Facts, and reviewed FDA and EU nutrition label guidelines.
+          To move beyond a single anecdote, I ran a <strong>22-person survey</strong> (ages 19&ndash;52, 40% with dietary restrictions) recruited via Reddit nutrition forums and campus boards, followed by <strong>4 semi-structured interviews</strong> with in-store shadowing, including a session at a Trader Joe&rsquo;s dairy aisle. I then ran a <strong>competitive audit</strong> of Yuka, Fooducate, and Open Food Facts, and reviewed FDA and EU nutrition label guidelines.
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 10px;">
           <span style="padding: 8px 16px; border-radius: 24px; background: rgba(177,215,59,.1); border: 1px solid rgba(12,71,0,.2); color: var(--green-dark); font-size: 13px; font-weight: 600;">&#x1F4CB; 22-person survey</span>
@@ -359,28 +344,37 @@
           <span style="padding: 8px 16px; border-radius: 24px; background: rgba(177,215,59,.1); border: 1px solid rgba(12,71,0,.2); color: var(--green-dark); font-size: 13px; font-weight: 600;">&#x1F4DC; FDA &amp; EU desk research</span>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Qualitative Themes -->
+
+  <!-- ===================== 02 / DEFINE ===================== -->
+  <section id="define" class="section-header">
+    <div class="section-tag">02 / Define</div>
+    <h2 class="section-title">Turning research into a <span class="highlight">focused product direction</span></h2>
+    <p class="section-desc">Across 22 survey responses and 4 in-depth interviews, the same frustrations surfaced repeatedly pointing clearly toward one unmet need.</p>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+
+      <!-- Three Synthesis Themes -->
       <div style="margin-bottom: 64px;">
-        <h3 style="font-size: 22px; font-weight: 800; color: #000; margin-bottom: 8px; letter-spacing: -0.5px;">
-          Three themes emerged consistently
-        </h3>
-        <p style="font-size: 15px; color: rgba(0,0,0,.6); margin-bottom: 28px;">
-          Across 22 survey responses and 4 in-depth interviews, the same frustrations surfaced repeatedly.
-        </p>
+        <h3 style="font-size: 22px; font-weight: 800; color: #000; margin-bottom: 8px; letter-spacing: -0.5px;">Three themes emerged consistently</h3>
+        <p style="font-size: 15px; color: rgba(0,0,0,.6); margin-bottom: 28px;">Affinity mapping clustered every observation into three clear clusters.</p>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
 
           <div style="background: rgba(254,249,195,.2); border: 1px solid rgba(254,240,138,.4); border-radius: 16px; padding: 24px;">
             <div style="font-size: 22px; margin-bottom: 12px;">&#x1F9E0;</div>
             <h4 style="font-size: 16px; font-weight: 700; color: #b45309; margin-bottom: 10px;">Decision-Making Overload</h4>
-            <p style="font-size: 13px; font-style: italic; color: rgba(0,0,0,.7); line-height: 1.6; border-left: 2px solid rgba(254,240,138,.6); padding-left: 10px; margin-bottom: 8px;">"I get overwhelmed &mdash; everything claims it&rsquo;s healthy."</p>
+            <p style="font-size: 13px; font-style: italic; color: rgba(0,0,0,.7); line-height: 1.6; border-left: 2px solid rgba(254,240,138,.6); padding-left: 10px; margin-bottom: 8px;">"I get overwhelmed everything claims it&rsquo;s healthy."</p>
             <p style="font-size: 13px; font-style: italic; color: rgba(0,0,0,.7); line-height: 1.6; border-left: 2px solid rgba(254,240,138,.6); padding-left: 10px;">"I compare products forever and still leave unsure."</p>
           </div>
 
           <div style="background: rgba(219,234,254,.2); border: 1px solid rgba(191,219,254,.4); border-radius: 16px; padding: 24px;">
             <div style="font-size: 22px; margin-bottom: 12px;">&#x1F50D;</div>
             <h4 style="font-size: 16px; font-weight: 700; color: #1d4ed8; margin-bottom: 10px;">Transparency &amp; Trust</h4>
-            <p style="font-size: 13px; font-style: italic; color: rgba(0,0,0,.7); line-height: 1.6; border-left: 2px solid rgba(191,219,254,.6); padding-left: 10px; margin-bottom: 8px;">"I don&rsquo;t trust &lsquo;natural&rsquo; labels &mdash; what does it even mean?"</p>
+            <p style="font-size: 13px; font-style: italic; color: rgba(0,0,0,.7); line-height: 1.6; border-left: 2px solid rgba(191,219,254,.6); padding-left: 10px; margin-bottom: 8px;">"I don&rsquo;t trust &lsquo;natural&rsquo; labels, what does it even mean?"</p>
             <p style="font-size: 13px; font-style: italic; color: rgba(0,0,0,.7); line-height: 1.6; border-left: 2px solid rgba(191,219,254,.6); padding-left: 10px;">"Nutrition panels are cluttered and hard to read in a hurry."</p>
           </div>
 
@@ -394,29 +388,21 @@
         </div>
       </div>
 
-      <!-- Narrative bridge into Stephanie -->
+      <!-- Bridge into Persona -->
       <div class="highlight-box" style="margin-bottom: 48px;">
-        <p>One participant kept coming up in every synthesis session. Her story captured all three themes at once &mdash; and became the foundation of the primary persona.</p>
+        <p>One participant kept coming up in every synthesis session. Her story captured all three themes at once and became the foundation of the primary persona.</p>
       </div>
 
       <!-- Persona -->
       <div style="border: 1px solid #000; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 64px;">
-
-        <!-- Dark header bar -->
         <div style="background: var(--green-dark); padding: 28px 40px;">
           <div style="display: inline-block; padding: 4px 12px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-family: 'Inter', sans-serif; color: var(--green-lime); margin-bottom: 12px;">
             Primary Persona
           </div>
-          <h3 style="font-size: clamp(20px, 3vw, 28px); font-weight: 800; color: #fff; margin: 0; line-height: 1.2;">
-            Speed is the ultimate feature for Stephanie
-          </h3>
+          <h3 style="font-size: clamp(20px, 3vw, 28px); font-weight: 800; color: #fff; margin: 0; line-height: 1.2;">Speed is the ultimate feature for Stephanie</h3>
         </div>
-      
-        <!-- Body -->
         <div style="padding: 40px; background: #fff;">
           <div style="display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: start;">
-      
-            <!-- Photo + facts -->
             <div>
               <div style="width: 180px; height: 180px; border-radius: 16px; overflow: hidden; border: 2px solid rgba(177,215,59,.4); margin-bottom: 20px;">
                 <img src="assets/img/Projects/Orbit Scan/Case Study/Stephanie.jpg" alt="Stephanie, 24, Graduate Student" style="width: 100%; height: 100%; object-fit: cover;">
@@ -430,20 +416,14 @@
                 <div style="font-size: 13px;"><span style="font-weight: 700; color: var(--green-dark);">Device</span><br>iPhone 15 Pro</div>
               </div>
             </div>
-      
-            <!-- Right side -->
             <div>
-              <!-- Quote -->
               <div style="background: rgba(177,215,59,.06); border-left: 4px solid var(--green-dark); padding: 16px 20px; border-radius: var(--radius-md); margin-bottom: 20px;">
                 <p style="font-style: italic; font-size: 16px; line-height: 1.6; margin: 0 0 12px;">"I just want a quick Yes or No so I can get out of the aisle. Why is reading labels harder than my grad school textbooks?"</p>
                 <p style="font-size: 13px; font-weight: 600; color: var(--green-dark); margin: 0 0 8px;">Speed matters. I have places to be.</p>
-                <!-- Progress bar like the PDF -->
                 <div style="height: 6px; background: rgba(0,0,0,.08); border-radius: 3px; overflow: hidden;">
                   <div style="height: 100%; width: 88%; background: linear-gradient(to right, var(--green-dark), var(--green-lime)); border-radius: 3px;"></div>
                 </div>
               </div>
-      
-              <!-- Needs / Frustrations two-column table matching PDF -->
               <table style="width: 100%; border-collapse: collapse; margin: 0 0 20px;">
                 <thead>
                   <tr>
@@ -453,41 +433,26 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td style="padding: 12px 16px; font-size: 14px; border: 1px solid #e5e7eb; vertical-align: top;">
-                      <span style="color: var(--green-dark); font-weight: 700; margin-right: 6px;">&#x2713;</span> Get in and out in under 25 minutes
-                    </td>
-                    <td style="padding: 12px 16px; font-size: 14px; border: 1px solid #e5e7eb; vertical-align: top;">
-                      <span style="color: var(--red); font-weight: 700; margin-right: 6px;">!</span> Paralysis by label overload
-                    </td>
+                    <td style="padding: 12px 16px; font-size: 14px; border: 1px solid #e5e7eb; vertical-align: top;"><span style="color: var(--green-dark); font-weight: 700; margin-right: 6px;">&#x2713;</span> Get in and out in under 25 minutes</td>
+                    <td style="padding: 12px 16px; font-size: 14px; border: 1px solid #e5e7eb; vertical-align: top;"><span style="color: var(--red); font-weight: 700; margin-right: 6px;">!</span> Paralysis by label overload</td>
                   </tr>
                   <tr>
-                    <td style="padding: 12px 16px; font-size: 14px; border: 1px solid #e5e7eb; vertical-align: top;">
-                        <span style="color: var(--green-dark); font-weight: 700; margin-right: 6px;">&#x2713;</span> Know instantly if a product is truly lactose-free
-                    </td>
-                    <td style="padding: 12px 16px; font-size: 14px; border: 1px solid #e5e7eb; vertical-align: top;">
-                      <span style="color: var(--red); font-weight: 700; margin-right: 6px;">!</span> Distrust of unclear ingredients
-                    </td>
+                    <td style="padding: 12px 16px; font-size: 14px; border: 1px solid #e5e7eb; vertical-align: top;"><span style="color: var(--green-dark); font-weight: 700; margin-right: 6px;">&#x2713;</span> Know instantly if a product is truly lactose-free</td>
+                    <td style="padding: 12px 16px; font-size: 14px; border: 1px solid #e5e7eb; vertical-align: top;"><span style="color: var(--red); font-weight: 700; margin-right: 6px;">!</span> Distrust of unclear ingredients</td>
                   </tr>
                 </tbody>
               </table>
-      
               <p style="font-size: 14px; color: rgba(0,0,0,.7); font-style: italic; margin: 0;">
                 <strong style="color: var(--green-dark); font-style: normal;">Design Implication:</strong> Any friction in the aisle directly competes with her limited time. She needs instant, binary answers she can trust.
               </p>
             </div>
-      
           </div>
         </div>
       </div>
-      
 
       <!-- Journey Map -->
-      <h3 style="font-size: 22px; font-weight: 800; color: #000; margin-bottom: 6px; letter-spacing: -0.5px;">
-        Stephanie&rsquo;s emotional descent &mdash; from hopeful to disappointed
-      </h3>
-      <p style="font-size: 15px; color: rgba(0,0,0,.6); margin-bottom: 24px;">
-        Every grocery run follows the same painful arc.
-      </p>
+      <h3 style="font-size: 22px; font-weight: 800; color: #000; margin-bottom: 6px; letter-spacing: -0.5px;">Stephanie&rsquo;s emotional descent, from hopeful to disappointed</h3>
+      <p style="font-size: 15px; color: rgba(0,0,0,.6); margin-bottom: 24px;">Every grocery run follows the same painful arc.</p>
       <div class="journey-grid">
         <div class="journey-stage">
           <div class="stage-label s1">1. Starting</div>
@@ -512,14 +477,10 @@
       </div>
 
       <!-- Competitive Analysis -->
-      <h3 style="font-size: 22px; font-weight: 800; color: #000; margin: 56px 0 8px; letter-spacing: -0.5px;">
-        Finding the gap in a crowded market
-      </h3>
-      <p style="font-size: 15px; color: rgba(0,0,0,.65); margin-bottom: 0; max-width: 700px; line-height: 1.7;">
-        Existing apps solve part of the problem. None solve Stephanie&rsquo;s problem.
-      </p>
+      <h3 style="font-size: 22px; font-weight: 800; color: #000; margin: 56px 0 8px; letter-spacing: -0.5px;">Finding the gap in a crowded market</h3>
+      <p style="font-size: 15px; color: rgba(0,0,0,.65); margin-bottom: 0; max-width: 700px; line-height: 1.7;">Existing apps solve part of the problem. None solve Stephanie&rsquo;s problem.</p>
       <div class="highlight-box" style="margin-bottom: 0;">
-        <p><strong>Key Insight:</strong> Shoppers crave an instant, credible signal they can trust and a way to filter options to their personal health needs &mdash; without scanning every label.</p>
+        <p><strong>Key Insight:</strong> Shoppers crave an instant, credible signal they can trust and a way to filter options to their personal health needs without scanning every label.</p>
       </div>
       <div style="overflow-x: auto; margin: 32px 0 0;">
         <table style="width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; border: 1px solid #000;">
@@ -534,88 +495,46 @@
           <tbody>
             <tr style="background: #fff;">
               <td style="padding: 16px 20px; font-size: 14px; font-weight: 600; border-bottom: 1px solid #e5e7eb; color: #000;">Personalized allergy filters</td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span>
-              </td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Paywall</span>
-              </td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span>
-              </td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span></td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Paywall</span></td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span></td>
             </tr>
             <tr style="background: rgba(177,215,59,.03);">
               <td style="padding: 16px 20px; font-size: 14px; font-weight: 600; border-bottom: 1px solid #e5e7eb; color: #000;">Alternative product suggestions</td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(22,163,74,.1); border-radius: 50%; color: #16a34a; font-size: 15px; font-weight: 700;">&#x2713;</span>
-              </td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Partial</span>
-              </td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span>
-              </td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(22,163,74,.1); border-radius: 50%; color: #16a34a; font-size: 15px; font-weight: 700;">&#x2713;</span></td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Partial</span></td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span></td>
             </tr>
             <tr style="background: #fff;">
               <td style="padding: 16px 20px; font-size: 14px; font-weight: 600; border-bottom: 1px solid #e5e7eb; color: #000;">Reward / loyalty system</td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span>
-              </td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span>
-              </td>
-              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span>
-              </td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span></td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span></td>
+              <td style="padding: 16px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,.1); border-radius: 50%; color: var(--red); font-size: 15px; font-weight: 700;">&#x2717;</span></td>
             </tr>
             <tr style="background: rgba(177,215,59,.03);">
               <td style="padding: 16px 20px; font-size: 14px; font-weight: 600; color: #000;">U.S. regulatory alignment (FDA)</td>
-              <td style="padding: 16px 20px; text-align: center;">
-                <span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Limited</span>
-              </td>
-              <td style="padding: 16px 20px; text-align: center;">
-                <span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Partial</span>
-              </td>
-              <td style="padding: 16px 20px; text-align: center;">
-                <span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Data only</span>
-              </td>
+              <td style="padding: 16px 20px; text-align: center;"><span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Limited</span></td>
+              <td style="padding: 16px 20px; text-align: center;"><span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Partial</span></td>
+              <td style="padding: 16px 20px; text-align: center;"><span style="display: inline-block; padding: 4px 10px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; font-size: 12px; font-weight: 700; color: #b45309;">Data only</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-            <p style="font-size: 15px; color: rgba(0,0,0,.6); margin-top: 8px;">
+      <p style="font-size: 15px; color: rgba(0,0,0,.6); margin-top: 8px;">
         <strong style="color: var(--green-dark);">Opportunity Gap:</strong> Personalized allergy filters + U.S. FDA alignment &mdash; competitors either paywall or ignore both.
       </p>
 
-    </div>
-  </section>
-
-  <!-- ===================== PROCESS ===================== -->
-  <section class="section-header" id="approach">
-    <div class="section-tag">Design Process</div>
-    <h2 class="section-title">The <span class="highlight">Double Diamond</span> Approach</h2>
-    <p class="section-desc">Evidence-based design, with each iteration grounded in real shopper pain points.</p>
-    <div class="container">
-      <div class="process-grid">
-        <div class="process-card"><div class="process-num">01</div><h3>Discover</h3><p>Surveys, interviews, competitive analysis, and desk research to map shopper pain points.</p></div>
-        <div class="process-card"><div class="process-num">02</div><h3>Define</h3><p>Affinity mapping, persona development, and a focused problem statement.</p></div>
-        <div class="process-card"><div class="process-num">03</div><h3>Develop</h3><p>Wireframes, prototypes, and iterative usability testing with target users.</p></div>
-        <div class="process-card"><div class="process-num">04</div><h3>Deliver</h3><p>High-fidelity designs, design system, and a launch-ready product story.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Design Challenge -->
-  <section class="content-section" style="padding-top: 16px;">
-    <div class="container">
-      <div class="highlight-box">
+      <!-- Design Challenge -->
+      <div class="highlight-box" style="margin-top: 56px;">
         <p><strong>Design Challenge:</strong> How might we turn complex food labels into <strong>instant, personalized</strong> health insights that help shoppers decide confidently in seconds at the shelf?</p>
       </div>
+
     </div>
   </section>
 
-  <!-- ===================== DEVELOP ===================== -->
-  <section class="section-header" id="decisions">
+
+  <!-- ===================== 03 / DEVELOP ===================== -->
+  <section id="develop" class="section-header">
     <div class="section-tag">03 / Develop</div>
     <h2 class="section-title">Ideation, Testing &amp; <span class="highlight">Key Decisions</span></h2>
   </section>
@@ -623,82 +542,49 @@
   <section class="content-section">
     <div class="container">
 
-      <!-- System Architecture -->
       <div class="highlight-box" style="margin-bottom: 40px;">
         <p><strong>Minimum Viable Loop:</strong> Scan &rarr; Immediate health score + ingredient breakdown &rarr; Personalized swap suggestions. Drafted into mid-fidelity wireframes and tested with 4 target users (20&ndash;30 min sessions) before high-fidelity design.</p>
       </div>
 
-      <!-- User Flow Image -->
+      <!-- User Flow -->
       <div style="margin: 0 0 56px; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden;">
         <img src="assets/img/Projects/Orbit Scan/Case Study/User Flow.png" alt="Orbit Scan core user-flow diagram" loading="lazy" style="width: 100%; height: auto; display: block;">
       </div>
 
-      <!-- Minimum Steps Flow — insert AFTER User Flow image, BEFORE Wireframe Ideation block -->
-<div style="margin: 0 0 56px;">
-
-    <!-- Label + heading -->
-    <div style="margin-bottom: 20px;">
-      <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--green-dark); margin-bottom: 6px; font-family: 'Inter', sans-serif;">System Architecture</p>
-      <h3 style="font-size: clamp(20px, 2.5vw, 26px); font-weight: 800; color: #000; margin: 0 0 12px; letter-spacing: -0.4px;">
-        Doing the heavy lifting in under 2 seconds
-      </h3>
-      <p style="font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.7); max-width: 760px; margin: 0;">
-        The entire experience is architected around a single constraint: <strong>minimum steps, maximum clarity.</strong> Once a barcode is scanned, the system runs health analysis, score calculation, ingredient breakdown, and risk flagging simultaneously — surfacing a result before the user lowers their phone. From there, personalized swap suggestions are a single tap away.
-      </p>
-    </div>
-  
-    <!-- Three-step flow pills -->
-    <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-      <span style="padding: 10px 20px; background: var(--green-dark); color: #fff; border-radius: 24px; font-size: 13px; font-weight: 700; font-family: 'Inter', sans-serif;">1. Scan</span>
-      <span style="color: var(--green-dark); font-size: 18px; font-weight: 700;">&rarr;</span>
-      <span style="padding: 10px 20px; background: var(--green-dark); color: #fff; border-radius: 24px; font-size: 13px; font-weight: 700; font-family: 'Inter', sans-serif;">2. Instant Health Score + Breakdown</span>
-      <span style="color: var(--green-dark); font-size: 18px; font-weight: 700;">&rarr;</span>
-      <span style="padding: 10px 20px; background: var(--green-dark); color: #fff; border-radius: 24px; font-size: 13px; font-weight: 700; font-family: 'Inter', sans-serif;">3. Personalized Swap Suggestions</span>
-    </div>
-  
-    <!-- Image -->
-    <div style="border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; background: #fff;">
-      <img
-        src="assets/img/Projects/Orbit Scan/Case Study/Minimum Steps Flow.png"
-        alt="Minimum steps flow diagram: Scan Barcode or Receipt → Health Analysis, Score, Ingredient Breakdown, Risk Indicators → Swap Suggestions"
-        loading="lazy"
-        style="width: 100%; height: auto; display: block;"
-      >
-    </div>
-  
-  </div>
-  
-
-      <!-- ✦ NEW: Wireframe Ideation Block -->
-      <div style="margin: 0 0 56px; background: #fafaf5; border: 1px solid #e5e7eb; border-radius: 20px; padding: 48px; overflow: hidden;">
-        <div class="ideation-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-
-          <!-- Left: Text -->
-          <div>
-            <div style="display: inline-block; padding: 5px 14px; background: rgba(177,215,59,.15); border: 1px solid rgba(12,71,0,.2); border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--green-dark); font-family: 'Inter', sans-serif; margin-bottom: 20px;">
-              Early Ideation
-            </div>
-            <h3 style="font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: #000; line-height: 1.25; margin-bottom: 20px; letter-spacing: -0.5px;">
-              Exploring breadth over perfection in early ideation
-            </h3>
-            <p style="font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.75); margin: 0;">
-              Before committing to visual design, I generated dozens of mid-fidelity wireframes to explore layout, hierarchy, and flow. The goal was to map the entire experience from onboarding to the intelligent scanner and rewards without getting bogged down in aesthetics. By focusing purely on utility, I could quickly build a prototype to put in front of real users.
-            </p>
-          </div>
-
-          <!-- Right: Wireframe Image -->
-          <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.1);">
-            <img
-              src="assets/img/Projects/Orbit Scan/Case Study/Low-fi.png"
-              alt="Grid of mid-fidelity wireframes exploring layout, hierarchy and flow for Orbit Scan"
-              loading="lazy"
-              style="width: 100%; height: auto; display: block;"
-            >
-          </div>
-
+      <!-- Minimum Steps Flow -->
+      <div style="margin: 0 0 56px;">
+        <div style="margin-bottom: 20px;">
+          <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--green-dark); margin-bottom: 6px; font-family: 'Inter', sans-serif;">System Architecture</p>
+          <h3 style="font-size: clamp(20px, 2.5vw, 26px); font-weight: 800; color: #000; margin: 0 0 12px; letter-spacing: -0.4px;">Doing the heavy lifting in under 2 seconds</h3>
+          <p style="font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.7); max-width: 760px; margin: 0;">
+            The entire experience is architected around a single constraint: <strong>minimum steps, maximum clarity.</strong> Once a barcode is scanned, the system runs health analysis, score calculation, ingredient breakdown, and risk flagging simultaneously.
+          </p>
+        </div>
+        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+          <span style="padding: 10px 20px; background: var(--green-dark); color: #fff; border-radius: 24px; font-size: 13px; font-weight: 700; font-family: 'Inter', sans-serif;">1. Scan</span>
+          <span style="color: var(--green-dark); font-size: 18px; font-weight: 700;">&rarr;</span>
+          <span style="padding: 10px 20px; background: var(--green-dark); color: #fff; border-radius: 24px; font-size: 13px; font-weight: 700; font-family: 'Inter', sans-serif;">2. Instant Health Score + Breakdown</span>
+          <span style="color: var(--green-dark); font-size: 18px; font-weight: 700;">&rarr;</span>
+          <span style="padding: 10px 20px; background: var(--green-dark); color: #fff; border-radius: 24px; font-size: 13px; font-weight: 700; font-family: 'Inter', sans-serif;">3. Personalized Swap Suggestions</span>
+        </div>
+        <div style="border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; background: #fff;">
+          <img src="assets/img/Projects/Orbit Scan/Case Study/Minimum Steps Flow.png" alt="Minimum steps flow diagram" loading="lazy" style="width: 100%; height: auto; display: block;">
         </div>
       </div>
-      <!-- ✦ END: Wireframe Ideation Block -->
+
+      <!-- Wireframe Ideation -->
+      <div style="margin: 0 0 56px; background: #fafaf5; border: 1px solid #e5e7eb; border-radius: 20px; padding: 48px; overflow: hidden;">
+        <div class="ideation-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+          <div>
+            <div style="display: inline-block; padding: 5px 14px; background: rgba(177,215,59,.15); border: 1px solid rgba(12,71,0,.2); border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--green-dark); font-family: 'Inter', sans-serif; margin-bottom: 20px;">Early Ideation</div>
+            <h3 style="font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: #000; line-height: 1.25; margin-bottom: 20px; letter-spacing: -0.5px;">Exploring breadth over perfection in early ideation</h3>
+            <p style="font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.75); margin: 0;">Before committing to visual design, I generated dozens of mid-fidelity wireframes to explore layout, hierarchy, and flow. The goal was to map the entire experience without getting bogged down in aesthetics.</p>
+          </div>
+          <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.1);">
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Low-fi.png" alt="Grid of mid-fidelity wireframes" loading="lazy" style="width: 100%; height: auto; display: block;">
+          </div>
+        </div>
+      </div>
 
       <!-- Usability Testing -->
       <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">Usability testing revealed three major speed bumps</h3>
@@ -706,7 +592,7 @@
       <div class="usability-grid">
         <div class="ux-card caution">
           <h4 class="caution-text">Issue: Score hard to parse</h4>
-          <p class="ux-quote">"I see 41/100 &mdash; is that good or bad?"</p>
+          <p class="ux-quote">"I see 41/100, is that good or bad?"</p>
           <p class="ux-fix">Added color-coded badge + traffic-light bar showing safe/risky zones + High/Limited risk tags.</p>
         </div>
         <div class="ux-card warn">
@@ -731,12 +617,12 @@
         <strong>Result:</strong> Perceived wait time reduced to &lt;2s. Users see pass/fail before lowering their phone.</p>
         <div class="comparison">
           <div class="comp-item">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Barcode Screen.png" alt="Old scanner with 30-second wait" loading="lazy">
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Barcode Screen.png" alt="Old scanner" loading="lazy">
             <p class="comp-label"><strong class="old">Before:</strong> Camera opens &rarr; blank screen &rarr; wait 30s for product details.</p>
           </div>
           <div class="comp-arrow">&rarr;</div>
           <div class="comp-item">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Barcode Screen.png" alt="New instant overlay scanner" loading="lazy">
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Barcode Screen.png" alt="New instant overlay" loading="lazy">
             <p class="comp-label"><strong class="new">After:</strong> Rating appears as an overlay in under 2s. Full details via swipe-up sheet.</p>
           </div>
         </div>
@@ -744,36 +630,36 @@
 
       <div class="decision d2">
         <h4>Decision 2: Traffic Light vs. Numerical Score</h4>
-        <p><strong>Constraint:</strong> A score of "41/100" lacked context, Stephanie couldn&rsquo;t tell if it was acceptable for her diet.<br>
+        <p><strong>Constraint:</strong> A score of "41/100" lacked context.<br>
         <strong>Trade-off:</strong> Add explanatory text vs. replace with traffic-light system + risk tags.<br>
-        <strong>Result:</strong> 60% improvement in comprehension. Validated by FDA research on color-coded labeling reducing cognitive load.</p>
+        <strong>Result:</strong> 60% improvement in comprehension. Validated by FDA research on color-coded labeling.</p>
         <div class="comparison">
           <div class="comp-item">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" alt="Old rating with raw numbers" loading="lazy">
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" alt="Old rating" loading="lazy">
             <p class="comp-label"><strong class="old">Before:</strong> Raw numbers and basic lists required mental math.</p>
           </div>
           <div class="comp-arrow">&rarr;</div>
           <div class="comp-item">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" alt="New rating with traffic light" loading="lazy">
-            <p class="comp-label"><strong class="new">After:</strong> Traffic-light color coding + risk tags (High, Limited) for instant comprehension.</p>
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" alt="New rating" loading="lazy">
+            <p class="comp-label"><strong class="new">After:</strong> Traffic-light color coding + risk tags for instant comprehension.</p>
           </div>
         </div>
       </div>
 
       <div class="decision d3">
         <h4>Decision 3: Toggle Switches vs. Icon Chips</h4>
-        <p><strong>Constraint:</strong> Toggling preferences required flipping each switch then hitting "Done", 3 steps per item.<br>
+        <p><strong>Constraint:</strong> Toggling preferences required 3 steps per item.<br>
         <strong>Decision:</strong> Replaced standard toggles with visual icon chips, auto-save on close.<br>
-        <strong>Result:</strong> Multi-select in a single tap. Steps reduced from 3 to 1 per item. Aligns with WCAG 2.1 guideline 3.2.2.</p>
+        <strong>Result:</strong> Multi-select in a single tap. Steps reduced from 3 to 1. Aligns with WCAG 2.1 guideline 3.2.2.</p>
         <div class="comparison">
           <div class="comp-item">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" alt="Old toggles UI" loading="lazy">
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" alt="Old toggles" loading="lazy">
             <p class="comp-label"><strong class="old">Before:</strong> Standard list with toggles + "Done" button required 3 steps per preference.</p>
           </div>
           <div class="comp-arrow">&rarr;</div>
           <div class="comp-item">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" alt="New icon chips UI" loading="lazy">
-            <p class="comp-label"><strong class="new">After:</strong> Visual icon chips (Gluten-free, Vegan, Lactose-free&hellip;), single tap, auto-save.</p>
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" alt="New icon chips" loading="lazy">
+            <p class="comp-label"><strong class="new">After:</strong> Visual icon chips, single tap, auto-save.</p>
           </div>
         </div>
       </div>
@@ -781,8 +667,9 @@
     </div>
   </section>
 
-  <!-- ===================== OUTCOMES ===================== -->
-  <section class="section-header" id="outcome">
+
+  <!-- ===================== 04 / DELIVER ===================== -->
+  <section id="deliver" class="section-header">
     <div class="section-tag">04 / Deliver</div>
     <h2 class="section-title">Measurable <span class="highlight">Impact</span></h2>
   </section>
@@ -815,41 +702,36 @@
       </div>
 
       <!-- Lessons Learned -->
-<div style="margin-top: 48px; background: var(--green-dark); border-radius: var(--radius-lg); padding: 40px 48px; color: #fff;">
-    <div style="display: inline-block; padding: 5px 14px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-family: 'Inter', sans-serif; margin-bottom: 20px; color: var(--green-lime);">
-      Lessons Learned
-    </div>
-    <p style="font-size: 18px; line-height: 1.85; color: rgba(255,255,255,.9); margin: 0;">
-      This research experience deeply shaped the way I approach design. Listening to real stories taught me that surface level observations often miss the most meaningful insights. It strengthened my desire to always dig deeper to uncover the root causes behind user behaviors and emotions, not just the visible pain points. This mindset now drives every project I take on, pushing me to design with more empathy, intention, and clarity.
-    </p>
-  </div>
-  
-  
-  <!-- Next Steps -->
-  <div class="next-steps" style="margin-top: 24px;">
-    <h3>What comes next</h3>
-    <ol>
-      <li>Validate the custom scoring algorithm through consultations with registered dietitians.</li>
-      <li>Expand the design system component library.</li>
-      <li>Conduct a longitudinal study to measure actual behavior change over a 30-day period.</li>
-      <li>Focus on validating the scoring model with nutrition experts and expanding these foundations into a reusable component library for future features.</li>
-    </ol>
-  </div>
-  
+      <div style="margin-top: 48px; background: var(--green-dark); border-radius: var(--radius-lg); padding: 40px 48px; color: #fff;">
+        <div style="display: inline-block; padding: 5px 14px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-family: 'Inter', sans-serif; margin-bottom: 20px; color: var(--green-lime);">Lessons Learned</div>
+        <p style="font-size: 18px; line-height: 1.85; color: rgba(255,255,255,.9); margin: 0;">
+          This research experience deeply shaped the way I approach design. Listening to real stories taught me that surface-level observations often miss the most meaningful insights. It strengthened my desire to always dig deeper to uncover root causes behind user behaviors and emotions, not just visible pain points.
+        </p>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="next-steps" style="margin-top: 24px;">
+        <h3>What comes next</h3>
+        <ol>
+          <li>Validate the custom scoring algorithm through consultations with registered dietitians.</li>
+          <li>Expand the design system component library.</li>
+          <li>Conduct a longitudinal study to measure actual behavior change over a 30-day period.</li>
+          <li>Focus on validating the scoring model with nutrition experts and expanding into a reusable component library for future features.</li>
+        </ol>
+      </div>
     </div>
   </section>
 
- <!-- ===================== PROTOTYPE ===================== -->
-<section class="section-header" id="prototype">
+
+  <!-- ===================== 05 / PROTOTYPE ===================== -->
+  <section id="prototype" class="section-header">
     <div class="section-tag">05 / Prototype</div>
     <h2 class="section-title"><span class="highlight">Interactive</span> Prototype</h2>
-    <p class="section-desc">Experience the complete Orbit Scan flow — scan to recommendation — with working interactions.</p>
+    <p class="section-desc">Experience the complete Orbit Scan flow, scan to recommendation, with working interactions.</p>
   </section>
-  
+
   <section class="content-section" style="padding-top: 16px;">
     <div class="container">
-  
-      <!-- Full Product Overview Image -->
       <div style="margin-bottom: 48px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
           <div>
@@ -858,42 +740,28 @@
           </div>
         </div>
         <div style="border: 1px solid #e5e7eb; border-radius: var(--radius-lg); overflow: hidden; background: #f9fafb;">
-          <img
-            src="assets/img/Projects/Orbit Scan/Case Study/Interaction Final Prototype.png"
-            alt="Full product overview showing all Orbit Scan screens and interaction flows"
-            loading="lazy"
-            style="width: 100%; height: auto; display: block;"
-          >
+          <img src="assets/img/Projects/Orbit Scan/Case Study/Interaction Final Prototype.png" alt="Full product overview" loading="lazy" style="width: 100%; height: auto; display: block;">
         </div>
         <p style="font-size: 13px; color: rgba(0,0,0,.5); margin-top: 10px; text-align: center; font-style: italic;">
           Onboarding &rarr; Camera scan &rarr; Health rating &rarr; Swap suggestions &rarr; Rewards system &rarr; Lists &amp; preferences
         </p>
       </div>
-  
-      <!-- Figma Button + Iframe -->
       <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; justify-content: center;">
-        <a href="https://www.figma.com/design/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?node-id=0-1&t=2hUOkQvCbw3UUzZG-1" target="_blank" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
-          &#x2197; Open in Figma
-        </a>
+        <a href="https://www.figma.com/design/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?node-id=0-1&t=2hUOkQvCbw3UUzZG-1" target="_blank" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">&#x2197; Open in Figma</a>
       </div>
       <div style="border: 1px solid #000; border-radius: var(--radius-lg); overflow: hidden; background: #fafafa;">
-        <iframe
-          style="border: none; width: 100%; height: 640px; display: block;"
+        <iframe style="border: none; width: 100%; height: 640px; display: block;"
           src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share"
-          allowfullscreen
-          loading="lazy">
+          allowfullscreen loading="lazy">
         </iframe>
       </div>
-  
     </div>
   </section>
-  
-  
+
 
   <!-- ===================== NEXT PROJECT NAV ===================== -->
   <section style="padding: 48px 5vw; border-top: 1px solid #e5e7eb;">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-
       <a href="Touro University GST.html" style="text-decoration: none;">
         <button style="padding: 14px 28px; border: 1px solid #000; background: #fff; border-radius: 50px; cursor: pointer; color: #000; font-size: 15px; font-weight: 600; font-family: 'Lora', serif; letter-spacing: .04em; transition: all 0.2s ease;"
           onmouseover="this.style.background='#f9fafb'; this.style.borderColor='var(--green-dark)'; this.style.color='var(--green-dark)'"
@@ -901,7 +769,6 @@
           &larr; Previous Project
         </button>
       </a>
-
       <a href="Habit Boost.html" style="text-decoration: none;">
         <button style="padding: 14px 28px; border: none; background: var(--green-dark); color: #fff; border-radius: 50px; cursor: pointer; font-size: 15px; font-weight: 600; font-family: 'Lora', serif; letter-spacing: .04em; transition: all 0.2s ease;"
           onmouseover="this.style.background='var(--green-mid)'"
@@ -909,17 +776,15 @@
           Next Project &rarr;
         </button>
       </a>
-
     </div>
   </section>
+
 
   <!-- ===================== FOOTER ===================== -->
   <footer style="background: #111827; color: #fff; padding: 64px 5vw 48px; text-align: center; border-top: none;">
     <div class="container">
-
       <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; font-family: 'Lora', serif; letter-spacing: .04em;">Let&rsquo;s Connect</h3>
       <p style="font-size: 15px; color: #9CA3AF; margin-bottom: 32px; font-family: 'Lora', serif;">Have a project in mind or just want to say hi?</p>
-
       <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 48px;">
         <a href="https://www.linkedin.com/in/mainakc98/" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: 15px; font-family: 'Lora', serif; transition: color 0.2s;"
           onmouseover="this.style.color='#B1D73B'" onmouseout="this.style.color='#D1D5DB'">
@@ -934,35 +799,34 @@
           <i class="fas fa-file-alt"></i> Resume
         </a>
       </div>
-
       <div style="border-top: 1px solid #374151; padding-top: 24px;">
-        <p style="font-size: 13px; color: #6B7280; font-family: 'Lora', serif; margin: 0;">
-          &copy; 2025 Mainak Chakraborty &middot; Designed &amp; built with intention.
-        </p>
+        <p style="font-size: 13px; color: #6B7280; font-family: 'Lora', serif; margin: 0;">&copy; 2025 Mainak Chakraborty &middot; Designed &amp; built with intention.</p>
       </div>
-
     </div>
   </footer>
 
 
-  <!-- Scripts -->
   <script>
+    // Progress bar
     const bar = document.getElementById('progress-bar');
     window.addEventListener('scroll', () => {
       const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
       bar.style.width = pct + '%';
     });
 
-    const pills = document.querySelectorAll('.jump-pill');
-    const sections = ['context','problem','approach','decisions','outcome','prototype'].map(id => document.getElementById(id));
+    // Jump nav active state
+    const pills = document.querySelectorAll('.jump-nav .jump-pill');
+    const sectionIds = ['overview', 'discover', 'define', 'develop', 'deliver', 'prototype'];
+    const sections = sectionIds.map(id => document.getElementById(id));
+
     window.addEventListener('scroll', () => {
-      const y = window.scrollY + window.innerHeight * 0.3;
-      sections.forEach((s, i) => {
-        if (s && s.offsetTop <= y) {
-          pills.forEach(p => p.classList.remove('active'));
-          pills[i]?.classList.add('active');
-        }
+      const scrollY = window.scrollY + window.innerHeight * 0.3;
+      let currentIndex = 0;
+      sections.forEach((section, i) => {
+        if (section && section.offsetTop <= scrollY) currentIndex = i;
       });
+      pills.forEach(p => p.classList.remove('active'));
+      if (pills[currentIndex]) pills[currentIndex].classList.add('active');
     });
   </script>
 
