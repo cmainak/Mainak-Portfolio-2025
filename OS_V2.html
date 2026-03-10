@@ -588,7 +588,7 @@
 
       <!-- Usability Testing -->
       <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">Usability testing revealed three major speed bumps</h3>
-      <p style="font-size: 15px; color: rgba(0,0,0,.7); margin-bottom: 24px;">Moderated sessions with 4 target users (20&ndash;30 min each). Tasks: scan product, read rating, set food preferences.</p>
+      <p style="font-size: 15px; color: rgba(0,0,0,.7); margin-bottom: 24px;">Moderated sessions with 4 target users (20&ndash;30 min each). Tasks: scan product, read rating, save food preferences.</p>
       <div class="usability-grid">
         <div class="ux-card caution">
           <h4 class="caution-text">Issue: Score hard to parse</h4>
@@ -603,7 +603,7 @@
         <div class="ux-card success">
           <h4 class="success-text">Issue: Toggles felt tedious</h4>
           <p class="ux-quote">"Too many switches, then I still have to hit Done."</p>
-          <p class="ux-fix">Replaced with visual icon chips, multi-select in one tap, auto-save on close. 3 steps &rarr; 1.</p>
+          <p class="ux-fix">Replaced the dense toggle list with a visual icon grid, making preferences easier to scan, recognize, and select. A bottom-anchored Save button creates a clearer and more polished completion point.</p>
         </div>
       </div>
 
@@ -613,8 +613,8 @@
       <div class="decision">
         <h4>Decision 1: Overlay vs. Separate Screen</h4>
         <p><strong>Constraint:</strong> Users waited up to 30 seconds for a separate screen to load after scanning.<br>
-        <strong>Decision:</strong> Shifted to an instant overlay with progressive disclosure.<br>
-        <strong>Result:</strong> Perceived wait time reduced to &lt;2s. Users see pass/fail before lowering their phone.</p>
+        <strong>Decision:</strong> Shifted to an instant overlay section with progressive disclosure.<br>
+        <strong>Result:</strong> Perceived wait time reduced to &lt;2s. Users could see pass/fail before going to the detailed screen.</p>
         <div class="comparison">
           <div class="comp-item">
             <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Barcode Screen.png" alt="Old scanner" loading="lazy">
@@ -625,6 +625,13 @@
             <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Barcode Screen.png" alt="New instant overlay" loading="lazy">
             <p class="comp-label"><strong class="new">After:</strong> Rating appears as an overlay in under 2s. Full details via swipe-up sheet.</p>
           </div>
+          <!-- Inside Decision 1, replace the .comparison div with: -->
+<div style="margin-top: 24px; border-radius: 12px; overflow: hidden;">
+  <img src="assets/img/Projects/Orbit Scan/Case Study/Key Decision 1.png"
+       alt="Before: 30s loading screen. After: instant 2-second camera overlay."
+       style="width: 100%; height: auto; display: block;">
+</div>
+
         </div>
       </div>
 
@@ -643,23 +650,31 @@
             <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" alt="New rating" loading="lazy">
             <p class="comp-label"><strong class="new">After:</strong> Traffic-light color coding + risk tags for instant comprehension.</p>
           </div>
+          <!-- Inside Decision 2, replace the .comparison div with: -->
+<div style="margin-top: 24px; border-radius: 12px; overflow: hidden;">
+  <img src="assets/img/Projects/Orbit Scan/Case Study/Key Decision 2.png"
+       alt="Before: raw score. After: traffic-light color coding with risk tags."
+       style="width: 100%; height: auto; display: block;">
+</div>
+
         </div>
       </div>
 
       <div class="decision d3">
-        <h4>Decision 3: Toggle Switches vs. Icon Chips</h4>
-        <p><strong>Constraint:</strong> Toggling preferences required 3 steps per item.<br>
-        <strong>Decision:</strong> Replaced standard toggles with visual icon chips, auto-save on close.<br>
-        <strong>Result:</strong> Multi-select in a single tap. Steps reduced from 3 to 1. Aligns with WCAG 2.1 guideline 3.2.2.</p>
+        <h4>Decision 3: List & Toggles vs. Visual Icon Grid</h4>
+        <p><strong>Constraint:</strong> The original screen presented preferences as a plain checkbox list with toggle switches functional but visually cold and mentally taxing. Each item looked identical, forcing users to read every label before making a choice.<br>
+        <strong>Decision:</strong> Replaced the text-only list with a grid of branded icon chips; each preference gets a custom illustrated icon and a label, making the entire screen scannable at a glance. The "Done" top nav action was replaced with a single prominent Save button anchored at the bottom, consistent with iOS native patterns and thumb-reachable interaction zones.<br>
+        <strong>Result:</strong> Users no longer read line by line to make choices. They recognize preferences visually, while the anchored Save button gives the screen a cleaner hierarchy and a more intentional finish.
+
         <div class="comparison">
           <div class="comp-item">
             <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" alt="Old toggles" loading="lazy">
-            <p class="comp-label"><strong class="old">Before:</strong> Standard list with toggles + "Done" button required 3 steps per preference.</p>
+            <p class="comp-label"><strong class="old">Before:</strong> A dense toggle list with identical rows users had to read each label individually to build their preferences.</p>
           </div>
           <div class="comp-arrow">&rarr;</div>
           <div class="comp-item">
             <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" alt="New icon chips" loading="lazy">
-            <p class="comp-label"><strong class="new">After:</strong> Visual icon chips, single tap, auto-save.</p>
+            <p class="comp-label"><strong class="new">After:</strong> Icon-first grid design instantly scannable, visually distinct, with a thumb-friendly Save CTA anchored at the bottom.</p>
           </div>
         </div>
       </div>
@@ -690,12 +705,23 @@
           <div class="metric-method"><strong>Measured:</strong> Success rate in moderated tests</div>
         </div>
         <div class="metric-card tertiary">
-          <div class="metric-num">3&rarr;1</div>
-          <div class="metric-title">Steps Reduced</div>
-          <div class="metric-desc">Preference setting streamlined to a single tap.</div>
-          <div class="metric-method"><strong>Measured:</strong> Interaction analysis, screen recordings</div>
+          <div class="metric-num">1 glance</div>
+          <div class="metric-title">Preference Recognition</div>
+          <div class="metric-desc">Icon grouping reduces text scanning and helps users identify preferences through recognition, not recall.</div>
+          <div class="metric-method"><strong>Measured:</strong> Moderated usability observation</div>
         </div>
+           
+        <!-- In #deliver, after .metrics-grid and before .highlight-box: -->
+
       </div>
+      <div style="margin: 0 0 40px; border-radius: 16px; overflow: hidden; border: 1px solid #e5e7eb;">
+        <img src="assets/img/Projects/Orbit Scan/Case Study/Deep Insights.png"
+             alt="Intelligent Scanner and Health Analysis Screen — final product"
+             style="width: 100%; height: auto; display: block;">
+      </div>
+      
+
+      
 
       <div class="highlight-box">
         <p><strong>Qualitative outcomes:</strong> All 4 users described the traffic light as "instantly understandable." 4/4 reported feeling confident vs. confused. 3/4 mentioned time savings unprompted.</p>
