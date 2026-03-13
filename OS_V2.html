@@ -315,46 +315,113 @@
   </section>
 
   <!-- ===================== DOUBLE DIAMOND ===================== -->
-<section style="background: #fff; padding: 72px 5vw 80px;">
-  <div style="max-width: 1200px; margin: 0 auto;">
+<section style="background:#fff; padding:72px 5vw 64px;" aria-label="Design Process: Double Diamond">
+  <div style="max-width:1100px; margin:0 auto;">
 
-    <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
-              color: var(--green-dark); font-weight: 700; margin-bottom: 12px;">
-      Design Process
-    </p>
-    <h2 style="font-size: clamp(22px, 3vw, 36px); font-weight: 800;
-               color: #000; margin-bottom: 8px;">
-      The <span style="color: var(--green-dark);">Double Diamond</span> Approach
+    <p style="font-size:13px; text-transform:uppercase; letter-spacing:2px; color:#0C4700; font-weight:700; margin-bottom:12px;">Design Process</p>
+    <h2 style="font-size:clamp(22px,3vw,36px); font-weight:800; color:#000; margin-bottom:8px;">
+      The <span style="color:#0C4700;">Double Diamond</span> Approach
     </h2>
-    <p style="font-size: 16px; color: rgba(0,0,0,.55); margin-bottom: 40px;">
+    <p style="font-size:16px; color:rgba(0,0,0,.55); margin-bottom:48px;">
       Evidence-based design, with each iteration grounded in real shopper pain points.
     </p>
 
-    <div class="process-grid">
-      <div class="process-card">
-        <div class="process-num">01</div>
-        <h3>Discover</h3>
-        <p>Surveys, interviews, competitive audit, and desk research to map real shopper pain points.</p>
-      </div>
-      <div class="process-card">
-        <div class="process-num">02</div>
-        <h3>Define</h3>
-        <p>Affinity mapping, synthesis themes, primary persona, journey map, and a focused design challenge.</p>
-      </div>
-      <div class="process-card">
-        <div class="process-num">03</div>
-        <h3>Develop</h3>
-        <p>Wireframes, system architecture, iterative usability testing, and key design decisions.</p>
-      </div>
-      <div class="process-card">
-        <div class="process-num">04</div>
-        <h3>Deliver</h3>
-        <p>High-fidelity designs, measurable outcomes, lessons learned, and a launch-ready product story.</p>
-      </div>
-    </div>
+    <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="Double Diamond design process diagram showing Discover, Define, Develop and Deliver phases"
+         style="width:100%; height:auto; display:block;">
+
+      <defs>
+        <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M1,1 L6,3.5 L1,6" fill="none" stroke="#aaa" stroke-width="1.2"/>
+        </marker>
+      </defs>
+
+      <!-- DIAMOND 1: tips at L(50,210) T(250,30) R(450,210) B(250,390) -->
+      <polygon points="50,210 250,30 450,210 250,390"
+               fill="rgba(12,71,0,0.06)" stroke="#0C4700" stroke-width="2"
+               stroke-linejoin="round"/>
+
+      <!-- DIAMOND 2: tips at L(450,210) T(650,30) R(850,210) B(650,390) -->
+      <polygon points="450,210 650,30 850,210 650,390"
+               fill="rgba(177,215,59,0.09)" stroke="#0C4700" stroke-width="2"
+               stroke-linejoin="round"/>
+
+      <!-- Dashed verticals at diamond peaks -->
+      <line x1="250" y1="30"  x2="250" y2="390" stroke="#0C4700" stroke-width="1" stroke-dasharray="5,5" opacity="0.3"/>
+      <line x1="650" y1="30"  x2="650" y2="390" stroke="#0C4700" stroke-width="1" stroke-dasharray="5,5" opacity="0.3"/>
+
+      <!-- Diverge arrows (top-left of each diamond) -->
+      <line x1="75"  y1="185" x2="225" y2="55"  stroke="#ccc" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="475" y1="185" x2="625" y2="55"  stroke="#ccc" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Converge arrows (top-right of each diamond) -->
+      <line x1="425" y1="185" x2="275" y2="55"  stroke="#ccc" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="825" y1="185" x2="675" y2="55"  stroke="#ccc" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Diverge labels -->
+      <text transform="translate(118,138) rotate(-45)" text-anchor="middle"
+            font-family="Inter,sans-serif" font-size="12" fill="#aaa">Diverge</text>
+      <text transform="translate(518,138) rotate(-45)" text-anchor="middle"
+            font-family="Inter,sans-serif" font-size="12" fill="#aaa">Diverge</text>
+
+      <!-- Converge labels -->
+      <text transform="translate(382,138) rotate(45)" text-anchor="middle"
+            font-family="Inter,sans-serif" font-size="12" fill="#aaa">Converge</text>
+      <text transform="translate(782,138) rotate(45)" text-anchor="middle"
+            font-family="Inter,sans-serif" font-size="12" fill="#aaa">Converge</text>
+
+      <!-- Diamond center labels -->
+      <text x="250" y="203" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="17" font-weight="800" fill="#0C4700">Problem</text>
+      <text x="250" y="224" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="17" font-weight="800" fill="#0C4700">Space</text>
+
+      <text x="650" y="203" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="17" font-weight="800" fill="#0C4700">Solution</text>
+      <text x="650" y="224" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="17" font-weight="800" fill="#0C4700">Space</text>
+
+      <!-- START dot + label -->
+      <circle cx="50"  cy="210" r="7" fill="#B1D73B"/>
+      <text x="50" y="196" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="12" font-weight="700" fill="#0C4700">Start</text>
+
+      <!-- END dot + label -->
+      <circle cx="850" cy="210" r="7" fill="#B1D73B"/>
+      <text x="850" y="196" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="12" font-weight="700" fill="#0C4700">End</text>
+
+      <!-- CENTER junction dot + Problem Definition label -->
+      <circle cx="450" cy="210" r="8" fill="#0C4700"/>
+      <text x="463" y="197" font-family="Inter,sans-serif" font-size="11"
+            font-weight="700" fill="#0C4700">Problem</text>
+      <text x="463" y="212" font-family="Inter,sans-serif" font-size="11"
+            font-weight="700" fill="#0C4700">Definition</text>
+
+      <!-- PHASE LABELS — each at the correct diamond tip -->
+      <!-- Discover: left tip of D1 = (50,210) → label below -->
+      <text x="50"  y="408" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="14" font-weight="800" fill="#0C4700">Discover</text>
+
+      <!-- Define: right tip of D1 = (450,210) → label below -->
+      <text x="450" y="408" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="14" font-weight="800" fill="#0C4700">Define</text>
+
+      <!-- Develop: left tip of D2 = (450,210) → same x, stacked label handled in HTML below -->
+      <!-- Deliver: right tip of D2 = (850,210) → label below -->
+      <text x="850" y="408" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="14" font-weight="800" fill="#0C4700">Deliver</text>
+
+      <!-- Develop sits at same x=450 as Define — offset slightly right to D2 left tip -->
+      <!-- D2 left tip IS (450,210), same as D1 right. Show Develop below D2 peak at 650 -->
+      <text x="650" y="408" text-anchor="middle" font-family="Inter,sans-serif"
+            font-size="14" font-weight="800" fill="#0C4700">Develop</text>
+
+    </svg>
 
   </div>
 </section>
+
 
 
 
