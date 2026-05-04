@@ -14,6 +14,9 @@
   <meta name="theme-color" content="#02437D" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 
+  <!-- ✅ NEW: Robots meta tag — tells Google to index and follow this page -->
+  <meta name="robots" content="index, follow">
+
   <!-- SEO: Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mainakchakraborty.com/">
@@ -30,6 +33,26 @@
 
   <!-- SEO: Canonical URL -->
   <link rel="canonical" href="https://mainakchakraborty.com/">
+
+  <!-- ✅ NEW: Sitemap reference — helps Google discover all your pages -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <!-- ✅ NEW: JSON-LD Structured Data — tells Google exactly who you are -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mainak Chakraborty",
+    "url": "https://mainakchakraborty.com",
+    "jobTitle": "Product Designer",
+    "description": "Product Designer specializing in UX/UI design, user research, and accessible digital experiences.",
+    "email": "mainak.chak04@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/mainakc98/",
+      "https://calendly.com/mainak-chak04/30min"
+    ]
+  }
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="assets/img/Logo2.svg" type="image/svg+xml">
@@ -566,16 +589,6 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
      aria-labelledby="about-heading">
 <div class="max-w-7xl mx-auto">
 
-<!-- Section Header 
-<header class="text-center mb-12 sm:mb-16">
-  <h2 id="about-heading" 
-      class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white 
-             uppercase tracking-wide mb-4">
-    About Me
-  </h2>
-  <div class="w-20 h-0.5 bg-primary-500 mx-auto" aria-hidden="true"></div>
-</header>
--->
 <!-- Content Grid -->
 <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -840,9 +853,6 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
   </a>
 </div>
 
-
-
-
 </div>
 </section>
 
@@ -935,7 +945,7 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
         </ul>
       </nav>
 
-      <!-- ✅ ADD SITEMAP LINK HERE -->
+      <!-- Sitemap Link -->
       <div class="text-center mb-8">
         <a href="sitemap.html" 
            class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4">
@@ -943,7 +953,6 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
           View Sitemap
         </a>
       </div>
-      <!-- ✅ END -->
       
      <!-- Copyright -->
 <div class="border-t border-white/20 pt-8 text-center">
@@ -989,8 +998,9 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
     window.addEventListener('scroll', function() {
       updateProgressBar();
     });
- // Get mobile menu and all navigation links
- const mobileMenu = document.getElementById('mobile-menu');
+
+    // Get mobile menu and all navigation links
+    const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('#mobile-menu a');
     const menuToggle = document.querySelector('[aria-controls="mobile-menu"]');
 
@@ -1075,12 +1085,7 @@ behavior: 'smooth'
 });
 </script>
 
-
-
-
 </main>
-
 
 </body>
 </html>
-
