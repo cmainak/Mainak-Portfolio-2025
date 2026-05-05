@@ -12,22 +12,24 @@
   <meta name="keywords" content="Mainak Chakraborty, About, Product Designer, UX Designer, UI Designer, Work Experience">
   <meta name="author" content="Mainak Chakraborty">
   <meta name="theme-color" content="#02437D">
+  <meta name="robots" content="index, follow">
 
   <!-- SEO: Open Graph -->
   <meta property="og:type" content="profile">
-  <meta property="og:url" content="https://mainakchakraborty.com/about.html">
+  <meta property="og:url" content="https://mainakc.netlify.app/about.html">
   <meta property="og:title" content="About Mainak Chakraborty - Product Designer">
   <meta property="og:description" content="Product Designer with expertise in UX research, accessibility, and scalable digital experiences.">
-  <meta property="og:image" content="https://mainakchakraborty.com/assets/img/og-image.jpg">
+  <meta property="og:image" content="https://mainakc.netlify.app/assets/img/og-image.jpg">
 
   <!-- SEO: Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://mainakchakraborty.com/about.html">
+  <meta property="twitter:url" content="https://mainakc.netlify.app/about.html">
   <meta property="twitter:title" content="About Mainak Chakraborty">
   <meta property="twitter:description" content="Product Designer creating accessible digital experiences.">
+  <meta property="twitter:image" content="https://mainakc.netlify.app/assets/img/og-image.jpg">
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://mainakchakraborty.com/about.html">
+  <link rel="canonical" href="https://mainakc.netlify.app/about.html">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/img/Logo2.svg" type="image/svg+xml">
@@ -487,10 +489,9 @@ aria-hidden="true"></i>
 <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
   <div class="max-w-6xl mx-auto">
 
-    <!-- Section Header — matches "What I Bring to the Table" layout -->
+    <!-- Section Header -->
     <div class="mb-16">
       <div class="grid lg:grid-cols-2 gap-8 items-end">
-        <!-- Left: Heading -->
         <div>
           <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
             My Stack
@@ -499,7 +500,6 @@ aria-hidden="true"></i>
             Tools I use to bring<br>ideas to life.
           </h2>
         </div>
-        <!-- Right: Description -->
         <div>
           <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             From research and wireframing to final handoff and code 
@@ -510,7 +510,7 @@ aria-hidden="true"></i>
       </div>
     </div>
 
-    <!-- Tools Grid — unchanged -->
+    <!-- Tools Grid -->
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
       <!-- Figma -->
@@ -635,9 +635,6 @@ aria-hidden="true"></i>
   </div>
 </section>
 
-
-
-
     <!-- Work Experience Section -->
     <section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800">
       <div class="max-w-6xl mx-auto">
@@ -729,7 +726,6 @@ aria-hidden="true"></i>
             </p>
           </article>
 
-          
           <!-- Zee Entertainment -->
           <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div class="flex justify-center mb-6">
@@ -768,12 +764,10 @@ aria-hidden="true"></i>
             </p>
           </article>
 
-
         </div>
       </div>
     </section>
 
-   
      <!-- Footer -->
   <footer id="contact" 
   class="relative bg-primary-500 dark:bg-slate-800 py-16 sm:py-20 lg:py-24 mt-24 overflow-hidden"
@@ -862,35 +856,31 @@ aria-hidden="true"></i>
         </ul>
       </nav>
 
-       <!-- ✅ ADD SITEMAP LINK HERE -->
-       <div class="text-center mb-8">
+      <div class="text-center mb-8">
         <a href="sitemap.html" 
            class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4">
           <i class="fas fa-sitemap text-xs"></i>
           View Sitemap
         </a>
       </div>
-      <!-- ✅ END -->
       
-       <!-- Copyright -->
-<div class="border-t border-white/20 pt-8 text-center">
-  <p class="text-sm text-white/80 flex items-center justify-center gap-1 flex-wrap">
-    <span>© 2026 Mainak Chakraborty • Designed & Coded with</span>
-    <img src="assets/img/Icon Badges/Heart Brain2.png" 
-    alt="heart and brain icon" 
-    class="inline-block h-7 w-auto align-middle mx-1"
-    width="28" 
-    height="28"> 
-    <span>sleepless nights, and lots of coffee.</span>
-  </p>
-</div>
-</div>
-</footer>
-
+      <!-- Copyright -->
+      <div class="border-t border-white/20 pt-8 text-center">
+        <p class="text-sm text-white/80 flex items-center justify-center gap-1 flex-wrap">
+          <span>© 2026 Mainak Chakraborty • Designed & Coded with</span>
+          <img src="assets/img/Icon Badges/Heart Brain2.png" 
+          alt="heart and brain icon" 
+          class="inline-block h-7 w-auto align-middle mx-1"
+          width="28" 
+          height="28"> 
+          <span>sleepless nights, and lots of coffee.</span>
+        </p>
+      </div>
+    </div>
+  </footer>
 
     <!-- Scripts -->
     <script>
-      // Hide loader after page loads
       window.addEventListener('load', function() {
         const loader = document.getElementById('loader');
         setTimeout(function() {
@@ -903,60 +893,47 @@ aria-hidden="true"></i>
     </script>  
 
     <!-- Back to Top Button -->
-<button id="back-to-top" 
-class="fixed bottom-8 right-8 z-50 w-12 h-12 
-       bg-primary-500 hover:bg-primary-600 
-       dark:bg-primary-600 dark:hover:bg-primary-500
-       text-white rounded-full shadow-lg 
-       flex items-center justify-center
-       opacity-0 invisible
-       transition-all duration-300
-       hover:scale-110 hover:shadow-xl
-       focus:outline-none focus:ring-4 focus:ring-primary-500/50"
-aria-label="Back to top">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-</svg>
-</button>
+    <button id="back-to-top" 
+    class="fixed bottom-8 right-8 z-50 w-12 h-12 
+           bg-primary-500 hover:bg-primary-600 
+           dark:bg-primary-600 dark:hover:bg-primary-500
+           text-white rounded-full shadow-lg 
+           flex items-center justify-center
+           opacity-0 invisible
+           transition-all duration-300
+           hover:scale-110 hover:shadow-xl
+           focus:outline-none focus:ring-4 focus:ring-primary-500/50"
+    aria-label="Back to top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+    </button>
 
-<style>
-/* Show button when scrolled */
-#back-to-top.show {
-opacity: 1;
-visibility: visible;
-}
+    <style>
+    #back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    }
+    </style>
 
-/* Smooth scroll animation */
-@media (prefers-reduced-motion: no-preference) {
-html {
-scroll-behavior: smooth;
-}
-}
-</style>
+    <script>
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+    backToTopBtn.classList.add('show');
+    } else {
+    backToTopBtn.classList.remove('show');
+    }
+    });
+    backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    </script>
 
-<script>
-// Back to Top Button Logic
-const backToTopBtn = document.getElementById('back-to-top');
-
-// Show/hide button based on scroll position
-window.addEventListener('scroll', function() {
-if (window.pageYOffset > 300) {
-backToTopBtn.classList.add('show');
-} else {
-backToTopBtn.classList.remove('show');
-}
-});
-
-// Scroll to top when clicked
-backToTopBtn.addEventListener('click', function() {
-window.scrollTo({
-top: 0,
-behavior: 'smooth'
-});
-});
-</script>
-
+  </main>
 
 </body>
-
 </html>
