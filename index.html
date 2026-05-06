@@ -71,7 +71,7 @@
   <link rel="preload" as="image" href="assets/img/Logo2.svg">
 
   <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
 
   <!-- Font Awesome (optimized loading) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -489,7 +489,9 @@ MAINAK CHAKRABORTY
               text-slate-600 dark:text-slate-400 
               font-medium tracking-wide
               animate-fade-in mb-4 sm:mb-6">
-      Hey there! 👋 I am
+              Hey there! 
+              <span role="img" aria-label="waving hand">👋</span> 
+              I am
     </p>
 
     <!-- Name with Animated Circles -->
@@ -616,7 +618,8 @@ MAINAK CHAKRABORTY
 
       <img src="assets/img/Mainak Art/Mainak Hero Image_2.png"
            alt="Illustrated avatar of Mainak Chakraborty, a product designer, shown working on design projects with design tools" 
-           loading="lazy"
+           fetchpriority="high"
+           content-visibility: auto;
            width="500"
            height="500"
            class="relative w-full h-auto object-contain rounded-3xl shadow-2xl 
