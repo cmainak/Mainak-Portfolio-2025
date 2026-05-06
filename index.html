@@ -15,10 +15,10 @@
 <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 <meta name="robots" content="index, follow">
 
-  <!-- ✅ NEW: Robots meta tag — tells Google to index and follow this page -->
+  <!-- Robots meta tag — tells Google to index and follow this page -->
   <meta name="robots" content="index, follow">
 
-  <!-- ✅ Google Search Console Verification -->
+  <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="ZtmAGhxqmMEcEOY3rLfQBSr2H6yrzT5l_T5GodkO2Sk" />
 
  <!-- SEO: Open Graph / Facebook -->
@@ -172,7 +172,94 @@
         scroll-behavior: smooth;
       }
     }
-    
+
+    /* Animation: Fade in */
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+
+    /* Animation: Fade in from bottom */
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in-up {
+      animation: fade-in-up 1.2s ease-out 0.3s both;
+    }
+
+    /* Animation: Scroll wheel indicator */
+    @keyframes scroll-wheel {
+      0%   { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(12px); }
+    }
+    .animate-scroll-wheel {
+      animation: scroll-wheel 1.5s ease-in-out infinite;
+    }
+
+    /* Floating Circle Animations */
+    @keyframes float-slow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%       { transform: translate(30px, -30px) scale(1.05); }
+      66%       { transform: translate(-20px, 20px) scale(0.95); }
+    }
+    @keyframes float-medium {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50%       { transform: translate(-40px, 30px) scale(1.1); }
+    }
+    @keyframes float-fast {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25%       { transform: translate(20px, -25px) scale(1.15); }
+      50%       { transform: translate(-30px, -15px) scale(0.9); }
+      75%       { transform: translate(15px, 25px) scale(1.05); }
+    }
+    .animate-float-slow   { animation: float-slow 20s ease-in-out infinite; }
+    .animate-float-medium { animation: float-medium 15s ease-in-out infinite; animation-delay: 2s; }
+    .animate-float-fast   { animation: float-fast 12s ease-in-out infinite; animation-delay: 4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float-slow,
+      .animate-float-medium,
+      .animate-float-fast {
+        animation: none !important;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       Project Card Backgrounds
+       Only these two patterns cannot be expressed
+       in Tailwind utility classes; everything else
+       in the cards is standard Tailwind.
+       ───────────────────────────────────────────── */
+
+    /* Orbit Scan: subtle green grid lines */
+    .card-orbit-grid {
+      background-image:
+        linear-gradient(rgba(2, 148, 68, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(2, 148, 68, 0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Habit Boost: warm amber dot matrix */
+    .card-habit-dots {
+      background-image: radial-gradient(circle, rgba(180, 100, 20, 0.11) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* Back to Top: show class */
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 </head>
 
@@ -224,7 +311,6 @@
 MAINAK CHAKRABORTY
 </span>
 
-            <!-- ✅ Font Awesome Icon (works in dark mode) -->
             <i class="fas fa-home hidden sm:inline-block text-sm opacity-0 -translate-x-4 
             transition-all duration-300 
             group-hover:opacity-100 group-hover:translate-x-0
@@ -376,22 +462,18 @@ MAINAK CHAKRABORTY
                 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 
                 pt-20 sm:pt-24 md:pt-28
                 pb-8 sm:pb-12 md:pb-16" 
-         aria-labelledby="hero-heading overflow-x: hidden;
-         max-width: 100vw;">
+         aria-labelledby="hero-heading">
 
 
-  <!-- Animated Background Blobs (Original Style) -->
+  <!-- Animated Background Blobs -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-    <!-- Left Blob -->
     <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-400/20 dark:bg-blue-500/10 
                 rounded-full mix-blend-multiply filter blur-3xl 
                 animate-pulse opacity-70"></div>
-    <!-- Right Blob -->
     <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-orange-400/20 dark:bg-orange-500/10 
                 rounded-full mix-blend-multiply filter blur-3xl 
                 animate-pulse opacity-70" 
          style="animation-delay: 1s;"></div>
-    <!-- Center Blob -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
                 w-[500px] h-[500px] bg-purple-400/10 dark:bg-purple-500/5 
                 rounded-full mix-blend-multiply filter blur-3xl 
@@ -399,7 +481,7 @@ MAINAK CHAKRABORTY
          style="animation-delay: 2s;"></div>
   </div>
 
-  <!-- Hero Content (Changed to flex-grow to push scroll down) -->
+  <!-- Hero Content -->
   <div class="relative z-10 text-center px-6 sm:px-8 flex-grow flex flex-col items-center justify-center">
 
     <!-- Greeting -->
@@ -413,23 +495,19 @@ MAINAK CHAKRABORTY
     <!-- Name with Animated Circles -->
     <div class="relative inline-block">
       
-      <!-- Background Animated Circles -->
       <div class="absolute inset-0 -z-10" aria-hidden="true">
-        <!-- Large Circle (Beige) -->
         <div class="absolute top-1/2 left-1/4 -translate-y-1/2 
                     w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96
                     bg-orange-100/40 dark:bg-orange-900/20
                     rounded-full blur-2xl
                     animate-float-slow"></div>
         
-        <!-- Medium Circle (Blue) -->
         <div class="absolute top-1/3 right-1/4 
                     w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72
                     bg-blue-200/50 dark:bg-blue-800/30
                     rounded-full blur-2xl
                     animate-float-medium"></div>
         
-        <!-- Small Circle (Light) -->
         <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2
                     w-40 h-40 sm:w-48 sm:h-48
                     bg-slate-200/30 dark:bg-slate-700/20
@@ -437,7 +515,6 @@ MAINAK CHAKRABORTY
                     animate-float-fast"></div>
       </div>
 
-      <!-- Name (Balanced Size) -->
       <h1 id="hero-heading" 
           class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem]
                  font-bold 
@@ -454,7 +531,7 @@ MAINAK CHAKRABORTY
     </div>
   </div>
 
-  <!-- Scroll Indicator - Now OUTSIDE content wrapper with margin-top -->
+  <!-- Scroll Indicator -->
   <div class="relative z-20 mt-auto mb-12 sm:mb-16 md:mb-20">
     <a href="#about" 
        class="flex flex-col items-center gap-3
@@ -465,14 +542,12 @@ MAINAK CHAKRABORTY
               focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-2" 
        aria-label="Scroll down to about section">
 
-      <!-- Mouse Scroll Icon -->
       <div class="w-7 h-11 rounded-full border-2 border-current 
                   flex justify-center pt-2 relative">
         <div class="w-1 h-3 bg-current rounded-full 
                     animate-scroll-wheel"></div>
       </div>
 
-      <!-- Arrow -->
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" 
               d="M19 14l-7 7m0 0l-7-7"/>
@@ -482,111 +557,6 @@ MAINAK CHAKRABORTY
 
 </section>
 
-
-<style>
-/* Animation: Fade in */
-@keyframes fade-in {
-from { opacity: 0; }
-to { opacity: 1; }
-}
-
-.animate-fade-in {
-animation: fade-in 1s ease-out;
-}
-
-/* Animation: Fade in from bottom */
-@keyframes fade-in-up {
-from { 
-opacity: 0;
-transform: translateY(30px);
-}
-to { 
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-.animate-fade-in-up {
-animation: fade-in-up 1.2s ease-out 0.3s both;
-}
-
-/* Animation: Scroll wheel indicator */
-@keyframes scroll-wheel {
-0% { 
-opacity: 1;
-transform: translateY(0);
-}
-100% { 
-opacity: 0;
-transform: translateY(12px);
-}
-}
-
-.animate-scroll-wheel {
-animation: scroll-wheel 1.5s ease-in-out infinite;
-}
-
-/* Floating Circle Animations */
-@keyframes float-slow {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -30px) scale(1.05);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.95);
-  }
-}
-
-@keyframes float-medium {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-40px, 30px) scale(1.1);
-  }
-}
-
-@keyframes float-fast {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(20px, -25px) scale(1.15);
-  }
-  50% {
-    transform: translate(-30px, -15px) scale(0.9);
-  }
-  75% {
-    transform: translate(15px, 25px) scale(1.05);
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 20s ease-in-out infinite;
-}
-
-.animate-float-medium {
-  animation: float-medium 15s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-.animate-float-fast {
-  animation: float-fast 12s ease-in-out infinite;
-  animation-delay: 4s;
-}
-
-/* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .animate-float-slow,
-  .animate-float-medium,
-  .animate-float-fast {
-    animation: none !important;
-  }
-}
-
-</style>
 
 <!-- About Section -->
 <section id="about" 
@@ -616,8 +586,6 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
     into accessible, scalable digital experiences.
   </p>
 
-
-
 <!-- CTA Button -->
 <div class="pt-4">
   <a href="about.html" 
@@ -646,8 +614,6 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
   <div class="absolute inset-0 rounded-full bg-gradient-to-br from-[#02437D] via-[#0369a1] to-[#0284c7]
               transform rotate-3 scale-95" aria-hidden="true"></div>
 
-
-      <!-- Avatar Image -->
       <img src="assets/img/Mainak Art/Mainak Hero Image_2.png"
            alt="Illustrated avatar of Mainak Chakraborty, a product designer, shown working on design projects with design tools" 
            loading="lazy"
@@ -681,164 +647,238 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
 <!-- Project Grid -->
 <div class="space-y-12">
 
-  <!-- Project 1: Orbit Scan -->
-  <article class="group relative bg-[#029444] rounded-2xl overflow-hidden 
-                  shadow-lg hover:shadow-2xl transition-shadow duration-300">
-    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center p-8 sm:p-12 lg:p-16">
+  <!-- ═══════════════════════════════════════════════════════
+       Project 1: Orbit Scan
+       Background: near-black #071a0e + card-orbit-grid (green grid lines)
+       + Tailwind blur glows for depth
+       WCAG: green-200/white text on #071a0e → >10:1 contrast (AAA)
+             All decorative divs aria-hidden, article aria-labelledby
+       ═══════════════════════════════════════════════════════ -->
+  <article class="group relative bg-[#071a0e] card-orbit-grid rounded-2xl overflow-hidden
+                  shadow-lg hover:shadow-2xl transition-shadow duration-300"
+           aria-labelledby="orbit-scan-title">
+
+    <!-- Decorative background layers — hidden from screen readers -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <!-- Radial glow: top-right -->
+      <div class="absolute -top-24 -right-16 w-96 h-96
+                  bg-green-500/20 rounded-full blur-3xl"></div>
+      <!-- Radial glow: bottom-left -->
+      <div class="absolute -bottom-20 -left-12 w-72 h-72
+                  bg-green-700/25 rounded-full blur-2xl"></div>
+      <!-- Accent micro-glow: centre -->
+      <div class="absolute top-1/2 right-1/3 -translate-y-1/2 w-48 h-48
+                  bg-emerald-400/10 rounded-full blur-xl"></div>
+      <!-- Concentric decorative ring 1 -->
+      <div class="absolute top-1/2 -right-20 -translate-y-1/2
+                  w-72 h-72 rounded-full border border-green-500/[0.15]"></div>
+      <!-- Concentric decorative ring 2 -->
+      <div class="absolute top-1/2 -right-36 -translate-y-1/2
+                  w-[420px] h-[420px] rounded-full border border-green-500/[0.06]"></div>
+    </div>
+
+    <div class="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center
+                p-8 sm:p-12 lg:p-16">
 
       <!-- Image -->
       <figure class="order-2 md:order-1">
-        <img src="assets/img/Projects/Orbit Scan/Cover.png" class="w-full max-w-lg"
+        <img src="assets/img/Projects/Orbit Scan/Cover.png"
              srcset="assets/img/Orbit/Orbit Scan Cover.webp 1x, 
                      assets/img/Orbit/Orbit Scan Cover@2x.webp 2x"
-             alt="Orbit Scan mobile app interface showing barcode scanner, product analysis dashboard, and health score features on three smartphone screens"
+             alt="Orbit Scan mobile app interface showing barcode scanner, product analysis
+                  dashboard, and health score features on three smartphone screens"
              width="480"
              height="400"
              loading="lazy"
-             class="w-full h-auto object-contain max-w-sm mx-auto">
+             class="w-full max-w-lg h-auto object-contain mx-auto
+                    group-hover:scale-[1.02] transition-transform duration-300">
       </figure>
-      
 
       <!-- Content -->
       <div class="order-1 md:order-2 space-y-4 text-white">
-        <p class="text-sm font-medium tracking-wider opacity-90 uppercase">
+
+        <p class="text-sm font-medium tracking-wider text-green-300/80 uppercase">
           01 | Mobile UX Design, Health Tech Case Study
         </p>
 
-        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold">
+        <h3 id="orbit-scan-title"
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
           Orbit Scan
         </h3>
 
-        <p class="text-base sm:text-lg leading-relaxed opacity-95">
+        <!-- Decorative accent line -->
+        <div class="w-10 h-0.5 bg-green-400/60" aria-hidden="true"></div>
+
+        <p class="text-base sm:text-lg leading-relaxed text-green-50/90">
           A smart grocery companion app that decodes food labels, identifies hidden 
           health risks, and helps users make informed nutritional choices through 
           AI-powered analysis.
         </p>
 
-        <p class="text-sm opacity-90">
-          Worked as a <strong>Lead UX/UI Designer</strong> | 14 Weeks (Q4 2024)
+        <p class="text-sm text-green-200/70">
+          Worked as a <strong class="font-semibold text-white">Lead UX/UI Designer</strong>
+          | 14 Weeks (Q4 2024)
         </p>
 
-        <!-- Tags -->
+        <!-- Tags — green-300 on bg-green-900/50 over #071a0e → ~10:1 contrast (AAA) -->
         <ul class="flex flex-wrap gap-2" role="list" aria-label="Project features">
           <li>
-            <span class="inline-block px-3 py-1 text-xs font-medium 
-                         bg-green-50 text-green-800 rounded-full border border-green-200">
+            <span class="inline-block px-3 py-1 text-xs font-medium rounded-full
+                         bg-green-900/50 text-green-300 border border-green-700/50">
               Barcode Scanner
             </span>
           </li>
           <li>
-            <span class="inline-block px-3 py-1 text-xs font-medium 
-                         bg-blue-50 text-blue-800 rounded-full border border-blue-200">
+            <span class="inline-block px-3 py-1 text-xs font-medium rounded-full
+                         bg-blue-900/50 text-blue-300 border border-blue-700/50">
               Health Analysis
             </span>
           </li>
           <li>
-            <span class="inline-block px-3 py-1 text-xs font-medium 
-                         bg-yellow-50 text-yellow-900 rounded-full border border-yellow-200">
+            <span class="inline-block px-3 py-1 text-xs font-medium rounded-full
+                         bg-yellow-900/50 text-yellow-200 border border-yellow-700/50">
               Rewards System
             </span>
           </li>
           <li>
-            <span class="inline-block px-3 py-1 text-xs font-bold 
-                         bg-white text-black rounded border border-black">
+            <span class="inline-block px-3 py-1 text-xs font-bold rounded
+                         bg-white/10 text-white border border-white/30">
               10 min read
             </span>
           </li>
         </ul>
 
-        <!-- CTA -->
+        <!-- CTA — white bg + slate-900 text → >15:1 contrast (AAA) -->
         <a href="OS_V2.html"
-           class="inline-block mt-6 px-6 py-3 bg-white text-slate-900 
-                  font-semibold rounded-lg shadow-md 
-                  hover:-translate-y-1 hover:shadow-xl 
-                  focus:outline-none focus:ring-4 focus:ring-white/50 
+           class="inline-block mt-6 px-6 py-3
+                  bg-white text-slate-900 font-semibold rounded-lg shadow-md
+                  hover:-translate-y-1 hover:bg-green-50 hover:shadow-xl
+                  focus:outline-none focus:ring-4 focus:ring-white/50
                   transition-all duration-200">
           View case study
           <span class="sr-only">about Orbit Scan project</span>
         </a>
+
       </div>
     </div>
   </article>
 
-  <!-- Project 2: Habit Boost -->
-  <article class="group relative bg-[#FEECD0] rounded-2xl overflow-hidden 
-                  shadow-lg hover:shadow-2xl transition-shadow duration-300">
-    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center p-8 sm:p-12 lg:p-16">
+
+  <!-- ═══════════════════════════════════════════════════════
+       Project 2: Habit Boost
+       Background: warm cream #fdf5e8 + card-habit-dots (amber dots)
+       + Tailwind blur glows for warmth
+       WCAG: slate-900 text on #fdf5e8 → >15:1 contrast (AAA)
+             All decorative divs aria-hidden, article aria-labelledby
+       ═══════════════════════════════════════════════════════ -->
+  <article class="group relative bg-[#fdf5e8] card-habit-dots rounded-2xl overflow-hidden
+                  shadow-lg hover:shadow-2xl transition-shadow duration-300"
+           aria-labelledby="habit-boost-title">
+
+    <!-- Decorative background layers — hidden from screen readers -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <!-- Warm golden glow: top-right -->
+      <div class="absolute -top-20 -right-16 w-80 h-80
+                  bg-orange-300/30 rounded-full blur-3xl"></div>
+      <!-- Peach glow: bottom-left -->
+      <div class="absolute -bottom-16 -left-12 w-72 h-72
+                  bg-amber-200/40 rounded-full blur-2xl"></div>
+      <!-- Soft warm centre -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64
+                  bg-orange-100/60 rounded-full blur-2xl"></div>
+      <!-- Decorative dashed circle: top-left -->
+      <div class="absolute -top-8 -left-8 w-44 h-44 rounded-full
+                  border border-dashed border-amber-400/30"></div>
+      <!-- Decorative solid circle: bottom-right -->
+      <div class="absolute bottom-8 right-[20%] w-24 h-24 rounded-full
+                  border border-amber-300/25"></div>
+    </div>
+
+    <div class="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center
+                p-8 sm:p-12 lg:p-16">
 
       <!-- Image -->
       <figure>
         <img src="assets/img/Projects/Habit Boost/Card Cover/Cover.png"
-        class="w-full max-w-lg"
-             alt="Habit Boost mobile app displaying garden metaphor interface and habit tracking screens with gamification elements"
+             alt="Habit Boost mobile app displaying garden metaphor interface and habit
+                  tracking screens with gamification elements"
              width="480"
              height="400"
              loading="lazy"
-             class="w-full h-auto object-contain max-w-sm mx-auto">
+             class="w-full max-w-lg h-auto object-contain mx-auto
+                    group-hover:scale-[1.02] transition-transform duration-300">
       </figure>
 
       <!-- Content -->
       <div class="space-y-4 text-slate-900">
-        <p class="text-sm font-medium tracking-wider opacity-90 uppercase">
+
+        <p class="text-sm font-medium tracking-wider text-amber-700/80 uppercase">
           02 | UX Research, User-centered Design
         </p>
 
-        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold">
+        <h3 id="habit-boost-title"
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
           Habit Boost
         </h3>
 
-        <p class="text-base sm:text-lg leading-relaxed opacity-95">
+        <!-- Decorative accent line -->
+        <div class="w-10 h-0.5 bg-amber-500/60" aria-hidden="true"></div>
+
+        <p class="text-base sm:text-lg leading-relaxed text-slate-700">
           A gamified habit tracking app utilizing the "Hook Model" to turn routine 
           building into an engaging, visual journey that improves retention.
         </p>
 
-        <p class="text-sm opacity-90">
-          Worked as a <strong>Lead UX Researcher</strong> | 7 Weeks
+        <p class="text-sm text-slate-600">
+          Worked as a <strong class="font-semibold text-slate-900">Lead UX Researcher</strong>
+          | 7 Weeks
         </p>
 
-        <!-- Tags -->
+        <!-- Tags — all meet WCAG AA on cream background -->
         <ul class="flex flex-wrap gap-2" role="list" aria-label="Project features">
           <li>
-            <span class="inline-block px-3 py-1 text-xs font-medium 
-                         bg-green-100 text-green-800 rounded-full border border-green-300">
+            <span class="inline-block px-3 py-1 text-xs font-medium rounded-full
+                         bg-green-100 text-green-800 border border-green-300">
               Behavioral Design
             </span>
           </li>
           <li>
-            <span class="inline-block px-3 py-1 text-xs font-medium 
-                         bg-yellow-100 text-yellow-900 rounded-full border border-yellow-300">
+            <span class="inline-block px-3 py-1 text-xs font-medium rounded-full
+                         bg-amber-100 text-amber-900 border border-amber-300">
               Gamification
             </span>
           </li>
           <li>
-            <span class="inline-block px-3 py-1 text-xs font-medium 
-                         bg-purple-100 text-purple-900 rounded-full border border-purple-300">
+            <span class="inline-block px-3 py-1 text-xs font-medium rounded-full
+                         bg-purple-100 text-purple-900 border border-purple-300">
               User Research
             </span>
           </li>
           <li>
-            <span class="inline-block px-3 py-1 text-xs font-bold 
-                         bg-white text-black rounded border border-black">
+            <span class="inline-block px-3 py-1 text-xs font-bold rounded
+                         bg-white/70 text-slate-900 border border-slate-400/50">
               8 min read
             </span>
           </li>
         </ul>
 
-        <!-- CTA -->
+        <!-- CTA — white text on slate-900 → >15:1 contrast (AAA) -->
         <a href="Habit Boost.html"
-           class="inline-block mt-6 px-6 py-3 bg-slate-900 text-white 
-                  font-semibold rounded-lg shadow-md 
-                  hover:-translate-y-1 hover:shadow-xl 
-                  focus:outline-none focus:ring-4 focus:ring-slate-900/50 
+           class="inline-block mt-6 px-6 py-3 
+                  bg-slate-900 text-white font-semibold rounded-lg shadow-md
+                  hover:-translate-y-1 hover:shadow-xl hover:bg-slate-800
+                  focus:outline-none focus:ring-4 focus:ring-slate-900/50
                   transition-all duration-200">
           View case study
           <span class="sr-only">about Habit Boost project</span>
         </a>
+
       </div>
     </div>
   </article>
 
 </div>
+<!-- End Project Grid -->
 
 <!-- View More Link -->
 <div class="text-center mt-12">
@@ -1004,25 +1044,21 @@ animation: scroll-wheel 1.5s ease-in-out infinite;
       updateProgressBar();
     });
 
-    // Get mobile menu and all navigation links
+    // Mobile menu close on link click
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('#mobile-menu a');
     const menuToggle = document.querySelector('[aria-controls="mobile-menu"]');
 
-    // Add click event to each link
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        // Close the menu
         mobileMenu.classList.add('hidden');
-        
-        // Update toggle button aria-expanded
         if (menuToggle) {
           menuToggle.setAttribute('aria-expanded', 'false');
         }
       });
     });
 
-    // Optional: Close menu when clicking outside
+    // Close menu when clicking outside
     document.addEventListener('click', (event) => {
       const isClickInsideMenu = mobileMenu.contains(event.target);
       const isClickOnToggle = menuToggle && menuToggle.contains(event.target);
@@ -1053,41 +1089,24 @@ aria-label="Back to top">
 </svg>
 </button>
 
-<style>
-/* Show button when scrolled */
-#back-to-top.show {
-opacity: 1;
-visibility: visible;
-}
-
-/* Smooth scroll animation */
-@media (prefers-reduced-motion: no-preference) {
-html {
-scroll-behavior: smooth;
-}
-}
-</style>
-
 <script>
-// Back to Top Button Logic
-const backToTopBtn = document.getElementById('back-to-top');
+  // Back to Top Button Logic
+  const backToTopBtn = document.getElementById('back-to-top');
 
-// Show/hide button based on scroll position
-window.addEventListener('scroll', function() {
-if (window.pageYOffset > 300) {
-backToTopBtn.classList.add('show');
-} else {
-backToTopBtn.classList.remove('show');
-}
-});
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
 
-// Scroll to top when clicked
-backToTopBtn.addEventListener('click', function() {
-window.scrollTo({
-top: 0,
-behavior: 'smooth'
-});
-});
+  backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 </script>
 
 </main>
