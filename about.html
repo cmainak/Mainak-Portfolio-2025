@@ -38,11 +38,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap">
+  <!-- Google Fonts — non-blocking (matches index.html pattern) -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap"
+        media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap">
+  </noscript>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Font Awesome — non-blocking (matches index.html pattern) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </noscript>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -140,16 +152,27 @@
         scroll-behavior: smooth;
       }
     }
+
+    /* Back to Top */
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 </head>
 
 <body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans antialiased">
 
-  <!-- Progress Bar -->
-  <div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar"
+       role="progressbar"
+       aria-label="Page scroll progress"
+       aria-valuenow="0"
+       aria-valuemin="0"
+       aria-valuemax="100"></div>
 
   <!-- Loader -->
-  <div id="loader">
+  <div id="loader" role="status" aria-live="polite" aria-label="Loading content">
     <p class="text-lg text-slate-700 font-medium">Loading my story... 📖</p>
   </div>
 
@@ -164,95 +187,112 @@
   <!-- Header Navigation -->
   <header role="banner">
     <nav class="fixed top-0 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md 
-                border-b border-slate-200 dark:border-slate-800 z-40">
+                border-b border-slate-200 dark:border-slate-800 z-40"
+         role="navigation"
+         aria-label="Main navigation">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
 
- <!-- Logo -->
- <a href="index.html" 
- class="flex items-center gap-2 relative group ffocus:outline-none 
- rounded-lg">
-<img src="assets/img/Logo2.svg" 
-     alt="Mainak Chakraborty logo" 
-     class="h-8 w-8 transition-transform duration-300 group-hover:scale-110"
-     width="32"
-     height="32">
-     <span class="text-sm font-bold text-slate-900 dark:text-white
-     transition-colors duration-300">
-MAINAK CHAKRABORTY
-</span>
-
-<!-- ✅ Font Awesome Icon (works in dark mode) -->
-<i class="fas fa-home hidden sm:inline-block text-sm opacity-0 -translate-x-4 
-transition-all duration-300 
-group-hover:opacity-100 group-hover:translate-x-0
-text-primary-500 dark:text-white"
-aria-hidden="true"></i>
-</a>
+          <!-- Logo — fixed typo: was "ffocus" -->
+          <a href="index.html" 
+             class="flex items-center gap-2 relative group focus:outline-none rounded-lg">
+            <img src="assets/img/Logo2.svg" 
+                 alt="Mainak Chakraborty logo" 
+                 class="h-8 w-8 transition-transform duration-300 group-hover:scale-110"
+                 width="32"
+                 height="32">
+            <span class="text-sm font-bold text-slate-900 dark:text-white transition-colors duration-300">
+              MAINAK CHAKRABORTY
+            </span>
+            <i class="fas fa-home hidden sm:inline-block text-sm opacity-0 -translate-x-4 
+                      transition-all duration-300 
+                      group-hover:opacity-100 group-hover:translate-x-0
+                      text-primary-500 dark:text-white"
+               aria-hidden="true"></i>
+          </a>
 
           <!-- Desktop Nav -->
           <div class="hidden md:flex items-center gap-8">
-            <a href="index.html" class="text-sm font-medium hover:text-primary-500 ">HOME</a>
-            <a href="#about" 
-            class="block px-3 py-2 text-sm font-medium text-slate-700 dark:text-accent-500 
-                   hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">
-           ABOUT
-         </a>
+            <a href="index.html"
+               class="text-sm font-medium text-slate-700 dark:text-slate-300
+                      hover:text-primary-500 dark:hover:text-primary-400
+                      transition-colors duration-200 focus:outline-none rounded-lg">
+              HOME
+            </a>
+            <a href="#about"
+               class="text-sm font-medium text-slate-700 dark:text-accent-500
+                      hover:text-primary-500 dark:hover:text-primary-400
+                      transition-colors duration-200 focus:outline-none rounded-lg">
+              ABOUT
+            </a>
 
             <!-- Work Dropdown -->
-<div class="relative group">
-  <a href="work.html" class="flex items-center gap-1 text-sm font-medium hover:text-primary-500">
-    WORK
-    <svg class="w-3 h-3 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-    </svg>
-  </a>
+            <div class="relative group">
+              <a href="work.html"
+                 class="flex items-center gap-1 text-sm font-medium
+                        text-slate-700 dark:text-slate-300 hover:text-primary-500
+                        transition-colors duration-200">
+                WORK
+                <svg class="w-3 h-3 group-hover:rotate-180 transition-transform"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </a>
+              <div class="absolute left-0 mt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+                          transition-all bg-white dark:bg-slate-800 rounded-lg shadow-xl
+                          border border-slate-200 dark:border-slate-700">
+                <div class="py-2">
+                  <a href="OS_V2.html"                  class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Orbit Scan</a>
+                  <a href="Habit Boost.html"            class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Habit Boost</a>
+                  <a href="ManageW.html"                class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">ManageWise</a>
+                  <a href="DS.html"                     class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Design System</a>
+                  <a href="Todo.html"                   class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Smart To-Do</a>
+                  <a href="Touro University GST.html"   class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Touro</a>
+                  <a href="work.html"                   class="text-orange-600 block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">More Projects</a>
+                </div>
+              </div>
+            </div>
 
-  <div class="absolute left-0 mt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-    transition-all bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700">
+            <a href="index.html#contact"
+               class="text-sm font-medium text-slate-700 dark:text-slate-300
+                      hover:text-primary-500 dark:hover:text-primary-400
+                      transition-colors duration-200 focus:outline-none rounded-lg">
+              CONTACT
+            </a>
 
-    <div class="py-2">
-      <a href="OS_V2.html" class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Orbit Scan</a>
-      <a href="Habit Boost.html" class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Habit Boost</a>
-      <a href="ManageW.html" class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">ManageWise</a>
-      <a href="DS.html" class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Design System</a>
-      <a href="Todo.html" class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Smart To-Do</a>
-      <a href="Touro University GST.html" class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">Touro</a>
-      <a href="work.html" class="text-orange-600 block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">More Projects</a>
-    </div>
-  </div>
-</div>
-
-            <a href="index.html#contact" class="text-sm font-medium hover:text-primary-500">CONTACT</a>
-
-           <!-- Theme Toggle -->
-           <button onclick="document.documentElement.classList.toggle('dark')" 
-           class="p-2 rounded-lg text-slate-600 dark:text-slate-400 
-                  hover:bg-slate-100 dark:hover:bg-slate-800 
-                  transition-colors duration-200 focus:outline-none 
-                  focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-           aria-label="Toggle dark mode">
-     <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-       <circle cx="12" cy="12" r="5"/>
-       <line x1="12" y1="1" x2="12" y2="3"/>
-       <line x1="12" y1="21" x2="12" y2="23"/>
-       <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-       <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-       <line x1="1" y1="12" x2="3" y2="12"/>
-       <line x1="21" y1="12" x2="23" y2="12"/>
-       <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-       <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-     </svg>
-     <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-     </svg>
-   </button>
+            <!-- Theme Toggle -->
+            <button onclick="document.documentElement.classList.toggle('dark')"
+                    class="p-2 rounded-lg text-slate-600 dark:text-slate-400 
+                           hover:bg-slate-100 dark:hover:bg-slate-800 
+                           transition-colors duration-200 focus:outline-none 
+                           focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    aria-label="Toggle dark mode">
+              <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+              <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </button>
           </div>
 
           <!-- Mobile Menu Button -->
-          <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" 
-                  class="md:hidden p-2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                  class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400
+                         hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors
+                         focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  aria-label="Open menu"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
           </button>
@@ -260,28 +300,47 @@ aria-hidden="true"></i>
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t">
-        <div class="px-4 py-4 space-y-2">
-          <a href="index.html" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Home</a>
-          <a href="about.html" class="block px-3 py-2 rounded-lg bg-slate-50 text-primary-500">About</a>
-          <button onclick="document.getElementById('mobile-work').classList.toggle('hidden')" 
-                  class="flex items-center justify-between w-full px-3 py-2 rounded-lg hover:bg-slate-50">
+      <div id="mobile-menu"
+           class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <nav aria-label="Mobile navigation" class="px-4 py-4 space-y-2">
+          <a href="index.html"
+             class="block px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-300
+                    hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">
+            Home
+          </a>
+          <a href="about.html"
+             class="block px-3 py-2 text-base font-medium text-primary-500
+                    bg-slate-50 dark:bg-slate-800 rounded-lg">
+            About
+          </a>
+          <button onclick="document.getElementById('mobile-work').classList.toggle('hidden');
+                           this.querySelector('svg').classList.toggle('rotate-180')"
+                  class="flex items-center justify-between w-full px-3 py-2 text-base font-medium
+                         text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800
+                         rounded-lg transition-colors"
+                  aria-expanded="false"
+                  aria-controls="mobile-work">
             Work
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 transition-transform duration-200"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
           <div id="mobile-work" class="hidden pl-6 space-y-1">
-            <a href="OS_V2.html" class="block px-3 py-2 text-sm">Orbit Scan</a>
-            <a href="Habit Boost.html" class="block px-3 py-2 text-sm">Habit Boost</a>
-            <a href="ManageW.html" class="block px-3 py-2 text-sm">ManageWise</a>
-            <a href="DS.html" class="block px-3 py-2 text-sm">Design System</a>
-            <a href="Todo.html" class="block px-3 py-2 text-sm">Smart To-Do</a>
-            <a href="Touro University GST.html" class="block px-3 py-2 text-sm">Touro</a>
-            <a href="work.html" class="text-orange-600 block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700">More Projects</a>
+            <a href="OS_V2.html"                 class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Orbit Scan</a>
+            <a href="Habit Boost.html"           class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Habit Boost</a>
+            <a href="ManageW.html"               class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">ManageWise</a>
+            <a href="DS.html"                    class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Design System</a>
+            <a href="Todo.html"                  class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Smart To-Do</a>
+            <a href="Touro University GST.html"  class="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Touro</a>
+            <a href="work.html"                  class="block px-3 py-2 text-sm text-orange-600 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">More Projects</a>
           </div>
-          <a href="index.html#contact" class="block px-3 py-2 rounded-lg hover:bg-slate-50">Contact</a>
-        </div>
+          <a href="index.html#contact"
+             class="block px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-300
+                    hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">
+            Contact
+          </a>
+        </nav>
       </div>
     </nav>
   </header>
@@ -290,7 +349,9 @@ aria-hidden="true"></i>
   <main id="main-content" class="pt-16">
 
     <!-- Hero Section with Photo Collage -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
+    <section id="about"
+             class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900"
+             aria-labelledby="about-heading">
       <div class="max-w-7xl mx-auto">
 
         <!-- Header -->
@@ -298,86 +359,96 @@ aria-hidden="true"></i>
           <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
             A LITTLE ABOUT ME
           </p>
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white">
+          <h1 id="about-heading"
+              class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white">
             Hello, I'm <span class="text-primary-500">Mainak</span>!
             <span class="text-2xl font-normal text-slate-500 dark:text-slate-400"> (MY-nuhk)</span>
           </h1>
         </div>
 
-<!-- Photo Collage Grid (Exact Match to Screenshot) -->
-<div class="max-w-6xl mx-auto mb-16">
-  <div class="grid grid-cols-2 gap-4">
-    
-    <!-- Large Photo - Left -->
-    <div class="row-span-2">
-      <img src="assets/img/Mainak Art/Mountain.jpg" 
-           alt="Mainak enjoying mountain scenery" 
-           class="w-full h-full object-cover rounded-3xl shadow-lg"
-           style="height: 360px;"
-           loading="lazy">
-    </div>
-    
-    <!-- Top Right - 2 Photos Side by Side -->
-    <div class="grid grid-cols-2 gap-4">
-      <div>
-        <img src="assets/img/Mainak Art/Mainak_Trail_2.jpeg" 
-     alt="Architectural design" 
-     class="w-full h-full object-cover object-[center_60%] rounded-3xl shadow-lg"
-     style="height: 175px;"
-     loading="lazy">
-      </div>
-      <div>
-        <img src="assets/img/Mainak Art/Central Park Boating.jpg" 
-             alt="Kayaking adventure" 
-             class="w-full h-full object-cover rounded-3xl shadow-lg"
-             style="height: 175px;"
-             loading="lazy">
-      </div>
-    </div>
-    
-    <!-- Bottom Right - 2 Photos Side by Side -->
-    <div class="grid grid-cols-2 gap-4">
-      <div>
-        <img src="assets/img/Mainak Art/Football.png" 
-             alt="Playing sports" 
-             class="w-full h-full object-cover rounded-3xl shadow-lg"
-             style="height: 175px;"
-             loading="lazy">
-      </div>
-      <div>
-        <img src="assets/img/Mainak Art/Concrete-Jungle.jpg" 
-             alt="Urban exploration" 
-             class="w-full h-full object-cover rounded-3xl shadow-lg"
-             style="height: 175px;"
-             loading="lazy">
-      </div>
-    </div>
-    
-  </div>
-</div>
+        <!-- Photo Collage Grid -->
+        <div class="max-w-6xl mx-auto mb-16">
+          <div class="grid grid-cols-2 gap-4">
+
+            <!-- Large Photo - Left -->
+            <div class="row-span-2">
+              <img src="assets/img/Mainak Art/Mountain.jpg"
+                   alt="Mainak enjoying mountain scenery"
+                   class="w-full h-full object-cover rounded-3xl shadow-lg"
+                   style="height: 360px;"
+                   loading="lazy"
+                   width="600"
+                   height="360">
+            </div>
+
+            <!-- Top Right - 2 Photos Side by Side -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <img src="assets/img/Mainak Art/Mainak_Trail_2.jpeg"
+                     alt="Mainak on a trail hike"
+                     class="w-full h-full object-cover object-[center_60%] rounded-3xl shadow-lg"
+                     style="height: 175px;"
+                     loading="lazy"
+                     width="280"
+                     height="175">
+              </div>
+              <div>
+                <img src="assets/img/Mainak Art/Central Park Boating.jpg"
+                     alt="Kayaking adventure in Central Park"
+                     class="w-full h-full object-cover rounded-3xl shadow-lg"
+                     style="height: 175px;"
+                     loading="lazy"
+                     width="280"
+                     height="175">
+              </div>
+            </div>
+
+            <!-- Bottom Right - 2 Photos Side by Side -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <img src="assets/img/Mainak Art/Football.png"
+                     alt="Playing sports"
+                     class="w-full h-full object-cover rounded-3xl shadow-lg"
+                     style="height: 175px;"
+                     loading="lazy"
+                     width="280"
+                     height="175">
+              </div>
+              <div>
+                <img src="assets/img/Mainak Art/Concrete-Jungle.jpg"
+                     alt="Urban exploration in the city"
+                     class="w-full h-full object-cover rounded-3xl shadow-lg"
+                     style="height: 175px;"
+                     loading="lazy"
+                     width="280"
+                     height="175">
+              </div>
+            </div>
+
+          </div>
+        </div>
 
         <!-- Biography Text -->
-<div class="max-w-6xl mx-auto space-y-6 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-
+        <div class="max-w-6xl mx-auto space-y-6 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
           <p>
             I'm a Product Designer who blends research, design, storytelling,
             and a bit of code to build products that actually work for people. In my most recent experience, I genuinely enjoy conducting user testing, running product tests, and prototype new solutions
-            for interface redesigns. My path to Product design wasn't linear, but it was very intentional. I started my career in creative roles, working for production houses and creative agencies, 
-            which gave me a sharp eye for visual storytelling and branding.  </p>
-            
-           <p>Later I moved into market research at Ipsos, where I worked on the quantitative research side, specifically on product testing, competitive benchmarking and brand-health tracking studies, coordinated 
-            the end to end execution, from initial methodology planning and study design to the final execution and delivery. While this taught me how to listen to users through data at scale, I found myself constantly 
-            wondering how those data points translated into the actual interfaces people interact with every day.</p>
-           
-            
-            <p> However, it  made me want to explore the design world more in-depth from research to final design, 
+            for interface redesigns. My path to Product design wasn't linear, but it was very intentional. I started my career in creative roles, working for production houses and creative agencies,
+            which gave me a sharp eye for visual storytelling and branding.
+          </p>
+          <p>
+            Later I moved into market research at Ipsos, where I worked on the quantitative research side, specifically on product testing, competitive benchmarking and brand-health tracking studies, coordinated
+            the end to end execution, from initial methodology planning and study design to the final execution and delivery. While this taught me how to listen to users through data at scale, I found myself constantly
+            wondering how those data points translated into the actual interfaces people interact with every day.
+          </p>
+          <p>
+            However, it made me want to explore the design world more in-depth from research to final design,
             that drive lead me to pursue my Master's in UX/UI & Interaction Design at Touro, where I deepened my knowledge in design thinking, user-centered design principles, interaction patterns, learned to code, and built this site myself from scratch.
           </p>
-
           <p>
-            I thrive on turning complex problems into seamless, intuitive experiences because great design should feel as 
-            effortless as a perfect cover drive in cricket (yes, I'm a huge sports fan too!). Right now, I'm focused on 
-            the intersection of design and AI. I'm actively learning about adaptive responsive UI and design systems to 
+            I thrive on turning complex problems into seamless, intuitive experiences because great design should feel as
+            effortless as a perfect cover drive in cricket (yes, I'm a huge sports fan too!). Right now, I'm focused on
+            the intersection of design and AI. I'm actively learning about adaptive responsive UI and design systems to
             build ethical, accessible products.
           </p>
         </div>
@@ -387,264 +458,280 @@ aria-hidden="true"></i>
 
 
     <!-- What I Do Section -->
-<section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800">
-  <div class="max-w-6xl mx-auto">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800"
+             aria-labelledby="skills-heading">
+      <div class="max-w-6xl mx-auto">
 
-    <!-- Section Header -->
-    <div class="mb-16">
-      <div class="grid lg:grid-cols-2 gap-8 items-end">
-        <!-- Left: Heading -->
-        <div>
-          <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
-            What I Bring to the Table
-          </p>
-          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
-            Design solutions crafted to<br>match your vision.
-          </h2>
-        </div>
-        <!-- Right: Description -->
-        <div>
-          <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            Over the years, I've sharpened my craft across UX research, interaction design, 
-            and front-end development always pushing myself to make every product smarter, 
-            cleaner, and more impactful.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Skills Cards Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
-      <!-- UX Research -->
-      <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700">
-        <div class="mb-5">
-          <!-- Icon -->
-          <svg class="w-7 h-7 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-        </div>
-        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">UX Research</h3>
-        <ul class="space-y-1.5">
-          <li class="text-sm text-slate-500 dark:text-slate-400">User Interviews</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Usability Testing</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Competitive Analysis</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Survey & Synthesis</li>
-        </ul>
-      </article>
-
-      <!-- UX/UI Design -->
-      <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700">
-        <div class="mb-5">
-          <svg class="w-7 h-7 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/>
-          </svg>
-        </div>
-        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">UX/UI Design</h3>
-        <ul class="space-y-1.5">
-          <li class="text-sm text-slate-500 dark:text-slate-400">Dashboards</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Mobile Apps</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Interaction Design</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Prototyping</li>
-        </ul>
-      </article>
-
-      <!-- Design Systems -->
-      <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700">
-        <div class="mb-5">
-          <svg class="w-7 h-7 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/>
-          </svg>
-        </div>
-        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">Design Systems</h3>
-        <ul class="space-y-1.5">
-          <li class="text-sm text-slate-500 dark:text-slate-400">Component Libraries</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Tokens & Variables</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Accessibility (WCAG)</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Documentation</li>
-        </ul>
-      </article>
-
-      <!-- Front-End Development -->
-      <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700">
-        <div class="mb-5">
-          <svg class="w-7 h-7 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
-          </svg>
-        </div>
-        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">Front-End Dev</h3>
-        <ul class="space-y-1.5">
-          <li class="text-sm text-slate-500 dark:text-slate-400">HTML / CSS / JS</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Tailwind CSS</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Responsive Design</li>
-          <li class="text-sm text-slate-500 dark:text-slate-400">Accessibility</li>
-        </ul>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- Stack I Use Section -->
-<section class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
-  <div class="max-w-6xl mx-auto">
-
-    <!-- Section Header -->
-    <div class="mb-16">
-      <div class="grid lg:grid-cols-2 gap-8 items-end">
-        <div>
-          <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
-            My Stack
-          </p>
-          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
-            Tools I use to bring<br>ideas to life.
-          </h2>
-        </div>
-        <div>
-          <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            From research and wireframing to final handoff and code 
-            staying sharp with the tools that help me design smarter, 
-            faster, and more collaboratively.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tools Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-
-      <!-- Figma -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 flex items-center justify-center">
-            <svg viewBox="0 0 38 57" class="w-12 h-12">
-              <path fill="#1ABCFE" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/>
-              <path fill="#0ACF83" d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z"/>
-              <path fill="#FF7262" d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z"/>
-              <path fill="#F24E1E" d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z"/>
-              <path fill="#A259FF" d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z"/>
-            </svg>
+        <!-- Section Header -->
+        <div class="mb-16">
+          <div class="grid lg:grid-cols-2 gap-8 items-end">
+            <div>
+              <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
+                What I Bring to the Table
+              </p>
+              <h2 id="skills-heading"
+                  class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
+                Design solutions crafted to<br>match your vision.
+              </h2>
+            </div>
+            <div>
+              <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                Over the years, I've sharpened my craft across UX research, interaction design,
+                and front-end development always pushing myself to make every product smarter,
+                cleaner, and more impactful.
+              </p>
+            </div>
           </div>
         </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Figma</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Design & Prototyping</p>
-      </div>
 
-      <!-- Adobe Creative Cloud -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-gradient-to-br from-red-600 via-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-            <img src="assets/img/Tools/adobe-creative-cloud.svg" alt="Adobe Creative Cloud Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px; flex-shrink:0;">
+        <!-- Skills Cards Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+          <!-- UX Research -->
+          <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700">
+            <div class="mb-5">
+              <svg class="w-7 h-7 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">UX Research</h3>
+            <ul class="space-y-1.5" role="list">
+              <li class="text-sm text-slate-500 dark:text-slate-400">User Interviews</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Usability Testing</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Competitive Analysis</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Survey & Synthesis</li>
+            </ul>
+          </article>
+
+          <!-- UX/UI Design -->
+          <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700">
+            <div class="mb-5">
+              <svg class="w-7 h-7 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">UX/UI Design</h3>
+            <ul class="space-y-1.5" role="list">
+              <li class="text-sm text-slate-500 dark:text-slate-400">Dashboards</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Mobile Apps</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Interaction Design</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Prototyping</li>
+            </ul>
+          </article>
+
+          <!-- Design Systems -->
+          <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700">
+            <div class="mb-5">
+              <svg class="w-7 h-7 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">Design Systems</h3>
+            <ul class="space-y-1.5" role="list">
+              <li class="text-sm text-slate-500 dark:text-slate-400">Component Libraries</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Tokens & Variables</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Accessibility (WCAG)</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Documentation</li>
+            </ul>
+          </article>
+
+          <!-- Front-End Development -->
+          <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700">
+            <div class="mb-5">
+              <svg class="w-7 h-7 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">Front-End Dev</h3>
+            <ul class="space-y-1.5" role="list">
+              <li class="text-sm text-slate-500 dark:text-slate-400">HTML / CSS / JS</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Tailwind CSS</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Responsive Design</li>
+              <li class="text-sm text-slate-500 dark:text-slate-400">Accessibility</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Stack I Use Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900"
+             aria-labelledby="tools-heading">
+      <div class="max-w-6xl mx-auto">
+
+        <!-- Section Header -->
+        <div class="mb-16">
+          <div class="grid lg:grid-cols-2 gap-8 items-end">
+            <div>
+              <p class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
+                My Stack
+              </p>
+              <h2 id="tools-heading"
+                  class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
+                Tools I use to bring<br>ideas to life.
+              </h2>
+            </div>
+            <div>
+              <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                From research and wireframing to final handoff and code —
+                staying sharp with the tools that help me design smarter,
+                faster, and more collaboratively.
+              </p>
+            </div>
           </div>
         </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Adobe Creative Cloud</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Design, Editing & Creative Tools</p>
-      </div>
 
-      <!-- Generative AI -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
-            <i class="fas fa-brain text-white text-2xl"></i>
+        <!-- Tools Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+
+          <!-- Figma -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 flex items-center justify-center">
+                <svg viewBox="0 0 38 57" class="w-12 h-12" aria-hidden="true">
+                  <path fill="#1ABCFE" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/>
+                  <path fill="#0ACF83" d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z"/>
+                  <path fill="#FF7262" d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z"/>
+                  <path fill="#F24E1E" d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z"/>
+                  <path fill="#A259FF" d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Figma</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Design & Prototyping</p>
           </div>
-        </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Generative AI - LLMs</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Research & Brainstorming</p>
-      </div>
 
-      <!-- Miro -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-yellow-400 rounded-lg flex items-center justify-center">
-            <img src="assets/img/Tools/Miro.png" alt="Miro Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+          <!-- Adobe Creative Cloud -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-gradient-to-br from-red-600 via-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <img src="assets/img/Tools/adobe-creative-cloud.svg"
+                     alt="Adobe Creative Cloud Logo"
+                     loading="lazy"
+                     width="50" height="50"
+                     style="width:50px;height:50px;object-fit:contain;border-radius:8px;flex-shrink:0;">
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Adobe Creative Cloud</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Design, Editing & Creative Tools</p>
           </div>
-        </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Miro</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Ideation & Collaboration</p>
-      </div>
 
-      <!-- Notion -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-white border border-slate-200 rounded-lg flex items-center justify-center">
-            <img src="assets/img/Tools/Notion.png" alt="Notion Logo" loading="lazy" width="50" height="50" style="width:50px; height:50px; object-fit:contain; border-radius:8px;">
+          <!-- Generative AI -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
+                <i class="fas fa-brain text-white text-2xl" aria-hidden="true"></i>
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Generative AI - LLMs</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Research & Brainstorming</p>
           </div>
-        </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Notion</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Notes & Documentation</p>
-      </div>
 
-      <!-- Framer -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
-            <svg viewBox="0 0 24 24" class="w-10 h-10" fill="white">
-              <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"/>
-            </svg>
+          <!-- Miro -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-yellow-400 rounded-lg flex items-center justify-center">
+                <img src="assets/img/Tools/Miro.png"
+                     alt="Miro Logo"
+                     loading="lazy"
+                     width="50" height="50"
+                     style="width:50px;height:50px;object-fit:contain;border-radius:8px;">
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Miro</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Ideation & Collaboration</p>
           </div>
-        </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Framer</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Website Builder</p>
-      </div>
 
-      <!-- VS Code -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center">
-            <i class="fas fa-code text-white text-2xl"></i>
+          <!-- Notion -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-white border border-slate-200 rounded-lg flex items-center justify-center">
+                <img src="assets/img/Tools/Notion.png"
+                     alt="Notion Logo"
+                     loading="lazy"
+                     width="50" height="50"
+                     style="width:50px;height:50px;object-fit:contain;border-radius:8px;">
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Notion</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Notes & Documentation</p>
           </div>
-        </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">VS Code</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Code Editor & Development</p>
-      </div>
 
-      <!-- HTML -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-orange-600 rounded-lg flex items-center justify-center">
-            <span class="text-white font-bold text-2xl">HTML</span>
+          <!-- Framer -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
+                <svg viewBox="0 0 24 24" class="w-10 h-10" fill="white" aria-hidden="true">
+                  <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">Framer</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Website Builder</p>
           </div>
-        </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">HTML</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Development</p>
-      </div>
 
-      <!-- CSS -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center">
-            <span class="text-white font-bold text-2xl">CSS</span>
+          <!-- VS Code -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center">
+                <i class="fas fa-code text-white text-2xl" aria-hidden="true"></i>
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">VS Code</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Code Editor & Development</p>
           </div>
-        </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">CSS</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Development</p>
-      </div>
 
-      <!-- JavaScript -->
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-yellow-400 rounded-lg flex items-center justify-center">
-            <span class="text-black font-bold text-xl">JS</span>
+          <!-- HTML -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-orange-600 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-2xl" aria-hidden="true">HTML</span>
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">HTML</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Development</p>
           </div>
-        </div>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">JavaScript</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Development</p>
-      </div>
 
-    </div>
-  </div>
-</section>
+          <!-- CSS -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-2xl" aria-hidden="true">CSS</span>
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">CSS</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Development</p>
+          </div>
+
+          <!-- JavaScript -->
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="flex justify-center mb-4">
+              <div class="w-16 h-16 bg-yellow-400 rounded-lg flex items-center justify-center">
+                <span class="text-black font-bold text-xl" aria-hidden="true">JS</span>
+              </div>
+            </div>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-1">JavaScript</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Development</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
 
     <!-- Work Experience Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800"
+             aria-labelledby="experience-heading">
       <div class="max-w-6xl mx-auto">
 
         <!-- Section Header -->
         <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-wide mb-4">
+          <h2 id="experience-heading"
+              class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-wide mb-4">
             MY Experience
           </h2>
-
         </div>
 
         <!-- Experience Grid -->
@@ -653,287 +740,272 @@ aria-hidden="true"></i>
           <!-- KeelWorks Foundation -->
           <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div class="flex justify-center mb-6">
-              <img src="assets/img/Brand I have Worked With/KW.png" 
-                   alt="KaalWorks Foundation logo" 
+              <img src="assets/img/Brand I have Worked With/KW.png"
+                   alt="KeelWorks Foundation logo"
                    class="h-16 object-contain"
                    loading="lazy">
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">
-              KeelWorks
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">
-              Product Designer
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">
-              February 2025 - January 2026
-            </p>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">KeelWorks</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">Product Designer</p>
+            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">February 2025 - January 2026</p>
           </article>
 
           <!-- Touro University -->
           <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div class="flex justify-center mb-6">
-              <img src="assets/img/Brand I have Worked With/TU.png" 
-                   alt="Touro University logo" 
+              <img src="assets/img/Brand I have Worked With/TU.png"
+                   alt="Touro University logo"
                    class="h-16 object-contain"
                    loading="lazy">
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">
-              Touro University NYC
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">
-              Visual Designer - Graduate Assistant
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">
-              June 2023 - December 2024
-            </p>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">Touro University NYC</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">Visual Designer - Graduate Assistant</p>
+            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">June 2023 - December 2024</p>
           </article>
 
           <!-- Ipsos Research -->
           <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div class="flex justify-center mb-6">
-              <img src="assets/img/Brand I have Worked With/Ipsos Logo.jpg" 
-                   alt="Ipsos logo" 
+              <img src="assets/img/Brand I have Worked With/Ipsos Logo.jpg"
+                   alt="Ipsos logo"
                    class="h-16 object-contain"
                    loading="lazy">
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">
-              Ipsos Research
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">
-              Research Associate
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">
-              January 2022 - July 2022
-            </p>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">Ipsos Research</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">Research Associate</p>
+            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">January 2022 - July 2022</p>
           </article>
 
           <!-- Rapt Reels -->
           <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div class="flex justify-center mb-6">
-              <img src="assets/img/Brand I have Worked With/RR Productions.png" 
-              alt="Rapt Reels Productions logo" 
-              class="h-16 object-contain"
-              loading="lazy">
+              <img src="assets/img/Brand I have Worked With/RR Productions.png"
+                   alt="Rapt Reels Productions logo"
+                   class="h-16 object-contain"
+                   loading="lazy">
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">
-              Rapt Reels Productions
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">
-              Multimedia Designer
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">
-              July 2020 - November 2021
-            </p>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">Rapt Reels Productions</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">Multimedia Designer</p>
+            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">July 2020 - November 2021</p>
           </article>
 
           <!-- Zee Entertainment -->
           <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div class="flex justify-center mb-6">
-              <img src="assets/img/Brand I have Worked With/ZEEBZINGA.png" 
-                   alt="Zee Entertainment logo" 
+              <img src="assets/img/Brand I have Worked With/ZEEBZINGA.png"
+                   alt="Zee Entertainment logo"
                    class="h-16 object-contain"
                    loading="lazy">
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">
-              Zee - Bzinga 
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">
-            Marketing Intern
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">
-              April 2020 - June 2020
-            </p>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">Zee - Bzinga</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">Marketing Intern</p>
+            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">April 2020 - June 2020</p>
           </article>
 
           <!-- RGBA Studios -->
           <article class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div class="flex justify-center mb-6">
-              <img src="assets/img/Brand I have Worked With/RGBA Studios Logo.png" 
-                   alt="RGBA Studios logo" 
+              <img src="assets/img/Brand I have Worked With/RGBA Studios Logo.png"
+                   alt="RGBA Studios logo"
                    class="h-16 object-contain"
                    loading="lazy">
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">
-              RGBA Studios Pvt. Ltd
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">
-              Production Coordinator
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">
-              October 2019 - January 2020
-            </p>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center mb-2">RGBA Studios Pvt. Ltd</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 text-center mb-1">Production Coordinator</p>
+            <p class="text-xs text-slate-500 dark:text-slate-500 text-center">October 2019 - January 2020</p>
           </article>
 
         </div>
       </div>
     </section>
 
-     <!-- Footer -->
-  <footer id="contact" 
-  class="relative bg-primary-500 dark:bg-slate-800 py-16 sm:py-20 lg:py-24 mt-24 overflow-hidden"
-          role="contentinfo"
-          aria-labelledby="footer-heading">
-    
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10" aria-hidden="true">
-      <div class="absolute inset-0" 
-           style="background-image: linear-gradient(rgba(247, 250, 252, 0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(247, 250, 252, 0.1) 1px, transparent 1px);
-                  background-size: 40px 40px;">
+
+    <!-- Footer -->
+    <footer id="contact"
+            class="relative bg-primary-500 dark:bg-slate-800 py-16 sm:py-20 lg:py-24 mt-24 overflow-hidden"
+            role="contentinfo"
+            aria-labelledby="footer-heading">
+
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-10" aria-hidden="true">
+        <div class="absolute inset-0"
+             style="background-image: linear-gradient(rgba(247, 250, 252, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(247, 250, 252, 0.1) 1px, transparent 1px);
+                    background-size: 40px 40px;">
+        </div>
       </div>
-    </div>
-    
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Header -->
-      <header class="text-center mb-12">
-        <h2 id="footer-heading" class="text-3xl font-bold text-white uppercase">
-          Let's get in touch
-        </h2>
-      </header>
-      
-      <!-- Contact Links -->
-      <nav aria-label="Contact information">
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" role="list">
-          
-          <!-- LinkedIn -->
-          <li>
-            <a href="https://www.linkedin.com/in/mainakc98/" 
-               target="_blank" rel="noopener noreferrer"
-               class="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-              <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                <i class="fab fa-linkedin-in text-white text-xl"></i>
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">LINKEDIN</div>
-                <div class="text-sm text-white/80">in/mainakc98</div>
-              </div>
-            </a>
-          </li>
-          
-          <!-- Email -->
-          <li>
-            <a href="mailto:mainak.chak04@gmail.com" 
-               class="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-              <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center">
-                <i class="fas fa-envelope text-white text-xl"></i>
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">EMAIL</div>
-                <div class="text-sm text-white/80 truncate">mainak.chak04@gmail.com</div>
-              </div>
-            </a>
-          </li>
-          
-          <!-- Resume -->
-          <li>
-            <a href="404.html" target="_blank" rel="noopener noreferrer"
-               class="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-              <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
-                <i class="fas fa-file-pdf text-white text-xl"></i>
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">RESUME</div>
-                <div class="text-sm text-white/80">Download PDF</div>
-              </div>
-            </a>
-          </li>
-          
-          <!-- Calendar -->
-          <li>
-            <a href="https://calendly.com/mainak-chak04/30min" 
-               target="_blank" rel="noopener noreferrer"
-               class="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-              <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <i class="fas fa-calendar text-white text-xl"></i>
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">MEETING</div>
-                <div class="text-sm text-white/80">Book a time</div>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </nav>
 
-      <div class="text-center mb-8">
-        <a href="sitemap.html" 
-           class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4">
-          <i class="fas fa-sitemap text-xs"></i>
-          View Sitemap
-        </a>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+          <h2 id="footer-heading" class="text-3xl font-bold text-white uppercase">
+            Let's get in touch
+          </h2>
+        </header>
+
+        <!-- Contact Links -->
+        <nav aria-label="Contact information">
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" role="list">
+
+            <li>
+              <a href="https://www.linkedin.com/in/mainakc98/"
+                 target="_blank" rel="noopener noreferrer"
+                 class="flex items-center gap-4 p-6 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all
+                        focus:outline-none focus:ring-2 focus:ring-white/50">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fab fa-linkedin-in text-white text-xl" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">LINKEDIN</div>
+                  <div class="text-sm text-white/80">in/mainakc98</div>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:mainak.chak04@gmail.com"
+                 class="flex items-center gap-4 p-6 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all
+                        focus:outline-none focus:ring-2 focus:ring-white/50">
+                <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-envelope text-white text-xl" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">EMAIL</div>
+                  <div class="text-sm text-white/80 truncate">mainak.chak04@gmail.com</div>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="404.html" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center gap-4 p-6 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all
+                        focus:outline-none focus:ring-2 focus:ring-white/50">
+                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-file-pdf text-white text-xl" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">RESUME</div>
+                  <div class="text-sm text-white/80">Download PDF</div>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://calendly.com/mainak-chak04/30min"
+                 target="_blank" rel="noopener noreferrer"
+                 class="flex items-center gap-4 p-6 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all
+                        focus:outline-none focus:ring-2 focus:ring-white/50">
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-calendar text-white text-xl" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">MEETING</div>
+                  <div class="text-sm text-white/80">Book a time</div>
+                </div>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+
+        <div class="text-center mb-8">
+          <a href="sitemap.html"
+             class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4">
+            <i class="fas fa-sitemap text-xs" aria-hidden="true"></i>
+            View Sitemap
+          </a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-white/20 pt-8 text-center">
+          <p class="text-sm text-white/80 flex items-center justify-center gap-1 flex-wrap">
+            <span>© 2026 Mainak Chakraborty • Designed & Coded with</span>
+            <img src="assets/img/Icon Badges/Heart Brain2.png"
+                 alt="heart and brain icon"
+                 class="inline-block h-7 w-auto align-middle mx-1"
+                 width="28"
+                 height="28">
+            <span>sleepless nights, and lots of coffee.</span>
+          </p>
+        </div>
       </div>
-      
-      <!-- Copyright -->
-      <div class="border-t border-white/20 pt-8 text-center">
-        <p class="text-sm text-white/80 flex items-center justify-center gap-1 flex-wrap">
-          <span>© 2026 Mainak Chakraborty • Designed & Coded with</span>
-          <img src="assets/img/Icon Badges/Heart Brain2.png" 
-          alt="heart and brain icon" 
-          class="inline-block h-7 w-auto align-middle mx-1"
-          width="28" 
-          height="28"> 
-          <span>sleepless nights, and lots of coffee.</span>
-        </p>
-      </div>
-    </div>
-  </footer>
-
-    <!-- Scripts -->
-    <script>
-      window.addEventListener('load', function() {
-        const loader = document.getElementById('loader');
-        setTimeout(function() {
-          loader.classList.add('fade-out');
-          setTimeout(function() {
-            loader.style.display = 'none';
-          }, 300);
-        }, 500);
-      });
-    </script>  
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" 
-    class="fixed bottom-8 right-8 z-50 w-12 h-12 
-           bg-primary-500 hover:bg-primary-600 
-           dark:bg-primary-600 dark:hover:bg-primary-500
-           text-white rounded-full shadow-lg 
-           flex items-center justify-center
-           opacity-0 invisible
-           transition-all duration-300
-           hover:scale-110 hover:shadow-xl
-           focus:outline-none focus:ring-4 focus:ring-primary-500/50"
-    aria-label="Back to top">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-    </svg>
-    </button>
-
-    <style>
-    #back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-    html { scroll-behavior: smooth; }
-    }
-    </style>
-
-    <script>
-    const backToTopBtn = document.getElementById('back-to-top');
-    window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-    backToTopBtn.classList.add('show');
-    } else {
-    backToTopBtn.classList.remove('show');
-    }
-    });
-    backToTopBtn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    </script>
+    </footer>
 
   </main>
+
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top"
+          class="fixed bottom-8 right-8 z-50 w-12 h-12 
+                 bg-primary-500 hover:bg-primary-600 
+                 dark:bg-primary-600 dark:hover:bg-primary-500
+                 text-white rounded-full shadow-lg 
+                 flex items-center justify-center
+                 opacity-0 invisible
+                 transition-all duration-300
+                 hover:scale-110 hover:shadow-xl
+                 focus:outline-none focus:ring-4 focus:ring-primary-500/50"
+          aria-label="Back to top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+
+
+  <script>
+    // ─── Loader: hide immediately on load (0ms delay) ───────────────────────
+    window.addEventListener('load', function () {
+      const loader = document.getElementById('loader');
+      loader.classList.add('fade-out');
+      setTimeout(function () { loader.style.display = 'none'; }, 300);
+    });
+
+    // ─── Reading Progress Bar ────────────────────────────────────────────────
+    // FIX: This was completely missing from the original about.html.
+    // The bar existed in HTML/CSS but had no JS to update its width on scroll.
+    function updateProgressBar() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('progress-bar');
+      if (bar) {
+        bar.style.width = scrolled + '%';
+        bar.setAttribute('aria-valuenow', Math.round(scrolled));
+      }
+    }
+    window.addEventListener('scroll', updateProgressBar, { passive: true });
+
+    // ─── Back to Top ─────────────────────────────────────────────────────────
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function () {
+      backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
+    }, { passive: true });
+    backToTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ─── Mobile menu: close on link click ────────────────────────────────────
+    const mobileMenu   = document.getElementById('mobile-menu');
+    const menuToggle   = document.querySelector('[aria-controls="mobile-menu"]');
+    const mobileLinks  = document.querySelectorAll('#mobile-menu a');
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) &&
+          !(menuToggle && menuToggle.contains(e.target)) &&
+          !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
 
 </body>
 </html>
