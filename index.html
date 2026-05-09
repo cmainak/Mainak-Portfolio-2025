@@ -260,7 +260,17 @@
       opacity: 1;
       visibility: visible;
     }
+
+    .footer-bg {
+    background-color: #030f1e;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
   </style>
+
+  
 </head>
 
 <body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans antialiased overflow-x-hidden max-width: 100vw;">
@@ -908,118 +918,184 @@ MAINAK CHAKRABORTY
 </section>
 
   <!-- Footer -->
-  <footer id="contact" 
-  class="relative bg-primary-500 dark:bg-slate-800 py-16 sm:py-20 lg:py-24 mt-24 overflow-hidden"
-          role="contentinfo"
-          aria-labelledby="footer-heading">
-    
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10" aria-hidden="true">
-      <div class="absolute inset-0" 
-           style="background-image: linear-gradient(rgba(247, 250, 252, 0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(247, 250, 252, 0.1) 1px, transparent 1px);
-                  background-size: 40px 40px;">
-      </div>
-    </div>
+<footer id="contact"
+class="relative footer-bg dark:bg-[#020c18] py-16 sm:py-20 lg:py-24 mt-24 overflow-hidden"
+role="contentinfo"
+aria-labelledby="footer-heading">
 
-  
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Header -->
-      <header class="text-center mb-12">
-        <h2 id="footer-heading" class="text-3xl font-bold text-white uppercase">
-          Let's get in touch
-        </h2>
-      </header>
-      
-      <!-- Contact Links -->
-      <nav aria-label="Contact information">
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" role="list">
-          
-          <!-- LinkedIn -->
-          <li>
-            <a href="https://www.linkedin.com/in/mainakc98/" 
-               target="_blank" rel="noopener noreferrer"
-               class="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-              <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                <i class="fab fa-linkedin-in text-white text-xl"></i>
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">LINKEDIN</div>
-                <div class="text-sm text-white/80">in/mainakc98</div>
-              </div>
-            </a>
-          </li>
-          
-          <!-- Email -->
-          <li>
-            <a href="mailto:mainak.chak04@gmail.com" 
-               class="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-              <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center">
-                <i class="fas fa-envelope text-white text-xl"></i>
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">EMAIL</div>
-                <div class="text-sm text-white/80 truncate">mainak.chak04@gmail.com</div>
-              </div>
-            </a>
-          </li>
-          
-          <!-- Resume -->
-          <li>
-            <a href="404.html" target="_blank" rel="noopener noreferrer"
-               class="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-              <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
-                <i class="fas fa-file-pdf text-white text-xl"></i>
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">RESUME</div>
-                <div class="text-sm text-white/80">Download PDF</div>
-              </div>
-            </a>
-          </li>
-          
-          <!-- Calendar -->
-          <li>
-            <a href="https://calendly.com/mainak-chak04/30min" 
-               target="_blank" rel="noopener noreferrer"
-               class="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-              <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <i class="fas fa-calendar text-white text-xl"></i>
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">MEETING</div>
-                <div class="text-sm text-white/80">Book a time</div>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </nav>
+<!-- Decorative background layers — hidden from screen readers -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
 
-      <!-- Sitemap Link -->
-      <div class="text-center mb-8">
-        <a href="sitemap.html" 
-           class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors underline underline-offset-4">
-          <i class="fas fa-sitemap text-xs"></i>
-          View Sitemap
-        </a>
-      </div>
-      
-     <!-- Copyright -->
-<div class="border-t border-white/20 pt-8 text-center">
-  <p class="text-sm text-white/80 flex items-center justify-center gap-1 flex-wrap">Thank you for your interest in my work!</p>
-    <p class="text-sm text-white/80 flex items-center justify-center gap-1 flex-wrap">
-      <span>Made with </span>
-      <img src="assets/img/Icon Badges/Heart Brain2.png" 
-      alt="heart and brain icon" 
-      class="inline-block h-7 w-auto align-middle mx-1"
-      width="28" 
-      height="28"> 
-      <span>sleepless nights, and lots of coffee.  | © 2023 Mainak Chakraborty</span>
-    </p>
-  </div>
+<!-- Orange accent glow: bottom-right (brand accent #FF9933) -->
+<div class="absolute -bottom-40 -right-20 w-[520px] h-[520px]
+        bg-[#FF9933]/[0.09] rounded-full blur-3xl"></div>
+
+<!-- Blue glow: top-left (brand primary) -->
+<div class="absolute -top-40 -left-20 w-[440px] h-[440px]
+        bg-blue-500/[0.08] rounded-full blur-3xl"></div>
+
+<!-- Subtle centre warm glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+        w-[600px] h-[300px] bg-blue-900/20 rounded-full blur-3xl"></div>
+
+<!-- Concentric ring 1: large, bottom-left -->
+<div class="absolute -bottom-56 -left-40
+        w-[700px] h-[700px] rounded-full border border-white/[0.04]"></div>
+
+<!-- Concentric ring 2: medium, bottom-left -->
+<div class="absolute -bottom-36 -left-24
+        w-[500px] h-[500px] rounded-full border border-white/[0.03]"></div>
+
+<!-- Small ring: top-right -->
+<div class="absolute top-10 right-[8%]
+        w-36 h-36 rounded-full border border-white/[0.06]"></div>
+
+<!-- Tiny orange accent ring: bottom-right area -->
+<div class="absolute bottom-16 right-[18%]
+        w-20 h-20 rounded-full border border-[#FF9933]/[0.2]"></div>
+
 </div>
-  </footer>
+
+<!-- Content -->
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<!-- Heading -->
+<header class="text-center mb-12">
+
+<!-- Eyebrow label -->
+<p class="text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-4">
+Open to opportunities
+</p>
+
+<!-- Main heading — gradient from white → blue-200 → accent orange -->
+<h2 id="footer-heading"
+  class="text-3xl sm:text-4xl font-bold uppercase
+         text-transparent bg-clip-text
+         bg-gradient-to-r from-white via-blue-200 to-white">
+Let's get in touch
+</h2>
+
+<!-- Decorative accent line -->
+<div class="mx-auto mt-4 w-12 h-0.5 bg-[#FF9933]/50 rounded-full"
+   aria-hidden="true"></div>
+
+</header>
+
+<!-- Contact Cards -->
+<nav aria-label="Contact information">
+<ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12" role="list">
+
+<!-- LinkedIn -->
+<li>
+  <a href="https://www.linkedin.com/in/mainakc98/"
+     target="_blank" rel="noopener noreferrer"
+     class="flex items-center gap-4 p-5
+            bg-white/[0.06] border border-white/[0.1] rounded-xl
+            hover:bg-white/[0.12] hover:-translate-y-0.5 hover:border-white/20
+            focus:outline-none focus:ring-2 focus:ring-white/30
+            transition-all duration-200">
+    <div class="w-11 h-11 bg-gradient-to-br from-blue-500 to-blue-700
+                rounded-lg flex items-center justify-center flex-shrink-0">
+      <i class="fab fa-linkedin-in text-white text-lg" aria-hidden="true"></i>
+    </div>
+    <div class="min-w-0">
+      <div class="text-sm font-semibold text-white">LINKEDIN</div>
+      <div class="text-sm text-white/60 truncate">in/mainakc98</div>
+    </div>
+  </a>
+</li>
+
+<!-- Email -->
+<li>
+  <a href="mailto:mainak.chak04@gmail.com"
+     class="flex items-center gap-4 p-5
+            bg-white/[0.06] border border-white/[0.1] rounded-xl
+            hover:bg-white/[0.12] hover:-translate-y-0.5 hover:border-white/20
+            focus:outline-none focus:ring-2 focus:ring-white/30
+            transition-all duration-200">
+    <div class="w-11 h-11 bg-gradient-to-br from-red-400 to-red-600
+                rounded-lg flex items-center justify-center flex-shrink-0">
+      <i class="fas fa-envelope text-white text-lg" aria-hidden="true"></i>
+    </div>
+    <div class="min-w-0">
+      <div class="text-sm font-semibold text-white">EMAIL</div>
+      <div class="text-sm text-white/60 truncate">mainak.chak04@gmail.com</div>
+    </div>
+  </a>
+</li>
+
+<!-- Resume -->
+<li>
+  <a href="404.html" target="_blank" rel="noopener noreferrer"
+     class="flex items-center gap-4 p-5
+            bg-white/[0.06] border border-white/[0.1] rounded-xl
+            hover:bg-white/[0.12] hover:-translate-y-0.5 hover:border-white/20
+            focus:outline-none focus:ring-2 focus:ring-white/30
+            transition-all duration-200">
+    <div class="w-11 h-11 bg-gradient-to-br from-emerald-400 to-emerald-600
+                rounded-lg flex items-center justify-center flex-shrink-0">
+      <i class="fas fa-file-pdf text-white text-lg" aria-hidden="true"></i>
+    </div>
+    <div class="min-w-0">
+      <div class="text-sm font-semibold text-white">RESUME</div>
+      <div class="text-sm text-white/60">Download PDF</div>
+    </div>
+  </a>
+</li>
+
+<!-- Calendar -->
+<li>
+  <a href="https://calendly.com/mainak-chak04/30min"
+     target="_blank" rel="noopener noreferrer"
+     class="flex items-center gap-4 p-5
+            bg-white/[0.06] border border-white/[0.1] rounded-xl
+            hover:bg-white/[0.12] hover:-translate-y-0.5 hover:border-white/20
+            focus:outline-none focus:ring-2 focus:ring-white/30
+            transition-all duration-200">
+    <div class="w-11 h-11 bg-gradient-to-br from-violet-400 to-violet-600
+                rounded-lg flex items-center justify-center flex-shrink-0">
+      <i class="fas fa-calendar text-white text-lg" aria-hidden="true"></i>
+    </div>
+    <div class="min-w-0">
+      <div class="text-sm font-semibold text-white">MEETING</div>
+      <div class="text-sm text-white/60">Book a time</div>
+    </div>
+  </a>
+</li>
+
+</ul>
+</nav>
+
+<!-- Sitemap -->
+<div class="text-center mb-10">
+<a href="sitemap.html"
+ class="inline-flex items-center gap-2 text-sm text-white/40
+        hover:text-white/80 transition-colors duration-200
+        underline underline-offset-4
+        focus:outline-none focus:ring-2 focus:ring-white/30 rounded">
+<i class="fas fa-sitemap text-xs" aria-hidden="true"></i>
+View Sitemap
+</a>
+</div>
+
+<!-- Copyright -->
+<div class="border-t border-white/[0.08] pt-8 text-center space-y-2">
+<p class="text-sm text-white/40">
+Thank you for your interest in my work!
+</p>
+<p class="text-sm text-white/40 flex items-center justify-center gap-1 flex-wrap">
+<span>Made with</span>
+<img src="assets/img/Icon Badges/Heart Brain2.png"
+     alt="heart and brain icon"
+     class="inline-block h-6 w-auto align-middle mx-1"
+     width="24"
+     height="24">
+<span>sleepless nights, and lots of coffee. | © 2026 Mainak Chakraborty</span>
+</p>
+</div>
+
+</div>
+</footer>
 
 
   <!-- Scripts -->
