@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mainak Chakraborty - Product Designer & UX/UI Portfolio</title>
+  <meta name="title" content="Mainak Chakraborty - Product Designer & UX/UI Portfolio">
+  <meta name="description" content="Product Designer specializing in UX/UI design, user research, and accessible digital experiences. View my case studies including Orbit Scan, Habit Boost, and more.">
+  <meta name="keywords" content="UX Designer, UI Designer, Product Designer, Portfolio, Mainak Chakraborty, Case Studies, User Research, Accessibility, Design Systems">
+  <meta name="author" content="Mainak Chakraborty">
+  <meta name="theme-color" content="#02437D" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="ZtmAGhxqmMEcEOY3rLfQBSr2H6yrzT5l_T5GodkO2Sk" />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mainakc.netlify.app/">
+  <meta property="og:title" content="Mainak Chakraborty - Product Designer">
+  <meta property="og:description" content="Product Designer creating accessible, user-centered digital experiences. View my portfolio of UX/UI case studies.">
+  <meta property="og:image" content="https://mainakc.netlify.app/assets/img/og-image.jpg">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mainakc.netlify.app/">
+  <meta property="twitter:title" content="Mainak Chakraborty - Product Designer">
+  <meta property="twitter:description" content="Product Designer creating accessible, user-centered digital experiences.">
+  <meta property="twitter:image" content="https://mainakc.netlify.app/assets/img/og-image.jpg">
+  <link rel="canonical" href="https://mainakc.netlify.app/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mainak Chakraborty",
+    "url": "https://mainakc.netlify.app",
+    "jobTitle": "Product Designer",
+    "description": "Product Designer specializing in UX/UI design, user research, and accessible digital experiences.",
+    "email": "mainak.chak04@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/mainakc98/",
+      "https://calendly.com/mainak-chak04/30min"
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="assets/img/Logo2.svg" type="image/svg+xml">
+
+  <!-- Preconnect & DNS Prefetch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+
+  <!-- Preload Critical Assets -->
+  <link rel="preload" as="image" href="assets/img/Logo2.svg">
+
+  <!-- Google Fonts: Chakra Petch -->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Chakra Petch"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              500: '#02437D',
+              600: '#023666',
+            },
+            accent: {
+              500: '#FF9933',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+     /* === FLOATING BACK BUTTON === */
+     .home-button {
+      position: fixed; top: 20px; right: 40px; z-index: 1001;
+      width: 50px; height: 50px; border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.1);
+      text-decoration: none; transition: all .3s ease;
+    }
+    .home-button:hover { transform: scale(1.1); background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,.2); }
+    .home-button i { color: rgba(0,0,0,.6); font-size: 1.6rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+    }
+    .sr-only.focus\:not-sr-only:focus {
+      position: static; width: auto; height: auto;
+      padding: inherit; margin: inherit; overflow: visible; clip: auto; white-space: normal;
+    }
+
+    #loader {
+      position: fixed; inset: 0; background: white;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999; transition: opacity 0.3s ease;
+    }
+    #loader.fade-out { opacity: 0; pointer-events: none; }
+
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(to right, #FF9933, #02437D);
+      width: 0%; z-index: 9998; transition: width 0.1s ease;
+    }
+
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    .animate-fade-in { animation: fade-in 1s ease-out; }
+
+    @keyframes fade-in-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in-up { animation: fade-in-up 1.2s ease-out 0.3s both; }
+
+    @keyframes scroll-wheel { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(12px); } }
+    .animate-scroll-wheel { animation: scroll-wheel 1.5s ease-in-out infinite; }
+
+    @keyframes float-slow { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -30px) scale(1.05); } 66% { transform: translate(-20px, 20px) scale(0.95); } }
+    @keyframes float-medium { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-40px, 30px) scale(1.1); } }
+    @keyframes float-fast { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(20px, -25px) scale(1.15); } 50% { transform: translate(-30px, -15px) scale(0.9); } 75% { transform: translate(15px, 25px) scale(1.05); } }
+    .animate-float-slow   { animation: float-slow 20s ease-in-out infinite; }
+    .animate-float-medium { animation: float-medium 15s ease-in-out infinite; animation-delay: 2s; }
+    .animate-float-fast   { animation: float-fast 12s ease-in-out infinite; animation-delay: 4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float-slow, .animate-float-medium, .animate-float-fast { animation: none !important; }
+    }
+
+    .card-orbit-grid {
+      background-image:
+        linear-gradient(rgba(2, 148, 68, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(2, 148, 68, 0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .card-habit-dots {
+      background-image: radial-gradient(circle, rgba(180, 100, 20, 0.11) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    #back-to-top.show { opacity: 1; visibility: visible; }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans antialiased overflow-x-hidden max-width: 100vw;">
+
+    <div id="progress-bar" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <div id="loader" role="status" aria-live="polite" aria-label="Loading content">
+      <div class="text-center">
+        <p class="text-lg text-slate-700 dark:text-slate-300 font-medium">
+          Loading awesome work... hang tight 🚀
+        </p>
+        <span class="sr-only">Loading page content</span>
+      </div>
+    </div>
+
+    <a href="#main-content"
+       class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4
+              focus:z-50 focus:px-6 focus:py-3 focus:bg-primary-500 focus:text-white
+              focus:rounded-lg focus:outline-none focus:ring-4 focus:ring-primary-600
+              focus:font-semibold">
+      Skip to main content
+    </a>
+
+  <a href="work.html" class="home-button"><i class="fas fa-times"></i></a>
+
+<section
+  id="stories"
+  class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900"
+  aria-labelledby="stories-heading"
+>
+  <div class="max-w-7xl mx-auto">
+    <header class="mb-10 sm:mb-12">
+      <h2
+        id="stories-heading"
+        class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white"
+      >
+      AI Visual Storytelling
+      </h2>
+      <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl">
+        This section is a look into my prompt design process, where I use AI as a tool to translate real-life memories into high-energy manga and cinematic visuals panels. 
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 grid-flow-row-dense">
+  
+        <figure class="mb-4 rounded-[2rem] overflow-hidden bg-pink-200 shadow-lg">
+          <img src="assets/img/Mainak Art/Mainak_TimeSquare_Comic.png" alt="Story 01" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="mb-4 rounded-[2rem] overflow-hidden bg-sky-200 shadow-lg">
+          <img src="assets/img/Mainak Art/TC_3.png" alt="Story 02" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="mb-4 rounded-[2rem] overflow-hidden bg-purple-200 shadow-lg">
+          <img src="assets/img/Mainak Art/Comic_Manga_Mainak_2.png" alt="Story 03" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="mb-4 rounded-[2rem] overflow-hidden bg-amber-200 shadow-lg">
+          <img src="assets/img/Mainak Art/TC_1.png" alt="Story 04" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+        <figure class="mb-4 rounded-[2rem] overflow-hidden bg-amber-200 shadow-lg">
+          <img src="assets/img/Mainak Art/TC_2.png" alt="Story 19" class="w-full h-full object-cover" loading="lazy" />
+        </figure>
+      
+        <figure class="mb-4 rounded-[2rem] overflow-hidden bg-amber-200 shadow-lg sm:col-span-2 lg:col-span-3">
+            <img src="assets/img/Mainak Art/Football_Comic_1.png" alt="Story 19" class="w-full h-auto object-cover" loading="lazy" />
+          </figure>
+      
+      </div>
+</section>
+
+<script>
+  window.addEventListener('load', function() {
+    const loader = document.getElementById('loader');
+    setTimeout(function() {
+      loader.classList.add('fade-out');
+      setTimeout(function() { loader.style.display = 'none'; }, 300);
+    }, 500);
+  });
+
+  function updateProgressBar() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar) {
+      progressBar.style.width = scrolled + '%';
+      progressBar.setAttribute('aria-valuenow', Math.round(scrolled));
+    }
+  }
+  window.addEventListener('scroll', updateProgressBar);
+
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('#mobile-menu a');
+  const menuToggle = document.querySelector('[aria-controls="mobile-menu"]');
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!mobileMenu) return;
+    const isClickInsideMenu = mobileMenu.contains(event.target);
+    const isClickOnToggle = menuToggle && menuToggle.contains(event.target);
+    if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<button id="back-to-top"
+  class="fixed bottom-8 right-8 z-50 w-12 h-12
+       bg-primary-500 hover:bg-primary-600
+       dark:bg-primary-600 dark:hover:bg-primary-500
+       text-white rounded-full shadow-lg
+       flex items-center justify-center
+       opacity-0 invisible
+       transition-all duration-300
+       hover:scale-110 hover:shadow-xl
+       focus:outline-none focus:ring-4 focus:ring-primary-500/50"
+  aria-label="Back to top">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+  </svg>
+</button>
+
+<script>
+const backToTopBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', function() {
+  if (window.pageYOffset > 300) { backToTopBtn.classList.add('show'); }
+  else { backToTopBtn.classList.remove('show'); }
+});
+backToTopBtn.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>
