@@ -55,12 +55,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class', // Enables toggleable dark mode
+      darkMode: 'class', 
       theme: {
         extend: {
           fontFamily: {
             sans:   ['Chakra Petch', 'sans-serif'],
-            sfx:    ['Bangers', 'cursive'],
+            sfx:    ['Bangers', 'sans-serif'], /* FOUT FIX: Replaced cursive with sans-serif */
           },
           colors: {
             primary:  { 500: '#02437D', 600: '#023666' },
@@ -97,6 +97,21 @@
       background-size: 24px 24px;
     }
 
+    /* ── Hero Splash Speedlines ── */
+    .manga-speedlines-hero {
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 15px,
+        rgba(0, 180, 255, 0.15) 15px,
+        rgba(0, 180, 255, 0.15) 18px,
+        transparent 18px,
+        transparent 35px,
+        rgba(255, 0, 110, 0.1) 35px,
+        rgba(255, 0, 110, 0.1) 38px
+      );
+    }
+
     .manga-panel { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #0D0D0D; }
     .manga-panel-blue { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #00B4FF; }
     .manga-panel-pink { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FF006E; }
@@ -114,7 +129,7 @@
     }
 
     .sfx {
-      font-family: 'Bangers', cursive;
+      font-family: 'Bangers', sans-serif;
       letter-spacing: 0.05em;
       -webkit-text-stroke: 2px #0D0D0D;
       paint-order: stroke fill;
@@ -157,12 +172,11 @@
       border: 2px solid #0D0D0D;
       background: #FF9933;
       color: #0D0D0D;
-      padding: 4px 12px;
+      padding: 6px 16px;
       display: inline-block;
       box-shadow: 3px 3px 0px 0px #0D0D0D;
     }
 
-    .ink-splat-1 { clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%); }
     .ink-splat-2 { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
 
     .panel-divider {
@@ -171,7 +185,7 @@
     }
 
     #progress-bar {
-      position: fixed; top: 0; left: 0; height: 4px;
+      position: fixed; top: 0; left: 0; height: 6px;
       background: repeating-linear-gradient(90deg, #00B4FF 0px, #00B4FF 16px, #FF006E 16px, #FF006E 32px, #FF9933 32px, #FF9933 48px);
       width: 0%; z-index: 9998; transition: width 0.1s ease;
     }
@@ -214,12 +228,6 @@
     .dark .footer-bg {
       background-color: #0A0A0F;
       background-image: linear-gradient(rgba(0,180,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,180,255,0.03) 1px, transparent 1px);
-    }
-
-    /* Marvel-style vertical SFX watermark */
-    .writing-mode-vertical {
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
     }
   </style>
 </head>
@@ -317,59 +325,88 @@
 
   <main id="main-content" role="main">
 
-    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20" aria-labelledby="hero-heading">
-      <div class="absolute inset-0" aria-hidden="true">
-
-        <div class="absolute inset-0 bg-white/40 dark:bg-manga-ink/60 transition-colors duration-300"></div>
-        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white dark:from-manga-ink to-transparent transition-colors duration-300"></div>
-      </div>
-
+    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24 pb-16 border-b-4 border-manga-ink transition-colors duration-300" aria-labelledby="hero-heading">
       
+      <div class="absolute inset-0 manga-halftone-light opacity-30 dark:opacity-10 pointer-events-none transition-opacity" aria-hidden="true"></div>
+      <div class="absolute inset-0 manga-speedlines-hero opacity-60 dark:opacity-30 pointer-events-none transition-opacity" aria-hidden="true"></div>
 
-      <div class="absolute inset-0 manga-halftone-light opacity-30 pointer-events-none" aria-hidden="true"></div>
-
-
-      <div class="absolute top-16 left-4 sm:left-10 z-10 pointer-events-none" aria-hidden="true">
-        <div class="w-16 h-16 bg-manga-pink/30 blur-2xl rounded-full"></div>
+      <div class="absolute top-10 lg:top-20 right-[-10%] z-0 pointer-events-none transform rotate-6 opacity-20 dark:opacity-10 transition-opacity" aria-hidden="true">
+        <span class="font-sfx text-[12rem] lg:text-[18rem] leading-none text-transparent" style="-webkit-text-stroke: 4px #00B4FF;">DESIGN!</span>
       </div>
 
-      <div class="relative z-10 text-center px-6 sm:px-8 flex flex-col items-center justify-center gap-6 flex-grow">
-        <div class="speech-bubble">
-          <p class="text-sm font-black text-manga-ink uppercase tracking-wider">Hey there! 👋 I am</p>
+      <div class="relative z-10 text-center px-4 flex flex-col items-center justify-center w-full max-w-6xl mx-auto flex-grow">
+        
+        <div class="absolute top-0 left-4 md:left-10 transform -translate-y-8 -rotate-12 z-20 hidden sm:block animate-fade-in-up" style="animation-delay: 0.1s;">
+          <div class="bg-manga-pink text-white font-sfx text-3xl px-4 py-2 border-3 border-manga-ink" style="box-shadow: 4px 4px 0 #0D0D0D; -webkit-text-stroke: 1px #0D0D0D;">
+            VOL. 1
+          </div>
         </div>
 
-        <h1 id="hero-heading" class="font-sfx text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] leading-none tracking-wide text-white animate-fade-in-up drop-shadow-[0_0_40px_rgba(0,180,255,0.4)]" style="-webkit-text-stroke: 3px #0D0D0D; paint-order: stroke fill;">
-          MAINAK
-        </h1>
-
-        <div class="flex flex-wrap gap-3 justify-center mt-2">
-          <span class="manga-label">Product Designer</span>
-          <span class="manga-label" style="background:#00B4FF; box-shadow:3px 3px 0 #0D0D0D;">UX Strategist</span>
-          <span class="manga-label" style="background:#FF006E; color:#fff; box-shadow:3px 3px 0 #0D0D0D;">Frontend Dev</span>
+        <div class="speech-bubble transform -translate-x-12 sm:-translate-x-32 rotate-[-2deg] mb-6 z-20 animate-fade-in-up" style="animation-delay: 0.2s;">
+          <p class="text-xs sm:text-sm font-black text-manga-ink uppercase tracking-widest m-0">Hey there! 👋 I am</p>
         </div>
 
-      
+        <div class="relative z-10 flex flex-col items-center w-full animate-fade-in-up" style="animation-delay: 0.3s;">
+          <h1 id="hero-heading" class="font-sfx text-7xl sm:text-9xl lg:text-[11rem] leading-[0.85] tracking-wide text-white transition-transform hover:scale-[1.02] duration-300 w-full" 
+              style="-webkit-text-stroke: 3px #0D0D0D; paint-order: stroke fill; text-shadow: 6px 6px 0px #0D0D0D, 12px 12px 0px #00B4FF;">
+            MAINAK
+          </h1>
+          <h2 class="font-sfx text-5xl sm:text-7xl lg:text-[8.5rem] leading-[0.85] tracking-wide text-accent-500 uppercase transition-transform hover:scale-[1.02] duration-300 w-full -mt-2 sm:-mt-6"
+              style="-webkit-text-stroke: 3px #0D0D0D; paint-order: stroke fill; text-shadow: 6px 6px 0px #0D0D0D, 12px 12px 0px #FF006E;">
+            CHAKRABORTY
+          </h2>
+        </div>
+
+        <div class="mt-10 sm:mt-16 bg-white dark:bg-manga-ink border-3 border-manga-ink p-5 flex flex-wrap gap-4 justify-center relative z-20 transition-colors duration-300 animate-fade-in-up" style="box-shadow: 8px 8px 0 #FF9933; animation-delay: 0.4s;">
+          <div class="absolute -top-4 -right-4 bg-white border-3 border-manga-ink rounded-full w-8 h-8 flex items-center justify-center" style="box-shadow: 2px 2px 0 #0D0D0D;">
+             <i class="fas fa-bolt text-accent-500 text-sm"></i>
+          </div>
+          <span class="manga-label text-xs sm:text-sm px-5 py-2 hover:-translate-y-1 transition-transform cursor-default">Product Designer</span>
+          <span class="manga-label text-xs sm:text-sm px-5 py-2 hover:-translate-y-1 transition-transform cursor-default" style="background:#00B4FF; box-shadow:3px 3px 0 #0D0D0D;">UX Strategist</span>
+          <span class="manga-label text-xs sm:text-sm px-5 py-2 hover:-translate-y-1 transition-transform cursor-default" style="background:#FF006E; color:#fff; box-shadow:3px 3px 0 #0D0D0D;">Frontend Dev</span>
+        </div>
+
 
       </div>
 
-      <div class="relative z-20 mt-auto pb-12">
-        <a href="#about" class="flex flex-col items-center gap-3 text-manga-ink/60 dark:text-white/60 hover:text-manga-blue dark:hover:text-manga-blue transition-colors focus:outline-none p-2" aria-label="Scroll to about section">
-          <div class="w-7 h-11 rounded-full border-3 border-current flex justify-center pt-2">
+      <div class="relative z-20 mt-12 mb-6">
+        <a href="#about" class="flex flex-col items-center gap-2 text-manga-ink/80 dark:text-white/80 hover:text-manga-blue dark:hover:text-manga-blue transition-colors focus:outline-none group" aria-label="Scroll to about section">
+          <span class="text-[0.65rem] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0">Scroll</span>
+          <div class="w-8 h-12 rounded-full border-3 border-current flex justify-center pt-2 bg-white/50 dark:bg-black/50 backdrop-blur-sm" style="box-shadow: 3px 3px 0 #0D0D0D;">
             <div class="w-1.5 h-3 bg-current rounded-full animate-scroll-wheel"></div>
           </div>
-          <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7"/></svg>
         </a>
       </div>
+      
     </section>
 
-    <div class="panel-divider" aria-hidden="true"></div>
+    <div class="panel-divider my-8 sm:my-12" aria-hidden="true"></div>
 
     <section id="about"
-class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8
-       bg-white dark:bg-manga-ink transition-colors duration-300"
+class="relative py-24 sm:py-32 overflow-hidden bg-white dark:bg-manga-ink transition-colors duration-300"
 aria-labelledby="about-heading">
-<div class="max-w-7xl mx-auto">
-<div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+
+<div class="absolute inset-0 manga-halftone-light opacity-20
+          pointer-events-none" aria-hidden="true"></div>
+
+<div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+   style="background: repeating-conic-gradient(
+            from 0deg at 50% 30%,
+            transparent 0deg, transparent 4deg,
+            rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg
+          );">
+</div>
+
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="mb-12">
+  <span class="manga-label"
+        style="background:#00B4FF; box-shadow:3px 3px 0 #0D0D0D;">
+    Chapter 01 — Origin Story
+  </span>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
 <div class="order-1 relative">
 
@@ -573,15 +610,10 @@ aria-labelledby="about-heading">
 
 </div>
 </div>
-<article class="order-2 space-y-6">
-
-<span class="manga-label w-fit"
-     style="background:#00B4FF; box-shadow:3px 3px 0 #0D0D0D;">
- Chapter 01 — Origin Story
-</span>
+<article class="order-2 space-y-8">
 
 <h2 id="about-heading"
-   class="text-2xl sm:text-3xl lg:text-4xl font-black
+   class="text-3xl sm:text-4xl lg:text-5xl font-black
           text-manga-ink dark:text-white leading-tight uppercase transition-colors">
  I'm a
  <span class="relative inline-block">
@@ -597,46 +629,46 @@ aria-labelledby="about-heading">
 </h2>
 
 <div class="speech-bubble speech-bubble-dark inline-block max-w-sm">
- <p class="text-sm font-bold text-white/80 italic">
+ <p class="text-base font-bold text-white/80 italic">
    "Learning how to learn."
  </p>
 </div>
 
-<p class="text-base text-manga-ink/80 dark:text-white/70 leading-relaxed
-         border-l-4 border-manga-blue pl-4 transition-colors">
+<p class="text-lg text-manga-ink/80 dark:text-white/70 leading-relaxed
+         border-l-4 border-manga-blue pl-6 transition-colors">
  With a foundation in marketing and consumer research, I translate
  user insights, storytelling, and strategic thinking into accessible,
  scalable digital experiences.
 </p>
 
-<div class="flex flex-wrap gap-4">
- <div class="manga-panel bg-white dark:bg-manga-ink p-4 text-center min-w-[100px] transition-colors">
-   <p class="sfx text-3xl text-manga-blue">3+</p>
-   <p class="text-xs text-manga-ink/60 dark:text-white/60 uppercase tracking-wider font-bold mt-1">
+<div class="flex flex-wrap gap-6 pt-4">
+ <div class="manga-panel bg-white dark:bg-manga-ink p-6 text-center min-w-[120px] transition-colors">
+   <p class="sfx text-4xl text-manga-blue">3+</p>
+   <p class="text-xs text-manga-ink/60 dark:text-white/60 uppercase tracking-wider font-bold mt-2">
      Case Studies
    </p>
  </div>
- <div class="manga-panel bg-white dark:bg-manga-ink p-4 text-center min-w-[100px] transition-colors">
-   <p class="sfx text-3xl text-manga-pink">3+</p>
-   <p class="text-xs text-manga-ink/60 dark:text-white/60 uppercase tracking-wider font-bold mt-1">
+ <div class="manga-panel bg-white dark:bg-manga-ink p-6 text-center min-w-[120px] transition-colors">
+   <p class="sfx text-4xl text-manga-pink">3+</p>
+   <p class="text-xs text-manga-ink/60 dark:text-white/60 uppercase tracking-wider font-bold mt-2">
      Years Exp
    </p>
  </div>
- <div class="manga-panel bg-white dark:bg-manga-ink p-4 text-center min-w-[100px] transition-colors">
-   <p class="sfx text-3xl text-accent-500">∞</p>
-   <p class="text-xs text-manga-ink/60 dark:text-white/60 uppercase tracking-wider font-bold mt-1">
+ <div class="manga-panel bg-white dark:bg-manga-ink p-6 text-center min-w-[120px] transition-colors">
+   <p class="sfx text-4xl text-accent-500">∞</p>
+   <p class="text-xs text-manga-ink/60 dark:text-white/60 uppercase tracking-wider font-bold mt-2">
      Coffees ☕
    </p>
  </div>
 </div>
 
-<div class="pt-2">
+<div class="pt-6">
  <a href="about.html"
-    class="inline-flex items-center gap-2 px-6 py-3
+    class="inline-flex items-center gap-3 px-8 py-4
            bg-manga-blue text-manga-ink font-black uppercase tracking-wide
            border-3 border-manga-ink shadow-comic
            hover:shadow-none hover:translate-x-1 hover:translate-y-1
-           transition-all duration-150 focus:outline-none">
+           transition-all duration-150 focus:outline-none text-lg">
    Read Full Story →
    <span class="sr-only">about Mainak Chakraborty</span>
  </a>
@@ -647,9 +679,9 @@ aria-labelledby="about-heading">
 </div>
 </section>
 
-    <div class="panel-divider" aria-hidden="true"></div>
+    <div class="panel-divider my-8 sm:my-12" aria-hidden="true"></div>
 
-    <section id="work" class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0A0A0F] transition-colors duration-300 relative overflow-hidden" aria-labelledby="work-heading">
+    <section id="work" class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0A0A0F] transition-colors duration-300 relative overflow-hidden" aria-labelledby="work-heading">
 
       <div class="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         <svg class="absolute top-1/4 -right-32 w-[600px] h-[600px] fill-accent-500 opacity-[0.06] dark:opacity-[0.08]" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M41.8,-66.3C53,-57.8,60,-43.3,64.9,-28.4C69.8,-13.5,72.6,1.8,68.8,15.5C65,29.1,54.7,41.1,42.1,49.2C29.6,57.3,14.8,61.5,-0.6,62.5C-16.1,63.4,-32.1,61.1,-45.8,53.2C-59.5,45.3,-70.8,31.7,-74.6,16.4C-78.4,1.1,-74.7,-15.8,-66.2,-29.4C-57.8,-43.1,-44.6,-53.4,-31.2,-60.8C-17.8,-68.2,-4.3,-72.6,6.3,-71C16.9,-69.5,30.5,-74.9,41.8,-66.3Z" transform="translate(100 100) rotate(45)" /></svg>
@@ -657,51 +689,50 @@ aria-labelledby="about-heading">
 
       <div class="max-w-7xl mx-auto relative z-10">
 
-        <header class="text-center mb-12 sm:mb-16">
-          <span class="manga-label mb-6 block w-fit mx-auto">Chapter 02 — Selected Work</span>
+        <header class="text-center mb-20">
+          <span class="manga-label mb-6 block w-fit mx-auto text-sm px-6 py-2">Chapter 02 — Selected Work</span>
           <div class="relative inline-block">
-            <h2 id="work-heading" class="text-3xl sm:text-4xl font-black text-manga-ink dark:text-white uppercase tracking-wide">
+            <h2 id="work-heading" class="text-4xl sm:text-5xl font-black text-manga-ink dark:text-white uppercase tracking-wide">
               Selected Work
             </h2>
-            <div class="absolute -bottom-2 left-0 w-full h-3 bg-manga-blue/30 -z-10 transform -rotate-1" aria-hidden="true"></div>
+            <div class="absolute -bottom-3 left-0 w-full h-4 bg-manga-blue/30 -z-10 transform -rotate-1" aria-hidden="true"></div>
           </div>
-          <p class="mt-6 text-base sm:text-lg text-slate-600 dark:text-white/60 max-w-2xl mx-auto leading-relaxed">
-            A selection of design and research projects from health tech to habit‑forming apps where
-insights, storytelling, and interaction design come together.
+          <p class="mt-8 text-lg text-slate-600 dark:text-white/60 max-w-2xl mx-auto leading-relaxed font-semibold">
+            A selection of design and research projects from health tech to habit‑forming apps where insights, storytelling, and interaction design come together.
           </p>
         </header>
 
-        <div class="space-y-14">
+        <div class="space-y-20">
 
-          <article class="group relative bg-[#071a0e] card-orbit-grid manga-panel hover:shadow-[10px_10px_0px_0px_#0D0D0D] transition-all duration-200" aria-labelledby="orbit-scan-title">
-            <div class="absolute -top-5 -left-5 z-20 ink-splat-2 w-14 h-14 bg-accent-500 flex items-center justify-center" aria-hidden="true">
-              <span class="sfx text-lg text-manga-ink">01</span>
+          <article class="group relative bg-[#071a0e] card-orbit-grid manga-panel hover:shadow-[12px_12px_0px_0px_#0D0D0D] transition-all duration-200" aria-labelledby="orbit-scan-title">
+            <div class="absolute -top-6 -left-6 z-20 ink-splat-2 w-16 h-16 bg-accent-500 flex items-center justify-center" aria-hidden="true">
+              <span class="sfx text-2xl text-manga-ink">01</span>
             </div>
             <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
               <div class="absolute -top-24 -right-16 w-96 h-96 bg-green-500/20 rounded-full blur-3xl"></div>
               <div class="absolute -bottom-20 -left-12 w-72 h-72 bg-green-700/25 rounded-full blur-2xl"></div>
             </div>
 
-            <div class="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center p-8 sm:p-12 lg:p-16">
+            <div class="relative z-10 grid md:grid-cols-2 gap-12 md:gap-16 items-center p-10 sm:p-16 lg:p-20">
               <figure class="order-2 md:order-1">
                 <img src="assets/img/Projects/Orbit Scan/Cover.png" alt="Orbit Scan mobile app interface showing barcode scanner, product analysis dashboard, and health score features" width="480" height="400" loading="lazy" class="w-full max-w-lg h-auto object-contain mx-auto group-hover:scale-[1.02] transition-transform duration-300">
               </figure>
-              <div class="order-1 md:order-2 space-y-4 text-white">
-                <span class="manga-label" style="background:transparent; color:#86efac; border-color:#86efac; box-shadow:3px 3px 0 #86efac;">
+              <div class="order-1 md:order-2 space-y-6 text-white">
+                <span class="manga-label text-xs" style="background:transparent; color:#86efac; border-color:#86efac; box-shadow:3px 3px 0 #86efac;">
                   01 | Mobile UX Design, Health Tech
                 </span>
-                <h3 id="orbit-scan-title" class="font-sfx text-5xl sm:text-6xl text-white tracking-wide" style="-webkit-text-stroke:2px #0D0D0D; paint-order:stroke fill;">
+                <h3 id="orbit-scan-title" class="font-sfx text-6xl sm:text-7xl text-white tracking-wide" style="-webkit-text-stroke:2px #0D0D0D; paint-order:stroke fill;">
                   ORBIT SCAN
                 </h3>
-                <div class="w-10 h-1.5 bg-green-400" aria-hidden="true"></div>
-                <p class="text-base leading-relaxed text-green-50/90">A smart grocery companion app that decodes food labels, identifies hidden health risks, and helps users make informed nutritional choices through AI-powered analysis.</p>
-                <p class="text-sm text-green-200/70"><strong class="text-white font-black">Lead UX/UI Designer</strong> | 14 Weeks (Q4 2024)</p>
-                <ul class="flex flex-wrap gap-2" role="list">
-                  <li><span class="manga-label" style="background:rgba(20,83,45,0.5); color:#86efac; border-color:#86efac; box-shadow:2px 2px 0 #86efac; font-size:0.65rem;">Barcode Scanner</span></li>
-                  <li><span class="manga-label" style="background:rgba(23,37,84,0.5); color:#93c5fd; border-color:#93c5fd; box-shadow:2px 2px 0 #93c5fd; font-size:0.65rem;">Health Analysis</span></li>
-                  <li><span class="manga-label" style="background:rgba(255,153,51,0.15); color:#fcd34d; border-color:#fcd34d; box-shadow:2px 2px 0 #fcd34d; font-size:0.65rem;">10 min read</span></li>
+                <div class="w-16 h-2 bg-green-400" aria-hidden="true"></div>
+                <p class="text-lg leading-relaxed text-green-50/90 font-medium">A smart grocery companion app that decodes food labels, identifies hidden health risks, and helps users make informed nutritional choices through AI-powered analysis.</p>
+                <p class="text-sm text-green-200/70 uppercase tracking-widest"><strong class="text-white font-black">Lead UX/UI Designer</strong> | 14 Weeks (Q4 2024)</p>
+                <ul class="flex flex-wrap gap-3 mt-4" role="list">
+                  <li><span class="manga-label" style="background:rgba(20,83,45,0.5); color:#86efac; border-color:#86efac; box-shadow:2px 2px 0 #86efac; font-size:0.7rem;">Barcode Scanner</span></li>
+                  <li><span class="manga-label" style="background:rgba(23,37,84,0.5); color:#93c5fd; border-color:#93c5fd; box-shadow:2px 2px 0 #93c5fd; font-size:0.7rem;">Health Analysis</span></li>
+                  <li><span class="manga-label" style="background:rgba(255,153,51,0.15); color:#fcd34d; border-color:#fcd34d; box-shadow:2px 2px 0 #fcd34d; font-size:0.7rem;">10 min read</span></li>
                 </ul>
-                <a href="OS_V2.html" class="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-white text-manga-ink font-black uppercase tracking-wide border-3 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none">
+                <a href="OS_V2.html" class="inline-flex items-center gap-3 mt-8 px-8 py-4 bg-white text-manga-ink font-black uppercase tracking-wide border-3 border-white shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none text-lg">
                   View Case Study →
                   <span class="sr-only">about Orbit Scan project</span>
                 </a>
@@ -709,33 +740,33 @@ insights, storytelling, and interaction design come together.
             </div>
           </article>
 
-          <article class="group relative bg-[#fdf5e8] card-habit-dots manga-panel-accent hover:shadow-[10px_10px_0px_0px_#FF9933] transition-all duration-200" aria-labelledby="habit-boost-title">
-            <div class="absolute -top-5 -left-5 z-20 ink-splat-2 w-14 h-14 bg-manga-blue flex items-center justify-center" aria-hidden="true">
-              <span class="sfx text-lg text-white">02</span>
+          <article class="group relative bg-[#fdf5e8] card-habit-dots manga-panel-accent hover:shadow-[12px_12px_0px_0px_#FF9933] transition-all duration-200" aria-labelledby="habit-boost-title">
+            <div class="absolute -top-6 -left-6 z-20 ink-splat-2 w-16 h-16 bg-manga-blue flex items-center justify-center" aria-hidden="true">
+              <span class="sfx text-2xl text-white">02</span>
             </div>
             <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
               <div class="absolute -top-20 -right-16 w-80 h-80 bg-orange-300/30 rounded-full blur-3xl"></div>
               <div class="absolute -bottom-16 -left-12 w-72 h-72 bg-amber-200/40 rounded-full blur-2xl"></div>
             </div>
 
-            <div class="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center p-8 sm:p-12 lg:p-16">
+            <div class="relative z-10 grid md:grid-cols-2 gap-12 md:gap-16 items-center p-10 sm:p-16 lg:p-20">
               <figure>
                 <img src="assets/img/Projects/Habit Boost/Card Cover/Cover.png" alt="Habit Boost mobile app displaying garden metaphor interface and habit tracking screens" width="480" height="400" loading="lazy" class="w-full max-w-lg h-auto object-contain mx-auto group-hover:scale-[1.02] transition-transform duration-300">
               </figure>
-              <div class="space-y-4 text-manga-ink">
-                <span class="manga-label">02 | UX Research, User-centred Design</span>
-                <h3 id="habit-boost-title" class="font-sfx text-5xl sm:text-6xl text-manga-ink tracking-wide" style="-webkit-text-stroke:1px #0D0D0D; paint-order:stroke fill;">
+              <div class="space-y-6 text-manga-ink">
+                <span class="manga-label text-xs">02 | UX Research, User-centred Design</span>
+                <h3 id="habit-boost-title" class="font-sfx text-6xl sm:text-7xl text-manga-ink tracking-wide" style="-webkit-text-stroke:2px #0D0D0D; paint-order:stroke fill;">
                   HABIT BOOST
                 </h3>
-                <div class="w-10 h-1.5 bg-amber-500" aria-hidden="true"></div>
-                <p class="text-base leading-relaxed text-slate-700">A gamified habit tracking app utilizing the "Hook Model" to turn routine building into an engaging, visual journey that improves retention.</p>
-                <p class="text-sm text-slate-600"><strong class="font-black text-manga-ink">Lead UX Researcher</strong> | 7 Weeks</p>
-                <ul class="flex flex-wrap gap-2" role="list">
-                  <li><span class="manga-label" style="background:#dcfce7; font-size:0.65rem;">Behavioral Design</span></li>
-                  <li><span class="manga-label" style="background:#fef9c3; font-size:0.65rem;">Gamification</span></li>
-                  <li><span class="manga-label" style="background:#ede9fe; font-size:0.65rem;">8 min read</span></li>
+                <div class="w-16 h-2 bg-amber-500" aria-hidden="true"></div>
+                <p class="text-lg leading-relaxed text-slate-800 font-medium">A gamified habit tracking app utilizing the "Hook Model" to turn routine building into an engaging, visual journey that improves retention.</p>
+                <p class="text-sm text-slate-700 uppercase tracking-widest"><strong class="font-black text-manga-ink">Lead UX Researcher</strong> | 7 Weeks</p>
+                <ul class="flex flex-wrap gap-3 mt-4" role="list">
+                  <li><span class="manga-label" style="background:#dcfce7; font-size:0.7rem;">Behavioral Design</span></li>
+                  <li><span class="manga-label" style="background:#fef9c3; font-size:0.7rem;">Gamification</span></li>
+                  <li><span class="manga-label" style="background:#ede9fe; font-size:0.7rem;">8 min read</span></li>
                 </ul>
-                <a href="HabitBoost.html" class="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-manga-ink text-white font-black uppercase tracking-wide border-3 border-manga-ink shadow-comic-accent hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none">
+                <a href="HabitBoost.html" class="inline-flex items-center gap-3 mt-8 px-8 py-4 bg-manga-ink text-white font-black uppercase tracking-wide border-3 border-manga-ink shadow-[6px_6px_0px_0px_#FF9933] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none text-lg">
                   View Case Study →
                   <span class="sr-only">about Habit Boost project</span>
                 </a>
@@ -745,91 +776,90 @@ insights, storytelling, and interaction design come together.
 
         </div>
 
-        <div class="text-center mt-12">
-          <a href="work.html" class="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-manga-ink dark:text-white font-black uppercase tracking-wide border-3 border-manga-ink dark:border-white shadow-comic dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 hover:bg-manga-blue hover:text-white hover:border-manga-blue dark:hover:border-manga-blue transition-all duration-150 focus:outline-none group">
+        <div class="text-center mt-20">
+          <a href="work.html" class="inline-flex items-center gap-3 px-10 py-5 bg-transparent text-manga-ink dark:text-white font-black uppercase tracking-wide border-3 border-manga-ink dark:border-white shadow-comic dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 hover:bg-manga-blue hover:text-white hover:border-manga-blue dark:hover:border-manga-blue transition-all duration-150 focus:outline-none group text-xl">
             All Projects
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
         </div>
 
       </div>
     </section>
 
-    <div class="panel-divider" aria-hidden="true"></div>
+    <div class="panel-divider my-8 sm:my-12" aria-hidden="true"></div>
 
-    <footer id="contact" class="relative footer-bg py-16 sm:py-20 lg:py-24 overflow-hidden transition-colors duration-300" role="contentinfo" aria-labelledby="footer-heading">
+    <footer id="contact" class="relative footer-bg py-24 sm:py-32 overflow-hidden transition-colors duration-300" role="contentinfo" aria-labelledby="footer-heading">
 
       <div class="absolute inset-0 manga-halftone opacity-[0.04] pointer-events-none" aria-hidden="true"></div>
-      <div class="absolute top-0 left-0 w-full h-2" style="background: repeating-linear-gradient(90deg, #00B4FF 0px, #00B4FF 16px, #FF006E 16px, #FF006E 32px, #FF9933 32px, #FF9933 48px);" aria-hidden="true"></div>
-
+      
       <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div class="absolute -bottom-40 -right-20 w-[500px] h-[500px] bg-manga-blue/[0.06] rounded-full blur-3xl"></div>
         <div class="absolute -top-40 -left-20 w-[440px] h-[440px] bg-manga-pink/[0.06] rounded-full blur-3xl"></div>
       </div>
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header class="text-center mb-12">
-          <span class="manga-label mb-6 block w-fit mx-auto bg-manga-blue text-manga-ink border-manga-ink" style="box-shadow:3px 3px 0 #0D0D0D;">
+        <header class="text-center mb-16">
+          <span class="manga-label mb-8 block w-fit mx-auto bg-manga-blue text-manga-ink border-manga-ink text-sm px-6 py-2" style="box-shadow:3px 3px 0 #0D0D0D;">
             Chapter 03 — Contact
           </span>
           <div class="relative inline-block">
-            <h2 id="footer-heading" class="text-3xl sm:text-4xl font-black uppercase tracking-wide text-manga-ink dark:text-white drop-shadow-[0_0_30px_rgba(0,180,255,0.3)]">
+            <h2 id="footer-heading" class="text-4xl sm:text-5xl font-black uppercase tracking-wide text-manga-ink dark:text-white drop-shadow-[0_0_30px_rgba(0,180,255,0.3)]">
               Let's Get In Touch
             </h2>
-            <div class="absolute -bottom-2 left-0 w-full h-2 bg-manga-pink -z-10 transform -rotate-1" aria-hidden="true"></div>
+            <div class="absolute -bottom-2 left-0 w-full h-3 bg-manga-pink -z-10 transform -rotate-1" aria-hidden="true"></div>
           </div>
-          <p class="mt-6 text-sm font-bold uppercase tracking-widest text-manga-ink/50 dark:text-white/40">
+          <p class="mt-8 text-base font-bold uppercase tracking-widest text-manga-ink/50 dark:text-white/40">
             Open to Opportunities
           </p>
         </header>
 
         <nav aria-label="Contact information">
-          <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12" role="list">
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16" role="list">
 
             <li>
-              <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-blue hover:shadow-comic-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-blue-500 to-blue-700 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
-                  <i class="fab fa-linkedin-in text-white text-lg" aria-hidden="true"></i>
+              <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-blue hover:shadow-comic-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+                <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 border-3 border-manga-ink flex items-center justify-center flex-shrink-0">
+                  <i class="fab fa-linkedin-in text-white text-xl" aria-hidden="true"></i>
                 </div>
                 <div class="min-w-0">
-                  <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-blue transition-colors">LinkedIn</div>
-                  <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate">in/mainakc98</div>
+                  <div class="text-base font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-blue transition-colors">LinkedIn</div>
+                  <div class="text-sm text-manga-ink/60 dark:text-white/40 truncate font-semibold">in/mainakc98</div>
                 </div>
               </a>
             </li>
 
             <li>
-              <a href="mailto:mainak.chak04@gmail.com" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-pink hover:shadow-comic-pink hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-red-400 to-red-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-envelope text-white text-lg" aria-hidden="true"></i>
+              <a href="mailto:mainak.chak04@gmail.com" class="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-pink hover:shadow-comic-pink hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+                <div class="w-14 h-14 bg-gradient-to-br from-red-400 to-red-600 border-3 border-manga-ink flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-envelope text-white text-xl" aria-hidden="true"></i>
                 </div>
                 <div class="min-w-0">
-                  <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-pink transition-colors">Email</div>
-                  <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate">mainak.chak04@gmail.com</div>
+                  <div class="text-base font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-pink transition-colors">Email</div>
+                  <div class="text-sm text-manga-ink/60 dark:text-white/40 truncate font-semibold">mainak.chak04@gmail.com</div>
                 </div>
               </a>
             </li>
 
             <li>
-              <a href="404.html" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-accent-500 hover:shadow-comic-accent hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-orange-400 to-orange-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-file-pdf text-white text-lg" aria-hidden="true"></i>
+              <a href="404.html" target="_blank" rel="noopener noreferrer" class="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.08)] hover:border-accent-500 hover:shadow-comic-accent hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+                <div class="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 border-3 border-manga-ink flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-file-pdf text-white text-xl" aria-hidden="true"></i>
                 </div>
                 <div class="min-w-0">
-                  <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-accent-500 transition-colors">Resume</div>
-                  <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate">Download PDF</div>
+                  <div class="text-base font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-accent-500 transition-colors">Resume</div>
+                  <div class="text-sm text-manga-ink/60 dark:text-white/40 truncate font-semibold">Download PDF</div>
                 </div>
               </a>
             </li>
 
             <li>
-              <a href="https://calendly.com/mainak-chak04/30min" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-blue hover:shadow-comic-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-violet-400 to-violet-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-calendar text-white text-lg" aria-hidden="true"></i>
+              <a href="https://calendly.com/mainak-chak04/30min" target="_blank" rel="noopener noreferrer" class="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-blue hover:shadow-comic-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+                <div class="w-14 h-14 bg-gradient-to-br from-violet-400 to-violet-600 border-3 border-manga-ink flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-calendar text-white text-xl" aria-hidden="true"></i>
                 </div>
                 <div class="min-w-0">
-                  <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-blue transition-colors">Meeting</div>
-                  <div class="text-xs text-manga-ink/60 dark:text-white/40">Book a time</div>
+                  <div class="text-base font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-blue transition-colors">Meeting</div>
+                  <div class="text-sm text-manga-ink/60 dark:text-white/40 font-semibold">Book a time</div>
                 </div>
               </a>
             </li>
@@ -837,28 +867,31 @@ insights, storytelling, and interaction design come together.
           </ul>
         </nav>
 
-        <div class="text-center mb-10">
-          <a href="sitemap.html" class="inline-flex items-center gap-2 px-5 py-2 text-sm font-black uppercase tracking-wider text-manga-ink/50 dark:text-white/40 border-2 border-black/10 dark:border-white/10 hover:border-manga-blue hover:text-manga-blue transition-all duration-150 focus:outline-none">
-            <i class="fas fa-sitemap text-xs" aria-hidden="true"></i>
+        <div class="text-center mb-12">
+          <a href="sitemap.html" class="inline-flex items-center gap-2 px-6 py-3 text-sm font-black uppercase tracking-wider text-manga-ink/60 dark:text-white/60 border-3 border-black/10 dark:border-white/10 hover:border-manga-blue hover:text-manga-blue transition-all duration-150 focus:outline-none">
+            <i class="fas fa-sitemap" aria-hidden="true"></i>
             View Sitemap
           </a>
         </div>
 
-
-          <p class="text-sm text-manga-ink/40 dark:text-white/25 flex items-center justify-center gap-2 flex-wrap font-bold text-center uppercase tracking-wider">
-            <span>Made with</span>
-            <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain icon" class="inline-block h-5 w-auto align-middle" width="20" height="20">
-            <span>sleepless nights &amp; lots of coffee</span>
-            <span class="text-manga-ink/20 dark:text-white/10 mx-1">|</span>
-            <span>© 2026 Mainak Chakraborty</span>
-          </p>
+        <div class="flex justify-center gap-8 mb-8" aria-hidden="true">
+          <span class="sfx text-3xl text-manga-blue/50 dark:text-manga-blue/40">THANK YOU FOR</span>
+          <span class="sfx text-3xl text-manga-pink/50 dark:text-manga-pink/40">READING MY STORY!</span>
         </div>
+
+        <p class="text-base text-manga-ink/50 dark:text-white/40 flex items-center justify-center gap-3 flex-wrap font-bold text-center uppercase tracking-wider">
+          <span>Made with</span>
+          <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain icon" class="inline-block h-6 w-auto align-middle" width="24" height="24">
+          <span>sleepless nights &amp; lots of coffee</span>
+          <span class="text-manga-ink/20 dark:text-white/20 mx-2">|</span>
+          <span>© 2026 Mainak Chakraborty</span>
+        </p>
       </div>
     </footer>
   </main>
 
-  <button id="back-to-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-manga-blue text-manga-ink font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none" aria-label="Back to top">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+  <button id="back-to-top" class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-manga-blue text-manga-ink font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none" aria-label="Back to top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
   </button>
 
   <script>
