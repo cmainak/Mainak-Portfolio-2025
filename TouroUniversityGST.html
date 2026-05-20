@@ -1,1017 +1,1057 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Touro University - Video & Graphics Portfolio</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="assets/img/Projects/Touro University/Fav Icon/TUFavIcon.jpeg" type="image/png">
-    
-    <style>
-        /* === VARIABLES & RESET === */
-        :root {
-            --primary: #02437D;
-            --primary-soft: #E3F2FD;
-            --accent: #FF9933;
-            --accent-soft: #FFF8F0;
-            
-            --text-dark: #111827;
-            --text-body: #4B5563;
-            --bg-body: #FFFFFF;
-            --bg-alt: #F9FAFB;
-            --border-light: #E5E7EB;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --section-gap: 120px;
-        }
+  <title>Touro University GST | Mainak Chakraborty — Video & Graphics</title>
+  <meta name="description" content="Video editing and graphic design portfolio from Mainak Chakraborty's role as Multimedia Designer at Touro University GST.">
+  <meta name="author" content="Mainak Chakraborty">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mainakc.netlify.app/TouroUniversityGST.html">
+  <link rel="icon" href="assets/img/Projects/Touro University/Fav Icon/TUFavIcon.jpeg" type="image/png">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        html { scroll-behavior: smooth; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Bangers&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-dark);
-            background: var(--bg-body);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        img { 
-            max-width: 100%; 
-            height: auto; 
-            display: block; 
-            border-radius: var(--radius-sm);
-        }
-
-       /* === UPDATED JUMP NAVIGATION === */
-.jump-nav {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 6px 8px; /* Slightly tighter padding */
-    border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
-    z-index: 1000;
-    width: max-content;
-    max-width: 90%;
-}
-
-.jump-nav-inner {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.jump-link {
-    text-decoration: none;
-    color: var(--text-body);
-    font-size: 13px;
-    font-weight: 600;
-    border-radius: 60px;
-    padding: 10px 12px;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-max-width: 320px;          /* Maximum width on desktop */
-min-width: 140px;          /* Minimum width on small phones */
-}
-
-.jump-link:hover {
-    color: var(--primary);
-    background: var(--primary-soft);
-}
-
-.jump-link.active {
-    background: var(--primary);
-    color: white;
-    box-shadow: 0 2px 8px rgba(2, 67, 125, 0.25);
-}
-
-/* Vertical Divider Line */
-.jump-divider {
-    width: 1px;
-    height: 16px;
-    background-color: var(--border-light);
-    margin: 0 4px;
-}
-
-/* Back to Top Icon Style */
-.jump-link.icon-only {
-    padding: 8px; /* Square/Circle shape */
-    width: 36px;
-    height: 36px;
-    color: var(--text-body);
-}
-
-.jump-link.icon-only:hover {
-    background: var(--primary);
-    color: #FFF;
-}
-
-
-        /* === HOME BUTTON === */
-        .home-button {
-            position: fixed;
-            top: 20px;
-            right: 40px;
-            z-index: 1001;
-            background: rgba(255, 255, 255, 0.2);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .home-button:hover {
-            transform: scale(1.1);
-            background: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .home-button i {
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 1.6rem; /* Increased from 1.4rem for better visibility */
-}
-
-
-        /* === UTILITY CLASSES === */
-        .container {
-            width: 100%;
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .text-center { text-align: center; }
-        
-        /* === TYPOGRAPHY === */
-        h1 {
-            font-size: clamp(36px, 5vw, 72px);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #02437D 0%, #014a87 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        h2 {
-            font-size: clamp(26px, 4vw, 42px);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 24px;
-            color: var(--text-dark);
-        }
-        
-        h3 {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-        
-        h4 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-
-        p {
-            color: var(--text-body);
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* === SECTION LABEL === */
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--primary-soft);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        /* === HERO SECTION === */
-        .hero {
-    /* 1. The Image + Dark Overlay (0.6 opacity) */
-    /* Replace 'hero-background.jpg' with your actual image filename */
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/img/Projects/Touro University/Cover Image TU/TouroCover.jpg');
-    
-    /* 2. Positioning */
-    background-size: cover;      /* Ensures image covers the whole area */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat;
-    
-    /* 3. Spacing */
-    padding: 140px 0; /* More padding looks better for hero images */
-    margin-bottom: 0;
-    
-    /* 4. Text Colors */
-    color: white;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Adds slight shadow for readability */
-}
-
-/* Force the Heading to be White (Overriding previous gradient) */
-.hero h1 {
-    background: none;
-    -webkit-text-fill-color: white;
-    color: white;
-    margin-bottom: 16px;
-}
-
-/* Make Subtitle and Paragraph White */
-.hero .hero-subtitle, 
-.hero p {
-    color: rgba(255, 255, 255, 0.95); /* Bright white */
-}
-
-
-        /* === VIDEO SECTION === */
-        .video-section {
-            padding: var(--section-gap) 0;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .video-card {
-            background: #fff;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .video-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary-soft);
-        }
-
-        .video-thumbnail {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-            overflow: hidden;
-        }
-
-        .video-thumbnail-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .video-card-body {
-            padding: 24px;
-        }
-
-        .video-card-body h5 {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin: 0 0 12px 0;
-            letter-spacing: -0.2px;
-        }
-
-        .video-card-body p {
-            font-size: 14px;
-            color: var(--text-body);
-            margin: 0;
-            line-height: 1.7;
-            font-weight: 400;
-        }
-
-        /* === GRAPHICS SECTION === */
-        .graphics-section {
-            background: var(--bg-alt);
-            padding: var(--section-gap) 0;
-        }
-
-        .graphics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .graphics-card {
-            background: #fff;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .graphics-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary-soft);
-        }
-
-        .graphics-thumbnail {
-            position: relative;
-            width: 100%;
-            padding-top: 70%;
-            overflow: hidden;
-        }
-
-        .graphics-thumbnail-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .graphics-card-body {
-            padding: 24px;
-        }
-
-        .graphics-card-body h5 {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin: 0 0 12px 0;
-            letter-spacing: -0.2px;
-        }
-
-        .graphics-card-body p {
-            font-size: 14px;
-            color: var(--text-body);
-            margin: 0;
-            line-height: 1.7;
-            font-weight: 400;
-        }
-
-        /* === LIGHTBOX MODAL === */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-video {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 8px;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            color: white;
-            font-size: 40px;
-            font-weight: 300;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.1);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10000;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 500;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 12px 24px;
-            border-radius: 50px;
-            max-width: 80%;
-        }
-
-        /* Make cards clickable */
-        .graphics-card, .video-card {
-            cursor: pointer;
-        }
-
-        /* === MOBILE ADJUSTMENTS === */
-        @media (max-width: 768px) {
-            :root { 
-                --section-gap: 60px;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Chakra Petch', 'sans-serif'],
+            sfx:  ['Bangers', 'cursive'],
+          },
+          colors: {
+            accent: { 500: '#FF9933' },
+            manga: {
+              ink:    '#0D0D0D',
+              panel:  '#FFFEF5',
+              blue:   '#00B4FF',
+              pink:   '#FF006E',
+              purple: '#9B4DCA',
+              navy:   '#02437D',
             }
-            
-            .container {
-                padding: 0 16px;
-            }
-
-            .jump-nav {
-                bottom: 20px;
-                padding: 4px;
-                max-width: 94%;
-            }
-
-            .jump-link {
-                padding: 8px 14px;
-                font-size: 12px;
-            }
-
-            .home-button {
-                top: 16px;
-                right: 16px;
-                width: 44px;
-                height: 44px;
-            }
-
-            .back-to-top {
-                bottom: 90px;
-                right: 20px;
-                width: 48px;
-                height: 48px;
-            }
-
-            .lightbox-close {
-                top: 10px;
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                font-size: 30px;
-            }
-
-            .lightbox-caption {
-                font-size: 14px;
-                padding: 10px 20px;
-                max-width: 90%;
-            }
-
-            h4 { font-size: 20px; }
-            p { font-size: 1rem; }
+          },
+          borderWidth: { '3': '3px' },
+          boxShadow: {
+            'comic':        '4px 4px 0px 0px #0D0D0D',
+            'comic-lg':     '8px 8px 0px 0px #0D0D0D',
+            'comic-navy':   '4px 4px 0px 0px #02437D',
+            'comic-navy-lg':'8px 8px 0px 0px #02437D',
+            'comic-accent': '4px 4px 0px 0px #FF9933',
+            'comic-pink':   '4px 4px 0px 0px #FF006E',
+            'comic-blue':   '4px 4px 0px 0px #00B4FF',
+          }
         }
-        /* Video cards that are not yet available */
-.video-card.is-disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-    pointer-events: none;
-}
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Manga Base ── */
+    .manga-halftone {
+      background-image: radial-gradient(circle, #0D0D0D 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .manga-halftone-light {
+      background-image: radial-gradient(circle, rgba(0,180,255,0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .manga-halftone-navy {
+      background-image: radial-gradient(circle, rgba(2,67,125,0.12) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+    .manga-halftone-accent {
+      background-image: radial-gradient(circle, rgba(255,153,51,0.10) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    .manga-panel         { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #0D0D0D; }
+    .manga-panel-navy    { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #02437D; }
+    .manga-panel-accent  { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FF9933; }
+    .manga-panel-pink    { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FF006E; }
+    .manga-panel-blue    { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #00B4FF; }
+
+    .manga-panel:hover, .manga-panel-navy:hover, .manga-panel-accent:hover,
+    .manga-panel-pink:hover, .manga-panel-blue:hover {
+      transform: translate(-2px, -2px);
+    }
+    .manga-panel:hover         { box-shadow: 8px 8px 0px 0px #0D0D0D; }
+    .manga-panel-navy:hover    { box-shadow: 8px 8px 0px 0px #02437D; }
+    .manga-panel-accent:hover  { box-shadow: 8px 8px 0px 0px #FF9933; }
+    .manga-panel-pink:hover    { box-shadow: 8px 8px 0px 0px #FF006E; }
+    .manga-panel-blue:hover    { box-shadow: 8px 8px 0px 0px #00B4FF; }
+    .manga-panel, .manga-panel-navy, .manga-panel-accent,
+    .manga-panel-pink, .manga-panel-blue {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .sfx {
+      font-family: 'Bangers', cursive;
+      letter-spacing: 0.05em;
+      -webkit-text-stroke: 2px #0D0D0D;
+      paint-order: stroke fill;
+    }
+    .sfx-light {
+      font-family: 'Bangers', cursive;
+      letter-spacing: 0.05em;
+      -webkit-text-stroke: 2px rgba(255,255,255,0.2);
+      paint-order: stroke fill;
+    }
+
+    .speech-bubble {
+      position: relative;
+      background: #FFFFFF;
+      border: 3px solid #0D0D0D;
+      border-radius: 14px;
+      box-shadow: 4px 4px 0px 0px #0D0D0D;
+      display: inline-block;
+      padding: 10px 20px;
+      color: #0D0D0D;
+    }
+    .speech-bubble::after  { content:''; position:absolute; bottom:-18px; left:24px; border:9px solid transparent; border-top-color:#0D0D0D; }
+    .speech-bubble::before { content:''; position:absolute; bottom:-12px; left:26px; border:7px solid transparent; border-top-color:#FFFFFF; z-index:1; }
+
+    .manga-label {
+      font-family: 'Chakra Petch', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 2px solid #0D0D0D;
+      background: #FF9933;
+      color: #0D0D0D;
+      padding: 4px 12px;
+      display: inline-block;
+      box-shadow: 3px 3px 0px 0px #0D0D0D;
+    }
+
+    .ink-splat-2 { clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
+
+    .panel-divider {
+      height: 6px;
+      background: repeating-linear-gradient(90deg, #FF9933 0px, #FF9933 20px, #0D0D0D 20px, #0D0D0D 22px);
+    }
+    .panel-divider-navy {
+      height: 6px;
+      background: repeating-linear-gradient(90deg, #02437D 0px, #02437D 20px, #0D0D0D 20px, #0D0D0D 22px);
+    }
+
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 4px;
+      background: repeating-linear-gradient(90deg, #02437D 0px, #02437D 16px, #FF9933 16px, #FF9933 32px, #00B4FF 32px, #00B4FF 48px);
+      width: 0%; z-index: 9998; transition: width 0.1s ease;
+    }
+
+    #loader { background: #FFFFFF; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.3s ease; }
+    #loader.fade-out { opacity: 0; pointer-events: none; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    @keyframes sfx-pop { 0%,100%{transform:scale(1) rotate(-2deg);} 50%{transform:scale(1.06) rotate(2deg);} }
+    .sfx-animate { animation: sfx-pop 2.5s ease-in-out infinite; }
+    @keyframes fade-in-up { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+    .animate-fade-in-up { animation: fade-in-up 0.9s ease-out 0.2s both; }
+    @keyframes scroll-wheel { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(12px)} }
+    .animate-scroll-wheel { animation: scroll-wheel 1.5s ease-in-out infinite; }
+
+    #back-to-top.show { opacity: 1; visibility: visible; }
+
+    /* ── Section chapter header ── */
+    .chapter-header {
+      background: #02437D;
+      border-top: 3px solid #0D0D0D;
+      border-bottom: 3px solid #0D0D0D;
+      padding: 40px 5vw 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Video cards ── */
+    .video-card {
+      border: 3px solid #0D0D0D;
+      background: #FFFEF5;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 6px 6px 0 #02437D;
+      cursor: pointer;
+    }
+    .video-card:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 #02437D; }
+    .video-card.is-disabled { opacity: 0.6; cursor: not-allowed; pointer-events: none; }
+
+    .video-thumbnail {
+      position: relative; width: 100%; padding-top: 56.25%;
+      background: #0D0D0D; overflow: hidden;
+    }
+    .video-thumbnail img {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; transition: transform 0.4s ease;
+    }
+    .video-card:hover .video-thumbnail img { transform: scale(1.04); }
+    .play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2;
+    }
+
+    /* ── Graphics cards ── */
+    .graphics-card {
+      border: 3px solid #0D0D0D;
+      background: #FFFEF5;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 6px 6px 0 #FF9933;
+      cursor: pointer;
+    }
+    .graphics-card:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 #FF9933; }
+
+    .graphics-thumbnail {
+      position: relative; width: 100%; padding-top: 72%;
+      overflow: hidden; background: #f3f4f6;
+    }
+    .graphics-thumbnail img {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; transition: transform 0.4s ease;
+    }
+    .graphics-card:hover .graphics-thumbnail img { transform: scale(1.04); }
+
+    /* ── Highlight box ── */
+    .highlight-box {
+      border-left: 5px solid #02437D;
+      background: rgba(2,67,125,0.06);
+      border-right: 3px solid #0D0D0D;
+      border-top: 3px solid #0D0D0D;
+      border-bottom: 3px solid #0D0D0D;
+      padding: 20px 24px;
+      box-shadow: 4px 4px 0 #02437D;
+    }
+
+    /* ── Footer ── */
+    .footer-bg {
+      background-color: #02437D;
+      background-image: repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,153,51,0.08) 39px,rgba(255,153,51,0.08) 40px),
+                        repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,153,51,0.08) 39px,rgba(255,153,51,0.08) 40px);
+    }
+
+    /* ── Jump nav ── */
+    .jump-nav {
+      position: fixed; bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: calc(100vw - 40px); max-width: 560px; min-width: 260px;
+      background: rgba(255,255,255,0.97);
+      border: 3px solid #0D0D0D;
+      box-shadow: 6px 6px 0px 0px #02437D;
+      padding: 6px;
+    }
+    .jump-nav-inner { display: flex; align-items: center; gap: 4px; }
+    .jump-pills { flex: 1; display: flex; gap: 3px; overflow-x: auto; -ms-overflow-style:none; scrollbar-width:none; }
+    .jump-pills::-webkit-scrollbar { display: none; }
+    .jump-pill {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 10px 8px; min-width: 60px;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      text-decoration: none; color: #0D0D0D;
+      background: transparent; border: 2px solid transparent;
+      transition: all 0.2s ease; cursor: pointer; white-space: nowrap;
+    }
+    .jump-pill:hover { background: rgba(2,67,125,0.08); border-color: #02437D; color: #02437D; }
+    .jump-pill.active { background: #02437D; color: #FF9933; border-color: #02437D; box-shadow: 2px 2px 0 #FF9933; }
+    .back-top {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: #FF9933; border: 3px solid #0D0D0D;
+      box-shadow: 3px 3px 0 #0D0D0D;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: #0D0D0D; font-size: 1rem; font-weight: 900;
+      transition: all 0.15s ease;
+    }
+    .back-top:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #0D0D0D; }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.95); z-index: 9999;
+      justify-content: center; align-items: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content { position: relative; max-width: 90%; max-height: 90%; }
+    .lightbox-image { max-width: 100%; max-height: 90vh; object-fit: contain; border: 3px solid #0D0D0D; box-shadow: 8px 8px 0 #FF9933; }
+    .lightbox-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 48px; height: 48px;
+      background: #FF9933; border: 3px solid #0D0D0D; box-shadow: 3px 3px 0 #0D0D0D;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.4rem; font-weight: 900; color: #0D0D0D;
+      z-index: 10000; transition: transform 0.15s ease;
+    }
+    .lightbox-close:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #0D0D0D; }
+    .lightbox-caption {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      font-family: 'Chakra Petch', sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      background: #FF9933; border: 2px solid #0D0D0D; box-shadow: 3px 3px 0 #0D0D0D;
+      padding: 6px 16px; color: #0D0D0D; white-space: nowrap; max-width: 90%;
+      overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .jump-pill { font-size: 0.55rem; padding: 8px 4px; }
+      .hero-phone-hide { display: none !important; }
+      .two-col { grid-template-columns: 1fr !important; }
+      .feature-inner { flex-direction: column !important; }
+    }
+  </style>
 </head>
-<body>
 
+<body class="bg-white text-manga-ink font-sans antialiased overflow-x-hidden">
 
-    <!-- Reading Progress Bar -->
-<div id="progress-bar" style="
-position: fixed;
-top: 0;
-left: 0;
-height: 3px;
-background: linear-gradient(to right,  #FFF,#02437D);
-width: 0%;
-z-index: 9998;
-transition: width 0.1s ease;">
-</div>
+  <div id="progress-bar" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
-    <nav class="jump-nav">
-        <div class="jump-nav-inner">
-            <a href="#videos" class="jump-link">Videos</a>
-            <a href="#academic" class="jump-link">Academic</a>
-            <a href="#graphics" class="jump-link">Graphics</a>
-            
-            <div class="jump-divider"></div>
-            
-            <a href="#" class="jump-link icon-only" aria-label="Back to Top">
-                <i class="fas fa-arrow-up"></i>
-            </a>
-        </div>
-    </nav>
-
-    <a href="work.html" class="home-button">
-        <i class="fas fa-times"></i>
-    </a>
-
-    <section class="hero">
-        <div class="container">
-            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
-                <h1>TOURO UNIVERSITY</h1>
-                <h2 class="hero-subtitle">Video Editing & Graphic Design Portfolio</h2>
-                <p>
-                    Produced engaging spotlight and workshop videos, along with marketing collaborations including banners, flyers, and other graphic materials for the university. This portfolio showcases my work in creating compelling visual content that tells stories and drives engagement.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="videos" class="video-section" style="padding-top: 20px; padding-bottom: 20px;">
-        <div class="container">
-            <span class="section-label">Video Projects</span>
-            <h4>Spotlight videos, workshops, and marketing campaigns</h4>
-            
-            <div class="video-grid">
-                <div class="video-card cursor-not-allowed opacity-60" title="Video coming soon">
-                    <div class="video-thumbnail">
-                        <img src="assets/img/Projects/Touro University/Videos/Student Alumini Spotlight Series Thumbnai_1.png" alt="Alumni Spotlight" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                <circle cx="12" cy="12" r="11"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-card-body">
-                        <h5>Student / Alumni Spotlight Series</h5>
-                        <p>Produced engaging spotlight videos highlighting student achievements and personal stories across various programs</p>
-                        
-                        <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Watch Full Video
-                        </a>
-                    </div>
-                </div>
-
-                <div class="video-card cursor-not-allowed opacity-60" title="Video coming soon">
-                    <div class="video-thumbnail">
-                        <img src="assets/img/Projects/Touro University/Videos/Student Alumini Spotlight Series Thumbnail 2 .png" alt="Alumni Spotlight" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                <circle cx="12" cy="12" r="11"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-card-body">
-                        <h5>Student / Alumni Spotlight Series</h5>
-                        <p>Produced engaging spotlight videos highlighting student achievements and personal stories across various programs</p>
-                        <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Watch Full Video
-                        </a>
-                    </div>
-                </div>
-
-                <div class="video-card cursor-not-allowed opacity-60" title="Video coming soon">
-                    <div class="video-thumbnail">
-                        <img src="assets/img/Projects/Touro University/Videos/Student Alumini Spoltlight Series 3 Thumbnail.png" alt="Alumni Spotlight" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                <circle cx="12" cy="12" r="11"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-card-body">
-                        <h5>Student / Alumni Spotlight Series</h5>
-                        <p>Produced engaging spotlight videos highlighting student achievements and personal stories across various programs</p>
-                        <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Watch Full Video
-                        </a>
-                    </div>
-                </div>
-
-                <div class="video-card cursor-not-allowed opacity-60" title="Video coming soon">
-                    <div class="video-thumbnail">
-                        <img src="assets/img/Projects/Touro University/Videos/Faculty Spotlight Series 1 Thumbnail.png" alt="Faculty Spotlight" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                <circle cx="12" cy="12" r="11"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-card-body">
-                        <h5>Faculty Spotlight Series</h5>
-                        <p>Produced professional spotlight videos featuring faculty members, their research, and contributions to the university</p>
-                        <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Watch Full Video
-                        </a>
-                    </div>
-                </div>
-
-                <div class="video-card cursor-not-allowed opacity-60" title="Video coming soon">
-                    <div class="video-thumbnail">
-                        <img src="assets/img/Projects/Touro University/Videos/Faculty Spotlight Series 2 Thumbnail.png" alt="Faculty Spotlight" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                <circle cx="12" cy="12" r="11"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-card-body">
-                        <h5>Faculty Spotlight Series</h5>
-                        <p>Produced professional spotlight videos featuring faculty members, their research, and contributions to the university</p>
-                        <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Watch Full Video
-                        </a>
-                    </div>
-                </div>
-
-                <div class="video-card cursor-not-allowed opacity-60" title="Video coming soon">
-                    <div class="video-thumbnail">
-                        <img src="assets/img/Projects/Touro University/Videos/Faculty Spotlight Series 3 Thumbnail.png" alt="Faculty Spotlight" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                <circle cx="12" cy="12" r="11"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-card-body">
-                        <h5>Faculty Spotlight Series</h5>
-                        <p>Produced professional spotlight videos featuring faculty members, their research, and contributions to the university</p>
-                        <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Watch Full Video
-                        </a>
-                    </div>
-                </div>
-            </div> 
-        </div> 
-    </section>
-
-    <section id="academic" class="video-section" style="padding-top: 20px;">
-        <div class="container">
-            <span class="section-label">Academic Project Section</span>
-
-            <h4>Coursework exploring how timing and audio shape a story. These projects required different editing approaches to match the user experience: one relies on quick cuts to build adrenaline, while the other uses a slower tempo to reflect patience and focus.</h4>
-            
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="assets/img/Projects/Touro University/Videos/AP/Thumbnail/Parkour.png" alt="Above All Extreme Air Sports - Parkour" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                <circle cx="12" cy="12" r="11"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-card-body">
-                        <h5>Above All Extreme Air Sports - Parkour</h5>
-                        <p>A short profile of a parkour athlete reflecting on fear and mental limits. The edit balances fast paced urban stunts with his personal story of moving from Bosnia to the U.S. and finding a community at Above All.</p>
-                        <a href="https://drive.google.com/file/d/125Bbwnw3dmPPqNkKbiYNudCef-P9FJYp/view?usp=drive_link" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Watch Full Video
-                        </a>
-                    </div>
-                </div>
-
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="assets/img/Projects/Touro University/Videos/AP/Thumbnail/LOR.png" alt="Lord of the Rings (Strategy Battle Game)" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                <circle cx="12" cy="12" r="11"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-card-body">
-                        <h5>Lord of the Rings (Strategy Battle Game)</h5>
-                        <p>A documentary style look at a Lord of the Rings miniature painter. This piece focuses on the quiet details of the hobby, using close up shots to capture the artist’s process and the patience required to bring the figures to life.</p>
-                        <a href="https://drive.google.com/file/d/1Rs0IcbQ3doX1sNe55QRlf6IcO9sthb18/view?usp=drive_link" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Watch Full Video
-                        </a>
-                    </div>
-                </div>
-            
-                    <div class="video-card">
-                        <div class="video-thumbnail">
-                            <img src="assets/img/Projects/Touro University/Videos/AP/Thumbnail/MB Thumbnail.png" alt="Above All Extreme Air Sports - Parkour" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                                <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(2, 67, 125, 0.8)" stroke="white" stroke-width="2">
-                                    <circle cx="12" cy="12" r="11"></circle>
-                                    <polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="video-card-body">
-                            <h5>Muscle Blazee Promo AD</h5>
-                            <p>The Ad was developed for a marketing and multimedia academic project. The campaign focuses on the dual necessity of intense physical training and strategic recovery.</p>
-                            <a href="https://drive.google.com/file/d/1_1qFkCAe4BpKGGn9GhjMrbqVcsGAeN3r/view?usp=sharing" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none;" onclick="event.stopPropagation();">
-                                <i class="fas fa-external-link-alt"></i> Watch Full Video
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div> 
-            <div style="margin-top: 60px; margin-bottom: 40px; border-top: 1px solid #E5E7EB; padding-top: 40px;">
-                
-                <div style="text-align: center; margin-bottom: 32px;">
-                    <h4>Brand Identity & Packaging</h4>
-                    <p style="max-width: 600px; margin: 0 auto; color: var(--text-body);">
-                        Strategic branding work created during academic coursework, focusing on visual storytelling.
-                    </p>
-                </div>
-
-                <div class="graphics-card feature-card" 
-                style="display: flex; flex-wrap: wrap; max-width: 900px; margin: 0 auto; overflow: hidden; align-items: center;">
-               
-               <div style="flex: 1 1 400px; height: 320px; position: relative; overflow: hidden;">
-                    <img src="assets/img/Projects/Candle Soda/Candle Soda Thumbnail.png" alt="Candle Soda Branding" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
-                   
-                   <div style="position: absolute; top: 16px; left: 16px; background: #FF9933; color: #fff; padding: 6px 14px; border-radius: 50px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
-                       Academic Project
-                   </div>
-               </div>
-
-               <div style="flex: 1 1 300px; padding: 40px;">
-                   <h5 style="font-size: 24px; color: #02437D; margin-bottom: 12px;">Candle Soda</h5>
-                   <p style="margin-bottom: 24px; font-size: 15px; line-height: 1.6;">
-                       A comprehensive brand identity project featuring logo design, color theory, and packaging mockups for a modern soda brand. This project explores how visual systems translate across different physical mediums.
-                   </p>
-                   
-                   <a href="Candlesoda.html" style="color: var(--primary); font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-                       View Brand Guidelines <i class="fas fa-arrow-right"></i>
-                   </a>
-               </div>
-
-           </div>
-    </section>
-
-    <section id="graphics" class="graphics-section" style="background: white; padding-top: 20px;">
-        <div class="container">
-            <span class="section-label">Graphic Design</span>
-
-            <h4>Marketing materials, banners, and digital graphics</h4>
-            
-            <div class="graphics-grid">
-                <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Dean Flyer.jpg', 'Event Banners - Dean Flyer')">
-                    <div class="graphics-thumbnail">
-                       <img src="assets/img/Projects/Touro University/Graphics/Dean Flyer.jpg" alt="Event Banners" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="graphics-card-body">
-                        <h5>Event Banners</h5>
-                        <p>Designed flyers for university events, conferences, and special programs</p>
-                    </div>
-                </div>
-
-                <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Python.jpg', 'Workshop Flyer - Python Flyer')">
-                    <div class="graphics-thumbnail">
-                       <img src="assets/img/Projects/Touro University/Graphics/Python.jpg" alt="Workshop Flyer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="graphics-card-body">
-                        <h5>Workshop Flyer</h5>
-                        <p>Designed flyers for university events, conferences, and special programs</p>
-                    </div>
-                </div>
-
-                <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Project Management.jpg', 'Workshop Flyer - Project Management Flyer')">
-                    <div class="graphics-thumbnail">
-                       <img src="assets/img/Projects/Touro University/Graphics/Project Management.jpg" alt="Workshop Flyer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="graphics-card-body">
-                        <h5>Workshop Flyer</h5>
-                        <p>Designed flyers for university events, conferences, and special programs</p>
-                    </div>
-                </div>
-
-                <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Navigating Digital Age.jpg', 'Workshop Flyer - Navigating Digital Age Flyer')">
-                    <div class="graphics-thumbnail">
-                       <img src="assets/img/Projects/Touro University/Graphics/Navigating Digital Age.jpg" alt="Workshop Flyer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="graphics-card-body">
-                        <h5>Workshop Flyer</h5>
-                        <p>Designed flyers for university events, conferences, and special programs</p>
-                    </div>
-                </div>
-
-                <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Chat GPT 201.jpg', 'Workshop Flyer - Chat GPT 201 Flyer')">
-                    <div class="graphics-thumbnail">
-                       <img src="assets/img/Projects/Touro University/Graphics/Chat GPT 201.jpg" alt="Workshop Flyer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="graphics-card-body">
-                        <h5>Workshop Flyer</h5>
-                        <p>Designed flyers for university events, conferences, and special programs</p>
-                    </div>
-                </div>
-
-                <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/AI Ethics.jpg', 'Workshop Flyer - AI Ethics Flyer')">
-                    <div class="graphics-thumbnail">
-                       <img src="assets/img/Projects/Touro University/Graphics/AI Ethics.jpg" alt="Workshop Flyer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="graphics-card-body">
-                        <h5>Workshop Flyer</h5>
-                        <p>Designed flyers for university events, conferences, and special programs</p>
-                    </div>
-                </div>
-            </div> 
-        </div> 
-    </section>
-
-    <!-- More Projects Section -->
-<section style="padding: 60px 20px;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-  
-      <!-- Previous Project Button -->
-      <a href="ToDo.html">
-        <button style="padding: 12px 24px; border: 1px solid #e5e7eb; background: #fff; border-radius: 8px; cursor: pointer; color: #111827; font-size: 15px; font-weight: 500; transition: all 0.2s ease;" onmouseover="this.style.background='#02437D'; this.style.borderColor='#02437D'" onmouseout="this.style.background='#fff'; this.style.borderColor='#684571'">
-          ← Previous
-        </button>
-      </a>
-    
-      <!-- Next Project Button -->
-      <a href="OS_V2.html">
-        <button style="padding: 12px 24px; border: none; background: #02437D; color: #FFF; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.2s ease;" onmouseover="this.style.background='#02437D'" onmouseout="this.style.background='#02437D'">
-          Next Project →
-        </button>
-      </a>
-    
+  <div id="loader" role="status" aria-live="polite">
+    <div class="text-center space-y-3">
+      <p class="sfx text-5xl sfx-animate" style="color:#02437D; -webkit-text-stroke:2px #FF9933;">LOADING!</p>
+      <p class="text-sm text-manga-ink/50 uppercase tracking-widest font-bold">Cuing up the reel... 🎬</p>
     </div>
-  </section>
-  <!-- More Projects Section Ends -->
+  </div>
 
-    <!-- Footer -->
-<footer style="background: #111827ea; color: #fff; padding: 60px 20px; text-align: center;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      
-      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #fff;">Let's Connect</h3>
-      
-      <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
-        <a href="https://www.linkedin.com/in/mainakc98/" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
-          <i class="fab fa-linkedin"></i> LinkedIn
+  <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-manga-navy focus:text-white focus:outline-none focus:font-bold">Skip to main content</a>
+
+ 
+  </header>
+
+  <a href="work.html"
+   class="fixed top-6 right-6 z-50 w-12 h-12
+          bg-accent-500 text-manga-ink font-black
+          border-3 border-manga-ink shadow-comic
+          flex items-center justify-center
+          hover:bg-manga-navy hover:text-white hover:shadow-none hover:translate-x-1 hover:translate-y-1
+          transition-all duration-150 focus:outline-none"
+   aria-label="Close case study">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+</a>
+
+  <main id="main-content" role="main">
+
+   <!-- ══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+    <section id="hero" class="relative min-h-[85vh] flex flex-col justify-end overflow-hidden pt-16"
+             style="background: linear-gradient(rgba(2,67,125,0.80),rgba(2,67,125,0.70)), url('assets/img/Projects/Touro University/Cover Image TU/TouroCover.jpg') center/cover no-repeat;"
+             aria-labelledby="hero-heading">
+
+      <div class="absolute inset-0 manga-halftone-navy opacity-40 pointer-events-none"></div>
+      <div class="absolute top-20 right-6 pointer-events-none" aria-hidden="true">
+        <span class="sfx-light text-[8rem] sm:text-[12rem] leading-none opacity-10" style="color:#FF9933;">CUT!</span>
+      </div>
+
+      <!-- Accent speed-line strips at bottom -->
+      <div class="absolute bottom-0 left-0 w-full h-24 pointer-events-none" style="background: repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(255,153,51,0.06) 8px, rgba(255,153,51,0.06) 10px);" aria-hidden="true"></div>
+
+      <!-- CHANGED: Restored mx-auto but kept w-full so it matches your other max-w-7xl containers -->
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 animate-fade-in-up">
+
+        <div class="manga-label mb-5 block w-fit" style="background:#FF9933; color:#0D0D0D; box-shadow:3px 3px 0 #FF9933;">
+          Graphic & Video Design — 2 Years
+        </div>
+
+        <div class="speech-bubble mb-6 inline-block">
+          <p class="text-xs font-black uppercase tracking-widest text-manga-ink">Chapter 05 — Multimedia Designer</p>
+        </div>
+
+        <h1 id="hero-heading" class="font-sfx text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none text-white mb-6"
+            style="-webkit-text-stroke:2px rgba(255,153,51,0.35); paint-order:stroke fill;">
+          TOURO<br>UNIVERSITY
+        </h1>
+
+        <p class="text-base sm:text-lg font-bold uppercase tracking-widest mb-8 max-w-2xl border-l-4 pl-4 text-white/85" style="border-color:#FF9933;">
+          Produced spotlight &amp; workshop videos, marketing banners, flyers, and digital graphics for the Graduate School of Technology over 2 years as Multimedia Designer.
+        </p>
+
+        <!-- Meta row -->
+        <div class="flex flex-wrap gap-3">
+          <div class="manga-panel bg-white/10 backdrop-blur-sm p-3 border-white/30" style="box-shadow:4px 4px 0 rgba(255,153,51,0.5);">
+            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-0.5" style="color:#FF9933;">Role</p>
+            <p class="text-xs font-bold text-white">Multimedia Designer — Grad Assistant</p>
+          </div>
+          <div class="manga-panel bg-white/10 backdrop-blur-sm p-3 border-white/30" style="box-shadow:4px 4px 0 rgba(255,153,51,0.5);">
+            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-0.5" style="color:#FF9933;">Period</p>
+            <p class="text-xs font-bold text-white">Jun 2023 — Dec 2024</p>
+          </div>
+          <div class="manga-panel bg-white/10 backdrop-blur-sm p-3 border-white/30" style="box-shadow:4px 4px 0 rgba(255,153,51,0.5);">
+            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-0.5" style="color:#FF9933;">Tools</p>
+            <p class="text-xs font-bold text-white">Premiere · Photoshop · Illustrator</p>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <a href="#videos" class="flex items-center gap-3 text-white/50 hover:text-white transition-colors p-2 focus:outline-none w-fit">
+            <div class="w-7 h-11 rounded-full border-3 border-current flex justify-center pt-2">
+              <div class="w-1.5 h-3 bg-current rounded-full animate-scroll-wheel"></div>
+            </div>
+            <span class="text-xs font-black uppercase tracking-widest">See the Work</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="panel-divider" aria-hidden="true"></div>
+    <!-- ══════════════════════════════════════
+         SPOTLIGHT VIDEOS
+    ═══════════════════════════════════════ -->
+    <section id="videos" class="chapter-header" aria-labelledby="videos-heading">
+      <div class="absolute inset-0 manga-halftone-navy opacity-40 pointer-events-none"></div>
+      <div class="absolute top-4 right-6 pointer-events-none" aria-hidden="true">
+        <span class="sfx-light text-6xl sm:text-8xl opacity-10" style="color:#FF9933;">ACTION!</span>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto">
+        <div class="flex items-start gap-6">
+          <div class="ink-splat-2 w-16 h-16 flex items-center justify-center flex-shrink-0 mt-1" style="background:#FF9933;" aria-hidden="true">
+            <span class="sfx text-xl" style="-webkit-text-stroke:1px #0D0D0D;">01</span>
+          </div>
+          <div>
+            <span class="manga-label mb-4 block w-fit" style="background:#FF9933; color:#0D0D0D;">Chapter 01 — Spotlight Videos</span>
+            <h2 id="videos-heading" class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">
+              Student &amp; Faculty<br><span style="color:#FF9933;">Spotlight Series</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]">
+      <div class="max-w-7xl mx-auto space-y-10">
+
+        <p class="text-sm text-manga-ink/70 leading-relaxed max-w-2xl border-l-4 pl-4" style="border-color:#02437D;">
+          Produced and edited engaging spotlight videos highlighting student achievements, personal journeys, and faculty contributions across GST programs.
+        </p>
+
+        <!-- Video notice -->
+        <div class="highlight-box">
+          <p class="text-sm font-bold text-manga-ink/80">
+            <strong style="color:#02437D;">Note:</strong> Full spotlight videos are hosted on the Touro GST website. Thumbnails below link directly to the full published series.
+          </p>
+        </div>
+
+        <!-- Student spotlights -->
+        <div>
+          <h3 class="text-xl font-black uppercase text-manga-ink mb-5 flex items-center gap-3">
+            <span class="manga-label text-[0.6rem] px-2 py-0.5" style="background:#02437D; color:#FF9933; border-color:#02437D; box-shadow:2px 2px 0 #0D0D0D;">Student</span>
+            Alumni Spotlight Series
+          </h3>
+          <div class="grid sm:grid-cols-3 gap-5">
+
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/Student Alumini Spotlight Series Thumbnai_1.png" alt="Student Alumni Spotlight 1">
+                <div class="play-btn">
+                  <div class="w-14 h-14 flex items-center justify-center;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <p class="text-sm font-black uppercase mb-1">Student / Alumni Spotlight Series</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">Highlighting student achievements and personal stories across GST programs.</p>
+                <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch on Touro GST
+                </a>
+              </div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/Student Alumini Spotlight Series Thumbnail 2 .png" alt="Student Alumni Spotlight 2">
+                <div class="play-btn">
+                  <div class="w-14 h-14 flex items-center justify-center;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <p class="text-sm font-black uppercase mb-1">Student / Alumni Spotlight Series</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">Highlighting student achievements and personal stories across GST programs.</p>
+                <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch on Touro GST
+                </a>
+              </div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/Student Alumini Spoltlight Series 3 Thumbnail.png" alt="Student Alumni Spotlight 3">
+                <div class="play-btn">
+                  <div class="w-14 h-14 flex items-center justify-center;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <p class="text-sm font-black uppercase mb-1">Student / Alumni Spotlight Series</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">Highlighting student achievements and personal stories across GST programs.</p>
+                <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch on Touro GST
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty spotlights -->
+        <div>
+          <h3 class="text-xl font-black uppercase text-manga-ink mb-5 flex items-center gap-3">
+            <span class="manga-label text-[0.6rem] px-2 py-0.5" style="background:#FF9933; color:#0D0D0D; box-shadow:2px 2px 0 #0D0D0D;">Faculty</span>
+            Faculty Spotlight Series
+          </h3>
+          <div class="grid sm:grid-cols-3 gap-5">
+
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/Faculty Spotlight Series 1 Thumbnail.png" alt="Faculty Spotlight 1">
+                <div class="play-btn">
+                  <div class="w-14 h-14 flex items-center justify-center;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <p class="text-sm font-black uppercase mb-1">Faculty Spotlight Series</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">Featuring faculty research and contributions to the GST community.</p>
+                <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch on Touro GST
+                </a>
+              </div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/Faculty Spotlight Series 2 Thumbnail.png" alt="Faculty Spotlight 2">
+                <div class="play-btn">
+                  <div class="w-14 h-14 flex items-center justify-center;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <p class="text-sm font-black uppercase mb-1">Faculty Spotlight Series</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">Featuring faculty research and contributions to the GST community.</p>
+                <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch on Touro GST
+                </a>
+              </div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/Faculty Spotlight Series 3 Thumbnail.png" alt="Faculty Spotlight 3">
+                <div class="play-btn">
+                  <div class="w-14 h-14 flex items-center justify-center;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <p class="text-sm font-black uppercase mb-1">Faculty Spotlight Series</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">Featuring faculty research and contributions to the GST community.</p>
+                <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch on Touro GST
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="panel-divider" aria-hidden="true"></div>
+
+    
+<!-- ══════════════════════════════════════
+         GRAPHIC DESIGN
+    ═══════════════════════════════════════ -->
+    <section id="graphics" class="chapter-header" aria-labelledby="graphics-heading">
+        <div class="absolute inset-0 manga-halftone-navy opacity-40 pointer-events-none"></div>
+        <div class="absolute top-4 right-6 pointer-events-none" aria-hidden="true">
+          <span class="sfx-light text-6xl sm:text-8xl opacity-10" style="color:#FF9933;">DESIGN!</span>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto">
+          <div class="flex items-start gap-6">
+            <div class="ink-splat-2 w-16 h-16 flex items-center justify-center flex-shrink-0 mt-1" style="background:#FF9933;" aria-hidden="true">
+              <span class="sfx text-xl" style="-webkit-text-stroke:1px #0D0D0D;">02</span>
+            </div>
+            <div>
+              <span class="manga-label mb-4 block w-fit" style="background:#FF9933; color:#0D0D0D;">Chapter 02 — Graphic Design</span>
+              <h2 id="graphics-heading" class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">
+                Marketing Materials,<br><span style="color:#FF9933;">Banners &amp; Flyers</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]">
+        <div class="max-w-7xl mx-auto space-y-8">
+  
+          <p class="text-sm text-manga-ink/70 leading-relaxed max-w-2xl border-l-4 pl-4" style="border-color:#FF9933;">
+            Designed event banners, workshop flyers, and digital marketing materials for Touro GST programs. Click any card to view full resolution.
+          </p>
+  
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+  
+            <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Dean Flyer.jpg', 'Event Banners — Dean Flyer')">
+              <div class="graphics-thumbnail">
+                <img src="assets/img/Projects/Touro University/Graphics/Dean Flyer.jpg" alt="Event Banners — Dean Flyer" loading="lazy">
+                <div class="absolute top-3 right-3 z-10">
+                  <div class="w-8 h-8 border-2 border-white flex items-center justify-center" style="background:rgba(255,153,51,0.9);">
+                    <i class="fas fa-expand text-manga-ink text-xs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm font-black uppercase mb-1">Event Banners</p>
+                <p class="text-xs text-manga-ink/60">Dean's event flyer for university program promotion.</p>
+              </div>
+            </div>
+  
+            <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Python.jpg', 'Workshop Flyer — Python')">
+              <div class="graphics-thumbnail">
+                <img src="assets/img/Projects/Touro University/Graphics/Python.jpg" alt="Python Workshop Flyer" loading="lazy">
+                <div class="absolute top-3 right-3 z-10">
+                  <div class="w-8 h-8 border-2 border-white flex items-center justify-center" style="background:rgba(255,153,51,0.9);">
+                    <i class="fas fa-expand text-manga-ink text-xs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm font-black uppercase mb-1">Workshop Flyer</p>
+                <p class="text-xs text-manga-ink/60">Python programming workshop promotional flyer.</p>
+              </div>
+            </div>
+  
+            <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Project Management.jpg', 'Workshop Flyer — Project Management')">
+              <div class="graphics-thumbnail">
+                <img src="assets/img/Projects/Touro University/Graphics/Project Management.jpg" alt="Project Management Workshop Flyer" loading="lazy">
+                <div class="absolute top-3 right-3 z-10">
+                  <div class="w-8 h-8 border-2 border-white flex items-center justify-center" style="background:rgba(255,153,51,0.9);">
+                    <i class="fas fa-expand text-manga-ink text-xs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm font-black uppercase mb-1">Workshop Flyer</p>
+                <p class="text-xs text-manga-ink/60">Project Management workshop promotional material.</p>
+              </div>
+            </div>
+  
+            <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Navigating Digital Age.jpg', 'Workshop Flyer — Navigating the Digital Age')">
+              <div class="graphics-thumbnail">
+                <img src="assets/img/Projects/Touro University/Graphics/Navigating Digital Age.jpg" alt="Navigating Digital Age Flyer" loading="lazy">
+                <div class="absolute top-3 right-3 z-10">
+                  <div class="w-8 h-8 border-2 border-white flex items-center justify-center" style="background:rgba(255,153,51,0.9);">
+                    <i class="fas fa-expand text-manga-ink text-xs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm font-black uppercase mb-1">Workshop Flyer</p>
+                <p class="text-xs text-manga-ink/60">Navigating the Digital Age workshop design.</p>
+              </div>
+            </div>
+  
+            <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Chat GPT 201.jpg', 'Workshop Flyer — ChatGPT 201')">
+              <div class="graphics-thumbnail">
+                <img src="assets/img/Projects/Touro University/Graphics/Chat GPT 201.jpg" alt="ChatGPT 201 Workshop Flyer" loading="lazy">
+                <div class="absolute top-3 right-3 z-10">
+                  <div class="w-8 h-8 border-2 border-white flex items-center justify-center" style="background:rgba(255,153,51,0.9);">
+                    <i class="fas fa-expand text-manga-ink text-xs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm font-black uppercase mb-1">Workshop Flyer</p>
+                <p class="text-xs text-manga-ink/60">ChatGPT 201 advanced workshop promotional flyer.</p>
+              </div>
+            </div>
+  
+            <div class="graphics-card" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/AI Ethics.jpg', 'Workshop Flyer — AI Ethics')">
+              <div class="graphics-thumbnail">
+                <img src="assets/img/Projects/Touro University/Graphics/AI Ethics.jpg" alt="AI Ethics Workshop Flyer" loading="lazy">
+                <div class="absolute top-3 right-3 z-10">
+                  <div class="w-8 h-8 border-2 border-white flex items-center justify-center" style="background:rgba(255,153,51,0.9);">
+                    <i class="fas fa-expand text-manga-ink text-xs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm font-black uppercase mb-1">Workshop Flyer</p>
+                <p class="text-xs text-manga-ink/60">AI Ethics workshop awareness campaign design.</p>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+  
+
+
+    <div class="panel-divider" aria-hidden="true"></div>
+
+        
+    <!-- ══════════════════════════════════════
+         ACADEMIC VIDEOS
+    ═══════════════════════════════════════ -->
+    <section id="academic" class="chapter-header" aria-labelledby="academic-heading">
+        <div class="absolute inset-0 manga-halftone-navy opacity-40 pointer-events-none"></div>
+        <div class="absolute top-4 right-6 pointer-events-none" aria-hidden="true">
+          <span class="sfx-light text-6xl sm:text-8xl opacity-10" style="color:#FF9933;">SCENE!</span>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto">
+          <div class="flex items-start gap-6">
+            <div class="ink-splat-2 w-16 h-16 flex items-center justify-center flex-shrink-0 mt-1" style="background:#FF9933;" aria-hidden="true">
+              <span class="sfx text-xl" style="-webkit-text-stroke:1px #0D0D0D;">03</span>
+            </div>
+            <div>
+              <span class="manga-label mb-4 block w-fit" style="background:#FF9933; color:#0D0D0D;">Chapter 03 — Academic Projects</span>
+              <h2 id="academic-heading" class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">
+                Coursework:<br><span style="color:#FF9933;">Timing &amp; Narrative</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto space-y-10">
+  
+          <p class="text-sm text-manga-ink/70 leading-relaxed max-w-2xl border-l-4 pl-4" style="border-color:#FF9933;">
+            Coursework exploring how timing and audio shape a story. These projects required different editing approaches: one relies on quick cuts to build adrenaline, while the other uses a slower tempo to reflect patience and focus.
+          </p>
+  
+          <div class="grid sm:grid-cols-3 gap-5">
+  
+            <!-- Parkour -->
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/AP/Thumbnail/Parkour.png" alt="Above All Extreme Air Sports - Parkour">
+                <div class="play-btn">
+                  <div class="w-14 h-14 border-3 border-white flex items-center justify-center" style="background:rgba(2,67,125,0.85); box-shadow:3px 3px 0 #FF9933;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <span class="manga-label text-[0.55rem] px-2 py-0.5 mb-3 block w-fit" style="background:#02437D; color:#FF9933; border-color:#02437D; box-shadow:2px 2px 0 #0D0D0D;">Academic Project</span>
+                <p class="text-sm font-black uppercase mb-2">Above All Extreme Air Sports — Parkour</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">A short profile of a parkour athlete reflecting on fear and mental limits. Fast-paced urban stunts balanced against his personal story of moving from Bosnia to the U.S.</p>
+                <a href="https://drive.google.com/file/d/125Bbwnw3dmPPqNkKbiYNudCef-P9FJYp/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch Full Video
+                </a>
+              </div>
+            </div>
+  
+            <!-- Lord of the Rings -->
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/AP/Thumbnail/LOR.png" alt="Lord of the Rings Strategy Battle Game">
+                <div class="play-btn">
+                  <div class="w-14 h-14 border-3 border-white flex items-center justify-center" style="background:rgba(2,67,125,0.85); box-shadow:3px 3px 0 #FF9933;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <span class="manga-label text-[0.55rem] px-2 py-0.5 mb-3 block w-fit" style="background:#02437D; color:#FF9933; border-color:#02437D; box-shadow:2px 2px 0 #0D0D0D;">Academic Project</span>
+                <p class="text-sm font-black uppercase mb-2">Lord of the Rings — Strategy Battle Game</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">Documentary-style look at a miniature painter. Close-up shots capture the artist's process and the patience required to bring figures to life.</p>
+                <a href="https://drive.google.com/file/d/1Rs0IcbQ3doX1sNe55QRlf6IcO9sthb18/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch Full Video
+                </a>
+              </div>
+            </div>
+  
+            <!-- Muscle Blazee -->
+            <div class="video-card">
+              <div class="video-thumbnail">
+                <img src="assets/img/Projects/Touro University/Videos/AP/Thumbnail/MB Thumbnail.png" alt="Muscle Blazee Promo Ad">
+                <div class="play-btn">
+                  <div class="w-14 h-14 border-3 border-white flex items-center justify-center" style="background:rgba(2,67,125,0.85); box-shadow:3px 3px 0 #FF9933;">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <span class="manga-label text-[0.55rem] px-2 py-0.5 mb-3 block w-fit" style="background:#02437D; color:#FF9933; border-color:#02437D; box-shadow:2px 2px 0 #0D0D0D;">Academic Project</span>
+                <p class="text-sm font-black uppercase mb-2">Muscle Blazee Promo Ad</p>
+                <p class="text-xs text-manga-ink/60 leading-relaxed mb-3">Developed for a marketing and multimedia academic project. The campaign focuses on the dual necessity of intense physical training and strategic recovery.</p>
+                <a href="https://drive.google.com/file/d/1_1qFkCAe4BpKGGn9GhjMrbqVcsGAeN3r/view?usp=sharing" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide"
+                   style="color:#02437D;" onclick="event.stopPropagation();">
+                  <i class="fas fa-external-link-alt"></i> Watch Full Video
+                </a>
+              </div>
+            </div>
+  
+          </div>
+  
+          <!-- Brand identity feature -->
+          <div>
+            <h3 class="text-xl font-black uppercase text-manga-ink mb-5 flex items-center gap-3">
+              <span class="manga-label text-[0.6rem] px-2 py-0.5">Brand Identity &amp; Packaging</span>
+            </h3>
+  
+            <div class="manga-panel-accent overflow-hidden" style="box-shadow:8px 8px 0 #0D0D0D;">
+              <div class="feature-inner flex flex-col sm:flex-row">
+                <div class="sm:w-2/5 relative overflow-hidden" style="min-height:240px;">
+                  <img src="assets/img/Projects/Candle Soda/Candle Soda Thumbnail.png" alt="Candle Soda Branding"
+                       class="w-full h-full object-cover absolute inset-0">
+                  <div class="absolute top-3 left-3">
+                    <span class="manga-label text-[0.55rem] px-2 py-0.5" style="background:#02437D; color:#FF9933; border-color:#02437D; box-shadow:2px 2px 0 #0D0D0D;">Academic Project</span>
+                  </div>
+                </div>
+                <div class="p-6 sm:p-8 flex flex-col justify-center sm:w-3/5">
+                  <h4 class="text-2xl font-black uppercase mb-2 text-manga-ink">Candle Soda</h4>
+                  <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#FF9933;">Brand Identity &amp; Packaging Design</p>
+                  <p class="text-sm text-manga-ink/70 leading-relaxed mb-5">A comprehensive brand identity project featuring logo design, color theory, and packaging mockups for a modern soda brand. Explores how visual systems translate across different physical mediums.</p>
+                  <a href="Candlesoda.html"
+                     class="inline-flex items-center gap-2 px-5 py-2.5 w-fit text-xs font-black uppercase tracking-wide border-3 border-manga-ink shadow-comic hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150 focus:outline-none"
+                     style="background:#02437D; color:#FF9933;">
+                    View Brand Guidelines
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </section>
+    
+    <div class="panel-divider" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════
+         NEXT / PREV NAV
+    ═══════════════════════════════════════ -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-6">
+        <a href="ToDo.html"
+           class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-manga-ink font-black uppercase tracking-wide border-3 border-manga-ink shadow-comic hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg>
+          Previous Project
         </a>
-        <a href="mailto:mainak.chak04@gmail.com" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
-          <i class="fas fa-envelope"></i> Email
+        <a href="work.html"
+           class="inline-flex items-center gap-2 px-6 py-3 font-black uppercase tracking-wide border-3 border-manga-ink transition-all duration-150 focus:outline-none"
+           style="background:#FF9933; color:#0D0D0D; box-shadow:4px 4px 0 #02437D;"
+           onmouseover="this.style.transform='translate(2px,2px)';this.style.boxShadow='2px 2px 0 #02437D'"
+           onmouseout="this.style.transform='';this.style.boxShadow='4px 4px 0 #02437D'">
+          All Projects ↗
         </a>
-        <a href="https://drive.google.com/file/d/1_l2CEcNTSOgdJuJh1EaovdHdRfeJlUXM/view?usp=drive_link" style="color: #D1D5DB; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#D1D5DB'">
-          <i class="fas fa-file-alt"></i> Resume
+        <a href="OS_V2.html"
+           class="inline-flex items-center gap-2 px-6 py-3 font-black uppercase tracking-wide border-3 border-manga-ink shadow-comic hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none"
+           style="background:#02437D; color:#FF9933;">
+          Next Project
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
       </div>
-      
-    </div>
-  </footer>
+    </section>
 
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="footer-bg py-16 sm:py-20 overflow-hidden relative" role="contentinfo" aria-labelledby="footer-heading">
+      <div class="absolute inset-0 manga-halftone-navy opacity-30 pointer-events-none"></div>
+      <div class="absolute top-0 left-0 w-full h-2" style="background: repeating-linear-gradient(90deg, #FF9933 0px, #FF9933 16px, #02437D 16px, #02437D 32px, #00B4FF 32px, #00B4FF 48px);" aria-hidden="true"></div>
 
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="text-center mb-12">
+          <span class="manga-label mb-6 block w-fit mx-auto" style="background:#FF9933; color:#0D0D0D; border-color:#0D0D0D; box-shadow:3px 3px 0 #0D0D0D;">Contact</span>
+          <div class="relative inline-block">
+            <h2 id="footer-heading" class="text-3xl sm:text-4xl font-black uppercase tracking-wide text-white">Let's Get In Touch</h2>
+            <div class="absolute -bottom-2 left-0 w-full h-2 -z-10 transform -rotate-1" style="background:#FF9933;" aria-hidden="true"></div>
+          </div>
+          <p class="mt-6 text-sm font-bold uppercase tracking-widest text-white/50">Open to Opportunities</p>
+        </header>
 
+        <nav aria-label="Contact information">
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12 max-w-3xl mx-auto" role="list">
+            <li>
+              <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-manga-blue hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+                <div class="w-11 h-11 bg-gradient-to-br from-blue-500 to-blue-700 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fab fa-linkedin-in text-white text-lg"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-manga-blue transition-colors">LinkedIn</div>
+                  <div class="text-xs text-white/40">in/mainakc98</div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:mainak.chak04@gmail.com"
+                 class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-manga-pink hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+                <div class="w-11 h-11 bg-gradient-to-br from-red-400 to-red-600 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-envelope text-white text-lg"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-manga-pink transition-colors">Email</div>
+                  <div class="text-xs text-white/40 truncate">mainak.chak04@gmail.com</div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="https://calendly.com/mainak-chak04/30min" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-accent-500 hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+                <div class="w-11 h-11 bg-gradient-to-br from-violet-400 to-violet-600 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-calendar text-white text-lg"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-accent-500 transition-colors">Meeting</div>
+                  <div class="text-xs text-white/40">Book a time</div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <div class="lightbox-content">
-            <img id="lightbox-img" class="lightbox-image" src="" alt="">
-            <video id="lightbox-video" class="lightbox-video" controls style="display: none;">
-                <source id="lightbox-video-source" src="" type="video/mp4">
-            </video>
+        <div class="flex justify-center gap-6 mb-6" aria-hidden="true">
+          <span class="sfx-light text-2xl opacity-40" style="color:#FF9933;">THANK YOU FOR</span>
+          <span class="sfx-light text-2xl opacity-40" style="color:#00B4FF;">READING MY STORY!</span>
         </div>
-        <div id="lightbox-caption" class="lightbox-caption"></div>
+        <p class="text-sm text-white/30 flex items-center justify-center gap-2 flex-wrap font-bold text-center uppercase tracking-wider">
+          <span>Made with</span>
+          <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain" class="inline-block h-5 w-auto align-middle" width="20" height="20">
+          <span>sleepless nights &amp; lots of coffee</span>
+          <span class="text-white/10 mx-1">|</span>
+          <span>© 2026 Mainak Chakraborty</span>
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ── Jump Nav ── -->
+  <nav class="jump-nav" aria-label="Page Navigation">
+    <div class="jump-nav-inner">
+      <div class="jump-pills">
+        <a href="#videos"   class="jump-pill">Spotlights</a>
+        <a href="#graphics" class="jump-pill">Graphics</a>
+        <a href="#academic" class="jump-pill">Academic</a>
+       
+      </div>
     </div>
+  </nav>
 
+  <!-- Back to top -->
+  <button id="back-to-top"
+          class="fixed bottom-6 right-6 sm:right-8 z-50 w-12 h-12 font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none"
+          style="background:#FF9933; color:#0D0D0D;"
+          aria-label="Back to top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
 
-    <script>
-        // Lightbox functionality
-        function openLightbox(src, caption, type = 'image') {
-            const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            const video = document.getElementById('lightbox-video');
-            const videoSource = document.getElementById('lightbox-video-source');
-            const captionText = document.getElementById('lightbox-caption');
-            
-            if (type === 'video') {
-                img.style.display = 'none';
-                video.style.display = 'block';
-                videoSource.src = src;
-                video.load();
-            } else {
-                video.style.display = 'none';
-                img.style.display = 'block';
-                img.src = src;
-            }
-            
-            captionText.textContent = caption;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
+  <!-- ── Lightbox ── -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <span class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" class="lightbox-image" src="" alt="">
+    </div>
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
 
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            const video = document.getElementById('lightbox-video');
-            
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-            
-            // Pause video if playing
-            if (video.style.display === 'block') {
-                video.pause();
-            }
-        }
-
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-
-        // Close lightbox with ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-
-        // Jump navigation active state
-        const sections = document.querySelectorAll('section[id]');
-        const navLi = document.querySelectorAll('.jump-nav .jump-link');
-
-        window.onscroll = () => {
-    let current = '';
-    const sections = document.querySelectorAll('section[id]');
-    // Select only text links, ignore the icon-only back-to-top
-    const navLi = document.querySelectorAll('.jump-nav .jump-link:not(.icon-only)');
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
+  <script>
+    // ── Loader ──
+    window.addEventListener('load', function () {
+      var loader = document.getElementById('loader');
+      setTimeout(function () {
+        loader.classList.add('fade-out');
+        setTimeout(function () { loader.style.display = 'none'; }, 300);
+      }, 700);
     });
 
-    navLi.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href') == '#' + current) {
-            a.classList.add('active');
-        }
+    // ── Progress bar ──
+    var bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function () {
+      var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      if (bar) { bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', Math.round(pct)); }
+    }, { passive: true });
+
+    // ── Back to top ──
+    var backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function () {
+      backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
+    }, { passive: true });
+    backToTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-};
-    </script>
+
+   // ── Jump nav active ──
+var pills = document.querySelectorAll('.jump-nav .jump-pill');
+// FIXED: Order changed to match the physical DOM layout (Top to Bottom)
+var sectionIds = ['videos', 'graphics', 'academic']; 
+var sections = sectionIds.map(function (id) { return document.getElementById(id); });
+
+window.addEventListener('scroll', function () {
+  var scrollY = window.scrollY + window.innerHeight * 0.3;
+  var currentIndex = 0;
+  
+  sections.forEach(function (section, i) {
+    if (section && section.offsetTop <= scrollY) currentIndex = i;
+  });
+  
+  pills.forEach(function (p) { p.classList.remove('active'); });
+  if (pills[currentIndex]) pills[currentIndex].classList.add('active');
+}, { passive: true });
+
+    // ── Lightbox ──
+    function openLightbox(src, caption) {
+      var lb = document.getElementById('lightbox');
+      var img = document.getElementById('lightbox-img');
+      var cap = document.getElementById('lightbox-caption');
+      img.src = src;
+      img.alt = caption;
+      cap.textContent = caption;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+      if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 
 </body>
 </html>
