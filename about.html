@@ -44,7 +44,7 @@
         extend: {
           fontFamily: {
             sans: ['Chakra Petch', 'sans-serif'],
-            sfx:  ['Bangers', 'cursive'],
+            sfx:  ['Bangers', 'sans-serif'], /* Changed cursive to sans-serif */
           },
           colors: {
             primary: { 500: '#02437D', 600: '#023666' },
@@ -96,7 +96,7 @@
     }
 
     .sfx {
-      font-family: 'Bangers', cursive;
+      font-family: 'Bangers', sans-serif; /* Changed cursive to sans-serif */
       letter-spacing: 0.05em;
       -webkit-text-stroke: 2px #0D0D0D;
       paint-order: stroke fill;
@@ -190,17 +190,17 @@
     }
 
     .card-base {
-  border: 3px solid #0D0D0D;
-  box-shadow: 6px 6px 0px 0px #0D0D0D;
-  background-color: #FFFFFF;
-  color: #0D0D0D;
-  padding: 1.5rem;
-  transition: all 0.15s ease-in-out;
-}
-.card-base:hover {
-  transform: translate(0.25rem, 0.25rem);
-  box-shadow: none;
-}
+      border: 3px solid #0D0D0D;
+      box-shadow: 6px 6px 0px 0px #0D0D0D;
+      background-color: #FFFFFF;
+      color: #0D0D0D;
+      padding: 1.5rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .card-base:hover {
+      transform: translate(0.25rem, 0.25rem);
+      box-shadow: none;
+    }
 
   </style>
 </head>
