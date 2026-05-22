@@ -601,5 +601,80 @@
     </div>
   </footer>
 
+  <script>
+    // ── Loader ──
+    window.addEventListener('load', function () {
+      const loader = document.getElementById('loader');
+      setTimeout(function () {
+        if(loader) {
+          loader.classList.add('fade-out');
+          setTimeout(function () { loader.style.display = 'none'; }, 300);
+        }
+      }, 700);
+    });
+
+    // ── Progress bar ──
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function () {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      if (bar) { bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', Math.round(pct)); }
+    }, { passive: true });
+
+    // ── Back to top ──
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function () {
+      if(backToTopBtn) backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
+    }, { passive: true });
+    
+    if(backToTopBtn) {
+      backToTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // ── Robust Jump Nav Active State (Scroll Spy) ──
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Get all pills
+      const pills = document.querySelectorAll('.jump-pill');
+      
+      // 2. Set up the observer options
+      const observerOptions = {
+        root: null,
+        // The rootMargin creates a horizontal band in the middle of the screen.
+        // When a section enters this band, it becomes 'active'.
+        rootMargin: '-30% 0px -60% 0px', 
+        threshold: 0
+      };
+
+      // 3. Create the observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Get the ID of the section that is currently on screen
+            const currentId = entry.target.getAttribute('id');
+            
+            // Loop through all pills
+            pills.forEach(pill => {
+              // Remove active class from all
+              pill.classList.remove('active');
+              // Add active class if the href matches the section ID
+              if (pill.getAttribute('href') === `#${currentId}`) {
+                pill.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      // 4. Tell the observer to watch all sections that have a corresponding pill
+      pills.forEach(pill => {
+        const id = pill.getAttribute('href').substring(1); // Remove the '#'
+        const targetSection = document.getElementById(id);
+        if (targetSection) {
+          observer.observe(targetSection);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
