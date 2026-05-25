@@ -200,6 +200,17 @@
       .wrapper-back { width: 95%; top: 50%; }
       .token-viz-container > div { flex-direction: column; }
     }
+
+    /* ── WCAG 2.4.7 Focus Visible Fix ── */
+:focus-visible {
+  outline: 3px solid #00B4FF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
   </style>
 </head>
 

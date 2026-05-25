@@ -309,6 +309,17 @@
       .two-col { grid-template-columns: 1fr !important; }
       .feature-inner { flex-direction: column !important; }
     }
+
+    /* ── WCAG 2.4.7 Focus Visible Fix ── */
+:focus-visible {
+  outline: 3px solid #00B4FF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
   </style>
 </head>
 

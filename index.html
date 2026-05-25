@@ -229,6 +229,18 @@
       background-color: #0A0A0F;
       background-image: linear-gradient(rgba(0,180,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,180,255,0.03) 1px, transparent 1px);
     }
+
+    /* ── WCAG 2.4.7 Focus Visible Fix ── */
+:focus-visible {
+  outline: 3px solid #00B4FF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
   </style>
 </head>
 
@@ -254,7 +266,7 @@
         
         <div class="flex justify-between items-center h-16">
 
-          <a href="#hero" class="flex items-center gap-3 group focus:outline-none">
+          <a href="#hero" class="flex items-center gap-3 group focus-visible:ring-3 focus-visible:ring-manga-blue focus-visible:ring-offset-2 focus-visible:outline-none">
             <img src="assets/img/Logo2.svg" alt="Mainak Chakraborty logo" class="h-8 w-8 transition-transform duration-200 group-hover:scale-110" width="32" height="32">
             
             <div class="flex items-center gap-2">
@@ -288,13 +300,16 @@
 
             <a href="#contact" class="text-sm font-bold text-manga-ink/80 dark:text-white/80 uppercase tracking-wider hover:text-manga-pink neon-pink-hover transition-all">CONTACT</a>
 
-            <button onclick="document.documentElement.classList.toggle('dark')" class="p-2 border-2 border-black/20 dark:border-white/20 hover:border-manga-blue hover:shadow-comic-blue transition-all duration-150 bg-transparent focus:outline-none" aria-label="Toggle dark mode">
+            <button onclick="document.documentElement.classList.toggle('dark')" 
+            class="p-2 border-2 border-black/20 ... focus-visible:ring-3 focus-visible:ring-manga-blue focus-visible:ring-offset-2" 
+            aria-label="Toggle dark mode">
               <svg class="w-5 h-5 hidden dark:block text-manga-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
               <svg class="w-5 h-5 block dark:hidden text-manga-ink/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
           </div>
 
-          <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 border-2 border-black/20 dark:border-white/20 hover:border-manga-blue transition-all focus:outline-none" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" 
+          class="md:hidden p-2 border-2 border-black/20 dark:border-white/20 hover:border-manga-blue transition-all focus-visible:ring-3 focus-visible:ring-manga-blue focus-visible:ring-offset-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="w-6 h-6 text-manga-ink dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="square" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
           
@@ -381,7 +396,8 @@
       
     </section>
 
-    <div class="panel-divider aria-hidden="true"></div>
+    <!-- ✅ FIX — aria-hidden is a separate attribute -->
+<div class="panel-divider" aria-hidden="true"></div>
 
     <section id="about"
 class="relative py-24 sm:py-32 overflow-hidden bg-white dark:bg-manga-ink transition-colors duration-300"
@@ -666,7 +682,8 @@ aria-labelledby="about-heading">
 </div>
 </section>
 
-<div class="panel-divider aria-hidden="true"></div>
+<!-- ✅ FIX — aria-hidden is a separate attribute -->
+<div class="panel-divider" aria-hidden="true"></div>
 
     <section id="work" class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0A0A0F] transition-colors duration-300 relative overflow-hidden" aria-labelledby="work-heading">
 
@@ -775,7 +792,8 @@ aria-labelledby="about-heading">
       </div>
     </section>
 
-    <div class="panel-divider aria-hidden="true"></div>
+<!-- ✅ FIX — aria-hidden is a separate attribute -->
+<div class="panel-divider" aria-hidden="true"></div>
 
     <footer id="contact" class="relative footer-bg py-24 sm:py-32 overflow-hidden transition-colors duration-300" role="contentinfo" aria-labelledby="footer-heading">
 

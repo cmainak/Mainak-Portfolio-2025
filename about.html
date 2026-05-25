@@ -202,6 +202,17 @@
       box-shadow: none;
     }
 
+    /* ── WCAG 2.4.7 Focus Visible Fix ── */
+:focus-visible {
+  outline: 3px solid #00B4FF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
   </style>
 </head>
 
@@ -596,7 +607,8 @@
       </div>
     </section>
 
-    <div class="panel-divider" aria-hidden="true"></div>
+<!-- ✅ FIX — aria-hidden is a separate attribute -->
+<div class="panel-divider" aria-hidden="true"></div>
 
     <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-manga-ink relative overflow-hidden">
 
@@ -795,7 +807,8 @@
   
   </section>
 
-    <div class="panel-divider" aria-hidden="true"></div>
+<!-- ✅ FIX — aria-hidden is a separate attribute -->
+<div class="panel-divider" aria-hidden="true"></div>
 
    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB] dark:bg-[#0A0A0F] relative overflow-hidden">
 
@@ -1125,7 +1138,8 @@
 
 </section>
 
-    <div class="panel-divider" aria-hidden="true"></div>
+<!-- ✅ FIX — aria-hidden is a separate attribute -->
+<div class="panel-divider" aria-hidden="true"></div>
 
     <footer id="contact" class="relative footer-bg py-16 sm:py-20 lg:py-24 overflow-hidden transition-colors duration-300" role="contentinfo" aria-labelledby="footer-heading">
 

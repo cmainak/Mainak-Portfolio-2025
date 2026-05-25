@@ -151,6 +151,17 @@
       background-color: #0A0A0F;
       background-image: linear-gradient(rgba(0,180,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,180,255,0.03) 1px, transparent 1px);
     }
+
+    /* ── WCAG 2.4.7 Focus Visible Fix ── */
+:focus-visible {
+  outline: 3px solid #00B4FF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
   </style>
 </head>
 

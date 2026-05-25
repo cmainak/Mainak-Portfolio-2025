@@ -118,6 +118,17 @@
     .sfx-animate { animation: sfx-pop 2.5s ease-in-out infinite; }
     
     #back-to-top.show { opacity: 1; visibility: visible; }
+
+    /* ── WCAG 2.4.7 Focus Visible Fix ── */
+:focus-visible {
+  outline: 3px solid #00B4FF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
   </style>
 </head>
 

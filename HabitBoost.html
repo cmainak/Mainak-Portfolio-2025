@@ -366,6 +366,17 @@
         rgba(13, 13, 13, 0.1) 46px
       );
     }
+
+    /* ── WCAG 2.4.7 Focus Visible Fix ── */
+:focus-visible {
+  outline: 3px solid #00B4FF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
   </style>
 </head>
 
