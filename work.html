@@ -295,8 +295,19 @@
         <nav aria-label="Mobile navigation" class="px-4 py-4 space-y-1">
           <a href="index.html" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Home</a>
           <a href="about.html" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">About</a>
-          <a href="work.html" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-blue bg-manga-blue/10 transition-colors">Work</a>
-          <a href="index.html#contact" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-pink hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Contact</a>
+          <button onclick="document.getElementById('mobile-work').classList.toggle('hidden')" class="flex items-center justify-between w-full px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+            Work
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="mobile-work" class="hidden pl-6 space-y-1 border-l-2 border-manga-blue/40">
+            <a href="OS_V2.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Orbit Scan</a>
+            <a href="Habit Boost.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Habit Boost</a>
+            <a href="ManageW.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">ManageWise</a>
+            <a href="DS.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Design System</a>
+            <a href="Todo.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Smart To-Do</a>
+            <a href="Touro University GST.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Touro</a>
+          </div>
+          <a href="#contact" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-pink hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Contact</a>
         </nav>
       </div>
     </nav>
