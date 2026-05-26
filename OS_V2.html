@@ -184,7 +184,7 @@
       position: fixed; top: 20px; right: 20px; z-index: 1001;
       background: #FFFFFF; border: 3px solid #0D0D0D; width: 50px; height: 50px;
       display: flex; align-items: center; justify-content: center; border-radius: 50%;
-      box-shadow: 4px 4px 0 #B1D73B; transition: all 0.2s ease; text-decoration: none; color: #0D0D0D; font-size: 1.4rem;
+      box-shadow: 4px 4px 0 #B1D73B; transition: all 0.2s ease; text-decoration: none; color: #B1D73B; font-size: 1.4rem;
     }
     .home-button:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #0C4700; }
 
@@ -216,6 +216,15 @@
       border-color: #0C4700;
       box-shadow: 2px 2px 0 #B1D73B;
     }
+    .back-top {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: #0C4700; border: 3px solid #0D0D0D;
+      box-shadow: 3px 3px 0 #0D0D0D;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: #0D0D0D; font-size: 1rem; font-weight: 900;
+      transition: all 0.15s ease;
+    }
+    .back-top:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #B1D73B; }
 
     /* ── Section chapter header ── */
     .chapter-header {
@@ -397,7 +406,7 @@
               ORBIT SCAN
             </h1>
 
-            <p class="text-base sm:text-sm text-white/80 font-bold uppercase tracking-widest mb-8 max-w-lg border-l-4 pl-4" style="border-color:#B1D73B;">
+            <p class="text-base sm:text-lg text-white/80 font-bold uppercase tracking-widest mb-8 max-w-lg border-l-4 pl-4" style="border-color:#B1D73B;">
               Food labels are supposed to help people decide. In practice, they often do the opposite. Orbit Scan was designed to reduce uncertainty at the shelf through instant scanning and health guidance grounded in personal dietary needs.
             </p>
 
@@ -1326,7 +1335,7 @@
     </div>
   </nav>
 
-  <button id="back-to-top" class="fixed bottom-5 right-4 sm:right-8 z-50 w-12 h-12 bg-manga-blue text-manga-ink font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none" aria-label="Back to top">
+  <button id="back-to-top" class="fixed bottom-5 right-4 sm:right-8 z-50 w-12 h-12 bg-manga-lime text-manga-ink font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none" aria-label="Back to top">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
   </button>
 
