@@ -916,7 +916,7 @@
 
         <div>
           <h3 class="text-2xl font-black uppercase text-manga-ink mb-2">System Architecture: Heavy Lifting in Under 2 Seconds</h3>
-          <p class="text-sm text-manga-ink/70 leading-relaxed mb-6 max-w-2xl">The entire experience is architected around a single constraint: <strong>minimum steps, maximum clarity.</strong> Once a barcode is scanned, the system runs health analysis, scoring, ingredient breakdown, and risk flagging simultaneously.</p>
+          <p class="text-md text-manga-ink/70 leading-relaxed mb-6 max-w-2xl">The entire experience is architected around a single constraint: <strong>minimum steps, maximum clarity.</strong> Once a barcode is scanned, the system runs health analysis, scoring, ingredient breakdown, and risk flagging simultaneously.</p>
 
           <div class="flex flex-wrap items-center gap-3 mb-6">
             <span class="manga-label" style="background:#0C4700; color:#B1D73B; border-color:#0C4700;">1. Scan</span>
@@ -934,7 +934,7 @@
 
         <div>
           <h3 class="text-2xl font-black uppercase text-manga-ink mb-2">Early Ideation: Breadth Over Perfection</h3>
-          <p class="text-sm text-manga-ink/70 leading-relaxed mb-6 max-w-2xl">Before committing to visual design, I generated dozens of mid-fidelity wireframes to explore layout, hierarchy, and flow — mapping the entire experience without getting bogged down in aesthetics.</p>
+          <p class="text-md text-manga-ink/70 leading-relaxed mb-6 max-w-2xl">Before committing to visual design, I generated dozens of mid-fidelity wireframes to explore layout, hierarchy, and flow — mapping the entire experience without getting bogged down in aesthetics.</p>
           <div class="manga-panel overflow-hidden bg-[#FFFEF5]" style="box-shadow:6px 6px 0 #0C4700;">
             <img src="assets/img/Projects/Orbit Scan/Case Study/Low-fi.png"
                  alt="Grid of mid-fidelity wireframes" loading="lazy" class="w-full h-auto">
@@ -943,32 +943,57 @@
 
         <div>
           <h3 class="text-2xl font-black uppercase text-manga-ink mb-2">Usability Testing Revealed 3 Major Speed Bumps</h3>
-          <p class="text-sm text-manga-ink/60 font-bold uppercase tracking-widest mb-6">Moderated sessions with 4 target users (20–30 min each). Tasks: scan product, read rating, save food preferences.</p>
+          <p class="text-md text-manga-ink/60 font-bold uppercase tracking-widest mb-6">Moderated sessions with 4 target users (20–30 min each). Tasks: scan product, read rating, save food preferences.</p>
           <div class="grid sm:grid-cols-3 gap-5">
             <div class="ux-card-caution">
               <p class="manga-label text-[0.55rem] px-2 py-0.5 mb-3 bg-accent-500">⚠ Caution</p>
               <h4 class="text-base font-black uppercase mb-2 text-accent-500">Score Hard to Parse</h4>
               <blockquote class="text-xs italic text-manga-ink/70 mb-3 border-l-3 border-accent-500 pl-3">"I see 41/100, is that good or bad?"</blockquote>
-              <p class="text-xs text-manga-ink/80 leading-relaxed font-bold">Fix → Color-coded badge + traffic-light bar showing safe/risky zones + High/Limited risk tags.</p>
+              <p class="text-md text-manga-ink/80 leading-relaxed font-bold">Fix → Color-coded badge + traffic-light bar showing safe/risky zones + High/Limited risk tags.</p>
             </div>
             <div class="ux-card-warn">
               <p class="manga-label text-[0.55rem] px-2 py-0.5 mb-3 bg-manga-pink text-white border-manga-pink" style="box-shadow:2px 2px 0 #0D0D0D;">! Critical</p>
               <h4 class="text-base font-black uppercase mb-2 text-manga-pink">30-Second Wait</h4>
               <blockquote class="text-xs italic text-manga-ink/70 mb-3 border-l-3 border-manga-pink pl-3">"Why do I land on a blank camera screen first?"</blockquote>
-              <p class="text-xs text-manga-ink/80 leading-relaxed font-bold">Fix → Rating now overlays the camera in &lt;2s via progressive disclosure. Full details on swipe-up sheet.</p>
+              <p class="text-md text-manga-ink/80 leading-relaxed font-bold">Fix → Rating now overlays the camera in &lt;2s via progressive disclosure. Full details on swipe-up sheet.</p>
             </div>
             <div class="ux-card-success">
               <p class="manga-label text-[0.55rem] px-2 py-0.5 mb-3" style="background:#B1D73B; color:#0C4700;">✓ Resolved</p>
               <h4 class="text-base font-black uppercase mb-2" style="color:#0C4700;">Toggles Felt Tedious</h4>
               <blockquote class="text-xs italic text-manga-ink/70 mb-3 border-l-3 pl-3" style="border-color:#0C4700;">"Too many switches, then I still have to hit Done."</blockquote>
-              <p class="text-xs text-manga-ink/80 leading-relaxed font-bold">Fix → Visual icon grid replacing the dense toggle list, with a bottom-anchored Save button.</p>
+              <p class="text-md text-manga-ink/80 leading-relaxed font-bold">Fix → Visual icon grid replacing the dense toggle list, with a bottom anchored Save button.</p>
             </div>
           </div>
         </div>
 
         <div>
           <h3 class="text-2xl font-black uppercase text-manga-ink mb-8">Key Decisions & Critical Trade-offs</h3>
-
+          <p class="text-sm text-manga-ink/60 font-bold uppercase tracking-widest mb-6">There's a particular humility that comes from watching someone use something you designed and realizing they understood it differently than you intended. Four moderated sessions, 20–30 minutes each, with participants matching the primary persona profile. Three things surfaced immediately.</p>
+          <div class="grid sm:grid-cols-3 gap-5">
+            <div class="ux-card-caution">
+              <p class="manga-label text-[0.55rem] px-2 py-0.5 mb-3 bg-accent-500">⚠ Caution</p>
+              <h4 class="text-base font-black uppercase mb-2 text-accent-500">Score Hard to Parse</h4>
+              <blockquote class="text-xs italic text-manga-ink/70 mb-3 border-l-3 border-accent-500 pl-3">"I see 41/100, is that good or bad?"</blockquote>
+              <p class="text-md text-manga-ink/80 leading-relaxed font-bold">Fix → Color-coded badge + traffic-light bar showing safe/risky zones + High/Limited risk tags.</p>
+            </div>
+            <div class="ux-card-warn">
+              <p class="manga-label text-[0.55rem] px-2 py-0.5 mb-3 bg-manga-pink text-white border-manga-pink" style="box-shadow:2px 2px 0 #0D0D0D;">! Critical</p>
+              <h4 class="text-base font-black uppercase mb-2 text-manga-pink">30-Second Wait</h4>
+              <blockquote class="text-xs italic text-manga-ink/70 mb-3 border-l-3 border-manga-pink pl-3">"Why do I land on a blank camera screen first?"</blockquote>
+              <p class="text-md text-manga-ink/80 leading-relaxed font-bold">Fix → Rating now overlays the camera in &lt;2s via progressive disclosure. Full details on swipe up sheet.</p>
+            </div>
+            <div class="ux-card-success">
+              <p class="manga-label text-[0.55rem] px-2 py-0.5 mb-3" style="background:#B1D73B; color:#0C4700;">✓ Resolved</p>
+              <h4 class="text-base font-black uppercase mb-2" style="color:#0C4700;">Toggles Felt Tedious</h4>
+              <blockquote class="text-xs italic text-manga-ink/70 mb-3 border-l-3 pl-3" style="border-color:#0C4700;">"Too many switches, then I still have to hit Done."</blockquote>
+              <p class="text-md text-manga-ink/80 leading-relaxed font-bold">Fix → Visual icon grid replacing the dense toggle list, with a bottom-anchored Save button.</p>
+            </div>
+          </div>
+        </div>
+ 
+        <div>
+          <h3 class="text-2xl font-black uppercase text-manga-ink mb-8">Key Decisions & Critical Trade offs</h3>
+ 
           <div class="decision-block mb-12">
             <div class="flex items-center gap-3 mb-4">
               <div class="ink-splat-2 w-10 h-10 flex items-center justify-center flex-shrink-0" style="background:#0C4700;" aria-hidden="true">
@@ -977,22 +1002,20 @@
               <h4 class="text-xl font-black uppercase" style="color:#0C4700;">Overlay vs. Separate Screen</h4>
             </div>
             <div class="highlight-box mb-5">
-              <p class="text-sm sm:text-base font-semibold text-manga-ink/90 leading-relaxed">
-                <strong style="color:#FF006E;">Constraint:</strong> Users waited up to 30 seconds for a separate screen to load after scanning.<br>
-                <strong style="color:#0C4700;">Decision:</strong> Shifted to an instant overlay with progressive disclosure.<br>
-                <strong style="color:#B1D73B;">Result:</strong> Perceived wait time reduced to &lt;2s. Users could see pass/fail before going to the detailed screen.
+              <p class="text-md font-bold text-manga-ink/80 leading-relaxed">
+                In my first wireframes, the results loaded on a separate screen after scanning. It felt natural scan, then read. But when I tested this with participants, users waited up to 30 seconds to get an answer. One asked, "Why do I land on a blank camera screen first?" The product was designed around my mental model, not theirs. I rebuilt the scanner around progressive disclosure: the health rating appears as an overlay on the camera feed in under two seconds. Full details are one swipe away. The change felt small. The impact wasn't.
               </p>
             </div>
             <div class="comparison-grid grid sm:grid-cols-2 gap-4 items-start mb-5">
               <div class="comp-old">
                 <p class="text-[0.6rem] font-black uppercase tracking-widest text-manga-pink mb-2">Before →</p>
                 <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Barcode Screen.png" alt="Old scanner screen" loading="lazy" class="w-full h-auto mb-2">
-                <p class="text-sm sm:text-[0.95rem] font-semibold text-manga-ink/80">Camera opens → blank screen → wait 30s for product details.</p>
+                <p class="text-md font-bold text-manga-ink/70">A separate results screen made users wait up to 30 seconds long enough to lose confidence in the product entirely.</p>
               </div>
               <div class="comp-new">
                 <p class="text-[0.6rem] font-black uppercase tracking-widest mb-2" style="color:#0C4700;">After ✓</p>
                 <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Barcode Screen.png" alt="New instant overlay" loading="lazy" class="w-full h-auto mb-2">
-                <p class="text-sm sm:text-[0.95rem] font-semibold text-manga-ink/80">Rating appears as overlay in &lt;2s. Full details via swipe-up sheet.</p>
+                <p class="text-md font-bold text-manga-ink/70">An instant overlay delivers the key signal in under 2 seconds. Full details are one swipe away when needed.</p>
               </div>
             </div>
             <div class="manga-panel overflow-hidden bg-white" style="box-shadow:6px 6px 0 #0C4700;">
@@ -1000,7 +1023,7 @@
                    alt="Key Decision 1 comparison: before vs after" loading="lazy" class="w-full h-auto">
             </div>
           </div>
-
+ 
           <div class="decision-block d2 mb-12">
             <div class="flex items-center gap-3 mb-4">
               <div class="ink-splat-2 w-10 h-10 flex items-center justify-center flex-shrink-0" style="background:#B1D73B;" aria-hidden="true">
@@ -1009,22 +1032,20 @@
               <h4 class="text-xl font-black uppercase" style="color:#B1D73B;">Traffic Light vs. Numerical Score</h4>
             </div>
             <div class="highlight-box mb-5">
-              <p class="text-sm sm:text-base font-semibold text-manga-ink/90 leading-relaxed">
-                <strong style="color:#FF006E;">Constraint:</strong> A score of "41/100" lacked context.<br>
-                <strong style="color:#0C4700;">Decision:</strong> Replace with traffic-light system + risk tags vs. adding explanatory text.<br>
-                <strong style="color:#B1D73B;">Result:</strong> 60% improvement in comprehension. Validated by FDA research on color-coded labeling.
+              <p class="text-md font-bold text-manga-ink/80 leading-relaxed">
+                My original prototype used a numerical score a product might receive a 41/100. In testing, nobody knew what 41 meant. One participant stared at it and asked, "Is that good or bad?" I went back to FDA research on color coded labeling, which had consistently shown that traffic light systems improved comprehension significantly faster than numerical ratings. I replaced the score with a three color badge paired with plain-language risk tags. What previously required explanation now worked at a glance.
               </p>
             </div>
             <div class="comparison-grid grid sm:grid-cols-2 gap-4 items-start mb-5">
               <div class="comp-old">
                 <p class="text-[0.6rem] font-black uppercase tracking-widest text-manga-pink mb-2">Before →</p>
                 <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" alt="Old rating screen" loading="lazy" class="w-full h-auto mb-2">
-                <p class="text-sm sm:text-[0.95rem] font-semibold text-manga-ink/80">Raw numbers and basic lists required mental math.</p>
+                <p class="text-md font-bold text-manga-ink/70">A numerical score without context asks users to do mental math they shouldn't have to do at a grocery shelf.</p>
               </div>
               <div class="comp-new">
                 <p class="text-[0.6rem] font-black uppercase tracking-widest mb-2" style="color:#0C4700;">After ✓</p>
                 <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" alt="New rating screen" loading="lazy" class="w-full h-auto mb-2">
-                <p class="text-sm sm:text-[0.95rem] font-semibold text-manga-ink/80">Traffic-light color coding + risk tags for instant comprehension.</p>
+                <p class="text-md font-bold text-manga-ink/70">Color coding plus plain-language risk tags turns a decision into a glance. No interpretation required.</p>
               </div>
             </div>
             <div class="manga-panel overflow-hidden bg-white" style="box-shadow:6px 6px 0 #B1D73B;">
@@ -1032,7 +1053,7 @@
                    alt="Key Decision 2 comparison" loading="lazy" class="w-full h-auto">
             </div>
           </div>
-
+ 
           <div class="decision-block d3 mb-4">
             <div class="flex items-center gap-3 mb-4">
               <div class="ink-splat-2 w-10 h-10 flex items-center justify-center flex-shrink-0 bg-manga-ink" aria-hidden="true">
@@ -1041,9 +1062,9 @@
               <h4 class="text-xl font-black uppercase text-manga-ink">List & Toggles vs. Visual Icon Grid</h4>
             </div>
             <div class="highlight-box mb-5">
-              <p class="text-sm sm:text-base font-semibold text-manga-ink/90 leading-relaxed">
-                <strong style="color:#FF006E;">Constraint:</strong> The original screen presented preferences as a plain checkbox list — functional but visually cold and mentally taxing.<br>
-                <strong style="color:#0C4700;">Decision:</strong> Replaced with a grid of branded icon chips. Each preference gets a custom icon + label, making the screen scannable at a glance. A bottom-anchored Save button replaced the top nav "Done" action, consistent with iOS thumb zones.<br>
+              <p class="text-md font-bold text-manga-ink/80 leading-relaxed">
+                <strong style="color:#FF006E;">Constraint:</strong> The original screen presented preferences as a plain checkbox list functional but visually cold and mentally taxing.<br>
+                <strong style="color:#0C4700;">Decision:</strong> Replaced with a grid of branded icon chips. Each preference gets a custom icon + label, making the screen scannable at a glance. A bottom anchored Save button replaced the top nav "Done" action, consistent with iOS thumb zones.<br>
                 <strong style="color:#B1D73B;">Result:</strong> Users no longer read line by line. They recognize preferences visually, while the Save button gives cleaner hierarchy.
               </p>
             </div>
@@ -1051,19 +1072,21 @@
               <div class="comp-old">
                 <p class="text-[0.6rem] font-black uppercase tracking-widest text-manga-pink mb-2">Before →</p>
                 <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" alt="Old toggle list" loading="lazy" class="w-full h-auto mb-2">
-                <p class="text-sm sm:text-[0.95rem] font-semibold text-manga-ink/80">Dense toggle list — users had to read each label individually.</p>
+                <p class="text-md font-bold text-manga-ink/70">Dense toggle list users had to read each label individually.</p>
               </div>
               <div class="comp-new">
                 <p class="text-[0.6rem] font-black uppercase tracking-widest mb-2" style="color:#0C4700;">After ✓</p>
                 <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" alt="New icon chips grid" loading="lazy" class="w-full h-auto mb-2">
-                <p class="text-sm sm:text-[0.95rem] font-semibold text-manga-ink/80">Icon-first grid: instantly scannable, visually distinct, thumb-friendly Save CTA.</p>
+                <p class="text-md font-bold text-manga-ink/70">Icon-first grid: instantly scannable, visually distinct, thumb friendly Save CTA.</p>
               </div>
             </div>
           </div>
-
+ 
         </div>
       </div>
     </section>
+
+
 
     <div class="panel-divider" aria-hidden="true"></div>
 
