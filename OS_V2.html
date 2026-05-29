@@ -621,13 +621,24 @@
           </p>
         </div>
 
-        <!-- CHANGED: Replaced max-w-4xl with w-full to match rest of layout -->
         <div>
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Core User Flow</h3>
-          <div class="manga-panel bg-white w-full p-4 sm:p-6 flex justify-center" style="box-shadow:6px 6px 0 #0C4700;">
-            <!-- CHANGED: Removed max-h-[500px] and min-w-[800px] so it expands cleanly -->
-            <img src="assets/img/Projects/Orbit Scan/Case Study/User Flow.png" alt="Orbit Scan core user-flow diagram" loading="lazy" class="w-full h-auto object-contain block mx-auto">
+          
+          <!-- CHANGED: Added max-h-[600px] and overflow-auto to create a scrollable window -->
+          <div class="manga-panel bg-white w-full p-4 sm:p-6 overflow-auto" style="max-height: 600px; box-shadow:6px 6px 0 #0C4700;">
+            
+            <!-- CHANGED: Added min-w-[800px] so the image never shrinks too small to read on mobile -->
+            <img src="assets/img/Projects/Orbit Scan/Case Study/User Flow.png" 
+                 alt="Orbit Scan core user-flow diagram" 
+                 loading="lazy" 
+                 class="w-full min-w-[800px] h-auto block mx-auto">
+                 
           </div>
+          
+          <!-- Added a visual cue for users -->
+          <p class="text-xs text-manga-ink/60 mt-4 font-bold uppercase tracking-widest text-center">
+            ↕ Scroll inside the panel to explore the full flow ↕
+          </p>
         </div>
 
         <div>
@@ -647,13 +658,25 @@
           </div>
         </div>
 
-        <!-- CHANGED: Replaced max-w limits with w-full, changed image h-auto -->
         <div>
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-4">Early Ideation: Breadth Over Perfection</h3>
           <p class="text-base text-manga-ink/80 leading-relaxed font-bold mb-8 w-full">Before committing to visual design, I generated dozens of mid-fidelity wireframes to explore layout, hierarchy, and flow — mapping the entire experience without getting bogged down in aesthetics.</p>
-          <div class="manga-panel overflow-hidden bg-[#FFFEF5] flex justify-center p-4 sm:p-6 w-full" style="box-shadow:6px 6px 0 #0C4700;">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Low-fi.png" alt="Grid of mid-fidelity wireframes" loading="lazy" class="w-full h-auto object-contain mx-auto">
+          
+          <!-- CHANGED: Replaced overflow-hidden with overflow-auto and added max-height -->
+          <div class="manga-panel overflow-auto bg-[#FFFEF5] p-4 sm:p-6 w-full" style="max-height: 600px; box-shadow:6px 6px 0 #0C4700;">
+            
+            <!-- CHANGED: Added min-w-[800px] to keep the wireframe grid large and readable -->
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Low-fi.png" 
+                 alt="Grid of mid-fidelity wireframes" 
+                 loading="lazy" 
+                 class="w-full min-w-[800px] h-auto block mx-auto">
+                 
           </div>
+          
+          <!-- Added the scroll helper text -->
+          <p class="text-xs text-manga-ink/60 mt-4 font-bold uppercase tracking-widest text-center">
+            ↕ Scroll inside the panel to explore the wireframes ↕
+          </p>
         </div>
 
         <div>
@@ -857,10 +880,23 @@
         <div>
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-4">Complete Product Architecture</h3>
           <p class="text-sm text-manga-ink/80 font-bold uppercase tracking-widest mb-8">Every screen. Every flow. One connected system.</p>
-          <div class="manga-panel bg-[#F9FAFB] p-4 sm:p-8 flex justify-center w-full" style="box-shadow:8px 8px 0 #0D0D0D;">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Interaction Final Prototype.png" alt="Full product overview: all screens and flows" loading="lazy" class="w-full h-auto object-contain mx-auto">
+          
+          <!-- CHANGED: Added overflow-auto and max-height to contain the tall diagram -->
+          <div class="manga-panel overflow-auto bg-[#F9FAFB] p-4 sm:p-8 w-full" style="max-height: 600px; box-shadow:8px 8px 0 #0D0D0D;">
+            
+            <!-- CHANGED: Added min-w-[1000px] so the individual UI screens remain large enough to read -->
+            <img src="assets/img/Projects/Orbit Scan/Case Study/Interaction Final Prototype.png" 
+                 alt="Full product overview: all screens and flows" 
+                 loading="lazy" 
+                 class="w-full min-w-[1000px] h-auto block mx-auto">
+                 
           </div>
-          <p class="text-sm text-manga-ink/60 font-bold uppercase tracking-widest text-center mt-6">
+          
+          <!-- Added the scroll helper text -->
+          <p class="text-xs text-manga-ink/60 mt-4 mb-2 font-bold uppercase tracking-widest text-center">
+            ↕ Scroll inside the panel to explore the architecture ↕
+          </p>
+          <p class="text-sm text-manga-ink/80 font-bold uppercase tracking-widest text-center">
             Onboarding → Camera Scan → Health Rating → Swap Suggestions → Rewards System → Lists & Preferences
           </p>
         </div>
