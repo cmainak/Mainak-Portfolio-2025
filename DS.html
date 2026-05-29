@@ -1,41 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Design System Redesign | Case Study</title>
   
-  <!-- Custom Manga SVG Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='90' height='90' x='5' y='5' rx='15' fill='%23684571' stroke='%230D0D0D' stroke-width='8'/><text x='50%25' y='54%25' font-family='Arial, sans-serif' font-weight='900' font-size='40' fill='%23FFFFFF' stroke='%230D0D0D' stroke-width='2' text-anchor='middle' dominant-baseline='middle'>DS</text></svg>">
   
-  <!-- Fonts: Manga + Original Typography examples -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:wght@400;600;700&family=Lato:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Chakra Petch', 'sans-serif'],
+            sfx:  ['Bangers', 'cursive'],
+          },
+          colors: {
+            manga: {
+              ink:    '#0D0D0D',
+              panel:  '#FFFEF5',
+              purple: '#684571',
+            }
+          },
+          borderWidth: { '3': '3px' },
+          boxShadow: {
+            'comic':          '4px 4px 0px 0px #0D0D0D',
+            'comic-lg':       '8px 8px 0px 0px #0D0D0D',
+            'comic-purple':   '4px 4px 0px 0px #684571',
+            'comic-purple-lg':'8px 8px 0px 0px #684571',
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
     /* =========================================
-       1. MANGA BASE RESET & VARIABLES
+       1. MANGA GRAPHIC LAYERS
        ========================================= */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: 'Chakra Petch', sans-serif;
-      background: #FAFAFA;
-      color: #0D0D0D;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    /* === TYPOGRAPHY & MANGA ELEMENTS === */
-    .font-sfx { font-family: 'Bangers', cursive; letter-spacing: 0.05em; }
-    
     .manga-halftone-purple {
       background-image: radial-gradient(circle, rgba(104, 69, 113, 0.4) 2px, transparent 2px);
       background-size: 20px 20px;
     }
-
     .manga-speedlines-purple {
       background: repeating-linear-gradient(
         -45deg, transparent, transparent 20px,
@@ -45,128 +58,40 @@
       );
     }
 
-    .manga-panel {
-      border: 3px solid #0D0D0D;
-      box-shadow: 6px 6px 0px 0px #0D0D0D;
-      background: #FFFFFF;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      border-radius: 4px;
-    }
+    /* =========================================
+       2. MANGA COMPONENTS
+       ========================================= */
+    .manga-panel        { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #0D0D0D; background: #FFFFFF; transition: transform 0.15s ease, box-shadow 0.15s ease; border-radius: 4px; }
+    .manga-panel-purple { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #684571; background: #FFFFFF; transition: transform 0.15s ease, box-shadow 0.15s ease; border-radius: 4px; }
+    .manga-panel:hover        { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px 0px #0D0D0D; }
+    .manga-panel-purple:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px 0px #684571; }
 
-    .manga-panel:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 8px 8px 0px 0px #0D0D0D;
-    }
-
-    .manga-panel-purple {
-      border: 3px solid #0D0D0D;
-      box-shadow: 6px 6px 0px 0px #684571;
-      background: #FFFFFF;
-      border-radius: 4px;
-    }
-
-    .speech-bubble {
-      position: relative;
-      background: #FFFFFF;
-      border: 3px solid #0D0D0D;
-      border-radius: 14px;
-      box-shadow: 4px 4px 0px 0px #0D0D0D;
-      display: inline-block;
-      padding: 10px 20px;
-      color: #0D0D0D;
-      font-weight: 700;
-    }
+    .speech-bubble { position: relative; background: #FFFFFF; border: 3px solid #0D0D0D; border-radius: 14px; box-shadow: 4px 4px 0px 0px #0D0D0D; display: inline-block; padding: 10px 20px; color: #0D0D0D; font-weight: 700; }
     .speech-bubble::after { content:''; position:absolute; bottom:-18px; left:24px; border:9px solid transparent; border-top-color:#0D0D0D; }
     .speech-bubble::before { content:''; position:absolute; bottom:-12px; left:26px; border:7px solid transparent; border-top-color:#FFFFFF; z-index:1; }
 
-    .manga-label-purple {
-      font-family: 'Chakra Petch', sans-serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border: 3px solid #0D0D0D;
-      background: #684571;
-      color: #FFFFFF;
-      padding: 6px 14px;
-      display: inline-block;
-      box-shadow: 3px 3px 0px 0px #0D0D0D;
-    }
-
-    .manga-button {
-      display: inline-block;
-      padding: 12px 24px;
-      background: #684571;
-      color: #FFFFFF;
-      font-weight: 800;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 3px solid #0D0D0D;
-      box-shadow: 4px 4px 0px #0D0D0D;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .manga-button:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0px #0D0D0D;
-    }
-
-    .section-title {
-      font-family: 'Bangers', cursive;
-      font-size: 3.5rem;
-      color: #111;
-      -webkit-text-stroke: 1px #0D0D0D;
-      text-shadow: 4px 4px 0px #684571;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+    .manga-label-purple { font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; border: 3px solid #0D0D0D; background: #684571; color: #FFFFFF; padding: 6px 14px; display: inline-block; box-shadow: 3px 3px 0px 0px #0D0D0D; }
 
     /* =========================================
-       2. NAVIGATION
+       3. NAVIGATION & UI UTILITIES
        ========================================= */
-    #progress-bar { position: fixed; top: 0; left: 0; height: 6px; background: repeating-linear-gradient(45deg, #684571, #684571 10px, #0D0D0D 10px, #0D0D0D 20px); width: 0%; z-index: 9998; transition: width 0.1s ease; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: repeating-linear-gradient(45deg, #684571, #684571 10px, #0D0D0D 10px, #0D0D0D 20px); width: 0%; z-index: 9998; transition: width 0.1s ease; }
+    #loader.fade-out { opacity: 0; pointer-events: none; }
+    #back-to-top.show { opacity: 1; visibility: visible; }
 
-    .home-button {
-      position: fixed; top: 20px; right: 20px; z-index: 1001;
-      background: #FFFFFF; border: 3px solid #0D0D0D; width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center; border-radius: 50%;
-      box-shadow: 4px 4px 0 #684571; transition: all 0.2s ease; text-decoration: none; color: #0D0D0D; font-size: 1.4rem;
-    }
-    .home-button:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #684571; }
-
-    .jump-nav {
-      position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 1000;
-      width: calc(100vw - 40px); max-width: 500px; min-width: 320px;
-      background: #FFFFFF; border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #684571;
-      padding: 8px 10px; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .jump-nav { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 1000; width: calc(100vw - 40px); max-width: 500px; min-width: 320px; background: rgba(255,255,255,0.98); border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #684571; padding: 6px; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
     @keyframes slideUp { from { opacity: 0; transform: translateX(-50%) translateY(50px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-    .jump-nav ul { margin: 0; padding: 0; list-style: none; display: flex; gap: 4px; align-items: center; width: 100%; justify-content: space-between; }
-    .jump-pill {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      padding: 8px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
-      text-decoration: none; color: #0D0D0D; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap;
-    }
-    .jump-pill:hover { background: rgba(104, 69, 113, 0.2); border-color: #0D0D0D; }
+    
+    .jump-pill { flex: 1; display: flex; align-items: center; justify-content: center; padding: 8px 10px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; text-decoration: none; color: #0D0D0D; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap; }
+    .jump-pill:hover { background: rgba(104, 69, 113, 0.15); border-color: #0D0D0D; color: #684571;}
     .jump-pill.active { background: #684571; color: #fff; border-color: #0D0D0D; box-shadow: 2px 2px 0 #0D0D0D; transform: translateY(-1px); }
-    .nav-divider { width: 3px; height: 24px; background-color: #0D0D0D; margin: 0 4px; }
-    .jump-pill.icon-only { flex: 0 0 auto; width: 40px; height: 40px; padding: 0; background: #684571; color: #fff; border: 3px solid #0D0D0D; box-shadow: 2px 2px 0 #0D0D0D; }
-    .jump-pill.icon-only:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #0D0D0D; }
 
     /* =========================================
-       3. 3D HERO COMPOSTION
+       4. CUSTOM 3D HERO COMPOSITION
        ========================================= */
-    .hero-composition {
-      position: relative; width: 100%; height: 500px;
-      background-color: #684571; border: 4px solid #0D0D0D; box-shadow: inset 0 0 80px rgba(0,0,0,0.5), 10px 10px 0 #0D0D0D;
-      overflow: hidden; perspective: 2000px; border-radius: 8px;
-    }
+    .hero-composition { position: relative; width: 100%; height: 500px; background-color: #684571; border: 4px solid #0D0D0D; box-shadow: inset 0 0 80px rgba(0,0,0,0.5), 10px 10px 0 #0D0D0D; overflow: hidden; perspective: 2000px; border-radius: 8px; }
     .card-wrapper { position: absolute; transform-style: preserve-3d; transition: all 0.5s ease; pointer-events: none; }
-    .card-visual {
-      width: 100%; display: block; border: 3px solid #0D0D0D; background: #fff;
-      box-shadow: 15px 15px 0px rgba(0,0,0,0.8); border-radius: 4px;
-    }
+    .card-visual { width: 100%; display: block; border: 3px solid #0D0D0D; background: #fff; box-shadow: 15px 15px 0px rgba(0,0,0,0.8); border-radius: 4px; }
     .wrapper-back { width: 85%; max-width: 1000px; top: 55%; left: 50%; transform: translate(-50%, -50%) rotateX(5deg) scale(0.95); z-index: 10; }
     .wrapper-left { width: 45%; min-width: 350px; bottom: -20px; left: -5%; z-index: 20; transform: rotateY(10deg) rotateZ(-3deg) translateZ(40px); }
     .wrapper-right { width: 50%; min-width: 380px; top: 10%; right: -8%; z-index: 30; transform: rotateY(-12deg) rotateZ(2deg) translateZ(80px); }
@@ -174,517 +99,461 @@
     .anim-bob-mid { animation: bob 8s ease-in-out infinite reverse; }
     .anim-bob-fast { animation: bob 7s ease-in-out infinite; }
     @keyframes bob { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+    @media (max-width: 900px) { .hero-composition { height: 350px; } .wrapper-left, .wrapper-right { display: none; } .wrapper-back { width: 95%; top: 50%; } }
 
     /* =========================================
-       4. MAIN CONTENT
+       5. INTERACTIVE THUMBNAIL GALLERY
        ========================================= */
-    .token-viz-container {
-      background: #FAFAFA; border: 4px solid #0D0D0D; box-shadow: 8px 8px 0 #684571;
-      padding: 40px; position: relative; margin: 60px 0; overflow: hidden;
-    }
-    .handwritten-label {
-      font-family: 'Bangers', cursive; color: #0D0D0D; font-size: 2rem;
-      transform: rotate(-5deg); position: absolute; text-shadow: 2px 2px 0 #FFF;
-      -webkit-text-stroke: 1px #fff;
-    }
-    .token-card {
-      background: white; border: 3px solid #0D0D0D; box-shadow: 4px 4px 0 #0D0D0D;
-      padding: 20px; font-family: 'Courier New', monospace; font-weight: bold;
-    }
-    .token-row { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; font-size: 14px;}
-    .color-swatch { width: 24px; height: 24px; border: 2px solid #0D0D0D; box-shadow: 2px 2px 0 #0D0D0D;}
-    
-    @media (max-width: 900px) {
-      .hero-composition { height: 350px; }
-      .wrapper-left, .wrapper-right { display: none; }
-      .wrapper-back { width: 95%; top: 50%; }
-      .token-viz-container > div { flex-direction: column; }
-    }
+    .thumb-item { width: 100px; height: 70px; border: 3px solid #0D0D0D; cursor: pointer; opacity: 0.5; transition: all 0.2s ease; background: #fff; overflow: hidden; }
+    .thumb-item img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb-item:hover { opacity: 1; transform: translateY(-2px); }
+    .thumb-item.active-thumb { opacity: 1; border-color: #684571; box-shadow: 4px 4px 0 #684571; }
+    @keyframes fadeIn { from { opacity: 0.8; transform: scale(0.99); } to { opacity: 1; transform: scale(1); } }
 
-    /* ── WCAG 2.4.7 Focus Visible Fix ── */
-:focus-visible {
-  outline: 3px solid #00B4FF;
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-:focus:not(:focus-visible) {
-  outline: none;
-}
+    /* Accessibility */
+    :focus-visible { outline: 3px solid #684571; outline-offset: 3px; border-radius: 2px; }
+    :focus:not(:focus-visible) { outline: none; }
   </style>
 </head>
 
-<body>
+<body class="bg-[#FAFAFA] text-manga-ink font-sans antialiased overflow-x-hidden">
 
-  <!-- Progress Bar & Jump Nav -->
-  <div id="progress-bar"></div>
-  <a href="work.html" class="home-button"><i class="fas fa-times"></i></a>
+  <div id="progress-bar" role="progressbar" aria-label="Page scroll progress"></div>
+
+  <div id="loader" class="fixed inset-0 bg-[#684571] flex flex-col items-center justify-center z-[9999] transition-opacity duration-300">
+    <p class="font-sfx text-6xl text-white tracking-widest animate-pulse" style="-webkit-text-stroke: 2px #0D0D0D; text-shadow: 4px 4px 0 #0D0D0D;">LOADING...</p>
+    <p class="font-bold text-white uppercase tracking-widest mt-4">Assembling Tokens 🎨</p>
+  </div>
+
+  <a href="work.html" class="fixed top-6 right-6 z-50 w-12 h-12 bg-manga-purple text-white font-black border-3 border-manga-ink shadow-comic flex items-center justify-center hover:bg-white hover:text-manga-purple hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none" aria-label="Close case study">
+    <i class="fas fa-times text-xl"></i>
+  </a>
 
   <nav aria-label="Case Study Navigation" class="jump-nav">
-    <ul>
-      <li><a href="#problem" class="jump-pill">Problem</a></li>
-      <li><a href="#research" class="jump-pill">Research</a></li>
-      <li><a href="#method" class="jump-pill">Method</a></li>
-      <li><a href="#results" class="jump-pill">Results</a></li>
-      <li class="nav-divider"></li>
-      <li><a href="#overview" class="jump-pill icon-only" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></a></li>
+    <ul class="flex w-full justify-between items-center gap-1">
+      <li class="flex-1"><a href="#problem" class="jump-pill active w-full">Problem</a></li>
+      <li class="flex-1"><a href="#research" class="jump-pill w-full">Research</a></li>
+      <li class="flex-1"><a href="#method" class="jump-pill w-full">Method</a></li>
+      <li class="flex-1"><a href="#results" class="jump-pill w-full">Results</a></li>
     </ul>
   </nav>
 
-  <!-- ══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
-  <section id="overview" style="position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 100px 20px 80px; background-color: #FAFAFA; border-bottom: 4px solid #0D0D0D; overflow: hidden;">
-    
-    <div class="manga-halftone-purple" style="position: absolute; inset: 0; opacity: 0.3; pointer-events: none;"></div>
-    <div class="manga-speedlines-purple" style="position: absolute; inset: 0; pointer-events: none;"></div>
+  <button id="back-to-top" class="fixed bottom-6 right-6 sm:right-8 z-50 w-12 h-12 text-white font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none bg-manga-purple" aria-label="Back to top">
+    <i class="fas fa-arrow-up text-xl"></i>
+  </button>
 
-    <div style="position: absolute; top: 5%; right: -5%; pointer-events: none; transform: rotate(3deg);">
-      <span class="font-sfx" style="font-size: clamp(8rem, 15vw, 16rem); line-height: 1; color: transparent; -webkit-text-stroke: 4px rgba(104, 69, 113, 0.15);">SYSTEM!</span>
-    </div>
+  <main id="main-content">
 
-    <div style="max-width: 1400px; margin: 0 auto; width: 100%; position: relative; z-index: 10;">
+    <section id="overview" class="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#FAFAFA] border-b-4 border-manga-ink py-20 px-4 sm:px-6 lg:px-8">
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; align-items: center;">
-        
-        <!-- Left: Copy -->
-        <div>
-          <div class="manga-label-purple" style="margin-bottom: 24px;">Case Study — Design Systems • 2025</div>
-          <br>
-          <div class="speech-bubble" style="margin-bottom: 24px;">
-            <p style="margin: 0; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Chapter 03 — Building Foundations</p>
-          </div>
-
-          <h1 class="font-sfx" style="font-size: clamp(4rem, 6vw, 6.5rem); line-height: 0.9; color: #111; margin: 0 0 16px; text-transform: uppercase; -webkit-text-stroke: 2px #0D0D0D; text-shadow: 4px 4px 0 #684571;">
-            DESIGN SYSTEM<br>REDESIGN
-          </h1>
-
-          <p style="font-size: 1.1rem; font-weight: 700; color: #111; margin-bottom: 32px; max-width: 500px; border-left: 4px solid #684571; padding-left: 16px; text-transform: uppercase;">
-            Bringing Structure, scalability, and token-based foundations to a fragmented component library.
-          </p>
-
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 560px;">
-            <div class="manga-panel" style="padding: 12px;">
-              <p style="margin: 0 0 4px; font-size: 0.6rem; font-weight: 900; color: #684571; text-transform: uppercase;">Primary Role</p>
-              <p style="margin: 0; font-size: 0.85rem; font-weight: 700;">UX Designer</p>
-            </div>
-            <div class="manga-panel" style="padding: 12px;">
-              <p style="margin: 0 0 4px; font-size: 0.6rem; font-weight: 900; color: #684571; text-transform: uppercase;">Timeframe</p>
-              <p style="margin: 0; font-size: 0.85rem; font-weight: 700;">2025</p>
-            </div>
-            <div class="manga-panel" style="padding: 12px;">
-              <p style="margin: 0 0 4px; font-size: 0.6rem; font-weight: 900; color: #684571; text-transform: uppercase;">Output</p>
-              <p style="margin: 0; font-size: 0.85rem; font-weight: 700;">Design Tokens</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: 3D Composition -->
-        <div class="hero-composition">
-          <div class="card-wrapper wrapper-back">
-              <img src="assets/img/Projects/KeelWorks Design System/Primitive.png" class="card-visual anim-bob-slow" alt="Main Dashboard Interface">
-          </div>
-          <div class="card-wrapper wrapper-left">
-              <img src="assets/img/Projects/KeelWorks Design System/Spacing.png" class="card-visual anim-bob-mid" alt="Detail View 1">
-          </div>
-          <div class="card-wrapper wrapper-right">
-              <img src="assets/img/Projects/KeelWorks Design System/Typography.png" class="card-visual anim-bob-fast" alt="Detail View 2">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================
-       PROBLEM
-       ===================== -->
-  <section id="problem" style="padding: 80px 20px; background: #fff; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 class="section-title">THE PROBLEM!</h2>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin-top: 40px;">
-        <div class="manga-panel-purple" style="padding: 30px;">
-          <p style="font-weight: 600; font-size: 1.1rem;">After reviewing our extensive component library, we realized our design system had become fragmented. Components were scattered, documentation was inconsistent, and the designs didn’t match with what was live on the site. We needed a clearer, more consistent, and scalable foundation to support future growth.</p>
-          <div style="margin-top: 20px; font-style: italic; font-size: 0.85rem; font-weight: 700; border: 2px solid #0D0D0D; padding: 10px; background: #FAFAFA;">*Disclaimer: Exact performance data is omitted to comply with NDA.</div>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-          <div class="manga-panel" style="padding: 20px; display: flex; align-items: center; gap: 16px; font-weight: 700; font-size: 1.1rem;">
-            <i class="fas fa-layer-group" style="color: #684571; font-size: 1.5rem;"></i> Scattered Components
-          </div>
-          <div class="manga-panel" style="padding: 20px; display: flex; align-items: center; gap: 16px; font-weight: 700; font-size: 1.1rem;">
-            <i class="fas fa-exclamation-triangle" style="color: #684571; font-size: 1.5rem;"></i> Figma Misaligned with Production
-          </div>
-          <div class="manga-panel" style="padding: 20px; display: flex; align-items: center; gap: 16px; font-weight: 700; font-size: 1.1rem;">
-            <i class="fas fa-file-alt" style="color: #684571; font-size: 1.5rem;"></i> Outdated Documentation
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================
-       RESEARCH
-       ===================== -->
-  <section id="research" style="padding: 80px 20px; background: #FAFAFA; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div class="speech-bubble" style="margin-bottom: 20px;"><p style="margin: 0; font-size: 14px; text-transform: uppercase;">Analysis</p></div>
-      <h2 class="section-title">RESEARCHING SYSTEMS!</h2>
-      
-      <div class="manga-panel" style="padding: 30px; margin-bottom: 40px; background: #684571; color: #fff;">
-        <p style="font-weight: 600; font-size: 1.2rem; margin: 0;">To understand how to rebuild our fragmented foundations, we researched strong, well-established systems like <strong>Material Design, Carbon, Atlassian, and Dell</strong>. We wanted to understand what makes a system scalable, maintainable, and easy to govern across multiple products.</p>
+      <div class="manga-halftone-purple absolute inset-0 opacity-30 pointer-events-none"></div>
+      <div class="manga-speedlines-purple absolute inset-0 pointer-events-none"></div>
+      <div class="absolute top-5 right-0 pointer-events-none transform rotate-3" aria-hidden="true">
+        <span class="font-sfx text-[clamp(8rem,15vw,16rem)] leading-none text-transparent" style="-webkit-text-stroke: 4px rgba(104, 69, 113, 0.15);">SYSTEM!</span>
       </div>
 
-      <div class="manga-panel-purple" style="padding: 30px; margin-bottom: 60px;">
-        <h4 style="margin: 0 0 16px; font-family: 'Bangers', cursive; font-size: 1.8rem; letter-spacing: 1px;">The strongest systems had 3 patterns in common:</h4>
-        <ul style="margin: 0; padding-left: 20px; font-weight: 700; font-size: 1.1rem; line-height: 1.8;">
-          <li>Tokenized foundations instead of raw values</li>
-          <li>Component libraries built on a consistent structure</li>
-          <li>Clear separation between design intent and engineering implementation</li>
-        </ul>
-      </div>
-
-      <!-- Color Tokens -->
-      <div class="token-viz-container">
-        <span class="handwritten-label" style="top: 20px; left: 20px;">PRIMITIVES!</span>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 40px; padding-top: 20px;">
-          <!-- Primitives Card -->
-          <div class="token-card" style="width: 320px;">
-            <div style="color: #684571; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">/Purple/Color</div>
-            <div class="token-row"><div class="color-swatch" style="background: #E0D3E3;"></div><span>#E0D3E3</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #D0BCD5;"></div><span>#D0BCD5</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #B49ABB;"></div><span>#B49ABB</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #825E8B;"></div><span>#825E8B</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #6F4B78;"></div><span>#6F4B78</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #684571;"></div><span>#684571</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #53385A;"></div><span>#53385A</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #433347;"></div><span>#433347</span></div>
-            
-            <div style="color: #684571; font-size: 12px; margin: 20px 0 10px; text-transform: uppercase;">/Link/Color</div>
-            <div class="token-row"><div class="color-swatch" style="background: #006699;"></div><span>#006699</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #004466;"></div><span>#004466</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #663399;"></div><span>#663399</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #999999;"></div><span>#999999</span></div>
-          </div>
+      <div class="relative z-10 max-w-7xl mx-auto w-full">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           
-          <div style="font-size: 40px; color: #0D0D0D;"><i class="fas fa-arrow-right"></i></div>
-          
-          <!-- Semantic Card -->
-          <div class="token-card" style="width: 320px;">
-            <div style="color: #684571; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">/Semantic/Usage</div>
-            <div class="token-row"><div class="color-swatch" style="background: #E0D3E3;"></div><span>--purple-surface-100</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #D0BCD5;"></div><span>--purple-surface-200</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #B49ABB;"></div><span>--purple-surface-300</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #825E8B;"></div><span>--purple-surface-400</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #6F4B78;"></div><span>--purple-text-strong</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #684571;"></div><span>--purple-text-default</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #53385A;"></div><span>--purple-border</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #433347;"></div><span>--purple-icon</span></div>
-            
-            <div style="color: #684571; font-size: 12px; margin: 20px 0 10px; text-transform: uppercase;">/Semantic/Usage</div>
-            <div class="token-row"><div class="color-swatch" style="background: #006699;"></div><span>--link-color-default</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #004466;"></div><span>--link-color-hover</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #663399;"></div><span>--link-color-visited</span></div>
-            <div class="token-row"><div class="color-swatch" style="background: #999999;"></div><span>--link-color-disabled</span></div>
-          </div>
-        </div>
-        <span class="handwritten-label" style="bottom: 20px; right: 40px; color: #684571;">SEMANTIC!</span>
-      </div>
-
-      <!-- Typography Tokens -->
-      <div class="token-viz-container">
-        <span class="handwritten-label" style="top: 20px; left: 20px; font-size: 1.5rem;">TYPOGRAPHY!</span>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 40px; padding-top: 20px;">
-          <div class="token-card" style="width: 320px;">
-              <div style="color: #684571; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">/Font/Family & Size</div>
-              <div class="token-row"><span style="font-family: 'Lato', sans-serif; font-weight: bold; font-size: 1.2rem;">Ag</span><span>Lato (Primary)</span></div>
-              <div class="token-row"><span style="font-family: 'Raleway', sans-serif; font-weight: bold; font-size: 1.2rem;">Ag</span><span>Raleway (Secondary)</span></div>
-              <div class="token-row"><div style="background: #eee; padding: 2px 6px; border: 2px solid #0D0D0D;">16px</div><span>size-md (1rem)</span></div>
-          </div>
-          <div style="font-size: 40px; color: #0D0D0D;"><i class="fas fa-arrow-right"></i></div>
-          <div class="token-card" style="width: 320px;">
-              <div style="color: #684571; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">/Semantic/Usage</div>
-              <div class="token-row"><span style="font-family: 'Lato', sans-serif;">Body Text</span><span>text-body-md</span></div>
-              <div class="token-row"><span style="font-family: 'Raleway', sans-serif; font-weight: 700;">Heading</span><span>text-heading-lg</span></div>
-              <div class="token-row"><span style="line-height: 1.5; background: #f9f9f9; padding: 2px;">Line Height</span><span>line-height-sm</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Spacing Tokens -->
-      <div class="token-viz-container">
-        <span class="handwritten-label" style="top: 20px; left: 20px; font-size: 1.5rem;">SPACING!</span>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 40px; padding-top: 20px;">
-            <div class="token-card" style="width: 320px;">
-                <div style="color: #684571; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">/Space/Scale</div>
-                <div class="token-row"><div style="width: 4px; height: 16px; background: #684571;"></div><span>--space-xs (4px)</span></div>
-                <div class="token-row"><div style="width: 16px; height: 16px; background: #684571;"></div><span>--space-md (16px)</span></div>
-                <div class="token-row"><div style="width: 32px; height: 16px; background: #684571;"></div><span>--space-xl (32px)</span></div>
+          <div>
+            <span class="manga-label-purple mb-6 block w-fit">Case Study — Design Systems • 2025</span>
+            <div class="speech-bubble mb-6 inline-block">
+              <p class="text-xs font-black uppercase tracking-widest">Chapter 03 — Building Foundations</p>
             </div>
-            <div style="font-size: 40px; color: #0D0D0D;"><i class="fas fa-arrow-right"></i></div>
-            <div class="token-card" style="width: 320px;">
-                <div style="color: #684571; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">/Semantic/Usage</div>
-                <div class="token-row"><div style="border: 2px dashed #0D0D0D; padding: 0 4px;">Gap</div><span>--padding-xs</span></div>
-                <div class="token-row"><div style="border: 2px dashed #0D0D0D; padding: 0 16px;">Inset</div><span>--padding-md</span></div>
-                <div class="token-row"><div style="border: 2px dashed #0D0D0D; padding: 0 32px;">Stack</div><span>--margin-xl</span></div>
-            </div>
-        </div>
-      </div>
 
-      <!-- Effects Tokens -->
-      <div class="token-viz-container">
-        <span class="handwritten-label" style="top: 20px; left: 20px; font-size: 1.5rem;">EFFECTS!</span>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 40px; padding-top: 20px;">
-            <div class="token-card" style="width: 320px;">
-                <div style="color: #684571; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">/Effect/Blur</div>
-                <div class="token-row"><span>2px</span><span>Blur-sm</span></div>
-                <div class="token-row"><span>8px</span><span>Blur-lg</span></div>
-                <div class="token-row"><span>24px</span><span>Blur-2xl</span></div>
-            </div>
-            <div style="font-size: 40px; color: #0D0D0D;"><i class="fas fa-arrow-right"></i></div>
-            <div class="token-card" style="width: 320px;">
-                <div style="color: #684571; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">/Semantic/Elevation</div>
-                <div class="token-row"><div style="width: 24px; height: 24px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.5); border-radius: 4px; border: 1px solid #000;"></div><span>--drop-shadow-sm</span></div>
-                <div class="token-row"><div style="width: 24px; height: 24px; background: #fff; box-shadow: 0 8px 16px rgba(0,0,0,0.5); border-radius: 4px; border: 1px solid #000;"></div><span>--drop-shadow-lg</span></div>
-                <div class="token-row"><div style="width: 24px; height: 24px; background: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); border-radius: 4px; border: 1px solid #000;"></div><span>--inner-shadow-sm</span></div>
-            </div>
-        </div>
-      </div>
+            <h1 class="font-sfx text-6xl sm:text-7xl lg:text-8xl leading-none text-[#111] mb-6 uppercase" style="-webkit-text-stroke: 1px #0D0D0D; text-shadow: 4px 4px 0 #684571;">
+              DESIGN SYSTEM<br>REDESIGN
+            </h1>
 
-    </div>
-  </section>
+            <p class="text-base sm:text-lg font-bold text-manga-ink/90 mb-8 max-w-lg border-l-4 border-manga-purple pl-4 uppercase tracking-wide leading-relaxed">
+              Bringing Structure, scalability, and token-based foundations to a fragmented component library.
+            </p>
 
-  <!-- =====================
-       METHOD
-       ===================== -->
-  <section id="method" style="padding: 80px 20px; background: #fff; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div class="speech-bubble" style="margin-bottom: 20px;"><p style="margin: 0; font-size: 14px; text-transform: uppercase;">Execution</p></div>
-      <h2 class="section-title">METHOD FOR SCALE!</h2>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin-bottom: 60px;">
-        <div class="manga-panel" style="padding: 30px;">
-            <h3 style="font-family: 'Bangers', cursive; font-size: 2rem; margin-bottom: 16px;">Token-First Approach</h3>
-            <p style="font-weight: 600;">We rebuilt the foundations of our system using a token-first mindset. Instead of relying on raw hex values or inconsistent naming, we defined a semantic structure covering color, spacing, and typography.</p>
-            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
-              <div style="background: #FAFAFA; border: 3px solid #0D0D0D; padding: 12px; font-weight: 700; font-family: monospace; font-size: 1rem;">
-                  <span style="color: #FF0000; margin-right: 10px;">✖</span> #684571 (Raw Hex)
+            <div class="grid grid-cols-3 gap-3 max-w-[560px]">
+              <div class="manga-panel p-3">
+                <p class="text-[0.65rem] font-black text-manga-purple uppercase tracking-widest mb-1">Primary Role</p>
+                <p class="text-xs font-bold text-manga-ink">UX Designer</p>
               </div>
-              <div style="background: #684571; color: #fff; border: 3px solid #0D0D0D; padding: 12px; font-weight: 700; font-family: monospace; font-size: 1rem;">
-                  <span style="color: #00FF00; margin-right: 10px;">✔</span> --purple-text-default (Token)
+              <div class="manga-panel p-3">
+                <p class="text-[0.65rem] font-black text-manga-purple uppercase tracking-widest mb-1">Timeframe</p>
+                <p class="text-xs font-bold text-manga-ink">2025</p>
+              </div>
+              <div class="manga-panel p-3">
+                <p class="text-[0.65rem] font-black text-manga-purple uppercase tracking-widest mb-1">Output</p>
+                <p class="text-xs font-bold text-manga-ink">Design Tokens</p>
               </div>
             </div>
-        </div>
+          </div>
 
-        <div class="manga-panel" style="padding: 30px;">
-            <h3 style="font-family: 'Bangers', cursive; font-size: 2rem; margin-bottom: 16px;">Custom Token Architecture</h3>
-            <p style="font-weight: 600;">Instead of relying on plugin-based automation, we defined all tokens manually. This allowed us to create a well-structured, transparent system with precise naming conventions and semantic organization, giving the team confidence in its scalability.</p>
-            
-            <h3 style="font-family: 'Bangers', cursive; font-size: 2rem; margin: 30px 0 16px;">Socializing The Update</h3>
-            <p style="font-weight: 600;">To help teams adopt the new structure, we conducted demos and shared before-and-after comparisons.</p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;">
-                <span class="manga-label-purple" style="font-size: 0.7rem;">Facilitated UX review</span>
-                <span class="manga-label-purple" style="font-size: 0.7rem;">Visual impact demos</span>
-                <span class="manga-label-purple" style="font-size: 0.7rem;">Migration guidelines</span>
+          <div class="hero-composition">
+            <div class="card-wrapper wrapper-back">
+                <img src="assets/img/Projects/KeelWorks Design System/Primitive.png" class="card-visual anim-bob-slow" alt="Main Dashboard Interface">
             </div>
+            <div class="card-wrapper wrapper-left">
+                <img src="assets/img/Projects/KeelWorks Design System/Spacing.png" class="card-visual anim-bob-mid" alt="Detail View 1">
+            </div>
+            <div class="card-wrapper wrapper-right">
+                <img src="assets/img/Projects/KeelWorks Design System/Typography.png" class="card-visual anim-bob-fast" alt="Detail View 2">
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
 
-      <!-- Interactive Gallery -->
-      <div class="manga-panel-purple" style="padding: 40px; background: #0D0D0D; color: #fff;">
-        <h3 style="font-family: 'Bangers', cursive; font-size: 3rem; color: #FFFFFF; -webkit-text-stroke: 1px #000; text-shadow: 4px 4px 0 #684571; margin-bottom: 10px;">TRIAL & ERROR!</h3>
-        <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 30px;">We iterated through multiple naming structures. Click the thumbnails below to see the evolution.</p>
-      
-        <div style="background: #fff; padding: 20px; border: 4px solid #0D0D0D; box-shadow: 8px 8px 0 #684571; border-radius: 8px; text-align: center;">
-          <div style="margin-bottom: 20px; min-height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #FAFAFA; border: 3px solid #0D0D0D;">
-            <img id="mainDisplay" src="assets/img/Projects/KeelWorks Design System/Workingfile.png" alt="Design System Figma File Overview" style="max-width: 100%; max-height: 500px; animation: fadeIn 0.5s;">
-          </div>
-          <p id="captionText" style="color: #0D0D0D; margin-bottom: 20px; font-weight: 800; font-size: 1.2rem; text-transform: uppercase;">Design System Overview</p>
-      
-          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; border-top: 3px dashed #0D0D0D; padding-top: 20px;">
-            <div class="thumb-item active-thumb" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Working file.png', 'Iteration 1: Initial Naming Structure')"><img src="assets/img/Projects/KeelWorks Design System/Working file.png"></div>
-            <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Buttons_5.png', 'Page 1: Refined Buttons Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Buttons_5.png"></div>
-            <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Buttons_6.png', 'Page 2: Refined Buttons Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Buttons_6.png"></div>
-            <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Typography_2.png', 'Page 1: Refined Typography Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Typography_2.png"></div>
-            <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Typography_3.png', 'Page 2: Refined Typography Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Typography_3.png"></div>
-            <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Spacing_1.png', 'Page 1: Refined Spacing Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Spacing_1.png"></div>
-            <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Spacing_Margin.png', 'Page 2: Refined Spacing Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Spacing_Margin.png"></div>
-            <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Shadows.png', 'Page 1: Refined Shadows Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Shadows.png"></div>
-          </div>
-        </div>
-      </div>
-      
-      <style>
-        .thumb-item { width: 100px; height: 70px; border: 3px solid #0D0D0D; cursor: pointer; opacity: 0.5; transition: all 0.2s ease; background: #fff; overflow: hidden; }
-        .thumb-item img { width: 100%; height: 100%; object-fit: cover; }
-        .thumb-item:hover { opacity: 1; transform: translateY(-2px); }
-        .thumb-item.active-thumb { opacity: 1; border-color: #684571; box-shadow: 4px 4px 0 #684571; }
-        @keyframes fadeIn { from { opacity: 0.8; transform: scale(0.99); } to { opacity: 1; transform: scale(1); } }
-      </style>
-      
-      <script>
-        function switchImage(element, src, caption) {
-          const mainImg = document.getElementById('mainDisplay');
-          const captionP = document.getElementById('captionText');
-          document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active-thumb'));
-          element.classList.add('active-thumb');
-          mainImg.src = src; mainImg.alt = caption; captionP.textContent = caption;
-          mainImg.style.animation = 'none'; mainImg.offsetHeight; mainImg.style.animation = 'fadeIn 0.5s';
-        }
-      </script>
-
-    </div>
-  </section>
-
-  <!-- =====================
-       RESULTS
-       ===================== -->
-  <section id="results" style="padding: 80px 20px; background: #FAFAFA; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div class="speech-bubble" style="margin-bottom: 20px;"><p style="margin: 0; font-size: 14px; text-transform: uppercase;">Impact</p></div>
-      <h2 class="section-title">OUTCOMES & INSIGHTS!</h2>
-      
-      <div class="manga-panel" style="padding: 30px; margin-bottom: 40px; background: #684571; color: #fff;">
-        <p style="font-weight: 700; font-size: 1.2rem; margin: 0;">Once the new approach was shared with leadership, they requested an update to the entire component library. Thanks to our token-based foundations, the process was completed in <strong>about 10 minutes</strong> instead of taking several days.</p>
-      </div>
-  
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px;">
+    <section id="problem" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-sfx text-5xl sm:text-6xl text-manga-ink uppercase tracking-wide mb-10" style="text-shadow: 4px 4px 0 #684571;">THE PROBLEM!</h2>
         
-        <div class="manga-panel" style="padding: 40px; text-align: center; display: flex; flex-direction: column; align-items: center;">
-          <div style="width: 80px; height: 80px; border: 4px solid #0D0D0D; background: #fff; box-shadow: 4px 4px 0 #684571; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; border-radius: 50%;">
-            <i class="fas fa-check-square" style="font-size: 2.5rem; color: #0D0D0D;"></i>
+        <div class="grid lg:grid-cols-2 gap-10">
+          <div class="manga-panel-purple p-8">
+            <p class="font-bold text-base sm:text-lg text-manga-ink/90 leading-relaxed mb-6">After reviewing our extensive component library, we realized our design system had become fragmented. Components were scattered, documentation was inconsistent, and the designs didn’t match with what was live on the site. We needed a clearer, more consistent, and scalable foundation to support future growth.</p>
+            <div class="italic text-sm font-bold border-2 border-manga-ink p-4 bg-[#FAFAFA] text-manga-ink/80">*Disclaimer: Exact performance data is omitted to comply with NDA.</div>
           </div>
-          <h3 style="font-family: 'Bangers', cursive; font-size: 2.5rem; margin-bottom: 10px; line-height: 1;">Library Audit</h3>
-          <p style="font-weight: 600; font-size: 1.1rem; margin: 0;">Reviewed components for consistency across the entire ecosystem.</p>
+
+          <div class="flex flex-col gap-4 justify-center">
+            <div class="manga-panel p-5 flex items-center gap-4 text-base sm:text-lg font-black text-manga-ink uppercase tracking-wide">
+              <i class="fas fa-layer-group text-2xl text-manga-purple w-8 text-center"></i> Scattered Components
+            </div>
+            <div class="manga-panel p-5 flex items-center gap-4 text-base sm:text-lg font-black text-manga-ink uppercase tracking-wide">
+              <i class="fas fa-exclamation-triangle text-2xl text-manga-purple w-8 text-center"></i> Figma Misaligned with Production
+            </div>
+            <div class="manga-panel p-5 flex items-center gap-4 text-base sm:text-lg font-black text-manga-ink uppercase tracking-wide">
+              <i class="fas fa-file-alt text-2xl text-manga-purple w-8 text-center"></i> Outdated Documentation
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto">
+        <div class="speech-bubble mb-6"><p class="m-0 text-sm uppercase tracking-widest">Analysis</p></div>
+        <h2 class="font-sfx text-5xl sm:text-6xl text-manga-ink uppercase tracking-wide mb-10" style="text-shadow: 4px 4px 0 #684571;">RESEARCHING SYSTEMS!</h2>
+        
+        <div class="manga-panel p-8 mb-10 bg-manga-purple text-white shadow-comic-lg">
+          <p class="font-bold text-base sm:text-lg leading-relaxed">To understand how to rebuild our fragmented foundations, we researched strong, well-established systems like <strong>Material Design, Carbon, Atlassian, and Dell</strong>. We wanted to understand what makes a system scalable, maintainable, and easy to govern across multiple products.</p>
         </div>
 
-        <div class="manga-panel" style="padding: 40px; text-align: center; display: flex; flex-direction: column; align-items: center; background: #684571; color: #fff;">
-          <div style="width: 80px; height: 80px; border: 4px solid #0D0D0D; background: #fff; box-shadow: 4px 4px 0 #0D0D0D; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; border-radius: 50%;">
-            <i class="fas fa-code-branch" style="font-size: 2.5rem; color: #684571;"></i>
+        <div class="manga-panel-purple p-8 mb-16 bg-white">
+          <h4 class="font-sfx text-3xl text-manga-ink mb-4 tracking-wide">The strongest systems had 3 patterns in common:</h4>
+          <ul class="list-disc pl-6 font-bold text-base text-manga-ink/90 leading-relaxed space-y-2">
+            <li>Tokenized foundations instead of raw values</li>
+            <li>Component libraries built on a consistent structure</li>
+            <li>Clear separation between design intent and engineering implementation</li>
+          </ul>
+        </div>
+
+        <div class="bg-[#FAFAFA] border-4 border-manga-ink shadow-[8px_8px_0_#684571] p-6 sm:p-10 relative overflow-hidden mb-16">
+          <span class="font-sfx text-3xl sm:text-4xl text-manga-ink absolute top-5 left-5 transform -rotate-3 text-shadow-sm" style="-webkit-text-stroke: 1px #fff; text-shadow: 2px 2px 0 #fff;">PRIMITIVES!</span>
+          
+          <div class="flex flex-wrap justify-center items-center gap-10 mt-12">
+            <div class="bg-white border-3 border-manga-ink shadow-comic p-5 font-mono font-bold text-xs sm:text-sm w-full max-w-[340px]">
+              <div class="text-[0.65rem] text-manga-purple mb-3 uppercase tracking-widest">/Purple/Color</div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#E0D3E3]"></div><span>#E0D3E3</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#D0BCD5]"></div><span>#D0BCD5</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#B49ABB]"></div><span>#B49ABB</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#825E8B]"></div><span>#825E8B</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#6F4B78]"></div><span>#6F4B78</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#684571]"></div><span>#684571</span></div>
+              
+              <div class="text-[0.65rem] text-manga-purple mt-6 mb-3 uppercase tracking-widest">/Link/Color</div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#006699]"></div><span>#006699</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#663399]"></div><span>#663399</span></div>
+            </div>
+            
+            <div class="text-4xl text-manga-ink hidden lg:block"><i class="fas fa-arrow-right"></i></div>
+            
+            <div class="bg-white border-3 border-manga-ink shadow-comic p-5 font-mono font-bold text-xs sm:text-sm w-full max-w-[340px]">
+              <div class="text-[0.65rem] text-manga-purple mb-3 uppercase tracking-widest">/Semantic/Usage</div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#E0D3E3]"></div><span>--purple-surface-100</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#D0BCD5]"></div><span>--purple-surface-200</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#B49ABB]"></div><span>--purple-surface-300</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#825E8B]"></div><span>--purple-surface-400</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#6F4B78]"></div><span>--purple-text-strong</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#684571]"></div><span>--purple-text-default</span></div>
+              
+              <div class="text-[0.65rem] text-manga-purple mt-6 mb-3 uppercase tracking-widest">/Semantic/Usage</div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#006699]"></div><span>--link-color-default</span></div>
+              <div class="flex items-center gap-3 mb-3"><div class="w-6 h-6 border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D] bg-[#663399]"></div><span>--link-color-visited</span></div>
+            </div>
           </div>
-          <h3 style="font-family: 'Bangers', cursive; font-size: 2.5rem; margin-bottom: 10px; line-height: 1;">Tokenization</h3>
-          <p style="font-weight: 600; font-size: 1.1rem; margin: 0;">Built a semantic, scalable foundation saving days of manual updates.</p>
+          <span class="font-sfx text-3xl sm:text-4xl text-manga-purple absolute bottom-5 right-5 transform rotate-2">SEMANTIC!</span>
+        </div>
+
+        <div class="bg-[#FAFAFA] border-4 border-manga-ink shadow-[8px_8px_0_#684571] p-6 sm:p-10 relative overflow-hidden mb-16">
+          <span class="font-sfx text-3xl sm:text-4xl text-manga-ink absolute top-5 left-5 transform -rotate-2" style="-webkit-text-stroke: 1px #fff; text-shadow: 2px 2px 0 #fff;">TYPOGRAPHY!</span>
+          <div class="flex flex-wrap justify-center items-center gap-10 mt-12">
+            <div class="bg-white border-3 border-manga-ink shadow-comic p-5 font-mono font-bold text-xs sm:text-sm w-full max-w-[340px]">
+                <div class="text-[0.65rem] text-manga-purple mb-4 uppercase tracking-widest">/Font/Family & Size</div>
+                <div class="flex items-center gap-4 mb-4"><span class="font-sans text-xl">Ag</span><span>Lato (Primary)</span></div>
+                <div class="flex items-center gap-4 mb-4"><span style="font-family: 'Raleway', sans-serif;" class="text-xl">Ag</span><span>Raleway (Secondary)</span></div>
+                <div class="flex items-center gap-4 mb-4"><div class="bg-gray-200 px-2 py-1 border-2 border-manga-ink">16px</div><span>size-md (1rem)</span></div>
+            </div>
+            <div class="text-4xl text-manga-ink hidden lg:block"><i class="fas fa-arrow-right"></i></div>
+            <div class="bg-white border-3 border-manga-ink shadow-comic p-5 font-mono font-bold text-xs sm:text-sm w-full max-w-[340px]">
+                <div class="text-[0.65rem] text-manga-purple mb-4 uppercase tracking-widest">/Semantic/Usage</div>
+                <div class="flex items-center justify-between mb-4"><span class="font-sans">Body Text</span><span>text-body-md</span></div>
+                <div class="flex items-center justify-between mb-4"><span style="font-family: 'Raleway', sans-serif;">Heading</span><span>text-heading-lg</span></div>
+                <div class="flex items-center justify-between mb-4"><span class="bg-gray-100 px-1 border border-gray-300">Line Height</span><span>line-height-sm</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#FAFAFA] border-4 border-manga-ink shadow-[8px_8px_0_#684571] p-6 sm:p-10 relative overflow-hidden mb-16">
+          <span class="font-sfx text-3xl sm:text-4xl text-manga-ink absolute top-5 left-5 transform -rotate-3" style="-webkit-text-stroke: 1px #fff; text-shadow: 2px 2px 0 #fff;">SPACING!</span>
+          <div class="flex flex-wrap justify-center items-center gap-10 mt-12">
+              <div class="bg-white border-3 border-manga-ink shadow-comic p-5 font-mono font-bold text-xs sm:text-sm w-full max-w-[340px]">
+                  <div class="text-[0.65rem] text-manga-purple mb-4 uppercase tracking-widest">/Space/Scale</div>
+                  <div class="flex items-center gap-4 mb-4"><div class="w-1 h-4 bg-manga-purple"></div><span>--space-xs (4px)</span></div>
+                  <div class="flex items-center gap-4 mb-4"><div class="w-4 h-4 bg-manga-purple"></div><span>--space-md (16px)</span></div>
+                  <div class="flex items-center gap-4 mb-4"><div class="w-8 h-4 bg-manga-purple"></div><span>--space-xl (32px)</span></div>
+              </div>
+              <div class="text-4xl text-manga-ink hidden lg:block"><i class="fas fa-arrow-right"></i></div>
+              <div class="bg-white border-3 border-manga-ink shadow-comic p-5 font-mono font-bold text-xs sm:text-sm w-full max-w-[340px]">
+                  <div class="text-[0.65rem] text-manga-purple mb-4 uppercase tracking-widest">/Semantic/Usage</div>
+                  <div class="flex items-center justify-between mb-4"><div class="border-2 border-dashed border-manga-ink px-1">Gap</div><span>--padding-xs</span></div>
+                  <div class="flex items-center justify-between mb-4"><div class="border-2 border-dashed border-manga-ink px-4">Inset</div><span>--padding-md</span></div>
+                  <div class="flex items-center justify-between mb-4"><div class="border-2 border-dashed border-manga-ink px-8">Stack</div><span>--margin-xl</span></div>
+              </div>
+          </div>
         </div>
 
       </div>
+    </section>
 
-      <div class="manga-panel" style="margin-top: 60px; padding: 40px; background: #fff;">
-        <h3 style="font-family: 'Bangers', cursive; font-size: 2.5rem; margin-bottom: 16px;">FUTURE VISION!</h3>
-        <p style="font-weight: 600; font-size: 1.1rem;">Our long-term goal is to merge multiple UI libraries into a single, token-driven design system. This unified approach would provide a consistent foundation across all products, reduce duplication, and streamline collaboration between teams.</p>
-        <ul style="margin: 20px 0 0 20px; font-weight: 700; font-size: 1.1rem;">
-          <li>Shared foundation tokens for consistency</li>
-          <li>Primitives and components built on these foundations</li>
-          <li>Standardized icons, assets, and engineering handoff processes</li>
-        </ul>
+    <section id="method" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto">
+        <div class="speech-bubble mb-6"><p class="m-0 text-sm uppercase tracking-widest">Execution</p></div>
+        <h2 class="font-sfx text-5xl sm:text-6xl text-manga-ink uppercase tracking-wide mb-10" style="text-shadow: 4px 4px 0 #684571;">METHOD FOR SCALE!</h2>
+
+        <div class="grid lg:grid-cols-2 gap-10 mb-16">
+          <div class="manga-panel p-8">
+              <h3 class="font-sfx text-3xl text-manga-ink tracking-wide mb-4">Token-First Approach</h3>
+              <p class="font-bold text-base text-manga-ink/90 leading-relaxed mb-6">We rebuilt the foundations of our system using a token-first mindset. Instead of relying on raw hex values or inconsistent naming, we defined a semantic structure covering color, spacing, and typography.</p>
+              <div class="flex flex-col gap-3">
+                <div class="bg-[#FAFAFA] border-3 border-manga-ink p-3 font-mono font-bold text-sm flex items-center">
+                    <span class="text-red-500 text-lg mr-3">✖</span> #684571 (Raw Hex)
+                </div>
+                <div class="bg-manga-purple text-white border-3 border-manga-ink p-3 font-mono font-bold text-sm flex items-center">
+                    <span class="text-green-400 text-lg mr-3">✔</span> --purple-text-default (Token)
+                </div>
+              </div>
+          </div>
+
+          <div class="manga-panel p-8">
+              <h3 class="font-sfx text-3xl text-manga-ink tracking-wide mb-4">Custom Token Architecture</h3>
+              <p class="font-bold text-base text-manga-ink/90 leading-relaxed mb-8">Instead of relying on plugin-based automation, we defined all tokens manually. This allowed us to create a well-structured, transparent system with precise naming conventions and semantic organization, giving the team confidence in its scalability.</p>
+              
+              <h3 class="font-sfx text-3xl text-manga-ink tracking-wide mb-4">Socializing The Update</h3>
+              <p class="font-bold text-base text-manga-ink/90 leading-relaxed mb-4">To help teams adopt the new structure, we conducted demos and shared before-and-after comparisons.</p>
+              <div class="flex flex-wrap gap-2">
+                  <span class="manga-label-purple text-[0.65rem]">Facilitated UX review</span>
+                  <span class="manga-label-purple text-[0.65rem]">Visual impact demos</span>
+                  <span class="manga-label-purple text-[0.65rem]">Migration guidelines</span>
+              </div>
+          </div>
+        </div>
+
+        <div class="manga-panel-purple p-6 sm:p-10 bg-[#0D0D0D] text-white">
+          <h3 class="font-sfx text-4xl sm:text-5xl text-white mb-4 tracking-wide" style="-webkit-text-stroke: 1px #000; text-shadow: 4px 4px 0 #684571;">TRIAL & ERROR!</h3>
+          <p class="font-bold text-base sm:text-lg text-white/90 mb-8">We iterated through multiple naming structures. Click the thumbnails below to see the evolution.</p>
+        
+          <div class="bg-white p-6 border-4 border-manga-ink shadow-[8px_8px_0_#684571] rounded text-center">
+            <div class="mb-6 min-h-[400px] flex items-center justify-center overflow-hidden bg-[#FAFAFA] border-3 border-manga-ink">
+              <img id="mainDisplay" src="assets/img/Projects/KeelWorks Design System/Working file.png" alt="Design System Figma File Overview" class="w-full max-h-[500px] object-contain">
+            </div>
+            <p id="captionText" class="text-manga-ink mb-6 font-black text-lg uppercase tracking-wide">Iteration 1: Initial Naming Structure</p>
+        
+            <div class="flex gap-4 justify-center flex-wrap border-t-3 border-dashed border-manga-ink pt-6">
+              <div class="thumb-item active-thumb" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Working file.png', 'Iteration 1: Initial Naming Structure')"><img src="assets/img/Projects/KeelWorks Design System/Working file.png"></div>
+              <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Buttons_5.png', 'Page 1: Refined Buttons Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Buttons_5.png"></div>
+              <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Buttons_6.png', 'Page 2: Refined Buttons Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Buttons_6.png"></div>
+              <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Typography_2.png', 'Page 1: Refined Typography Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Typography_2.png"></div>
+              <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Typography_3.png', 'Page 2: Refined Typography Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Typography_3.png"></div>
+              <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Spacing_1.png', 'Page 1: Refined Spacing Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Spacing_1.png"></div>
+              <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Spacing_Margin.png', 'Page 2: Refined Spacing Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Spacing_Margin.png"></div>
+              <div class="thumb-item" onclick="switchImage(this, 'assets/img/Projects/KeelWorks Design System/Tokens/Shadows.png', 'Page 1: Refined Shadows Groupings')"><img src="assets/img/Projects/KeelWorks Design System/Tokens/Shadows.png"></div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function switchImage(element, src, caption) {
+            const mainImg = document.getElementById('mainDisplay');
+            const captionP = document.getElementById('captionText');
+            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active-thumb'));
+            element.classList.add('active-thumb');
+            mainImg.src = src; mainImg.alt = caption; captionP.textContent = caption;
+            mainImg.style.animation = 'none'; mainImg.offsetHeight; mainImg.style.animation = 'fadeIn 0.5s';
+          }
+        </script>
+
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- =====================
-       MORE PROJECTS & FOOTER
-       ===================== -->
-  <section style="padding: 60px 20px; background: #FAFAFA; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-      <a href="ManageW.html" class="manga-button" style="background: #FFFFFF; color: #0D0D0D;">← Previous</a>
-      <a href="TouroUniversityGST.html" class="manga-button">Next Project →</a>
-    </div>
-  </section>
-
-  <footer style="background-color: #0D0D0D; position: relative; overflow: hidden; padding: 80px 20px; text-align: center; border-top: 6px solid #684571;">
-    <div class="manga-halftone-purple" style="position: absolute; inset: 0; opacity: 0.15; pointer-events: none;"></div>
+    <section id="results" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto">
+        <div class="speech-bubble mb-6"><p class="m-0 text-sm uppercase tracking-widest">Impact</p></div>
+        <h2 class="font-sfx text-5xl sm:text-6xl text-manga-ink uppercase tracking-wide mb-10" style="text-shadow: 4px 4px 0 #684571;">OUTCOMES & INSIGHTS!</h2>
+        
+        <div class="manga-panel p-8 mb-12 bg-manga-purple text-white shadow-comic-lg">
+          <p class="font-bold text-base sm:text-lg leading-relaxed">Once the new approach was shared with leadership, they requested an update to the entire component library. Thanks to our token-based foundations, the process was completed in <strong>about 10 minutes</strong> instead of taking several days.</p>
+        </div>
     
-    <div style="position: relative; z-index: 10; max-width: 1100px; margin: 0 auto;">
-      <h3 class="font-sfx" style="font-size: 4rem; color: #fff; margin-bottom: 30px; letter-spacing: 2px;">LET'S CONNECT!</h3>
-      
-      <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
-        <a href="https://www.linkedin.com/in/mainakc98/" style="color: #684571; text-decoration: none; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; border: 3px solid #684571; padding: 10px 20px; transition: all 0.2s ease;" onmouseover="this.style.background='#684571'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#684571';">
-          <i class="fab fa-linkedin"></i> LinkedIn
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="manga-panel p-10 flex flex-col items-center text-center">
+            <div class="w-20 h-20 border-4 border-manga-ink bg-white shadow-[4px_4px_0_#684571] flex items-center justify-center mb-6 rounded-full">
+              <i class="fas fa-check-square text-4xl text-manga-ink"></i>
+            </div>
+            <h3 class="font-sfx text-4xl text-manga-ink tracking-wide mb-3">Library Audit</h3>
+            <p class="font-bold text-base text-manga-ink/90 leading-relaxed">Reviewed components for consistency across the entire ecosystem.</p>
+          </div>
+
+          <div class="manga-panel p-10 flex flex-col items-center text-center bg-manga-purple text-white shadow-comic-lg">
+            <div class="w-20 h-20 border-4 border-manga-ink bg-white shadow-[4px_4px_0_#0D0D0D] flex items-center justify-center mb-6 rounded-full">
+              <i class="fas fa-code-branch text-4xl text-manga-purple"></i>
+            </div>
+            <h3 class="font-sfx text-4xl text-white tracking-wide mb-3">Tokenization</h3>
+            <p class="font-bold text-base text-white/90 leading-relaxed">Built a semantic, scalable foundation saving days of manual updates.</p>
+          </div>
+        </div>
+
+        <div class="manga-panel p-8 sm:p-12 mt-16 bg-white">
+          <h3 class="font-sfx text-4xl sm:text-5xl text-manga-ink tracking-wide mb-6">FUTURE VISION!</h3>
+          <p class="font-bold text-base sm:text-lg text-manga-ink/90 leading-relaxed mb-6">Our long-term goal is to merge multiple UI libraries into a single, token-driven design system. This unified approach would provide a consistent foundation across all products, reduce duplication, and streamline collaboration between teams.</p>
+          <ul class="list-disc pl-6 font-bold text-base text-manga-ink/90 space-y-2">
+            <li>Shared foundation tokens for consistency</li>
+            <li>Primitives and components built on these foundations</li>
+            <li>Standardized icons, assets, and engineering handoff processes</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-t-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-4">
+        <a href="ManageW.html" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-manga-ink font-black uppercase tracking-wide border-3 border-manga-ink shadow-comic hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none">
+          <i class="fas fa-arrow-left text-xs"></i> Previous Project
         </a>
-        <a href="mailto:mainak.chak04@gmail.com" style="color: #684571; text-decoration: none; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; border: 3px solid #684571; padding: 10px 20px; transition: all 0.2s ease;" onmouseover="this.style.background='#684571'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#684571';">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-        <a href="https://drive.google.com/file/d/1_l2CEcNTSOgdJuJh1EaovdHdRfeJlUXM/view?usp=drive_link" style="color: #684571; text-decoration: none; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; border: 3px solid #684571; padding: 10px 20px; transition: all 0.2s ease;" onmouseover="this.style.background='#684571'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#684571';">
-          <i class="fas fa-file-alt"></i> Resume
+        <a href="TouroUniversityGST.html" class="inline-flex items-center gap-2 px-6 py-3 bg-manga-purple text-white font-black uppercase tracking-wide border-3 border-manga-ink shadow-[4px_4px_0_#0D0D0D] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none">
+          Next Project <i class="fas fa-arrow-right text-xs"></i>
         </a>
       </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-[#0D0D0D] py-12 sm:py-16 overflow-hidden relative" role="contentinfo" aria-labelledby="footer-heading">
+    <div class="absolute inset-0 manga-halftone-purple opacity-[0.25] pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-full h-2" style="background: repeating-linear-gradient(90deg, #684571 0px, #684571 16px, #262626 16px, #262626 32px);" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-12">
+        <span class="manga-label-purple mb-6 block w-fit mx-auto">Contact</span>
+        <div class="relative inline-block">
+          <h2 id="footer-heading" class="text-3xl sm:text-4xl font-black uppercase tracking-wide text-white">Let's Get In Touch</h2>
+          <div class="absolute -bottom-2 left-0 w-full h-2 -z-10 transform -rotate-1" style="background:#684571;" aria-hidden="true"></div>
+        </div>
+        <p class="mt-6 text-sm font-bold uppercase tracking-widest text-white/70">Open to Opportunities</p>
+      </header>
+
+      <nav aria-label="Contact information">
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto" role="list">
+          <li>
+            <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-[#684571] hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+              <div class="w-11 h-11 bg-gradient-to-br from-purple-500 to-purple-800 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                <i class="fab fa-linkedin-in text-white text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-[#684571] transition-colors">LinkedIn</div>
+                <div class="text-xs text-white/60">in/mainakc98</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:mainak.chak04@gmail.com" class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-[#684571] hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+              <div class="w-11 h-11 bg-gradient-to-br from-purple-500 to-purple-800 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-envelope text-white text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-[#684571] transition-colors">Email</div>
+                <div class="text-xs text-white/60 truncate">mainak.chak04@gmail.com</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1_l2CEcNTSOgdJuJh1EaovdHdRfeJlUXM/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-[#684571] hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+              <div class="w-11 h-11 bg-gradient-to-br from-purple-500 to-purple-800 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-file-alt text-white text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-[#684571] transition-colors">Resume</div>
+                <div class="text-xs text-white/60">Download PDF</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <p class="text-sm text-white/50 flex items-center justify-center gap-2 flex-wrap font-bold text-center uppercase tracking-wider">
+        <span>Made with</span>
+        <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain" class="inline-block h-5 w-auto align-middle" width="20" height="20">
+        <span>sleepless nights &amp; lots of coffee</span>
+        <span class="text-white/20 mx-1">|</span>
+        <span>© 2026 Mainak Chakraborty</span>
+      </p>
     </div>
   </footer>
 
   <script>
-    // ── Loader ──
-    window.addEventListener('load', function () {
-      const loader = document.getElementById('loader');
-      setTimeout(function () {
-        if(loader) {
-          loader.classList.add('fade-out');
-          setTimeout(function () { loader.style.display = 'none'; }, 300);
-        }
-      }, 700);
-    });
+    // 1. Structural Loader Process (Failsafe Timer)
+    setTimeout(function() {
+      const loader = document.getElementById("loader");
+      if(loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => { loader.style.display = "none"; }, 400);
+      }
+    }, 800);
 
-    // ── Progress bar ──
-    const bar = document.getElementById('progress-bar');
+    // 2. Real-Time Scroll Calculation
     window.addEventListener('scroll', function () {
-      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-      if (bar) { bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', Math.round(pct)); }
+      var bar = document.getElementById('progress-bar');
+      var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      if (bar) { bar.style.width = pct + '%'; }
     }, { passive: true });
 
-    // ── Back to top ──
-    const backToTopBtn = document.getElementById('back-to-top');
-    window.addEventListener('scroll', function () {
-      if(backToTopBtn) backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
-    }, { passive: true });
-    
-    if(backToTopBtn) {
-      backToTopBtn.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    // ── Robust Jump Nav Active State (Scroll Spy) ──
+    // 3. Jump Tracking Anchor Management Engine
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Get all pills
-      const pills = document.querySelectorAll('.jump-pill');
-      
-      // 2. Set up the observer options
-      const observerOptions = {
-        root: null,
-        // The rootMargin creates a horizontal band in the middle of the screen.
-        // When a section enters this band, it becomes 'active'.
-        rootMargin: '-30% 0px -60% 0px', 
-        threshold: 0
-      };
+      const pills = document.querySelectorAll('.jump-nav .jump-pill');
+      const sections = ['problem', 'research', 'method', 'results'].map(id => document.getElementById(id));
+      const backToTop = document.getElementById('back-to-top');
 
-      // 3. Create the observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Get the ID of the section that is currently on screen
-            const currentId = entry.target.getAttribute('id');
-            
-            // Loop through all pills
-            pills.forEach(pill => {
-              // Remove active class from all
-              pill.classList.remove('active');
-              // Add active class if the href matches the section ID
-              if (pill.getAttribute('href') === `#${currentId}`) {
-                pill.classList.add('active');
-              }
-            });
-          }
+      window.addEventListener('scroll', function () {
+        var scrollY = window.scrollY + window.innerHeight * 0.3;
+        var currentIndex = 0;
+        
+        sections.forEach(function (section, i) {
+          if (section && section.offsetTop <= scrollY) currentIndex = i;
         });
-      }, observerOptions);
+        
+        pills.forEach(function (p) { p.classList.remove('active'); });
+        if (pills[currentIndex]) pills[currentIndex].classList.add('active');
 
-      // 4. Tell the observer to watch all sections that have a corresponding pill
-      pills.forEach(pill => {
-        const id = pill.getAttribute('href').substring(1); // Remove the '#'
-        const targetSection = document.getElementById(id);
-        if (targetSection) {
-          observer.observe(targetSection);
+        // Back to top floating button logic
+        if (backToTop) {
+          if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+          } else {
+            backToTop.classList.remove('show');
+          }
         }
-      });
+      }, { passive: true });
+
+      if(backToTop) {
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
     });
   </script>
 </body>
