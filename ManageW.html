@@ -1,860 +1,850 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ManageWise | Personalizing Productivity Through AI</title>
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='90' height='90' x='5' y='5' rx='15' fill='%23FFCD29' stroke='%230D0D0D' stroke-width='8'/><text x='50%25' y='54%25' font-family='Arial, sans-serif' font-weight='900' font-size='40' fill='%230D0D0D' text-anchor='middle' dominant-baseline='middle'>MW</text></svg>">
   
-  <!-- Fonts -->
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Bangers&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
   
-  <style>
-    /* === BASE MANGA RESET === */
-    html, body { height: 100%; margin: 0; padding: 0; scroll-behavior: smooth; }
-    body {
-      font-family: 'Chakra Petch', sans-serif;
-      background-color: #FAFAFA;
-      color: #0D0D0D;
-      line-height: 1.6;
+  <!-- Tailwind Core Engine & Custom System Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Chakra Petch', 'sans-serif'],
+            sfx:  ['Bangers', 'cursive'],
+          },
+          colors: {
+            accent:  { 500: '#FF9933' },
+            manga: {
+              ink:    '#0D0D0D',
+              panel:  '#FFFEF5',
+              blue:   '#00B4FF',
+              pink:   '#FF006E',
+              purple: '#9B4DCA',
+              amber:  '#D97706',
+              yellow: '#FFCD29',
+            }
+          },
+          borderWidth: { '3': '3px' },
+          boxShadow: {
+            'comic':          '4px 4px 0px 0px #0D0D0D',
+            'comic-lg':       '8px 8px 0px 0px #0D0D0D',
+            'comic-yellow':   '4px 4px 0px 0px #FFCD29',
+            'comic-yellow-lg':'8px 8px 0px 0px #FFCD29',
+            'comic-purple':   '4px 4px 0px 0px #9B4DCA',
+            'comic-amber':    '4px 4px 0px 0px #D97706',
+            'comic-pink':     '4px 4px 0px 0px #FF006E',
+            'comic-blue':     '4px 4px 0px 0px #00B4FF',
+          }
+        }
+      }
     }
-
-    /* === TYPOGRAPHY & MANGA ELEMENTS === */
-    .font-sfx { font-family: 'Bangers', cursive; letter-spacing: 0.05em; }
-    
-    .manga-halftone-yellow {
-      background-image: radial-gradient(circle, rgba(255, 205, 41, 0.4) 2px, transparent 2px);
+  </script>
+  
+  <!-- Custom Manga Graphical Stylesheets -->
+  <style>
+    /* ── Halftones & Graphic Layers ── */
+    .manga-halftone {
+      background-image: radial-gradient(circle, #0D0D0D 1px, transparent 1px);
       background-size: 20px 20px;
     }
-
+    .manga-halftone-yellow {
+      background-image: radial-gradient(circle, rgba(255, 205, 41, 0.25) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
     .manga-speedlines-yellow {
       background: repeating-linear-gradient(
         -45deg, transparent, transparent 20px,
-        rgba(255, 205, 41, 0.2) 20px, rgba(255, 205, 41, 0.2) 23px,
+        rgba(255, 205, 41, 0.15) 20px, rgba(255, 205, 41, 0.15) 23px,
         transparent 23px, transparent 45px,
-        rgba(255, 205, 41, 0.15) 45px, rgba(255, 205, 41, 0.15) 46px
+        rgba(255, 205, 41, 0.1) 45px, rgba(255, 205, 41, 0.1) 46px
       );
     }
 
-    .manga-panel {
-      border: 3px solid #0D0D0D;
-      box-shadow: 6px 6px 0px 0px #0D0D0D;
-      background: #FFFFFF;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      border-radius: 4px;
-    }
+    /* ── Structured Manga Framework Panels ── */
+    .manga-panel        { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #0D0D0D; background: #FFFFFF; transition: transform 0.15s ease, box-shadow 0.15s ease; border-radius: 4px; }
+    .manga-panel-yellow { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FFCD29; background: #FFFFFF; transition: transform 0.15s ease, box-shadow 0.15s ease; border-radius: 4px; }
+    
+    .manga-panel:hover        { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px 0px #0D0D0D; }
+    .manga-panel-yellow:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px 0px #FFCD29; }
 
-    .manga-panel:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 8px 8px 0px 0px #0D0D0D;
-    }
-
-    .manga-panel-yellow {
-      border: 3px solid #0D0D0D;
-      box-shadow: 6px 6px 0px 0px #FFCD29;
-      background: #FFFFFF;
-      border-radius: 4px;
-    }
-
+    /* ── Graphic Component Assets ── */
     .speech-bubble {
-      position: relative;
-      background: #FFFFFF;
-      border: 3px solid #0D0D0D;
-      border-radius: 14px;
-      box-shadow: 4px 4px 0px 0px #0D0D0D;
-      display: inline-block;
-      padding: 10px 20px;
-      color: #0D0D0D;
-      font-weight: 700;
+      position: relative; background: #FFFFFF; border: 3px solid #0D0D0D; border-radius: 14px;
+      box-shadow: 4px 4px 0px 0px #0D0D0D; display: inline-block; padding: 10px 20px; color: #0D0D0D; font-weight: 700;
     }
-    .speech-bubble::after { content:''; position:absolute; bottom:-18px; left:24px; border:9px solid transparent; border-top-color:#0D0D0D; }
+    .speech-bubble::after  { content:''; position:absolute; bottom:-18px; left:24px; border:9px solid transparent; border-top-color:#0D0D0D; }
     .speech-bubble::before { content:''; position:absolute; bottom:-12px; left:26px; border:7px solid transparent; border-top-color:#FFFFFF; z-index:1; }
 
     .manga-label-yellow {
-      font-family: 'Chakra Petch', sans-serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border: 3px solid #0D0D0D;
-      background: #FFCD29;
-      color: #0D0D0D;
-      padding: 6px 14px;
-      display: inline-block;
-      box-shadow: 3px 3px 0px 0px #0D0D0D;
+      font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;
+      border: 2px solid #0D0D0D; background: #FFCD29; color: #0D0D0D; padding: 4px 12px; display: inline-block; box-shadow: 3px 3px 0px 0px #0D0D0D;
     }
+    .ink-splat-yellow { clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); background: #FFCD29; }
 
-    .manga-button {
-      display: inline-block;
-      padding: 12px 24px;
-      background: #FFCD29;
-      color: #0D0D0D;
-      font-weight: 800;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 3px solid #0D0D0D;
-      box-shadow: 4px 4px 0px #0D0D0D;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .manga-button:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0px #0D0D0D;
-    }
-
+    /* ── Typography & Title Vectors ── */
     .section-title {
-      font-family: 'Bangers', cursive;
-      font-size: 3rem;
-      color: #FFFFFF;
-      -webkit-text-stroke: 2px #0D0D0D;
-      text-shadow: 4px 4px 0px #FFCD29;
-      margin-bottom: 1rem;
-      text-align: center;
-      letter-spacing: 0.05em;
+      font-family: 'Bangers', cursive; color: #FFFFFF;
+      -webkit-text-stroke: 2px #0D0D0D; text-shadow: 4px 4px 0px #FFCD29;
+      margin-bottom: 1rem; text-align: center; letter-spacing: 0.05em; paint-order: stroke fill;
     }
+    .chapter-header { background: #111827; border-top: 3px solid #0D0D0D; border-bottom: 3px solid #0D0D0D; padding: 48px 5vw 40px; position: relative; overflow: hidden; }
+    .panel-divider-yellow { height: 6px; background: repeating-linear-gradient(90deg, #FFCD29 0px, #FFCD29 20px, #0D0D0D 20px, #0D0D0D 22px); }
 
-    /* === LIGHTBOX STYLES === */
-    .lightbox {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(13,13,13,0.9); justify-content: center; align-items: center; z-index: 9999;
-    }
+    /* ── Layout Utilities ── */
+    #progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: repeating-linear-gradient(45deg, #FFCD29, #FFCD29 10px, #0D0D0D 10px, #0D0D0D 20px); width: 0%; z-index: 9998; transition: width 0.1s ease; }
+    #loader.fade-out { opacity: 0; pointer-events: none; }
+    @keyframes pulse { from { transform: scale(0.95); } to { transform: scale(1.05); } }
+    .animate-pulse-manga { animation: pulse 1s infinite alternate; }
+
+    /* ── Interactive Systems ── */
+    .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(13,13,13,0.95); justify-content: center; align-items: center; z-index: 9999; }
     .lightbox:target { display: flex; }
     .lightbox img { max-width: 90%; max-height: 80vh; border: 4px solid #0D0D0D; box-shadow: 10px 10px 0 #FFCD29; background: #fff; }
     .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 40px; color: #FFCD29; text-decoration: none; font-weight: 900; -webkit-text-stroke: 2px #0D0D0D; }
 
-    /* === JUMP NAVIGATION (MANGA YELLOW) === */
-    .jump-nav-2026 {
-      position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 1000;
-      width: calc(100vw - 40px); max-width: 640px; min-width: 320px;
-      background: #FFFFFF; border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FFCD29;
-      padding: 8px 10px; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateX(-50%) translateY(50px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-    .jump-nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 4px; }
-    .jump-pills-container { flex: 1; display: flex; justify-content: space-evenly; gap: 2px; overflow-x: auto;}
-    .jump-pill-2026 {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      padding: 8px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
-      text-decoration: none; color: #0D0D0D; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap;
-    }
-    .jump-pill-2026:hover { background: rgba(255, 205, 41, 0.2); border-color: #0D0D0D; }
-    .jump-pill-2026.active { background: #FFCD29; border-color: #0D0D0D; box-shadow: 2px 2px 0 #0D0D0D; transform: translateY(-1px); }
-    
-    .back-to-top-2026 {
-      width: 40px; height: 40px; background: #FFCD29; border: 3px solid #0D0D0D;
-      display: flex; align-items: center; justify-content: center; margin-left: 6px;
-      text-decoration: none; color: #0D0D0D; font-weight: 900; box-shadow: 2px 2px 0 #0D0D0D; transition: all 0.2s ease;
-    }
-    .back-to-top-2026:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #0D0D0D; }
+    .jump-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: calc(100vw - 40px); max-width: 680px; min-width: 280px; background: rgba(255,255,255,0.98); border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FFCD29; padding: 6px; }
+    .jump-pill { flex: 1; display: flex; align-items: center; justify-content: center; padding: 10px 6px; min-width: 60px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; color: #0D0D0D; background: transparent; border: 2px solid transparent; transition: all 0.2s ease; cursor: pointer; white-space: nowrap; }
+    .jump-pill:hover { background: rgba(255, 205, 41, 0.15); border-color: #0D0D0D; color: #D97706; }
+    .jump-pill.active { background: #FFCD29; color: #0D0D0D; border-color: #0D0D0D; box-shadow: 2px 2px 0 #0D0D0D; }
 
-    /* Floating Home Button */
-    .home-button {
-      position: fixed; top: 20px; right: 20px; z-index: 1001;
-      background: #FFFFFF; border: 3px solid #0D0D0D; width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 4px 4px 0 #FFCD29; transition: all 0.2s ease; text-decoration: none; color: #0D0D0D; font-size: 1.4rem;
-    }
-    .home-button:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #FFCD29; }
+    /* Back to top smooth transition */
+    #back-to-top.show { opacity: 1; visibility: visible; }
 
-    /* Progress Bar */
-    #progress-bar { position: fixed; top: 0; left: 0; height: 6px; background: repeating-linear-gradient(45deg, #FFCD29, #FFCD29 10px, #0D0D0D 10px, #0D0D0D 20px); width: 0%; z-index: 9998; transition: width 0.1s ease; }
-
-    /* Responsive adjustments */
-    img { max-width: 100%; height: auto; }
-    @media (max-width: 768px) {
-      .font-sfx { font-size: 4rem !important; }
-      .grid-2 { grid-template-columns: 1fr !important; }
-      .grid-3 { grid-template-columns: 1fr !important; }
-    }
-
-    /* ── WCAG 2.4.7 Focus Visible Fix ── */
-:focus-visible {
-  outline: 3px solid #00B4FF;
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-:focus:not(:focus-visible) {
-  outline: none;
-}
+    /* Accessibility Focus */
+    :focus-visible { outline: 3px solid #00B4FF; outline-offset: 3px; border-radius: 2px; }
+    :focus:not(:focus-visible) { outline: none; }
   </style>
 </head>
-<body>
 
-  <!-- Loader -->
-  <div id="loader" style="position: fixed; inset: 0; background: #FFCD29; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.4s ease;">
-    <p class="font-sfx" style="font-size: 4rem; color: #fff; -webkit-text-stroke: 2px #0D0D0D; text-shadow: 4px 4px 0 #0D0D0D; animation: pulse 1s infinite alternate;">LOADING...</p>
-    <p style="font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #0D0D0D;">Fetching Productivity Data 🚀</p>
+<body class="bg-[#FAFAFA] text-manga-ink font-sans antialiased overflow-x-hidden">
+
+  <!-- Application Global Scroll Performance Loader -->
+  <div id="progress-bar" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- Animated Graphical Entry Screen -->
+  <div id="loader" role="status" aria-live="polite">
+    <div class="text-center space-y-3">
+      <p class="font-sfx text-6xl text-white animate-pulse-manga" style="-webkit-text-stroke: 2px #0D0D0D; text-shadow: 4px 4px 0 #0D0D0D;">LOADING...</p>
+      <p class="text-sm font-bold uppercase tracking-widest text-manga-ink">Fetching Productivity Data 🚀</p>
+    </div>
   </div>
-  <style>@keyframes pulse { from { transform: scale(0.95); } to { transform: scale(1.05); } }</style>
 
-  <!-- Progress Bar -->
-  <div id="progress-bar"></div>
+  <a href="#intro" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-manga-yellow focus:text-manga-ink focus:outline-none focus:font-bold border-2 border-manga-ink">Skip to main content</a>
 
-  <!-- Floating Close Button -->
-  <a href="work.html" class="home-button"><i class="fas fa-times"></i></a>
+  <!-- Navigation Layer Interface Anchors -->
+  <a href="work.html" class="fixed top-6 right-6 z-50 w-12 h-12 bg-manga-pink text-white font-black border-3 border-manga-ink shadow-comic flex items-center justify-center hover:bg-manga-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none" aria-label="Close case study">
+     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
+  </a>
 
-  <!-- Jump Navigation -->
-  <nav aria-label="Case Study Navigation" class="jump-nav-2026">
-    <div class="jump-nav-inner">
-      <div class="jump-pills-container">
-        <a href="#discover" class="jump-pill-2026">Discover</a>
-        <a href="#define" class="jump-pill-2026">Define</a>
-        <a href="#develop" class="jump-pill-2026">Develop</a>
-        <a href="#deliver" class="jump-pill-2026">Deliver</a>
-        <a href="#prototype" class="jump-pill-2026">Prototype</a>
+  <!-- Global Multi-Step Jump Tracking Nav -->
+  <nav class="jump-nav" aria-label="Case Study Navigation">
+    <div class="flex items-center gap-1 w-full mx-auto">
+      <div class="flex-1 flex gap-1 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <a href="#discover" class="jump-pill active">Discover</a>
+        <a href="#define" class="jump-pill">Define</a>
+        <a href="#develop" class="jump-pill">Develop</a>
+        <a href="#deliver" class="jump-pill">Deliver</a>
+        <a href="#prototype" class="jump-pill">Prototype</a>
       </div>
-      <a href="#intro" class="back-to-top-2026" aria-label="Back to top">↑</a>
     </div>
   </nav>
 
-  <!-- ══════════════════════════════════════
-       MANGA HERO & OVERVIEW
-  ═══════════════════════════════════════ -->
-  <section id="intro" style="position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; background-color: #111827; border-bottom: 4px solid #0D0D0D; font-family: 'Chakra Petch', sans-serif;">
-    
-    <!-- Manga Background Effects -->
-    <div class="manga-halftone-yellow" style="position: absolute; inset: 0; opacity: 0.15; pointer-events: none;"></div>
-    
-    <!-- Outlined SFX Text -->
-    <div style="position: absolute; top: 15%; right: -5%; pointer-events: none; transform: rotate(3deg);">
-      <span class="font-sfx" style="font-size: clamp(10rem, 15vw, 18rem); line-height: 1; color: transparent; -webkit-text-stroke: 4px rgba(255, 205, 41, 0.15);">PLAN!</span>
-    </div>
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 sm:right-8 z-50 w-12 h-12 text-manga-ink font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none bg-manga-yellow" aria-label="Back to top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
 
-    <div style="position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; width: 100%; padding: 80px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; align-items: center;">
-      
-      <!-- Left: Copy -->
-      <div>
-        <div class="manga-label-yellow" style="margin-bottom: 24px;">
-          Case Study — Product Design (UX/UI)
-        </div>
-        <br>
-        <div class="speech-bubble" style="margin-bottom: 24px;">
-          <p style="margin: 0; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #0D0D0D;">Chapter 01 — Personalizing Productivity</p>
-        </div>
+  <!-- Main Presentation Grid -->
+  <main id="main-content">
 
-        <h1 class="font-sfx" style="font-size: clamp(4.5rem, 8vw, 7.5rem); line-height: 0.9; color: #FFFFFF; margin: 0 0 16px; text-transform: uppercase; -webkit-text-stroke: 2px rgba(255, 205, 41, 0.4); text-shadow: 4px 4px 0 #0D0D0D;">
-          MANAGEWISE
-        </h1>
+    <!-- ══════════════════════════════════════
+         MANGA HERO HERO VIEWPORT
+    ═══════════════════════════════════════ -->
+    <section id="intro" class="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#111827] border-b-4 border-manga-ink">
+      <div class="absolute inset-0 manga-halftone-yellow opacity-15 pointer-events-none"></div>
+      <div class="absolute inset-0 manga-speedlines-yellow pointer-events-none"></div>
+      <div class="absolute top-16 -right-10 pointer-events-none transform rotate-3" aria-hidden="true">
+        <span class="font-sfx text-[10rem] sm:text-[15rem] leading-none text-transparent" style="-webkit-text-stroke: 4px rgba(255, 205, 41, 0.15);">PLAN!</span>
+      </div>
 
-        <p style="font-size: 1.1rem; font-weight: 700; color: rgba(255, 255, 255, 0.9); margin-bottom: 32px; max-width: 500px; border-left: 4px solid #FFCD29; padding-left: 16px; text-transform: uppercase; letter-spacing: 1px;">
-          A personalized productivity app that integrates task management, goal setting, and AI-driven smart scheduling without overwhelming users.
-        </p>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <span class="manga-label-yellow mb-6">Case Study — Product Design (UX/UI)</span>
+            <div class="block mb-6"><div class="speech-bubble text-xs uppercase tracking-widest">Chapter 01 — Personalizing Productivity</div></div>
+            
+            <h1 class="font-sfx text-7xl sm:text-8xl md:text-9xl leading-none text-white mb-4" style="-webkit-text-stroke:2px rgba(255, 205, 41, 0.4);">
+              MANAGEWISE
+            </h1>
+            <p class="text-base sm:text-lg font-bold uppercase tracking-widest mb-8 max-w-lg border-l-4 pl-4 text-white/90 border-manga-yellow">
+              A personalized productivity app that integrates task management, goal setting, and AI-driven smart scheduling without overwhelming users.
+            </p>
 
-        <!-- Meta Grid -->
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 560px;">
-          <div class="manga-panel" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(4px); border-color: rgba(255,255,255,0.3); box-shadow: 4px 4px 0 rgba(255, 205, 41, 0.5); padding: 12px;">
-            <p style="margin: 0 0 4px; font-size: 0.6rem; font-weight: 900; color: #FFCD29; text-transform: uppercase; letter-spacing: 2px;">Role</p>
-            <p style="margin: 0; font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">Product Design (UX/UI)</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-[560px]">
+              <div class="manga-panel bg-white/5 backdrop-blur-sm p-3 border-white/20 shadow-[4px_4px_0_rgba(255,205,41,0.5)]">
+                <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1 text-manga-yellow">Role</p>
+                <p class="text-xs font-bold text-white">Product Designer</p>
+              </div>
+              <div class="manga-panel bg-white/5 backdrop-blur-sm p-3 border-white/20 shadow-[4px_4px_0_rgba(255,205,41,0.5)]">
+                <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1 text-manga-yellow">Timeline</p>
+                <p class="text-xs font-bold text-white">10 Weeks</p>
+              </div>
+              <div class="manga-panel bg-white/5 backdrop-blur-sm p-3 border-white/20 shadow-[4px_4px_0_rgba(255,205,41,0.5)]">
+                <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1 text-manga-yellow">Tools</p>
+                <p class="text-xs font-bold text-white">Figma · Miro</p>
+              </div>
+              <div class="manga-panel bg-white/5 backdrop-blur-sm p-3 border-white/20 shadow-[4px_4px_0_rgba(255,205,41,0.5)]">
+                <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1 text-manga-yellow">Team</p>
+                <p class="text-xs font-bold text-white">Solo UX Lead</p>
+              </div>
+            </div>
           </div>
-          <div class="manga-panel" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(4px); border-color: rgba(255,255,255,0.3); box-shadow: 4px 4px 0 rgba(255, 205, 41, 0.5); padding: 12px;">
-            <p style="margin: 0 0 4px; font-size: 0.6rem; font-weight: 900; color: #FFCD29; text-transform: uppercase; letter-spacing: 2px;">Timeline</p>
-            <p style="margin: 0; font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">10 Weeks</p>
-          </div>
-          <div class="manga-panel" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(4px); border-color: rgba(255,255,255,0.3); box-shadow: 4px 4px 0 rgba(255, 205, 41, 0.5); padding: 12px;">
-            <p style="margin: 0 0 4px; font-size: 0.6rem; font-weight: 900; color: #FFCD29; text-transform: uppercase; letter-spacing: 2px;">Tools</p>
-            <p style="margin: 0; font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">Figma · Miro · Forms</p>
-          </div>
-          <div class="manga-panel" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(4px); border-color: rgba(255,255,255,0.3); box-shadow: 4px 4px 0 rgba(255, 205, 41, 0.5); padding: 12px;">
-            <p style="margin: 0 0 4px; font-size: 0.6rem; font-weight: 900; color: #FFCD29; text-transform: uppercase; letter-spacing: 2px;">Team</p>
-            <p style="margin: 0; font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">Solo UX Lead</p>
+          <div class="flex justify-center items-center">
+            <img src="assets/img/Projects/Manage Wise/ManageWise Cover.png" alt="ManageWise App Preview" class="w-full max-w-[450px] rounded-xl border-4 border-manga-ink shadow-comic-yellow-lg transform rotate-3 hover:rotate-0 hover:-translate-y-2 transition-all duration-300">
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Right: Image Mockup -->
-      <div style="display: flex; justify-content: center; align-items: center;">
-        <img src="assets/img/Projects/Manage Wise/ManageWise Cover.png" alt="ManageWise App Preview" style="width: 100%; max-width: 450px; border-radius: 12px; border: 4px solid #0D0D0D; box-shadow: 12px 12px 0px 0px #FFCD29; transform: rotate(3deg); transition: transform 0.3s ease;" onmouseover="this.style.transform='rotate(0deg) translateY(-10px)'" onmouseout="this.style.transform='rotate(3deg)'">
-      </div>
+    <div class="panel-divider-yellow" aria-hidden="true"></div>
 
-    </div>
-    
-    <style>
-      @keyframes scrollWheel {
-        0% { opacity: 1; transform: translateY(0); }
-        100% { opacity: 0; transform: translateY(12px); }
-      }
-      @media (max-width: 900px) {
-        #intro > div.grid { grid-template-columns: 1fr !important; text-align: center; }
-        #intro .speech-bubble { margin: 0 auto 24px; }
-        #intro p { margin-left: auto; margin-right: auto; }
-        #intro .manga-label-yellow { margin: 0 auto 24px; }
-      }
-    </style>
-
-  </section>
-
-  <!-- ══════════════════════════════════════
-       PROCESS: DOUBLE DIAMOND
-  ═══════════════════════════════════════ -->
-  <section style="padding: 80px 20px; background: #fff; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      
-      <h2 class="section-title">THE DOUBLE DIAMOND APPROACH</h2>
-
-      <div class="grid-3" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px;">
+    <!-- ══════════════════════════════════════
+         PROCESS MAP STRATEGY
+    ═══════════════════════════════════════ -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto">
+        <!-- FIXED: Increased contrast and visibility for the heading -->
+        <h2 class="font-sfx text-5xl sm:text-6xl text-center text-manga-ink tracking-wide" style="text-shadow: 4px 4px 0 #FFCD29;">
+          THE DOUBLE DIAMOND APPROACH
+        </h2>
         
-        <!-- Discover -->
-        <div class="manga-panel" style="padding: 24px; text-align: center; position: relative; overflow: hidden;">
-          <div style="position: absolute; top: 0; right: 0; background: #FFCD29; border-bottom: 3px solid #0D0D0D; border-left: 3px solid #0D0D0D; padding: 4px 12px; font-family: 'Bangers'; font-size: 1.5rem;">01</div>
-          <h3 style="margin: 20px 0 10px; font-weight: 800; font-size: 1.4rem; text-transform: uppercase;">Discover</h3>
-          <p style="margin: 0; font-size: 0.9rem; font-weight: 600;">Surveys • Interviews • Competitive Analysis</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          <div class="manga-panel p-6 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-manga-yellow border-b-3 border-l-3 border-manga-ink px-3 py-1 font-sfx text-xl">01</div>
+            <h3 class="mt-4 mb-2 font-black text-lg uppercase">Discover</h3>
+            <p class="font-bold text-sm text-manga-ink/80">Surveys • Interviews • Competitive Audit</p>
+          </div>
+          <div class="manga-panel p-6 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-manga-yellow border-b-3 border-l-3 border-manga-ink px-3 py-1 font-sfx text-xl">02</div>
+            <h3 class="mt-4 mb-2 font-black text-lg uppercase">Define</h3>
+            <p class="font-bold text-sm text-manga-ink/80">Affinity Mapping • Persona • UX Journey</p>
+          </div>
+          <div class="manga-panel p-6 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-manga-yellow border-b-3 border-l-3 border-manga-ink px-3 py-1 font-sfx text-xl">03</div>
+            <h3 class="mt-4 mb-2 font-black text-lg uppercase">Design</h3>
+            <p class="font-bold text-sm text-manga-ink/80">User Flows • IA • Wireframing</p>
+          </div>
+          <div class="manga-panel p-6 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-manga-yellow border-b-3 border-l-3 border-manga-ink px-3 py-1 font-sfx text-xl">04</div>
+            <h3 class="mt-4 mb-2 font-black text-lg uppercase">Deliver</h3>
+            <p class="font-bold text-sm text-manga-ink/80">Prototypes • Usability Validation</p>
+          </div>
         </div>
-
-        <!-- Define -->
-        <div class="manga-panel" style="padding: 24px; text-align: center; position: relative; overflow: hidden;">
-          <div style="position: absolute; top: 0; right: 0; background: #FFCD29; border-bottom: 3px solid #0D0D0D; border-left: 3px solid #0D0D0D; padding: 4px 12px; font-family: 'Bangers'; font-size: 1.5rem;">02</div>
-          <h3 style="margin: 20px 0 10px; font-weight: 800; font-size: 1.4rem; text-transform: uppercase;">Define</h3>
-          <p style="margin: 0; font-size: 0.9rem; font-weight: 600;">Affinity Mapping • Persona • JTBD</p>
-        </div>
-
-        <!-- Design -->
-        <div class="manga-panel" style="padding: 24px; text-align: center; position: relative; overflow: hidden;">
-          <div style="position: absolute; top: 0; right: 0; background: #FFCD29; border-bottom: 3px solid #0D0D0D; border-left: 3px solid #0D0D0D; padding: 4px 12px; font-family: 'Bangers'; font-size: 1.5rem;">03</div>
-          <h3 style="margin: 20px 0 10px; font-weight: 800; font-size: 1.4rem; text-transform: uppercase;">Design</h3>
-          <p style="margin: 0; font-size: 0.9rem; font-weight: 600;">User Flows • IA • Wireframes • Hi-fi</p>
-        </div>
-
-        <!-- Deliver -->
-        <div class="manga-panel" style="padding: 24px; text-align: center; position: relative; overflow: hidden;">
-          <div style="position: absolute; top: 0; right: 0; background: #FFCD29; border-bottom: 3px solid #0D0D0D; border-left: 3px solid #0D0D0D; padding: 4px 12px; font-family: 'Bangers'; font-size: 1.5rem;">04</div>
-          <h3 style="margin: 20px 0 10px; font-weight: 800; font-size: 1.4rem; text-transform: uppercase;">Deliver</h3>
-          <p style="margin: 0; font-size: 0.9rem; font-weight: 600;">Prototypes • Testing • Iterations</p>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════════════════════════════════
-       DISCOVER
-  ═══════════════════════════════════════ -->
-  <section id="discover" style="padding: 80px 20px; background-color: #FAFAFA; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      
-      <div class="speech-bubble" style="margin-bottom: 20px;"><p style="margin: 0; font-size: 14px; text-transform: uppercase;">01 / Discover</p></div>
-      <h2 class="section-title" style="text-align: left; font-size: 4rem;">EXPLORING USER NEEDS!</h2>
-
-      <!-- Research Methodology -->
-      <div class="manga-panel" style="padding: 24px; margin-bottom: 40px; background: #FFCD29;">
-        <div class="manga-label-yellow" style="background: #fff; margin-bottom: 16px;">Research Methodology</div>
-        <p style="font-weight: 700; margin-bottom: 8px;">Participant Recruitment</p>
-        <p style="margin: 0 0 16px; font-size: 0.95rem; font-weight: 500; background: #fff; padding: 12px; border: 2px solid #0D0D0D;">
-          20 participants (students and early-career professionals, ages 22–35) were recruited via LinkedIn and Slack. All participants were regular users of productivity and habit-tracking apps. 
-        </p>
-        <p style="font-weight: 700; margin-bottom: 8px;">Methods Used</p>
-        <ul style="margin: 0; padding-left: 20px; font-size: 0.95rem; font-weight: 600; background: #fff; padding: 12px 12px 12px 30px; border: 2px solid #0D0D0D;">
-          <li>Online survey (Google Forms): Likert scale, multiple-choice, and open-ended.</li>
-          <li>Remote interviews (Zoom): Exploring daily routines and motivation.</li>
-          <li>Competitive audit: Todoist, Microsoft To Do, Habitica, and Google Calendar.</li>
-        </ul>
+    <!-- ══════════════════════════════════════
+         CHAPTER 01: DISCOVER
+    ═══════════════════════════════════════ -->
+    <section id="discover" class="chapter-header">
+      <div class="absolute inset-0 manga-halftone-yellow opacity-10 pointer-events-none"></div>
+      <div class="relative z-10 max-w-7xl mx-auto flex items-start gap-6">
+        <div class="ink-splat-yellow w-16 h-16 flex items-center justify-center flex-shrink-0 mt-1"><span class="font-sfx text-xl text-manga-ink">01</span></div>
+        <div>
+          <span class="manga-label-yellow mb-4 block w-fit">01 / Discover</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">EXPLORING USER NEEDS!</h2>
+        </div>
       </div>
+    </section>
 
-      <!-- Key Findings -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">Key Findings from Survey</h3>
-      
-      <div class="grid-2" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px;">
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto space-y-16">
         
-        <div class="manga-panel" style="padding: 20px;">
-          <span class="manga-label-yellow" style="background:#fff; margin-bottom:10px; font-size:0.6rem;">Theme</span>
-          <h4 style="margin:0 0 8px; font-weight:800; font-size:1.2rem; text-transform:uppercase;">Overlapping Tasks</h4>
-          <p style="font-style:italic; font-weight:600; background:#f4f4f4; padding:8px; border-left:4px solid #FFCD29; margin-bottom:10px;">"My work, studies, and personal stuff all clash."</p>
-          <p style="margin:0; font-weight:700; font-size:0.9rem;">🎯 Opportunity: Simplify daily planning and task capture.</p>
+        <div class="manga-panel p-6 bg-manga-yellow shadow-comic-lg w-full">
+          <span class="manga-label-yellow bg-white mb-4">Research Methodology</span>
+          <div class="grid md:grid-cols-2 gap-6 mt-4">
+            <div class="bg-white p-4 border-2 border-manga-ink box-shadow-[3px_3px_0_#0D0D0D]">
+              <p class="font-black mb-2 uppercase text-xs tracking-wider">Participant Matrix</p>
+              <p class="text-sm font-semibold text-manga-ink/80">20 participants (students & early-career specialists, ages 22–35) sourced through specialized professional slacks and networks. All relied heavily on digital tools.</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-manga-ink box-shadow-[3px_3px_0_#0D0D0D]">
+              <p class="font-black mb-2 uppercase text-xs tracking-wider">Execution Vector</p>
+              <p class="text-sm font-semibold text-manga-ink/80">Contextual evaluation via mixed methods: Structured scaling surveys (Google Forms), in-depth continuous narrative interviews (Zoom), and strategic competitive profiling.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="manga-panel" style="padding: 20px;">
-          <span class="manga-label-yellow" style="background:#fff; margin-bottom:10px; font-size:0.6rem;">Theme</span>
-          <h4 style="margin:0 0 8px; font-weight:800; font-size:1.2rem; text-transform:uppercase;">Fragmented Tools</h4>
-          <p style="font-style:italic; font-weight:600; background:#f4f4f4; padding:8px; border-left:4px solid #FFCD29; margin-bottom:10px;">"I switch between Google Calendar, Notion, and To Do."</p>
-          <p style="margin:0; font-weight:700; font-size:0.9rem;">🎯 Opportunity: Integrate workflows and reduce context switching.</p>
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Key Insights Discovery Map</h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            <div class="manga-panel p-5">
+              <span class="manga-label-yellow bg-white text-[0.6rem] mb-2">Insight 01</span>
+              <h4 class="font-black uppercase text-lg mb-2">Overlapping Tasks</h4>
+              <p class="text-xs font-bold border-l-4 border-manga-yellow pl-2 italic text-manga-ink/80 mb-3">"My work, studies, and personal stuff all clash."</p>
+              <p class="text-xs font-bold text-manga-ink/90">🎯 Target: Streamline unified processing and simplified task injection mechanisms.</p>
+            </div>
+            <div class="manga-panel p-5">
+              <span class="manga-label-yellow bg-white text-[0.6rem] mb-2">Insight 02</span>
+              <h4 class="font-black uppercase text-lg mb-2">Fragmented Tools</h4>
+              <p class="text-xs font-bold border-l-4 border-manga-yellow pl-2 italic text-manga-ink/80 mb-3">"I switch between Google Calendar, Notion, and To Do."</p>
+              <p class="text-xs font-bold text-manga-ink/90">🎯 Target: Centralize system structures to lower cognitive friction loops.</p>
+            </div>
+            <div class="manga-panel p-5">
+              <span class="manga-label-yellow bg-white text-[0.6rem] mb-2">Insight 03</span>
+              <h4 class="font-black uppercase text-lg mb-2">Motivation Drops</h4>
+              <p class="text-xs font-bold border-l-4 border-manga-yellow pl-2 italic text-manga-ink/80 mb-3">"I lose track when I don't see progress or rewards."</p>
+              <p class="text-xs font-bold text-manga-ink/90">🎯 Target: Dynamic graphical dashboards featuring integrated reward states.</p>
+            </div>
+            <div class="manga-panel p-5">
+              <span class="manga-label-yellow bg-white text-[0.6rem] mb-2">Insight 04</span>
+              <h4 class="font-black uppercase text-lg mb-2">Poor Prioritization</h4>
+              <p class="text-xs font-bold border-l-4 border-manga-yellow pl-2 italic text-manga-ink/80 mb-3">"I don't know where to start when I'm overwhelmed."</p>
+              <p class="text-xs font-bold text-manga-ink/90">🎯 Target: Investigate direct assistive interfaces for adaptive task distribution.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="manga-panel" style="padding: 20px;">
-          <span class="manga-label-yellow" style="background:#fff; margin-bottom:10px; font-size:0.6rem;">Theme</span>
-          <h4 style="margin:0 0 8px; font-weight:800; font-size:1.2rem; text-transform:uppercase;">Motivation Drops</h4>
-          <p style="font-style:italic; font-weight:600; background:#f4f4f4; padding:8px; border-left:4px solid #FFCD29; margin-bottom:10px;">"I lose track when I don't see progress or rewards."</p>
-          <p style="margin:0; font-weight:700; font-size:0.9rem;">🎯 Opportunity: Visual dashboards and gamified progress tracking.</p>
-        </div>
-
-        <div class="manga-panel" style="padding: 20px;">
-          <span class="manga-label-yellow" style="background:#fff; margin-bottom:10px; font-size:0.6rem;">Theme</span>
-          <h4 style="margin:0 0 8px; font-weight:800; font-size:1.2rem; text-transform:uppercase;">Poor Prioritization</h4>
-          <p style="font-style:italic; font-weight:600; background:#f4f4f4; padding:8px; border-left:4px solid #FFCD29; margin-bottom:10px;">"I don't know where to start when I'm overwhelmed."</p>
-          <p style="margin:0; font-weight:700; font-size:0.9rem;">🎯 Opportunity: Investigate ways to support smarter scheduling.</p>
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Competitive Audit</h3>
+          <div class="grid sm:grid-cols-3 gap-6 w-full">
+            <div class="manga-panel p-5">
+              <h4 class="font-black uppercase text-xl border-b-2 border-manga-ink pb-2 mb-3">Todoist</h4>
+              <p class="text-xs font-bold mb-1 text-manga-ink/90"><strong>Pros:</strong> Solid list architectures, swift multi-task modifications.</p>
+              <p class="text-xs font-bold mb-3 text-manga-ink/90"><strong>Cons:</strong> Complex settings overhead, priority flags buried deep.</p>
+              <p class="text-xs italic bg-gray-100 p-2 border border-manga-ink font-bold">"I lose track of what matters because layout inputs feel too busy."</p>
+            </div>
+            <div class="manga-panel p-5 bg-manga-yellow">
+              <h4 class="font-black uppercase text-xl border-b-2 border-manga-ink pb-2 mb-3">Habitica</h4>
+              <p class="text-xs font-bold mb-1 text-manga-ink/90"><strong>Pros:</strong> Robust structural gamification mechanisms.</p>
+              <p class="text-xs font-bold mb-3 text-manga-ink/90"><strong>Cons:</strong> High layout density that overcomplicates core production tasks.</p>
+              <p class="text-xs italic bg-white p-2 border border-manga-ink font-bold">"The character leveling system is neat, but actual focus gets lost."</p>
+            </div>
+            <div class="manga-panel p-5">
+              <h4 class="font-black uppercase text-xl border-b-2 border-manga-ink pb-2 mb-3">Google Calendar</h4>
+              <p class="text-xs font-bold mb-1 text-manga-ink/90"><strong>Pros:</strong> Excellent clear structural block visualizations.</p>
+              <p class="text-xs font-bold mb-3 text-manga-ink/90"><strong>Cons:</strong> Weak goal progression support, missing modular task frameworks.</p>
+              <p class="text-xs italic bg-gray-100 p-2 border border-manga-ink font-bold">"Perfect for meetings, but lacks support for long-term personal growth targets."</p>
+            </div>
+          </div>
         </div>
 
       </div>
+    </section>
 
-      <!-- Competitive Analysis -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">Competitive Analysis</h3>
-      <div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+    <!-- ══════════════════════════════════════
+         CHAPTER 02: DEFINE
+    ═══════════════════════════════════════ -->
+    <section id="define" class="chapter-header">
+      <div class="absolute inset-0 manga-halftone-yellow opacity-10 pointer-events-none"></div>
+      <div class="relative z-10 max-w-7xl mx-auto flex items-start gap-6">
+        <div class="ink-splat-yellow w-16 h-16 flex items-center justify-center flex-shrink-0 mt-1"><span class="font-sfx text-xl text-manga-ink">02</span></div>
+        <div>
+          <span class="manga-label-yellow mb-4 block w-fit">02 / Define</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">FRAMING THE OPPORTUNITY!</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto space-y-16">
         
-        <div class="manga-panel" style="padding: 20px;">
-          <h4 style="margin:0 0 10px; font-weight:800; font-size:1.2rem; text-transform:uppercase; border-bottom: 3px solid #0D0D0D; padding-bottom: 4px;">Todoist</h4>
-          <p style="font-size:0.9rem; font-weight:600;"><strong>Strengths:</strong> Robust task manager, recurring tasks, bulk editing.</p>
-          <p style="font-size:0.9rem; font-weight:600;"><strong>Gaps:</strong> Setup is daunting, priorities buried.</p>
-          <div style="margin-top: 12px; font-style: italic; font-weight: 700; font-size: 0.85rem; border: 2px solid #0D0D0D; padding: 8px;">"I forget to set priorities because capture UX is busy."</div>
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">User Persona</h3>
+          <div class="manga-panel-yellow p-6 flex flex-wrap lg:flex-nowrap gap-8 items-start w-full">
+            <div class="w-full lg:w-1/3 border-3 border-manga-ink p-3 bg-[#FAFAFA] text-center">
+              <img src="assets/img/Projects/Manage Wise/Alex.jpg" alt="Alex persona portrait" class="w-full border-2 border-manga-ink mx-auto grayscale object-cover max-h-64">
+              <h4 class="font-sfx text-3xl mt-4 mb-1">ALEX, 26</h4>
+              <p class="text-xs font-black tracking-widest uppercase">Computer Science Graduate Student</p>
+            </div>
+            <div class="w-full lg:w-2/3 space-y-4">
+              <div class="border-2 border-manga-ink p-4 bg-white shadow-comic">
+                <span class="manga-label-yellow bg-white mb-2 text-[0.6rem]">User Context Scenario</span>
+                <p class="text-sm font-bold text-manga-ink/90">Starts weekly cycles with high personal focus, but massive variable deadlines scattered across multiple loose apps constantly trigger critical stress states and late-night triage.</p>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="border-2 border-manga-ink p-4 bg-white shadow-comic-yellow">
+                  <span class="manga-label-yellow text-[0.6rem] mb-2">Core Goals</span>
+                  <ul class="list-disc pl-5 text-xs font-bold space-y-1 text-manga-ink/80">
+                    <li>Achieve continuous layout structures.</li>
+                    <li>Establish verified path execution models.</li>
+                    <li>Preserve personal creative development drive.</li>
+                  </ul>
+                </div>
+                <div class="border-2 border-manga-ink p-4 bg-manga-ink text-white shadow-comic">
+                  <span class="manga-label-yellow bg-white text-[0.6rem] mb-2 text-manga-ink">Structural Bottlenecks</span>
+                  <ul class="list-disc pl-5 text-xs font-bold space-y-1 text-white/90">
+                    <li>High friction activating multi-stage tasks.</li>
+                    <li>Siloed data channels across distinct software suites.</li>
+                    <li>Rapid velocity drops from cognitive overload.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="manga-panel" style="padding: 20px; background: #FFCD29;">
-          <h4 style="margin:0 0 10px; font-weight:800; font-size:1.2rem; text-transform:uppercase; border-bottom: 3px solid #0D0D0D; padding-bottom: 4px;">Habitica</h4>
-          <p style="font-size:0.9rem; font-weight:600;"><strong>Strengths:</strong> Gamified tracking, rewards, avatars.</p>
-          <p style="font-size:0.9rem; font-weight:600;"><strong>Gaps:</strong> Cluttered interface, distracts from core tasks.</p>
-          <div style="margin-top: 12px; font-style: italic; font-weight: 700; font-size: 0.85rem; border: 2px solid #0D0D0D; padding: 8px; background: #fff;">"I got hooked on leveling up but lost track of tasks."</div>
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">User Journey Map: Strategic Timeline</h3>
+          <div class="manga-panel p-6 bg-[#FAFAFA] w-full">
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-white border-2 border-manga-ink p-4 shadow-comic-yellow">
+                <span class="manga-label-yellow text-[0.65rem] mb-2">07:30 AM — Context Triage</span>
+                <h4 class="font-black uppercase text-sm mb-2">Cross-checking Schedules 📅</h4>
+                <p class="text-xs font-bold text-manga-ink/80">Manually unifies scattered calendars and project files. Identifies immediate structural overlap anomalies.</p>
+                <div class="mt-3 inline-block bg-manga-ink text-manga-yellow px-2 py-0.5 text-[0.65rem] font-black uppercase">Friction State</div>
+                <p class="text-xs italic font-bold mt-2 text-manga-ink/70">"I run multiple systems and still drop track of minor actions."</p>
+              </div>
+              <div class="bg-white border-2 border-manga-ink p-4 shadow-comic-yellow">
+                <span class="manga-label-yellow text-[0.65rem] mb-2">09:00 AM — Capture Friction</span>
+                <h4 class="font-black uppercase text-sm mb-2">Task Injection Loading 📝</h4>
+                <p class="text-xs font-bold text-manga-ink/80">Attempts raw recording of variable targets. Faces immediate processing block defining critical urgency weight.</p>
+                <div class="mt-3 inline-block bg-manga-ink text-manga-yellow px-2 py-0.5 text-[0.65rem] font-black uppercase">Friction State</div>
+                <p class="text-xs italic font-bold mt-2 text-manga-ink/70">"Everything presents with high urgency flags simultaneously."</p>
+              </div>
+              <div class="bg-manga-yellow border-2 border-manga-ink p-4 shadow-comic">
+                <span class="manga-label-yellow bg-white text-[0.65rem] mb-2">01:00 PM — Context Split</span>
+                <h4 class="font-black uppercase text-sm mb-2">Operational Shift 🍴</h4>
+                <p class="text-xs font-bold text-manga-ink/90">Transitions environments. Demands a localized view of absolute critical task status indicators.</p>
+                <div class="mt-3 inline-block bg-white text-manga-ink border border-manga-ink px-2 py-0.5 text-[0.65rem] font-black uppercase">Core Requirement</div>
+                <p class="text-xs italic font-bold mt-2 text-manga-ink/80">"I need an isolated single source of truth matrix."</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="manga-panel" style="padding: 20px;">
-          <h4 style="margin:0 0 10px; font-weight:800; font-size:1.2rem; text-transform:uppercase; border-bottom: 3px solid #0D0D0D; padding-bottom: 4px;">Google Calendar</h4>
-          <p style="font-size:0.9rem; font-weight:600;"><strong>Strengths:</strong> Seamless scheduling, time-blocking.</p>
-          <p style="font-size:0.9rem; font-weight:600;"><strong>Gaps:</strong> Lacks habit-tracking and prioritization features.</p>
-          <div style="margin-top: 12px; font-style: italic; font-weight: 700; font-size: 0.85rem; border: 2px solid #0D0D0D; padding: 8px;">"Great for meetings but weak for personal goals."</div>
+        <!-- FIXED: Adjusted Information Architecture padding/width -->
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Information Architecture</h3>
+          <div class="manga-panel p-6 overflow-x-auto w-full">
+            <div class="min-w-[700px] text-center space-y-6">
+              <span class="manga-label-yellow text-sm px-6 py-2">ManageWise App Core Structural Topography</span>
+              <div class="grid grid-cols-4 gap-4">
+                <div class="border-2 border-manga-ink p-3 bg-gray-50">
+                  <h4 class="font-black uppercase text-xs mb-2">Onboarding</h4>
+                  <div class="text-[0.75rem] font-bold space-y-1 text-manga-ink/80">
+                    <p class="border-b border-manga-ink/20 pb-1">Credential Processing</p>
+                    <p class="border-b border-manga-ink/20 py-1">Context Induction</p>
+                    <p class="pt-1">Security Gateway</p>
+                  </div>
+                </div>
+                <div class="border-2 border-manga-ink p-3 bg-gray-50">
+                  <h4 class="font-black uppercase text-xs mb-2">Dashboard Control</h4>
+                  <div class="text-[0.75rem] font-bold space-y-1 text-manga-ink/80">
+                    <p class="border-b border-manga-ink/20 pb-1">Primary Grid View</p>
+                    <p class="border-b border-manga-ink/20 py-1">Forward Layouts</p>
+                    <p class="pt-1">History Execution</p>
+                  </div>
+                </div>
+                <div class="border-2 border-manga-ink p-3 bg-manga-yellow shadow-comic">
+                  <h4 class="font-black uppercase text-xs mb-2">System Planner</h4>
+                  <div class="text-[0.75rem] font-bold space-y-1 text-manga-ink/90">
+                    <p class="border-b border-manga-ink/30 pb-1">Modular Extraction</p>
+                    <p class="border-b border-manga-ink/30 py-1">Urgency Allocation</p>
+                    <p class="pt-1">Assistive Engine (AI)</p>
+                  </div>
+                </div>
+                <div class="border-2 border-manga-ink p-3 bg-gray-50">
+                  <h4 class="font-black uppercase text-xs mb-2">Habit Metrics</h4>
+                  <div class="text-[0.75rem] font-bold space-y-1 text-manga-ink/80">
+                    <p class="border-b border-manga-ink/20 pb-1">Target Engine Builder</p>
+                    <p class="border-b border-manga-ink/20 py-1">Category Index</p>
+                    <p class="pt-1">Execution Metrics</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIXED: Adjusted Affinity Synthesis Blueprint padding/width -->
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Affinity Synthesis Blueprint</h3>
+          <div class="manga-panel p-4 bg-white w-full mb-6">
+            <img src="assets/img/Projects/Manage Wise/Affinity Mapping.png" alt="Affinity mapping analytical synthesis matrix" class="w-full h-auto block border-2 border-manga-ink">
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full">
+            <div class="manga-panel p-4 bg-gray-50 text-xs">
+              <h4 class="font-black uppercase mb-1">Capture Friction</h4>
+              <p class="font-bold text-manga-ink/80">Minimize mandatory data fields during ingestion tasks. Users demand rapid entry modes.</p>
+            </div>
+            <div class="manga-panel p-4 bg-gray-50 text-xs">
+              <h4 class="font-black uppercase mb-1">Silo Integration</h4>
+              <p class="font-bold text-manga-ink/80">Unify operational schedules with task tracking maps to completely isolate systemic drop-off anomalies.</p>
+            </div>
+            <div class="manga-panel p-4 bg-gray-50 text-xs">
+              <h4 class="font-black uppercase mb-1">Priority Weighting</h4>
+              <p class="font-bold text-manga-ink/80">Implement visual processing indicators to immediately clarify path selection parameters.</p>
+            </div>
+            <div class="manga-panel p-4 bg-manga-yellow text-xs">
+              <h4 class="font-black uppercase mb-1">Progression States</h4>
+              <p class="font-bold text-manga-ink/90">Deploy continuous visualization trackers to prevent velocity drop-offs over extended operation.</p>
+            </div>
+            <div class="manga-panel p-4 bg-gray-50 text-xs">
+              <h4 class="font-black uppercase mb-1">Engine Trust</h4>
+              <p class="font-bold text-manga-ink/80">Establish explicit preview processing check-gates for all automated calendar scheduling configurations.</p>
+            </div>
+          </div>
         </div>
 
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       DEFINE
-  ═══════════════════════════════════════ -->
-  <section id="define" style="padding: 80px 20px; background-color: #fff; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      
-      <div class="speech-bubble" style="margin-bottom: 20px;"><p style="margin: 0; font-size: 14px; text-transform: uppercase;">02 / Define</p></div>
-      <h2 class="section-title" style="text-align: left; font-size: 4rem; color: #111; text-shadow: 4px 4px 0 #FFCD29;">FRAMING THE OPPORTUNITY!</h2>
-
-      <!-- Persona -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">User Persona</h3>
-      <div class="manga-panel-yellow" style="padding: 24px; display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start; margin-bottom: 60px;">
-        
-        <div style="flex: 1 1 240px; border: 3px solid #0D0D0D; padding: 10px; background: #FAFAFA;">
-          <img src="assets/img/Projects/Manage Wise/Alex.jpg" alt="Alex persona" style="width: 100%; border: 3px solid #0D0D0D; object-fit: cover;">
-          <h4 style="font-family: 'Bangers', cursive; font-size: 2rem; margin: 10px 0 0; text-align: center;">ALEX, 26</h4>
-          <p style="text-align: center; font-weight: 700; text-transform: uppercase; margin: 0;">CS Grad Student</p>
+    <!-- ══════════════════════════════════════
+         CHAPTER 03: DEVELOP
+    ═══════════════════════════════════════ -->
+    <section id="develop" class="chapter-header">
+      <div class="absolute inset-0 manga-halftone-yellow opacity-10 pointer-events-none"></div>
+      <div class="relative z-10 max-w-7xl mx-auto flex items-start gap-6">
+        <div class="ink-splat-yellow w-16 h-16 flex items-center justify-center flex-shrink-0 mt-1"><span class="font-sfx text-xl text-manga-ink">03</span></div>
+        <div>
+          <span class="manga-label-yellow mb-4 block w-fit">03 / Develop</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">IDEATION & INTERACTION DESIGN!</h2>
         </div>
+      </div>
+    </section>
 
-        <div style="flex: 2 1 400px; display: flex; flex-direction: column; gap: 16px;">
-          <div style="border: 3px solid #0D0D0D; padding: 16px; background: #fff; box-shadow: 4px 4px 0 #0D0D0D;">
-            <div class="manga-label-yellow" style="margin-bottom: 10px; background: #fff;">Scenario</div>
-            <p style="margin: 0; font-weight: 600;">Kicks off each week highly motivated, but overlapping deadlines across different apps forces regular late-night catchups.</p>
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA] border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <!-- FIXED: Adjusted Rapid Conceptual Prototyping width -->
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-2">Rapid Conceptual Prototyping (Crazy 8s)</h3>
+          <p class="text-sm font-bold text-manga-ink/70 uppercase tracking-widest mb-6">Iterative technical sketch generation targeting entry acceleration models and AI visibility patterns.</p>
+          
+          <!-- CHANGED: Added flex and justify-center to the panel, and max-h-[500px] object-contain mx-auto to the image -->
+          <div class="manga-panel p-4 bg-white w-full mb-6 flex justify-center">
+            <img src="assets/img/Projects/Manage Wise/Crazy 8_MW.png" alt="Crazy 8s ideation sketches sheet" class="w-full max-h-[500px] object-contain mx-auto block border-2 border-manga-ink">
           </div>
           
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <div style="border: 3px solid #0D0D0D; padding: 16px; background: #fff; box-shadow: 4px 4px 0 #FFCD29;">
-              <div class="manga-label-yellow" style="margin-bottom: 10px; padding: 2px 8px;">Goals</div>
-              <ul style="margin: 0; padding-left: 20px; font-weight: 600; font-size: 0.9rem;">
-                <li>Efficient weekly planning</li>
-                <li>Clear, confident priorities</li>
-                <li>Maintain goal momentum</li>
-              </ul>
+          <div class="w-full border-l-4 border-manga-yellow bg-white p-6 border-2 border-manga-ink shadow-comic">
+            <h4 class="font-sfx text-2xl uppercase tracking-wide mb-3">Selected Feature Directives</h4>
+            <ul class="list-disc pl-5 text-sm font-bold space-y-2 text-manga-ink/90">
+              <li>Decouple deadline processing structures from base task recording steps to reduce friction.</li>
+              <li>Deploy continuous geometric tracking bars for immediate real-time habit execution visibility.</li>
+              <li>Structure AI parsing outputs into clean, sub-task arrays (e.g., auto-deconstructing complex items).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FIXED: Adjusted Mid-Fidelity Wireframes width -->
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Mid-Fidelity Wireframes</h3>
+          <div class="grid md:grid-cols-3 gap-6 w-full">
+            <div class="manga-panel flex flex-col bg-white overflow-hidden">
+              <div class="p-3 bg-manga-yellow border-b-2 border-manga-ink text-center font-black uppercase text-sm">Task Generation Entry</div>
+              <div class="p-6 flex-1 flex items-center justify-center bg-white">
+                <a href="#wf1" class="focus:outline-none"><img src="assets/img/Projects/Manage Wise/Add Task.png" alt="Task execution entry flow mid-fi viewport" class="max-h-60 object-contain border-2 border-manga-ink"></a>
+              </div>
+              <div class="p-4 bg-gray-50 border-t-2 border-manga-ink text-xs font-bold text-manga-ink/80">Isolates title inputs; places strategic variable flags on single-tap access vectors. Optional parsing variables.</div>
             </div>
-            <div style="border: 3px solid #0D0D0D; padding: 16px; background: #fff; box-shadow: 4px 4px 0 #FFCD29;">
-              <div class="manga-label-yellow" style="margin-bottom: 10px; padding: 2px 8px; background:#0D0D0D; color:#fff;">Pain Points</div>
-              <ul style="margin: 0; padding-left: 20px; font-weight: 600; font-size: 0.9rem;">
-                <li>Hard to start large tasks</li>
-                <li>Scattered tools</li>
-                <li>Procrastination triggers</li>
-              </ul>
+            <div class="manga-panel flex flex-col bg-white overflow-hidden">
+              <div class="p-3 bg-manga-yellow border-b-2 border-manga-ink text-center font-black uppercase text-sm">Engine Planner (AI Parsing)</div>
+              <div class="p-6 flex-1 flex items-center justify-center bg-white">
+                <a href="#wf2" class="focus:outline-none"><img src="assets/img/Projects/Manage Wise/Plan my Day.png" alt="AI operational layout optimization interface wireframe" class="max-h-60 object-contain border-2 border-manga-ink"></a>
+              </div>
+              <div class="p-4 bg-gray-50 border-t-2 border-manga-ink text-xs font-bold text-manga-ink/80">Integrates a comprehensive optimization viewport with verification steps to maximize system execution trust.</div>
+            </div>
+            <div class="manga-panel flex flex-col bg-white overflow-hidden">
+              <div class="p-3 bg-manga-yellow border-b-2 border-manga-ink text-center font-black uppercase text-sm">Progression Mapping</div>
+              <div class="p-6 flex-1 flex items-center justify-center bg-white">
+                <a href="#wf3" class="focus:outline-none"><img src="assets/img/Projects/Manage Wise/Goal.png" alt="Continuous growth habit metric layout wireframe" class="max-h-60 object-contain border-2 border-manga-ink"></a>
+              </div>
+              <div class="p-4 bg-gray-50 border-t-2 border-manga-ink text-xs font-bold text-manga-ink/80">Provides structural visibility tracking systems to continuously support personal progression velocity.</div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- User Journey Map -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px; margin-top: 60px;">User Journey Map: A Typical Day</h3>
-      <div class="manga-panel" style="padding: 24px; margin-bottom: 40px; overflow-x: auto;">
-        <div style="display: flex; gap: 20px; min-width: 800px;">
-          <!-- 7:30am -->
-          <div style="flex: 1; border: 3px solid #0D0D0D; padding: 16px; background: #FAFAFA; box-shadow: 4px 4px 0 #FFCD29;">
-            <div class="manga-label-yellow" style="margin-bottom: 10px; font-size: 0.6rem;">7:30 AM</div>
-            <h4 style="margin: 0 0 8px; font-weight: 800; text-transform: uppercase;">Check Calendar 📅</h4>
-            <p style="margin: 0 0 10px; font-size: 0.9rem; font-weight: 600;">Checks Apple Calendar and Notion. Notices overlapping reminders.</p>
-            <div style="background: #0D0D0D; color: #FFCD29; padding: 4px 8px; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: inline-block;">Pain Point</div>
-            <p style="margin: 8px 0 0; font-style: italic; font-weight: 700; font-size: 0.85rem;">“I get reminders from both apps and still forget one.”</p>
+        <!-- System Interface Wireframe Lightbox Triggers -->
+        <div id="wf1" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Add Task.png" alt="Enlarged view"></div>
+        <div id="wf2" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Plan my Day.png" alt="Enlarged view"></div>
+        <div id="wf3" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Goal.png" alt="Enlarged view"></div>
+
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-4">Usability Testing & Operational Validation</h3>
+          <p class="text-sm font-bold text-manga-ink/70 uppercase tracking-widest mb-6">Moderated behavioral diagnostics run on live interactive systems across target cohorts.</p>
+          <div class="manga-panel p-6 bg-white">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+              <div class="border-3 border-manga-ink p-3 bg-manga-ink shadow-comic-yellow text-white">
+                <span class="manga-label-yellow bg-white text-manga-ink text-[0.65rem] mb-3">Diagnostic Stream: Task 03 AI Scheduling</span>
+                <div class="overflow-hidden bg-black border-2 border-white/20 aspect-video flex items-center">
+                  <video controls playsinline class="w-full h-auto block">
+                    <source src="assets/img/Projects/Manage Wise/Naz Usability Test_Cut.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <p class="text-[0.7rem] font-bold text-white/80 mt-3 italic">Continuous capture parsing user interactive loop validation.</p>
+              </div>
+              <div class="space-y-4">
+                <h4 class="font-black uppercase text-lg text-manga-pink border-b-2 border-manga-ink pb-1">Identified System Vulnerabilities</h4>
+                <ul class="list-disc pl-5 text-sm font-bold space-y-2 text-manga-ink/90">
+                  <li>The "Plan My Day" title mechanism triggered severe expectation variance anomalies (67% operational drop-off rate).</li>
+                  <li>Inadequate real-time data visibility indicators generated localized processing anxiety blocks.</li>
+                  <li>Background engine operational cycles lacked clear progress state notifications.</li>
+                  <li>Missing explicit confirmation states caused post-execution tracking errors.</li>
+                </ul>
+                <div class="p-4 bg-manga-yellow border-2 border-manga-ink shadow-comic text-sm">
+                  <p class="font-black uppercase mb-1">Applied Architectural Pivot:</p>
+                  <p class="font-semibold text-manga-ink/90">Reconfigured feature taxonomy to "Ask AI". Deployed mandatory execution preview matrices and transactional completion validation windows to maintain explicit system control loops.</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- 9:00am -->
-          <div style="flex: 1; border: 3px solid #0D0D0D; padding: 16px; background: #FAFAFA; box-shadow: 4px 4px 0 #FFCD29;">
-            <div class="manga-label-yellow" style="margin-bottom: 10px; font-size: 0.6rem;">9:00 AM</div>
-            <h4 style="margin: 0 0 8px; font-weight: 800; text-transform: uppercase;">Class Time 📝</h4>
-            <p style="margin: 0 0 10px; font-size: 0.9rem; font-weight: 600;">Jots down new assignment. Unsure which task matters most.</p>
-            <div style="background: #0D0D0D; color: #FFCD29; padding: 4px 8px; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: inline-block;">Pain Point</div>
-            <p style="margin: 8px 0 0; font-style: italic; font-weight: 700; font-size: 0.85rem;">“Everything feels equally urgent.”</p>
+        </div>
+
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Interface Refinement (Before vs After)</h3>
+          <div class="manga-panel p-6 sm:p-10 bg-white space-y-12">
+            <!-- Dashboard Optimization Frame -->
+            <div class="grid lg:grid-cols-11 gap-6 items-center border-b-2 border-dashed border-manga-ink pb-10">
+              <div class="lg:col-span-5 space-y-3">
+                <span class="manga-label-yellow bg-white text-xs">Legacy V1 — Unfocused Dashboard</span>
+                <div class="border-3 border-manga-ink overflow-hidden"><img src="assets/img/Projects/Manage Wise/Before and After Screens/Old Dasboard Screen_MW.png" alt="Before screen" class="w-full h-auto block"></div>
+                <p class="text-sm font-bold text-manga-ink/80">Quadratic array spread information density too thin, blurring system priority focus maps.</p>
+              </div>
+              <div class="lg:col-span-1 text-center font-sfx text-5xl text-manga-yellow hidden lg:block" style="-webkit-text-stroke: 1px #0D0D0D;">→</div>
+              <div class="lg:col-span-5 space-y-3">
+                <span class="manga-label-yellow text-xs">Revised V2 — Streamlined Interface</span>
+                <div class="border-3 border-manga-ink shadow-comic-yellow overflow-hidden"><img src="assets/img/Projects/Manage Wise/Before and After Screens/New Dashboard Screen_MW.png" alt="After screen" class="w-full h-auto block"></div>
+                <p class="text-sm font-bold text-manga-ink/80">Consolidated into primary core tracks: Direct Tasks and Active Habits with geometric progress bars.</p>
+              </div>
+            </div>
+            <!-- Ingestion Layer Optimization Frame -->
+            <div class="grid lg:grid-cols-11 gap-6 items-center">
+              <div class="lg:col-span-5 space-y-3">
+                <span class="manga-label-yellow bg-white text-xs">Legacy V1 — Visual Overload</span>
+                <div class="border-3 border-manga-ink overflow-hidden"><img src="assets/img/Projects/Manage Wise/Before and After Screens/Old task Screen_MW.png" alt="Before screen" class="w-full h-auto block"></div>
+                <p class="text-sm font-bold text-manga-ink/80">Continuous attribute configuration arrays created visual clutter and lowered processing speed.</p>
+              </div>
+              <div class="lg:col-span-1 text-center font-sfx text-5xl text-manga-yellow hidden lg:block" style="-webkit-text-stroke: 1px #0D0D0D;">→</div>
+              <div class="lg:col-span-5 space-y-3">
+                <span class="manga-label-yellow text-xs">Revised V2 — Focused Ingestion View</span>
+                <div class="border-3 border-manga-ink shadow-comic-yellow overflow-hidden"><img src="assets/img/Projects/Manage Wise/Before and After Screens/New task Screen_MW.png" alt="After screen" class="w-full h-auto block"></div>
+                <p class="text-sm font-bold text-manga-ink/80">Deployed top-level horizontal calendar widgets and stripped out all low-utility elements.</p>
+              </div>
+            </div>
           </div>
-          <!-- 1:00pm -->
-          <div style="flex: 1; border: 3px solid #0D0D0D; padding: 16px; background: #FFCD29; box-shadow: 4px 4px 0 #0D0D0D;">
-            <div class="manga-label-yellow" style="margin-bottom: 10px; font-size: 0.6rem; background: #fff;">1:00 PM</div>
-            <h4 style="margin: 0 0 8px; font-weight: 800; text-transform: uppercase;">Lunch/Shift 🍴</h4>
-            <p style="margin: 0 0 10px; font-size: 0.9rem; font-weight: 600;">Checks Google Calendar before work. Wishes all plans were in one place.</p>
-            <div style="background: #fff; color: #0D0D0D; padding: 4px 8px; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: inline-block; border: 2px solid #0D0D0D;">Key Need</div>
-            <p style="margin: 8px 0 0; font-style: italic; font-weight: 700; font-size: 0.85rem;">“I want one list for everything.”</p>
-          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CHAPTER 04: DELIVER
+    ═══════════════════════════════════════ -->
+    <section id="deliver" class="chapter-header">
+      <div class="absolute inset-0 manga-halftone-yellow opacity-10 pointer-events-none"></div>
+      <div class="relative z-10 max-w-7xl mx-auto flex items-start gap-6">
+        <div class="ink-splat-yellow w-16 h-16 flex items-center justify-center flex-shrink-0 mt-1"><span class="font-sfx text-xl text-manga-ink">04</span></div>
+        <div>
+          <span class="manga-label-yellow mb-4 block w-fit">04 / Deliver</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">HIGH-FIDELITY DESIGN BLUEPRINTS!</h2>
         </div>
       </div>
+    </section>
 
-      <!-- Information Architecture -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">Information Architecture</h3>
-      <div class="manga-panel" style="padding: 24px; margin-bottom: 60px; overflow-x: auto;">
-         <div style="display:flex; flex-direction:column; align-items:center; min-width:730px;">
-           <div class="manga-label-yellow" style="font-size: 1.2rem; margin-bottom: 20px;">ManageWise App</div>
-           <div style="display:flex; justify-content:center; gap:16px; width:100%;">
-             
-             <div style="border: 3px solid #0D0D0D; padding: 12px; background: #FAFAFA; flex: 1; text-align: center;">
-               <h4 style="margin:0 0 12px; font-weight:800; text-transform:uppercase;">Onboarding</h4>
-               <p style="margin: 0 0 4px; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0D0D0D; padding-bottom: 4px;">Sign Up / Login</p>
-               <p style="margin: 0 0 4px; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0D0D0D; padding-bottom: 4px;">Welcome</p>
-               <p style="margin: 0; font-weight: 600; font-size: 0.85rem;">Verification</p>
-             </div>
-
-             <div style="border: 3px solid #0D0D0D; padding: 12px; background: #FAFAFA; flex: 1; text-align: center;">
-               <h4 style="margin:0 0 12px; font-weight:800; text-transform:uppercase;">Dashboard</h4>
-               <p style="margin: 0 0 4px; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0D0D0D; padding-bottom: 4px;">Today</p>
-               <p style="margin: 0 0 4px; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0D0D0D; padding-bottom: 4px;">Upcoming</p>
-               <p style="margin: 0; font-weight: 600; font-size: 0.85rem;">Completed</p>
-             </div>
-
-             <div style="border: 3px solid #0D0D0D; padding: 12px; background: #FFCD29; flex: 1; text-align: center; box-shadow: 4px 4px 0 #0D0D0D;">
-               <h4 style="margin:0 0 12px; font-weight:800; text-transform:uppercase;">Planner</h4>
-               <p style="margin: 0 0 4px; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0D0D0D; padding-bottom: 4px;">Add Task</p>
-               <p style="margin: 0 0 4px; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0D0D0D; padding-bottom: 4px;">Set Priority</p>
-               <p style="margin: 0; font-weight: 600; font-size: 0.85rem;">Ask AI</p>
-             </div>
-
-             <div style="border: 3px solid #0D0D0D; padding: 12px; background: #FAFAFA; flex: 1; text-align: center;">
-               <h4 style="margin:0 0 12px; font-weight:800; text-transform:uppercase;">Habits</h4>
-               <p style="margin: 0 0 4px; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0D0D0D; padding-bottom: 4px;">Create Goal</p>
-               <p style="margin: 0 0 4px; font-weight: 600; font-size: 0.85rem; border-bottom: 2px solid #0D0D0D; padding-bottom: 4px;">Categories</p>
-               <p style="margin: 0; font-weight: 600; font-size: 0.85rem;">Tracker</p>
-             </div>
-
-           </div>
-         </div>
-      </div>
-
-      <!-- Affinity Mapping -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">Affinity Mapping</h3>
-      <div class="manga-panel" style="padding: 20px; margin-bottom: 24px;">
-        <img src="assets/img/Projects/Manage Wise/Affinity Mapping.png" alt="Affinity mapping board" style="width: 100%; border: 3px solid #0D0D0D;">
-      </div>
-
-      <div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px;">
-        <div class="manga-panel" style="padding: 16px; background: #FAFAFA;">
-          <h4 style="margin:0 0 10px; font-weight:800; text-transform:uppercase;">Start Friction</h4>
-          <p style="font-weight: 600; font-size: 0.9rem; margin:0;">Capture without mandatory fields. "I don't want to set dates every time."</p>
-        </div>
-        <div class="manga-panel" style="padding: 16px; background: #FAFAFA;">
-          <h4 style="margin:0 0 10px; font-weight:800; text-transform:uppercase;">Fragmented Tools</h4>
-          <p style="font-weight: 600; font-size: 0.9rem; margin:0;">Calendar and reminders must be integrated. "I forget things."</p>
-        </div>
-        <div class="manga-panel" style="padding: 16px; background: #FAFAFA;">
-          <h4 style="margin:0 0 10px; font-weight:800; text-transform:uppercase;">Prioritization Clarity</h4>
-          <p style="font-weight: 600; font-size: 0.9rem; margin:0;">Visible, simple priority cues. "Unsure what's most important."</p>
-        </div>
-        <div class="manga-panel" style="padding: 16px; background: #FFCD29;">
-          <h4 style="margin:0 0 10px; font-weight:800; text-transform:uppercase;">Motivation & Progress</h4>
-          <p style="font-weight: 600; font-size: 0.9rem; margin:0;">Unambiguous goal categories. "I lose steam without seeing progress."</p>
-        </div>
-        <div class="manga-panel" style="padding: 16px; background: #FAFAFA;">
-          <h4 style="margin:0 0 10px; font-weight:800; text-transform:uppercase;">AI Interest + Trust</h4>
-          <p style="font-weight: 600; font-size: 0.9rem; margin:0;">Transparent Ask AI. "Show me what it will do before it changes anything."</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       DEVELOP
-  ═══════════════════════════════════════ -->
-  <section id="develop" style="padding: 80px 20px; background-color: #FAFAFA; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      
-      <div class="speech-bubble" style="margin-bottom: 20px;"><p style="margin: 0; font-size: 14px; text-transform: uppercase;">03 / Develop</p></div>
-      <h2 class="section-title" style="text-align: left; font-size: 4rem;">IDEATION & DESIGN!</h2>
-
-      <!-- Crazy 8s -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">Crazy 8s Sketching</h3>
-      <div class="manga-panel" style="padding: 24px; margin-bottom: 40px;">
-        <p style="margin: 0 0 20px; font-weight: 600; font-size: 1rem;">Rapid sketching to explore fast capture, clear priorities, and transparent Ask AI flows.</p>
-        <div style="border: 3px solid #0D0D0D; background: #fff; padding: 10px; margin-bottom: 20px;">
-          <img src="assets/img/Projects/Manage Wise/Crazy 8_MW.png" alt="Crazy 8s Sketches" style="width: 100%; display: block; border: 2px solid #0D0D0D;">
-        </div>
-        <div style="border-left: 6px solid #FFCD29; padding: 12px 16px; background: rgba(255, 205, 41, 0.15); border-top: 3px solid #0D0D0D; border-right: 3px solid #0D0D0D; border-bottom: 3px solid #0D0D0D;">
-          <h4 style="margin: 0 0 8px; font-family: 'Bangers', cursive; font-size: 1.5rem; letter-spacing: 1px;">THE WINNING IDEAS</h4>
-          <ul style="margin: 0; padding-left: 20px; font-weight: 600; font-size: 0.95rem;">
-            <li>Add quick tasks without forced dates</li>
-            <li>Track habits using visual progress bars</li>
-            <li>"Ask AI" to break down complex tasks (e.g., baking a cake -> lists ingredients)</li>
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <div class="manga-panel p-6 sm:p-8 bg-manga-ink text-white shadow-comic-lg w-full">
+          <h3 class="font-sfx text-3xl text-manga-yellow uppercase tracking-wide mb-6">CRITICAL UX ENGINEERING IMPLEMENTATIONS</h3>
+          <ul class="list-disc pl-6 font-bold text-base space-y-3 text-white/90">
+            <li><span class="text-manga-yellow">Taxonomy Realignment:</span> Transitioned feature profile to "Ask AI" to completely fix initial expectation drop-off anomalies.</li>
+            <li><span class="text-manga-yellow">Friction Mitigation:</span> Converted complex systemic configuration tasks into lightweight habit metrics with explicit streak markers.</li>
+            <li><span class="text-manga-yellow">Information Compression:</span> Completely flattened structural layouts down into an absolute processing dual-track view.</li>
           </ul>
         </div>
-      </div>
 
-      <!-- Mid-Fidelity -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">Mid-Fidelity Wireframes</h3>
-      <div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <!-- FIXED: Repacked the chaotic 4-grid into a clean, breathing 2-grid layout -->
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-8">Validated Interface System Topography</h3>
+          <div class="grid sm:grid-cols-2 gap-10 lg:gap-12 w-full">
+            
+            <div class="manga-panel-yellow p-6 text-center flex flex-col bg-white">
+              <h4 class="font-black uppercase text-lg mb-4">Onboarding Verification</h4>
+              <div class="flex-1 bg-gray-50 border-3 border-manga-ink p-6 flex items-center justify-center">
+                <a href="#f1" class="focus:outline-none"><img src="assets/img/Projects/Manage Wise/Screens Final/Onboarding Sign Up.png" alt="Onboarding flow final view" class="max-h-96 object-contain shadow-comic"></a>
+              </div>
+              <p class="text-sm font-bold text-left mt-4 text-manga-ink/80">Optimized utilizing robust transaction structures paired with contextual illustrations.</p>
+            </div>
+
+            <div class="manga-panel-yellow p-6 text-center flex flex-col bg-white">
+              <h4 class="font-black uppercase text-lg mb-4">Ingestion Engineering</h4>
+              <div class="flex-1 bg-gray-50 border-3 border-manga-ink p-6 flex items-center justify-center">
+                <a href="#f2" class="focus:outline-none"><img src="assets/img/Projects/Manage Wise/Screens Final/Add New Task Set Priorities.png" alt="Task generation architecture" class="max-h-96 object-contain shadow-comic"></a>
+              </div>
+              <p class="text-sm font-bold text-left mt-4 text-manga-ink/80">Features progressive disclosure pathways for advanced structural task controls.</p>
+            </div>
+
+            <div class="manga-panel-yellow p-6 text-center flex flex-col bg-white">
+              <h4 class="font-black uppercase text-lg mb-4">AI Engine Viewport</h4>
+              <div class="flex-1 bg-gray-50 border-3 border-manga-ink p-6 flex items-center justify-center">
+                <a href="#f3" class="focus:outline-none"><img src="assets/img/Projects/Manage Wise/Screens Final/Ask AI.png" alt="AI execution grid view" class="max-h-96 object-contain shadow-comic"></a>
+              </div>
+              <p class="text-sm font-bold text-left mt-4 text-manga-ink/80">Maintains comprehensive verification patterns before calendar injection executions.</p>
+            </div>
+
+            <div class="manga-panel-yellow p-6 text-center flex flex-col bg-white">
+              <h4 class="font-black uppercase text-lg mb-4">Continuous Habit Metrics</h4>
+              <div class="flex-1 bg-gray-50 border-3 border-manga-ink p-6 flex items-center justify-center">
+                <a href="#f4" class="focus:outline-none"><img src="assets/img/Projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png" alt="Habit validation view" class="max-h-96 object-contain shadow-comic"></a>
+              </div>
+              <p class="text-sm font-bold text-left mt-4 text-manga-ink/80">Features direct structural setup pipelines mapped to clear streak execution engines.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- System Interface Production Lightbox Triggers -->
+        <div id="f1" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Screens Final/Onboarding Sign Up.png" alt="Enlarged view"></div>
+        <div id="f2" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Screens Final/Add New Task Set Priorities.png" alt="Enlarged view"></div>
+        <div id="f3" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Screens Final/Ask AI.png" alt="Enlarged view"></div>
+        <div id="f4" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png" alt="Enlarged view"></div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CHAPTER 05: PROTOTYPE & OUTCOMES
+    ═══════════════════════════════════════ -->
+    <section id="prototype" class="chapter-header">
+      <div class="absolute inset-0 manga-halftone-yellow opacity-10 pointer-events-none"></div>
+      <div class="relative z-10 max-w-7xl mx-auto flex items-start gap-6">
+        <div class="ink-splat-yellow w-16 h-16 flex items-center justify-center flex-shrink-0 mt-1"><span class="font-sfx text-xl text-manga-ink">05</span></div>
+        <div>
+          <span class="manga-label-yellow mb-4 block w-fit">05 / Interact</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">EXPERIMENTAL LIVE VALIDATION!</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA]">
+      <div class="max-w-7xl mx-auto space-y-16">
         
-        <div class="manga-panel" style="padding: 0; display: flex; flex-direction: column;">
-          <div style="padding: 12px; background: #FFCD29; border-bottom: 3px solid #0D0D0D;">
-            <h4 style="margin:0; font-weight:800; text-transform:uppercase; text-align: center;">Add Task</h4>
-          </div>
-          <div style="padding: 20px; text-align: center; flex-grow: 1; background: #fff;">
-            <a href="#img1"><img src="assets/img/Projects/Manage Wise/Add Task.png" alt="Add Task Wireframe" style="max-height: 250px; border: 2px solid #0D0D0D;"></a>
-          </div>
-          <div style="padding: 12px; border-top: 3px solid #0D0D0D; font-weight: 600; font-size: 0.85rem; background: #FAFAFA;">
-            Title first; priority in one tap; date/time added only when needed.
+        <div class="max-w-7xl mx-auto w-full">
+          <div class="manga-panel p-3 sm:p-5 bg-manga-yellow shadow-comic-lg">
+            <div class="border-3 border-manga-ink bg-white p-2">
+              <iframe width="100%" height="600" style="border: 2px solid #0D0D0D; display: block;" src="https://embed.figma.com/proto/Q23ONt1t5GInwVq4kRGTtf/Manage-Wise-Productivity-App_WMM614_Mainak-Chakraborty?page-id=0%3A1&node-id=1-4594&viewport=621%2C380%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4594&embed-host=share" allowfullscreen title="Manage Wise Interactive Production Prototype"></iframe>
+            </div>
           </div>
         </div>
 
-        <div class="manga-panel" style="padding: 0; display: flex; flex-direction: column;">
-          <div style="padding: 12px; background: #FFCD29; border-bottom: 3px solid #0D0D0D;">
-            <h4 style="margin:0; font-weight:800; text-transform:uppercase; text-align: center;">Planner + Ask AI</h4>
-          </div>
-          <div style="padding: 20px; text-align: center; flex-grow: 1; background: #fff;">
-            <a href="#img2"><img src="assets/img/Projects/Manage Wise/Plan my Day.png" alt="Ask AI Wireframe" style="max-height: 250px; border: 2px solid #0D0D0D;"></a>
-          </div>
-          <div style="padding: 12px; border-top: 3px solid #0D0D0D; font-weight: 600; font-size: 0.85rem; background: #FAFAFA;">
-            Ask AI entry with preview and confirm steps for user control.
-          </div>
-        </div>
-
-        <div class="manga-panel" style="padding: 0; display: flex; flex-direction: column;">
-          <div style="padding: 12px; background: #FFCD29; border-bottom: 3px solid #0D0D0D;">
-            <h4 style="margin:0; font-weight:800; text-transform:uppercase; text-align: center;">Set a Goal</h4>
-          </div>
-          <div style="padding: 20px; text-align: center; flex-grow: 1; background: #fff;">
-            <a href="#img3"><img src="assets/img/Projects/Manage Wise/Goal.png" alt="Goal Wireframe" style="max-height: 250px; border: 2px solid #0D0D0D;"></a>
-          </div>
-          <div style="padding: 12px; border-top: 3px solid #0D0D0D; font-weight: 600; font-size: 0.85rem; background: #FAFAFA;">
-            Set a new goal and monitor progress using visual bars.
+        <!-- FIXED: Adjusted width mapping for takeaways -->
+        <div>
+          <h3 class="font-sfx text-5xl text-manga-ink text-center mb-10 tracking-wide">System Analysis Key Takeaways</h3>
+          <div class="grid md:grid-cols-2 gap-8 w-full">
+            <div class="manga-panel p-8 bg-white shadow-comic-lg">
+              <div class="manga-label-yellow mb-6">AI Interaction Transparency Requirements</div>
+              <p class="text-base font-bold text-manga-ink/90 leading-relaxed">Automated parsing systems require explicit structural confirmation steps. Deploying preview matrices significantly optimized core user system trust and lowered execution triage friction profiles across all target experimental groups.</p>
+            </div>
+            <div class="manga-panel p-8 bg-manga-ink text-white shadow-comic-yellow-lg">
+              <div class="manga-label-yellow bg-white text-manga-ink mb-6">Optimization Impact Metrics</div>
+              <p class="text-base font-bold text-white/90 leading-relaxed">Minor localized interface refinements—such as button taxonomy updates and optional attribute generation fields—drove a verified 40% increase in layout execution metrics. Small changes yield massive system velocity boosts.</p>
+            </div>
           </div>
         </div>
-        
 
       </div>
+    </section>
 
-      <!-- Lightboxes -->
-      <div id="img1" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Add Task.png"></div>
-      <div id="img2" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Plan my Day.png"></div>
-      <div id="img3" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Goal.png"></div>
-
-
-
-    <!-- Usability Testing & Video -->
-    <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px; margin-top: 40px;">Usability Testing — Task-Based Scenarios</h3>
-    <div class="manga-panel" style="padding: 24px; margin-bottom: 40px;">
-      <p style="font-weight: 600; margin-bottom: 24px;">Conducted moderated usability tests with 3 participants (student, PM, and early-career professional) on 5 core tasks.</p>
-
-      <!-- Video Highlight Grid -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
-        
-        <!-- Task 3 Video -->
-        <div style="border: 3px solid #0D0D0D; background: #FAFAFA; padding: 12px; box-shadow: 4px 4px 0 #FFCD29;">
-          <div class="manga-label-yellow" style="margin-bottom: 12px; font-size: 0.6rem;">Task 3: Ask AI (MVP)</div>
-          <div style="border: 3px solid #0D0D0D; overflow: hidden; background: #000; border-radius: 4px;">
-            <video controls playsinline style="display: block; width: 100%; height: auto;">
-              <source src="assets/img/Projects/Manage Wise/Naz Usability Test_Cut.mp4" type="video/mp4">
-            </video>
-          </div>
-          <p style="margin: 12px 0 0; font-weight: 600; font-size: 0.85rem; font-style: italic;">Participant 2 completing the Plan with AI task</p>
-        </div>
-
-        <!-- Video Findings -->
-        <div style="border: 3px solid #0D0D0D; background: #fff; padding: 20px;">
-          <h4 style="margin:0 0 12px; font-weight:800; text-transform:uppercase; color: #ef4444;">Critical Issues Found</h4>
-          <ul style="margin: 0; padding-left: 20px; font-weight: 600; font-size: 0.95rem;">
-            <li>“Plan My Day” caused expectation mismatch (67% failure rate).</li>
-            <li>No visible AI output created uncertainty.</li>
-            <li>Processing state lacked progress indicators.</li>
-            <li>Missing completion confirmation.</li>
-          </ul>
-          <div style="margin-top: 20px; padding: 12px; background: #FFCD29; border: 3px solid #0D0D0D;">
-            <p style="margin:0; font-weight:800; text-transform:uppercase;">The Fix:</p>
-            <p style="margin: 4px 0 0; font-weight: 600; font-size: 0.85rem;">Renamed to "Ask AI" and added a mandatory preview and confirm step so users maintain control.</p>
-          </div>
-        </div>
+    <!-- ══════════════════════════════════════
+         CASE ROUTING CROSS-NAVIGATION
+    ═══════════════════════════════════════ -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-t-4 border-manga-ink">
+      <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-4">
+        <a href="Habit Boost.html" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-manga-ink font-black uppercase tracking-wide border-3 border-manga-ink shadow-comic hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none">
+          <i class="fas fa-arrow-left text-xs"></i> Previous Project
+        </a>
+        <a href="DS.html" class="inline-flex items-center gap-2 px-6 py-3 bg-manga-yellow text-manga-ink font-black uppercase tracking-wide border-3 border-manga-ink shadow-comic hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none">
+          Next Project <i class="fas fa-arrow-right text-xs"></i>
+        </a>
       </div>
-    </div>
+    </section>
 
-    <!-- Before & After Screens -->
-    <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">Before & After: Key Improvements</h3>
-    <div class="manga-panel" style="padding: 24px; margin-bottom: 60px; background: #FAFAFA;">
-      
-      <!-- Dashboard -->
-      <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 3px dashed #0D0D0D;">
-        <div>
-          <div class="manga-label-yellow" style="margin-bottom: 12px; background: #fff;">Before: Cluttered Dashboard</div>
-          <img src="assets/img/Projects/Manage Wise/Before and After Screens/Old Dasboard Screen_MW.png" style="width: 100%; border: 3px solid #0D0D0D;">
-          <p style="margin: 12px 0 0; font-weight: 600; font-size: 0.85rem;">4-grid layout confused users on whether the focus was tasks or tracking.</p>
-        </div>
-        <div style="font-family: 'Bangers'; font-size: 3rem; color: #FFCD29; -webkit-text-stroke: 2px #0D0D0D;">→</div>
-        <div>
-          <div class="manga-label-yellow" style="margin-bottom: 12px;">After: Streamlined View</div>
-          <img src="assets/img/Projects/Manage Wise/Before and After Screens/New Dashboard Screen_MW.png" style="width: 100%; border: 3px solid #0D0D0D; box-shadow: 6px 6px 0 #FFCD29;">
-          <p style="margin: 12px 0 0; font-weight: 600; font-size: 0.85rem;">Simplified to two sections: Tasks and Habits, with quick visual progress bars.</p>
-        </div>
-      </div>
-
-      <!-- Task Screen -->
-      <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center;">
-        <div>
-          <div class="manga-label-yellow" style="margin-bottom: 12px; background: #fff;">Before: Heavy Interactions</div>
-          <img src="assets/img/Projects/Manage Wise/Before and After Screens/Old task Screen_MW.png" style="width: 100%; border: 3px solid #0D0D0D;">
-          <p style="margin: 12px 0 0; font-weight: 600; font-size: 0.85rem;">Mood selectors and constant 3-dot menus created visual clutter.</p>
-        </div>
-        <div style="font-family: 'Bangers'; font-size: 3rem; color: #FFCD29; -webkit-text-stroke: 2px #0D0D0D;">→</div>
-        <div>
-          <div class="manga-label-yellow" style="margin-bottom: 12px;">After: Clean Lists</div>
-          <img src="assets/img/Projects/Manage Wise/Before and After Screens/New task Screen_MW.png" style="width: 100%; border: 3px solid #0D0D0D; box-shadow: 6px 6px 0 #FFCD29;">
-          <p style="margin: 12px 0 0; font-weight: 600; font-size: 0.85rem;">Introduced a top calendar widget and stripped away unnecessary elements.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
+  </main>
 
   <!-- ══════════════════════════════════════
-       DELIVER (Final Designs & Testing)
+       FOOTER UNIFIED COMPONENT
   ═══════════════════════════════════════ -->
-  <section id="deliver" style="padding: 80px 20px; background-color: #fff; border-bottom: 4px solid #0D0D0D;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      
-      <div class="speech-bubble" style="margin-bottom: 20px;"><p style="margin: 0; font-size: 14px; text-transform: uppercase;">04 / Deliver</p></div>
-      <h2 class="section-title" style="text-align: left; font-size: 4rem; color: #111; text-shadow: 4px 4px 0 #FFCD29;">FINAL DESIGNS!</h2>
+  <footer class="bg-[#0D0D0D] py-12 sm:py-16 overflow-hidden relative" role="contentinfo" aria-labelledby="footer-heading">
+    <div class="absolute inset-0 manga-halftone-yellow opacity-[0.15] pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-full h-2" style="background: repeating-linear-gradient(90deg, #FFCD29 0px, #FFCD29 16px, #262626 16px, #262626 32px);" aria-hidden="true"></div>
 
-      <div class="manga-panel" style="padding: 24px; margin-bottom: 40px; background: #0D0D0D; color: #fff;">
-        <h3 style="margin: 0 0 16px; font-family: 'Bangers', cursive; font-size: 2rem; color: #FFCD29; letter-spacing: 1px;">CRITICAL USABILITY FIXES</h3>
-        <ul style="margin: 0; padding-left: 20px; font-weight: 600; font-size: 1rem; line-height: 1.6;">
-          <li><span style="color:#FFCD29">Rename:</span> "Plan My Day" changed to "Ask AI" to fix expectation mismatch (67% failure rate in testing).</li>
-          <li><span style="color:#FFCD29">Pivot:</span> Replaced heavy "Goals" with lightweight "Habit Tracking" featuring streaks for better motivation.</li>
-          <li><span style="color:#FFCD29">Clean UI:</span> Replaced cluttered 4-grid dashboard with a streamlined 2-column view (Tasks & Habits).</li>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-12">
+        <span class="manga-label mb-6 block w-fit mx-auto" style="background:#FFCD29; color:#0D0D0D; border-color:#FFCD29; box-shadow:3px 3px 0 #FFCD29;">Contact</span>
+        <div class="relative inline-block">
+          <h2 id="footer-heading" class="text-3xl sm:text-4xl font-black uppercase tracking-wide text-white">Let's Get In Touch</h2>
+          <div class="absolute -bottom-2 left-0 w-full h-2 -z-10 transform -rotate-1" style="background:#FFCD29;" aria-hidden="true"></div>
+        </div>
+        <p class="mt-6 text-sm font-bold uppercase tracking-widest text-white/70">Open to Opportunities</p>
+      </header>
+
+      <nav aria-label="Contact information">
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto" role="list">
+          <li>
+            <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-[#FFCD29] hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+              <div class="w-11 h-11 bg-gradient-to-br from-yellow-400 to-yellow-600 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                <i class="fab fa-linkedin-in text-white text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-[#FFCD29] transition-colors">LinkedIn</div>
+                <div class="text-xs text-white/60">in/mainakc98</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:mainak.chak04@gmail.com" class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-[#FFCD29] hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+              <div class="w-11 h-11 bg-gradient-to-br from-yellow-400 to-yellow-600 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-envelope text-white text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-[#FFCD29] transition-colors">Email</div>
+                <div class="text-xs text-white/60 truncate">mainak.chak04@gmail.com</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://calendly.com/mainak-chak04/30min" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 hover:border-[#FFCD29] hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+              <div class="w-11 h-11 bg-gradient-to-br from-yellow-400 to-yellow-600 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-calendar text-white text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-black uppercase tracking-wider text-white group-hover:text-[#FFCD29] transition-colors">Meeting</div>
+                <div class="text-xs text-white/60">Book a time</div>
+              </div>
+            </a>
+          </li>
         </ul>
-      </div>
+      </nav>
 
-      <!-- High Fidelity Gallery -->
-      <h3 style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px;">Refined Screens</h3>
-      <div class="grid-2" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
-        
-        <div class="manga-panel-yellow" style="padding: 20px; text-align: center; display: flex; flex-direction: column;">
-          <h4 style="margin:0 0 16px; font-weight:900; font-size:1.2rem; text-transform:uppercase;">Onboarding & Security</h4>
-          <div style="flex-grow: 1; border: 3px solid #0D0D0D; background: #FAFAFA; padding: 20px;">
-            <a href="#final1"><img src="assets/img/Projects/Manage Wise/Screens Final/Onboarding Sign Up.png" style="max-height: 400px; box-shadow: 4px 4px 0 #0D0D0D;"></a>
-          </div>
-          <p style="margin: 16px 0 0; font-weight: 600; font-size: 0.9rem; text-align: left;">Enhanced with OTP verification and feature-matched illustrations.</p>
-        </div>
-
-        <div class="manga-panel-yellow" style="padding: 20px; text-align: center; display: flex; flex-direction: column;">
-          <h4 style="margin:0 0 16px; font-weight:900; font-size:1.2rem; text-transform:uppercase;">Add Task & Priorities</h4>
-          <div style="flex-grow: 1; border: 3px solid #0D0D0D; background: #FAFAFA; padding: 20px;">
-            <a href="#final2"><img src="assets/img/Projects/Manage Wise/Screens Final/Add New Task Set Priorities.png" style="max-height: 400px; box-shadow: 4px 4px 0 #0D0D0D;"></a>
-          </div>
-          <p style="margin: 16px 0 0; font-weight: 600; font-size: 0.9rem; text-align: left;">Optional date/time and enhanced "More Options" visibility.</p>
-        </div>
-
-        <div class="manga-panel-yellow" style="padding: 20px; text-align: center; display: flex; flex-direction: column;">
-          <h4 style="margin:0 0 16px; font-weight:900; font-size:1.2rem; text-transform:uppercase;">Ask AI (Smart Schedule)</h4>
-          <div style="flex-grow: 1; border: 3px solid #0D0D0D; background: #FAFAFA; padding: 20px;">
-            <a href="#final3"><img src="assets/img/Projects/Manage Wise/Screens Final/Ask AI.png" style="max-height: 400px; box-shadow: 4px 4px 0 #0D0D0D;"></a>
-          </div>
-          <p style="margin: 16px 0 0; font-weight: 600; font-size: 0.9rem; text-align: left;">Renamed feature with preview and confirmation steps.</p>
-        </div>
-
-        <div class="manga-panel-yellow" style="padding: 20px; text-align: center; display: flex; flex-direction: column;">
-          <h4 style="margin:0 0 16px; font-weight:900; font-size:1.2rem; text-transform:uppercase;">Habit Tracking</h4>
-          <div style="flex-grow: 1; border: 3px solid #0D0D0D; background: #FAFAFA; padding: 20px;">
-            <a href="#final4"><img src="assets/img/Projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png" style="max-height: 400px; box-shadow: 4px 4px 0 #0D0D0D;"></a>
-          </div>
-          <p style="margin: 16px 0 0; font-weight: 600; font-size: 0.9rem; text-align: left;">Start from templates; set frequency & reminders; track streaks.</p>
-        </div>
-
-      </div>
-
-      <!-- Lightboxes Final -->
-      <div id="final1" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Screens Final/Onboarding Sign Up.png"></div>
-      <div id="final2" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Screens Final/Add New Task Set Priorities.png"></div>
-      <div id="final3" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Screens Final/Ask AI.png"></div>
-      <div id="final4" class="lightbox"><a href="#_" class="lightbox-close">×</a><img src="assets/img/Projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png"></div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       PROTOTYPE & TAKEAWAYS
-  ═══════════════════════════════════════ -->
-  <section id="prototype" style="padding: 80px 20px; background-color: #FAFAFA;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      
-      <div class="speech-bubble" style="margin-bottom: 20px;"><p style="margin: 0; font-size: 14px; text-transform: uppercase;">05 / Interact</p></div>
-      <h2 class="section-title" style="text-align: left; font-size: 4rem;">TRY IT OUT!</h2>
-
-      <!-- Prototype Frame -->
-      <div class="manga-panel" style="padding: 10px; background: #FFCD29; margin-bottom: 60px;">
-        <div style="border: 3px solid #0D0D0D; background: #fff; padding: 10px;">
-          <iframe
-            width="100%" height="600" style="border: 3px solid #0D0D0D; display: block;"
-            src="https://embed.figma.com/proto/Q23ONt1t5GInwVq4kRGTtf/Manage-Wise-Productivity-App_WMM614_Mainak-Chakraborty?page-id=0%3A1&node-id=1-4594&viewport=621%2C380%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4594&embed-host=share"
-            allowfullscreen title="Manage Wise Interactive Prototype">
-          </iframe>
-        </div>
-      </div>
-
-      <!-- Takeaways -->
-      <h3 style="font-weight: 800; font-size: 2rem; text-transform: uppercase; margin-bottom: 20px; text-align: center;">Key Takeaways</h3>
-      <div class="grid-2" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
-        
-        <div class="manga-panel" style="padding: 24px;">
-          <div class="manga-label-yellow" style="margin-bottom: 16px;">AI UX Requires Transparency</div>
-          <p style="font-weight: 600; font-size: 1rem;">Users need to see AI "thinking" and have control over outputs. Preview + confirmation steps built trust and reduced anxiety about automated scheduling decisions.</p>
-        </div>
-
-        <div class="manga-panel" style="padding: 24px; background: #0D0D0D; color: #fff;">
-          <div class="manga-label-yellow" style="margin-bottom: 16px; background: #fff;">Small Changes, Big Impact</div>
-          <p style="font-weight: 600; font-size: 1rem;">Renaming one button and adding optional date fields improved task completion by 40%. Sometimes the most impactful design decisions are the smallest ones.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       NEXT / PREV NAV
-  ═══════════════════════════════════════ -->
-  <section style="padding: 60px 20px; border-top: 4px solid #0D0D0D; background: #fff;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-      <a href="Habit Boost.html" class="manga-button" style="background: #fff;">← Previous</a>
-      <a href="DS.html" class="manga-button">Next Project →</a>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════ -->
-  <footer style="background-color: #0D0D0D; position: relative; overflow: hidden; padding: 80px 20px; text-align: center; border-top: 6px solid #FFCD29;">
-    <div class="manga-halftone-yellow" style="position: absolute; inset: 0; opacity: 0.15; pointer-events: none;"></div>
-    
-    <div style="position: relative; z-index: 10; max-width: 1100px; margin: 0 auto;">
-      <h3 class="font-sfx" style="font-size: 4rem; color: #fff; margin-bottom: 30px; letter-spacing: 2px;">LET'S CONNECT!</h3>
-      
-      <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
-        <a href="https://www.linkedin.com/in/mainakc98/" style="color: #FFCD29; text-decoration: none; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; border: 3px solid #FFCD29; padding: 10px 20px; transition: all 0.2s ease;" onmouseover="this.style.background='#FFCD29'; this.style.color='#0D0D0D';" onmouseout="this.style.background='transparent'; this.style.color='#FFCD29';">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="mailto:mainak.chak04@gmail.com" style="color: #FFCD29; text-decoration: none; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; border: 3px solid #FFCD29; padding: 10px 20px; transition: all 0.2s ease;" onmouseover="this.style.background='#FFCD29'; this.style.color='#0D0D0D';" onmouseout="this.style.background='transparent'; this.style.color='#FFCD29';">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-      </div>
+      <p class="text-sm text-white/50 flex items-center justify-center gap-2 flex-wrap font-bold text-center uppercase tracking-wider">
+        <span>Made with</span>
+        <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain" class="inline-block h-5 w-auto align-middle" width="20" height="20">
+        <span>sleepless nights &amp; lots of coffee</span>
+        <span class="text-white/20 mx-1">|</span>
+        <span>© 2026 Mainak Chakraborty</span>
+      </p>
     </div>
   </footer>
 
+  <!-- ══════════════════════════════════════
+       SYSTEM SCRIPTS ENGINE
+  ═══════════════════════════════════════ -->
   <script>
-    // 1. Loader Script
+    // 1. Structural Loader Process
     window.addEventListener("load", function() {
       setTimeout(function() {
         const loader = document.getElementById("loader");
@@ -862,36 +852,46 @@
           loader.style.opacity = '0';
           setTimeout(() => loader.style.display = "none", 400);
         }
-      }, 800);
+      }, 600);
     });
 
-    // 2. Progress Bar
+    // 2. Real-Time Scroll Calculation
     window.addEventListener('scroll', function () {
       var bar = document.getElementById('progress-bar');
       var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
       if (bar) { bar.style.width = pct + '%'; }
     }, { passive: true });
 
-    // 3. Jump Navigation Active State
+    // 3. Jump Tracking Anchor Management Engine
     document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section#intro, section#discover, section#define, section#develop, section#deliver, section#prototype');
-      const navLinks = document.querySelectorAll('.jump-nav-2026 .jump-pill-2026');
+      const pills = document.querySelectorAll('.jump-nav .jump-pill');
+      const sections = ['discover', 'define', 'develop', 'deliver', 'prototype'].map(id => document.getElementById(id));
+      const backToTop = document.getElementById('back-to-top');
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const currentId = entry.target.getAttribute('id');
-            navLinks.forEach(link => {
-              link.classList.remove('active');
-              if (link.getAttribute('href') === `#${currentId}`) {
-                link.classList.add('active');
-              }
-            });
-          }
+      window.addEventListener('scroll', function () {
+        var scrollY = window.scrollY + window.innerHeight * 0.3;
+        var currentIndex = 0;
+        
+        sections.forEach(function (section, i) {
+          if (section && section.offsetTop <= scrollY) currentIndex = i;
         });
-      }, { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+        
+        pills.forEach(function (p) { p.classList.remove('active'); });
+        if (pills[currentIndex]) pills[currentIndex].classList.add('active');
 
-      sections.forEach(section => observer.observe(section));
+        // Back to top floating button logic
+        if (backToTop) {
+          if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+          } else {
+            backToTop.classList.remove('show');
+          }
+        }
+      }, { passive: true });
+
+      if(backToTop) {
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
     });
   </script>
 
