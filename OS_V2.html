@@ -908,10 +908,18 @@
 
         <div>
           <h3 class="text-2xl font-black uppercase text-manga-ink mb-6">Core User Flow</h3>
-          <div class="manga-panel overflow-hidden bg-white" style="box-shadow:6px 6px 0 #0C4700;">
+          
+          <!-- Notice: Added max-h-[500px] and overflow-auto to the container -->
+          <div class="manga-panel bg-white max-h-[500px] overflow-auto custom-scrollbar" style="box-shadow:6px 6px 0 #0C4700;">
+            <!-- Notice: Removed max-h, added min-w-[800px] to ensure it never shrinks too small to read -->
             <img src="assets/img/Projects/Orbit Scan/Case Study/User Flow.png"
-                 alt="Orbit Scan core user-flow diagram" loading="lazy" class="w-full h-auto">
+                 alt="Orbit Scan core user-flow diagram" loading="lazy" class="w-full min-w-[800px] h-auto block">
           </div>
+          
+          <!-- Helpful hint for users -->
+          <p class="text-xs text-manga-ink/50 mt-3 font-bold uppercase tracking-widest text-center">
+            ↕ Scroll inside the panel to explore the full flow ↕
+          </p>
         </div>
 
         <div>
@@ -1213,7 +1221,8 @@
     </section>
 
     <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]">
-      <div class="max-w-5xl mx-auto">
+      <!-- CHANGED: max-w-5xl is now max-w-7xl to match the rest of the case study -->
+      <div class="max-w-7xl mx-auto">
         <div class="flex gap-4 mb-8 flex-wrap">
           <a href="https://www.figma.com/design/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?node-id=0-1&t=2hUOkQvCbw3UUzZG-1"
              target="_blank" rel="noopener noreferrer"
@@ -1233,7 +1242,7 @@
         </div>
       </div>
     </section>
-
+    
     <div class="panel-divider" aria-hidden="true"></div>
 
     <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white">
