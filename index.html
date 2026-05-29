@@ -795,105 +795,103 @@ aria-labelledby="about-heading">
 <!-- ✅ FIX — aria-hidden is a separate attribute -->
 <div class="panel-divider" aria-hidden="true"></div>
 
-    <footer id="contact" class="relative footer-bg py-24 sm:py-32 overflow-hidden transition-colors duration-300" role="contentinfo" aria-labelledby="footer-heading">
+    <!-- CHANGED: py-24 sm:py-32 is now py-12 sm:py-16 (48px and 64px, both multiples of 8) -->
+<footer id="contact" class="relative footer-bg py-12 sm:py-16 overflow-hidden transition-colors duration-300" role="contentinfo" aria-labelledby="footer-heading">
 
-      <div class="absolute inset-0 manga-halftone opacity-[0.04] pointer-events-none" aria-hidden="true"></div>
-      
-      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div class="absolute -bottom-40 -right-20 w-[500px] h-[500px] bg-manga-blue/[0.06] rounded-full blur-3xl"></div>
-        <div class="absolute -top-40 -left-20 w-[440px] h-[440px] bg-manga-pink/[0.06] rounded-full blur-3xl"></div>
+  <div class="absolute inset-0 manga-halftone opacity-[0.04] pointer-events-none" aria-hidden="true"></div>
+  
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute -bottom-40 -right-20 w-[500px] h-[500px] bg-manga-blue/[0.06] rounded-full blur-3xl"></div>
+    <div class="absolute -top-40 -left-20 w-[440px] h-[440px] bg-manga-pink/[0.06] rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- CHANGED: Reduced margin-bottom from mb-16 to mb-12 (48px) to match the tighter layout -->
+    <header class="text-center mb-12">
+      <div class="relative inline-block">
+        <h2 id="footer-heading" class="text-3xl sm:text-4xl font-black uppercase tracking-wide text-manga-ink dark:text-white drop-shadow-[0_0_30px_rgba(0,180,255,0.3)]">
+          Let's Get In Touch
+        </h2>
+        <div class="absolute -bottom-2 left-0 w-full h-3 bg-manga-pink -z-10 transform -rotate-1" aria-hidden="true"></div>
       </div>
+      <p class="mt-6 text-sm font-bold uppercase tracking-widest text-manga-ink/50 dark:text-white/40">
+        Open to Opportunities
+      </p>
+    </header>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header class="text-center mb-16">
+    <nav aria-label="Contact information">
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12" role="list">
 
-          <div class="relative inline-block">
-            <h2 id="footer-heading" class="text-3xl sm:text-4xl font-black uppercase tracking-wide text-manga-ink dark:text-white drop-shadow-[0_0_30px_rgba(0,180,255,0.3)]">
-              Let's Get In Touch
-            </h2>
-            <div class="absolute -bottom-2 left-0 w-full h-3 bg-manga-pink -z-10 transform -rotate-1" aria-hidden="true"></div>
-          </div>
-          <p class="mt-6 text-sm font-bold uppercase tracking-widest text-manga-ink/50 dark:text-white/40">
-            Open to Opportunities
-          </p>
-        </header>
-
-        <nav aria-label="Contact information">
-          <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12" role="list">
-
-            <li>
-              <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-blue hover:shadow-comic-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-blue-500 to-blue-700 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
-                  <i class="fab fa-linkedin-in text-white text-lg" aria-hidden="true"></i>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-blue transition-colors">LinkedIn</div>
-                  <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate font-semibold">in/mainakc98</div>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="mailto:mainak.chak04@gmail.com" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-pink hover:shadow-comic-pink hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-red-400 to-red-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-envelope text-white text-lg" aria-hidden="true"></i>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-pink transition-colors">Email</div>
-                  <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate font-semibold">mainak.chak04@gmail.com</div>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="404.html" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-accent-500 hover:shadow-comic-accent hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-orange-400 to-orange-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-file-pdf text-white text-lg" aria-hidden="true"></i>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-accent-500 transition-colors">Resume</div>
-                  <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate font-semibold">Download PDF</div>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="https://calendly.com/mainak-chak04/30min" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-blue hover:shadow-comic-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-violet-400 to-violet-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-calendar text-white text-lg" aria-hidden="true"></i>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-blue transition-colors">Meeting</div>
-                  <div class="text-xs text-manga-ink/60 dark:text-white/40 font-semibold">Book a time</div>
-                </div>
-              </a>
-            </li>
-
-          </ul>
-        </nav>
-
-        <div class="text-center mb-12">
-          <a href="sitemap.html" class="inline-flex items-center gap-2 px-5 py-2 text-sm font-black uppercase tracking-wider text-manga-ink/60 dark:text-white/60 border-2 border-black/10 dark:border-white/10 hover:border-manga-blue hover:text-manga-blue transition-all duration-150 focus:outline-none">
-            <i class="fas fa-sitemap" aria-hidden="true"></i>
-            View Sitemap
+        <li>
+          <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-blue hover:shadow-comic-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+            <div class="w-11 h-11 bg-gradient-to-br from-blue-500 to-blue-700 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
+              <i class="fab fa-linkedin-in text-white text-lg" aria-hidden="true"></i>
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-blue transition-colors">LinkedIn</div>
+              <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate font-semibold">in/mainakc98</div>
+            </div>
           </a>
-        </div>
+        </li>
 
-        <div class="flex justify-center gap-6 mb-6" aria-hidden="true">
-          <span class="sfx text-2xl text-manga-blue/50 dark:text-manga-blue/40">THANK YOU FOR</span>
-          <span class="sfx text-2xl text-manga-pink/50 dark:text-manga-pink/40">READING MY STORY!</span>
-        </div>
+        <li>
+          <a href="mailto:mainak.chak04@gmail.com" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-pink hover:shadow-comic-pink hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+            <div class="w-11 h-11 bg-gradient-to-br from-red-400 to-red-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-envelope text-white text-lg" aria-hidden="true"></i>
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-pink transition-colors">Email</div>
+              <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate font-semibold">mainak.chak04@gmail.com</div>
+            </div>
+          </a>
+        </li>
 
-        <p class="text-sm text-manga-ink/50 dark:text-white/40 flex items-center justify-center gap-2 flex-wrap font-bold text-center uppercase tracking-wider">
-          <span>Made with</span>
-          <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain icon" class="inline-block h-6 w-auto align-middle" width="24" height="24">
-          <span>sleepless nights &amp; lots of coffee</span>
-          <span class="text-manga-ink/20 dark:text-white/20 mx-1">|</span>
-          <span>© 2026 Mainak Chakraborty</span>
-        </p>
-      </div>
-    </footer>
-  </main>
+        <li>
+          <a href="404.html" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-accent-500 hover:shadow-comic-accent hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+            <div class="w-11 h-11 bg-gradient-to-br from-orange-400 to-orange-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-file-pdf text-white text-lg" aria-hidden="true"></i>
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-accent-500 transition-colors">Resume</div>
+              <div class="text-xs text-manga-ink/60 dark:text-white/40 truncate font-semibold">Download PDF</div>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://calendly.com/mainak-chak04/30min" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-black/[0.02] dark:bg-white/[0.04] border-3 border-black/10 dark:border-white/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] hover:border-manga-blue hover:shadow-comic-blue hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
+            <div class="w-11 h-11 bg-gradient-to-br from-violet-400 to-violet-600 border-2 border-manga-ink flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-calendar text-white text-lg" aria-hidden="true"></i>
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-manga-blue transition-colors">Meeting</div>
+              <div class="text-xs text-manga-ink/60 dark:text-white/40 font-semibold">Book a time</div>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="text-center mb-8">
+      <a href="sitemap.html" class="inline-flex items-center gap-2 px-5 py-2 text-sm font-black uppercase tracking-wider text-manga-ink/60 dark:text-white/60 border-2 border-black/10 dark:border-white/10 hover:border-manga-blue hover:text-manga-blue transition-all duration-150 focus:outline-none">
+        <i class="fas fa-sitemap" aria-hidden="true"></i>
+        View Sitemap
+      </a>
+    </div>
+
+    <p class="text-sm text-manga-ink/50 dark:text-white/40 flex items-center justify-center gap-2 flex-wrap font-bold text-center uppercase tracking-wider">
+      <span>Made with</span>
+      <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain icon" class="inline-block h-6 w-auto align-middle" width="24" height="24">
+      <span>sleepless nights &amp; lots of coffee</span>
+      <span class="text-manga-ink/20 dark:text-white/20 mx-1">|</span>
+      <span>© 2026 Mainak Chakraborty</span>
+    </p>
+  </div>
+</footer>
+
+</main>
 
   <button id="back-to-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-manga-blue text-manga-ink font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none" aria-label="Back to top">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
