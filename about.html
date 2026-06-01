@@ -147,7 +147,7 @@
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-manga-blue focus:text-white focus:outline-none focus:font-bold border-2 border-manga-ink">Skip to main content</a>
 
   <header role="banner">
-    <nav class="fixed top-0 w-full z-40 bg-white/95 dark:bg-manga-ink/95 backdrop-blur-md border-b-3 border-manga-blue/20 transition-colors duration-300" role="navigation" aria-label="Main navigation">
+    <nav id="navbar" class="fixed top-0 w-full z-40 bg-white/95 dark:bg-manga-ink/95 backdrop-blur-md border-b-3 border-manga-blue/20 transition-all duration-300" role="navigation" aria-label="Main navigation">
 
       <div class="h-1 w-full" style="background: repeating-linear-gradient(90deg, #00B4FF 0px, #00B4FF 12px, #FF006E 12px, #FF006E 14px, transparent 14px, transparent 28px);" aria-hidden="true"></div>
 
@@ -319,8 +319,8 @@
               </p>
             </div>
             
-            <div class="space-y-4 text-base text-manga-ink/90 dark:text-white/90 leading-relaxed font-semibold transition-colors">
-              
+            <div class="space-y-3 text-sm text-manga-ink/90 dark:text-white/90 leading-relaxed font-semibold transition-colors">
+  
               <p class="border-l-4 border-manga-blue pl-4">
                 I'm a Product Designer (UX/UI) from Mumbai, India. I graduated with a BA in Mass Media
                 from the University of Mumbai in 2019, and went on to complete a Masters in UX/UI
@@ -329,7 +329,7 @@
                 Table Tennis, and Badminton throughout. I am competitive by nature and enjoy picking
                 up new sports and skills whenever I can.
               </p>
-              
+
               <p class="border-l-4 border-manga-pink pl-4">
                 My interest in product design started somewhere less obvious: a habit of obsessively
                 exploring new apps. Music players, sports score trackers, fitness tools, anything that
@@ -805,6 +805,32 @@
         if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
       }
     });
+
+    <!-- ── NAVBAR HIDE/SHOW ON SCROLL SCRIPT ── -->
+  let lastScrollTop = 0;
+  const navbar = document.getElementById('navbar');
+
+  window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Check if we have scrolled past the initial 50px (prevents jitter at the very top)
+    if (scrollTop > 50) {
+      if (scrollTop > lastScrollTop) {
+        // Scrolling Down: Hide the navbar
+        navbar.classList.add('-translate-y-full');
+      } else {
+        // Scrolling Up: Show the navbar
+        navbar.classList.remove('-translate-y-full');
+      }
+    } else {
+      // Always show the navbar when at the absolute top of the page
+      navbar.classList.remove('-translate-y-full');
+    }
+    
+    lastScrollTop = scrollTop;
+  });
+      //NAVBAR HIDE/SHOW ON SCROLL ENDS//
+
   </script>
 
 </body>
