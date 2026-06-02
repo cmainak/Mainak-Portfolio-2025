@@ -359,66 +359,75 @@
 
       <div class="relative z-10 text-center px-4 flex flex-col items-center justify-center w-full max-w-6xl mx-auto flex-grow">
         
-        <div class="absolute top-0 left-4 md:left-10 transform -translate-y-8 -rotate-12 z-20 hidden sm:block animate-fade-in-up" style="animation-delay: 0.1s;">
-          <div class="bg-manga-pink text-white font-sfx text-3xl px-4 py-2 border-3 border-manga-ink" style="box-shadow: 4px 4px 0 #0D0D0D; -webkit-text-stroke: 1px #0D0D0D;">
-            VOL. 1
-          </div>
-        </div>
+ 
 
         <div class="speech-bubble transform -translate-x-12 sm:-translate-x-32 rotate-[-2deg] mb-6 z-20 animate-fade-in-up" style="animation-delay: 0.2s;">
           <p class="text-xs sm:text-sm font-black text-manga-ink uppercase tracking-widest m-0">Hey there! 👋 I am</p>
         </div>
 
-        <div class="relative z-10 flex flex-col items-center w-full animate-fade-in-up" style="animation-delay: 0.3s;">
-          <h1 id="hero-heading" class="font-sfx text-7xl sm:text-9xl lg:text-[11rem] leading-[0.85] tracking-wide text-white transition-transform hover:scale-[1.02] duration-300 w-full" 
-              style="-webkit-text-stroke: 3px #0D0D0D; paint-order: stroke fill; text-shadow: 6px 6px 0px #0D0D0D, 12px 12px 0px #00B4FF;">
-            MAINAK
-          </h1>
-          <h2 class="font-sfx text-5xl sm:text-7xl lg:text-[8.5rem] leading-[0.85] tracking-wide text-accent-500 uppercase transition-transform hover:scale-[1.02] duration-300 w-full -mt-2 sm:-mt-6"
-              style="-webkit-text-stroke: 3px #0D0D0D; paint-order: stroke fill; text-shadow: 6px 6px 0px #0D0D0D, 12px 12px 0px #FF006E;">
-            CHAKRABORTY
-          </h2>
-        </div>
+<!-- Heading Component: Adjusted line-height and margins for desktop clearance -->
+<div class="relative z-10 flex flex-col items-center w-full animate-fade-in-up" style="animation-delay: 0.3s;">
+  <!-- Changed global leading to respond beautifully from mobile up to desktop -->
+  <h1 id="hero-heading" class="font-sfx leading-[0.8] lg:leading-[0.9] tracking-wide transition-transform hover:scale-[1.01] duration-300 w-full text-center" 
+      style="-webkit-text-stroke: 2px #0D0D0D; paint-order: stroke fill;">
+    
+    <!-- First Name -->
+    <span class="block text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[10rem] text-white" 
+          style="text-shadow: 4px 4px 0px #0D0D0D, 8px 8px 0px #00B4FF;">
+      MAINAK
+    </span>
+    
+    <!-- Last Name: Added 'lg:mt-0' to cancel the negative margin on desktop screens -->
+    <span class="block text-[10.5vw] sm:text-[8.5vw] md:text-[7.5vw] lg:text-[7.5rem] text-accent-500 uppercase -mt-2 sm:-mt-4 lg:mt-0" 
+          style="text-shadow: 4px 4px 0px #0D0D0D, 8px 8px 0px #FF006E;">
+      CHAKRABORTY
+    </span>
+  </h1>
+</div>
 
-        <div class="mt-10 sm:mt-12 border-3 border-manga-ink p-6 flex flex-wrap gap-4 justify-center relative z-20 transition-colors duration-300 animate-fade-in-up" style="box-shadow: 8px 8px 0 #FF9933; animation-delay: 0.4s;">
-          <div class="absolute -top-4 -right-4 bg-white border-3 border-manga-ink rounded-full w-8 h-8 flex items-center justify-center" style="box-shadow: 2px 2px 0 #0D0D0D;">
-             <i class="fas fa-bolt text-accent-500 text-sm"></i>
-          </div>
-          <span class="manga-label text-xs sm:text-sm hover:-translate-y-1 transition-transform cursor-default"style="background:#FFF; box-shadow:3px 3px 0 #0D0D0D;">AI</span>
-          <span class="manga-label text-xs sm:text-sm hover:-translate-y-1 transition-transform cursor-default" style="background:#FFF; box-shadow:3px 3px 0 #0D0D0D;">Product</span>
-          <span class="manga-label text-xs sm:text-sm hover:-translate-y-1 transition-transform cursor-default" style="background:#FFF; color:#000; box-shadow:3px 3px 0 #0D0D0D;">Tech</span>
-          <span class="manga-label text-xs sm:text-sm hover:-translate-y-1 transition-transform cursor-default" style="background:#FFF; color:#000; box-shadow:3px 3px 0 #0D0D0D;">Tools</span>
-          <span class="manga-label text-xs sm:text-sm hover:-translate-y-1 transition-transform cursor-default" style="background:#FFF; color:#000; box-shadow:3px 3px 0 #0D0D0D;">Travel</span>
+       <!-- Tags Box: Reduced padding and margins to recapture vertical space -->
+       <div class="mt-6 border-3 border-manga-ink p-4 flex flex-wrap gap-3 justify-center relative z-20 transition-colors duration-300 animate-fade-in-up" style="box-shadow: 6px 6px 0 #FF9933; animation-delay: 0.4s;">
+        <div class="absolute -top-3.5 -right-3.5 bg-white border-3 border-manga-ink rounded-full w-7 h-7 flex items-center justify-center" style="box-shadow: 2px 2px 0 #0D0D0D;">
+           <i class="fas fa-bolt text-accent-500 text-xs"></i>
         </div>
-
+        <span class="manga-label text-[10px] sm:text-xs hover:-translate-y-0.5 transition-transform cursor-default" style="background:#FFF; box-shadow:2px 2px 0 #0D0D0D;">AI</span>
+        <span class="manga-label text-[10px] sm:text-xs hover:-translate-y-0.5 transition-transform cursor-default" style="background:#FFF; box-shadow:2px 2px 0 #0D0D0D;">Product</span>
+        <span class="manga-label text-[10px] sm:text-xs hover:-translate-y-0.5 transition-transform cursor-default" style="background:#FFF; color:#000; box-shadow:2px 2px 0 #0D0D0D;">Tech</span>
+        <span class="manga-label text-[10px] sm:text-xs hover:-translate-y-0.5 transition-transform cursor-default" style="background:#FFF; color:#000; box-shadow:2px 2px 0 #0D0D0D;">Tools</span>
+        <span class="manga-label text-[10px] sm:text-xs hover:-translate-y-0.5 transition-transform cursor-default" style="background:#FFF; color:#000; box-shadow:2px 2px 0 #0D0D0D;">Travel</span>
       </div>
 
-      <div class="relative z-20 mt-12 mb-6">
-        <a href="#about" class="flex flex-col items-center gap-2 text-manga-ink/80 dark:text-white/80 hover:text-manga-blue dark:hover:text-manga-blue transition-colors focus-visible:ring-3 focus-visible:ring-manga-blue focus-visible:ring-offset-2 rounded group" aria-label="Scroll to about section">
-          <span class="text-[0.65rem] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0">Scroll</span>
-          <div class="w-8 h-12 rounded-full border-3 border-current flex justify-center pt-2 bg-white/50 dark:bg-black/50 backdrop-blur-sm" style="box-shadow: 3px 3px 0 #0D0D0D;">
-            <div class="w-1.5 h-3 bg-current rounded-full animate-scroll-wheel"></div>
-          </div>
-        </a>
-      </div>
+    </div>
+
+    <!-- Scroll Indicator: Swapped out heavy static margins for 'mt-auto' to lock it to the screen floor -->
+    <div class="relative z-20 mt-auto pt-4 mb-2">
+      <a href="#about" class="flex flex-col items-center gap-1.5 text-manga-ink/80 dark:text-white/80 hover:text-manga-blue dark:hover:text-manga-blue transition-colors focus-visible:ring-3 focus-visible:ring-manga-blue focus-visible:ring-offset-2 rounded group" aria-label="Scroll to about section">
+        <span class="text-[0.6rem] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity translate-y-1 group-hover:translate-y-0">Scroll</span>
+        <div class="w-7 h-10 rounded-full border-3 border-current flex justify-center pt-1.5 bg-white/50 dark:bg-black/50 backdrop-blur-sm" style="box-shadow: 2px 2px 0 #0D0D0D;">
+          <div class="w-1 h-2.5 bg-current rounded-full animate-scroll-wheel"></div>
+        </div>
+      </a>
+    </div>
       
     </section>
 
     <div class="panel-divider" aria-hidden="true"></div>
-    <section id="about" class="relative py-24 sm:py-32 overflow-hidden bg-white dark:bg-manga-ink transition-colors duration-300" aria-labelledby="about-heading">
+
+    <section id="about" class="relative min-h-screen lg:h-screen flex items-center py-8 lg:py-0 overflow-hidden bg-white dark:bg-manga-ink transition-colors duration-300" aria-labelledby="about-heading">
 
       <div class="absolute inset-0 manga-halftone-light opacity-20 pointer-events-none" aria-hidden="true"></div>
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background: repeating-conic-gradient(from 0deg at 50% 30%, transparent 0deg, transparent 4deg, rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg);"></div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 xl:gap-16 items-center">
 
-          <div class="order-1 relative">
+          <!-- Left Side: Comic Panel Layout (Heights compressed with vh constraints) -->
+          <div class="order-1 relative max-w-xl mx-auto lg:max-w-none w-full">
 
-            <div class="relative p-4 bg-white" style="box-shadow: 0 0 0 4px #0D0D0D, 8px 8px 0 4px #0D0D0D;">
+            <div class="relative p-3 sm:p-4 bg-white" style="box-shadow: 0 0 0 4px #0D0D0D, 8px 8px 0 4px #0D0D0D;">
 
-             <div class="bg-manga-blue px-4 py-2 mb-4 border-b-4 border-manga-ink">
+             <div class="bg-manga-blue px-4 py-1.5 mb-3 border-b-4 border-manga-ink">
                <p class="text-xs font-black uppercase tracking-[0.2em] text-manga-ink">
                  Chapter 01 — Origin Story
                </p>
@@ -426,7 +435,8 @@
 
              <div class="flex flex-col gap-2">
 
-               <div class="relative overflow-hidden group" style="height: 80px; border: 4px solid #0D0D0D;">
+               <!-- Panel 1: Shifted to responsive vh sizing -->
+               <div class="relative overflow-hidden group h-[9vh] min-h-[60px] max-h-[80px]" style="border: 4px solid #0D0D0D;">
 
                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.25) 1px, transparent 1px); background-size: 8px 8px; opacity: 0.4;"></div>
 
@@ -443,9 +453,10 @@
 
                </div>
 
-               <div class="flex gap-2" style="height: 240px;">
+               <!-- Panels 2 & 3 Row: Shifted to responsive vh sizing -->
+               <div class="flex gap-2 h-[22vh] min-h-[150px] max-h-[220px]">
 
-                 <div class="relative overflow-hidden group " style="border: 4px solid #0D0D0D;">
+                 <div class="relative overflow-hidden group flex-1" style="border: 4px solid #0D0D0D;">
 
                    <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(255,0,110,0.3) 1px, transparent 1px); background-size: 8px 8px; opacity: 0.5;"></div>
 
@@ -464,7 +475,8 @@
 
                </div>
 
-               <div class="relative overflow-hidden group" style="height: 200px; border: 4px solid #0D0D0D;">
+               <!-- Panel 4: Shifted to responsive vh sizing -->
+               <div class="relative overflow-hidden group h-[18vh] min-h-[130px] max-h-[180px]" style="border: 4px solid #0D0D0D;">
 
                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.3) 2px, transparent 2px); background-size: 8px 8px; opacity: 0.45;"></div>
 
@@ -479,17 +491,19 @@
 
              </div>
              
-             <div class="mt-4 bg-manga-ink px-4 py-2 border-t-4 border-manga-ink flex items-center justify-between">
-               <span class="sfx text-sm text-accent-500 tracking-widest">NEVER STOP.</span>
-               <span class="sfx text-sm text-manga-blue tracking-widest">TO BE CONTINUED...</span>
+             <div class="mt-3 bg-manga-ink px-4 py-1.5 border-t-4 border-manga-ink flex items-center justify-between">
+               <span class="sfx text-xs sm:text-sm text-accent-500 tracking-widest">NEVER STOP.</span>
+               <span class="sfx text-xs sm:text-sm text-manga-blue tracking-widest">TO BE CONTINUED...</span>
              </div>
 
             </div>
           </div>
 
-          <article class="order-2 space-y-8">
+          <!-- Right Side: Content Area (Spacers tightened for spatial efficiency) -->
+          <article class="order-2 space-y-4 md:space-y-5 xl:space-y-6">
             
-            <h2 id="about-heading" class="text-4xl sm:text-5xl lg:text-6xl font-black text-manga-ink dark:text-white uppercase tracking-wide transition-colors">
+            <!-- Heading size dialed in slightly to prevent text block blowout -->
+            <h2 id="about-heading" class="text-3xl sm:text-4xl xl:text-5xl font-black text-manga-ink dark:text-white uppercase tracking-wide transition-colors leading-tight">
               I'm a
               <span class="relative inline-block">
                 <span class="text-manga-blue drop-shadow-[0_0_20px_rgba(0,180,255,0.5)]">UX Designer</span>
@@ -497,29 +511,32 @@
               </span>
               building bold interactions &amp; scalable products.
             </h2>
-            <p class="text-lg text-manga-ink/80 dark:text-white/80 leading-relaxed border-l-4 border-manga-blue pl-6 transition-colors font-semibold">
+            
+            <p class="text-base sm:text-lg text-manga-ink/80 dark:text-white/80 leading-relaxed border-l-4 border-manga-blue pl-4 sm:pl-6 transition-colors font-semibold">
               My design practice spans product design, visual storytelling, and digital experiences built for real people.
             </p>
             
-            <div class="flex flex-wrap gap-4"> 
-               <div class="bg-white dark:bg-manga-ink p-4 text-center min-w-[120px] transition-all duration-200 border-4 border-manga-ink shadow-[8px_8px_0_0_#0D0D0D] hover:shadow-[4px_4px_0_0_#0D0D0D] hover:translate-x-1 hover:translate-y-1"> 
-                 <p class="sfx text-4xl text-manga-blue">3+</p>
-                 <p class="text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-2">Case Studies</p> 
+            <!-- Quick Stat Badges -->
+            <div class="flex flex-wrap gap-3 sm:gap-4"> 
+               <div class="bg-white dark:bg-manga-ink p-3 text-center min-w-[110px] sm:min-w-[120px] transition-all duration-200 border-4 border-manga-ink shadow-[6px_6px_0_0_#0D0D0D] hover:shadow-[3px_3px_0_0_#0D0D0D] hover:translate-x-0.5 hover:translate-y-0.5"> 
+                 <p class="sfx text-3xl sm:text-4xl text-manga-blue">3+</p>
+                 <p class="text-[10px] sm:text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-1">Case Studies</p> 
                </div>
-               <div class="bg-white dark:bg-manga-ink p-4 text-center min-w-[120px] transition-all duration-200 border-4 border-manga-ink shadow-[8px_8px_0_0_#0D0D0D] hover:shadow-[4px_4px_0_0_#0D0D0D] hover:translate-x-1 hover:translate-y-1">
-                 <p class="sfx text-4xl text-manga-pink">3+</p>
-                 <p class="text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-2">Years Exp</p>
+               <div class="bg-white dark:bg-manga-ink p-3 text-center min-w-[110px] sm:min-w-[120px] transition-all duration-200 border-4 border-manga-ink shadow-[6px_6px_0_0_#0D0D0D] hover:shadow-[3px_3px_0_0_#0D0D0D] hover:translate-x-0.5 hover:translate-y-0.5">
+                 <p class="sfx text-3xl sm:text-4xl text-manga-pink">3+</p>
+                 <p class="text-[10px] sm:text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-1">Years Exp</p>
                </div>
-               <div class="bg-white dark:bg-manga-ink p-4 text-center min-w-[120px] transition-all duration-200 border-4 border-manga-ink shadow-[8px_8px_0_0_#0D0D0D] hover:shadow-[4px_4px_0_0_#0D0D0D] hover:translate-x-1 hover:translate-y-1">
-                 <p class="sfx text-4xl text-accent-500">∞</p>
-                 <p class="text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-2">Coffees ☕</p>
+               <div class="bg-white dark:bg-manga-ink p-3 text-center min-w-[110px] sm:min-w-[120px] transition-all duration-200 border-4 border-manga-ink shadow-[6px_6px_0_0_#0D0D0D] hover:shadow-[3px_3px_0_0_#0D0D0D] hover:translate-x-0.5 hover:translate-y-0.5">
+                 <p class="sfx text-3xl sm:text-4xl text-accent-500">∞</p>
+                 <p class="text-[10px] sm:text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-1">Coffees ☕</p>
                </div>
             </div>
 
-            <div class="pt-4"> 
-              <a href="about.html" class="inline-flex items-center gap-3 px-8 py-4 bg-manga-ink text-white dark:bg-white dark:text-manga-ink font-black uppercase tracking-wide border-4 border-manga-ink dark:border-white shadow-[8px_8px_0px_0px_#00B4FF] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all duration-150 focus-visible:ring-4 focus-visible:ring-manga-ink focus-visible:ring-offset-4 group"> 
+            <!-- Action Button -->
+            <div class="pt-2"> 
+              <a href="about.html" class="inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-3.5 bg-manga-ink text-white dark:bg-white dark:text-manga-ink font-black uppercase tracking-wide border-4 border-manga-ink dark:border-white shadow-[6px_6px_0px_0px_#00B4FF] hover:shadow-none hover:translate-x-1.5 hover:translate-y-1.5 transition-all duration-150 focus-visible:ring-4 focus-visible:ring-manga-ink focus-visible:ring-offset-4 group text-sm sm:text-base"> 
                Read Full Story
-               <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+               <svg class="w-5 h-5 sm:w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                <span class="sr-only">about Mainak Chakraborty</span>
              </a>
             </div>
@@ -680,13 +697,10 @@ class="relative z-10 w-full max-w-xl h-auto object-contain md:-ml-8 lg:-ml-10 dr
       <header class="text-center mb-16">
         <div class="relative inline-block">
           <h2 id="footer-heading" class="text-4xl sm:text-5xl font-black text-manga-ink dark:text-white uppercase tracking-wide">
-            Let's Get In Touch
+            Let's Build Something
           </h2>
           <div class="absolute -bottom-2 left-0 w-full h-3 bg-manga-blue -z-10 transform -rotate-1" aria-hidden="true"></div>
         </div>
-        <p class="mt-6 text-sm font-bold uppercase tracking-widest text-manga-ink/70 dark:text-white/70">
-          Open to Opportunities
-        </p>
       </header>
 
       <nav aria-label="Contact information">
