@@ -352,68 +352,82 @@
 
   <main id="main-content" role="main">
 
-    <section class="relative pt-32 pb-16 overflow-hidden bg-white dark:bg-manga-ink transition-colors duration-300" aria-labelledby="work-hero-heading">
-      <div class="absolute inset-0 manga-halftone-light opacity-20 pointer-events-none" aria-hidden="true"></div>
-      
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-           style="background: repeating-conic-gradient(
-                    from 0deg at 50% -20%,
-                    transparent 0deg, transparent 4deg,
-                    rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg
-                  );">
+    <section class="relative pt-32 bg-white dark:bg-manga-ink transition-colors duration-300" aria-labelledby="work-hero-heading">
+  
+      <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-0 manga-halftone-light opacity-20"></div>
+        <div class="absolute inset-0"
+             style="background: repeating-conic-gradient(
+                      from 0deg at 50% -20%,
+                      transparent 0deg, transparent 4deg,
+                      rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg
+                    );">
+        </div>
       </div>
-
-      <div class="relative z-10 max-w-4xl mx-auto text-center px-6 animate-fade-in-up">
-
+    
+      <div class="relative z-10 max-w-4xl mx-auto text-center px-6 pb-12 animate-fade-in-up">
         <h1 id="work-hero-heading" 
             class="font-sfx text-6xl sm:text-7xl lg:text-8xl text-manga-ink dark:text-white uppercase tracking-wide drop-shadow-[4px_4px_0_#FF9933] dark:drop-shadow-[4px_4px_0_#FF9933]" 
             style="-webkit-text-stroke: 2px #0D0D0D; paint-order: stroke fill;">
           My Work
         </h1>
-
-   
       </div>
-    </section>
-
-    <section class="py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-manga-ink sticky top-16 z-30 border-b-3 border-manga-blue/20 transition-colors duration-300" aria-label="Project filters">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
-
-          <button onclick="filterProjects('all')" 
-                  class="filter-btn active px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="all" aria-label="Show all projects">
-            All Projects
-          </button>
-
-          <button onclick="filterProjects('ux')" 
-                  class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="ux" aria-label="Show UX research projects">
-            Mobile App Design
-          </button>
-
-          <button onclick="filterProjects('web')" 
-                  class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="web" aria-label="Show web projects">
-            Web Design
-          </button>
-
-          <button onclick="filterProjects('design-system')" 
-                  class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="design-system" aria-label="Show design system projects">
-            Design Systems
-          </button>
-
-          <button onclick="filterProjects('graphic-video')" 
-                  class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="graphic-video" aria-label="Show graphic design projects">
-            Graphic & Video
-          </button>
-
+    
+      <div class="sticky top-16 z-30 relative overflow-hidden py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-manga-ink border-b-3 border-manga-blue/20 transition-colors duration-300" aria-label="Project filters">
+  
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div class="absolute inset-0 manga-halftone-light opacity-20"></div>
+          <div class="absolute inset-0"
+               style="background: repeating-conic-gradient(
+                        from 0deg at 50% 50%,
+                        transparent 0deg, transparent 4deg,
+                        rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg
+                      );">
+          </div>
+        </div>
+      
+        <div class="relative z-10 max-w-7xl mx-auto">
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+      
+            <button onclick="filterProjects('all')" 
+                    class="filter-btn active px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="all" aria-label="Show all projects">
+              All Projects
+            </button>
+      
+            <button onclick="filterProjects('ux')" 
+                    class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="ux" aria-label="Show UX research projects">
+              Mobile App Design
+            </button>
+      
+            <button onclick="filterProjects('web')" 
+                    class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="web" aria-label="Show web projects">
+              Web Design
+            </button>
+      
+            <button onclick="filterProjects('design-system')" 
+                    class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="design-system" aria-label="Show design system projects">
+              Design Systems
+            </button>
+      
+            <button onclick="filterProjects('graphic-video')" 
+                    class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="graphic-video" aria-label="Show graphic design projects">
+              Graphic & Video
+            </button>
+      
+          </div>
         </div>
       </div>
     </section>
+    
 
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB] dark:bg-[#0A0A0F] transition-colors duration-300" aria-labelledby="projects-heading">
+    <div class="panel-divider w-full" aria-hidden="true"></div>
+
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-[#FFF] dark:bg-[#0A0A0F] transition-colors duration-300" aria-labelledby="projects-heading">
       <div class="max-w-7xl mx-auto">
 
         <h2 id="projects-heading" class="sr-only">Project Portfolio</h2>
@@ -608,11 +622,11 @@
       </div>
     </section>
 
+    <div class="panel-divider w-full" aria-hidden="true"></div>
 
     <!-- FOOTER START -->
 
-    <footer id="contact" class="relative w-full py-16 sm:py-24 overflow-hidden transition-colors duration-300 border-t-4 border-manga-ink" role="contentinfo" aria-labelledby="footer-heading">
-  
+    <footer id="contact" class="relative w-full py-16 sm:py-24 overflow-hidden transition-colors duration-300" role="contentinfo" aria-labelledby="footer-heading">
       <div class="absolute inset-0 manga-halftone-light opacity-30 dark:opacity-10 pointer-events-none" aria-hidden="true"></div>
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 4deg, rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg);"></div>
       
