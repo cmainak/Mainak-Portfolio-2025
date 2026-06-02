@@ -810,9 +810,10 @@ class="relative z-10 w-full max-w-xl h-auto object-contain md:-ml-8 lg:-ml-10 dr
     <!-- FOOTER END -->
 
 
-  <button id="back-to-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-manga-blue text-manga-ink font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none" aria-label="Back to top">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-  </button>
+  <!-- Back to top button -->
+<button id="back-to-top" class="fixed bottom-6 right-6 z-50 p-3 bg-manga-blue text-white border-3 border-manga-ink shadow-comic opacity-0 invisible transition-all duration-300 hover:-translate-y-1 hover:shadow-comic-lg rounded-full" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
   <script>
     // ── DARK MODE TOGGLE LOGIC ──
@@ -852,18 +853,20 @@ class="relative z-10 w-full max-w-xl h-auto object-contain md:-ml-8 lg:-ml-10 dr
     window.addEventListener('scroll', updateProgressBar, { passive: true });
 
     // ── BACK TO TOP SCRIPT ──
-    const backToTopBtn = document.getElementById('back-to-top');
-    window.addEventListener('scroll', function () {
-      if(backToTopBtn) {
-        backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
-      }
-    }, { passive: true });
-    
-    if(backToTopBtn) {
-      backToTopBtn.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
+    const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    backToTop.classList.remove('opacity-0', 'invisible');
+    backToTop.classList.add('opacity-100', 'visible');
+  } else {
+    backToTop.classList.add('opacity-0', 'invisible');
+    backToTop.classList.remove('opacity-100', 'visible');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
     // ── MOBILE MENU SCRIPT ──
     const mobileMenu   = document.getElementById('mobile-menu');
