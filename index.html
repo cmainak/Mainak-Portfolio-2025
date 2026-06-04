@@ -893,8 +893,12 @@ backToTop.addEventListener('click', () => {
         if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
       }
     });
+    
 
-    // ── NAVBAR HIDE/SHOW ON SCROLL SCRIPT ──
+// ── NAVBAR HIDE/SHOW ON SCROLL SCRIPT ──
+    
+    /* <--- Navbar currently sticky to hide the navbar when scrolled remove this comment
+
     let lastScrollTop = 0;
     const navbar = document.getElementById('navbar');
 
@@ -903,7 +907,7 @@ backToTop.addEventListener('click', () => {
       
       if (scrollTop > 50) {
         if (scrollTop > lastScrollTop) {
-          navbar.classList.add('-translate-y-full');
+          navbar.classList.add('-translate-y-full'); 
         } else {
           navbar.classList.remove('-translate-y-full');
         }
@@ -912,7 +916,10 @@ backToTop.addEventListener('click', () => {
       }
       
       lastScrollTop = scrollTop;
-    });
+    }); */
+    
+
+     // ── NAVBAR HIDE/SHOW ON SCROLL SCRIPT ──
   </script>
 </body>
 </html>
