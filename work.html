@@ -229,6 +229,22 @@
 :focus:not(:focus-visible) {
   outline: none;
 }
+
+/* ── Dark Mode Overrides for Manga Panels ── */
+.dark .manga-panel, 
+    .dark .manga-panel-blue, 
+    .dark .manga-panel-pink, 
+    .dark .manga-panel-accent {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Make the standard black shadow visible in dark mode */
+    .dark .manga-panel {
+      box-shadow: 6px 6px 0px 0px rgba(255, 255, 255, 0.1);
+    }
+    .dark .manga-panel:hover {
+      box-shadow: 8px 8px 0px 0px rgba(255, 255, 255, 0.2);
+    }
   </style>
 
 
