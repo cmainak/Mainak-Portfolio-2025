@@ -27,7 +27,7 @@
             accent: { 500: '#FF9933' },
             manga: {
               ink:    '#0D0D0D',
-              panel:  '#FFFEF5',
+              panel:  '#FFF',
               blue:   '#00B4FF',
               pink:   '#FF006E',
               navy:   '#02437D',
@@ -111,7 +111,7 @@
       width: 0%; z-index: 9998; transition: width 0.1s ease;
     }
 
-    #loader { background: #FFFEF5; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.3s ease; }
+    #loader { background: #FFF; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.3s ease; }
     #loader.fade-out { opacity: 0; pointer-events: none; }
 
     @keyframes sfx-pop { 0%,100%{transform:scale(1) rotate(-2deg);} 50%{transform:scale(1.06) rotate(2deg);} }
@@ -160,12 +160,12 @@
 
   <main id="main-content" role="main">
 
-    <section id="stories" class="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8 border-b-3 border-manga-ink bg-[#F9FAFB] overflow-hidden" aria-labelledby="stories-heading">
+    <section id="stories" class="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8  border-manga-ink bg-[#FFF] overflow-hidden" aria-labelledby="stories-heading">
       
       <div class="absolute inset-0 manga-halftone-navy opacity-30 pointer-events-none"></div>
       
-      <div class="absolute top-10 right-0 sm:right-10 pointer-events-none" aria-hidden="true">
-        <span class="sfx-light text-[6rem] sm:text-[10rem] leading-none opacity-20" style="color:#FF9933;">DRAW!</span>
+      <div class="absolute top-10 inset-x-0 text-center pointer-events-none" aria-hidden="true">
+        <span class="sfx-light text-[30rem] sm:text-[20rem] leading-none opacity-10" style="color:#02437D;">GENERATE!</span>
       </div>
 
       <div class="relative z-10 max-w-7xl mx-auto text-center">
@@ -186,7 +186,7 @@
       </div>
     </section>
 
-    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#FFF] overflow-hidden" aria-label="Manga style AI generated art panels">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 grid-flow-row-dense">
     
           <figure class="manga-panel flex flex-col">
