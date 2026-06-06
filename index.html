@@ -287,7 +287,7 @@
           </a>
 
           <div class="hidden md:flex items-center gap-6">
-            <a href="#hero" class="text-sm font-bold text-manga-blue dark:text-manga-blue uppercase tracking-wider transition-all">HOME</a>
+            <a href="#hero" class="text-sm font-bold text-manga-ink/80 dark:text-white/80 uppercase tracking-wider hover:text-manga-blue dark:hover:text-manga-blue transition-all">HOME</a>
             <a href="#about" class="text-sm font-bold text-manga-ink/80 dark:text-white/80 uppercase tracking-wider hover:text-manga-blue dark:hover:text-manga-blue transition-all">ABOUT</a>
 
             <div class="relative flex items-center gap-0.5">
@@ -881,6 +881,45 @@ window.addEventListener('scroll', () => {
 
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ── SCROLL SPY NAVBAR SCRIPT ──
+// Select all major sections and the footer
+const scrollSections = document.querySelectorAll('section[id], footer[id]');
+// Select only anchor links inside the navbar (desktop & mobile)
+const navLinks = document.querySelectorAll('nav a[href^="#"]'); 
+
+// The 'secret sauce' margin creates a trigger line slightly below the top of the screen
+const observerOptions = {
+  root: null,
+  rootMargin: '-20% 0px -70% 0px', 
+  threshold: 0
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const currentId = entry.target.getAttribute('id');
+      
+      navLinks.forEach(link => {
+        // If the link's href matches the section currently on screen
+        if (link.getAttribute('href') === `#${currentId}`) {
+          // Add Active State
+          link.classList.remove('text-manga-ink/80', 'dark:text-white/80');
+          link.classList.add('text-manga-blue', 'dark:text-manga-blue');
+        } else {
+          // Revert to Inactive State
+          link.classList.remove('text-manga-blue', 'dark:text-manga-blue');
+          link.classList.add('text-manga-ink/80', 'dark:text-white/80');
+        }
+      });
+    }
+  });
+}, observerOptions);
+
+// Start observing all sections
+scrollSections.forEach(section => {
+  scrollObserver.observe(section);
 });
 
     // ── MOBILE MENU SCRIPT ──
