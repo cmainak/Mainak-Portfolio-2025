@@ -683,13 +683,13 @@
               <p class="manga-label text-[0.65rem] px-3 py-1 mb-4 bg-accent-500">⚠ Caution</p>
               <h4 class="text-lg font-black uppercase mb-3 text-accent-500">Score Hard to Parse</h4>
               <blockquote class="text-sm font-bold italic text-manga-ink/90 mb-4 border-l-4 border-accent-500 pl-4">"I see 41/100, is that good or bad?"</blockquote>
-              <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-accent-500/20 pt-4">Fix → Color-coded badge + traffic-light bar showing safe/risky zones + High/Limited risk tags.</p>
+              <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-accent-500/20 pt-4">Fix → Color-coded badge + traffic-light bar showing safe/risky zones.</p>
             </div>
             <div class="ux-card-warn">
               <p class="manga-label text-[0.65rem] px-3 py-1 mb-4 bg-manga-pink text-white border-manga-pink" style="box-shadow:2px 2px 0 #0D0D0D;">! Critical</p>
               <h4 class="text-lg font-black uppercase mb-3 text-manga-pink">30-Second Wait</h4>
               <blockquote class="text-sm font-bold italic text-manga-ink/90 mb-4 border-l-4 border-manga-pink pl-4">"Why do I land on a blank camera screen first?"</blockquote>
-              <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-manga-pink/20 pt-4">Fix → Rating now overlays the camera in &lt;2s via progressive disclosure. Full details on swipe-up sheet.</p>
+              <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-manga-pink/20 pt-4">Fix → Rating now overlays the camera in &lt;2s via progressive disclosure.</p>
             </div>
             <div class="ux-card-success">
               <p class="manga-label text-[0.65rem] px-3 py-1 mb-4" style="background:#B1D73B; color:#0C4700;">✓ Resolved</p>
@@ -751,7 +751,7 @@
             </div>
             
               <p class="text-base font-bold text-manga-ink/90 leading-relaxed">
-                My original prototype used a numerical score for example, a product might receive a 41/100. In testing, nobody knew what 41 meant.
+                My original prototype used a numerical score for example, a product might receive a 41/100. In testing, nobody knew what that score actually meant.
               </p>
             </div>
             <div class="comparison-grid grid sm:grid-cols-2 gap-6 items-start mb-8">
@@ -836,7 +836,7 @@
       </div>
     </section>
 
-    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section class="pt-8 pb-16 sm:pt-12 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div class="max-w-7xl mx-auto space-y-16">
 
         <div>
@@ -911,8 +911,9 @@
         
         <div class="mb-12">
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-4">Lessons Learned</h3>
-          <p class="text-lg text-manga-ink/90 leading-relaxed font-bold max-w-4xl">
-            Testing the early prototypes completely broke my own assumptions. I originally designed flows around how I thought apps "should" work—like moving a user to a new screen after scanning. Watching users stumble over those decisions taught me that surface-level logic often fails in practice. It reinforced my drive to prototype and test in realistic environments as early as possible, rather than waiting for a polished, but flawed, final product.
+          
+          <p class="text-lg text-manga-ink/90 leading-relaxed font-bold">
+            Testing the early prototypes completely broke my own assumptions. I originally designed flows around how I thought apps "should" work like moving a user to a new screen after scanning. Watching users stumble over those decisions taught me that surface level logic often fails in practice. It reinforced my drive to prototype and test in realistic environments as early as possible, rather than waiting for a polished, but flawed, final product.
           </p>
         </div>
         
@@ -945,7 +946,7 @@
             <h2 id="prototype-heading" class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">
               <span style="color:#B1D73B;">Interactive</span> Prototype
             </h2>
-            <p class="text-white/80 font-bold uppercase tracking-widest text-sm mt-4">Experience the complete Orbit Scan flow — scan to recommendation — with working interactions.</p>
+            <p class="text-white/80 font-bold uppercase tracking-widest text-sm mt-4">Experience the complete flow from scan to recommendation with working interactions.</p>
           </div>
         </div>
       </div>
@@ -954,7 +955,15 @@
     <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]">
       <div class="max-w-7xl mx-auto w-full">
         
-        <div class="flex gap-4 mb-8 flex-wrap">
+        <div class="border-[3px] border-[#0C4700] overflow-hidden bg-[#FFFEF5] p-2 sm:p-4 w-full transition-all duration-150" style="box-shadow:8px 8px 0 #0C4700;">
+          <iframe class="border-[3px] border-[#0C4700] box-border w-full h-[600px] block"
+            src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share"
+            allowfullscreen loading="lazy"
+            title="Orbit Scan Interactive Prototype">
+          </iframe>
+        </div>
+    
+        <div class="flex justify-center w-full mt-8">
           <a href="https://www.figma.com/design/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?node-id=0-1&t=2hUOkQvCbw3UUzZG-1"
              target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-3 px-6 py-4 font-black uppercase tracking-wide border-[3px] border-[#0C4700] transition-all duration-150 focus:outline-none"
@@ -965,15 +974,6 @@
           </a>
         </div>
     
-        <div class="border-[3px] border-[#0C4700] overflow-hidden bg-[#FFFEF5] p-2 sm:p-4 w-full transition-all duration-150" style="box-shadow:8px 8px 0 #0C4700;">
-          
-          <iframe class="border-[3px] border-[#0C4700] box-border w-full h-[600px] block"
-            src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share"
-            allowfullscreen loading="lazy"
-            title="Orbit Scan Interactive Prototype">
-          </iframe>
-          
-        </div>
       </div>
     </section>
 
