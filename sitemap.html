@@ -509,6 +509,13 @@
           </ul>
         </nav>
 
+        <div class="text-center mb-12">
+          <a href="sitemap.html" class="inline-flex items-center gap-2 px-6 py-3 text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white bg-white dark:bg-manga-ink transition-all duration-150 focus:outline-none">
+            <i class="fas fa-sitemap" aria-hidden="true"></i>
+            View Sitemap
+          </a>
+        </div>
+
         <p class="text-sm text-manga-ink/40 dark:text-white/25 flex items-center justify-center gap-2 flex-wrap font-bold text-center uppercase tracking-wider">
           <span>Made with</span>
           <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain icon" class="inline-block h-5 w-auto align-middle" width="20" height="20">
@@ -607,33 +614,6 @@
         }
       });
     }
-
-    //NAVBAR HIDE/SHOW ON SCROLL//
-  let lastScrollTop = 0;
-  const navbar = document.getElementById('navbar');
-
-  window.addEventListener('scroll', () => {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Check if we have scrolled past the initial 50px (prevents jitter at the very top)
-    if (scrollTop > 50) {
-      if (scrollTop > lastScrollTop) {
-        // Scrolling Down: Hide the navbar
-        navbar.classList.add('-translate-y-full');
-      } else {
-        // Scrolling Up: Show the navbar
-        navbar.classList.remove('-translate-y-full');
-      }
-    } else {
-      // Always show the navbar when at the absolute top of the page
-      navbar.classList.remove('-translate-y-full');
-    }
-    
-    lastScrollTop = scrollTop;
-
-
-  });
-      //NAVBAR HIDE/SHOW ON SCROLL ENDS//
   </script>
 </body>
 </html>
