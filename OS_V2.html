@@ -470,14 +470,14 @@
           <div class="persona-card">
             <div class="bg-[#0C4700] px-6 sm:px-8 py-5 flex items-center gap-4 border-b-3 border-manga-ink">
               <span class="manga-label text-xs hidden sm:block" style="background:#B1D73B; color:#0C4700;">Primary Persona</span>
-              <h4 class="text-white font-black uppercase text-xl sm:text-2xl ml-auto">Speed is the ultimate feature for Stephanie</h4>
+            
             </div>
 
             <div class="p-6 sm:p-10">
               <div class="persona-grid grid lg:grid-cols-3 gap-10">
                 <div class="flex flex-col items-center gap-6">
                   <div class="w-40 h-40 sm:w-48 sm:h-48 overflow-hidden border-4 border-manga-ink" style="box-shadow:4px 4px 0 #0C4700;">
-                    <img src="assets/img/Projects/Orbit Scan/Case Study/Stephanie.jpg" alt="Stephanie, 24, Graduate Student" class="w-full h-full object-cover">
+                    <img src="assets/img/Projects/Orbit Scan/Case Study/Stephanie.jpg" alt="Stephanie, 24, Graduate Student" class="w-full h-full object-fill">
                   </div>
                   <div class="text-center">
                     <p class="text-2xl font-black uppercase">Stephanie</p>
@@ -515,7 +515,7 @@
                     <div class="border-3 border-manga-pink p-6" style="box-shadow:4px 4px 0 #FF006E; background:#FFF0F5;">
                       <p class="text-xs font-black uppercase tracking-widest mb-4 text-manga-pink">! Frustrations</p>
                       <ul class="space-y-3">
-                        <li class="text-sm font-bold text-manga-ink/90 flex items-start gap-3"><span class="text-manga-pink flex-shrink-0 font-black">!</span> Paralysis by label overload</li>
+                        <li class="text-sm font-bold text-manga-ink/90 flex items-start gap-3"><span class="text-manga-pink flex-shrink-0 font-black">!</span> Overwhelmed by label overload</li>
                         <li class="text-sm font-bold text-manga-ink/90 flex items-start gap-3"><span class="text-manga-pink flex-shrink-0 font-black">!</span> Distrust of unclear ingredients</li>
                       </ul>
                     </div>
@@ -623,16 +623,13 @@
         <div>
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Core User Flow</h3>
           
-          <!-- CHANGED: Added max-h-[600px] and overflow-auto to create a scrollable window -->
-          <div class="manga-panel bg-white w-full p-4 sm:p-6 overflow-auto" style="max-height: 600px; box-shadow:6px 6px 0 #0C4700;">
-            
-            <!-- CHANGED: Added min-w-[800px] so the image never shrinks too small to read on mobile -->
+          <div class="bg-white w-full p-4 sm:p-6 overflow-auto" style="max-height: 600px;">
             <img src="assets/img/Projects/Orbit Scan/Case Study/User Flow.png" 
                  alt="Orbit Scan core user-flow diagram" 
                  loading="lazy" 
                  class="w-full min-w-[800px] h-auto block mx-auto">
-                 
           </div>
+        
           
           <!-- Added a visual cue for users -->
           <p class="text-xs text-manga-ink/60 mt-4 font-bold uppercase tracking-widest text-center">
@@ -652,7 +649,7 @@
             <span class="manga-label px-4 py-2" style="background:#0C4700; color:#B1D73B; border-color:#0C4700;">3. Personalized Swap Suggestions</span>
           </div>
 
-          <div class="manga-panel overflow-hidden bg-white flex justify-center p-4 sm:p-6 w-full" style="box-shadow:6px 6px 0 #0C4700;">
+          <div class="overflow-hidden bg-white flex justify-center p-4 sm:p-6 w-full">
             <img src="assets/img/Projects/Orbit Scan/Case Study/Minimum Steps Flow.png" alt="Minimum steps flow diagram" loading="lazy" class="w-full h-auto object-contain mx-auto">
           </div>
         </div>
@@ -661,16 +658,13 @@
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-4">Early Ideation: Breadth Over Perfection</h3>
           <p class="text-base text-manga-ink/80 leading-relaxed font-bold mb-8 w-full">Before committing to visual design, I generated dozens of mid-fidelity wireframes to explore layout, hierarchy, and flow — mapping the entire experience without getting bogged down in aesthetics.</p>
           
-          <!-- CHANGED: Replaced overflow-hidden with overflow-auto and added max-height -->
-          <div class="manga-panel overflow-auto bg-[#FFFEF5] p-4 sm:p-6 w-full" style="max-height: 600px; box-shadow:6px 6px 0 #0C4700;">
-            
-            <!-- CHANGED: Added min-w-[800px] to keep the wireframe grid large and readable -->
+          <div class="overflow-auto bg-[#FFFEF5] p-4 sm:p-6 w-full" style="max-height: 600px;">
             <img src="assets/img/Projects/Orbit Scan/Case Study/Low-fi.png" 
                  alt="Grid of mid-fidelity wireframes" 
                  loading="lazy" 
                  class="w-full min-w-[800px] h-auto block mx-auto">
-                 
           </div>
+      
           
           <!-- Added the scroll helper text -->
           <p class="text-xs text-manga-ink/60 mt-4 font-bold uppercase tracking-widest text-center">
@@ -862,12 +856,12 @@
 
         <div>
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Final Product: Deep Insights View</h3>
-          <div class="manga-panel overflow-hidden bg-white p-4 sm:p-8 flex justify-center" style="box-shadow:6px 6px 0 #0C4700;">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/Deep Insights.png" alt="Final product: Intelligent Scanner and Health Analysis Screen" loading="lazy" class="w-full max-h-[600px] object-contain mx-auto">
-          </div>
+<div class="overflow-hidden bg-white p-4 sm:p-8 flex justify-center">
+  <img src="assets/img/Projects/Orbit Scan/Case Study/Deep Insights.png" alt="Final product: Intelligent Scanner and Health Analysis Screen" loading="lazy" class="w-full max-h-[600px] object-contain mx-auto">
+</div>
         </div>
 
-        <div class="manga-panel-green bg-[#F0FFF4] p-8 sm:p-12" style="box-shadow:6px 6px 0 #0C4700;">
+        <div class="manga-panel-green bg-[#F0FFF4] p-8 sm:p-12">
           <span class="manga-label mb-6 block w-fit" style="background:#B1D73B; color:#0C4700;">Qualitative Outcomes</span>
           <ul class="space-y-4">
             <li class="flex items-start gap-4 text-base font-bold text-manga-ink/90"><span class="text-manga-green font-black text-xl flex-shrink-0">✓</span> All 4 users described the traffic light as "instantly understandable."</li>
@@ -880,10 +874,8 @@
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-4">Complete Product Architecture</h3>
           <p class="text-sm text-manga-ink/80 font-bold uppercase tracking-widest mb-8">Every screen. Every flow. One connected system.</p>
           
-          <!-- CHANGED: Added overflow-auto and max-height to contain the tall diagram -->
-          <div class="manga-panel overflow-auto bg-[#F9FAFB] p-4 sm:p-8 w-full" style="max-height: 600px; box-shadow:8px 8px 0 #0D0D0D;">
+          <div class="overflow-auto bg-[#F9FAFB] p-4 sm:p-8 w-full" style="max-height: 600px;">
             
-            <!-- CHANGED: Added min-w-[1000px] so the individual UI screens remain large enough to read -->
             <img src="assets/img/Projects/Orbit Scan/Case Study/Interaction Final Prototype.png" 
                  alt="Full product overview: all screens and flows" 
                  loading="lazy" 
@@ -891,7 +883,6 @@
                  
           </div>
           
-          <!-- Added the scroll helper text -->
           <p class="text-xs text-manga-ink/60 mt-4 mb-2 font-bold uppercase tracking-widest text-center">
             ↕ Scroll inside the panel to explore the architecture ↕
           </p>
@@ -900,6 +891,9 @@
           </p>
         </div>
 
+
+
+        
         <div class="manga-panel bg-[#0C4700] p-8 sm:p-12 relative overflow-hidden" style="box-shadow:8px 8px 0 #0D0D0D;">
           <div class="absolute inset-0 manga-halftone-green opacity-20 pointer-events-none"></div>
           <div class="relative z-10">
@@ -947,27 +941,31 @@
 
     <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]">
       <div class="max-w-7xl mx-auto w-full">
+        
         <div class="flex gap-4 mb-8 flex-wrap">
           <a href="https://www.figma.com/design/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?node-id=0-1&t=2hUOkQvCbw3UUzZG-1"
              target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 px-6 py-4 font-black uppercase tracking-wide border-3 border-manga-ink transition-all duration-150 focus:outline-none"
+             class="inline-flex items-center gap-3 px-6 py-4 font-black uppercase tracking-wide border-[3px] border-[#0C4700] transition-all duration-150 focus:outline-none"
              style="background:#B1D73B; color:#0C4700; box-shadow:4px 4px 0 #0C4700;"
              onmouseover="this.style.transform='translate(2px,2px)';this.style.boxShadow='2px 2px 0 #0C4700'"
              onmouseout="this.style.transform='';this.style.boxShadow='4px 4px 0 #0C4700'">
             <i class="fas fa-external-link-alt" aria-hidden="true"></i> Open in Figma
           </a>
         </div>
-        <div class="manga-panel overflow-hidden bg-[#FFFEF5] p-2 sm:p-4 w-full" style="box-shadow:8px 8px 0 #0C4700;">
-          <iframe style="border:3px solid #0D0D0D; width:100%; height:600px; display:block;"
+    
+        <div class="border-[3px] border-[#0C4700] overflow-hidden bg-[#FFFEF5] p-2 sm:p-4 w-full transition-all duration-150" style="box-shadow:8px 8px 0 #0C4700;">
+          
+          <iframe class="border-[3px] border-[#0C4700] box-border w-full h-[600px] block"
             src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share"
             allowfullscreen loading="lazy"
             title="Orbit Scan Interactive Prototype">
           </iframe>
+          
         </div>
       </div>
     </section>
 
-    <div class="panel-divider" aria-hidden="true"></div>
+  
 
     <!-- ══════════════════════════════════════
          CROSS-NAVIGATION
@@ -1002,14 +1000,14 @@
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header class="text-center mb-12">
-          <span class="manga-label mb-6 block w-fit mx-auto" style="background:#B1D73B; color:#0C4700; border-color:#0D0D0D;">Contact</span>
+          
           <div class="relative inline-block">
             <h2 id="footer-heading" class="text-3xl sm:text-4xl font-black uppercase tracking-wide text-white">
               Let's Get In Touch
             </h2>
             <div class="absolute -bottom-2 left-0 w-full h-2 -z-10 transform -rotate-1" style="background:#B1D73B;" aria-hidden="true"></div>
           </div>
-          <p class="mt-6 text-sm font-bold uppercase tracking-widest text-white/70">Open to Opportunities</p>
+          
         </header>
 
         <nav aria-label="Contact information">
@@ -1029,7 +1027,7 @@
             <li>
               <a href="mailto:mainak.chak04@gmail.com"
                  class="flex items-center gap-4 p-5 bg-white/5 border-3 border-white/20 shadow-[4px_4px_0px_0px_rgba(177,215,59,0.3)] hover:border-manga-pink hover:shadow-comic-pink hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 focus:outline-none group">
-                <div class="w-11 h-11 bg-gradient-to-br from-red-400 to-red-600 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                <div class="w-13 h-11 bg-gradient-to-br from-red-400 to-red-600 border-2 border-white/20 flex items-center justify-center flex-shrink-0">
                   <i class="fas fa-envelope text-white text-lg" aria-hidden="true"></i>
                 </div>
                 <div>
