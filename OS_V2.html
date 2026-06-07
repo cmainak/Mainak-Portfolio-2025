@@ -63,16 +63,17 @@
     .manga-halftone-light { background-image: radial-gradient(circle, rgba(0,180,255,0.15) 1px, transparent 1px); background-size: 24px 24px; }
     .manga-halftone-green { background-image: radial-gradient(circle, rgba(12,71,0,0.12) 1px, transparent 1px); background-size: 18px 18px; }
 
-    .manga-panel        { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #0D0D0D; }
-    .manga-panel-green  { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #0C4700; }
-    .manga-panel-lime   { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #B1D73B; }
-    .manga-panel-blue   { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #00B4FF; }
-    .manga-panel-pink   { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FF006E; }
-    .manga-panel-accent { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FF9933; }
+   /* Change all of these to use #0D0D0D instead of their respective colors */
+.manga-panel-green  { border: 3px solid #0D0D0D; box-shadow: 4px 4px 0px 0px #0D0D0D; }
+.manga-panel-lime   { border: 3px solid #0D0D0D; box-shadow: 4px 4px 0px 0px #0D0D0D; }
+.manga-panel-blue   { border: 3px solid #0D0D0D; box-shadow: 4px 4px 0px 0px #0D0D0D; }
+.manga-panel-pink   { border: 3px solid #0D0D0D; box-shadow: 4px 4px 0px 0px #0D0D0D; }
+.manga-panel-accent { border: 3px solid #0D0D0D; box-shadow: 4px 4px 0px 0px #0D0D0D; }
 
-    .manga-panel:hover, .manga-panel-green:hover, .manga-panel-lime:hover,
-    .manga-panel-blue:hover, .manga-panel-pink:hover, .manga-panel-accent:hover { transform: translate(-2px, -2px); }
-    
+/* Keep the hover state uniform as well */
+.manga-panel-green:hover, .manga-panel-lime:hover, .manga-panel-blue:hover, .manga-panel-pink:hover, .manga-panel-accent:hover { 
+  box-shadow: 6px 6px 0px 0px #0D0D0D; 
+}    
     .manga-panel:hover        { box-shadow: 8px 8px 0px 0px #0D0D0D; }
     .manga-panel-green:hover  { box-shadow: 8px 8px 0px 0px #0C4700; }
     .manga-panel-lime:hover   { box-shadow: 8px 8px 0px 0px #B1D73B; }
@@ -200,73 +201,68 @@
 
   <main id="main-content" role="main">
 
-    <!-- ══════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════ -->
-    <section id="overview" class="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-16"
-             style="background: linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.78)), url('assets/img/Projects/Orbit Scan/Case Study Background.png') center/cover no-repeat;"
-             aria-labelledby="hero-heading">
+    <section id="overview" class="relative min-h-screen flex flex-col justify-center overflow-hidden py-12"
+    style="background: linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.78)), url('assets/img/Projects/Orbit Scan/Case Study Background.png') center/cover no-repeat;"
+    aria-labelledby="hero-heading">
 
-      <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(177,215,59,0.06) 1px, transparent 1px); background-size: 22px 22px;" aria-hidden="true"></div>
-      <div class="absolute top-24 right-6 pointer-events-none" aria-hidden="true">
-        <span class="sfx-white text-[8rem] sm:text-[12rem] leading-none opacity-10" style="color:#B1D73B;">SCAN!</span>
-      </div>
+  <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(177,215,59,0.06) 1px, transparent 1px); background-size: 22px 22px;" aria-hidden="true"></div>
+  <div class="absolute top-24 right-6 pointer-events-none" aria-hidden="true">
+    <span class="sfx-white text-[14rem] sm:text-[20rem] leading-none opacity-10" style="color:#B1D73B;">SCAN!</span>
+  </div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 animate-fade-in-up">
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <div class="manga-label mb-6 block w-fit" style="background:#B1D73B; color:#0C4700; box-shadow:3px 3px 0 #B1D73B;">
-              Case Study — Mobile UX Design, Health Tech
-            </div>
-            <div class="speech-bubble mb-6 inline-block">
-              <p class="text-xs font-black uppercase tracking-widest text-manga-ink">Chapter 01 — The Mission</p>
-            </div>
-            <h1 id="hero-heading" class="font-sfx text-7xl sm:text-8xl md:text-9xl leading-none text-white mb-6"
-                style="-webkit-text-stroke: 2px rgba(177,215,59,0.5); paint-order: stroke fill; filter: drop-shadow(0 0 40px rgba(177,215,59,0.3));">
-              ORBIT SCAN
-            </h1>
-            <p class="text-base sm:text-lg text-white/90 font-bold uppercase tracking-widest mb-8 max-w-lg border-l-4 pl-4" style="border-color:#B1D73B;">
-              Food labels are supposed to help people decide. In practice, they often do the opposite. Orbit Scan was designed to reduce uncertainty at the shelf through instant scanning and health guidance grounded in personal dietary needs.
-            </p>
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 animate-fade-in-up">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div>
 
-            <div class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-4" style="max-width:560px;">
-              <div class="manga-panel bg-white/10 backdrop-blur-sm p-4 border-white/30" style="box-shadow:4px 4px 0 rgba(177,215,59,0.4);">
-                <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1" style="color:#B1D73B;">Role</p>
-                <p class="text-xs font-bold text-white">Lead UX/UI Designer</p>
-              </div>
-              <div class="manga-panel bg-white/10 backdrop-blur-sm p-4 border-white/30" style="box-shadow:4px 4px 0 rgba(177,215,59,0.4);">
-                <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1" style="color:#B1D73B;">Timeline</p>
-                <p class="text-xs font-bold text-white">14 Weeks (Q4 2024)</p>
-              </div>
-              <div class="manga-panel bg-white/10 backdrop-blur-sm p-4 border-white/30" style="box-shadow:4px 4px 0 rgba(177,215,59,0.4);">
-                <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1" style="color:#B1D73B;">Tools</p>
-                <p class="text-xs font-bold text-white">Figma · FigJam</p>
-              </div>
-              <div class="manga-panel bg-white/10 backdrop-blur-sm p-4 border-white/30" style="box-shadow:4px 4px 0 rgba(177,215,59,0.4);">
-                <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1" style="color:#B1D73B;">Team</p>
-                <p class="text-xs font-bold text-white">Solo UX Lead</p>
-              </div>
-            </div>
+        <div class="speech-bubble mb-4 inline-block">
+          <p class="text-xs font-black uppercase tracking-widest text-manga-ink">Case Study — Mobile UX Design, Health Tech</p>
+        </div>
+        <h1 id="hero-heading" class="font-sfx text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] leading-none text-white mb-4"
+            style="-webkit-text-stroke: 2px rgba(177,215,59,0.5); paint-order: stroke fill; filter: drop-shadow(0 0 40px rgba(177,215,59,0.3));">
+          ORBIT SCAN
+        </h1>
+        <p class="text-sm sm:text-base text-white/90 font-bold uppercase tracking-widest mb-6 max-w-lg border-l-4 pl-4" style="border-color:#B1D73B;">
+          Orbit Scan was built to bring clarity to grocery shopping. It helps users navigate complex food labels through instant scanning and personalized health insights.
+        </p>
+
+        <div class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-4" style="max-width:560px;">
+          <div class="manga-panel bg-white/10 backdrop-blur-sm p-3 border-white/30" style="box-shadow:4px 4px 0 rgba(177,215,59,0.4);">
+            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1" style="color:#B1D73B;">Role</p>
+            <p class="text-xs font-bold text-white">Lead UX/UI Designer</p>
           </div>
-
-          <div class="hidden lg:flex justify-center items-end hero-phone-img">
-            <img src="assets/img/Projects/Orbit Scan/Case Study/CoverOS.png"
-                 alt="Orbit Scan app preview on iPhone"
-                 class="w-full max-w-sm h-auto object-contain"
-                 style="filter: drop-shadow(0 40px 60px rgba(0,0,0,0.6)) drop-shadow(0 0 30px rgba(177,215,59,0.2));">
+          <div class="manga-panel bg-white/10 backdrop-blur-sm p-3 border-white/30" style="box-shadow:4px 4px 0 rgba(177,215,59,0.4);">
+            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1" style="color:#B1D73B;">Timeline</p>
+            <p class="text-xs font-bold text-white">14 Weeks (Q4 2024)</p>
+          </div>
+          <div class="manga-panel bg-white/10 backdrop-blur-sm p-3 border-white/30" style="box-shadow:4px 4px 0 rgba(177,215,59,0.4);">
+            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1" style="color:#B1D73B;">Tools</p>
+            <p class="text-xs font-bold text-white">Figma · FigJam</p>
+          </div>
+          <div class="manga-panel bg-white/10 backdrop-blur-sm p-3 border-white/30" style="box-shadow:4px 4px 0 rgba(177,215,59,0.4);">
+            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-1" style="color:#B1D73B;">Team</p>
+            <p class="text-xs font-bold text-white">Solo UX Lead</p>
           </div>
         </div>
-
-        <div class="flex flex-col items-start gap-2 mt-10">
-          <a href="#process" class="flex items-center gap-3 text-white/70 hover:text-white transition-colors p-2 focus:outline-none" aria-label="Scroll to design process">
-            <div class="w-7 h-11 rounded-full border-3 border-current flex justify-center pt-2">
-              <div class="w-1.5 h-3 bg-current rounded-full" style="animation:scroll-wheel 1.5s ease-in-out infinite;"></div>
-            </div>
-            <span class="text-xs font-black uppercase tracking-widest">Read the Case Study</span>
-          </a>
-        </div>
       </div>
-    </section>
+
+      <div class="hidden lg:flex justify-center items-end hero-phone-img">
+        <img src="assets/img/Projects/Orbit Scan/Case Study/CoverOS.png"
+             alt="Orbit Scan app preview on iPhone"
+             class="w-full max-w-sm max-h-[65vh] object-contain"
+             style="filter: drop-shadow(0 40px 60px rgba(0,0,0,0.6)) drop-shadow(0 0 30px rgba(177,215,59,0.2));">
+      </div>
+    </div>
+
+    <div class="flex flex-col items-start gap-2 mt-6">
+      <a href="#process" class="flex items-center gap-3 text-white/70 hover:text-white transition-colors p-2 focus:outline-none" aria-label="Scroll to design process">
+        <div class="w-7 h-11 rounded-full border-3 border-current flex justify-center pt-2">
+          <div class="w-1.5 h-3 bg-current rounded-full" style="animation:scroll-wheel 1.5s ease-in-out infinite;"></div>
+        </div>
+        <span class="text-xs font-black uppercase tracking-widest">Read the Case Study</span>
+      </a>
+    </div>
+  </div>
+</section>
 
     <div class="panel-divider-green" aria-hidden="true"></div>
 
@@ -277,39 +273,42 @@
     <section id="process" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white" aria-labelledby="process-heading">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-12">
-          <span class="manga-label mb-6 block w-fit mx-auto" style="background:#B1D73B; color:#0C4700;">Design Process</span>
+          <div class="speech-bubble mb-4 inline-block">
+            <p class="text-xs font-black uppercase tracking-widest text-manga-ink">Design Process</p>
+          </div>
+
           <h2 id="process-heading" class="text-3xl sm:text-4xl font-black uppercase text-manga-ink">The Double Diamond Approach</h2>
           <p class="mt-4 text-sm text-manga-ink/80 font-bold uppercase tracking-widest">Evidence-based design, every iteration grounded in real shopper pain points.</p>
         </div>
 
         <div class="process-grid-4 grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12">
           <div class="process-card manga-panel" style="box-shadow:6px 6px 0 #0C4700;">
-            <div class="absolute -top-4 -left-4 ink-splat-2 w-10 h-10 flex items-center justify-center" style="background:#B1D73B;" aria-hidden="true"><span class="sfx text-sm" style="-webkit-text-stroke:1px #0D0D0D;">01</span></div>
+            
             <p class="text-[0.6rem] font-black uppercase tracking-widest mb-2 mt-2" style="color:#0C4700;">Discover</p>
             <h3 class="text-lg font-black uppercase mb-2 text-manga-ink">Explore</h3>
             <p class="text-xs text-manga-ink/80 leading-relaxed font-bold">Surveys, interviews, in-store shadowing, competitive audit & desk research.</p>
           </div>
-          <div class="process-card manga-panel" style="box-shadow:6px 6px 0 #B1D73B;">
-            <div class="absolute -top-4 -left-4 ink-splat-2 w-10 h-10 flex items-center justify-center" style="background:#0C4700;" aria-hidden="true"><span class="sfx text-sm text-white" style="-webkit-text-stroke:1px rgba(255,255,255,0.2);">02</span></div>
-            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-2 mt-2" style="color:#B1D73B;">Define</p>
+          <div class="process-card manga-panel" style="box-shadow:6px 6px 0 #0C4700;">
+            
+            <p class="text-[0.6rem] font-black uppercase tracking-widest mb-2 mt-2" style="color:#0C4700;">Define</p>
             <h3 class="text-lg font-black uppercase mb-2 text-manga-ink">Focus</h3>
             <p class="text-xs text-manga-ink/80 leading-relaxed font-bold">Affinity mapping, HMW statements, persona & journey map synthesis.</p>
           </div>
-          <div class="process-card manga-panel" style="box-shadow:6px 6px 0 #FF9933;">
-            <div class="absolute -top-4 -left-4 ink-splat-2 w-10 h-10 flex items-center justify-center bg-accent-500" aria-hidden="true"><span class="sfx text-sm" style="-webkit-text-stroke:1px #0D0D0D;">03</span></div>
+          <div class="process-card manga-panel" style="box-shadow:6px 6px 0 #0C4700;">
+          
             <p class="text-[0.6rem] font-black uppercase tracking-widest mb-2 mt-2 text-accent-500">Develop</p>
             <h3 class="text-lg font-black uppercase mb-2 text-manga-ink">Ideate</h3>
             <p class="text-xs text-manga-ink/80 leading-relaxed font-bold">Low-fi wireframes, user flows, usability testing & key design decisions.</p>
           </div>
-          <div class="process-card manga-panel" style="box-shadow:6px 6px 0 #FF006E;">
-            <div class="absolute -top-4 -left-4 ink-splat-2 w-10 h-10 flex items-center justify-center bg-manga-pink" aria-hidden="true"><span class="sfx text-sm text-white" style="-webkit-text-stroke:1px rgba(255,255,255,0.2);">04</span></div>
+          <div class="process-card manga-panel" style="box-shadow:6px 6px 0 #0C4700;">
+           
             <p class="text-[0.6rem] font-black uppercase tracking-widest mb-2 mt-2 text-manga-pink">Deliver</p>
             <h3 class="text-lg font-black uppercase mb-2 text-manga-ink">Ship</h3>
             <p class="text-xs text-manga-ink/80 leading-relaxed font-bold">High-fidelity UI, interactive prototype & measurable outcomes.</p>
           </div>
         </div>
 
-        <div class="content-panel overflow-hidden p-6 sm:p-10" style="box-shadow:6px 6px 0 #0C4700; background:#FFFEF5;">
+        <div class="content-panel overflow-hidden p-6 sm:p-10" style="box-shadow:6px 6px 0 #0C4700; background:#FFF;">
           <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Double Diamond design process diagram" style="width:100%; height:auto; display:block;">
             <defs><marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1,1 L6,3.5 L1,6" fill="none" stroke="#0C4700" stroke-width="1.2"/></marker></defs>
             <polygon points="50,150 250,20 450,150 250,280" fill="rgba(177,215,59,0.12)" stroke="#0C4700" stroke-width="3" stroke-linejoin="round"/>
@@ -321,12 +320,12 @@
             <text x="550" y="155" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="14" font-weight="700" fill="#0C4700">DEVELOP</text>
             <text x="750" y="155" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="14" font-weight="700" fill="#0C4700">DELIVER</text>
             <circle cx="50"  cy="150" r="8" fill="#B1D73B" stroke="#0D0D0D" stroke-width="2"/>
-            <circle cx="450" cy="150" r="10" fill="#0C4700" stroke="#B1D73B" stroke-width="2"/>
-            <circle cx="850" cy="150" r="8" fill="#B1D73B" stroke="#0D0D0D" stroke-width="2"/>
-            <text x="50"  y="138" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="10" font-weight="700" fill="#0C4700">START</text>
-            <text x="450" y="136" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="10" font-weight="700" fill="#B1D73B">PROBLEM</text>
-            <text x="450" y="149" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="10" font-weight="700" fill="#B1D73B">DEFINED</text>
-            <text x="850" y="138" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="10" font-weight="700" fill="#0C4700">END</text>
+            <circle cx="450" cy="150" r="10" fill="#0C4700" stroke="#0C4700" stroke-width="2"/>
+            <circle cx="850" cy="150" r="8" fill="#0C4700" stroke="#0D0D0D" stroke-width="2"/>
+            <text x="50"  y="132" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="10" font-weight="700" fill="#0C4700">START</text>
+<text x="450" y="120" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="10" font-weight="700" fill="#000000">PROBLEM</text>
+<text x="450" y="131" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="10" font-weight="700" fill="#000000">DEFINED</text>
+<text x="850" y="129" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="10" font-weight="700" fill="#000000">END</text>
           </svg>
         </div>
       </div>
@@ -366,7 +365,7 @@
           <div class="absolute inset-0 manga-halftone-green opacity-20 pointer-events-none"></div>
           <div class="relative z-10 grid sm:grid-cols-2 gap-6">
             <div class="text-center p-6 border-r-2 border-white/10">
-              <p class="font-sfx text-6xl sm:text-7xl" style="color:#B1D73B; -webkit-text-stroke:1px rgba(255,255,255,0.2);">65%</p>
+              <p class="font-sfx text-6xl sm:text-7xl" style="color:#B1D73B; -webkit-text-stroke:1px rgba(255, 255, 255, 0.2);">65%</p>
               <p class="text-sm font-black uppercase tracking-widest text-white/80 mt-2">of US shoppers struggle to interpret food labels</p>
             </div>
             <div class="text-center p-6">
