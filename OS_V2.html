@@ -678,31 +678,36 @@
         <div>
           <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-4">Usability Testing Revealed 3 Major Speed Bumps</h3>
           <p class="text-base text-manga-ink/80 leading-relaxed font-bold mb-8 w-full">Moderated sessions with 4 target users (20–30 min each). Tasks: scan product, read rating, save food preferences.</p>
+          
           <div class="grid lg:grid-cols-3 gap-6">
-            <div class="ux-card-caution">
-              <p class="manga-label text-[0.65rem] px-3 py-1 mb-4 bg-accent-500">⚠ Caution</p>
-              <h4 class="text-lg font-black uppercase mb-3 text-accent-500">Score Hard to Parse</h4>
-              <blockquote class="text-sm font-bold italic text-manga-ink/90 mb-4 border-l-4 border-accent-500 pl-4">"I see 41/100, is that good or bad?"</blockquote>
-              <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-accent-500/20 pt-4">Fix → Color-coded badge + traffic-light bar showing safe/risky zones.</p>
-            </div>
+            
             <div class="ux-card-warn">
               <p class="manga-label text-[0.65rem] px-3 py-1 mb-4 bg-manga-pink text-white border-manga-pink" style="box-shadow:2px 2px 0 #0D0D0D;">! Critical</p>
               <h4 class="text-lg font-black uppercase mb-3 text-manga-pink">30-Second Wait</h4>
               <blockquote class="text-sm font-bold italic text-manga-ink/90 mb-4 border-l-4 border-manga-pink pl-4">"Why do I land on a blank camera screen first?"</blockquote>
               <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-manga-pink/20 pt-4">Fix → Rating now overlays the camera in &lt;2s via progressive disclosure.</p>
             </div>
+            
+            <div class="ux-card-caution">
+              <p class="manga-label text-[0.65rem] px-3 py-1 mb-4 bg-accent-500">⚠ Caution</p>
+              <h4 class="text-lg font-black uppercase mb-3 text-accent-500">Score Hard to Parse</h4>
+              <blockquote class="text-sm font-bold italic text-manga-ink/90 mb-4 border-l-4 border-accent-500 pl-4">"I see 41/100, is that good or bad?"</blockquote>
+              <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-accent-500/20 pt-4">Fix → Color-coded badge + traffic-light bar showing safe/risky zones.</p>
+            </div>
+            
             <div class="ux-card-success">
               <p class="manga-label text-[0.65rem] px-3 py-1 mb-4" style="background:#B1D73B; color:#0C4700;">✓ Resolved</p>
               <h4 class="text-lg font-black uppercase mb-3 text-manga-green">Toggles Felt Tedious</h4>
               <blockquote class="text-sm font-bold italic text-manga-ink/90 mb-4 border-l-4 pl-4 border-manga-green">"Too many switches, then I still have to hit Done."</blockquote>
-              <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-manga-green/20 pt-4">Fix → Visual icon grid replacing the dense toggle list, with a bottom anchored Save button.</p>
+              <p class="text-base text-manga-ink/90 leading-relaxed font-bold border-t-2 border-manga-green/20 pt-4">Fix → Icon grid replacing the dense toggle list, with a bottom anchored Save button.</p>
             </div>
+            
           </div>
         </div>
 
         <!-- Decisions Block -->
         <div>
-          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Key Decisions & Critical Trade-offs</h3>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase text-manga-ink mb-6">Turning Insights Into Solutions</h3>
          
 
           <!-- Decision 1 -->
@@ -718,22 +723,29 @@
               </p>
             </div>
             <div class="comparison-grid grid sm:grid-cols-2 gap-6 items-start mb-8">
-              <div class="comp-old h-full flex flex-col justify-between">
-                <div>
+  
+              <div class="comp-old h-full flex flex-col">
+                <div class="relative z-0">
                   <p class="text-xs font-black uppercase tracking-widest text-manga-pink mb-4">Before →</p>
-                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Barcode Screen.png" alt="Old scanner screen" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto mb-4">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" alt="Old rating screen" loading="lazy" class="w-full max-h-[500px] h-auto object-contain mx-auto">
                 </div>
-                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-pink/20">A separate results screen made users wait up to 30 seconds — long enough to lose confidence in the product entirely.</p>
+                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-pink/20 -mt-16 relative z-10 bg-white/80 pb-2">
+                  A numerical score without context asks users to do mental math they shouldn't have to do at a grocery shelf.
+                </p>
               </div>
-              <div class="comp-new h-full flex flex-col justify-between">
-                <div>
+              
+              <div class="comp-new h-full flex flex-col">
+                <div class="relative z-0">
                   <p class="text-xs font-black uppercase tracking-widest text-manga-green mb-4">After ✓</p>
-                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Barcode Screen.png" alt="New instant overlay" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto mb-4">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" alt="New rating screen" loading="lazy" class="w-full max-h-[500px] h-auto object-contain mx-auto">
                 </div>
-                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-green/20">An instant overlay delivers the key signal in under 2 seconds. Full details are one swipe away when needed.</p>
+                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-green/20 -mt-16 relative z-10 bg-white/80 pb-2">
+                  Color coding plus plain-language risk tags turns a decision into a glance. No interpretation required.
+                </p>
               </div>
+              
             </div>
-            <div class="overflow-hidden bg-white p-4 sm:p-6 flex justify-center w-full">
+            <div class="flex justify-center w-full mt-8">
   
               <img src="assets/img/Projects/Orbit Scan/Case Study/Key Decision 1.png" 
                    alt="Key Decision 1 comparison" 
@@ -755,25 +767,32 @@
               </p>
             </div>
             <div class="comparison-grid grid sm:grid-cols-2 gap-6 items-start mb-8">
-              <div class="comp-old h-full flex flex-col justify-between">
-                <div>
+  
+              <div class="comp-old h-full flex flex-col">
+                <div class="relative z-0">
                   <p class="text-xs font-black uppercase tracking-widest text-manga-pink mb-4">Before →</p>
-                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" alt="Old rating screen" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto mb-4">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Rating Screen.png" alt="Old rating screen" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto">
                 </div>
-                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-pink/20">A numerical score without context asks users to do mental math they shouldn't have to do at a grocery shelf.</p>
+                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-pink/20 -mt-16 relative z-10 bg-white/80 pb-2">
+                  A numerical score without context asks users to do mental math they shouldn't have to do at a grocery shelf.
+                </p>
               </div>
-              <div class="comp-new h-full flex flex-col justify-between">
-                <div>
+              
+              <div class="comp-new h-full flex flex-col">
+                <div class="relative z-0">
                   <p class="text-xs font-black uppercase tracking-widest text-manga-green mb-4">After ✓</p>
-                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" alt="New rating screen" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto mb-4">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Rating Screen.png" alt="New rating screen" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto">
                 </div>
-                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-green/20">Color coding plus plain-language risk tags turns a decision into a glance. No interpretation required.</p>
+                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-green/20 -mt-16 relative z-10 bg-white/80 pb-2">
+                  Color coding plus plain-language risk tags turns a decision into a glance. No interpretation required.
+                </p>
               </div>
+              
             </div>
             <div class="flex justify-center w-full overflow-hidden">
               <img src="assets/img/Projects/Orbit Scan/Case Study/Key Decision 2.png" alt="Key Decision 2 comparison" loading="lazy" class="w-full h-auto object-contain mx-auto">
             </div>
-            </div>
+       
 
           <!-- Decision 3 -->
           <div class="decision-block d3 mb-8 mt-12"> <div class="flex items-center gap-4 mb-6">
@@ -796,25 +815,29 @@
   </p>
             </div>
             <div class="comparison-grid grid sm:grid-cols-2 gap-6 items-start">
-              <div class="comp-old h-full flex flex-col justify-between">
-                <div>
+  
+              <div class="comp-old h-full flex flex-col">
+                <div class="relative z-0">
                   <p class="text-xs font-black uppercase tracking-widest text-manga-pink mb-4">Before →</p>
-                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" alt="Old toggle list" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto mb-4">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/Old/Old Food Preference Screen.png" alt="Old toggle list" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto">
                 </div>
-                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-pink/20">Dense toggle list users had to read each label individually.</p>
+                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-pink/20 -mt-16 relative z-10 bg-white/80 pb-2">
+                  Dense toggle list users had to read each label individually.
+                </p>
               </div>
-              <div class="comp-new h-full flex flex-col justify-between">
-                <div>
+              
+              <div class="comp-new h-full flex flex-col">
+                <div class="relative z-0">
                   <p class="text-xs font-black uppercase tracking-widest text-manga-green mb-4">After ✓</p>
-                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" alt="New icon chips grid" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto mb-4">
+                  <img src="assets/img/Projects/Orbit Scan/Case Study/Screens/New/New Food Preference Screen.png" alt="New icon chips grid" loading="lazy" class="w-full max-h-[500px] object-contain mx-auto">
                 </div>
-                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-green/20">Icon-first grid: instantly scannable, visually distinct, thumb friendly Save CTA.</p>
+                <p class="text-sm font-bold text-manga-ink/80 pt-4 border-t-2 border-manga-green/20 -mt-16 relative z-10 bg-white/80 pb-2">
+                  Icon-first grid: instantly scannable, visually distinct, thumb friendly Save CTA.
+                </p>
               </div>
+              
             </div>
-          </div>
-
-        </div>
-      </div>
+     
     </section>
 
     <div class="panel-divider-green" aria-hidden="true"></div>
