@@ -1135,61 +1135,65 @@
       </div>
     </section>
 
-    <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div class="max-w-4xl mx-auto space-y-6">
+   <!-- ══════════════════════════════════════
+         CHALLENGES & LEARNINGS (CONSISTENT WIDTH)
+    ═══════════════════════════════════════ -->
+<section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+  <!-- CHANGED: max-w-4xl to max-w-7xl to match the rest of the case study -->
+  <div class="max-w-7xl mx-auto space-y-6">
 
-        <div class="manga-panel-purple bg-[#FFFEF5] p-6 transition-all">
-          <div class="flex items-start gap-4">
-            <div class="process-step flex-shrink-0 mt-1">1</div>
-            <div>
-              <h4 class="text-base font-black uppercase mb-2 text-manga-purple">Simplicity vs. Personalization</h4>
-              <p class="text-sm text-manga-ink/80 leading-relaxed font-bold">Initial designs overwhelmed users with customization options, contradicting Travis's need for speed. Solution: "Smart defaults" with progressive disclosure. Onboarding reduced from 3+ min to 45 sec.</p>
-            </div>
-          </div>
+    <div class="manga-panel-purple bg-[#FFFEF5] p-6 transition-all">
+      <div class="flex items-start gap-4">
+        <div class="process-step flex-shrink-0 mt-1">1</div>
+        <div>
+          <h4 class="text-base font-black uppercase mb-2 text-manga-purple">Simplicity vs. Personalization</h4>
+          <p class="text-sm text-manga-ink/80 leading-relaxed font-bold">Initial designs overwhelmed users with customization options, contradicting Travis's need for speed. Solution: "Smart defaults" with progressive disclosure. Onboarding reduced from 3+ min to 45 sec.</p>
         </div>
-
-        <div class="manga-panel-amber bg-[#FFFEF5] p-6 transition-all">
-          <div class="flex items-start gap-4">
-            <div class="process-step flex-shrink-0 mt-1" style="background:#D97706;">2</div>
-            <div>
-              <h4 class="text-base font-black uppercase mb-2 text-manga-amber">Accessibility Oversight</h4>
-              <p class="text-sm text-manga-ink/80 leading-relaxed font-bold">3 colorblind users couldn't distinguish habit status by color alone. Redesigned using icons + color + text labels, achieving WCAG AA compliance. <em>Learning: Accessibility testing should happen alongside initial usability testing, not after.</em></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="manga-panel-pink bg-[#FFFEF5] p-6 transition-all">
-          <div class="flex items-start gap-4">
-            <div class="process-step flex-shrink-0 mt-1" style="background:#FF006E;">3</div>
-            <div>
-              <h4 class="text-base font-black uppercase mb-2 text-manga-pink">Late-Stage IA Testing</h4>
-              <p class="text-sm text-manga-ink/80 leading-relaxed font-bold">Navigation confusion discovered in week 5, requiring significant rework of information architecture. <em>Learning: Test IA early with lo-fi prototypes, not after investing in high-fidelity designs.</em></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="manga-panel-accent bg-[#FFFEF5] p-6 transition-all">
-          <div class="flex items-start gap-4">
-            <div class="process-step flex-shrink-0 mt-1" style="background:#FF9933; color:#0D0D0D;">4</div>
-            <div>
-              <h4 class="text-base font-black uppercase mb-2 text-accent-500">Feature Bloat</h4>
-              <p class="text-sm text-manga-ink/80 leading-relaxed font-bold">Removed social features after testing showed 78% of users preferred private tracking. Validated Katniss's persona needs. User satisfaction increased from 72% to 92%. <em>Learning: The best feature is sometimes the one you don't build.</em></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="manga-panel bg-[#4C1D95] p-6 sm:p-8 relative overflow-hidden" style="box-shadow:6px 6px 0 #0D0D0D;">
-          <div class="absolute inset-0 manga-halftone-purple opacity-20 pointer-events-none"></div>
-          <div class="relative z-10">
-            <span class="manga-label mb-4 block w-fit" style="background:#D97706; color:#0D0D0D;">Key Takeaway</span>
-            <p class="text-white text-sm sm:text-base font-bold leading-relaxed">
-              Every design decision should trace back to specific user needs or research insights. When staying true to personas and core principles (Visual, Coherent, Simple), better decisions happen faster.
-            </p>
-          </div>
-        </div>
-
       </div>
-    </section>
+    </div>
+
+    <div class="manga-panel-amber bg-[#FFFEF5] p-6 transition-all">
+      <div class="flex items-start gap-4">
+        <div class="process-step flex-shrink-0 mt-1" style="background:#D97706;">2</div>
+        <div>
+          <h4 class="text-base font-black uppercase mb-2 text-manga-amber">Accessibility Oversight</h4>
+          <p class="text-sm text-manga-ink/80 leading-relaxed font-bold">3 colorblind users couldn't distinguish habit status by color alone. Redesigned using icons + color + text labels, achieving WCAG AA compliance. <em>Learning: Accessibility testing should happen alongside initial usability testing, not after.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="manga-panel-pink bg-[#FFFEF5] p-6 transition-all">
+      <div class="flex items-start gap-4">
+        <div class="process-step flex-shrink-0 mt-1" style="background:#FF006E;">3</div>
+        <div>
+          <h4 class="text-base font-black uppercase mb-2 text-manga-pink">Late-Stage IA Testing</h4>
+          <p class="text-sm text-manga-ink/80 leading-relaxed font-bold">Navigation confusion discovered in week 5, requiring significant rework of information architecture. <em>Learning: Test IA early with lo-fi prototypes, not after investing in high-fidelity designs.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="manga-panel-accent bg-[#FFFEF5] p-6 transition-all">
+      <div class="flex items-start gap-4">
+        <div class="process-step flex-shrink-0 mt-1" style="background:#FF9933; color:#0D0D0D;">4</div>
+        <div>
+          <h4 class="text-base font-black uppercase mb-2 text-accent-500">Feature Bloat</h4>
+          <p class="text-sm text-manga-ink/80 leading-relaxed font-bold">Removed social features after testing showed 78% of users preferred private tracking. Validated Katniss's persona needs. User satisfaction increased from 72% to 92%. <em>Learning: The best feature is sometimes the one you don't build.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="manga-panel bg-[#4C1D95] p-6 sm:p-8 relative overflow-hidden" style="box-shadow:6px 6px 0 #0D0D0D;">
+      <div class="absolute inset-0 manga-halftone-purple opacity-20 pointer-events-none"></div>
+      <div class="relative z-10">
+        <span class="manga-label mb-4 block w-fit" style="background:#D97706; color:#0D0D0D;">Key Takeaway</span>
+        <p class="text-white text-sm sm:text-base font-bold leading-relaxed">
+          Every design decision should trace back to specific user needs or research insights. When staying true to personas and core principles (Visual, Coherent, Simple), better decisions happen faster.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <div class="panel-divider-purple" aria-hidden="true"></div>
 
