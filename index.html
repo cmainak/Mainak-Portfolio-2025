@@ -187,6 +187,15 @@
       background: repeating-linear-gradient(90deg, #FF9933 0px, #FF9933 20px, #0D0D0D 20px, #0D0D0D 22px);
     }
 
+    /* ── Seamless Wave Animation ── */
+    @keyframes wave-flow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-wave-flow {
+      animation: wave-flow 4s linear infinite;
+    }
+
     #progress-bar {
       position: fixed; top: 0; left: 0; height: 4px;
       background: repeating-linear-gradient(90deg, #00B4FF 0px, #00B4FF 16px, #FF006E 16px, #FF006E 32px, #FF9933 32px, #FF9933 48px);
@@ -426,7 +435,26 @@
     </section>
     <!-- HERO SECTION END -->
 
-    <div class="panel-divider" aria-hidden="true"></div>
+        <!-- PANEL DIVIDER START -->
+        <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
+  
+          <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+        
+          </div>
+        </div>
+      <!-- PANEL DIVIDER END -->
 
     <section id="about" class="relative min-h-screen lg:h-screen flex items-center py-8 lg:py-0 overflow-hidden bg-white dark:bg-manga-ink transition-colors duration-300" aria-labelledby="about-heading">
 
@@ -561,7 +589,26 @@
       </div>
     </section>
 
-    <div class="panel-divider" aria-hidden="true"></div>
+            <!-- PANEL DIVIDER START -->
+            <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
+  
+              <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
+                
+                <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
+                  <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+                </svg>
+                
+                <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
+                  <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+                </svg>
+                
+                <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
+                  <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+                </svg>
+            
+              </div>
+            </div>
+          <!-- PANEL DIVIDER END -->
 
     <section id="work" class="py-16 sm:py-24 bg-white dark:bg-[#0A0A0F] transition-colors duration-300 relative overflow-hidden" aria-labelledby="work-heading">
       
@@ -704,7 +751,26 @@ class="relative z-10 w-full max-w-xl h-auto object-contain md:-ml-8 lg:-ml-10 dr
 
   </main> 
   
-  <div class="panel-divider w-full" aria-hidden="true"></div>
+          <!-- PANEL DIVIDER START -->
+          <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
+  
+            <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
+              
+              <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
+                <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+              </svg>
+              
+              <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
+                <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+              </svg>
+              
+              <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
+                <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+              </svg>
+          
+            </div>
+          </div>
+        <!-- PANEL DIVIDER END -->
 
 
    <!-- FOOTER START -->

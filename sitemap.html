@@ -126,6 +126,15 @@
       background: repeating-linear-gradient(90deg, #FF9933 0px, #FF9933 20px, #0D0D0D 20px, #0D0D0D 22px);
     }
 
+    /* ── Seamless Wave Animation ── */
+    @keyframes wave-flow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-wave-flow {
+      animation: wave-flow 4s linear infinite;
+    }
+
     #loader { background: #FFFFFF; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.3s ease; }
     .dark #loader { background: #0A0A0F; }
     #loader.fade-out { opacity: 0; pointer-events: none; }
@@ -433,7 +442,26 @@
       </div>
     </section>
 
-
+        <!-- PANEL DIVIDER START -->
+        <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
+  
+          <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+        
+          </div>
+        </div>
+      <!-- PANEL DIVIDER END -->
 
        <!-- FOOTER START -->
 
@@ -563,7 +591,7 @@
     </div>
   </footer>
     <!-- FOOTER END -->
-     
+
   </main>
 
   <button id="back-to-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-manga-blue text-manga-ink font-black border-3 border-manga-ink shadow-comic flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-none hover:translate-x-1 hover:translate-y-1 focus:outline-none" aria-label="Back to top">

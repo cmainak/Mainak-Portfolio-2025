@@ -168,6 +168,15 @@
       background: repeating-linear-gradient(90deg, #FF9933 0px, #FF9933 20px, #0D0D0D 20px, #0D0D0D 22px);
     }
 
+    /* ── Seamless Wave Animation ── */
+    @keyframes wave-flow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-wave-flow {
+      animation: wave-flow 4s linear infinite;
+    }
+
     #progress-bar {
       position: fixed; top: 0; left: 0; height: 4px;
       background: repeating-linear-gradient(90deg, #00B4FF 0px, #00B4FF 16px, #FF006E 16px, #FF006E 32px, #FF9933 32px, #FF9933 48px);
@@ -386,7 +395,7 @@
 
   <main id="main-content" role="main">
 
-    <section class="relative pt-32 pb-16 bg-white dark:bg-manga-ink transition-colors duration-300 border-b-3 border-manga-blue/20" aria-labelledby="work-hero-heading">
+    <section class="relative pt-32 pb-16 bg-white dark:bg-manga-ink transition-colors duration-300" aria-labelledby="work-hero-heading">
   
       <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div class="absolute inset-0 manga-halftone-light opacity-20"></div>
@@ -443,197 +452,237 @@
     </section>
     
 
-    <div class="panel-divider w-full" aria-hidden="true"></div>
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-[#FFF] dark:bg-[#0A0A0F] transition-colors duration-300" aria-labelledby="projects-heading">
-      <div class="max-w-7xl mx-auto">
-
-        <h2 id="projects-heading" class="sr-only">Project Portfolio</h2>
-
-        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-
-          <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col lg:flex-row h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-2 lg:col-span-6" data-category="ux">
-            <a href="OS_V2.html" class="flex flex-col lg:flex-row h-full focus:outline-none w-full">
-              <div class="relative w-full lg:w-3/5 aspect-video md:aspect-[21/9] lg:aspect-auto border-b-3 lg:border-b-0 lg:border-r-3 border-manga-ink overflow-hidden bg-[#029444]">
-                <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.4) 1.5px, transparent 1.5px); background-size: 6px 6px; opacity: 0.5;"></div>
-                <img src="assets/img/Projects/Orbit Scan/Orbit Scan Thumbnail.png" alt="Orbit Scan app interface" loading="lazy" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105">
-                <div class="absolute top-4 left-4 z-20"><span class="manga-label px-3 py-1 bg-white text-manga-ink shadow-comic">FEATURED CASE STUDY</span></div>
-              </div>
-              <div class="w-full lg:w-2/5 p-6 md:p-8 flex flex-col flex-grow justify-center">
-                <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="manga-label text-[0.6rem] px-2 py-1 bg-[#86efac] text-manga-ink border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Mobile UX</span>
-                  <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">12 weeks</span>
-                </div>
-                <h3 class="text-3xl md:text-4xl font-black uppercase text-manga-ink dark:text-white mb-4 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Orbit Scan</h3>
-                <p class="text-base text-manga-ink/70 dark:text-white/60 mb-8 font-medium leading-relaxed">A smart grocery companion app that decodes food labels and identifies health risks through AI-powered analysis.</p>
-                <div class="mt-auto inline-flex items-center gap-2 text-base font-black uppercase text-manga-ink dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                  Read Case Study <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-3" data-category="ux">
-            <a href="HabitBoost.html" class="flex flex-col h-full focus:outline-none">
-              <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-[#FEECD0]">
-                <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.3;"></div>
-                <img src="assets/img/Projects/Habit Boost/Habit Boost Thumbnail.png" alt="Habit Boost app interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 right-3 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">02</span></div>
-              </div>
-              <div class="p-6 md:p-8 flex flex-col flex-grow">
-                <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="manga-label text-[0.6rem] px-2 py-1 bg-[#d8b4fe] text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">UX Research & Design</span>
-                  <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">12 weeks</span>
-                </div>
-                <h3 class="text-2xl lg:text-3xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors">Habit Boost</h3>
-                <p class="text-sm lg:text-base text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed">A gamified habit tracking app utilizing the Hook Model to turn routine building into an engaging journey.</p>
-                <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors">
-                  Read Case Study <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-3" data-category="ux">
-            <a href="ManageW.html" class="flex flex-col h-full focus:outline-none">
-              <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-blue-600">
-                <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.4;"></div>
-                <img src="assets/img/Projects/Manage Wise/ManageWise Cover.png" alt="ManageWise interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 right-3 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">03</span></div>
-              </div>
-              <div class="p-6 md:p-8 flex flex-col flex-grow">
-                <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="manga-label text-[0.6rem] px-2 py-1 bg-[#93c5fd] text-manga-ink border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Product Design</span>
-                  <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">12 weeks</span>
-                </div>
-                <h3 class="text-2xl lg:text-3xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">ManageWise</h3>
-                <p class="text-sm lg:text-base text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed">A comprehensive project management platform designed for teams to collaborate efficiently and track progress.</p>
-                <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
-                  Read Case Study <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-2" data-category="design-system">
-            <a href="DS.html" class="flex flex-col h-full focus:outline-none">
-              <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-orange-400">
-                <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.3;"></div>
-                <img src="assets/img/Projects/KeelWorks Design System/Cover.png" alt="Design System components" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-2 right-2 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">04</span></div>
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="manga-label text-[0.6rem] px-2 py-1 bg-[#FF9933] text-manga-ink border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Design System</span>
-                </div>
-                <h3 class="text-xl lg:text-2xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">Design System</h3>
-                <p class="text-sm text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed line-clamp-3">A comprehensive design system with reusable components, tokens, and documentation for consistent UX.</p>
-                <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">
-                  Read <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-2" data-category="graphic-video web">
-            <a href="TouroUniversityGST.html" class="flex flex-col h-full focus:outline-none">
-              <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-indigo-500">
-                <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.4;"></div>
-                <img src="assets/img/Projects/Touro University/Cover.png" alt="Touro University GST interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-2 right-2 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">05</span></div>
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="manga-label text-[0.6rem] px-2 py-1 bg-indigo-400 text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Graphic & Web</span>
-                </div>
-                <h3 class="text-xl lg:text-2xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">Touro GST</h3>
-                <p class="text-sm text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed line-clamp-3">Redesigning the Graduate School of Technology website to improve navigation and user experience.</p>
-                <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
-                  View <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-2" data-category="graphic-video">
-            <a href="ai-prompt-series.html" class="flex flex-col h-full focus:outline-none">
-              <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-slate-900">
-                <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.4;"></div>
-                <img src="assets/img/Mainak Art/Curosity_Research_Design Cover.png" alt="AI-generated personal branding" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-2 right-2 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">06</span></div>
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="manga-label text-[0.6rem] px-2 py-1 bg-pink-400 text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">AI</span>
-                </div>
-                <h3 class="text-xl lg:text-2xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors">AI Playground</h3>
-                <p class="text-sm text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed line-clamp-3">A personal brand identity expressed through AI generated manga and cinematic visuals.</p>
-                <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors">
-                  View <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-3" data-category="graphic-video">
-            <a href="404.html" class="flex flex-col h-full focus:outline-none">
-              <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-slate-200">
-                <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.3;"></div>
-                <img src="assets/img/Projects/Rapt Reels Productions/Thumbnail/Thumbnail RR.png" alt="Rapt Reels Productions interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 right-3 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">07</span></div>
-              </div>
-              <div class="p-6 md:p-8 flex flex-col flex-grow">
-                <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="manga-label text-[0.6rem] px-2 py-1 bg-slate-400 text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Video & Graphics</span>
-                  <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">1 yr 4 mos</span>
-                </div>
-                <h3 class="text-2xl lg:text-3xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors">Rapt Reels Prod.</h3>
-                <p class="text-sm lg:text-base text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed">Designed engaging visual content for various multimedia platforms, producing graphics, animations, and video edits for advertising.</p>
-                <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors">
-                  View <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-3" data-category="graphic-video">
-            <a href="404.html" class="flex flex-col h-full focus:outline-none">
-              <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-red-400">
-                <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.3;"></div>
-                <img src="assets/img/Projects/RGBA Studios/Thumbnail/Thumbnail_RGBA.png" alt="RGBA Studios interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 right-3 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">08</span></div>
-              </div>
-              <div class="p-6 md:p-8 flex flex-col flex-grow">
-                <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="manga-label text-[0.6rem] px-2 py-1 bg-red-400 text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Production</span>
-                  <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">4 months</span>
-                </div>
-                <h3 class="text-2xl lg:text-3xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">RGBA Studios</h3>
-                <p class="text-sm lg:text-base text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed">Coordinated production workflows, creative operations, and shoot planning for commercials and feature films.</p>
-                <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
-                  View <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </div>
-              </div>
-            </a>
-          </article>
-
-        </div>
-
-        <div id="no-results" class="hidden text-center py-20">
-          <div class="inline-block p-8 manga-panel bg-white dark:bg-manga-ink">
-            <span class="sfx text-5xl text-manga-ink/20 dark:text-white/20 block mb-4">???</span>
-            <h3 class="text-2xl font-black uppercase text-manga-ink dark:text-white mb-2">
-              No projects found
-            </h3>
-            <p class="text-manga-ink/60 dark:text-white/60 font-bold uppercase tracking-widest">
-              Try selecting a different filter
-            </p>
+        <!-- PANEL DIVIDER START -->
+        <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
+  
+          <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+        
           </div>
         </div>
+      <!-- PANEL DIVIDER END -->
 
-      </div>
-    </section>
+      <section class="py-20 bg-white dark:bg-[#0A0A0F] transition-colors duration-300" aria-labelledby="projects-heading">
+      
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  
+          <h2 id="projects-heading" class="sr-only">Project Portfolio</h2>
+  
+          <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+  
+            <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col lg:flex-row h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-2 lg:col-span-6" data-category="ux">
+              <a href="OS_V2.html" class="flex flex-col lg:flex-row h-full focus:outline-none w-full">
+                <div class="relative w-full lg:w-3/5 aspect-video md:aspect-[21/9] lg:aspect-auto border-b-3 lg:border-b-0 lg:border-r-3 border-manga-ink overflow-hidden bg-[#029444]">
+                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.4) 1.5px, transparent 1.5px); background-size: 6px 6px; opacity: 0.5;"></div>
+                  <img src="assets/img/Projects/Orbit Scan/Orbit Scan Thumbnail.png" alt="Orbit Scan app interface" loading="lazy" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105">
+                  <div class="absolute top-4 left-4 z-20"><span class="manga-label px-3 py-1 bg-white text-manga-ink shadow-comic">FEATURED CASE STUDY</span></div>
+                </div>
+                <div class="w-full lg:w-2/5 p-6 md:p-8 flex flex-col flex-grow justify-center">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="manga-label text-[0.6rem] px-2 py-1 bg-[#86efac] text-manga-ink border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Mobile UX</span>
+                    <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">12 weeks</span>
+                  </div>
+                  <h3 class="text-3xl md:text-4xl font-black uppercase text-manga-ink dark:text-white mb-4 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Orbit Scan</h3>
+                  <p class="text-base text-manga-ink/70 dark:text-white/60 mb-8 font-medium leading-relaxed">A smart grocery companion app that decodes food labels and identifies health risks through AI-powered analysis.</p>
+                  <div class="mt-auto inline-flex items-center gap-2 text-base font-black uppercase text-manga-ink dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                    Read Case Study <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+  
+            <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-3" data-category="ux">
+              <a href="HabitBoost.html" class="flex flex-col h-full focus:outline-none">
+                <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-[#FEECD0]">
+                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.3;"></div>
+                  <img src="assets/img/Projects/Habit Boost/Habit Boost Thumbnail.png" alt="Habit Boost app interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute top-3 right-3 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">02</span></div>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="manga-label text-[0.6rem] px-2 py-1 bg-[#d8b4fe] text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">UX Research & Design</span>
+                    <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">12 weeks</span>
+                  </div>
+                  <h3 class="text-2xl lg:text-3xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors">Habit Boost</h3>
+                  <p class="text-sm lg:text-base text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed">A gamified habit tracking app utilizing the Hook Model to turn routine building into an engaging journey.</p>
+                  <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors">
+                    Read Case Study <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+  
+            <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-3" data-category="ux">
+              <a href="ManageW.html" class="flex flex-col h-full focus:outline-none">
+                <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-blue-600">
+                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.4;"></div>
+                  <img src="assets/img/Projects/Manage Wise/ManageWise Cover.png" alt="ManageWise interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute top-3 right-3 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">03</span></div>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="manga-label text-[0.6rem] px-2 py-1 bg-[#93c5fd] text-manga-ink border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Product Design</span>
+                    <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">12 weeks</span>
+                  </div>
+                  <h3 class="text-2xl lg:text-3xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">ManageWise</h3>
+                  <p class="text-sm lg:text-base text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed">A comprehensive project management platform designed for teams to collaborate efficiently and track progress.</p>
+                  <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
+                    Read Case Study <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+  
+            <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-2" data-category="design-system">
+              <a href="DS.html" class="flex flex-col h-full focus:outline-none">
+                <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-orange-400">
+                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.3;"></div>
+                  <img src="assets/img/Projects/KeelWorks Design System/Cover.png" alt="Design System components" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute top-2 right-2 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">04</span></div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="manga-label text-[0.6rem] px-2 py-1 bg-[#FF9933] text-manga-ink border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Design System</span>
+                  </div>
+                  <h3 class="text-xl lg:text-2xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">Design System</h3>
+                  <p class="text-sm text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed line-clamp-3">A comprehensive design system with reusable components, tokens, and documentation for consistent UX.</p>
+                  <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">
+                    Read <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+  
+            <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-2" data-category="graphic-video web">
+              <a href="TouroUniversityGST.html" class="flex flex-col h-full focus:outline-none">
+                <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-indigo-500">
+                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.4;"></div>
+                  <img src="assets/img/Projects/Touro University/Cover.png" alt="Touro University GST interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute top-2 right-2 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">05</span></div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="manga-label text-[0.6rem] px-2 py-1 bg-indigo-400 text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Graphic & Web</span>
+                  </div>
+                  <h3 class="text-xl lg:text-2xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">Touro GST</h3>
+                  <p class="text-sm text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed line-clamp-3">Redesigning the Graduate School of Technology website to improve navigation and user experience.</p>
+                  <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
+                    View <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+  
+            <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-2" data-category="graphic-video">
+              <a href="ai-prompt-series.html" class="flex flex-col h-full focus:outline-none">
+                <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-slate-900">
+                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.4;"></div>
+                  <img src="assets/img/Mainak Art/Curosity_Research_Design Cover.png" alt="AI-generated personal branding" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute top-2 right-2 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">06</span></div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="manga-label text-[0.6rem] px-2 py-1 bg-pink-400 text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">AI</span>
+                  </div>
+                  <h3 class="text-xl lg:text-2xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors">AI Playground</h3>
+                  <p class="text-sm text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed line-clamp-3">A personal brand identity expressed through AI generated manga and cinematic visuals.</p>
+                  <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors">
+                    View <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+  
+            <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-3" data-category="graphic-video">
+              <a href="404.html" class="flex flex-col h-full focus:outline-none">
+                <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-slate-200">
+                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.3;"></div>
+                  <img src="assets/img/Projects/Rapt Reels Productions/Thumbnail/Thumbnail RR.png" alt="Rapt Reels Productions interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute top-3 right-3 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">07</span></div>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="manga-label text-[0.6rem] px-2 py-1 bg-slate-400 text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Video & Graphics</span>
+                    <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">1 yr 4 mos</span>
+                  </div>
+                  <h3 class="text-2xl lg:text-3xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors">Rapt Reels Prod.</h3>
+                  <p class="text-sm lg:text-base text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed">Designed engaging visual content for various multimedia platforms, producing graphics, animations, and video edits for advertising.</p>
+                  <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors">
+                    View <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+  
+            <article class="project-card manga-panel bg-white dark:bg-manga-ink group relative flex flex-col h-full hover:shadow-comic-lg hover:-translate-y-2 transition-all duration-300 md:col-span-1 lg:col-span-3" data-category="graphic-video">
+              <a href="404.html" class="flex flex-col h-full focus:outline-none">
+                <div class="relative aspect-video border-b-3 border-manga-ink overflow-hidden bg-red-400">
+                  <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 5px 5px; opacity: 0.3;"></div>
+                  <img src="assets/img/Projects/RGBA Studios/Thumbnail/Thumbnail_RGBA.png" alt="RGBA Studios interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute top-3 right-3 z-20"><span class="manga-label text-[0.55rem] px-2 py-0.5 bg-white text-manga-ink">08</span></div>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="manga-label text-[0.6rem] px-2 py-1 bg-red-400 text-white border-2 border-manga-ink shadow-[2px_2px_0_#0D0D0D]">Production</span>
+                    <span class="text-xs font-bold text-manga-ink/50 dark:text-white/50 uppercase">4 months</span>
+                  </div>
+                  <h3 class="text-2xl lg:text-3xl font-black uppercase text-manga-ink dark:text-white mb-2 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">RGBA Studios</h3>
+                  <p class="text-sm lg:text-base text-manga-ink/70 dark:text-white/60 mb-6 font-medium leading-relaxed">Coordinated production workflows, creative operations, and shoot planning for commercials and feature films.</p>
+                  <div class="mt-auto inline-flex items-center gap-2 text-sm font-black uppercase text-manga-ink dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                    View <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+  
+          </div>
+  
+          <div id="no-results" class="hidden text-center py-20">
+            <div class="inline-block p-8 manga-panel bg-white dark:bg-manga-ink">
+              <span class="sfx text-5xl text-manga-ink/20 dark:text-white/20 block mb-4">???</span>
+              <h3 class="text-2xl font-black uppercase text-manga-ink dark:text-white mb-2">
+                No projects found
+              </h3>
+              <p class="text-manga-ink/60 dark:text-white/60 font-bold uppercase tracking-widest">
+                Try selecting a different filter
+              </p>
+            </div>
+          </div>
+  
+        </div>
+      </section>
 
-    <div class="panel-divider w-full" aria-hidden="true"></div>
+        <!-- PANEL DIVIDER START -->
+        <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
+  
+          <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+            
+            <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
+              <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
+            </svg>
+        
+          </div>
+        </div>
+      <!-- PANEL DIVIDER END -->
 
         <!-- FOOTER START -->
 
@@ -771,178 +820,144 @@
   <i class="fas fa-arrow-up"></i>
 </button>
 
-  <script>
-<!--DARK MODE TOGGLE STARTS-->
-function toggleTheme() {
-  const html = document.documentElement;
-  html.classList.toggle('dark');
-
-  if (html.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-  } else {
-    localStorage.setItem('theme', 'light');
-  }
-}
-
-    window.addEventListener('load', function () {
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      // ── 1. DARK MODE TOGGLE ──
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const toggleTheme = () => {
+          document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      };
+      if (themeToggleBtn) {
+          themeToggleBtn.addEventListener('click', toggleTheme);
+      }
+  
+      // ── 2. LOADER ──
       const loader = document.getElementById('loader');
-      setTimeout(function () {
-        loader.classList.add('fade-out');
-        setTimeout(function () { loader.style.display = 'none'; }, 300);
-      }, 600);
-    });
-
-    function updateProgressBar() {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      const bar = document.getElementById('progress-bar');
-      if (bar) { bar.style.width = scrolled + '%'; bar.setAttribute('aria-valuenow', Math.round(scrolled)); }
-    }
-    window.addEventListener('scroll', updateProgressBar, { passive: true });
-
-    // ── BACK TO TOP SCRIPT ──
-    const backToTop = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 500) {
-    backToTop.classList.remove('opacity-0', 'invisible');
-    backToTop.classList.add('opacity-100', 'visible');
-  } else {
-    backToTop.classList.add('opacity-0', 'invisible');
-    backToTop.classList.remove('opacity-100', 'visible');
-  }
-});
-
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-    const mobileMenu   = document.getElementById('mobile-menu');
-    const menuToggle   = document.querySelector('[aria-controls="mobile-menu"]');
-    const mobileLinks  = document.querySelectorAll('#mobile-menu a');
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu) return;
-      if (!mobileMenu.contains(e.target) &&
-          !(menuToggle && menuToggle.contains(e.target)) &&
-          !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      if (loader) {
+          window.addEventListener('load', () => {
+              setTimeout(() => {
+                  loader.classList.add('fade-out');
+                  setTimeout(() => { loader.style.display = 'none'; }, 300);
+              }, 600);
+          });
       }
-    });
-
-    // Filtering logic adapted for comic style cards
-    function filterProjects(category) {
-      const projects = document.querySelectorAll('.project-card');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const noResults = document.getElementById('no-results');
-      let visibleCount = 0;
+  
+      // ── 3. PROGRESS BAR & BACK TO TOP ──
+      const backToTop = document.getElementById('back-to-top');
+      const progressBar = document.getElementById('progress-bar');
       
-      filterBtns.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-filter') === category) {
-          btn.classList.add('active');
-        }
-      });
-      
-      projects.forEach(project => {
-        const categories = project.getAttribute('data-category');
-        if (category === 'all' || categories.includes(category)) {
-          project.classList.remove('hidden');
-          visibleCount++;
-        } else {
-          project.classList.add('hidden');
-        }
-      });
-      
-      if (visibleCount === 0) {
-        noResults.classList.remove('hidden');
-      } else {
-        noResults.classList.add('hidden');
+      window.addEventListener('scroll', () => {
+          // Progress Bar
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          if (progressBar) {
+              progressBar.style.width = scrolled + '%';
+              progressBar.setAttribute('aria-valuenow', Math.round(scrolled));
+          }
+  
+          // Back to Top Visibility
+          if (backToTop) {
+              if (window.scrollY > 500) {
+                  backToTop.classList.remove('opacity-0', 'invisible');
+                  backToTop.classList.add('opacity-100', 'visible');
+              } else {
+                  backToTop.classList.add('opacity-0', 'invisible');
+                  backToTop.classList.remove('opacity-100', 'visible');
+              }
+          }
+      }, { passive: true });
+  
+      if (backToTop) {
+          backToTop.addEventListener('click', () => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
       }
-    }
-    window.filterProjects = filterProjects;
-
-    // ── DESKTOP WORK DROPDOWN SCRIPT ──
-    const workDropdownBtn = document.getElementById('work-dropdown-btn');
-    const workDropdownMenu = document.getElementById('work-dropdown-menu');
-    const workChevron = document.getElementById('work-chevron');
-
-    if (workDropdownBtn && workDropdownMenu) {
-      workDropdownBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevents the click from instantly bubbling up to the document listener
-        
-        const isExpanded = workDropdownBtn.getAttribute('aria-expanded') === 'true';
-        
-        // Toggle accessibility state
-        workDropdownBtn.setAttribute('aria-expanded', !isExpanded);
-        
-        // Toggle Tailwind visibility classes
-        workDropdownMenu.classList.toggle('opacity-0');
-        workDropdownMenu.classList.toggle('invisible');
-        workDropdownMenu.classList.toggle('opacity-100');
-        workDropdownMenu.classList.toggle('visible');
-        
-        // Toggle chevron rotation
-        workChevron.classList.toggle('rotate-180');
-      });
-
-      // Close dropdown when clicking anywhere outside of it
-      document.addEventListener('click', (e) => {
-        if (!workDropdownBtn.contains(e.target) && !workDropdownMenu.contains(e.target)) {
-          workDropdownBtn.setAttribute('aria-expanded', 'false');
-          workDropdownMenu.classList.add('opacity-0', 'invisible');
-          workDropdownMenu.classList.remove('opacity-100', 'visible');
-          workChevron.classList.remove('rotate-180');
-        }
-      });
+  
+      // ── 4. MOBILE MENU ──
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuToggle = document.querySelector('[aria-controls="mobile-menu"]');
       
-      // Close dropdown when pressing the Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && workDropdownBtn.getAttribute('aria-expanded') === 'true') {
-          workDropdownBtn.setAttribute('aria-expanded', 'false');
-          workDropdownMenu.classList.add('opacity-0', 'invisible');
-          workDropdownMenu.classList.remove('opacity-100', 'visible');
-          workChevron.classList.remove('rotate-180');
-          workDropdownBtn.focus(); // Return focus to the button for accessibility
-        }
-      });
-    }
-
-
-//NAVBAR HIDE/SHOW ON SCROLL//
-  let lastScrollTop = 0;
-  const navbar = document.getElementById('navbar');
-
-  window.addEventListener('scroll', () => {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Check if we have scrolled past the initial 50px (prevents jitter at the very top)
-    if (scrollTop > 50) {
-      if (scrollTop > lastScrollTop) {
-        // Scrolling Down: Hide the navbar
-        navbar.classList.add('-translate-y-full');
-      } else {
-        // Scrolling Up: Show the navbar
-        navbar.classList.remove('-translate-y-full');
+      if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener('click', () => {
+              mobileMenu.classList.toggle('hidden');
+              menuToggle.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
+          });
+  
+          // Close when clicking outside
+          document.addEventListener('click', (e) => {
+              if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                  mobileMenu.classList.add('hidden');
+                  menuToggle.setAttribute('aria-expanded', 'false');
+              }
+          });
       }
-    } else {
-      // Always show the navbar when at the absolute top of the page
-      navbar.classList.remove('-translate-y-full');
-    }
-    
-    lastScrollTop = scrollTop;
-
-    //NAVBAR HIDE/SHOW ON SCROLL ENDS//
-
-        
+  
+      // ── 5. FILTERING LOGIC ──
+      window.filterProjects = (category) => {
+          const projects = document.querySelectorAll('.project-card');
+          const filterBtns = document.querySelectorAll('.filter-btn');
+          const noResults = document.getElementById('no-results');
+          let visibleCount = 0;
+  
+          filterBtns.forEach(btn => {
+              btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
+          });
+  
+          projects.forEach(project => {
+              const categories = project.getAttribute('data-category');
+              if (category === 'all' || categories.includes(category)) {
+                  project.classList.remove('hidden');
+                  visibleCount++;
+              } else {
+                  project.classList.add('hidden');
+              }
+          });
+  
+          if (noResults) noResults.classList.toggle('hidden', visibleCount > 0);
+      };
+  
+      // ── 6. DESKTOP WORK DROPDOWN ──
+      const workDropdownBtn = document.getElementById('work-dropdown-btn');
+      const workDropdownMenu = document.getElementById('work-dropdown-menu');
+      const workChevron = document.getElementById('work-chevron');
+  
+      if (workDropdownBtn && workDropdownMenu) {
+          workDropdownBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const isExpanded = workDropdownBtn.getAttribute('aria-expanded') === 'true';
+              workDropdownBtn.setAttribute('aria-expanded', !isExpanded);
+              workDropdownMenu.classList.toggle('opacity-0');
+              workDropdownMenu.classList.toggle('invisible');
+              workDropdownMenu.classList.toggle('opacity-100');
+              workDropdownMenu.classList.toggle('visible');
+              if (workChevron) workChevron.classList.toggle('rotate-180');
+          });
+  
+          document.addEventListener('click', (e) => {
+              if (!workDropdownBtn.contains(e.target) && !workDropdownMenu.contains(e.target)) {
+                  workDropdownBtn.setAttribute('aria-expanded', 'false');
+                  workDropdownMenu.classList.add('opacity-0', 'invisible');
+                  workDropdownMenu.classList.remove('opacity-100', 'visible');
+                  if (workChevron) workChevron.classList.remove('rotate-180');
+              }
+          });
+      }
+  
+      // ── 7. NAVBAR HIDE/SHOW ON SCROLL ──
+      let lastScrollTop = 0;
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+          if (!navbar) return;
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          if (scrollTop > 50) {
+              navbar.classList.toggle('-translate-y-full', scrollTop > lastScrollTop);
+          } else {
+              navbar.classList.remove('-translate-y-full');
+          }
+          lastScrollTop = scrollTop;
+      }, { passive: true });
   });
   </script>
 </body>
