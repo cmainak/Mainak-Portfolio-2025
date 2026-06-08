@@ -416,39 +416,41 @@
           My Work
         </h1>
         
-        <div class="flex flex-wrap justify-center gap-3 sm:gap-4" aria-label="Project filters">
-          <button onclick="filterProjects('all')" 
-                  class="filter-btn active px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="all" aria-label="Show all projects">
-            All Projects
-          </button>
-    
-          <button onclick="filterProjects('ux')" 
-                  class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="ux" aria-label="Show UX research projects">
-            Mobile App Design
-          </button>
-    
-          <button onclick="filterProjects('web')" 
-                  class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="web" aria-label="Show web projects">
-            Web Design
-          </button>
-    
-          <button onclick="filterProjects('design-system')" 
-                  class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="design-system" aria-label="Show design system projects">
-            Design Systems
-          </button>
-    
-          <button onclick="filterProjects('graphic-video')" 
-                  class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
-                  data-filter="graphic-video" aria-label="Show graphic design projects">
-            Graphic & Video
-          </button>
+        <div id="filter-bar" class="sticky top-16 z-30 py-4 mb-8 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 bg-white/90 dark:bg-manga-ink/90 backdrop-blur-md transition-transform duration-300 border-b border-manga-ink/10 dark:border-white/10">
+  
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-7xl mx-auto" aria-label="Project filters">
+            <button onclick="filterProjects('all')" 
+                    class="filter-btn active px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="all" aria-label="Show all projects">
+              All Projects
+            </button>
+        
+            <button onclick="filterProjects('ux')" 
+                    class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="ux" aria-label="Show UX research projects">
+              Mobile App Design
+            </button>
+        
+            <button onclick="filterProjects('web')" 
+                    class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="web" aria-label="Show web projects">
+              Web Design
+            </button>
+        
+            <button onclick="filterProjects('design-system')" 
+                    class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="design-system" aria-label="Show design system projects">
+              Design Systems
+            </button>
+        
+            <button onclick="filterProjects('graphic-video')" 
+                    class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 border-2 border-manga-ink dark:border-white text-xs sm:text-sm font-black uppercase tracking-wider bg-white dark:bg-manga-ink text-manga-ink dark:text-white shadow-[3px_3px_0px_0px_#0D0D0D] dark:shadow-[3px_3px_0px_0px_#FFFFFF] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all focus:outline-none"
+                    data-filter="graphic-video" aria-label="Show graphic design projects">
+              Graphic & Video
+            </button>
+          </div>
+        
         </div>
-
-      </div>
     </section>
     
 
@@ -944,6 +946,7 @@
               }
           });
       }
+      
   
       // ── 7. NAVBAR HIDE/SHOW ON SCROLL ──
       let lastScrollTop = 0;
@@ -958,6 +961,7 @@
           }
           lastScrollTop = scrollTop;
       }, { passive: true });
+      
   });
   </script>
 </body>
