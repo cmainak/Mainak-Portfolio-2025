@@ -363,31 +363,34 @@
             </button>
           </div>
 
-          <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 border-2 border-black/20 dark:border-white/20 hover:border-manga-blue transition-all focus:outline-none" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <button class="md:hidden p-2 border-2 border-black/20 dark:border-white/20 hover:border-manga-blue transition-all focus:outline-none" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="w-6 h-6 text-manga-ink dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="square" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
           
         </div>
       </div>
 
-      <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-manga-ink border-t-3 border-manga-blue/40">
+      <div id="mobile-menu" class="hidden md:hidden bg-manga-ink border-t-3 border-manga-blue/40 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
         <nav aria-label="Mobile navigation" class="px-4 py-4 space-y-1">
-          <a href="index.html" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Home</a>
-          <a href="about.html" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">About</a>
-          <button onclick="document.getElementById('mobile-work').classList.toggle('hidden')" class="flex items-center justify-between w-full px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+          <a href="index.html" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-white/90 hover:text-manga-blue hover:bg-white/5 transition-colors">Home</a>
+          <a href="about.html" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-white/90 hover:text-manga-blue hover:bg-white/5 transition-colors">About</a>
+          
+          <button onclick="document.getElementById('mobile-work').classList.toggle('hidden')" class="flex items-center justify-between w-full px-3 py-2.5 text-sm font-black uppercase tracking-wider text-white/90 hover:text-manga-blue hover:bg-white/5 transition-colors">
             Work
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
+          
           <div id="mobile-work" class="hidden pl-6 space-y-1 border-l-2 border-manga-blue/40">
-            <a href="OS_V2.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Orbit Scan</a>
-            <a href="HabitBoost.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Habit Boost</a>
-            <a href="ManageW.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">ManageWise</a>
-            <a href="DS.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Design System</a>
-            <a href="Touro University GST.html" class="block px-3 py-2 text-sm text-manga-ink/60 dark:text-white/60 hover:text-manga-blue transition-colors">Touro</a>
-            <a href="ai-prompt-series.html" class="block px-4 py-2.5 text-sm font-medium text-manga-ink/80 dark:text-white/80 hover:text-manga-pink hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/10 dark:border-white/10">AI Playground</a>
-            <a href="work.html" class="block px-4 py-2.5 text-sm font-black text-accent-500 hover:bg-black/5 dark:hover:bg-white/5 border-t-2 border-manga-blue/40 transition-colors">↗ All Projects</a>
+            <a href="OS_V2.html" class="block px-3 py-2 text-sm font-bold text-white/60 hover:text-manga-blue transition-colors">Orbit Scan</a>
+            <a href="HabitBoost.html" class="block px-3 py-2 text-sm font-bold text-white/60 hover:text-manga-blue transition-colors">Habit Boost</a>
+            <a href="ManageW.html" class="block px-3 py-2 text-sm font-bold text-white/60 hover:text-manga-blue transition-colors">ManageWise</a>
+            <a href="DS.html" class="block px-3 py-2 text-sm font-bold text-white/60 hover:text-manga-blue transition-colors">Design System</a>
+            <a href="TouroUniversityGST.html" class="block px-3 py-2 text-sm font-bold text-white/60 hover:text-manga-blue transition-colors">Touro</a>
+            <a href="ai-prompt-series.html" class="block px-4 py-2.5 text-sm font-bold text-white/80 hover:text-manga-pink hover:bg-white/5 transition-colors border-b border-white/10">AI Playground</a>
+            <a href="work.html" class="block px-4 py-2.5 text-sm font-black text-accent-500 hover:bg-white/5 border-t-2 border-manga-blue/40 transition-colors">↗ All Projects</a>
           </div>
-          <a href="work.html#contact" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-pink hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Contact</a>
+          
+          <a href="work.html#contact" class="block px-3 py-2.5 text-sm font-black uppercase tracking-wider text-white/90 hover:text-manga-pink hover:bg-white/5 transition-colors">Contact</a>
         </nav>
       </div>
     </nav>
@@ -877,12 +880,13 @@
           });
       }
   
-      // ── 4. MOBILE MENU ──
+      // ── 4. MOBILE MENU (Fixed) ──
       const mobileMenu = document.getElementById('mobile-menu');
       const menuToggle = document.querySelector('[aria-controls="mobile-menu"]');
       
       if (menuToggle && mobileMenu) {
-          menuToggle.addEventListener('click', () => {
+          menuToggle.addEventListener('click', (e) => {
+              e.stopPropagation(); // Prevents instant closing
               mobileMenu.classList.toggle('hidden');
               menuToggle.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
           });
@@ -897,29 +901,40 @@
       }
   
       // ── 5. FILTERING LOGIC ──
-      window.filterProjects = (category) => {
-          const projects = document.querySelectorAll('.project-card');
-          const filterBtns = document.querySelectorAll('.filter-btn');
-          const noResults = document.getElementById('no-results');
-          let visibleCount = 0;
-  
-          filterBtns.forEach(btn => {
-              btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
-          });
-  
-          projects.forEach(project => {
-              const categories = project.getAttribute('data-category');
-              if (category === 'all' || categories.includes(category)) {
-                  project.classList.remove('hidden');
-                  visibleCount++;
-              } else {
-                  project.classList.add('hidden');
-              }
-          });
-  
-          if (noResults) noResults.classList.toggle('hidden', visibleCount > 0);
-      };
-  
+    window.filterProjects = (category) => {
+        const projects = document.querySelectorAll('.project-card');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const noResults = document.getElementById('no-results');
+        let visibleCount = 0;
+
+        // Update active button styling
+        filterBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
+        });
+
+        // Show/hide project cards
+        projects.forEach(project => {
+            // Split the data-category into an array to safely match multiple categories
+            const categories = project.getAttribute('data-category').split(' ');
+            
+            if (category === 'all' || categories.includes(category)) {
+                project.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                project.classList.add('hidden');
+            }
+        });
+
+        // FIXED: Explicitly show or hide the "No Results" block
+        if (noResults) {
+            if (visibleCount > 0) {
+                noResults.classList.add('hidden'); // Hide if we have projects
+            } else {
+                noResults.classList.remove('hidden'); // Show if count is 0
+            }
+        }
+    };
+    
       // ── 6. DESKTOP WORK DROPDOWN ──
       const workDropdownBtn = document.getElementById('work-dropdown-btn');
       const workDropdownMenu = document.getElementById('work-dropdown-menu');
@@ -946,7 +961,6 @@
               }
           });
       }
-      
   
       // ── 7. NAVBAR HIDE/SHOW ON SCROLL ──
       let lastScrollTop = 0;
@@ -961,7 +975,6 @@
           }
           lastScrollTop = scrollTop;
       }, { passive: true });
-      
   });
   </script>
 </body>
