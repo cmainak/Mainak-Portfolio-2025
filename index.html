@@ -1,1066 +1,413 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth overflow-x-hidden">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Mainak Chakraborty - Product Designer & UX/UI Portfolio</title>
-  <meta name="title" content="Mainak Chakraborty - Product Designer & UX/UI Portfolio">
-  <meta name="description" content="Product Designer specializing in UX/UI design, user research, and accessible digital experiences.">
-  <meta name="keywords" content="UX Designer, UI Designer, Product Designer, Portfolio, Mainak Chakraborty">
-  <meta name="author" content="Mainak Chakraborty">
-  <meta name="robots" content="index, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Mainak Chakraborty — UX/UI Designer</title>
+  <meta name="description" content="Portfolio of Mainak Chakraborty, a UX/UI Designer specializing in clean, systemic, and accessible digital experiences.">
   
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mainakc.netlify.app/">
-  <meta property="og:title" content="Mainak Chakraborty - Product Designer">
-  <meta property="og:description" content="Product Designer creating accessible, user-centered digital experiences.">
-  <meta property="og:image" content="https://mainakc.netlify.app/assets/img/og-image.jpg">
+  <meta property="og:title" content="Mainak Chakraborty — UX/UI Designer">
+  <meta property="og:description" content="Portfolio of Mainak Chakraborty, a UX/UI Designer specializing in clean, systemic, and accessible digital experiences.">
+  <meta property="og:image" content="https://mainakc.netlify.app/assets/images/og-preview.jpg">
+  
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://mainakc.netlify.app/">
-  <meta property="twitter:title" content="Mainak Chakraborty - Product Designer">
-  <meta property="twitter:description" content="Product Designer creating accessible, user-centered digital experiences.">
-  <meta property="twitter:image" content="https://mainakc.netlify.app/assets/img/og-image.jpg">
-  <link rel="canonical" href="https://mainakc.netlify.app/">
+  <meta property="twitter:title" content="Mainak Chakraborty — UX/UI Designer">
+  <meta property="twitter:description" content="Portfolio of Mainak Chakraborty, a UX/UI Designer specializing in clean, systemic, and accessible digital experiences.">
+  <meta property="twitter:image" content="https://mainakc.netlify.app/assets/images/og-preview.jpg">
 
-  <link rel="icon" type="image/svg+xml" href="assets/img/Logo2.svg">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mainak Chakraborty",
-    "url": "https://mainakc.netlify.app",
-    "jobTitle": "Product Designer",
-    "email": "mainak.chak04@gmail.com",
-    "sameAs": [
-      "https://www.linkedin.com/in/mainakc98/",
-      "https://calendly.com/mainak-chak04/30min"
-    ]
-  }
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('color-scheme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {
+        console.error('Error setting theme:', e);
+      }
+    })();
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Bangers&display=swap" media="print" onload="this.media='all'"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class', 
-      theme: {
-        extend: {
-          fontFamily: {
-            sans:   ['Chakra Petch', 'sans-serif'],
-            sfx:    ['Bangers', 'sans-serif'],
-          },
-          colors: {
-            primary:  { 500: '#02437D', 600: '#023666' },
-            accent:   { 500: '#FF9933' },
-            manga: {
-              ink:    '#0D0D0D',
-              panel:  '#FFFEF5',
-              blue:   '#00B4FF',
-              pink:   '#FF006E',
-              purple: '#9B4DCA',
-            }
-          },
-          borderWidth: { '3': '3px' },
-          boxShadow: {
-            'comic':        '4px 4px 0px 0px #0D0D0D',
-            'comic-lg':     '8px 8px 0px 0px #0D0D0D',
-            'comic-blue':   '4px 4px 0px 0px #00B4FF',
-            'comic-pink':   '4px 4px 0px 0px #FF006E',
-            'comic-accent': '4px 4px 0px 0px #FF9933',
-          }
-        }
-      }
-    }
-  </script>
-
-  <script>
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  </script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
 
   <style>
-    /* ── Manga Base Patterns ─────────────────────── */
-    .manga-halftone {
-      background-image: radial-gradient(circle, #0D0D0D 1px, transparent 1px);
-      background-size: 20px 20px;
-    }
-    .manga-halftone-light {
-      background-image: radial-gradient(circle, rgba(0,180,255,0.15) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-
-    /* ── Hero Splash Speedlines ── */
-    .manga-speedlines-hero {
-      background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 15px,
-        rgba(0, 180, 255, 0.15) 15px,
-        rgba(0, 180, 255, 0.15) 18px,
-        transparent 18px,
-        transparent 35px,
-        rgba(255, 0, 110, 0.1) 35px,
-        rgba(255, 0, 110, 0.1) 38px
-      );
+    /* — Homepage "Selected Work" intro row — */
+    .section-intro-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-12);
     }
 
-    .manga-panel { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #0D0D0D; }
-    .manga-panel-blue { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #00B4FF; }
-    .manga-panel-pink { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FF006E; }
-    .manga-panel-accent { border: 3px solid #0D0D0D; box-shadow: 6px 6px 0px 0px #FF9933; }
-    
-    .manga-panel:hover, .manga-panel-blue:hover, .manga-panel-pink:hover, .manga-panel-accent:hover {
-      transform: translate(-2px, -2px);
-    }
-    .manga-panel:hover { box-shadow: 8px 8px 0px 0px #0D0D0D; }
-    .manga-panel-blue:hover { box-shadow: 8px 8px 0px 0px #00B4FF; }
-    .manga-panel-pink:hover { box-shadow: 8px 8px 0px 0px #FF006E; }
-    .manga-panel-accent:hover { box-shadow: 8px 8px 0px 0px #FF9933; }
-    .manga-panel, .manga-panel-blue, .manga-panel-pink, .manga-panel-accent {
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    .section-intro-row h2 {
+      margin-bottom: 0;
     }
 
-    .sfx {
-      font-family: 'Bangers', sans-serif;
-      letter-spacing: 0.05em;
-      -webkit-text-stroke: 2px #0D0D0D;
-      paint-order: stroke fill;
+    .section-intro-row .cta-button {
+      flex-shrink: 0;
     }
 
-    .speech-bubble {
+    /* — About section cleanup — */
+    .about-layout {
       position: relative;
-      background: #FFFFFF;
-      border: 3px solid #0D0D0D;
-      border-radius: 14px;
-      box-shadow: 4px 4px 0px 0px #0D0D0D;
-      display: inline-block;
-      padding: 10px 20px;
-      color: #0D0D0D;
-    }
-    .speech-bubble::after {
-      content: ''; position: absolute; bottom: -18px; left: 24px;
-      border: 9px solid transparent; border-top-color: #0D0D0D;
-    }
-    .speech-bubble::before {
-      content: ''; position: absolute; bottom: -12px; left: 26px;
-      border: 7px solid transparent; border-top-color: #FFFFFF; z-index: 1;
     }
 
-    .speech-bubble-dark {
-      background: rgba(10,10,15,0.9);
-      border-color: rgba(255,255,255,0.2);
-      box-shadow: 4px 4px 0px 0px rgba(255,255,255,0.1);
-      color: #fff;
-    }
-    .speech-bubble-dark::after  { border-top-color: rgba(255,255,255,0.2); }
-    .speech-bubble-dark::before { border-top-color: rgba(10,10,15,0.9); }
-
-    .manga-label {
-      font-family: 'Chakra Petch', sans-serif;
+    .about-eyebrow {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
       font-weight: 700;
-      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border: 2px solid #0D0D0D;
-      background: #FF9933;
-      color: #0D0D0D;
-      padding: 4px 12px;
-      display: inline-block;
-      box-shadow: 3px 3px 0px 0px #0D0D0D;
-    }
-
-    .ink-splat-2 { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
-
-    .panel-divider {
-      height: 6px;
-      background: repeating-linear-gradient(90deg, #FF9933 0px, #FF9933 20px, #0D0D0D 20px, #0D0D0D 22px);
-    }
-
-    /* ── Seamless Wave Animation ── */
-    @keyframes wave-flow {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-wave-flow {
-      animation: wave-flow 4s linear infinite;
-    }
-
-    #progress-bar {
-      position: fixed; top: 0; left: 0; height: 4px;
-      background: repeating-linear-gradient(90deg, #00B4FF 0px, #00B4FF 16px, #FF006E 16px, #FF006E 32px, #FF9933 32px, #FF9933 48px);
-      width: 0%; z-index: 9998; transition: width 0.1s ease;
-    }
-
-    #loader { background: #FFFFFF; }
-    .dark #loader { background: #0A0A0F; }
-    #loader p { color: #FF9933; }
-
-    .card-orbit-grid { background-image: linear-gradient(rgba(2,148,68,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(2,148,68,0.07) 1px, transparent 1px); background-size: 32px 32px; }
-    .card-habit-dots { background-image: radial-gradient(circle, rgba(180,100,20,0.11) 1px, transparent 1px); background-size: 22px 22px; }
-
-    #back-to-top.show { opacity: 1; visibility: visible; }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-    }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
-    #loader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.3s ease; }
-    #loader.fade-out { opacity: 0; pointer-events: none; }
-    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-
-    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-    .animate-fade-in { animation: fade-in 1s ease-out; }
-    @keyframes fade-in-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .animate-fade-in-up { animation: fade-in-up 1.2s ease-out 0.3s both; }
-    @keyframes scroll-wheel { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(12px); } }
-    .animate-scroll-wheel { animation: scroll-wheel 1.5s ease-in-out infinite; }
-    @keyframes sfx-pop { 0%, 100% { transform: scale(1) rotate(-2deg); } 50% { transform: scale(1.06) rotate(2deg); } }
-    .sfx-animate { animation: sfx-pop 2.5s ease-in-out infinite; }
-
-    .neon-blue-hover:hover { text-shadow: 0 0 12px #00B4FF, 0 0 24px #00B4FF; }
-    .neon-pink-hover:hover { text-shadow: 0 0 12px #FF006E, 0 0 24px #FF006E; }
-
-    /* Footer Theme Adaptation */
-    .footer-bg {
-      background-color: #FFFFFF;
-      background-image: linear-gradient(rgba(0,180,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,180,255,0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    .dark .footer-bg {
-      background-color: #0A0A0F;
-      background-image: linear-gradient(rgba(0,180,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,180,255,0.03) 1px, transparent 1px);
-    }
-
-    /* ── WCAG 2.4.7 Focus Visible Fix ── */
-    :focus-visible {
-      outline: 3px solid #00B4FF;
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-
-    :focus:not(:focus-visible) {
-      outline: none;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
     }
   </style>
 </head>
+<body>
 
-<body class="bg-white text-manga-ink dark:bg-manga-ink dark:text-white font-sans antialiased overflow-x-hidden transition-colors duration-300">
+  <div id="scroll-progress" aria-hidden="true"></div>
 
-  <div id="progress-bar" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <div id="loader" role="status" aria-live="polite">
-    <div class="text-center space-y-3">
-      <p class="sfx text-5xl text-accent-500 sfx-animate">LOADING!</p>
-      <p class="text-sm text-manga-ink/80 dark:text-white/80 uppercase tracking-widest font-bold">Hang tight... 🚀</p>
-    </div>
-  </div>
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Main navigation">
 
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-manga-blue focus:text-white focus:outline-none focus:font-bold">Skip to main content</a>
+      <a href="#hero" class="nav-logo" aria-label="Mainak Chakraborty — back to top">
+        <img src="assets/images/Logo.png" alt="Mainak Chakraborty Logo" class="logo-image" />
+      </a>
 
-  <header role="banner">
-    <nav id="navbar"
-    class="fixed top-0 w-full z-40
-    bg-white/75 dark:bg-manga-ink/75
-    backdrop-blur-md
-
-    transition-all duration-300"
-    role="navigation"
-    aria-label="Main navigation">
-
-      <div class="h-1 w-full" style="background: repeating-linear-gradient(90deg, #00B4FF 0px, #00B4FF 12px, #FF006E 12px, #FF006E 14px, transparent 14px, transparent 28px);" aria-hidden="true"></div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ul class="nav-links" role="list" id="nav-menu">
+        <li><a href="#about">About</a></li>
         
-        <div class="flex justify-between items-center h-16">
-
-          <a href="#hero" class="flex items-center gap-3 group focus-visible:ring-3 focus-visible:ring-manga-blue focus-visible:ring-offset-2 focus-visible:outline-none">
-            <img src="assets/img/Logo2.svg" alt="Mainak Chakraborty logo" class="h-8 w-8 transition-transform duration-200 group-hover:scale-110" width="32" height="32">
-            
-            <div class="flex items-center gap-2">
-              <span class="text-sm font-black text-manga-ink dark:text-white tracking-widest uppercase">
-                MAINAK CHAKRABORTY
-              </span>
-              <i class="fas fa-home text-manga-ink dark:text-white text-base opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" aria-hidden="true"></i>
-            </div>
-          </a>
-
-          <div class="hidden md:flex items-center gap-6">
-            <a href="#hero" class="text-sm font-bold text-manga-ink/80 dark:text-white/80 uppercase tracking-wider hover:text-manga-blue dark:hover:text-manga-blue transition-all">HOME</a>
-            <a href="#about" class="text-sm font-bold text-manga-ink/80 dark:text-white/80 uppercase tracking-wider hover:text-manga-blue dark:hover:text-manga-blue transition-all">ABOUT</a>
-
-            <div class="relative flex items-center gap-0.5">
-              <a href="#work" class="text-sm font-bold text-manga-ink/80 dark:text-white/80 uppercase tracking-wider hover:text-manga-blue dark:hover:text-manga-blue transition-all">
-                WORK
-              </a>
-              
-              <button id="work-dropdown-btn" aria-haspopup="true" aria-expanded="false" aria-controls="work-dropdown-menu" aria-label="Toggle project list" class="flex items-center justify-center p-1 text-manga-ink/80 dark:text-white/80 hover:text-manga-blue dark:hover:text-manga-blue transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-manga-blue rounded">
-                <svg id="work-chevron" class="w-3 h-3 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </button>
-              
-              <div id="work-dropdown-menu" class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-52 opacity-0 invisible transition-all duration-200 bg-white dark:bg-manga-ink border-3 border-manga-blue/60 shadow-comic-blue z-50 before:absolute before:-top-3 before:left-0 before:w-full before:h-3">
-                <div class="py-2">
-                  <a href="OS_V2.html" class="block px-4 py-2 text-sm font-medium text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/10 dark:border-white/10">Orbit Scan</a>
-                  <a href="HabitBoost.html" class="block px-4 py-2 text-sm font-medium text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/10 dark:border-white/10">Habit Boost</a>
-                  <a href="ManageW.html" class="block px-4 py-2 text-sm font-medium text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/10 dark:border-white/10">ManageWise</a>
-                  <a href="DS.html" class="block px-4 py-2 text-sm font-medium text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/10 dark:border-white/10">Design System</a>
-                  <a href="TouroUniversityGST.html" class="block px-4 py-2 text-sm font-medium text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/10 dark:border-white/10">Touro</a>
-                  <a href="ai-prompt-series.html" class="block px-4 py-2 text-sm font-medium text-manga-ink/80 dark:text-white/80 hover:text-manga-pink hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/10 dark:border-white/10">AI Playground</a>
-                  <a href="work.html" class="block px-4 py-2 text-sm font-black text-accent-500 hover:bg-black/5 dark:hover:bg-white/5 border-t-2 border-manga-blue/40 transition-colors">↗ All Projects</a>
-                </div>
-              </div>
-            </div>
-
-            <a href="#contact" class="text-sm font-bold text-manga-ink/80 dark:text-white/80 uppercase tracking-wider hover:text-manga-pink dark:hover:text-manga-pink transition-all">CONTACT</a>
-
-            <button id="theme-toggle" class="p-2 border border-manga-ink/20 dark:border-white/20 shadow-sm hover:border-manga-blue dark:hover:border-yellow-500 transition-all focus-visible:ring-3 focus-visible:ring-manga-blue dark:focus-visible:ring-yellow-500 focus-visible:ring-offset-2 bg-white dark:bg-transparent rounded-sm" aria-label="Toggle dark mode">
-              
-              <svg class="w-5 h-5 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="5"/>
-                <line x1="12" y1="1" x2="12" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/>
-                <line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-              </svg>
-              
-              <svg class="w-5 h-5 block dark:hidden text-manga-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-              
-            </button>
-          </div>
-
-          <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" 
-          class="md:hidden p-2 border-2 border-black/20 dark:border-white/20 hover:border-manga-blue transition-all focus-visible:ring-3 focus-visible:ring-manga-blue focus-visible:ring-offset-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-            <svg class="w-6 h-6 text-manga-ink dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="square" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <li class="dropdown">
+          <button type="button" aria-expanded="false" aria-controls="projects-menu" class="dropdown-toggle">
+            <span>Projects</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           
-        </div>
+          <ul id="projects-menu" class="dropdown-menu" role="list">
+            <li><a href="orbit-scan.html">[01] Orbit Scan</a></li>
+            <li><a href="HB.html">[02] Habit Boost</a></li>
+            <li><a href="KWDS.html">[03] Design System</a></li>
+            <li><a href="CS.html">[04] Visual Identity</a></li>
+            <li><a href="AIPlayground.html">[05] AI Playground</a></li>
+            <li><a href="work.html" class="view-all">View All Work ↗</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls" role="group" aria-label="Site controls">
+        <button
+          type="button"
+          class="theme-toggle"
+          aria-label="Switch to dark mode"
+          aria-pressed="false">
+          <svg class="icon icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="icon icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-menu">
+          <span class="hamburger-bar" aria-hidden="true"></span>
+          <span class="hamburger-bar" aria-hidden="true"></span>
+          <span class="hamburger-bar" aria-hidden="true"></span>
+        </button>
       </div>
 
-      <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-manga-ink border-t-3 border-manga-blue/40">
-        <nav aria-label="Mobile navigation" class="px-4 py-4 space-y-1">
-          <a href="#hero" class="block px-4 py-2 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Home</a>
-          <a href="#about" class="block px-4 py-2 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">About</a>
-          <button onclick="document.getElementById('mobile-work').classList.toggle('hidden')" class="flex items-center justify-between w-full px-4 py-2 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
-            Work
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div id="mobile-work" class="hidden pl-6 space-y-1 border-l-2 border-manga-blue/40">
-            <a href="OS_V2.html" class="block px-4 py-2 text-sm text-manga-ink/80 dark:text-white/80 hover:text-manga-blue transition-colors">Orbit Scan</a>
-            <a href="HabitBoost.html" class="block px-4 py-2 text-sm text-manga-ink/80 dark:text-white/80 hover:text-manga-blue transition-colors">Habit Boost</a>
-            <a href="ManageW.html" class="block px-4 py-2 text-sm text-manga-ink/80 dark:text-white/80 hover:text-manga-blue transition-colors">ManageWise</a>
-            <a href="DS.html" class="block px-4 py-2 text-sm text-manga-ink/80 dark:text-white/80 hover:text-manga-blue transition-colors">Design System</a>
-            <a href="Touro University GST.html" class="block px-4 py-2 text-sm text-manga-ink/80 dark:text-white/80 hover:text-manga-blue transition-colors">Touro</a>
-            <a href="ai-prompt-series.html" class="block px-4 py-2 text-sm font-medium text-manga-ink/80 dark:text-white/80 hover:text-manga-pink hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/10 dark:border-white/10">AI Playground</a>
-            <a href="work.html" class="block px-4 py-2 text-sm font-black text-accent-500 hover:bg-black/5 dark:hover:bg-white/5 border-t-2 border-manga-blue/40 transition-colors">↗ All Projects</a>
-          </div>
-          <a href="#contact" class="block px-4 py-2 text-sm font-black uppercase tracking-wider text-manga-ink/80 dark:text-white/80 hover:text-manga-pink hover:bg-black/5 dark:hover:bg-white/5 transition-colors">Contact</a>
-        </nav>
-      </div>
     </nav>
   </header>
 
-  <main id="main-content" role="main">
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden pt-20 pb-6 lg:pt-24 lg:pb-16 border-manga-ink transition-colors duration-300" aria-labelledby="hero-heading">
-  
-      <div class="absolute inset-0 manga-halftone-light opacity-30 dark:opacity-10 pointer-events-none transition-opacity" aria-hidden="true"></div>
-      <div class="absolute inset-0 manga-speedlines-hero opacity-60 dark:opacity-30 pointer-events-none transition-opacity" aria-hidden="true"></div>
-     <!--
-      <div class="absolute top-1/2 left-1/2 z-0 pointer-events-none transform -translate-x-1/2 -translate-y-[50%] opacity-15 dark:opacity-10 transition-opacity w-full text-center flex flex-col items-center justify-center gap-4 sm:gap-8 lg:gap-16" aria-hidden="true">
-        <span class="font-sfx text-[7rem] sm:text-[10rem] lg:text-[20rem] leading-none text-transparent" style="-webkit-text-stroke: 3px #00B4FF;">DESIGN!</span>
-        <span class="font-sfx text-[7rem] sm:text-[10rem] lg:text-[20rem] leading-none text-transparent" style="-webkit-text-stroke: 3px #FF9933;">RESEARCH!</span>
+  <main id="main-content">
+
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="hero-graphic-layer" aria-hidden="true">
+        <img src="assets/images/Hero_BG.png" alt="">
+        <div class="hero-fade-mask"></div>
       </div>
-      -->
-      <div class="relative z-10 text-center px-4 flex flex-col items-center justify-center w-full max-w-6xl mx-auto lg:flex-grow">
-        
-        <div class="flex flex-col items-center gap-8 sm:gap-10 lg:gap-12 w-full">
+
+      <div class="container relative-z">
+        <div class="hero-layout">
           
-          <div class="flex flex-col items-center gap-6 sm:gap-8">
-            <div class="speech-bubble transform -translate-x-4 sm:-translate-x-16 rotate-[-2deg] z-20 animate-fade-in-up">
-              <p class="text-[10px] sm:text-sm font-black text-manga-ink uppercase tracking-widest m-0">Hey there! 👋 I am</p>
-            </div>
+          <div class="hero-main">
+            <h1 id="hero-heading">Mainak<br>Chakraborty</h1>
+            <p class="hero-role">PRODUCT DESIGNER</p>
+          </div>
+
+          <div class="hero-meta">
+            <p>
+              I build seamless digital experiences through a design-system-first approach. Merging user-centered research with polished visual design.
+            </p>
+            <a href="work.html" class="cta-button">View my work</a>
             
-            <h1 id="hero-heading" class="font-sfx leading-[0.85] tracking-wide w-full text-center" style="-webkit-text-stroke: 2px #0D0D0D; paint-order: stroke fill;">
-              <span class="block text-[16vw] lg:text-[10rem] text-white" style="text-shadow: 4px 4px 0px #0D0D0D, 8px 8px 0px #00B4FF;">MAINAK</span>
-              <span class="block text-[11vw] lg:text-[7.5rem] text-accent-500 uppercase mt-0" style="text-shadow: 4px 4px 0px #0D0D0D, 8px 8px 0px #FF006E;">CHAKRABORTY</span>
-            </h1>
-          </div>
-    
-          <div class="p-5 flex flex-wrap gap-2 sm:gap-3 justify-center relative z-20 animate-fade-in-up rounded-2xl border-2 border-dashed border-manga-ink/30 dark:border-white/30 bg-transparent">
-            <div class="absolute -top-3.5 -right-3.5 bg-white dark:bg-manga-ink border-2 border-manga-ink dark:border-white rounded-full w-8 h-8 flex items-center justify-center shadow-comic">
-               <i class="fas fa-bolt text-accent-500 text-xs"></i>
+            <div class="scroll-explore-wrapper">
+              <a href="#about" class="scroll-explore" aria-label="Scroll down to About section">
+                <span class="explore-text">Scroll to explore</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+                  <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+              </a>
             </div>
-            <span class="px-4 py-2 text-[9px] sm:text-xs font-bold uppercase tracking-widest text-manga-ink dark:text-white border-2 border-dashed border-manga-ink/30 dark:border-white/30 rounded-full">UX/UI Design</span>
-            <span class="px-4 py-2 text-[9px] sm:text-xs font-bold uppercase tracking-widest text-manga-ink dark:text-white border-2 border-dashed border-manga-ink/30 dark:border-white/30 rounded-full">Visual Design</span>
-            <span class="px-4 py-2 text-[9px] sm:text-xs font-bold uppercase tracking-widest text-manga-ink dark:text-white border-2 border-dashed border-manga-ink/30 dark:border-white/30 rounded-full">Design Thinking</span>
-            <span class="px-4 py-2 text-[9px] sm:text-xs font-bold uppercase tracking-widest text-manga-ink dark:text-white border-2 border-dashed border-manga-ink/30 dark:border-white/30 rounded-full">Creative Strategy</span>
           </div>
+
+        </div> 
+      </div> 
+    </section>
+
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
     
-          <div class="lg:mt-auto">
-            <a href="#about" class="flex flex-col items-center gap-1.5 text-manga-ink/80 dark:text-white/80 hover:text-manga-blue transition-colors group">
-              <span class="text-[0.6rem] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Scroll</span>
-              <div class="w-7 h-10 rounded-full border-3 border-current flex justify-center pt-1.5 bg-white/50 backdrop-blur-sm" style="box-shadow: 2px 2px 0 #0D0D0D;">
-                <div class="w-1 h-2.5 bg-current rounded-full animate-scroll-wheel"></div>
-              </div>
+        <h2 id="about-heading">About Me</h2>
+    
+        <div class="about-layout">
+          <div class="about-photo" style="--stagger-delay: 100ms;">
+            <img
+              src="assets/images/Double exposure.jpg"
+              alt="Mainak Chakraborty, UX/UI designer"
+              loading="lazy"
+              decoding="async" />
+          </div>
+
+          <div class="about-content" style="--stagger-delay: 200ms;">
+            <span class="about-eyebrow">Product Designer · Systems Thinker · AI Collaborator</span>
+
+            <p>
+              I craft digital experiences that refuse to be ignored. By treating design as a scalable, living system rather than a static canvas, I deliver clean, editorial interfaces powered by flawless logic — things that look premium and perform even better.
+            </p>
+
+            <a href="about.html" class="cta-button" style="margin-top: var(--space-4);">
+              Read More
             </a>
           </div>
+
         </div>
       </div>
     </section>
-    <!-- HERO SECTION END -->
+    <section id="projects" aria-labelledby="projects-heading" style="overflow: hidden;">
+      <div class="container">
 
-        <!-- PANEL DIVIDER START -->
-        <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
-  
-          <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
-            
-            <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
-              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-            </svg>
-            
-            <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
-              <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-            </svg>
-            
-            <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
-              <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-            </svg>
-        
-          </div>
+        <div class="section-intro-row">
+          <h2 id="projects-heading">Selected Work</h2>
+          <a href="work.html" class="cta-button">View All ↗</a>
         </div>
-      <!-- PANEL DIVIDER END -->
 
-      <section id="about" class="relative min-h-screen lg:h-screen flex items-center py-16 lg:py-0 overflow-hidden bg-white dark:bg-manga-ink transition-colors duration-300" aria-labelledby="about-heading">
+        <div class="showcase-grid">
 
-        <div class="absolute inset-0 manga-halftone-light opacity-20 pointer-events-none" aria-hidden="true"></div>
-        <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background: repeating-conic-gradient(from 0deg at 50% 30%, transparent 0deg, transparent 4deg, rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg);"></div>
-  
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  
-          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-  
-            <div class="order-1 relative max-w-xl mx-auto lg:max-w-none w-full">
-  
-              <div class="relative p-3 sm:p-4 bg-white dark:bg-manga-ink border-[3px] border-manga-ink dark:border-white/20 shadow-[8px_8px_0_0_#0D0D0D] dark:shadow-[8px_8px_0_0_rgba(255,255,255,0.1)]">
-  
-               <div class="bg-manga-blue px-4 py-1.5 mb-3 border-b-[3px] border-manga-ink">
-                 <p class="text-xs font-black uppercase tracking-[0.2em] text-manga-ink">
-                  Origin Story
-                 </p>
-               </div>
-  
-               <div class="flex flex-col gap-2">
-  
-                 <div class="relative overflow-hidden group h-[9vh] min-h-[60px] max-h-[80px] border-[3px] border-manga-ink">
-                   <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.25) 1px, transparent 1px); background-size: 8px 8px; opacity: 0.4;"></div>
-                   <div class="absolute -bottom-10 -left-8 w-64 h-64 z-10 pointer-events-none" style="background: repeating-conic-gradient(from 0deg at 0% 100%, transparent 0deg, transparent 7deg, rgba(255,153,51,0.25) 7deg, rgba(255,153,51,0.25) 8deg);"></div>
-                   <img src="assets/img/Mainak Art/Comic_Manga_Mainak_2.png" alt="Comic panel: Mainak in Times Square action sequence" fetchpriority="high" class="w-full h-full object-cover object-[center_10%] scale-[1.02] group-hover:scale-[1.05] transition-transform duration-700 ease-out">
-                   <div class="absolute bottom-3 left-3 z-20">
-                     <div class="relative bg-white border-[3px] border-manga-ink px-3 py-1.5 rounded-sm max-w-[120px] shadow-[3px_3px_0_#0D0D0D]">
-                       <div class="absolute -bottom-[9px] left-4 w-0 h-0" style="border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid #0D0D0D;"></div>
-                       <div class="absolute -bottom-[5px] left-[15px] w-0 h-0 z-10" style="border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid #ffffff;"></div>
-                     </div>
-                   </div>
-                 </div>
-  
-                 <div class="flex gap-2 h-[22vh] min-h-[150px] max-h-[220px]">
-                   <div class="relative overflow-hidden group flex-1 border-[3px] border-manga-ink">
-                     <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(255,0,110,0.3) 1px, transparent 1px); background-size: 8px 8px; opacity: 0.5;"></div>
-                     <img src="assets/img/Mainak Art/TC_3.png" alt="Comic panel close-up: intense focus" class="w-full h-full object-cover object-[10%_15%] scale-[1.08] group-hover:scale-[1.12] transition-transform duration-700">
-                     <div class="absolute inset-0 z-10 pointer-events-none" style="background: repeating-linear-gradient(-45deg, transparent 0px, transparent 8px, rgba(255,153,51,0.08) 8px, rgba(255,153,51,0.08) 10px);"></div>
-                   </div>
-                   <div class="relative overflow-hidden group flex-[3] border-[3px] border-manga-ink">
-                     <div class="absolute inset-0 z-10 pointer-events-none" style="background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px); background-size: 8px 8px; opacity: 0.5;"></div>
-                     <img src="assets/img/Mainak Art/TC_1.png" alt="Comic panel: Mainak dream big Times Square" class="w-full h-full object-cover object-[center_50%] scale-[1.02] group-hover:scale-[1.06] transition-transform duration-700">
-                   </div>
-                 </div>
-  
-                 <div class="relative overflow-hidden group h-[18vh] min-h-[130px] max-h-[180px] border-[3px] border-manga-ink">
-                   <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(circle, rgba(0,0,0,0.3) 2px, transparent 2px); background-size: 8px 8px; opacity: 0.45;"></div>
-                   <div class="absolute inset-0 z-10 pointer-events-none" style="background: repeating-conic-gradient(from 0deg at 50% 60%, transparent 0deg, transparent 4deg, rgba(255,153,51,0.12) 4deg, rgba(255,153,51,0.12) 4.5deg);"></div>
-                   <img src="assets/img/Mainak Art/Mainak_TimeSquare_Comic.png" alt="Comic splash panel: Mainak full figure Times Square" class="w-full h-full object-cover object-[center_10%] scale-[1.02] group-hover:scale-[1.04] transition-transform duration-700">
-                   <div class="absolute top-0 right-0 z-20 bg-white/90 px-4 py-2 border-l-[3px] border-b-[3px] border-manga-ink">
-                    <p class="text-xs font-black text-manga-ink uppercase tracking-wider">...</p>
-                  </div>
-                 </div>
-  
-               </div>
-               
-               <div class="mt-3 bg-manga-ink px-4 py-1.5 border-t-[3px] border-manga-ink flex items-center justify-between">
-                 <span class="sfx text-xs sm:text-sm text-accent-500 tracking-widest">NEVER STOP.</span>
-                 <span class="sfx text-xs sm:text-sm text-manga-blue tracking-widest">TO BE CONTINUED...</span>
-               </div>
-  
-              </div>
-            </div>
-  
-            <article class="order-2 space-y-5 md:space-y-6 xl:space-y-8 pt-4 lg:pt-0">
-              
-              <h2 id="about-heading" class="text-3xl sm:text-4xl xl:text-5xl font-black text-manga-ink dark:text-white uppercase tracking-wide transition-colors leading-[1.1]">
-                I'm a
-                <span class="text-manga-blue [text-shadow:3px_3px_0_#0D0D0D] dark:[text-shadow:3px_3px_0_rgba(255,255,255,0.2)]">
-                  Product Designer
-                </span>
-                building bold interactions &amp; scalable experience
-              </h2>
-              
-              <p class="text-base sm:text-lg text-manga-ink/80 dark:text-white/80 leading-relaxed border-l-[3px] border-manga-blue pl-4 sm:pl-6 transition-colors font-semibold">
-                My design practice spans product design, visual storytelling, and digital experiences built for real people.
-              </p>
-              
-              <div class="flex flex-wrap gap-3 sm:gap-4"> 
-                 <div class="bg-white dark:bg-manga-ink p-3 text-center min-w-[110px] sm:min-w-[120px] transition-all duration-200 border-[3px] border-manga-ink dark:border-white/30 shadow-[4px_4px_0_0_#0D0D0D] dark:shadow-[4px_4px_0_0_rgba(255,255,255,0.2)] hover:-translate-y-1"> 
-                   <p class="sfx text-3xl sm:text-4xl text-manga-blue">3+</p>
-                   <p class="text-[10px] sm:text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-1">Case Studies</p> 
-                 </div>
-                 <div class="bg-white dark:bg-manga-ink p-3 text-center min-w-[110px] sm:min-w-[120px] transition-all duration-200 border-[3px] border-manga-ink dark:border-white/30 shadow-[4px_4px_0_0_#0D0D0D] dark:shadow-[4px_4px_0_0_rgba(255,255,255,0.2)] hover:-translate-y-1">
-                   <p class="sfx text-3xl sm:text-4xl text-manga-pink">3+</p>
-                   <p class="text-[10px] sm:text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-1">Years Exp</p>
-                 </div>
-                 <div class="bg-white dark:bg-manga-ink p-3 text-center min-w-[110px] sm:min-w-[120px] transition-all duration-200 border-[3px] border-manga-ink dark:border-white/30 shadow-[4px_4px_0_0_#0D0D0D] dark:shadow-[4px_4px_0_0_rgba(255,255,255,0.2)] hover:-translate-y-1">
-                   <p class="sfx text-3xl sm:text-4xl text-accent-500">∞</p>
-                   <p class="text-[10px] sm:text-xs text-manga-ink/80 dark:text-white/80 uppercase tracking-wider font-bold mt-1">Coffees ☕</p>
-                 </div>
-              </div>
-  
-              <div class="pt-2"> 
-                <a href="about.html" class="inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-3.5 bg-manga-ink text-white dark:bg-white dark:text-manga-ink font-black uppercase tracking-wide border-[3px] border-manga-ink dark:border-white shadow-[4px_4px_0px_0px_#00B4FF] hover:shadow-[2px_2px_0px_0px_#00B4FF] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150 focus-visible:ring-3 focus-visible:ring-manga-ink focus-visible:ring-offset-2 group text-sm sm:text-base"> 
-                 Read Full Story
-                 <svg class="w-5 h-5 sm:w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-               </a>
-              </div>
-  
-            </article>
-          </div>
-        </div>
-      </section>
-
-            <!-- PANEL DIVIDER START -->
-            <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
-  
-              <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
-                
-                <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
-                  <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-                </svg>
-                
-                <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
-                  <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-                </svg>
-                
-                <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
-                  <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-                </svg>
-            
-              </div>
-            </div>
-          <!-- PANEL DIVIDER END -->
-
-    <section id="work" class="py-16 sm:py-24 bg-white dark:bg-[#0A0A0F] transition-colors duration-300 relative overflow-hidden" aria-labelledby="work-heading">
-      
-      <div class="absolute inset-0 manga-halftone-light opacity-20 pointer-events-none" aria-hidden="true"></div>
-      
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 4deg, rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg);"></div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <header class="mb-16 sm:mb-24 relative z-10">
-
-        
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-  
-  <!-- Wrapper added for the dash positioning -->
-  <div class="relative inline-block pb-4">
-    <!-- Header standardized to match footer sizes -->
-    <h2 id="work-heading" class="text-4xl sm:text-5xl font-black text-manga-ink dark:text-white uppercase tracking-wide m-0 leading-none">
-      Selected Work
-    </h2>
-    <!-- The exact same gradient dash from the footer -->
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-manga-ink/30 dark:via-white/30 to-transparent" aria-hidden="true"></div>
-  </div>
-  
-  <a href="work.html" class="inline-flex items-center gap-3 text-sm sm:text-base font-black uppercase tracking-wider text-manga-blue hover:text-accent-500 transition-colors group pb-1 md:pb-2">
-    View All Projects
-    <span class="block w-8 h-1 bg-manga-blue group-hover:bg-accent-500 group-hover:w-12 transition-all duration-300"></span>
-  </a>
-
-</div>
-        </header>
-
-        <div class="space-y-32 sm:space-y-40">
-    
-          <article class="relative flex flex-col md:flex-row items-center gap-8 md:gap-16" aria-labelledby="orbit-scan-title">
-            
-            <figure class="w-full md:w-1/2 relative z-10 flex justify-center md:justify-end items-center">
-              
-              <div class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none -translate-x-20 sm:-translate-x-32 -translate-y-20 opacity-30">
-                <span class="font-sfx text-[9rem] sm:text-[20rem] text-transparent -rotate-6" style="-webkit-text-stroke: 3px #22c55e;">
-                  SCAN!
-                </span>
-              </div>
-              
-              <img src="assets/img/Projects/Orbit Scan/Cover.png" alt="Orbit Scan mobile app interface" width="480" height="400" loading="lazy" class="relative z-10 w-full max-w-xl h-auto object-contain md:mr-0 drop-shadow-[16px_16px_0_rgba(34,197,94,1)]">
-              
+          <article class="showcase-card" aria-labelledby="orbit-scan-title">
+            <figure class="showcase-visual">
+              <div class="showcase-bg-text" aria-hidden="true">SCAN!</div>
+              <img src="assets/images/projects/orbit/Orbit Scan Thumbnail.png" alt="Orbit Scan app thumbnail">
             </figure>
     
-            <div class="w-full md:w-1/2 relative z-10 space-y-6">
-              <div class="flex items-center gap-4">
-                <span class="text-4xl font-sfx text-green-500 tracking-wider">01</span>
-                <span class="h-1 w-12 bg-manga-ink/20 dark:bg-white/20"></span>
-                <span class="text-xs font-black uppercase tracking-widest text-manga-ink/60 dark:text-white/60">Health Tech / Mobile UX</span>
+            <div class="showcase-content">
+              <div class="showcase-meta">
+                <span class="meta-num">01</span>
+                <span class="meta-line" aria-hidden="true"></span>
+                <span class="meta-cat">Product Strategy / UX/UI</span>
               </div>
               
-              <h3 id="orbit-scan-title" class="text-5xl sm:text-6xl font-sans font-black text-green-600 dark:text-green-400 uppercase tracking-tight leading-none">
-                ORBIT SCAN
-              </h3>
+              <h3 id="orbit-scan-title" class="showcase-title">Orbit Scan</h3>
+              <p class="showcase-desc">Bringing clarity to complex food labels through instant scanning and personalized health insights.</p>
               
-              <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 font-semibold max-w-lg">
-                A smart grocery companion app that decodes food labels, identifies hidden health risks, and helps users make informed nutritional choices.
-              </p>
-              
-              <ul class="flex flex-wrap gap-4" role="list">
-                <li><span class="px-4 py-2 border-2 border-manga-ink dark:border-white/30 text-xs font-bold uppercase rounded-full">UX Research</span></li>
-                <li><span class="px-4 py-2 border-2 border-manga-ink dark:border-white/30 text-xs font-bold uppercase rounded-full">UI Design & Prototyping</span></li>
-                <li><span class="px-4 py-2 bg-green-500 border-2 border-green-500 text-white text-xs font-bold uppercase rounded-full">10 min read</span></li>
+              <ul class="showcase-tags" role="list">
+                <li>UX Research</li>
+                <li>Prototyping</li>
+                <li class="tag-highlight">10 min read</li>
               </ul>
               
-              <div class="pt-6">
-                <a href="OS_V2.html" class="inline-flex items-center gap-4 text-lg font-black uppercase text-manga-ink dark:text-white hover:text-green-500 transition-colors group/link">
-                  View Case Study 
-                  <span class="block w-8 h-1 bg-manga-ink dark:bg-white group-hover/link:bg-green-500 group-hover/link:w-16 transition-all duration-300"></span>
-                </a>
-              </div>
+              <a href="orbit-scan.html" class="showcase-cta">
+                Read More 
+                <span class="cta-line" aria-hidden="true"></span>
+              </a>
             </div>
           </article>
-    
-          <article class="relative flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16" aria-labelledby="habit-boost-title">
-            
-            <figure class="w-full md:w-1/2 relative z-10 flex justify-center md:justify-start items-center">
-              
-              <div class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none translate-x-20 sm:translate-x-32 -translate-y-20 opacity-30">
-                <span
-                  class="font-sfx text-[1rem] sm:text-[20rem] text-transparent rotate-6"
-                  style="-webkit-text-stroke: 3px #FF9933;">
-                  BOOST!
-                </span>
-              </div>
-              
-              <img src="assets/img/Projects/Habit Boost/Card Cover/Cover.png"alt="Habit Boost mobile app interface"
-width="480"
-height="400"
-loading="lazy"
-class="relative z-10 w-full max-w-xl h-auto object-contain md:-ml-8 lg:-ml-10 drop-shadow-[-16px_16px_0_#FF9933]">
-              
+
+          <article class="showcase-card reversed" aria-labelledby="habit-boost-title">
+            <figure class="showcase-visual">
+              <div class="showcase-bg-text" aria-hidden="true">BOOST!</div>
+              <img src="assets/images/projects/HB/Habit Boost Thumbnail.png" alt="Habit Boost app thumbnail">
             </figure>
     
-            <div class="w-full md:w-1/2 relative z-10 space-y-6">
-              <div class="flex items-center gap-4">
-                <span class="text-4xl font-sfx text-[#FF9933] tracking-wider">02</span>
-                <span class="h-1 w-12 bg-manga-ink/20 dark:bg-white/20"></span>
-                <span class="text-xs font-black uppercase tracking-widest text-manga-ink/60 dark:text-white/60">UX Research / User-Centered Design</span>
+            <div class="showcase-content">
+              <div class="showcase-meta">
+                <span class="meta-num">02</span>
+                <span class="meta-line" aria-hidden="true"></span>
+                <span class="meta-cat">UX Research / Interaction Design</span>
               </div>
               
-              <h3 id="habit-boost-title" class="text-5xl sm:text-6xl font-sans font-black text-[#FF9933] uppercase tracking-tight leading-none">
-                HABIT BOOST
-              </h3>
+              <h3 id="habit-boost-title" class="showcase-title">Habit Boost</h3>
+              <p class="showcase-desc">An app that turns daily routines into lasting habits using behavioral psychology and gamification.</p>
               
-              <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 font-semibold max-w-lg">
-                A gamified habit tracking app utilizing the "Hook Model" to turn routine building into an engaging, visual journey that improves retention.
-              </p>
-              
-              <ul class="flex flex-wrap gap-4" role="list">
-                <li><span class="px-4 py-2 border-2 border-manga-ink dark:border-white/30 text-xs font-bold uppercase rounded-full">UX Research</span></li>
-                <li><span class="px-4 py-2 border-2 border-manga-ink dark:border-white/30 text-xs font-bold uppercase rounded-full">Interaction Design</span></li>
-                <li><span class="px-4 py-2 bg-[#FF9933] border-2 border-[#FF9933] text-white text-xs font-bold uppercase rounded-full">8 min read</span></li>
+              <ul class="showcase-tags" role="list">
+                <li>User Research</li>
+                <li>User Testing</li>
+                <li class="tag-highlight">10 min read</li>
               </ul>
               
-              <div class="pt-6">
-                <a href="HabitBoost.html" class="inline-flex items-center gap-4 text-lg font-black uppercase text-manga-ink dark:text-white hover:text-[#FF9933] transition-colors group/link">
-                  View Case Study 
-                  <span class="block w-8 h-1 bg-manga-ink dark:bg-white group-hover/link:bg-[#FF9933] group-hover/link:w-16 transition-all duration-300"></span>
-                </a>
-              </div>
+              <a href="HB.html" class="showcase-cta">
+                Read More 
+                <span class="cta-line" aria-hidden="true"></span>
+              </a>
             </div>
           </article>
+
+          <article class="showcase-card" aria-labelledby="kwds-title">
+            <figure class="showcase-visual">
+              <div class="showcase-bg-text" aria-hidden="true">SYSTEM!</div>
+              <img src="assets/images/projects/KW/KWDS/Cover.png" alt="Design System thumbnail">
+            </figure>
     
+            <div class="showcase-content">
+              <div class="showcase-meta">
+                <span class="meta-num">03</span>
+                <span class="meta-line" aria-hidden="true"></span>
+                <span class="meta-cat">Design Systems / Architecture</span>
+              </div>
+              
+              <h3 id="kwds-title" class="showcase-title">KW DS</h3>
+              <p class="showcase-desc">Building a scalable, token-based design system to unify visual language across 5 distinct product lines.</p>
+              
+              <ul class="showcase-tags" role="list">
+                <li>Figma Variables</li>
+                <li>Documentation</li>
+                <li class="tag-highlight">8 min read</li>
+              </ul>
+              
+              <a href="KWDS.html" class="showcase-cta">
+                Read More 
+                <span class="cta-line" aria-hidden="true"></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="showcase-card reversed" aria-labelledby="candle-soda-title">
+            <figure class="showcase-visual">
+              <div class="showcase-bg-text" aria-hidden="true">SODA!</div>
+              <img src="assets/images/projects/CS/Candle Soda Thumbnail.png" alt="Candle Soda Project thumbnail">
+            </figure>
+    
+            <div class="showcase-content">
+              <div class="showcase-meta">
+                <span class="meta-num">04</span>
+                <span class="meta-line" aria-hidden="true"></span>
+                <span class="meta-cat">Brand Identity Design </span>
+              </div>
+              
+              <h3 id="candle-soda-title" class="showcase-title">Candle Soda</h3>
+              <p class="showcase-desc">A refreshed corporate identity and packaging system honoring 75 years of heritage with a modern, soda-focused aesthetic.</p>
+              
+              <ul class="showcase-tags" role="list">
+                <li>Brand Identity</li>
+                <li>Print Design</li>
+                <li class="tag-highlight">5 min read</li>
+              </ul>
+              
+              <a href="CS.html" class="showcase-cta">
+                Read More 
+                <span class="cta-line" aria-hidden="true"></span>
+              </a>
+            </div>
+          </article>
+
         </div>
-    
-        <div class="mt-24 text-center md:text-left relative z-10">
-          <a href="work.html" class="inline-flex items-center gap-3 px-8 py-4 bg-manga-ink text-white dark:bg-white dark:text-manga-ink font-black uppercase tracking-wide border-4 border-manga-ink dark:border-white shadow-[8px_8px_0px_0px_#00B4FF] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all duration-150 focus-visible:ring-4 focus-visible:ring-manga-ink focus-visible:ring-offset-4 group">
-            All Projects
-            <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </a>
-        </div>
-    
       </div>
     </section>
 
-  </main> 
-  
-          <!-- PANEL DIVIDER START -->
-          <div class="relative w-full h-10 sm:h-16 overflow-hidden z-20 my-2 sm:my-6" aria-hidden="true">
-  
-            <div class="absolute top-0 left-0 w-[200%] h-full animate-wave-flow flex items-center">
-              
-              <svg class="absolute top-0 left-0 w-full h-full text-manga-blue ml-2 mt-2" viewBox="0 0 2880 60" preserveAspectRatio="none">
-                <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-              </svg>
-              
-              <svg class="absolute top-0 left-0 w-full h-full text-manga-pink ml-1 mt-1" viewBox="0 0 2880 60" preserveAspectRatio="none">
-                <path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-              </svg>
-              
-              <svg class="absolute top-0 left-0 w-full h-full text-manga-ink dark:text-white" viewBox="0 0 2880 60" preserveAspectRatio="none">
-                <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M0,30 C240,80 480,-20 720,30 C960,80 1200,-20 1440,30 C1680,80 1920,-20 2160,30 C2400,80 2640,-20 2880,30"></path>
-              </svg>
-          
-            </div>
-          </div>
-        <!-- PANEL DIVIDER END -->
-
-
-   <!-- FOOTER START -->
-
-  <footer id="contact" class="relative w-full py-16 sm:py-24 overflow-hidden transition-colors duration-300" role="contentinfo" aria-labelledby="footer-heading">
-
-    <div class="absolute inset-0 manga-halftone-light opacity-30 dark:opacity-10 pointer-events-none" aria-hidden="true"></div>
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 4deg, rgba(0,180,255,0.03) 4deg, rgba(0,180,255,0.03) 4.5deg);"></div>
-    
-    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-      <div class="absolute -bottom-40 -right-20 w-[500px] h-[500px] bg-manga-blue/[0.08] rounded-full blur-3xl"></div>
-      <div class="absolute -top-40 -left-20 w-[440px] h-[440px] bg-manga-blue/[0.06] rounded-full blur-3xl"></div>
+    <div class="hero-marquee-divider" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span> • PRODUCT DESIGNER • SYSTEM THINKER • CREATIVE DEVELOPER • AI COLLABORATOR</span>
+          <span> • PRODUCT DESIGNER • SYSTEM THINKER • CREATIVE DEVELOPER • AI COLLABORATOR</span>
+        </div>
+        <div class="marquee-content">
+          <span> • PRODUCT DESIGNER • SYSTEM THINKER • CREATIVE DEVELOPER • AI COLLABORATOR •</span>
+          <span> • PRODUCT DESIGNER • SYSTEM THINKER • CREATIVE DEVELOPER • AI COLLABORATOR •</span>
+        </div>
+      </div>
     </div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <header class="text-center mb-16">
-        <div class="relative inline-block pb-4">
-          <h2 id="footer-heading" class="text-4xl sm:text-5xl font-black text-manga-ink dark:text-white uppercase tracking-wide">
-            Let's Build Something
-          </h2>
-          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-manga-ink/30 dark:via-white/30 to-transparent" aria-hidden="true"></div>
-        </div>
-      </header>
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading">Get in touch</h2>
 
-      <nav aria-label="Contact information">
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16" role="list">
+        <div class="contact-layout">
+          <div class="contact-info">
+            <p>I am currently open to full-time roles and select freelance projects. Let's connect.</p>
+            <ul class="social-links" role="list">
+              <li><a href="mailto:mainak.chak04@gmail.com">Email</a></li>
+              <li><a href="https://www.linkedin.com/in/mainakc98/">LinkedIn</a></li>
+              <li><a href="https://calendly.com/mainak-chak04/30min">Calendly</a></li>
+              <li><a href="https://drive.google.com/file/d/1_-3E3crr0_YsHA1sAireyKqzV74h2avJ/view?usp=sharing">Resume</a></li>
+              <li><a href="#">YouTube</a></li>
+            </ul>
+          </div>
+
+          <form class="contact-form" action="https://formspree.io/f/mnjykkng" method="POST">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="container">
       
-          <!-- LINKEDIN (Blue Dashed) -->
-          <li>
-            <a href="https://www.linkedin.com/in/mainakc98/" target="_blank" rel="noopener noreferrer"
-              class="flex items-center gap-4 p-6 bg-transparent border-2 border-dashed border-[#0A66C2] dark:border-[#60A5FA] rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#0A66C2]/5 dark:hover:bg-[#60A5FA]/10 focus:outline-none group">
-      
-              <div class="w-12 h-12 bg-transparent border-2 border-dashed border-[#0A66C2] dark:border-[#60A5FA] rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#0A66C2]/10 dark:group-hover:bg-[#60A5FA]/20">
-                <i class="fab fa-linkedin-in text-[#0A66C2] dark:text-[#60A5FA] text-lg" aria-hidden="true"></i>
-              </div>
-      
-              <div class="min-w-0">
-                <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-[#0A66C2] dark:group-hover:text-[#60A5FA] transition-colors">
-                  LinkedIn
-                </div>
-                <div class="text-xs text-manga-ink/80 dark:text-white/80 truncate font-bold">
-                  in/mainakc98
-                </div>
-              </div>
-            </a>
-          </li>
-      
-          <!-- EMAIL (Red Dashed) -->
-          <li>
-            <a href="mailto:mainak.chak04@gmail.com"
-              class="flex items-center gap-4 p-6 bg-transparent border-2 border-dashed border-red-500 dark:border-red-400 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-red-500/5 dark:hover:bg-red-400/10 focus:outline-none group">
-      
-              <div class="w-12 h-12 bg-transparent border-2 border-dashed border-red-500 dark:border-red-400 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-red-500/10 dark:group-hover:bg-red-400/20">
-                <i class="fas fa-envelope text-red-500 dark:text-red-400 text-lg" aria-hidden="true"></i>
-              </div>
-      
-              <div class="min-w-0">
-                <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
-                  Email
-                </div>
-                <div class="text-xs text-manga-ink/80 dark:text-white/80 truncate font-bold">
-                  mainak.chak04@gmail.com
-                </div>
-              </div>
-            </a>
-          </li>
-      
-          <!-- RESUME (Yellow Dashed) -->
-          <li>
-            <a href="https://drive.google.com/file/d/1_-3E3crr0_YsHA1sAireyKqzV74h2avJ/view?usp=sharing"
-              target="_blank" rel="noopener noreferrer"
-              class="flex items-center gap-4 p-6 bg-transparent border-2 border-dashed border-yellow-500 dark:border-yellow-400 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-500/5 dark:hover:bg-yellow-400/10 focus:outline-none group">
-      
-              <div class="w-12 h-12 bg-transparent border-2 border-dashed border-yellow-500 dark:border-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-yellow-500/10 dark:group-hover:bg-yellow-400/20">
-                <i class="fas fa-file-pdf text-yellow-500 dark:text-yellow-400 text-lg" aria-hidden="true"></i>
-              </div>
-      
-              <div class="min-w-0">
-                <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">
-                  Resume
-                </div>
-                <div class="text-xs text-manga-ink/80 dark:text-white/80 truncate font-bold">
-                  Download PDF
-                </div>
-              </div>
-            </a>
-          </li>
-      
-          <!-- MEETING (Violet Dashed) -->
-          <li>
-            <a href="https://calendly.com/mainak-chak04/30min"
-              target="_blank" rel="noopener noreferrer"
-              class="flex items-center gap-4 p-6 bg-transparent border-2 border-dashed border-violet-500 dark:border-violet-400 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-violet-500/5 dark:hover:bg-violet-400/10 focus:outline-none group">
-      
-              <div class="w-12 h-12 bg-transparent border-2 border-dashed border-violet-500 dark:border-violet-400 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-violet-500/10 dark:group-hover:bg-violet-400/20">
-                <i class="fas fa-calendar text-violet-500 dark:text-violet-400 text-lg" aria-hidden="true"></i>
-              </div>
-      
-              <div class="min-w-0">
-                <div class="text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
-                  Meeting
-                </div>
-                <div class="text-xs text-manga-ink/80 dark:text-white/80 font-bold">
-                  Book a time
-                </div>
-              </div>
-            </a>
-          </li>
-      
-        </ul>
-      </nav>
-      
-      <div class="text-center mb-12">
-        <a href="sitemap.html" class="inline-flex items-center gap-2 px-6 py-3 text-sm font-black uppercase tracking-wider text-manga-ink dark:text-white bg-transparent border-2 border-dashed border-manga-ink/30 dark:border-white/30 rounded-full transition-all duration-300 hover:-translate-y-1 hover:bg-manga-ink/5 dark:hover:bg-white/5 focus:outline-none">
-          <i class="fas fa-sitemap" aria-hidden="true"></i>
-          View Sitemap
-        </a>
+      <div class="footer-left">
+        <p>&copy; <span id="footer-year">2026</span> Mainak Chakraborty.</p>
+        <span class="footer-divider" aria-hidden="true">|</span>
+        <div class="footer-signature">
+          <span>Made with</span>
+          <img src="assets/images/Heart Brain2.png" alt="heart and brain icon" class="signature-icon" width="24" height="24">
+          <span>purpose &amp; lots of caffeine</span>
+        </div>
       </div>
 
-      <p class="text-sm text-manga-ink/70 dark:text-white/70 flex items-center justify-center gap-2 flex-wrap font-bold text-center uppercase tracking-wider">
-        <span>Made with</span>
-        <img src="assets/img/Icon Badges/Heart Brain2.png" alt="heart and brain icon" class="inline-block h-6 w-auto align-middle" width="24" height="24">
-        <span>purpose &amp; lots of caffeine</span>
-        <span class="text-manga-ink/40 dark:text-white/40 mx-1">|</span>
-        <span>© 2026 Mainak Chakraborty</span>
-      </p>
+      <a href="#main-content" aria-label="Scroll back to the top of the page">Back to top ↑</a>
+      
     </div>
   </footer>
-    <!-- FOOTER END -->
 
-  <!-- Back to top button -->
-<button id="back-to-top" class="fixed bottom-6 right-6 z-50 p-3 bg-manga-blue text-white border-3 border-manga-ink shadow-comic opacity-0 invisible transition-all duration-300 hover:-translate-y-1 hover:shadow-comic-lg rounded-full" aria-label="Back to top">
-  <i class="fas fa-arrow-up"></i>
-</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/script.js"></script>
 
-  <script>
-    // ── DARK MODE TOGGLE LOGIC ──
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    if(themeToggleBtn) {
-      themeToggleBtn.addEventListener('click', function() {
-        if (document.documentElement.classList.contains('dark')) {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
-        } else {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-        }
-      });
-    }
-
-    // ── LOADER SCRIPT (FAILSAFE TIMER) ──
-    setTimeout(function() {
-      const loader = document.getElementById("loader");
-      if(loader) {
-        loader.style.opacity = '0';
-        setTimeout(() => { loader.style.display = "none"; }, 400);
-      }
-    }, 800);
-
-    // ── PROGRESS BAR SCRIPT ──
-    function updateProgressBar() {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      const bar = document.getElementById('progress-bar');
-      if (bar) {
-        bar.style.width = scrolled + '%';
-        bar.setAttribute('aria-valuenow', Math.round(scrolled));
-      }
-    }
-    window.addEventListener('scroll', updateProgressBar, { passive: true });
-
-    // ── BACK TO TOP SCRIPT ──
-    const backToTop = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 500) {
-    backToTop.classList.remove('opacity-0', 'invisible');
-    backToTop.classList.add('opacity-100', 'visible');
-  } else {
-    backToTop.classList.add('opacity-0', 'invisible');
-    backToTop.classList.remove('opacity-100', 'visible');
-  }
-});
-
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// ── SCROLL SPY NAVBAR SCRIPT ──
-// Select all major sections and the footer
-const scrollSections = document.querySelectorAll('section[id], footer[id]');
-// Select only anchor links inside the navbar (desktop & mobile)
-const navLinks = document.querySelectorAll('nav a[href^="#"]'); 
-
-// The 'secret sauce' margin creates a trigger line slightly below the top of the screen
-const observerOptions = {
-  root: null,
-  rootMargin: '-20% 0px -70% 0px', 
-  threshold: 0
-};
-
-const scrollObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const currentId = entry.target.getAttribute('id');
-      
-      navLinks.forEach(link => {
-        // If the link's href matches the section currently on screen
-        if (link.getAttribute('href') === `#${currentId}`) {
-          // Add Active State
-          link.classList.remove('text-manga-ink/80', 'dark:text-white/80');
-          link.classList.add('text-manga-blue', 'dark:text-manga-blue');
-        } else {
-          // Revert to Inactive State
-          link.classList.remove('text-manga-blue', 'dark:text-manga-blue');
-          link.classList.add('text-manga-ink/80', 'dark:text-white/80');
-        }
-      });
-    }
-  });
-}, observerOptions);
-
-// Start observing all sections
-scrollSections.forEach(section => {
-  scrollObserver.observe(section);
-});
-
-
-
-
-    // ── MOBILE MENU SCRIPT ──
-    const mobileMenu   = document.getElementById('mobile-menu');
-    const menuToggle   = document.querySelector('[aria-controls="mobile-menu"]');
-    const mobileLinks  = document.querySelectorAll('#mobile-menu a');
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if(mobileMenu) mobileMenu.classList.add('hidden');
-        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu) return;
-      if (!mobileMenu.contains(e.target) &&
-          !(menuToggle && menuToggle.contains(e.target)) &&
-          !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // ── DESKTOP WORK DROPDOWN SCRIPT ──
-    const workDropdownBtn = document.getElementById('work-dropdown-btn');
-    const workDropdownMenu = document.getElementById('work-dropdown-menu');
-    const workChevron = document.getElementById('work-chevron');
-
-    if (workDropdownBtn && workDropdownMenu) {
-      workDropdownBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevents the click from instantly bubbling up to the document listener
-        
-        const isExpanded = workDropdownBtn.getAttribute('aria-expanded') === 'true';
-        
-        // Toggle accessibility state
-        workDropdownBtn.setAttribute('aria-expanded', !isExpanded);
-        
-        // Toggle Tailwind visibility classes
-        workDropdownMenu.classList.toggle('opacity-0');
-        workDropdownMenu.classList.toggle('invisible');
-        workDropdownMenu.classList.toggle('opacity-100');
-        workDropdownMenu.classList.toggle('visible');
-        
-        // Toggle chevron rotation
-        workChevron.classList.toggle('rotate-180');
-      });
-
-      // Close dropdown when clicking anywhere outside of it
-      document.addEventListener('click', (e) => {
-        if (!workDropdownBtn.contains(e.target) && !workDropdownMenu.contains(e.target)) {
-          workDropdownBtn.setAttribute('aria-expanded', 'false');
-          workDropdownMenu.classList.add('opacity-0', 'invisible');
-          workDropdownMenu.classList.remove('opacity-100', 'visible');
-          workChevron.classList.remove('rotate-180');
-        }
-      });
-      
-      // Close dropdown when pressing the Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && workDropdownBtn.getAttribute('aria-expanded') === 'true') {
-          workDropdownBtn.setAttribute('aria-expanded', 'false');
-          workDropdownMenu.classList.add('opacity-0', 'invisible');
-          workDropdownMenu.classList.remove('opacity-100', 'visible');
-          workChevron.classList.remove('rotate-180');
-          workDropdownBtn.focus(); // Return focus to the button for accessibility
-        }
-      });
-    }
-    
-
-// ── NAVBAR HIDE/SHOW ON SCROLL SCRIPT ──
-    
-    /* <--- Navbar currently sticky to hide the navbar when scrolled remove this comment
-
-    let lastScrollTop = 0;
-    const navbar = document.getElementById('navbar');
-
-    window.addEventListener('scroll', () => {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (scrollTop > 50) {
-        if (scrollTop > lastScrollTop) {
-          navbar.classList.add('-translate-y-full'); 
-        } else {
-          navbar.classList.remove('-translate-y-full');
-        }
-      } else {
-        navbar.classList.remove('-translate-y-full');
-      }
-      
-      lastScrollTop = scrollTop;
-    }); */
-    
-
-     // ── NAVBAR HIDE/SHOW ON SCROLL SCRIPT ──
-  </script>
 </body>
 </html>

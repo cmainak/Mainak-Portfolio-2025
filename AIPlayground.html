@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>AI Playground — Mainak Chakraborty</title>
+  <meta name="description" content="A look into my prompt design process, translating real-life memories into high-energy manga and cinematic visual panels.">
+  
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('color-scheme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
+
+  <style>
+    /* AI Playground Specific Theme Override */
+    :root {
+      --color-primary: #0ea5e9; /* A tech-focused bright blue */
+    }
+  </style>
+</head>
+<body>
+    <div id="scroll-progress" aria-hidden="true"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Mainak Chakraborty — back to home">
+        <img src="assets/images/Logo.png" alt="Mainak Chakraborty Logo" class="logo-image" />
+      </a>
+      <ul class="nav-links" role="list" id="nav-menu">
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+            <button type="button" aria-expanded="false" aria-controls="projects-menu" class="dropdown-toggle">
+              <span>Projects</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            
+            <ul id="projects-menu" class="dropdown-menu" role="list">
+                <li><a href="orbit-scan.html">[01] Orbit Scan</a></li>
+                <li><a href="HB.html">[02] Habit Boost</a></li>
+                <li><a href="KWDS.html">[03] Design System</a></li>
+                <li><a href="CS.html">[04] Visual Identity</a></li>
+                <li><a href="TU.html">[05] Touro</a></li>
+                <li><a href="work.html" class="view-all">View All Work ↗</a></li>
+            </ul>
+          </li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-controls" role="group">
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+        <button type="button" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section class="editorial-about">
+      <div class="container">
+        
+        <div class="work-header-row">
+          <h1 class="massive-about-title">AI PLAYGROUND</h1>
+        </div>
+
+        <div class="back-nav-container">
+          <a href="work.html" class="back-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Back to Work</span>
+          </a>
+        </div>
+
+        <div class="about-editorial-grid">
+          
+          <aside class="about-sidebar">
+            <ul class="about-meta-list" role="list">
+              <li><strong>ROLE</strong><br>Prompt Designer</li>
+              <li><strong>TYPE</strong><br>Prompt Engineering</li>
+              <li><strong>STATUS</strong><br>Ongoing Experiments</li>
+              <li><strong>TOOLS</strong><br>LLMs, Image Generators</li>
+            </ul>
+          </aside>
+
+          <div class="about-main-content">
+            
+            <div class="about-text-blocks">
+              <h2 class="editorial-subtitle full-width">A growing collection of generative visual experiments.</h2>
+              
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+                A look into my prompt design process, translating real-life memories into high-energy manga and cinematic visual panels. Stay tuned for what comes next.
+              </p>
+
+              <h3 class="table-heading" style="font-size: 1.5rem;">01. Visual Gallery</h3>
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-12);">
+                
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface); min-height: 250px;">
+                  <img src="assets/images/projects/AI Playground/Mainak_TimeSquare_Comic.png" alt="Story 01 - Times Square Comic" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface); min-height: 250px;">
+                  <img src="assets/images/projects/AI Playground/Comic_Manga_Mainak_2.png" alt="Story 19 - Comic Manga" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface); min-height: 250px;">
+                  <img src="assets/images/projects/AI Playground/TC_1.png" alt="Story 02" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface); min-height: 250px;">
+                  <img src="assets/images/projects/AI Playground/TC_2.png" alt="Story 03" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+ 
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface); grid-column: 1 / -1; min-height: 400px;">
+                  <img src="assets/images/projects/AI Playground/Football_Comic_1.png" alt="Football Comic Story" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-left">
+        <p>&copy; <span id="footer-year">2026</span> Mainak Chakraborty.</p>
+        <span class="footer-divider" aria-hidden="true">|</span>
+        <div class="footer-signature">
+          <span>Made with</span>
+          <img src="assets/images/Heart Brain2.png" alt="heart and brain icon" class="signature-icon" width="24" height="24">
+          <span>purpose &amp; lots of caffeine</span>
+        </div>
+      </div>
+
+      <a href="#main-content" aria-label="Scroll back to the top of the page">Back to top ↑</a>
+      
+    </div>
+  </footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/script.js"></script>
+
+</body>
+</html>

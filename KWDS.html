@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Design System Redesign Case Study — Mainak Chakraborty</title>
+  <meta name="description" content="Bringing Structure, scalability, and token-based foundations to a fragmented component library.">
+  
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('color-scheme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
+
+  <style>
+    :root {
+      /* Design System Purple */
+      --color-primary: #684571; 
+    }
+    [data-theme="dark"] {
+      /* Lighter purple for accessibility on dark backgrounds */
+      --color-primary: #d0bcd5; 
+    }
+
+    /* Custom classes for HTML Token Tables */
+    .token-table {
+      width: 100%; border: 1px solid var(--color-border); background-color: var(--color-surface); margin-bottom: var(--space-8);
+    }
+    .token-header {
+      background-color: var(--color-border); padding: var(--space-2) var(--space-4); font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .token-row {
+      display: flex; align-items: center; justify-content: space-between; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-family: 'Courier New', Courier, monospace; font-size: 0.85rem;
+    }
+    .token-row:last-child { border-bottom: none; }
+    .color-swatch { width: 24px; height: 24px; border: 1px solid var(--color-text); margin-right: 12px; display: inline-block; vertical-align: middle; }
+  </style>
+</head>
+<body>
+    <div id="scroll-progress" aria-hidden="true"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Mainak Chakraborty — back to home">
+        <img src="assets/images/Logo.png" alt="Mainak Chakraborty Logo" class="logo-image" />
+      </a>
+      <ul class="nav-links" role="list" id="nav-menu">
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+            <button type="button" aria-expanded="false" aria-controls="projects-menu" class="dropdown-toggle">
+              <span>Projects</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            
+            <ul id="projects-menu" class="dropdown-menu" role="list">
+                <li><a href="orbit-scan.html">[01] Orbit Scan</a></li>
+                <li><a href="HB.html">[02] Habit Boost</a></li>
+                <li><a href="KWDS.html">[03] Design System</a></li>
+                <li><a href="CS.html">[04] Visual Identity</a></li>
+                <li><a href="TU.html">[05] Touro</a></li>
+                <li><a href="work.html" class="view-all">View All Work ↗</a></li>
+            </ul>
+          </li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-controls" role="group">
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+        <button type="button" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section class="editorial-about">
+      <div class="container">
+        
+        <div class="work-header-row">
+          <h1 class="massive-about-title">DESIGN SYSTEM</h1>
+        </div>
+
+        <div class="back-nav-container">
+          <a href="work.html" class="back-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Back to Work</span>
+          </a>
+        </div>
+
+        <div class="about-editorial-grid">
+          
+          <aside class="about-sidebar">
+            <ul class="about-meta-list" role="list">
+              <li><strong>ROLE</strong><br>UX Designer</li>
+              <li><strong>TIMELINE</strong><br>2025</li>
+              <li><strong>OUTPUT</strong><br>Design Tokens & System Architecture</li>
+             
+            </ul>
+          </aside>
+
+          <div class="about-main-content">
+            
+            <div class="about-text-blocks">
+              <h2 class="editorial-subtitle full-width">Bringing Structure to Chaos.</h2>
+              
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+                Building scalability and token-based foundations for a fragmented component library. 
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-12);">
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Primitive.png" alt="Design System Primitives" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                    <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                      <img src="assets/images/projects/KW/KWDS/Typography.png" alt="Design System Typography" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                    </div>
+                    <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                      <img src="assets/images/projects/KW/KWDS/Spacing.png" alt="Design System Spacing" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                    </div>
+                </div>
+              </div>
+
+              <h3 class="table-heading" style="font-size: 1.5rem;">01. The Problem</h3>
+              <div class="text-columns" style="margin-bottom: var(--space-8);">
+                <p class="secondary-paragraph">
+                  After reviewing our extensive component library, we realized our design system had become highly fragmented. Components were scattered, documentation was inconsistent, and the designs didn’t match what was actually live on the site.
+                </p>
+                <p class="secondary-paragraph">
+                  We needed a clearer, more consistent, and scalable foundation to support future growth and bridge the gap between design intent and engineering execution.
+                </p>
+              </div>
+
+              <div class="about-capabilities" style="margin-bottom: var(--space-12);">
+                <h3 class="table-heading">Key Friction Points</h3>
+                <div class="capability-row">
+                  <span class="cap-number">01</span>
+                  <span class="cap-title">Scattered Components</span>
+                  <span class="cap-desc">No single source of truth for designers or engineers.</span>
+                </div>
+                <div class="capability-row">
+                  <span class="cap-number">02</span>
+                  <span class="cap-title">Figma Misaligned with Production</span>
+                  <span class="cap-desc">Hardcoded hex values and raw pixels meant updates in Figma didn't sync with code.</span>
+                </div>
+                <div class="capability-row">
+                  <span class="cap-number">03</span>
+                  <span class="cap-title">Outdated Documentation</span>
+                  <span class="cap-desc">Lack of governance led to multiple versions of the same components.</span>
+                </div>
+              </div>
+
+              <h3 class="table-heading" style="font-size: 1.5rem;">02. Research & System Benchmarking</h3>
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+                To understand how to rebuild our fragmented foundations, we researched strong, well-established systems like Material Design, Carbon, Atlassian, and Dell. The strongest systems shared three common traits:
+              </p>
+
+              <div class="about-capabilities" style="margin-bottom: var(--space-12);">
+                <div class="capability-row">
+                  <span class="cap-number">01</span>
+                  <div style="flex: 1;"><strong>Tokenized Foundations</strong> instead of raw hardcoded values.</div>
+                </div>
+                <div class="capability-row">
+                  <span class="cap-number">02</span>
+                  <div style="flex: 1;"><strong>Component Libraries</strong> built on a rigid, consistent internal structure.</div>
+                </div>
+                <div class="capability-row">
+                  <span class="cap-number">03</span>
+                  <div style="flex: 1;"><strong>Clear Separation</strong> between design intent and engineering implementation.</div>
+                </div>
+              </div>
+
+              <h3 class="table-heading" style="font-size: 1.5rem;">03. Building the Token Architecture</h3>
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+                We rebuilt the foundations of our system using a token-first mindset. Instead of relying on raw hex values or inconsistent naming, we defined a semantic structure covering color, spacing, and typography.
+              </p>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-12);">
+                  
+                  <div class="token-table">
+                    <div class="token-header">/Purple/Primitives</div>
+                    <div class="token-row"><span><span class="color-swatch" style="background-color: #E0D3E3;"></span>#E0D3E3</span></div>
+                    <div class="token-row"><span><span class="color-swatch" style="background-color: #D0BCD5;"></span>#D0BCD5</span></div>
+                    <div class="token-row"><span><span class="color-swatch" style="background-color: #B49ABB;"></span>#B49ABB</span></div>
+                    <div class="token-row"><span><span class="color-swatch" style="background-color: #825E8B;"></span>#825E8B</span></div>
+                    <div class="token-row"><span><span class="color-swatch" style="background-color: #6F4B78;"></span>#6F4B78</span></div>
+                    <div class="token-row"><span><span class="color-swatch" style="background-color: #684571;"></span>#684571</span></div>
+                  </div>
+
+                  <div class="token-table">
+                    <div class="token-header">/Semantic/Usage</div>
+                    <div class="token-row"><span>--purple-surface-100</span></div>
+                    <div class="token-row"><span>--purple-surface-200</span></div>
+                    <div class="token-row"><span>--purple-surface-300</span></div>
+                    <div class="token-row"><span>--purple-surface-400</span></div>
+                    <div class="token-row"><span>--purple-text-strong</span></div>
+                    <div class="token-row"><span>--purple-text-default</span></div>
+                  </div>
+
+                  <div class="token-table">
+                    <div class="token-header">/Typography/Scale</div>
+                    <div class="token-row"><span>Body Text</span><span>text-body-md</span></div>
+                    <div class="token-row"><span>Heading</span><span>text-heading-lg</span></div>
+                    <div class="token-row"><span>Line Height</span><span>line-height-sm</span></div>
+                  </div>
+
+                  <div class="token-table">
+                    <div class="token-header">/Spacing/Semantic</div>
+                    <div class="token-row"><span>Gap</span><span>--padding-xs</span></div>
+                    <div class="token-row"><span>Inset</span><span>--padding-md</span></div>
+                    <div class="token-row"><span>Stack</span><span>--margin-xl</span></div>
+                  </div>
+
+              </div>
+
+              <h3 class="table-heading" style="font-size: 1.5rem;">04. Trial & Error (Iterations)</h3>
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+                Instead of relying on plugin-based automation, we defined all tokens manually. This allowed us to iterate through multiple naming structures to create a transparent system with precise semantic organization.
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-8); margin-bottom: var(--space-12);">
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Working file.png" alt="Iteration 1: Initial Naming Structure" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Tokens/Buttons_5.png" alt="Refined Buttons Groupings" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Tokens/Buttons_6.png" alt="Refined Buttons Groupings 2" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Tokens/Typography_2.png" alt="Refined Typography Groupings" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Tokens/Typography_3.png" alt="Refined Typography Groupings 2" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Tokens/Spacing_1.png" alt="Refined Spacing Groupings" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Tokens/Spacing_Margin.png" alt="Refined Spacing Margins" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/KW/KWDS/Tokens/Shadows.png" alt="Refined Shadows Groupings" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+              </div>
+
+              <h3 class="table-heading" style="font-size: 1.5rem;">05. Outcomes & Future Vision</h3>
+              <div class="text-columns" style="margin-bottom: var(--space-8);">
+                <p class="secondary-paragraph">
+                  <strong>The Impact:</strong> Once the new approach was shared with leadership, they requested an update to the entire component library. Thanks to our token-based foundations, the process was completed in <strong>about 10 minutes</strong> instead of taking several days of manual overrides.
+                </p>
+                <p class="secondary-paragraph">
+                  <strong>Future Vision:</strong> Our long-term goal is to merge multiple UI libraries into a single, token-driven design system. This unified approach provides a consistent foundation across all products, reduces code duplication, and streamlines collaboration between UX and Engineering.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-left">
+        <p>&copy; <span id="footer-year">2026</span> Mainak Chakraborty.</p>
+        <span class="footer-divider" aria-hidden="true">|</span>
+        <div class="footer-signature">
+          <span>Made with</span>
+          <img src="assets/images/Heart Brain2.png" alt="heart and brain icon" class="signature-icon" width="24" height="24">
+          <span>purpose &amp; lots of caffeine</span>
+        </div>
+      </div>
+
+      <a href="#main-content" aria-label="Scroll back to the top of the page">Back to top ↑</a>
+      
+    </div>
+  </footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/script.js"></script>
+
+</body>
+</html>
