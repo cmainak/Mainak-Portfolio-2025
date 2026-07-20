@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ManageWise Case Study — Mainak Chakraborty</title>
+  <meta name="description" content="A UX/UI case study on ManageWise — a personalized productivity app that unifies task management, goal setting, and AI-driven smart scheduling.">
+
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('color-scheme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
+
+  <style>
+    :root {
+      /* ManageWise Amber */
+      --color-primary: #B45309;
+    }
+    [data-theme="dark"] {
+      /* Brighter amber for accessibility on dark backgrounds */
+      --color-primary: #FBBF24;
+    }
+
+    /* — Chapter dividers, shared language with the Touro case study — */
+    .chapter-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-4);
+      align-items: end;
+      border-top: 2px solid var(--color-text);
+      padding-top: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    .chapter-index {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .chapter-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      text-transform: uppercase;
+      line-height: var(--leading-tight);
+    }
+
+    .subhead {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    /* — Generic bordered info card, reused for insights / audit / journey / IA — */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      margin-bottom: var(--space-12);
+    }
+
+    @media (min-width: 640px) {
+      .info-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 768px) {
+      .info-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+      .info-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .info-card {
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+
+    .info-card:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0 var(--color-primary);
+    }
+
+    .info-card.is-highlight {
+      background-color: var(--color-primary);
+    }
+
+    [data-theme="dark"] .info-card.is-highlight { color: var(--color-bg); }
+    .info-card.is-highlight .info-title,
+    .info-card.is-highlight .info-quote,
+    .info-card.is-highlight .info-desc { color: var(--color-on-primary); }
+
+    .info-eyebrow {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+    }
+
+    .info-title {
+      font-family: var(--font-display);
+      font-size: var(--text-md);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text);
+      line-height: var(--leading-tight);
+    }
+
+    .info-quote {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: var(--color-text-muted);
+      border-left: 2px solid var(--color-primary);
+      padding-left: var(--space-3);
+    }
+
+    .info-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .info-list li {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-2);
+    }
+
+    .info-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    /* — Media grid, reused for wireframes / final screens with lightbox — */
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-12);
+    }
+
+    @media (min-width: 768px) {
+      .media-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+      .media-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .media-card {
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+
+    .media-card:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0 var(--color-primary);
+    }
+
+    .media-thumb {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+    }
+
+    .media-thumb img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+
+    .media-card:hover .media-thumb img {
+      transform: scale(1.03);
+    }
+
+    .expand-icon {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      width: 2rem;
+      height: 2rem;
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .media-body {
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .media-tag {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+    }
+
+    .media-title {
+      font-family: var(--font-display);
+      font-size: var(--text-md);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+
+    .media-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* — Before / after comparison rows — */
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      align-items: center;
+      margin-bottom: var(--space-12);
+    }
+
+    @media (min-width: 1024px) {
+      .compare-row {
+        grid-template-columns: 1fr auto 1fr;
+      }
+    }
+
+    .compare-arrow {
+      display: none;
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--color-primary);
+    }
+
+    @media (min-width: 1024px) {
+      .compare-arrow { display: block; }
+    }
+
+    .compare-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .compare-panel img {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--color-border);
+      display: block;
+    }
+
+    .compare-panel.is-after img {
+      border-color: var(--color-primary);
+    }
+
+    /* — Persona / video feature panel, reused pattern from other case studies — */
+    .feature-panel {
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface);
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-bottom: var(--space-12);
+    }
+
+    @media (min-width: 768px) {
+      .feature-panel.has-image {
+        grid-template-columns: 2fr 3fr;
+      }
+    }
+
+    .feature-image {
+      position: relative;
+      min-height: 260px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--color-border);
+      background-color: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .feature-image {
+        border-bottom: none;
+        border-right: 1px solid var(--color-border);
+      }
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .feature-content {
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-4);
+    }
+
+    .feature-content video {
+      width: 100%;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-text);
+    }
+
+    /* — Full-width image panel (Crazy 8s, Affinity Map) — */
+    .full-image-panel {
+      width: 100%;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface);
+      margin-bottom: var(--space-8);
+      overflow: hidden;
+    }
+
+    .full-image-panel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* — Prototype embed frame — */
+    .embed-frame {
+      width: 100%;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface);
+      margin-bottom: var(--space-12);
+      padding: var(--space-3);
+    }
+
+    .embed-frame iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      display: block;
+    }
+
+    /* — Jump nav — */
+    .jump-nav {
+      position: fixed;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 150;
+      width: calc(100% - 2rem);
+      max-width: 560px;
+      background-color: var(--color-bg);
+      border: 2px solid var(--color-text);
+      box-shadow: 8px 8px 0 var(--color-primary);
+      padding: var(--space-2);
+    }
+
+    .jump-nav-inner {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .jump-pills {
+      flex: 1;
+      display: flex;
+      gap: var(--space-1);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .jump-pills::-webkit-scrollbar { display: none; }
+
+    .jump-pill {
+      flex: 1;
+      text-align: center;
+      white-space: nowrap;
+      padding: var(--space-2);
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .jump-pill:hover {
+      color: var(--color-text);
+      border-color: var(--color-border);
+    }
+
+    .jump-pill.active {
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+
+    .jump-back-top {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-text);
+      color: var(--color-bg);
+      text-decoration: none;
+      transition: background-color var(--duration-fast) var(--ease-out);
+    }
+
+    .jump-back-top:hover {
+      background-color: var(--color-primary);
+    }
+
+    /* — Lightbox — */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.92);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 85vh;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border: 2px solid var(--color-on-primary);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -3rem;
+      right: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* — Prev / Next project row — */
+    .project-nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-4);
+      border-top: 2px solid var(--color-text);
+      padding-top: var(--space-8);
+      margin-top: var(--space-16);
+    }
+
+    @media (max-width: 767px) {
+      main { padding-bottom: 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Mainak Chakraborty — back to home">
+        <img src="assets/images/Logo.png" alt="Mainak Chakraborty Logo" class="logo-image" />
+      </a>
+      <ul class="nav-links" role="list" id="nav-menu">
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+            <button type="button" aria-expanded="false" aria-controls="projects-menu" class="dropdown-toggle">
+              <span>Projects</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <ul id="projects-menu" class="dropdown-menu" role="list">
+              <li><a href="orbit-scan.html">[01] Orbit Scan</a></li>
+              <li><a href="HB.html">[02] Habit Boost</a></li>
+              <li><a href="KWDS.html">[03] Design System</a></li>
+              <li><a href="CS.html">[04] Visual Identity</a></li>
+              <li><a href="TU.html">[05] Touro</a></li>
+              <li><a href="MW.html" class="is-active" aria-current="page">[06] ManageWise</a></li>
+              <li><a href="work.html">View All Work ↗</a></li>
+            </ul>
+          </li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-controls" role="group">
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+        <button type="button" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section class="editorial-about">
+      <div class="container">
+
+        <div class="work-header-row">
+          <h1 class="massive-about-title">MANAGEWISE</h1>
+        </div>
+
+        <div class="back-nav-container">
+          <a href="work.html" class="back-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Back to Work</span>
+          </a>
+        </div>
+
+        <div class="about-editorial-grid">
+
+          <aside class="about-sidebar">
+            <ul class="about-meta-list" role="list">
+              <li><strong>ROLE</strong><br>Product Designer</li>
+              <li><strong>TIMELINE</strong><br>10 Weeks</li>
+              <li><strong>TOOLS</strong><br>Figma, Miro</li>
+              <li><strong>TEAM</strong><br>Solo UX Lead</li>
+              <li>
+                <strong>IMPACT</strong><br>
+                <span style="color: var(--color-primary); font-family: var(--font-display); font-size: 1.5rem;">40%</span> Faster Task Execution
+              </li>
+            </ul>
+          </aside>
+
+          <div class="about-main-content">
+
+            <div class="about-text-blocks">
+              <h2 class="editorial-subtitle full-width">Personalizing productivity through AI.</h2>
+
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+                ManageWise is a personalized productivity app that integrates task management, goal setting, and AI-driven smart scheduling — without overwhelming users.
+              </p>
+
+              <div class="full-image-panel">
+                <img src="assets/img/Projects/Manage Wise/ManageWise Cover.png" alt="ManageWise app preview">
+              </div>
+
+              <!-- Double Diamond overview -->
+              <h3 class="table-heading" style="font-size: 1.5rem;">The Double Diamond Approach</h3>
+              <div class="info-grid cols-4" style="margin-bottom: var(--space-12);">
+                <div class="info-card">
+                  <span class="info-eyebrow">01</span>
+                  <h4 class="info-title">Discover</h4>
+                  <p class="info-desc">Surveys, interviews, competitive audit.</p>
+                </div>
+                <div class="info-card">
+                  <span class="info-eyebrow">02</span>
+                  <h4 class="info-title">Define</h4>
+                  <p class="info-desc">Affinity mapping, persona, UX journey.</p>
+                </div>
+                <div class="info-card">
+                  <span class="info-eyebrow">03</span>
+                  <h4 class="info-title">Design</h4>
+                  <p class="info-desc">User flows, IA, wireframing.</p>
+                </div>
+                <div class="info-card">
+                  <span class="info-eyebrow">04</span>
+                  <h4 class="info-title">Deliver</h4>
+                  <p class="info-desc">Prototypes, usability validation.</p>
+                </div>
+              </div>
+
+              <!-- 01. Discover -->
+              <div class="chapter-row" id="discover">
+                <span class="chapter-index">01</span>
+                <h3 class="chapter-heading">Discover: Exploring User Needs</h3>
+              </div>
+
+              <div class="about-capabilities" style="margin-bottom: var(--space-12);">
+                <h3 class="table-heading">Research Methodology</h3>
+                <div class="capability-row">
+                  <span class="cap-number">01</span>
+                  <span class="cap-title">Participants</span>
+                  <span class="cap-desc">20 participants (students and early-career specialists, ages 22–35) sourced through professional Slacks and networks. All relied heavily on digital tools.</span>
+                </div>
+                <div class="capability-row">
+                  <span class="cap-number">02</span>
+                  <span class="cap-title">Methods</span>
+                  <span class="cap-desc">Structured scaling surveys (Google Forms), in-depth narrative interviews (Zoom), and competitive profiling.</span>
+                </div>
+              </div>
+
+              <h4 class="subhead">Key Insights</h4>
+              <div class="info-grid cols-4">
+                <div class="info-card">
+                  <span class="info-eyebrow">Insight 01</span>
+                  <h4 class="info-title">Overlapping Tasks</h4>
+                  <p class="info-quote">"My work, studies, and personal stuff all clash."</p>
+                  <p class="info-desc">Target: streamline unified processing and simplified task entry.</p>
+                </div>
+                <div class="info-card">
+                  <span class="info-eyebrow">Insight 02</span>
+                  <h4 class="info-title">Fragmented Tools</h4>
+                  <p class="info-quote">"I switch between Google Calendar, Notion, and To Do."</p>
+                  <p class="info-desc">Target: centralize systems to lower cognitive friction.</p>
+                </div>
+                <div class="info-card">
+                  <span class="info-eyebrow">Insight 03</span>
+                  <h4 class="info-title">Motivation Drops</h4>
+                  <p class="info-quote">"I lose track when I don't see progress or rewards."</p>
+                  <p class="info-desc">Target: dynamic dashboards with visible progress states.</p>
+                </div>
+                <div class="info-card">
+                  <span class="info-eyebrow">Insight 04</span>
+                  <h4 class="info-title">Poor Prioritization</h4>
+                  <p class="info-quote">"I don't know where to start when I'm overwhelmed."</p>
+                  <p class="info-desc">Target: assistive interfaces for adaptive task distribution.</p>
+                </div>
+              </div>
+
+              <h4 class="subhead">Competitive Audit</h4>
+              <div class="info-grid cols-3">
+                <div class="info-card">
+                  <h4 class="info-title">Todoist</h4>
+                  <p class="info-desc"><strong>Pros:</strong> Solid list structures, fast multi-task edits.<br><strong>Cons:</strong> Complex settings, priority flags buried deep.</p>
+                  <p class="info-quote">"I lose track of what matters because the layout feels too busy."</p>
+                </div>
+                <div class="info-card is-highlight">
+                  <h4 class="info-title">Habitica</h4>
+                  <p class="info-desc"><strong>Pros:</strong> Strong gamification mechanics.<br><strong>Cons:</strong> High layout density overcomplicates core tasks.</p>
+                  <p class="info-quote">"The character leveling is neat, but actual focus gets lost."</p>
+                </div>
+                <div class="info-card">
+                  <h4 class="info-title">Google Calendar</h4>
+                  <p class="info-desc"><strong>Pros:</strong> Clear block visualizations.<br><strong>Cons:</strong> Weak goal progression, no task frameworks.</p>
+                  <p class="info-quote">"Perfect for meetings, but lacks support for long-term goals."</p>
+                </div>
+              </div>
+
+              <!-- 02. Define -->
+              <div class="chapter-row" id="define">
+                <span class="chapter-index">02</span>
+                <h3 class="chapter-heading">Define: Framing the Opportunity</h3>
+              </div>
+
+              <h4 class="subhead">User Persona</h4>
+              <div class="feature-panel has-image">
+                <div class="feature-image">
+                  <img src="assets/img/Projects/Manage Wise/Alex.jpg" alt="Alex persona portrait" style="filter: grayscale(100%);">
+                </div>
+                <div class="feature-content">
+                  <span class="media-tag">Primary Persona</span>
+                  <h4 style="font-family: var(--font-display); font-size: 1.4rem; text-transform: uppercase; color: var(--color-text);">Alex, 26 — Computer Science Graduate Student</h4>
+                  <p class="secondary-paragraph">Starts each week with high focus, but variable deadlines scattered across multiple apps trigger stress and late-night triage.</p>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-2);">
+                    <div>
+                      <strong style="color: var(--color-text); font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase;">Goals</strong>
+                      <ul class="secondary-paragraph" style="margin-top: var(--space-2); padding-left: var(--space-4);">
+                        <li>Continuous, unified task structures.</li>
+                        <li>Trustworthy, verified scheduling.</li>
+                        <li>Preserve creative energy.</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong style="color: var(--color-text); font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase;">Frustrations</strong>
+                      <ul class="secondary-paragraph" style="margin-top: var(--space-2); padding-left: var(--space-4);">
+                        <li>High friction starting multi-step tasks.</li>
+                        <li>Data siloed across separate apps.</li>
+                        <li>Motivation drops from cognitive overload.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="subhead">User Journey Map</h4>
+              <div class="info-grid cols-3">
+                <div class="info-card">
+                  <span class="info-eyebrow">07:30 AM — Context Triage</span>
+                  <h4 class="info-title">Cross-Checking Schedules</h4>
+                  <p class="info-desc">Manually unifies scattered calendars and files, spotting overlap issues.</p>
+                  <p class="info-quote">"I run multiple systems and still drop track of minor things."</p>
+                </div>
+                <div class="info-card">
+                  <span class="info-eyebrow">09:00 AM — Capture Friction</span>
+                  <h4 class="info-title">Adding New Tasks</h4>
+                  <p class="info-desc">Tries to record new tasks but struggles to weigh urgency.</p>
+                  <p class="info-quote">"Everything feels urgent at the same time."</p>
+                </div>
+                <div class="info-card is-highlight">
+                  <span class="info-eyebrow">01:00 PM — Context Split</span>
+                  <h4 class="info-title">Switching Environments</h4>
+                  <p class="info-desc">Needs one clear view of what's actually critical right now.</p>
+                  <p class="info-quote">"I need a single source of truth."</p>
+                </div>
+              </div>
+
+              <h4 class="subhead">Information Architecture</h4>
+              <div class="info-grid cols-4">
+                <div class="info-card">
+                  <h4 class="info-title">Onboarding</h4>
+                  <ul class="info-list">
+                    <li>Credential Processing</li>
+                    <li>Context Induction</li>
+                    <li>Security Gateway</li>
+                  </ul>
+                </div>
+                <div class="info-card">
+                  <h4 class="info-title">Dashboard</h4>
+                  <ul class="info-list">
+                    <li>Primary Grid View</li>
+                    <li>Forward Layouts</li>
+                    <li>History</li>
+                  </ul>
+                </div>
+                <div class="info-card is-highlight">
+                  <h4 class="info-title">System Planner</h4>
+                  <ul class="info-list">
+                    <li>Modular Extraction</li>
+                    <li>Urgency Allocation</li>
+                    <li>Assistive Engine (AI)</li>
+                  </ul>
+                </div>
+                <div class="info-card">
+                  <h4 class="info-title">Habit Metrics</h4>
+                  <ul class="info-list">
+                    <li>Target Builder</li>
+                    <li>Category Index</li>
+                    <li>Execution Metrics</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h4 class="subhead">Affinity Synthesis</h4>
+              <div class="full-image-panel">
+                <img src="assets/img/Projects/Manage Wise/Affinity Mapping.png" alt="Affinity mapping synthesis matrix">
+              </div>
+              <div class="info-grid cols-4">
+                <div class="info-card">
+                  <h4 class="info-title">Capture Friction</h4>
+                  <p class="info-desc">Minimize mandatory fields during entry. Users want fast entry.</p>
+                </div>
+                <div class="info-card">
+                  <h4 class="info-title">Silo Integration</h4>
+                  <p class="info-desc">Unify schedules with task tracking to remove drop-off points.</p>
+                </div>
+                <div class="info-card">
+                  <h4 class="info-title">Priority Weighting</h4>
+                  <p class="info-desc">Visual indicators clarify what to act on first.</p>
+                </div>
+                <div class="info-card">
+                  <h4 class="info-title">Progression States</h4>
+                  <p class="info-desc">Continuous visualization prevents motivation drop-off.</p>
+                </div>
+              </div>
+
+              <!-- 03. Develop -->
+              <div class="chapter-row" id="develop">
+                <span class="chapter-index">03</span>
+                <h3 class="chapter-heading">Develop: Ideation &amp; Interaction Design</h3>
+              </div>
+
+              <h4 class="subhead">Rapid Ideation (Crazy 8s)</h4>
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+                Sketch sprints targeting faster task entry and clearer AI visibility.
+              </p>
+              <div class="full-image-panel">
+                <img src="assets/img/Projects/Manage Wise/Crazy 8_MW.png" alt="Crazy 8s ideation sketches">
+              </div>
+              <div class="info-grid cols-2" style="margin-bottom: var(--space-12);">
+                <div class="info-card" style="grid-column: 1 / -1;">
+                  <h4 class="info-title">Selected Feature Directives</h4>
+                  <ul class="info-list">
+                    <li>Decouple deadline processing from base task recording to reduce friction.</li>
+                    <li>Continuous progress bars for real-time habit visibility.</li>
+                    <li>AI parses complex items into clean, structured sub-tasks.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h4 class="subhead">Mid-Fidelity Wireframes</h4>
+              <div class="media-grid cols-3">
+                <article class="media-card">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Add Task.png', 'Task Generation Entry')">
+                    <img src="assets/img/Projects/Manage Wise/Add Task.png" alt="Task entry wireframe">
+                    <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                  </button>
+                  <div class="media-body">
+                    <span class="media-tag">Wireframe</span>
+                    <h5 class="media-title">Task Generation Entry</h5>
+                    <p class="media-desc">Isolates title input; places variable flags on single-tap access. Parsing fields stay optional.</p>
+                  </div>
+                </article>
+                <article class="media-card">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Plan my Day.png', 'Engine Planner (AI Parsing)')">
+                    <img src="assets/img/Projects/Manage Wise/Plan my Day.png" alt="AI planning wireframe">
+                    <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                  </button>
+                  <div class="media-body">
+                    <span class="media-tag">Wireframe</span>
+                    <h5 class="media-title">Engine Planner (AI Parsing)</h5>
+                    <p class="media-desc">A full optimization viewport with verification steps to build trust in automated scheduling.</p>
+                  </div>
+                </article>
+                <article class="media-card">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Goal.png', 'Progression Mapping')">
+                    <img src="assets/img/Projects/Manage Wise/Goal.png" alt="Progression mapping wireframe">
+                    <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                  </button>
+                  <div class="media-body">
+                    <span class="media-tag">Wireframe</span>
+                    <h5 class="media-title">Progression Mapping</h5>
+                    <p class="media-desc">Structural visibility tracking to support ongoing personal progress.</p>
+                  </div>
+                </article>
+              </div>
+
+              <h4 class="subhead">Usability Testing</h4>
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+                Moderated sessions run on the live interactive prototype across the target cohort.
+              </p>
+              <div class="feature-panel has-image">
+                <div class="feature-content">
+                  <span class="media-tag">Diagnostic: AI Scheduling Task</span>
+                  <video controls playsinline>
+                    <source src="assets/img/Projects/Manage Wise/Naz Usability Test_Cut.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="feature-content">
+                  <h4 style="font-family: var(--font-display); font-size: 1.2rem; text-transform: uppercase; color: var(--color-text);">What Broke</h4>
+                  <ul class="info-list">
+                    <li>The "Plan My Day" label triggered a mismatch in expectations (67% drop-off).</li>
+                    <li>Weak real-time visibility created processing anxiety.</li>
+                    <li>Background AI cycles lacked clear progress notifications.</li>
+                    <li>Missing confirmation states caused post-task tracking errors.</li>
+                  </ul>
+                  <div style="padding: var(--space-4); border: 1px solid var(--color-primary); background-color: var(--color-bg);">
+                    <p class="secondary-paragraph" style="margin: 0;"><strong>Fix:</strong> Renamed the feature to "Ask AI," added mandatory preview steps, and added completion confirmations to keep the user in control.</p>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="subhead">Interface Refinement: Before &amp; After</h4>
+
+              <div class="compare-row">
+                <div class="compare-panel">
+                  <span class="media-tag">Before — Unfocused Dashboard</span>
+                  <img src="assets/img/Projects/Manage Wise/Before and After Screens/Old Dasboard Screen_MW.png" alt="Old dashboard screen">
+                  <p class="secondary-paragraph">Information spread too thin, blurring priority.</p>
+                </div>
+                <span class="compare-arrow">→</span>
+                <div class="compare-panel is-after">
+                  <span class="media-tag">After — Streamlined Interface</span>
+                  <img src="assets/img/Projects/Manage Wise/Before and After Screens/New Dashboard Screen_MW.png" alt="New dashboard screen">
+                  <p class="secondary-paragraph">Consolidated into Tasks and Habits, with clear progress bars.</p>
+                </div>
+              </div>
+
+              <div class="compare-row">
+                <div class="compare-panel">
+                  <span class="media-tag">Before — Visual Overload</span>
+                  <img src="assets/img/Projects/Manage Wise/Before and After Screens/Old task Screen_MW.png" alt="Old task screen">
+                  <p class="secondary-paragraph">Too many configuration fields created clutter.</p>
+                </div>
+                <span class="compare-arrow">→</span>
+                <div class="compare-panel is-after">
+                  <span class="media-tag">After — Focused Entry View</span>
+                  <img src="assets/img/Projects/Manage Wise/Before and After Screens/New task Screen_MW.png" alt="New task screen">
+                  <p class="secondary-paragraph">A horizontal calendar widget replaced low-value elements.</p>
+                </div>
+              </div>
+
+              <!-- 04. Deliver -->
+              <div class="chapter-row" id="deliver">
+                <span class="chapter-index">04</span>
+                <h3 class="chapter-heading">Deliver: High-Fidelity Screens</h3>
+              </div>
+
+              <div class="info-grid cols-2" style="margin-bottom: var(--space-8);">
+                <div class="info-card is-highlight" style="grid-column: 1 / -1;">
+                  <h4 class="info-title">Key UX Decisions</h4>
+                  <ul class="info-list">
+                    <li>Renamed the AI feature to "Ask AI" to fix the expectation mismatch.</li>
+                    <li>Converted complex configuration into lightweight habit metrics with visible streaks.</li>
+                    <li>Flattened the layout down to a single dual-track view.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h4 class="subhead">Validated Screens</h4>
+              <div class="media-grid cols-2">
+                <article class="media-card">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Screens Final/Onboarding Sign Up.png', 'Onboarding')">
+                    <img src="assets/img/Projects/Manage Wise/Screens Final/Onboarding Sign Up.png" alt="Onboarding final screen">
+                    <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                  </button>
+                  <div class="media-body">
+                    <span class="media-tag">Final Screen</span>
+                    <h5 class="media-title">Onboarding</h5>
+                    <p class="media-desc">Simple transactional steps paired with contextual illustrations.</p>
+                  </div>
+                </article>
+                <article class="media-card">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Screens Final/Add New Task Set Priorities.png', 'Task Entry')">
+                    <img src="assets/img/Projects/Manage Wise/Screens Final/Add New Task Set Priorities.png" alt="Task entry final screen">
+                    <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                  </button>
+                  <div class="media-body">
+                    <span class="media-tag">Final Screen</span>
+                    <h5 class="media-title">Task Entry</h5>
+                    <p class="media-desc">Progressive disclosure keeps advanced controls out of the way.</p>
+                  </div>
+                </article>
+                <article class="media-card">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Screens Final/Ask AI.png', 'Ask AI')">
+                    <img src="assets/img/Projects/Manage Wise/Screens Final/Ask AI.png" alt="Ask AI final screen">
+                    <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                  </button>
+                  <div class="media-body">
+                    <span class="media-tag">Final Screen</span>
+                    <h5 class="media-title">Ask AI</h5>
+                    <p class="media-desc">A full preview step is required before anything hits the calendar.</p>
+                  </div>
+                </article>
+                <article class="media-card">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png', 'Habit Tracking')">
+                    <img src="assets/img/Projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png" alt="Habit tracking final screen">
+                    <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                  </button>
+                  <div class="media-body">
+                    <span class="media-tag">Final Screen</span>
+                    <h5 class="media-title">Habit Tracking</h5>
+                    <p class="media-desc">Simple setup connected directly to visible streak tracking.</p>
+                  </div>
+                </article>
+              </div>
+
+              <!-- 05. Prototype -->
+              <div class="chapter-row" id="prototype">
+                <span class="chapter-index">05</span>
+                <h3 class="chapter-heading">Prototype &amp; Outcomes</h3>
+              </div>
+
+              <div class="embed-frame">
+                <iframe src="https://embed.figma.com/proto/Q23ONt1t5GInwVq4kRGTtf/Manage-Wise-Productivity-App_WMM614_Mainak-Chakraborty?page-id=0%3A1&node-id=1-4594&viewport=621%2C380%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4594&embed-host=share" allowfullscreen title="ManageWise interactive prototype"></iframe>
+              </div>
+
+              <div class="info-grid cols-2">
+                <div class="info-card">
+                  <h4 class="info-title">AI Transparency Matters</h4>
+                  <p class="info-desc">Automated parsing needs explicit confirmation steps. Preview matrices meaningfully increased trust and lowered friction across every test group.</p>
+                </div>
+                <div class="info-card is-highlight">
+                  <h4 class="info-title">Small Changes, Big Impact</h4>
+                  <p class="info-desc">Minor refinements — button naming, optional fields — drove a verified 40% increase in task execution speed.</p>
+                </div>
+              </div>
+
+              <!-- Prev / Next -->
+              <div class="project-nav-row">
+                <a href="HB.html" class="back-button">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                  <span>Previous Project</span>
+                </a>
+                <a href="KWDS.html" class="back-button">
+                  <span>Next Project</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="footer-year">2026</span> Mainak Chakraborty. All rights reserved.</p>
+      <a href="#main-content" aria-label="Scroll back to the top of the page">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Jump navigation -->
+  <nav class="jump-nav" aria-label="Section navigation">
+    <div class="jump-nav-inner">
+      <div class="jump-pills">
+        <a href="#discover" class="jump-pill">Discover</a>
+        <a href="#define" class="jump-pill">Define</a>
+        <a href="#develop" class="jump-pill">Develop</a>
+        <a href="#deliver" class="jump-pill">Deliver</a>
+        <a href="#prototype" class="jump-pill">Prototype</a>
+      </div>
+      <a href="#main-content" class="jump-back-top" aria-label="Back to top">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+      <img id="lightbox-img" src="" alt="">
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/script.js"></script>
+
+  <script>
+    function openLightbox(src, caption) {
+      var lb = document.getElementById('lightbox');
+      var img = document.getElementById('lightbox-img');
+      img.src = src;
+      img.alt = caption;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+      if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    (function () {
+      var pills = document.querySelectorAll('.jump-nav .jump-pill');
+      var sectionIds = ['discover', 'define', 'develop', 'deliver', 'prototype'];
+      var sections = sectionIds.map(function (id) { return document.getElementById(id); });
+      if (!sections.length) return;
+
+      window.addEventListener('scroll', function () {
+        var scrollY = window.scrollY + window.innerHeight * 0.3;
+        var currentIndex = 0;
+        sections.forEach(function (section, i) {
+          if (section && section.offsetTop <= scrollY) currentIndex = i;
+        });
+        pills.forEach(function (p) { p.classList.remove('active'); });
+        if (pills[currentIndex]) pills[currentIndex].classList.add('active');
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
