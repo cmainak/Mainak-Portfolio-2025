@@ -781,7 +781,7 @@
    
    .hero-role {
    font-family: var(--font-display);
-   font-size: var(--text-xl);
+   font-size: var(--text-lg);
    color: var(--color-primary);
    font-weight: 700;
    text-transform: uppercase;
@@ -1479,7 +1479,7 @@
    }
    
    .showcase-tags li.tag-highlight {
-     background-color: var(--color-primary);
+     background-color: var(--color-text-muted);
      border-color: var(--color-primary);
      color: var(--color-bg);
    }
@@ -1492,7 +1492,7 @@
      font-size: var(--text-lg);
      font-weight: 800;
      text-transform: uppercase;
-     color: var(--color-text);
+     color: var(--color-primary);
      text-decoration: none;
      margin-top: var(--space-2);
      align-self: flex-start;
@@ -1502,17 +1502,17 @@
      display: block;
      width: 2rem;
      height: 4px;
-     background-color: var(--color-text);
+     background-color: var(--color-primary);
      transition: width var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
    }
    
    .showcase-cta:hover {
-     color: var(--color-primary);
+     color: var(--color-text);
    }
    
    .showcase-cta:hover .cta-line {
      width: 4rem;
-     background-color: var(--color-primary);
+     background-color: var(--color-text);
    }
    
    /* For Dedicated 'All Work' Page Title Layout */
