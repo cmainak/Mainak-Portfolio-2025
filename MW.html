@@ -102,15 +102,6 @@
       box-shadow: 8px 8px 0 var(--color-primary);
     }
 
-    .info-card.is-highlight {
-      background-color: var(--color-primary);
-    }
-
-    [data-theme="dark"] .info-card.is-highlight { color: var(--color-bg); }
-    .info-card.is-highlight .info-title,
-    .info-card.is-highlight .info-quote,
-    .info-card.is-highlight .info-desc { color: var(--color-on-primary); }
-
     .info-eyebrow {
       font-family: var(--font-display);
       font-size: var(--text-xs);
@@ -152,7 +143,7 @@
 
     .info-list li {
       font-size: var(--text-sm);
-      color: var(--color-text-muted);
+      color: var(--color-text);
       border-bottom: 1px solid var(--color-border);
       padding-bottom: var(--space-2);
     }
@@ -581,7 +572,7 @@
             <ul class="about-meta-list" role="list">
               <li><strong>ROLE</strong><br>Product Designer</li>
               <li><strong>TIMELINE</strong><br>10 Weeks</li>
-              <li><strong>TOOLS</strong><br>Figma, Miro</li>
+              <li><strong>TOOLS</strong><br>Figma, Adobe CC, Miro</li>
               <li><strong>TEAM</strong><br>Solo UX Lead</li>
               <li>
                 <strong>IMPACT</strong><br>
@@ -702,33 +693,35 @@
               </div>
 
               <h4 class="subhead">User Persona</h4>
-              <div class="feature-panel has-image">
-                <div class="feature-image">
-                  <img src="assets/images/projects/Manage Wise/Alex.jpg" alt="Alex persona portrait" style="filter: grayscale(100%);">
+              <div class="info-grid cols-3">
+                
+                <div class="info-card">
+                  <span class="info-eyebrow">Primary Persona</span>
+                  <h4 class="info-title">Alex, 26</h4>
+                  <img src="assets/images/projects/Manage Wise/Alex.jpg" alt="Alex persona portrait" style="width: 100%; height: 180px; object-fit: cover; filter: grayscale(100%); border: 1px solid var(--color-border); margin: 0.5rem 0;">
+                  <p class="info-desc">CS Graduate Student. Starts each week with high focus, but scattered deadlines across apps trigger stress and late-night triage.</p>
                 </div>
-                <div class="feature-content">
-                  <span class="media-tag">Primary Persona</span>
-                  <h4 style="font-family: var(--font-display); font-size: 1.4rem; text-transform: uppercase; color: var(--color-text);">Alex, 26 — Computer Science Graduate Student</h4>
-                  <p class="secondary-paragraph">Starts each week with high focus, but variable deadlines scattered across multiple apps trigger stress and late-night triage.</p>
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-2);">
-                    <div>
-                      <strong style="color: var(--color-text); font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase;">Goals</strong>
-                      <ul class="secondary-paragraph" style="margin-top: var(--space-2); padding-left: var(--space-4);">
-                        <li>Continuous, unified task structures.</li>
-                        <li>Trustworthy, verified scheduling.</li>
-                        <li>Preserve creative energy.</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <strong style="color: var(--color-text); font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase;">Frustrations</strong>
-                      <ul class="secondary-paragraph" style="margin-top: var(--space-2); padding-left: var(--space-4);">
-                        <li>High friction starting multi-step tasks.</li>
-                        <li>Data siloed across separate apps.</li>
-                        <li>Motivation drops from cognitive overload.</li>
-                      </ul>
-                    </div>
-                  </div>
+              
+                <div class="info-card">
+                  <span class="info-eyebrow">Motivations</span>
+                  <h4 class="info-title">Core Goals</h4>
+                  <ul class="info-list">
+                    <li>Continuous, unified task structures.</li>
+                    <li>Trustworthy, verified scheduling.</li>
+                    <li>Preserve creative energy.</li>
+                  </ul>
                 </div>
+              
+                <div class="info-card">
+                  <span class="info-eyebrow">Pain Points</span>
+                  <h4 class="info-title">Frustrations</h4>
+                  <ul class="info-list">
+                    <li>High friction starting multi-step tasks.</li>
+                    <li>Data siloed across separate apps.</li>
+                    <li>Motivation drops from cognitive overload.</li>
+                  </ul>
+                </div>
+              
               </div>
 
               <h4 class="subhead">User Journey Map</h4>
@@ -838,8 +831,9 @@
 
               <h4 class="subhead">Mid-Fidelity Wireframes</h4>
               <div class="media-grid cols-3">
+                
                 <article class="media-card">
-                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Add Task.png', 'Task Generation Entry')">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/images/projects/Manage Wise/Add Task.png', 'Task Generation Entry')">
                     <img src="assets/images/projects/Manage Wise/Add Task.png" alt="Task entry wireframe">
                     <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                   </button>
@@ -849,8 +843,9 @@
                     <p class="media-desc">Isolates title input; places variable flags on single-tap access. Parsing fields stay optional.</p>
                   </div>
                 </article>
+              
                 <article class="media-card">
-                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Plan my Day.png', 'Engine Planner (AI Parsing)')">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/images/projects/Manage Wise/Plan my Day.png', 'Engine Planner (AI Parsing)')">
                     <img src="assets/images/projects/Manage Wise/Plan my Day.png" alt="AI planning wireframe">
                     <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                   </button>
@@ -860,8 +855,9 @@
                     <p class="media-desc">A full optimization viewport with verification steps to build trust in automated scheduling.</p>
                   </div>
                 </article>
+              
                 <article class="media-card">
-                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Goal.png', 'Progression Mapping')">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/images/projects/Manage Wise/Goal.png', 'Progression Mapping')">
                     <img src="assets/images/projects/Manage Wise/Goal.png" alt="Progression mapping wireframe">
                     <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                   </button>
@@ -871,6 +867,7 @@
                     <p class="media-desc">Structural visibility tracking to support ongoing personal progress.</p>
                   </div>
                 </article>
+              
               </div>
 
               <h4 class="subhead">Usability Testing</h4>
@@ -948,7 +945,7 @@
               <h4 class="subhead">Validated Screens</h4>
               <div class="media-grid cols-2">
                 <article class="media-card">
-                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Screens Final/Onboarding Sign Up.png', 'Onboarding')">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/images/projects/Manage Wise/Screens Final/Onboarding Sign Up.png', 'Onboarding')">
                     <img src="assets/images/projects/Manage Wise/Screens Final/Onboarding Sign Up.png" alt="Onboarding final screen">
                     <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                   </button>
@@ -958,8 +955,9 @@
                     <p class="media-desc">Simple transactional steps paired with contextual illustrations.</p>
                   </div>
                 </article>
+                
                 <article class="media-card">
-                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Screens Final/Add New Task Set Priorities.png', 'Task Entry')">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/images/projects/Manage Wise/Screens Final/Add New Task Set Priorities.png', 'Task Entry')">
                     <img src="assets/images/projects/Manage Wise/Screens Final/Add New Task Set Priorities.png" alt="Task entry final screen">
                     <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                   </button>
@@ -969,8 +967,9 @@
                     <p class="media-desc">Progressive disclosure keeps advanced controls out of the way.</p>
                   </div>
                 </article>
+                
                 <article class="media-card">
-                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Screens Final/Ask AI.png', 'Ask AI')">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/images/projects/Manage Wise/Screens Final/Ask AI.png', 'Ask AI')">
                     <img src="assets/images/projects/Manage Wise/Screens Final/Ask AI.png" alt="Ask AI final screen">
                     <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                   </button>
@@ -980,9 +979,10 @@
                     <p class="media-desc">A full preview step is required before anything hits the calendar.</p>
                   </div>
                 </article>
+                
                 <article class="media-card">
-                  <button type="button" class="media-thumb" onclick="openLightbox('assets/img/Projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png', 'Habit Tracking')">
-                    <img src="assets/img/Projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png" alt="Habit tracking final screen">
+                  <button type="button" class="media-thumb" onclick="openLightbox('assets/images/projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png', 'Habit Tracking')">
+                    <img src="assets/images/projects/Manage Wise/Screens Final/Habit Tracking and View Progress.png" alt="Habit tracking final screen">
                     <span class="expand-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                   </button>
                   <div class="media-body">
