@@ -418,3 +418,49 @@ document.addEventListener("DOMContentLoaded", () => {
     progressBar.style.width = scrollPercentage + '%';
   }, { passive: true }); // passive: true improves scrolling performance
 })();
+
+
+// ============================================================
+// Scroll Reveal Animations (GSAP)
+// ============================================================
+document.addEventListener("DOMContentLoaded", (event) => {
+  // 1. Register ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 2. Hero Section Load Animation (No scroll needed, happens on load)
+  const heroTl = gsap.timeline();
+  heroTl.from(".hero-main h1", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.1 })
+        .from(".hero-role", { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" }, "-=0.6")
+        .from(".hero-meta", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.4");
+
+  // 3. Reusable Scroll Reveal Function
+  // Triggers when the top of the element hits 85% down the viewport
+  const scrollReveal = (targets, yOffset = 40) => {
+    gsap.utils.toArray(targets).forEach(element => {
+      gsap.from(element, {
+        scrollTrigger: {
+          trigger: element,
+          start: "top 85%", 
+          toggleActions: "play none none none" // Plays once, doesn't reverse on scroll up
+        },
+        y: yOffset,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      });
+    });
+  };
+
+  // 4. Apply to your sections!
+  // Animate Section Headings
+  scrollReveal('h2, .section-intro-row', 30);
+  
+  // Animate About Section pieces
+  scrollReveal('.about-photo, .about-content', 40);
+  
+  // Animate Project Cards
+  scrollReveal('.showcase-card', 60);
+
+  // Animate Contact Info & Form
+  scrollReveal('.contact-info, .contact-form', 40);
+});

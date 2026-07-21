@@ -1455,11 +1455,11 @@
    }
    
    .showcase-desc {
-     font-size: var(--text-lg);
-     color: var(--color-text-muted);
-     line-height: var(--leading-relaxed);
-     max-width: 500px;
-   }
+    font-size: var(--text-md); /* Shrinks the text slightly */
+    color: var(--color-text-muted); /* Softens the color so it doesn't fight the title */
+    line-height: 1.5; /* Keeps it readable */
+    margin-top: var(--space-2); /* Adds a little breathing room from the title */
+  }
    
    .showcase-tags {
      display: flex;
@@ -1664,23 +1664,10 @@
    }
    
    
-   /* 18. Scroll and animations
+   /* 18. Scroll Transition and animations
       ---------------------------------------------------------- */
-   
-   @keyframes fadeSlideUp {
-     from { opacity: 0; transform: translateY(20px); }
-     to   { opacity: 1; transform: translateY(0); }
-   }
-   
-   .will-animate {
-     opacity: 0;
-     transform: translateY(20px);
-   }
-   
-   .will-animate.is-visible {
-     animation: fadeSlideUp var(--duration-slow) var(--ease-out) both;
-     animation-delay: var(--stagger-delay, 0ms); 
-   }
+
+
    
    
    /* ============================================================
