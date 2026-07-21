@@ -769,7 +769,7 @@
    
    #hero h1 {
    font-family: var(--font-display);
-   font-size: clamp(5rem, 4vw, 5rem); 
+   font-size: clamp(2.75rem, 9vw, 5rem);
    line-height: 0.85;                
    text-transform: uppercase;
    letter-spacing: -0.04em;          
