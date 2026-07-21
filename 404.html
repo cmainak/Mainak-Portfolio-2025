@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>404: Page Not Found — Mainak Chakraborty</title>
+  
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('color-scheme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Mainak Chakraborty — back to home">
+        <img src="assets/images/Logo.png" alt="Mainak Chakraborty Logo" class="logo-image" />
+      </a>
+      <ul class="nav-links" role="list" id="nav-menu">
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+            <button type="button" aria-expanded="false" aria-controls="projects-menu" class="dropdown-toggle">
+              <span>Projects</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <ul id="projects-menu" class="dropdown-menu" role="list">
+              <li><a href="orbit-scan.html">Orbit Scan</a></li>
+              <li><a href="HB.html">Habit Boost</a></li>
+              <li><a href="KWDS.html">Design System</a></li>
+              <li><a href="TU.html">Touro University</a></li>
+              <li><a href="work.html" class="view-all">View All Work ↗</a></li>
+            </ul>
+          </li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-controls" role="group">
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+        <button type="button" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" style="display: flex; flex-direction: column; justify-content: center; min-height: 85vh; padding-top: var(--nav-height);">
+    <div class="container" style="text-align: center;">
+      
+      <h1 style="font-family: var(--font-display); font-size: clamp(6rem, 20vw, 15rem); font-weight: 800; line-height: 1; color: var(--color-primary); margin: 0; text-shadow: 8px 8px 0 var(--color-text);">
+        404
+      </h1>
+      
+      <h2 style="font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.5rem); text-transform: uppercase; color: var(--color-text); margin-top: var(--space-4); margin-bottom: var(--space-4);">
+        Dead End Reached.
+      </h2>
+      
+      <p style="font-size: var(--text-base); color: var(--color-text-muted); max-width: 500px; margin: 0 auto var(--space-8) auto;">
+        The page you are looking for doesn't exist, has been archived, or was swallowed by the void. Don't worry, even the best navigators get lost sometimes.
+      </p>
+
+      <a href="index.html" class="back-button" style="display: inline-flex; margin: 0 auto; justify-content: center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back to Homepage</span>
+      </a>
+
+    </div>
+  </main>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
