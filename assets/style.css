@@ -1269,14 +1269,14 @@
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-16);
+  gap: var(--space-12);
   margin-top: var(--space-12);
 }
 
 @media (min-width: 1024px) {
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-16) var(--space-8);
+    gap: var(--space-8) var(--space-6);
   }
 }
 
@@ -1347,6 +1347,47 @@
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
   margin: 0;
+}
+
+
+/* Add this to your style.css */
+/* De-emphasize Archive items until hovered */
+.archive-section .project-card {
+  opacity: 0.85;
+  filter: grayscale(20%); /* Subtly pushes them into the background */
+  transition: opacity var(--duration-base) ease, filter var(--duration-base) ease, transform var(--duration-base) ease;
+}
+
+.archive-section .project-card:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: translateY(-4px); /* Restores prominence only when the user shows intent */
+}
+
+/* Make Archive titles slightly smaller to reinforce hierarchy */
+.archive-section .project-title {
+  font-size: var(--text-xl); 
+}
+
+.archive-section {
+  margin-top: var(--space-24);
+  padding-top: var(--space-12); /* Increased padding to respect Proximity */
+  border-top: 1px solid var(--color-border); /* Softer divider */
+}
+
+.archive-header {
+  margin-bottom: var(--space-12);
+}
+
+.archive-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0;
+}
+
+.archive-subtitle {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
 }
    
    /* ============================================================
