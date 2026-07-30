@@ -1579,7 +1579,35 @@
      border-bottom: 2px solid var(--color-text);
      padding-bottom: var(--space-8);
    }
+
+   /* ============================================================
+      15. Case Study
+   ============================================================ */
    
+/* Unifies all case study images */
+.case-study-media {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-8);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  border-radius: 4px; /* Optional: Adds a tiny polish */
+}
+
+.case-study-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Unifies all Persona callouts */
+.persona-card {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  margin-bottom: var(--space-12);
+}
+
    
    /* ============================================================
    Marquee Infinite Scroll Animation
