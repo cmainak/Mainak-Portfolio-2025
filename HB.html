@@ -35,18 +35,19 @@
       --color-primary: #4ade80; 
     }
 
-    /* — Jump navigation, matching the site's brutalist dropdown language — */
+    /* — Jump navigation, matching Orbit Scan perfectly — */
     .jump-nav {
       position: fixed;
-      bottom: var(--space-4);
+      bottom: var(--space-8); /* Matches Orbit Scan height */
       left: 50%;
       transform: translateX(-50%);
-      z-index: 150;
-      width: calc(100% - 2rem);
-      max-width: 560px;
-      background-color: var(--color-bg);
+      z-index: 1000;
+      width: calc(100vw - var(--space-8));
+      max-width: 680px; /* Matches Orbit Scan width */
+      min-width: 280px;
+      background-color: var(--color-surface); /* Matches Orbit Scan background */
       border: 2px solid var(--color-text);
-      box-shadow: 8px 8px 0 var(--color-primary);
+      box-shadow: 8px 8px 0 var(--color-primary); 
       padding: var(--space-2);
     }
 
@@ -59,39 +60,49 @@
     .jump-pills {
       flex: 1;
       display: flex;
+      align-items: center;
       gap: var(--space-1);
       overflow-x: auto;
+      -ms-overflow-style: none;
       scrollbar-width: none;
     }
 
-    .jump-pills::-webkit-scrollbar { display: none; }
+    .jump-pills::-webkit-scrollbar { 
+      display: none; 
+    }
 
     .jump-pill {
-      flex: 1;
-      text-align: center;
-      white-space: nowrap;
-      padding: var(--space-2);
+      flex: 1 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-2) var(--space-4); /* Matches Orbit Scan padding */
       font-family: var(--font-display);
-      font-size: var(--text-xs);
+      font-size: 0.8rem; /* Matches Orbit Scan font size */
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--color-text-muted);
       text-decoration: none;
-      border: 1px solid transparent;
+      color: var(--color-text); /* Matches Orbit Scan color */
+      background: transparent;
+      border: 2px solid transparent;
       transition: all var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+      cursor: pointer;
     }
 
     .jump-pill:hover {
-      color: var(--color-text);
+      background-color: var(--color-bg);
       border-color: var(--color-border);
     }
 
     .jump-pill.active {
       background-color: var(--color-primary);
-      color: var(--color-on-primary);
+      color: var(--color-on-primary, #fff);
+      border-color: var(--color-primary);
     }
 
+    /* Keeps the back-to-top button perfectly square */
     .jump-back-top {
       flex-shrink: 0;
       width: 2.5rem;
@@ -108,14 +119,14 @@
     .jump-back-top:hover {
       background-color: var(--color-primary);
     }
-
+    
     /* Keep content from hiding behind the fixed jump nav on mobile */
     @media (max-width: 767px) {
       main { padding-bottom: 5rem; }
     }
 
     /* Give jump targets breathing room under the fixed site header */
-    #problem, #strategy, #decisions, #walkthrough, #outcomes, #lessons {
+    #discover, #define, #ideate, #iterate, #prototype, #reflect {
       scroll-margin-top: calc(var(--nav-height) + var(--space-6));
     }
   </style>
@@ -206,7 +217,7 @@
                 <img src="assets/images/projects/HB/Habit Boost Thumbnail.png" alt="Habit Boost app preview on iPhone" style="width: 100%; height: auto; display: block;">
               </div>
 
-              <h3 class="table-heading" id="problem" style="font-size: 1.5rem;">01. The Problem</h3>
+              <h3 class="table-heading" id="discover" style="font-size: 1.5rem;">01. The Problem</h3>
               <div class="text-columns" style="margin-bottom: var(--space-8);">
                 <p class="secondary-paragraph">
                   Imagine making a promise to yourself to start a fitness routine or learn a new language. The first week goes well. The second week, not so much. Then eventually you lose all hope. <strong>73% of people abandon their habits within the first month.</strong>
@@ -249,7 +260,7 @@
                 </p>
               </div>
 
-              <h3 class="table-heading" id="strategy" style="font-size: 1.5rem;">02. Strategy & Approach</h3>
+              <h3 class="table-heading" id="define" style="font-size: 1.5rem;">02. Strategy & Approach</h3>
               <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
                 In my literature review of habit frameworks, I discovered the <strong>Hook Model</strong>. It's a particularly effective approach for increasing investment in habit formation through a cyclical process of triggers, actions, rewards, and investments. It directly addresses motivation decline by creating multiple reinforcement points throughout the habit cycle.
               </p>
@@ -321,7 +332,7 @@
                 </div>
               </div>
 
-              <h3 class="table-heading" style="font-size: 1.5rem;">05. The Solution Direction: A Garden Metaphor</h3>
+              <h3 class="table-heading" id="ideate" style="font-size: 1.5rem;">05. The Solution Direction: A Garden Metaphor</h3>
               <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
                 These insights led to a cultivation visual metaphor—a garden that grows with commitment but also reflects natural cycles of growth and rest. Unlike traditional point systems that punish failure (streaks), the garden provides the visual progress and compassionate accountability missing from competitor apps.
               </p>
@@ -330,7 +341,7 @@
                 <img src="assets/images/projects/HB/Habit Garden.png" alt="Habit Garden concept illustration" style="width: 100%; height: auto; display: block;">
               </div>
 
-              <h3 class="table-heading" id="decisions" style="font-size: 1.5rem;">06. Key Design Decisions</h3>
+              <h3 class="table-heading" id="iterate" style="font-size: 1.5rem;">06. Key Design Decisions</h3>
               
               <div style="margin-bottom: var(--space-8);">
                 <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 1: Feature Prioritization for MVP</h4>
@@ -398,7 +409,7 @@
                 </div>
               </div>
 
-              <h3 class="table-heading" id="walkthrough" style="font-size: 1.5rem;">07. Core Feature Walkthrough</h3>
+              <h3 class="table-heading" style="font-size: 1.5rem;">07. Core Feature Walkthrough</h3>
               
               <div style="margin-bottom: var(--space-8);">
                 <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Creating Good Habits</h4>
@@ -440,7 +451,7 @@
                 </div>
               </div>
 
-              <h3 class="table-heading" id="outcomes" style="font-size: 1.5rem;">08. The Final Prototype & Outcomes</h3>
+              <h3 class="table-heading" id="prototype" style="font-size: 1.5rem;">08. The Final Prototype & Outcomes</h3>
               <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
                 The final interactive prototype resulted in a <strong>73% increase in habit completion</strong> (11 out of 15 users completed their first habit goal during testing compared to the 4/15 baseline). Navigation simplification reduced required clicks by 67%, driving an <strong>82 SUS Score</strong>.
               </p>
@@ -457,7 +468,7 @@
                 </div>
               </div>
 
-              <h3 class="table-heading" id="lessons" style="font-size: 1.5rem;">09. Lessons Learned</h3>
+              <h3 class="table-heading" id="reflect" style="font-size: 1.5rem;">09. Lessons Learned</h3>
               
               <div class="about-capabilities" style="margin-bottom: var(--space-8);">
                 <div class="capability-row">
@@ -504,16 +515,15 @@
   </footer>
 
 
-  <!-- Jump navigation -->
   <nav class="jump-nav" aria-label="Section navigation">
     <div class="jump-nav-inner">
       <div class="jump-pills">
-        <a href="#problem" class="jump-pill">Problem</a>
-        <a href="#strategy" class="jump-pill">Strategy</a>
-        <a href="#decisions" class="jump-pill">Decisions</a>
-        <a href="#walkthrough" class="jump-pill">Walkthrough</a>
-        <a href="#outcomes" class="jump-pill">Outcomes</a>
-        <a href="#lessons" class="jump-pill">Lessons</a>
+        <a href="#discover" class="jump-pill">Discover</a>
+        <a href="#define" class="jump-pill">Define</a>
+        <a href="#ideate" class="jump-pill">Ideate</a>
+        <a href="#iterate" class="jump-pill">Iterate</a>
+        <a href="#prototype" class="jump-pill">Prototype</a>
+        <a href="#reflect" class="jump-pill">Reflect</a>
       </div>
       <a href="#main-content" class="jump-back-top" aria-label="Back to top">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
@@ -529,18 +539,50 @@
     // Jump nav active state
     (function () {
       var pills = document.querySelectorAll('.jump-nav .jump-pill');
-      var sectionIds = ['problem', 'strategy', 'decisions', 'walkthrough', 'outcomes', 'lessons'];
+      
+      // Fixed JS Array names
+      var sectionIds = ['discover', 'define', 'ideate', 'iterate', 'prototype', 'reflect'];
       var sections = sectionIds.map(function (id) { return document.getElementById(id); });
+      
       if (!sections.length) return;
 
       window.addEventListener('scroll', function () {
         var scrollY = window.scrollY + window.innerHeight * 0.3;
         var currentIndex = 0;
+        
         sections.forEach(function (section, i) {
           if (section && section.offsetTop <= scrollY) currentIndex = i;
         });
-        pills.forEach(function (p) { p.classList.remove('active'); });
-        if (pills[currentIndex]) pills[currentIndex].classList.add('active');
+
+        // The "Bottom of Page" override so 'Reflect' highlights correctly
+        var isAtBottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50;
+        if (isAtBottom) {
+          currentIndex = sections.length - 1;
+        }
+
+        // Reset pills
+        pills.forEach(function (p) { 
+          p.classList.remove('active'); 
+          p.setAttribute('aria-selected', 'false');
+        });
+
+        // Activate correct pill
+        if (pills[currentIndex]) {
+          pills[currentIndex].classList.add('active');
+          pills[currentIndex].setAttribute('aria-selected', 'true');
+          
+          // Auto-scroll pills horizontally on mobile
+          var jumpNav = document.querySelector('.jump-nav');
+          if (jumpNav) {
+            var container = jumpNav.querySelector('.jump-pills');
+            if (container && container.scrollWidth > container.clientWidth) {
+              var pill = pills[currentIndex];
+              var pillLeft = pill.offsetLeft;
+              var scrollPos = pillLeft - (container.clientWidth / 2) + (pill.clientWidth / 2);
+              container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+            }
+          }
+        }
       }, { passive: true });
     })();
   </script>

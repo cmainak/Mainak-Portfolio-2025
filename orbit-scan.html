@@ -24,6 +24,49 @@
 
   <link rel="stylesheet" href="assets/style.css">
   <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
+
+  <style>
+
+  /* Creates the side-by-side layout for the pills and the arrow */
+  .jump-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  /* Ensures the pills take up the available space, pushing the arrow to the right */
+  .jump-pills {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .jump-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* The brutalist Back to Top square button */
+  .jump-back-top {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    text-decoration: none;
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .jump-back-top:hover {
+    background-color: var(--color-primary);
+  }
+</style>
 </head>
 <body>
 
@@ -282,13 +325,18 @@
     </section>
 
     <nav class="jump-nav" aria-label="Case Study Sections">
-      <div class="jump-pills" role="tablist">
-        <a href="#discover" class="jump-pill active" role="tab" aria-selected="true">Discover</a>
-        <a href="#define" class="jump-pill" role="tab" aria-selected="false">Define</a>
-        <a href="#ideate" class="jump-pill" role="tab" aria-selected="false">Ideate</a>
-        <a href="#iterate" class="jump-pill" role="tab" aria-selected="false">Iterate</a>
-        <a href="#prototype" class="jump-pill" role="tab" aria-selected="false">Prototype</a>
-        <a href="#reflect" class="jump-pill" role="tab" aria-selected="false">Reflect</a>
+      <div class="jump-nav-inner">
+        <div class="jump-pills" role="tablist">
+          <a href="#discover" class="jump-pill active" role="tab" aria-selected="true">Discover</a>
+          <a href="#define" class="jump-pill" role="tab" aria-selected="false">Define</a>
+          <a href="#ideate" class="jump-pill" role="tab" aria-selected="false">Ideate</a>
+          <a href="#iterate" class="jump-pill" role="tab" aria-selected="false">Iterate</a>
+          <a href="#prototype" class="jump-pill" role="tab" aria-selected="false">Prototype</a>
+          <a href="#reflect" class="jump-pill" role="tab" aria-selected="false">Reflect</a>
+        </div>
+        <a href="#main-content" class="jump-back-top" aria-label="Back to top">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+        </a>
       </div>
     </nav>
   </main>
@@ -376,50 +424,91 @@
 </style>
 
 <script>
-/* ── Scroll Active State JS ── */
-document.addEventListener("DOMContentLoaded", () => {
-    const jumpNav = document.querySelector('.jump-nav');
-    if (!jumpNav) return;
-
-    const pills = document.querySelectorAll('.jump-pill');
-    
-    // Map IDs based on the href attributes
-    const sections = Array.from(pills).map(pill => {
-      const id = pill.getAttribute('href').substring(1);
-      return document.getElementById(id);
-    });
-
-    window.addEventListener('scroll', () => {
-      // Offset triggers the change when a section hits the top 30% of the viewport
-      const scrollPosition = window.scrollY + (window.innerHeight * 0.3);
-      let currentIndex = -1;
-
-      sections.forEach((section, index) => {
-        if (section && section.offsetTop <= scrollPosition) {
-          currentIndex = index;
-        }
+  /* ── Universal Scroll & Jump JS ── */
+  document.addEventListener("DOMContentLoaded", () => {
+      const jumpNav = document.querySelector('.jump-nav');
+      if (!jumpNav) return;
+  
+      const pills = document.querySelectorAll('.jump-pill');
+      
+      // 1. Map IDs based on the href attributes
+      const sections = Array.from(pills).map(pill => {
+        const id = pill.getAttribute('href').substring(1);
+        return document.getElementById(id);
       });
-
-      pills.forEach((pill, index) => {
-        if (index === currentIndex) {
-          pill.classList.add('active');
-          pill.setAttribute('aria-selected', 'true');
+  
+      // 2. FIX: Explicit Click-to-Jump behavior (Overrides conflicting scripts)
+      pills.forEach(pill => {
+        pill.addEventListener('click', function(e) {
+          e.preventDefault(); // Stops other scripts from breaking the link
+          const targetId = this.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
           
-          // Auto-scroll the pill container horizontally on mobile
-          const container = jumpNav.querySelector('.jump-pills');
-          if (container.scrollWidth > container.clientWidth) {
-             const pillLeft = pill.offsetLeft;
-             const scrollPos = pillLeft - (container.clientWidth / 2) + (pill.clientWidth / 2);
-             container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+          if (targetSection) {
+            // Smoothly forces the browser to the exact section
+            targetSection.scrollIntoView({ behavior: 'smooth' });
           }
-        } else {
-          pill.classList.remove('active');
-          pill.setAttribute('aria-selected', 'false');
-        }
+        });
       });
-    }, { passive: true });
+  
+      // 3. FIX: The Back to Top arrow behavior
+      const backToTop = jumpNav.querySelector('.jump-back-top');
+      if (backToTop) {
+        backToTop.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+  
+      // 4. FIX: Bulletproof Scroll Highlighting
+      function updateActivePill() {
+        let currentIndex = -1;
+  
+        sections.forEach((section, index) => {
+          if (section) {
+            // getBoundingClientRect measures exact viewport position, bypassing CSS relative wrapper bugs
+            const rect = section.getBoundingClientRect();
+            
+            // If the section top is above the middle of the screen, mark it active
+            if (rect.top <= window.innerHeight * 0.4) {
+              currentIndex = index;
+            }
+          }
+        });
+  
+        // Bottom of Page Override (Highlights last pill if you hit the footer)
+        const isAtBottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50;
+        if (isAtBottom) {
+          currentIndex = sections.length - 1;
+        }
+  
+        // Applies the visual active classes
+        pills.forEach((pill, index) => {
+          if (index === currentIndex) {
+            pill.classList.add('active');
+            pill.setAttribute('aria-selected', 'true');
+            
+            // Auto-scroll the pill container horizontally on mobile devices
+            const container = jumpNav.querySelector('.jump-pills');
+            if (container && container.scrollWidth > container.clientWidth) {
+               const pillLeft = pill.offsetLeft;
+               const scrollPos = pillLeft - (container.clientWidth / 2) + (pill.clientWidth / 2);
+               container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+            }
+          } else {
+            pill.classList.remove('active');
+            pill.setAttribute('aria-selected', 'false');
+          }
+        });
+      }
+  
+      // Run the scroll function when the user scrolls
+      window.addEventListener('scroll', updateActivePill, { passive: true });
+      
+      // Force the function to run once immediately when the page loads
+      updateActivePill();
   });
-</script>
+  </script>
 
   </main>
 
