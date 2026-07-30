@@ -110,7 +110,7 @@
                 <img src="assets/images/projects/orbit/Orbit Scan Thumbnail.png" alt="Orbit Scan app preview on iPhone" style="width: 100%; height: auto; display: block;">
               </div>
 
-              <h3 id="problem" class="table-heading" style="font-size: 1.5rem;">01. The Problem</h3>
+              <h3 id="discover" class="table-heading" style="font-size: 1.5rem;">01. The Problem</h3>
               <div class="text-columns" style="margin-bottom: var(--space-8);">
                 <p class="secondary-paragraph">
                   This project started in a grocery aisle. I watched a friend with lactose intolerance read a label, look up unfamiliar ingredients, and still leave unsure if the product was safe. Giving people a lot of information doesn't help if it isn't easy to understand.
@@ -139,7 +139,7 @@
                 </div>
               </div>
 
-              <h3 id="strategy" class="table-heading" style="font-size: 1.5rem;">02. Strategy & Persona</h3>
+              <h3 id="define" class="table-heading" style="font-size: 1.5rem;">02. Strategy & Persona</h3>
               <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
                 I synthesized data from 22 surveys and 4 in-depth interviews. A clear business opportunity emerged: while competitors provided raw data, they hid actionable personalization (like allergy filters) behind paywalls. The goal became clear: <strong>How might we translate complex food labels into instant, personalized insights?</strong>
               </p>
@@ -171,7 +171,7 @@
                 <img src="assets/images/projects/orbit/Journey Map.png" alt="Journey Map" style="width: 100%; height: auto; display: block;">
               </div>
 
-              <h3 id="architecture" class="table-heading" style="font-size: 1.5rem;">03. Architecture & User Flow</h3>
+              <h3 id="ideate" class="table-heading" style="font-size: 1.5rem;">03. Architecture & User Flow</h3>
               <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
                 To solve Stephanie's need for speed, the architecture had to do the heavy lifting in under 2 seconds. I mapped out a streamlined flow: <strong>Scan → Instant Health Score → Personalized Swap Suggestions.</strong>
               </p>
@@ -180,7 +180,25 @@
                 <img src="assets/images/projects/orbit/Minimum Steps Flow.png" alt="Orbit Scan User Flow" style="width: 100%; height: auto; display: block;">
               </div>
 
-              <h3 id="decisions" class="table-heading" style="font-size: 1.5rem;">04. Key Design Decisions</h3>
+              <figure style="margin: 0; margin-bottom: var(--space-12);">
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/orbit/User Flow.png" alt="Orbit Scan Detailed User Flow" style="width: 100%; height: auto; display: block;">
+                </div>
+                <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-3); font-style: italic; border-left: 2px solid var(--color-primary); padding-left: var(--space-3);">
+                  Mapping the core user journey. By visualizing the architecture early, I identified redundant steps and successfully condensed the path from initial scan to personalized health insight into a single, seamless flow.
+                </figcaption>
+              </figure>
+
+              <figure style="margin: 0; margin-bottom: var(--space-12);">
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/orbit/Low-fi.png" alt="Orbit Scan Low-Fidelity Wireframes" style="width: 100%; height: auto; display: block;">
+                </div>
+                <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-3); font-style: italic; border-left: 2px solid var(--color-primary); padding-left: var(--space-3);">
+                  Initial mid-fidelity wireframes focused strictly on spatial layout and information hierarchy. Stripping away visual design allowed for rapid iteration and unbiased user testing of the core mechanics.
+                </figcaption>
+              </figure>
+
+              <h3 id="iterate" class="table-heading" style="font-size: 1.5rem;">04. Key Design Decisions</h3>
               
               <div style="margin-bottom: var(--space-8);">
                 <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 1: Progressive Disclosure over Separate Screens</h4>
@@ -234,9 +252,19 @@
                   src="https://embed.figma.com/proto/gkotZ6qbF7pzia0x1ZJQ8h/Orbit-Scan-UXIN-694-Mainak-Chakraborty?page-id=0%3A1&node-id=6-3203&viewport=973%2C1414%2C0.41&scaling=scale-down&content-scaling=fixed&embed-host=share" 
                   allowfullscreen>
                 </iframe>
+                
               </div>
 
-              <h3 id="lessons" class="table-heading" style="font-size: 1.5rem;">06. Lessons Learned</h3>
+              <figure style="margin: 0; margin-bottom: var(--space-8);">
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/orbit/Interaction Final Prototype.png" alt="Orbit Scan Final UI Interactions" style="width: 100%; height: auto; display: block;">
+                </div>
+                <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-3); font-style: italic; border-left: 2px solid var(--color-primary); padding-left: var(--space-3);">
+                  The final interaction model prioritizes fluid, responsive transitions. By keeping the health score overlay dynamic and anchored to the bottom of the screen, the interface remains thumb-friendly during live scanning.
+                </figcaption>
+              </figure>
+
+              <h3 id="reflect" class="table-heading" style="font-size: 1.5rem;">06. Reflect</h3>
               <div class="text-columns" style="margin-bottom: var(--space-8);">
                 <p class="secondary-paragraph">
                   Testing the early prototypes completely broke my own assumptions. I originally designed flows around how I thought apps "should" work like moving a user to a new screen after scanning. 
@@ -254,12 +282,12 @@
 
     <nav class="jump-nav" aria-label="Case Study Sections">
       <div class="jump-pills" role="tablist">
-        <a href="#problem" class="jump-pill active" role="tab" aria-selected="true">Problem</a>
-        <a href="#strategy" class="jump-pill" role="tab" aria-selected="false">Strategy</a>
-        <a href="#architecture" class="jump-pill" role="tab" aria-selected="false">Flow</a>
-        <a href="#decisions" class="jump-pill" role="tab" aria-selected="false">Decisions</a>
+        <a href="#discover" class="jump-pill active" role="tab" aria-selected="true">Discover</a>
+        <a href="#define" class="jump-pill" role="tab" aria-selected="false">Define</a>
+        <a href="#ideate" class="jump-pill" role="tab" aria-selected="false">Ideate</a>
+        <a href="#iterate" class="jump-pill" role="tab" aria-selected="false">Iterate</a>
         <a href="#prototype" class="jump-pill" role="tab" aria-selected="false">Prototype</a>
-        <a href="#lessons" class="jump-pill" role="tab" aria-selected="false">Lessons</a>
+        <a href="#reflect" class="jump-pill" role="tab" aria-selected="false">Reflect</a>
       </div>
     </nav>
   </main>
