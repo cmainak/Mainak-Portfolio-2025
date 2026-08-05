@@ -3,884 +3,195 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Touro University GST Case Study — Mainak Chakraborty</title>
-  <meta name="description" content="Video editing and graphic design work from Mainak Chakraborty's role as Multimedia Designer at Touro University GST.">
-
-  <script>
-    (function () {
-      try {
-        const saved = localStorage.getItem('color-scheme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = saved || (prefersDark ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', theme);
-      } catch(e) {}
-    })();
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
-
-  <style>
-    :root {
-      /* Touro Navy */
-      --color-primary: #02437D;
-    }
-    [data-theme="dark"] {
-      /* Brighter blue for accessibility on dark backgrounds */
-      --color-primary: #38bdf8;
-    }
-
-    /* — Chapter dividers reusing the capability-row rhythm — */
-    .chapter-row {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: var(--space-4);
-      align-items: end;
-      border-top: 2px solid var(--color-text);
-      padding-top: var(--space-6);
-      margin-bottom: var(--space-8);
-    }
-
-    .chapter-index {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      font-weight: 800;
-      color: var(--color-primary);
-      line-height: 1;
-    }
-
-    .chapter-heading {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
-      text-transform: uppercase;
-      line-height: var(--leading-tight);
-    }
-
-    /* — Media card grids (video + graphics) — */
-    .media-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
-      margin-bottom: var(--space-12);
-    }
-
-    @media (min-width: 768px) {
-      .media-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .media-card {
-      border: 1px solid var(--color-border);
-      background-color: var(--color-surface);
-      display: flex;
-      flex-direction: column;
-      transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
-    }
-
-    .media-card:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 8px 8px 0 var(--color-primary);
-    }
-
-    .media-thumb {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      background-color: var(--color-text);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .media-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform var(--duration-slow) var(--ease-out);
-    }
-
-    .media-card:hover .media-thumb img {
-      transform: scale(1.05);
-    }
-
-    .media-thumb.graphics-thumb {
-      aspect-ratio: 4/3;
-      background-color: var(--color-surface);
-    }
-
-    .play-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      background-color: var(--color-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    .expand-icon {
-      position: absolute;
-      top: var(--space-3);
-      right: var(--space-3);
-      width: 2rem;
-      height: 2rem;
-      background-color: var(--color-primary);
-      color: var(--color-on-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: var(--text-sm);
-    }
-
-    .media-body {
-      padding: var(--space-4);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      flex: 1;
-    }
-
-    .media-tag {
-      font-family: var(--font-display);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--color-primary);
-    }
-
-    .media-title {
-      font-family: var(--font-display);
-      font-size: var(--text-md);
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--color-text);
-      line-height: var(--leading-tight);
-    }
-
-    .media-desc {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      line-height: var(--leading-relaxed);
-    }
-
-    .media-link {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      font-family: var(--font-display);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--color-primary);
-      text-decoration: none;
-      margin-top: auto;
-      padding-top: var(--space-2);
-    }
-
-    .media-link:hover {
-      text-decoration: underline;
-    }
-
-    .graphics-clickable {
-      cursor: pointer;
-      border: none;
-      background: none;
-      text-align: left;
-      width: 100%;
-      font: inherit;
-      color: inherit;
-      padding: 0;
-    }
-
-    /* — Feature panel (Candle Soda / Touro spotlight) — */
-    .feature-panel {
-      border: 1px solid var(--color-border);
-      background-color: var(--color-surface);
-      display: grid;
-      grid-template-columns: 1fr;
-      margin-bottom: var(--space-12);
-      transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
-    }
-
-    .feature-panel:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 12px 12px 0 var(--color-primary);
-    }
-
-    @media (min-width: 768px) {
-      .feature-panel {
-        grid-template-columns: 2fr 3fr;
-      }
-    }
-
-    .feature-image {
-      position: relative;
-      min-height: 220px;
-      overflow: hidden;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    @media (min-width: 768px) {
-      .feature-image {
-        border-bottom: none;
-        border-right: 1px solid var(--color-border);
-      }
-    }
-
-    .feature-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
-    }
-
-    .feature-content {
-      padding: var(--space-8);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: var(--space-3);
-    }
-
-    /* — Jump nav, restyled to match the dropdown-menu language — */
-    .jump-nav {
-      position: fixed;
-      bottom: var(--space-4);
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 150;
-      width: calc(100% - 2rem);
-      max-width: 480px;
-      background-color: var(--color-bg);
-      border: 2px solid var(--color-text);
-      box-shadow: 8px 8px 0 var(--color-primary);
-      padding: var(--space-2);
-    }
-
-    .jump-nav-inner {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-    }
-
-    .jump-pills {
-      flex: 1;
-      display: flex;
-      gap: var(--space-1);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .jump-pills::-webkit-scrollbar { display: none; }
-
-    .jump-pill {
-      flex: 1;
-      text-align: center;
-      white-space: nowrap;
-      padding: var(--space-2);
-      font-family: var(--font-display);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--color-text-muted);
-      text-decoration: none;
-      border: 1px solid transparent;
-      transition: all var(--duration-fast) var(--ease-out);
-    }
-
-    .jump-pill:hover {
-      color: var(--color-text);
-      border-color: var(--color-border);
-    }
-
-    .jump-pill.active {
-      background-color: var(--color-primary);
-      color: var(--color-on-primary);
-    }
-
-    .jump-back-top {
-      flex-shrink: 0;
-      width: 2.5rem;
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--color-text);
-      color: var(--color-bg);
-      text-decoration: none;
-      transition: background-color var(--duration-fast) var(--ease-out);
-    }
-
-    .jump-back-top:hover {
-      background-color: var(--color-primary);
-    }
-
-    /* — Lightbox, restyled brutalist — */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 5, 5, 0.92);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      padding: var(--space-6);
-    }
-
-    .lightbox.active { display: flex; }
-
-    .lightbox-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 85vh;
-    }
-
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 85vh;
-      object-fit: contain;
-      border: 2px solid var(--color-on-primary);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -3rem;
-      right: 0;
-      width: 2.5rem;
-      height: 2.5rem;
-      background-color: var(--color-primary);
-      color: var(--color-on-primary);
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-caption {
-      position: absolute;
-      bottom: -2.5rem;
-      left: 0;
-      font-family: var(--font-display);
-      font-size: var(--text-sm);
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--color-on-primary);
-      letter-spacing: 0.03em;
-    }
-
-    /* — Prev / Next project row — */
-    .project-nav-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--space-4);
-      border-top: 2px solid var(--color-text);
-      padding-top: var(--space-8);
-      margin-top: var(--space-16);
-    }
-
-    /* Keep content from hiding behind the fixed jump nav on mobile */
-    @media (max-width: 767px) {
-      main { padding-bottom: 5rem; }
-    }
-  </style>
+  <title>Green's Blue Light Lounge — Brand Identity Case Study</title>
 </head>
-<body>
-    <div id="scroll-progress" aria-hidden="true"></div>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #000012; color: #FFFFFF; line-height: 1.6; -webkit-font-smoothing: antialiased;">
 
-  <header class="site-header">
-    <nav class="nav-container" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo" aria-label="Mainak Chakraborty — back to home">
-        <img src="assets/images/logo.png" alt="Mainak Chakraborty Logo" class="logo-image">
-        Mainak Chakraborty
+  <header style="position: sticky; top: 0; z-index: 100; background-color: #000012; border-bottom: 2px solid #333344; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+    <a href="index.html" style="color: #9CF400; font-weight: 800; font-size: 1.25rem; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;">
+      MAINAK PORTFOLIO
     </a>
-      <ul class="nav-links" role="list" id="nav-menu">
-        <li><a href="about.html">About</a></li>
-        <li class="dropdown">
-            <button type="button" aria-expanded="false" aria-controls="projects-menu" class="dropdown-toggle">
-              <span>Projects</span>
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <ul id="projects-menu" class="dropdown-menu" role="list">
-              <li><a href="orbit-scan.html">Orbit Scan</a></li>
-              <li><a href="HB.html">Habit Boost</a></li>
-              <li><a href="KWDS.html">Design System</a></li>
-              <li><a href="TU.html">Touro University</a></li>
-              <li><a href="work.html" class="view-all">View All Work ↗</a></li>
-            </ul>
-          </li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-      <div class="nav-controls" role="group">
-        <button type="button" class="theme-toggle" aria-label="Switch to dark mode">
-          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
-        </button>
-        <button type="button" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
-      </div>
+    <nav style="display: flex; gap: 1.5rem;">
+      <a href="work.html" style="color: #FFFFFF; text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Work</a>
+      <a href="about.html" style="color: #888899; text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">About</a>
     </nav>
   </header>
 
-  <main id="main-content">
+  <main style="max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem;">
+    
+    <nav aria-label="Breadcrumb" style="margin-bottom: 2rem;">
+      <a href="work.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #9CF400; text-decoration: none; font-weight: 700; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.5rem 1rem; border: 2px solid #9CF400; background-color: transparent;">
+        &larr; Back to Projects
+      </a>
+    </nav>
 
-    <section class="editorial-about">
-      <div class="container">
+    <header style="border-bottom: 2px solid #333344; padding-bottom: 2rem; margin-bottom: 3rem;">
+      <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); text-transform: uppercase; font-weight: 900; margin: 0 0 0.5rem 0; color: #FFFFFF; letter-spacing: -0.02em; line-height: 1.05;">
+        GBLL Brand System
+      </h1>
+      <p style="color: #9CF400; font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">
+        Crafting a cohesive visual identity &amp; style guide from scratch
+      </p>
+    </header>
 
-        <div class="work-header-row">
-          <h1 class="massive-about-title">TOURO UNIVERSITY GST</h1>
-        </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: start;">
+      
+      <aside style="background-color: #004101; border: 2px solid #9CF400; padding: 2rem; box-shadow: 8px 8px 0px #000000; color: #FFFFFF;">
+        <section style="margin-bottom: 1.5rem;">
+          <h3 style="color: #9CF400; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.25rem 0;">The Client</h3>
+          <p style="margin: 0; font-weight: 700; font-size: 1.1rem;">Green's Blue Light Lounge</p>
+        </section>
 
-        <div class="back-nav-container">
-          <a href="work.html" class="back-button">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            <span>Back to Work</span>
-          </a>
-        </div>
+        <section style="margin-bottom: 1.5rem;">
+          <h3 style="color: #9CF400; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.25rem 0;">Location</h3>
+          <p style="margin: 0; font-weight: 600; font-size: 0.95rem; color: #E0E0E0;">Upper West Side, New York City</p>
+        </section>
 
-        <div class="about-editorial-grid">
+        <section style="margin-bottom: 1.5rem;">
+          <h3 style="color: #9CF400; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.25rem 0;">My Role</h3>
+          <p style="margin: 0; font-weight: 700; font-size: 1rem;">Lead Graphic &amp; Visual Designer</p>
+        </section>
 
-          <aside class="about-sidebar">
-            <ul class="about-meta-list" role="list">
-              <li><strong>ROLE</strong><br>Multimedia Designer (Graduate Assistant)</li>
-              <li><strong>PERIOD</strong><br>Jun 2023 – Dec 2024</li>
-              <li><strong>TOOLS</strong><br>Premiere Pro, Photoshop, Illustrator, Figma</li>
-              <li>
-                <strong>OUTPUT</strong><br>
-                <span style="color: var(--color-primary); font-family: var(--font-display); font-size: 1.5rem;">2 Yrs of Multimedia Design</span> 
-              </li>
-            </ul>
-          </aside>
+        <section style="margin-bottom: 1.5rem;">
+          <h3 style="color: #9CF400; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.5rem 0;">What I Built</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; color: #E0E0E0;">
+            <li style="margin-bottom: 0.35rem; padding-left: 1rem; position: relative;">
+              <span style="position: absolute; left: 0; color: #9CF400;">—</span> Full Brand Identity Guide
+            </li>
+            <li style="margin-bottom: 0.35rem; padding-left: 1rem; position: relative;">
+              <span style="position: absolute; left: 0; color: #9CF400;">—</span> Logo Usage &amp; Clear Space Rules
+            </li>
+            <li style="margin-bottom: 0.35rem; padding-left: 1rem; position: relative;">
+              <span style="position: absolute; left: 0; color: #9CF400;">—</span> Typography &amp; Custom Layouts
+            </li>
+            <li style="margin-bottom: 0.35rem; padding-left: 1rem; position: relative;">
+              <span style="position: absolute; left: 0; color: #9CF400;">—</span> Print &amp; Digital Color Palettes
+            </li>
+            <li style="margin-bottom: 0.35rem; padding-left: 1rem; position: relative;">
+              <span style="position: absolute; left: 0; color: #9CF400;">—</span> Real-world Marketing Collateral
+            </li>
+          </ul>
+        </section>
 
-          <div class="about-main-content">
-
-            <div class="about-text-blocks">
-              <h2 class="editorial-subtitle full-width">Video, UX/UI Design and graphics for the graduate school of technology.</h2>
-
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-12);">
-                Over two years as Multimedia Designer for the Touro Graduate School of Technology, I produced spotlight and workshop videos, marketing banners, flyers, and digital graphics that supported student recruitment, faculty recognition, and campus events.
-              </p>
-
-              <div class="chapter-row" id="videos">
-                <span class="chapter-index">01</span>
-                <h3 class="chapter-heading">Student &amp; Faculty Spotlight Series</h3>
-              </div>
-
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
-                Produced and edited spotlight videos highlighting student achievements, personal journeys, and faculty contributions across GST programs. Full videos are hosted on the Touro GST website; thumbnails below link directly to the published series.
-              </p>
-
-              <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: var(--space-4);">Student / Alumni Spotlight</h4>
-              <div class="media-grid">
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/Student Alumini Spotlight Series Thumbnai_1.png" alt="Student Alumni Spotlight 1">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Spotlight Video</span>
-                    <h5 class="media-title">Alumni Spotlight, Episode 1</h5>
-                    <p class="media-desc">Highlighting student achievements and personal stories across GST programs.</p>
-                    <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer" class="media-link">Watch on Touro GST ↗</a>
-                  </div>
-                </article>
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/Student Alumini Spotlight Series Thumbnail 2 .png" alt="Student Alumni Spotlight 2">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Spotlight Video</span>
-                    <h5 class="media-title">Alumni Spotlight, Episode 2</h5>
-                    <p class="media-desc">Highlighting student achievements and personal stories across GST programs.</p>
-                    <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer" class="media-link">Watch on Touro GST ↗</a>
-                  </div>
-                </article>
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/Student Alumini Spoltlight Series 3 Thumbnail.png" alt="Student Alumni Spotlight 3">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Spotlight Video</span>
-                    <h5 class="media-title">Alumni Spotlight, Episode 3</h5>
-                    <p class="media-desc">Highlighting student achievements and personal stories across GST programs.</p>
-                    <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer" class="media-link">Watch on Touro GST ↗</a>
-                  </div>
-                </article>
-
-              </div>
-
-              <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: var(--space-4);">Faculty Spotlight</h4>
-              <div class="media-grid">
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/Faculty Spotlight Series 1 Thumbnail.png" alt="Faculty Spotlight 1">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Spotlight Video</span>
-                    <h5 class="media-title">Faculty Spotlight, Episode 1</h5>
-                    <p class="media-desc">Featuring faculty research and contributions to the GST community.</p>
-                    <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer" class="media-link">Watch on Touro GST ↗</a>
-                  </div>
-                </article>
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/Faculty Spotlight Series 2 Thumbnail.png" alt="Faculty Spotlight 2">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Spotlight Video</span>
-                    <h5 class="media-title">Faculty Spotlight, Episode 2</h5>
-                    <p class="media-desc">Featuring faculty research and contributions to the GST community.</p>
-                    <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer" class="media-link">Watch on Touro GST ↗</a>
-                  </div>
-                </article>
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/Faculty Spotlight Series 3 Thumbnail.png" alt="Faculty Spotlight 3">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Spotlight Video</span>
-                    <h5 class="media-title">Faculty Spotlight, Episode 3</h5>
-                    <p class="media-desc">Featuring faculty research and contributions to the GST community.</p>
-                    <a href="https://gst.touro.edu/whats-trending-at-GST/spotlight/spotlight.php#WMM" target="_blank" rel="noopener noreferrer" class="media-link">Watch on Touro GST ↗</a>
-                  </div>
-                </article>
-
-              </div>
-
-              <div class="chapter-row" id="graphics">
-                <span class="chapter-index">02</span>
-                <h3 class="chapter-heading">Marketing Materials, Banners &amp; Flyers</h3>
-              </div>
-
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
-                Designed event banners, workshop flyers, and digital marketing materials for Touro GST programs. Select any card to view it full resolution.
-              </p>
-
-              <div class="media-grid">
-
-                <button type="button" class="media-card graphics-clickable" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Dean Flyer.jpg', 'Event Banners — Dean Flyer')">
-                  <div class="media-thumb graphics-thumb">
-                    <img src="assets/images/projects/Touro University/Graphics/Dean Flyer.jpg" alt="Event Banners — Dean Flyer" loading="lazy">
-                    <span class="expand-icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Event Banner</span>
-                    <h5 class="media-title">Dean's Flyer</h5>
-                    <p class="media-desc">Dean's event flyer for university program promotion.</p>
-                  </div>
-                </button>
-
-                <button type="button" class="media-card graphics-clickable" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Python.jpg', 'Workshop Flyer — Python')">
-                  <div class="media-thumb graphics-thumb">
-                    <img src="assets/images/projects/Touro University/Graphics/Python.jpg" alt="Python Workshop Flyer" loading="lazy">
-                    <span class="expand-icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Workshop Flyer</span>
-                    <h5 class="media-title">Python Workshop</h5>
-                    <p class="media-desc">Promotional flyer for a Python programming workshop.</p>
-                  </div>
-                </button>
-
-                <button type="button" class="media-card graphics-clickable" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Project Management.jpg', 'Workshop Flyer — Project Management')">
-                  <div class="media-thumb graphics-thumb">
-                    <img src="assets/images/projects/Touro University/Graphics/Project Management.jpg" alt="Project Management Workshop Flyer" loading="lazy">
-                    <span class="expand-icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Workshop Flyer</span>
-                    <h5 class="media-title">Project Management</h5>
-                    <p class="media-desc">Promotional material for a project management workshop.</p>
-                  </div>
-                </button>
-
-                <button type="button" class="media-card graphics-clickable" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Navigating Digital Age.jpg', 'Workshop Flyer — Navigating the Digital Age')">
-                  <div class="media-thumb graphics-thumb">
-                    <img src="assets/images/projects/Touro University/Graphics/Navigating Digital Age.jpg" alt="Navigating Digital Age Flyer" loading="lazy">
-                    <span class="expand-icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Workshop Flyer</span>
-                    <h5 class="media-title">Navigating the Digital Age</h5>
-                    <p class="media-desc">Design for a workshop on navigating today's digital landscape.</p>
-                  </div>
-                </button>
-
-                <button type="button" class="media-card graphics-clickable" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/Chat GPT 201.jpg', 'Workshop Flyer — ChatGPT 201')">
-                  <div class="media-thumb graphics-thumb">
-                    <img src="assets/images/projects/Touro University/Graphics/Chat GPT 201.jpg" alt="ChatGPT 201 Workshop Flyer" loading="lazy">
-                    <span class="expand-icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Workshop Flyer</span>
-                    <h5 class="media-title">ChatGPT 201</h5>
-                    <p class="media-desc">Promotional flyer for an advanced ChatGPT workshop.</p>
-                  </div>
-                </button>
-
-                <button type="button" class="media-card graphics-clickable" onclick="openLightbox('assets/img/Projects/Touro University/Graphics/AI Ethics.jpg', 'Workshop Flyer — AI Ethics')">
-                  <div class="media-thumb graphics-thumb">
-                    <img src="assets/images/projects/Touro University/Graphics/AI Ethics.jpg" alt="AI Ethics Workshop Flyer" loading="lazy">
-                    <span class="expand-icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Workshop Flyer</span>
-                    <h5 class="media-title">AI Ethics</h5>
-                    <p class="media-desc">Awareness campaign design for an AI ethics workshop.</p>
-                  </div>
-                </button>
-
-              </div>
-
-              <div class="chapter-row" id="academic">
-                <span class="chapter-index">03</span>
-                <h3 class="chapter-heading">Coursework: Timing &amp; Narrative</h3>
-              </div>
-
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
-                Coursework exploring how timing and audio shape a story. These projects called for different editing approaches: one relies on quick cuts to build adrenaline, the other uses a slower tempo to reflect patience and focus.
-              </p>
-
-              <div class="media-grid">
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/AP/Thumbnail/Parkour.png" alt="Above All Extreme Air Sports - Parkour">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Academic Project</span>
-                    <h5 class="media-title">Above All Extreme Air Sports — Parkour</h5>
-                    <p class="media-desc">A short profile of a parkour athlete reflecting on fear and mental limits, balancing fast-paced urban stunts against his personal story of moving from Bosnia to the U.S.</p>
-                    <a href="https://drive.google.com/file/d/125Bbwnw3dmPPqNkKbiYNudCef-P9FJYp/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="media-link">Watch Full Video ↗</a>
-                  </div>
-                </article>
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/AP/Thumbnail/LOR.png" alt="Lord of the Rings Strategy Battle Game">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Academic Project</span>
-                    <h5 class="media-title">Lord of the Rings — Strategy Battle Game</h5>
-                    <p class="media-desc">A documentary-style look at a miniature painter. Close-up shots capture the artist's process and the patience required to bring figures to life.</p>
-                    <a href="https://drive.google.com/file/d/1Rs0IcbQ3doX1sNe55QRlf6IcO9sthb18/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="media-link">Watch Full Video ↗</a>
-                  </div>
-                </article>
-
-                <article class="media-card">
-                  <div class="media-thumb">
-                    <img src="assets/images/projects/Touro University/Videos/AP/Thumbnail/MB Thumbnail.png" alt="Muscle Blazee Promo Ad">
-                    <span class="play-icon" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <span class="media-tag">Academic Project</span>
-                    <h5 class="media-title">Muscle Blazee Promo Ad</h5>
-                    <p class="media-desc">Developed for a marketing and multimedia academic project. The campaign focuses on the dual necessity of intense physical training and strategic recovery.</p>
-                    <a href="https://drive.google.com/file/d/1_1qFkCAe4BpKGGn9GhjMrbqVcsGAeN3r/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="media-link">Watch Full Video ↗</a>
-                  </div>
-                </article>
-
-              </div>
-
-              <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: var(--space-4);">Brand Identity &amp; Packaging</h4>
-
-              <div class="feature-panel">
-                <div class="feature-image" style="display: flex; align-items: center; justify-content: center; background-color: #F4F4F4; padding: var(--space-4);">
-                  <img src="assets/images/projects/CS/Candle Soda Thumbnail.png" alt="Candle Soda Branding" style="width: 100%; max-height: 100%; object-fit: contain; position: relative;">
-                </div>
-                <div class="feature-content">
-                  <span class="media-tag">Academic Project</span>
-                  <h4 style="font-family: var(--font-display); font-size: 1.4rem; text-transform: uppercase; color: var(--color-text);">Candle Soda</h4>
-                  <p class="secondary-paragraph">A comprehensive brand identity project featuring logo design, color theory, and packaging mockups for a modern soda brand. Explores how a visual system translates across different physical mediums.</p>
-                  <a href="CS.html" class="cta-button" style="margin-top: var(--space-4);">View Project</a>
-                </div>
-              </div>
-
-              <div class="feature-panel">
-                <div class="feature-image" style="display: flex; align-items: center; justify-content: center; background-color: var(--color-surface);">
-                  <img src="assets/images/projects/Touro University/Headshot_Final_White.png" alt="Mainak Chakraborty" style="object-fit: contain; padding: var(--space-8); position: relative; height: auto;">
-                </div>
-                <div class="feature-content">
-                  <span class="media-tag">University Recognition</span>
-                  <h4 style="font-family: var(--font-display); font-size: 1.4rem; text-transform: uppercase; color: var(--color-text);">Featured by Touro GST</h4>
-                  <p class="secondary-paragraph">Touro Graduate School of Technology featured my profile, highlighting my academic journey, creative work, and contributions as a Multimedia Designer and graduate student.</p>
-                  <a href="https://gst.touro.edu/whats-trending-at-GST/graduate-assistant.php" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin-top: var(--space-4);">Read My Touro Story</a>
-                </div>
-              </div>
-
-              <div class="project-nav-row">
-                <a href="work.html" class="back-button">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                  <span>All Projects</span>
-                </a>
-                <a href="orbit-scan.html" class="back-button">
-                  <span>Next Project</span>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-
-            </div>
+        <section>
+          <h3 style="color: #9CF400; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.5rem 0;">Software Toolkit</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="background-color: #000012; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid #9CF400;">Illustrator</span>
+            <span style="background-color: #000012; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid #9CF400;">InDesign</span>
+            <span style="background-color: #000012; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid #9CF400;">Photoshop</span>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      </aside>
 
+      <article style="display: flex; flex-direction: column; gap: 2.5rem;">
+        
+        <section>
+          <h2 style="font-size: 1.5rem; text-transform: uppercase; color: #FFFFFF; margin: 0 0 1rem 0; border-bottom: 2px solid #333344; padding-bottom: 0.5rem;">
+            The Story Behind the Project
+          </h2>
+          <p style="font-size: 1.15rem; color: #FFFFFF; line-height: 1.6; margin: 0 0 1rem 0; font-weight: 500;">
+            When Green’s Blue Light Lounge was preparing to open in Manhattan's Upper West Side, they needed more than just a nice logo—they needed a distinct visual system that balanced the relaxed energy of a neighborhood lounge with the sleekness of a high-end cocktail spot.
+          </p>
+          <p style="font-size: 1rem; color: #B0B0C0; line-height: 1.6; margin: 0;">
+            My goal was to design a comprehensive brand identity system that could scale effortlessly. Whether rendered on a tiny mobile app screen, printed on a textured menu, or scaled up for a giant outdoor billboard, every piece of media had to feel unmistakably "GBLL."
+          </p>
+        </section>
+
+        <section style="border-top: 2px solid #333344; padding-top: 2rem;">
+          <h2 style="font-size: 1.5rem; text-transform: uppercase; color: #FFFFFF; margin: 0 0 1.5rem 0;">
+            How I Approached the Execution
+          </h2>
+
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #222233;">
+            <h3 style="color: #9CF400; font-size: 1.1rem; text-transform: uppercase; margin: 0 0 0.5rem 0;">
+              1. Protecting the Logo with Clear Rules
+            </h3>
+            <p style="color: #B0B0C0; font-size: 0.95rem; margin: 0;">
+              A logo is only as strong as its consistency. I built a strict clear-space boundary (using the letter height 'B' as the unit of measure) so the logomark always gets breathing room. I also established clear "Do’s and Don’ts" to prevent accidental stretching, font swaps, or low-contrast placement.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #222233;">
+            <h3 style="color: #9CF400; font-size: 1.1rem; text-transform: uppercase; margin: 0 0 0.5rem 0;">
+              2. Dialing in a High-Contrast Palette
+            </h3>
+            <p style="color: #B0B0C0; font-size: 0.95rem; margin: 0;">
+              To give the venue its signature nighttime aesthetic, I paired deep, dark greens and moody blacks with a vibrant electric neon accent (<code style="color: #9CF400;">#9CF400</code>). I documented exact RGB, HEX, and CMYK color values to guarantee the neon pops on screen and prints accurately in physical media.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="color: #9CF400; font-size: 1.1rem; text-transform: uppercase; margin: 0 0 0.5rem 0;">
+              3. Bringing the Brand to Life Across Touchpoints
+            </h3>
+            <p style="color: #B0B0C0; font-size: 0.95rem; margin: 0;">
+              Guidelines are only useful if they work in the real world. I translated the brand rules into tangible assets: custom food and drink menus, physical signboards, table tents, branded apparel, dinnerware, and intuitive mobile app mockups for reservations and ordering.
+            </p>
+          </div>
+        </section>
+
+        <section style="border-top: 2px solid #333344; padding-top: 2rem;">
+          <h2 style="font-size: 1.5rem; text-transform: uppercase; color: #FFFFFF; margin: 0 0 1.5rem 0;">
+            Project Highlights &amp; Artifacts
+          </h2>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+            
+            <figure style="margin: 0; background-color: #08081A; border: 2px solid #333344; padding: 1rem;">
+              <div style="width: 100%; height: 180px; background-color: #004101; display: flex; align-items: center; justify-content: center; color: #9CF400; font-weight: 800; border: 1px solid #9CF400;">
+                [ BRAND MANUAL ]
+              </div>
+              <figcaption style="margin-top: 0.75rem;">
+                <span style="color: #9CF400; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: block;">Overview</span>
+                <strong style="color: #FFFFFF; font-size: 1rem; display: block; margin-top: 0.2rem;">The Style Guide Book</strong>
+                <p style="color: #888899; font-size: 0.85rem; margin: 0.25rem 0 0 0;">Setting the strategic foundation, brand voice, and core visual rules.</p>
+              </figcaption>
+            </figure>
+
+            <figure style="margin: 0; background-color: #08081A; border: 2px solid #333344; padding: 1rem;">
+              <div style="width: 100%; height: 180px; background-color: #000012; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 800; border: 1px solid #333344;">
+                [ LOGO SYSTEMS ]
+              </div>
+              <figcaption style="margin-top: 0.75rem;">
+                <span style="color: #9CF400; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: block;">Brand Safety</span>
+                <strong style="color: #FFFFFF; font-size: 1rem; display: block; margin-top: 0.2rem;">Clear Space &amp; Usage</strong>
+                <p style="color: #888899; font-size: 0.85rem; margin: 0.25rem 0 0 0;">Proportional grid guides and anti-distortion rules for team handoffs.</p>
+              </figcaption>
+            </figure>
+
+            <figure style="margin: 0; background-color: #08081A; border: 2px solid #333344; padding: 1rem;">
+              <div style="width: 100%; height: 180px; background-color: #004101; display: flex; align-items: center; justify-content: center; color: #9CF400; font-weight: 800; border: 1px solid #9CF400;">
+                [ TYPE &amp; COLOR ]
+              </div>
+              <figcaption style="margin-top: 0.75rem;">
+                <span style="color: #9CF400; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: block;">Design Foundations</span>
+                <strong style="color: #FFFFFF; font-size: 1rem; display: block; margin-top: 0.2rem;">Palette &amp; Typography</strong>
+                <p style="color: #888899; font-size: 0.85rem; margin: 0.25rem 0 0 0;">Pairing display typography (Gagalin) with custom scripts and color codes.</p>
+              </figcaption>
+            </figure>
+
+            <figure style="margin: 0; background-color: #08081A; border: 2px solid #333344; padding: 1rem;">
+              <div style="width: 100%; height: 180px; background-color: #000012; display: flex; align-items: center; justify-content: center; color: #9CF400; font-weight: 800; border: 1px solid #333344;">
+                [ REAL WORLD ]
+              </div>
+              <figcaption style="margin-top: 0.75rem;">
+                <span style="color: #9CF400; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: block;">Application</span>
+                <strong style="color: #FFFFFF; font-size: 1rem; display: block; margin-top: 0.2rem;">Collateral &amp; Mockups</strong>
+                <p style="color: #888899; font-size: 0.85rem; margin: 0.25rem 0 0 0;">Large-format billboards, physical menus, and digital app touchpoints.</p>
+              </figcaption>
+            </figure>
+
+          </div>
+        </section>
+
+      </article>
+    </div>
   </main>
 
-  
-  <footer class="site-footer">
-    <div class="container">
-      
-      <div class="footer-left" style="display: flex; align-items: center; gap: var(--space-2);">
-        <p>&copy; <span id="footer-year">2026</span> Mainak Chakraborty.</p>
-        <span class="footer-divider" aria-hidden="true">|</span>
-        <div class="footer-signature" style="display: flex; align-items: center; gap: var(--space-1);">
-          <span>Made with</span>
-          <img src="assets/images/Heart Brain2.png" alt="heart and brain icon" class="signature-icon" width="24" height="24">
-          <span>purpose &amp; lots of caffeine 😉</span>
-        </div>
-      </div>
-
-      <div class="footer-right" style="display: flex; align-items: center; gap: var(--space-6);">
-        <a href="accessibility.html" aria-label="View Accessibility Statement">Accessibility</a>
-        <a href="#main-content" aria-label="Scroll back to the top of the page">Back to top ↑</a>
-      </div>
-      
-    </div>
-</footer>
-
-
-  <nav class="jump-nav" aria-label="Section navigation">
-    <div class="jump-nav-inner">
-      <div class="jump-pills">
-        <a href="#videos" class="jump-pill">Spotlights</a>
-        <a href="#graphics" class="jump-pill">Graphics</a>
-        <a href="#academic" class="jump-pill">Academic</a>
-      </div>
-      <a href="#main-content" class="jump-back-top" aria-label="Back to top">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-      </a>
-    </div>
-  </nav>
-
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <div class="lightbox-content">
-      <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
-      <img id="lightbox-img" src="" alt="">
-      <p id="lightbox-caption" class="lightbox-caption"></p>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="assets/script.js"></script>
-
-  <script>
-    // Lightbox
-    function openLightbox(src, caption) {
-      var lb = document.getElementById('lightbox');
-      var img = document.getElementById('lightbox-img');
-      var cap = document.getElementById('lightbox-caption');
-      img.src = src;
-      img.alt = caption;
-      cap.textContent = caption;
-      lb.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    document.getElementById('lightbox').addEventListener('click', function (e) {
-      if (e.target === this) closeLightbox();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    // Jump nav active state
-    (function () {
-      var pills = document.querySelectorAll('.jump-nav .jump-pill');
-      var sectionIds = ['videos', 'graphics', 'academic'];
-      var sections = sectionIds.map(function (id) { return document.getElementById(id); });
-      if (!sections.length) return;
-
-      window.addEventListener('scroll', function () {
-        var scrollY = window.scrollY + window.innerHeight * 0.3;
-        var currentIndex = 0;
-        sections.forEach(function (section, i) {
-          if (section && section.offsetTop <= scrollY) currentIndex = i;
-        });
-        pills.forEach(function (p) { p.classList.remove('active'); });
-        if (pills[currentIndex]) pills[currentIndex].classList.add('active');
-      }, { passive: true });
-    })();
-  </script>
+  <footer style="border-top: 2px solid #333344; margin-top: 4rem; padding: 2rem 1.5rem; text-align: center; color: #888899; font-size: 0.875rem;">
+    <p style="margin: 0 0 0.5rem 0;">Designed by Mainak Chakraborty</p>
+    <p style="margin: 0; color: #555566;">Portfolio Project Case Study</p>
+  </footer>
 
 </body>
 </html>

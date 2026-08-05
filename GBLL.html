@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>GBLL Brand System Case Study — Mainak Chakraborty</title>
+  <meta name="description" content="A comprehensive visual identity and presentation case study on Green's Blue Light Lounge by Mainak Chakraborty.">
+  
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('color-scheme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
+
+  <style>
+  /* ── Page-Level Theme Overrides: Shifting Accent Color to GBLL Brand Green ── */
+  :root {
+    --color-primary: #9CF400; /* GBLL Brand Neon Green */
+    --color-primary-dark: #004101; /* GBLL Brand Dark Green */
+    --color-on-primary: #000012; /* GBLL Black for high-contrast text on primary elements */
+  }
+
+  /* Styling for local green accent highlights */
+  .gbll-metric {
+    color: var(--color-primary-dark) !important;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+
+  [data-theme="dark"] .gbll-metric {
+    color: var(--color-primary) !important;
+  }
+
+  /* Color swatch inline preview box */
+  .color-swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .swatch-card {
+    border: 1px solid var(--color-border);
+    padding: var(--space-3);
+    background-color: var(--color-surface);
+  }
+
+  .swatch-color {
+    height: 50px;
+    width: 100%;
+    margin-bottom: var(--space-2);
+    border: 1px solid var(--color-border);
+  }
+
+  /* Brutalist CTA Button Styling for PDF Link */
+  .pdf-cta-box {
+    border: 2px solid var(--color-text);
+    background-color: var(--color-surface);
+    padding: var(--space-6);
+    margin-bottom: var(--space-12);
+    box-shadow: 6px 6px 0 var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .pdf-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: 2px solid var(--color-text);
+    transition: all var(--duration-fast) var(--ease-out);
+    width: fit-content;
+  }
+
+  .pdf-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border-color: var(--color-text);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--color-text);
+  }
+</style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Main Site Header -->
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Mainak Chakraborty — back to home">
+        <img src="assets/images/logo.png" alt="Mainak Chakraborty Logo" class="logo-image">
+        Mainak Chakraborty
+      </a>
+      <ul class="nav-links" role="list" id="nav-menu">
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+          <button type="button" aria-expanded="false" aria-controls="projects-menu" class="dropdown-toggle">
+            <span>Projects</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          
+          <ul id="projects-menu" class="dropdown-menu" role="list">
+            <li><a href="gbll.html">GBLL Brand System</a></li>
+            <li><a href="orbit-scan.html">Orbit Scan</a></li>
+            <li><a href="HB.html">Habit Boost</a></li>
+            <li><a href="KWDS.html">Design System</a></li>
+            <li><a href="TU.html">Touro University</a></li>
+            <li><a href="work.html" class="view-all">View All Work ↗</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-controls" role="group">
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+        <button type="button" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Body -->
+  <main id="main-content">
+
+    <section class="editorial-about">
+      <div class="container">
+        
+        <div class="work-header-row">
+          <h1 class="massive-about-title">GBLL BRAND SYSTEM</h1>
+        </div>
+
+        <div class="back-nav-container">
+          <a href="work.html" class="back-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Back to Work</span>
+          </a>
+        </div>
+
+        <div class="about-editorial-grid">
+          
+          <!-- Metadata Sidebar -->
+          <aside class="about-sidebar">
+            <ul class="about-meta-list" role="list">
+              <li><strong>ROLE</strong><br>Lead Visual &amp; Graphic Designer</li>
+              <li><strong>TIMELINE</strong><br>May 2024</li>
+              <li><strong>TOOLS</strong><br>Adobe Illustrator, InDesign, Photoshop</li>
+              <li>
+                <strong>IMPACT</strong><br>
+                <span class="gbll-metric">100%</span> Brand Alignment<br>
+                <span class="gbll-metric">8+</span> Collateral Assets
+              </li>
+              <li>
+                <strong>DOCUMENT</strong><br>
+                <a href="assets/images/projects/GBLL/GBLL Final Brand Portfolio_Mainak.pdf" target="_blank" style="color: var(--color-primary-dark); font-weight: 700; text-decoration: underline;">Download Full PDF ↗</a>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- Main Case Study Content -->
+          <div class="about-main-content">
+            
+            <div class="about-text-blocks">
+              <h2 class="editorial-subtitle full-width">Building a flexible visual identity &amp; style guide from the ground up.</h2>
+              
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+                Green’s Blue Light Lounge set out to reimagine the Upper West Side bar and dining experience by blending the sophistication of a modern cocktail lounge with the warmth of a neighborhood restaurant. I designed a comprehensive brand system and visual style guide to ensure visual consistency across print menus, signage, marketing touchpoints, and digital interfaces[cite: 1].
+              </p>
+
+              <!-- Main Hero Banner -->
+              <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-12); overflow: hidden; background-color: var(--color-surface);">
+                <img src="assets/images/projects/GBLL/Cover_Page.png" alt="GBLL Brand Identity Guidelines cover page" style="width: 100%; height: auto; display: block;">
+              </div>
+
+              <!-- 01. Discover / Problem -->
+              <h3 class="table-heading" style="font-size: 1.5rem;">01. The Context</h3>
+              <div class="text-columns" style="margin-bottom: var(--space-8);">
+                <p class="secondary-paragraph">
+                  A high-end restaurant and lounge requires an identity that scales gracefully across contrasting environments—from low-lit ambient interior menus to bright outdoor billboards and small mobile screens. 
+                </p>
+                <p class="secondary-paragraph">
+                  Without strict clear-space metrics, locked typographic hierarchies, and cross-media color standards (CMYK vs RGB), visual brands quickly become diluted when handed off to external vendors or production teams.
+                </p>
+              </div>
+
+              <div class="about-capabilities" style="margin-bottom: var(--space-12);">
+                <h3 class="table-heading">Identified Design Objectives</h3>
+                <div class="capability-row">
+                  <span class="cap-number" style="color: var(--color-primary-dark);">01</span>
+                  <span class="cap-title">Vector Precision &amp; Safety</span>
+                  <span class="cap-desc">Define clear-space boundaries and usage prohibitions to guard logo integrity.</span>
+                </div>
+                <div class="capability-row">
+                  <span class="cap-number" style="color: var(--color-primary-dark);">02</span>
+                  <span class="cap-title">Cross-Media Color Standards</span>
+                  <span class="cap-desc">Document exact HEX, RGB, and CMYK color formulas for print and digital publishing.</span>
+                </div>
+                <div class="capability-row">
+                  <span class="cap-number" style="color: var(--color-primary-dark);">03</span>
+                  <span class="cap-title">Collateral Ecosystem</span>
+                  <span class="cap-desc">Apply brand rules to menus, stationery, outdoor ads, dinnerware, and app screens.</span>
+                </div>
+              </div>
+
+              <!-- 02. Define / Strategy & Logo -->
+              <h3 class="table-heading" style="font-size: 1.5rem;">02. Logo Architecture &amp; Rules</h3>
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+                To maintain logomark clarity against dark interior backgrounds and bright digital displays, I established a strict clear-space metric based on the letter height <strong>'B'</strong>. No text or visual graphics may invade this perimeter.
+              </p>
+             
+              <div class="persona-card">
+                <h4 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-2); color: var(--color-text);">Brand Governance (Do's &amp; Don'ts)</h4>
+                
+                <p class="secondary-paragraph" style="margin-bottom: var(--space-4); font-style: italic;">
+                  "Locking down core logo parameters prevents accidental distortion during fast production cycles."
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                  <div>
+                    <strong style="color: var(--color-text);">Logomark Do's:</strong>
+                    <ul class="secondary-paragraph" style="margin-top: var(--space-2); padding-left: var(--space-4);">
+                      <li>Scale proportionally at all times.</li>
+                      <li>Use official color formulas on approved backdrops.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <strong style="color: var(--color-text);">Prohibited Misuses:</strong>
+                    <ul class="secondary-paragraph" style="margin-top: var(--space-2); padding-left: var(--space-4);">
+                      <li>Do not squish, stretch, or alter logo proportions.</li>
+                      <li>Do not swap fonts or change logomark placement.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-12); overflow: hidden; background-color: var(--color-surface);">
+                <img src="assets/images/projects/GBLL/Logo_Usage.png" alt="GBLL Logo Clear Space and Rules Diagram" style="width: 100%; height: auto; display: block;">
+              </div>
+
+              <!-- 03. Ideate / Color & Typography -->
+              <h3 class="table-heading" style="font-size: 1.5rem;">03. Color &amp; Typography System</h3>
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+                To give the lounge its signature nighttime look, I paired moody blacks and deep greens with a vibrant neon green accent (<code style="color: var(--color-primary-dark); font-weight: 700;">#9CF400</code>). Headlines use <strong>Gagalin</strong> for bold presence, while custom script accents (<strong>Brush Script MT</strong>) add warmth to dining menus.
+              </p>
+              
+              <div class="color-swatch-grid" style="margin-bottom: var(--space-8);">
+                <div class="swatch-card">
+                  <div class="swatch-color" style="background-color: #000012;"></div>
+                  <strong style="font-size: 0.85rem; color: var(--color-text);">GBLL Black</strong><br>
+                  <span style="font-size: 0.75rem; color: var(--color-text-muted);">#000012</span>
+                </div>
+                <div class="swatch-card">
+                  <div class="swatch-color" style="background-color: #004101;"></div>
+                  <strong style="font-size: 0.85rem; color: var(--color-text);">Dark Green</strong><br>
+                  <span style="font-size: 0.75rem; color: var(--color-text-muted);">#004101</span>
+                </div>
+                <div class="swatch-card">
+                  <div class="swatch-color" style="background-color: #9CF400;"></div>
+                  <strong style="font-size: 0.85rem; color: var(--color-text);">GBLL Neon</strong><br>
+                  <span style="font-size: 0.75rem; color: var(--color-text-muted);">#9CF400</span>
+                </div>
+                <div class="swatch-card">
+                  <div class="swatch-color" style="background-color: #FFFFFF; border: 1px solid var(--color-border);"></div>
+                  <strong style="font-size: 0.85rem; color: var(--color-text);">GBLL White</strong><br>
+                  <span style="font-size: 0.75rem; color: var(--color-text-muted);">#FFFFFF</span>
+                </div>
+              </div>
+
+              <figure style="margin: 0; margin-bottom: var(--space-12);">
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/GBLL/TYPOGRAPHY.png" alt="GBLL Primary Typography Hierarchy" style="width: 100%; height: auto; display: block;">
+                </div>
+                <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-3); font-style: italic; border-left: 2px solid var(--color-primary); padding-left: var(--space-3);">
+                  Setting type hierarchy. Combining Gagalin for display headers with Brush Script MT for accent lettering provides visual structure across print collateral.
+                </figcaption>
+              </figure>
+
+              <!-- 04. Iterate / Real World Applications -->
+              <h3 class="table-heading" style="font-size: 1.5rem;">04. Real-World Applications</h3>
+              
+              <div style="margin-bottom: var(--space-8);">
+                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Stationery &amp; Business Collateral</h4>
+                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+                  Corporate envelopes, business cards, and official letterhead designs feature dark green header bands and high-contrast logo placements.
+                </p>
+                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/GBLL/Mockup_1.png" alt="GBLL Stationery Mockup" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+
+              <div style="margin-bottom: var(--space-8);">
+                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Food &amp; Beverage Menus</h4>
+                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+                  Multi-column menu spreads designed with clean typographic spacing ensure fast reading under warm, low-light lounge lighting.
+                </p>
+                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/GBLL/Mockup_Menu_2.png" alt="GBLL Menu Layout" style="width: 100%; height: auto; display: block;">
+                </div>
+                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+                    <img src="assets/images/projects/GBLL/Mockup_4.png" alt="GBLL Menu Layout" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+
+              <div style="margin-bottom: var(--space-12);">
+                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Large-Format Billboard &amp; Merchandise</h4>
+                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+                  High-impact billboard layouts and branded apparel showcase clear visual hierarchy optimized for fast recognition from a distance.
+                </p>
+                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/GBLL/Mockup_3.png" alt="GBLL Outdoor Billboard Presentation" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+
+              <!-- 05. Prototype / Digital App UI -->
+              <h3 class="table-heading" style="font-size: 1.5rem;">05. Digital App Interface</h3>
+              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+                I translated the visual guidelines into a mobile application UI, extending the brand to online reservations, digital waitlists, and interactive food ordering.
+              </p>
+
+              <figure style="margin: 0; margin-bottom: var(--space-12);">
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                  <img src="assets/images/projects/GBLL/Mockup_5_Screens.png" alt="GBLL Mobile App UI Screens" style="width: 100%; height: auto; display: block;">
+                </div>
+                
+                <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-3); font-style: italic; border-left: 2px solid var(--color-primary); padding-left: var(--space-3);">
+                  Extending the style guide to digital UI. Electric neon accents highlight key calls to action like "Order Now" and "Join Waitlist".
+                </figcaption>
+                <br>
+
+                <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                    <img src="assets/images/projects/GBLL/Mockup_6_Screens.png" alt="GBLL Mobile App UI Screens" style="width: 100%; height: auto; display: block;">
+                </div>
+              </figure>
+
+              <!-- PDF Document Link Box -->
+              <div class="pdf-cta-box">
+                <div>
+                  <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin: 0 0 0.5rem 0; color: var(--color-text);">Full Brand Guidelines Document</h3>
+                  <p class="secondary-paragraph" style="margin: 0;">
+                    Explore the complete 26-page brand manual including full grid calculations, vector logo construction diagrams, collateral mockups, and printing specifications[cite: 1].
+                  </p>
+                </div>
+                <a href="assets/images/projects/GBLL/GBLL Final Brand Portfolio_Mainak.pdf" target="_blank" class="pdf-button">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                    <polyline points="9 15 12 18 15 15"></polyline>
+                  </svg>
+                  View Brand Book (PDF) ↗
+                </a>
+              </div>
+
+              <!-- 06. Reflect -->
+              <h3 class="table-heading" style="font-size: 1.5rem;">06. Reflect</h3>
+              <div class="text-columns" style="margin-bottom: var(--space-8);">
+                <p class="secondary-paragraph">
+                  Designing the GBLL brand identity highlighted the importance of clear governance when producing collateral across print, merchandise, outdoor advertising, and mobile screens.
+                </p>
+                <p class="secondary-paragraph">
+                  By standardizing color formulas, clear-space boundaries, and typographic rules early, production teams can build marketing and pitch materials efficiently while maintaining brand integrity.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Main Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-left" style="display: flex; align-items: center; gap: var(--space-2);">
+        <p>&copy; <span id="footer-year">2026</span> Mainak Chakraborty.</p>
+        <span class="footer-divider" aria-hidden="true">|</span>
+        <div class="footer-signature" style="display: flex; align-items: center; gap: var(--space-1);">
+          <span>Made with</span>
+          <img src="assets/images/Heart Brain2.png" alt="heart and brain icon" class="signature-icon" width="24" height="24">
+          <span>purpose &amp; lots of caffeine 😉</span>
+        </div>
+      </div>
+
+      <div class="footer-right" style="display: flex; align-items: center; gap: var(--space-6);">
+        <a href="accessibility.html" aria-label="View Accessibility Statement">Accessibility</a>
+        <a href="#main-content" aria-label="Scroll back to the top of the page">Back to top ↑</a>
+      </div>
+      
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/script.js"></script>
+
+</body>
+</html>
