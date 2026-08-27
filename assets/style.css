@@ -1072,7 +1072,7 @@
    /* Creating a Common Region for the sidebar */
 .about-meta-list {
   background-color: var(--color-surface); /* Subtle off-background color */
-  padding: var(--space-6);
+  padding: var(--space-4);
   border-radius: 8px;
   border: 1px solid var(--color-border);
   display: flex;
@@ -1107,7 +1107,7 @@
    
    @media (min-width: 768px) {
    .about-editorial-grid {
-    grid-template-columns: 3fr 9fr; 
+    grid-template-columns: 220px 1fr; 
     gap: var(--space-16);
    }
    }
