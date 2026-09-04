@@ -68,6 +68,10 @@
    .skip-link:focus-visible {
      top: var(--space-4);
    }
+
+
+
+   
    
    /* ============================================================
       Scroll Progress Bar
@@ -757,8 +761,8 @@ h3 {
   .about-lead {
     font-size: var(--text-md);
     color: var(--color-text-muted);
-    max-width: 65ch;
-    line-height: var(--leading-relaxed);
+    max-width: 100%; 
+  line-height: var(--leading-relaxed);
   }
   
   .about-profile-grid {
@@ -822,7 +826,7 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
-    max-width: 65ch;
+    max-width: 100%;
     color: var(--color-text-muted);
     line-height: var(--leading-relaxed);
   }
@@ -873,6 +877,7 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
+    max-width: 100%;
   }
   
   .personal-highlight {
@@ -1029,25 +1034,26 @@ h3 {
      60% { transform: translateY(-4px); }
    }
 
-   /* ============================================================
+
+/* ============================================================
    Paragraph Typography & Readability Fix
    ============================================================ */
 
-p, .secondary-paragraph, .about-story-copy p {
-  /* Enforces a clean, highly readable base size (1rem to 1.125rem) */
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
-  
-  /* Ensures comfortable line spacing for readability */
-  line-height: var(--leading-relaxed);
-  
-  /* Locks the line width to prevent awkward, jagged mid-line breaks */
-  max-width: var(--measure); 
-  
-  /* Prevents harsh, clipped word wrapping */
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-   
+   p, .secondary-paragraph, .about-story-copy p, .personal-story p {
+    /* THE FIX: Increased the clamp values so the font scales up nicely on larger screens */
+    font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+    
+    /* Ensures comfortable line spacing for readability */
+    line-height: var(--leading-relaxed);
+    
+    /* THE FIX: Replaced var(--measure) with 100% so text flows naturally to the edge of its grid container */
+    max-width: 100%; 
+    
+    /* Prevents harsh, clipped word wrapping */
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
    /* 11. Hero Layout
       ---------------------------------------------------------- */
    
@@ -1376,210 +1382,67 @@ p, .secondary-paragraph, .about-story-copy p {
    background-color: var(--color-bg);
    }
    
-   .about-header-row {
-   margin-bottom: var(--space-16);
-   border-bottom: 2px solid var(--color-text);
-   padding-bottom: var(--space-8);
-   }
-   
-   .massive-about-title {
-   font-family: var(--font-display);
-   font-size: clamp(3rem, 7vw, 5rem);
-   line-height: 0.85;
-   text-transform: uppercase;
-   letter-spacing: -0.02em;
-   color: transparent;
-   -webkit-text-stroke: 2px var(--color-text);
-   margin: 0;
-   }
-   
-   .about-editorial-grid {
-   display: grid;
-   grid-template-columns: 1fr;
-   gap: var(--space-12);
-   }
+   /* ============================================================
+   Clean About Page (In a Nutshell - Split Layout)
+   ============================================================ */
 
-   /* Creating a Common Region for the sidebar */
-.about-meta-list {
-  background-color: var(--color-surface); /* Subtle off-background color */
-  padding: var(--space-4);
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+.clean-about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-24);
+  align-items: center; 
 }
 
-.about-meta-list li {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  font-size: var(--text-sm);
-}
-
-.about-meta-list strong {
-  font-family: var(--font-display);
-  color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.75rem;
-}
-
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background-color: #22c55e; 
-  border-radius: 50%;
-  margin-right: 6px;
-  animation: pulse 2s infinite;
-  }
-   
-   @media (min-width: 768px) {
-   .about-editorial-grid {
-    grid-template-columns: 220px 1fr; 
-    gap: var(--space-16);
-   }
-   }
-   
-   .about-sidebar {
-   position: sticky;
-   top: calc(var(--nav-height) + var(--space-8));
-   align-self: start;
-   }
-   
-
-   
-   
-   
-   @keyframes pulse {
-   0% { 
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); 
-   }
-   70% { 
-    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); 
-   }
-   100% { 
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); 
-   }
-   }
-   
-   .about-main-content {
-   display: flex;
-   flex-direction: column;
-   gap: var(--space-8);
-   padding-top: var(--space-4); 
-   }
-   
-   
-   .editorial-subtitle {
-   font-family: var(--font-display);
-   font-size: clamp(1.5rem, 3vw, 2.5rem); 
-   line-height: var(--leading-tight);
-   text-transform: uppercase;
-   margin-bottom: var(--space-8);
-   max-width: 45ch; 
-   color: var(--color-text);
-   }
-   
-   @media (min-width: 1024px) {
-   .text-columns {
-    display: grid;
+@media (min-width: 1024px) {
+  .clean-about-grid {
+    /* Splits the layout evenly on desktop */
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-   }
-   }
-   
-   .lead-paragraph {
-   font-size: var(--text-lg);
-   font-weight: 500;
-   color: var(--color-text);
-   line-height: var(--leading-relaxed);
-   margin-bottom: 0;
-   }
-   
-   .secondary-paragraph {
-   font-size: var(--text-md);
-   color: var(--color-text-muted);
-   line-height: var(--leading-relaxed);
-   margin-bottom: 0;
-   }
-   
-   .about-capabilities {
-   border-top: 2px solid var(--color-text);
-   padding-top: var(--space-8);
-   }
-   
-   .table-heading {
-   font-family: var(--font-display);
-   font-size: var(--text-xl);
-   text-transform: uppercase;
-   margin-bottom: var(--space-8);
-   }
-   
-   .capability-row {
-    display: grid;
-    grid-template-columns: 40px 200px 1fr; /* Strict vertical alignment */
-    gap: var(--space-6);
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border); /* Anchors the eye horizontally */
-    align-items: baseline;
-   transition: transform var(--duration-fast) var(--ease-out);
-   }
-
-   .capability-row:first-of-type {
-    border-top: 1px solid var(--color-border);
+    gap: var(--space-16);
   }
-   
-   .capability-row:hover {
-   transform: translateX(10px);
-   }
-   
-   @media (min-width: 768px) {
-   .capability-row {
-    grid-template-columns: 80px 1fr 2fr;
-    align-items: center;
-   }
-   }
-   
-   .cap-number {
-   font-family: var(--font-display);
-   color: var(--color-primary);
-   font-weight: 700;
-   font-size: var(--text-md);
-   }
-   
-   .cap-title {
-   font-family: var(--font-display);
-   font-size: var(--text-lg);
-   text-transform: uppercase;
-   font-weight: 700;
-   color: var(--color-text);
-   }
-   
-   .cap-desc {
-   color: var(--color-text-muted);
-   font-size: var(--text-base);
-   line-height: 1.6;
-   }
-   
-   .will-animate {
-   opacity: 1 !important; 
-   transform: translateY(0) !important;
-   }
-   
-   @media (max-width: 767px) {
-   .about-sidebar {
-    position: static; 
-    margin-bottom: var(--space-8); 
-    width: 100%;
-   }
-   
-   .about-editorial-grid {
-    display: block; 
-   }
-   }
-   
+}
+
+.clean-about-content {
+  /* Constrains the text to a highly readable width */
+  max-width: 65ch;
+}
+
+.clean-about-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.clean-about-prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.clean-about-prose p {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 100%;
+}
+
+.clean-about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Applies a stark, graphic B&W treatment to match the reference */
+  filter: grayscale(100%) contrast(120%);
+  transition: filter var(--duration-base) var(--ease-out);
+}
+
+.clean-about-image:hover img {
+  filter: grayscale(0%) contrast(100%);
+}
+
+
 
    /* ============================================================
    Dedicated Work Page (Grid Layout)
