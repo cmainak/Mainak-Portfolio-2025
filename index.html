@@ -41,6 +41,7 @@
 
   <style>
     /* — Homepage "Selected Work" intro row — */
+    /* — Homepage "Selected Work" intro row — */
     .section-intro-row {
       display: flex;
       flex-wrap: wrap;
@@ -153,17 +154,18 @@
           
           <div class="hero-main">
             <h1 id="hero-heading">Mainak<br>Chakraborty</h1>
-            <p class="hero-role">UX DESIGNER & DEVELOPER</p>
+           
           </div>
 
           <div class="hero-meta">
             <p>
-              I design and build intuitive digital products driven by user-centered approach.
+              Product Designer with an MS in Interaction Design. Skilled in developing responsive, mobile-friendly web applications with a strong foundation in UX design principles, usability best practices, and translating design specifications into accessible, high-fidelity user interfaces.
+             
             </p>
-            <a href="work.html" class="cta-button">View my work</a>
+            <a href="about.html" class="cta-button">Read more</a>
             
             <div class="scroll-explore-wrapper">
-              <a href="#about" class="scroll-explore" aria-label="Scroll down to About section">
+              <a href="#main-content" class="scroll-explore" aria-label="Scroll down to About section">
                 <span class="explore-text">Scroll to explore</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
                   <path d="M12 5v14M19 12l-7 7-7-7"/>
@@ -175,6 +177,8 @@
         </div> 
       </div> 
     </section>
+
+    <!--
 
     <section id="about" aria-labelledby="about-heading">
       <div class="container">
@@ -194,8 +198,7 @@
 
 
             <p>
-              UI/UX Developer with an MS in UX/UI & Interaction Design. Skilled in developing responsive, mobile-friendly web applications with a strong foundation in UX design principles, usability best practices, and translating design specifications into accessible, high-fidelity user interfaces.
-            </p>
+              I design and build intuitive digital products driven by user-centered approach.
 
             <a href="about.html" class="cta-button" style="margin-top: var(--space-4);">
               Read More
@@ -205,13 +208,14 @@
         </div>
       </div>
     </section>
+
+    -->
+
     <section id="projects" aria-labelledby="projects-heading" style="overflow: hidden;">
       <div class="container">
 
-        <div class="section-intro-row">
-          <h2 id="projects-heading">SELECTED WORK</h2>
-          <a href="work.html" class="cta-button">View All ↗</a>
-        </div>
+        <!-- Clean, standalone section header -->
+        <h2 id="projects-heading" style="margin-bottom: var(--space-12);">SELECTED WORK</h2>
 
         <div class="showcase-grid">
 
@@ -272,6 +276,7 @@
               </a>
             </div>
           </article>
+          <!--
 
           <article class="showcase-card" aria-labelledby="kwds-title">
             <figure class="showcase-visual">
@@ -301,6 +306,7 @@
               </a>
             </div>
           </article>
+          -->
 <!--
           <article class="showcase-card reversed" aria-labelledby="candle-soda-title">
             <figure class="showcase-visual">
@@ -332,6 +338,13 @@
           </article>
 -->
         </div>
+
+        <!-- View All Button moved to the bottom -->
+        <div style="display: flex; justify-content: center; margin-top: var(--space-16);">
+          <a href="work.html" class="cta-button">View All Work ↗</a>
+        </div>
+
+
       </div>
     </section>
 
