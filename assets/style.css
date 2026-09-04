@@ -791,16 +791,17 @@ h3 {
   }
   
   .about-story-section,
-  .about-principles-section,
-  .about-capabilities-section,
-  .about-personal-section,
-  .about-training-section {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: var(--space-8);
-    margin-bottom: var(--space-24);
-    align-items: start;
-  }
+.about-principles-section,
+.about-capabilities-section,
+.about-personal-section,
+.about-training-section {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--space-8);
+  /* THE FIX: Reduced from --space-24 to --space-12 to tighten the macro-spacing between related narrative blocks */
+  margin-bottom: var(--space-8); 
+  align-items: start;
+}
   
   .about-section-number {
     font-family: var(--font-display);
