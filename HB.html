@@ -175,323 +175,364 @@
 
   <main id="main-content">
 
-    <section class="editorial-about">
+    <!-- 1. Hero & Meta Section -->
+    <section class="editorial-about" style="padding-bottom: 0;">
       <div class="container">
         
-        <div class="work-header-row">
-          <h1 class="massive-about-title">HABIT BOOST</h1>
-        </div>
-
-        <div class="back-nav-container">
+        <div class="back-nav-container" style="margin-bottom: var(--space-4);">
           <a href="work.html" class="back-button">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             <span>Back to Work</span>
           </a>
         </div>
 
-        <div class="about-editorial-grid">
+        <div class="work-header-row" style="border-bottom: none; padding-bottom: 0;">
+          <h1 class="massive-about-title">HABIT BOOST</h1>
+          <p class="about-lead" style="margin-top: var(--space-4); max-width: 80ch;">
+            An app that turns daily routines into lasting habits. By applying behavioral psychology to a gamified garden, I created a system that sustains motivation and helps users build routines that stick.
+          </p>
+        </div>
+
+        <!-- Impact Metrics -->
+        <div class="impact-metrics-grid">
+          <div class="metric-item">
+            <span class="metric-value">73%</span>
+            <span class="metric-label">Goal Completion</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">82</span>
+            <span class="metric-label">SUS Score</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">15</span>
+            <span class="metric-label">Users Tested</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">12</span>
+            <span class="metric-label">Weeks</span>
+          </div>
+        </div>
+
+        <!-- Horizontal Meta Data Row -->
+        <div class="meta-horizontal-row">
+          <div class="meta-block">
+            <strong>ROLE</strong>
+            <span>Lead UX Researcher</span>
+          </div>
+          <div class="meta-block">
+            <strong>TIMELINE</strong>
+            <span>12 Weeks</span>
+          </div>
+          <div class="meta-block">
+            <strong>TOOLS</strong>
+            <span>Figma, Miro</span>
+          </div>
+          <div class="meta-block">
+            <strong>TEAM</strong>
+            <span>Solo Lead</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. "Discover" Section (Mapped to #discover) -->
+    <section id="discover" class="problem-response-section table-heading">
+      <div class="container">
+        <div class="split-content-grid">
+          <div class="split-block">
+            <h2 style="color: var(--color-primary);">The Problem</h2>
+            <p class="secondary-paragraph">
+              73% of people abandon their habits within the first month. Despite a saturated market of habit-tracking apps, users continue to struggle with long-term commitment. Existing solutions don't address the psychological reality of motivation decline.
+            </p>
+          </div>
+          <div class="split-block">
+            <h2 style="color: var(--color-primary);">The Response</h2>
+            <p class="secondary-paragraph">
+              A gamified habit tracking app using the Hook Model to sustain motivation. Rather than relying on rigid streaks that punish failure, a garden metaphor provides visual progress and compassionate accountability to keep users invested.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Main Case Study Body (Mapped to remaining IDs) -->
+    <section class="case-study-body">
+      <div class="container case-study-content">
+        
+        <div class="case-study-media" style="margin-bottom: var(--space-12);">
+          <img src="assets/images/projects/HB/Habit Boost Thumbnail.png" alt="Habit Boost app preview on iPhone">
+        </div>
+
+        <!-- Remaining Discover Content -->
+        <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+          <img src="assets/images/projects/HB/Motivational Graph.png" alt="Motivation decline graph showing user drop-off" style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <div class="about-capabilities" style="margin-bottom: var(--space-12);">
+          <h3 class="table-heading">Competitive Audit Findings</h3>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            All leading apps track—none support. A competitive audit of the three dominant apps revealed the same gap: they share identical feature sets centered on goal tracking, but none address the emotional and psychological challenges users face when motivation drops.
+          </p>
+          <div class="capability-row">
+            <span class="cap-number">01</span>
+            <span class="cap-title">Habit App</span>
+            <span class="cap-desc">Simple Goal Tracking. Lacks emotional reinforcement.</span>
+          </div>
+          <div class="capability-row">
+            <span class="cap-number">02</span>
+            <span class="cap-title">Habitify</span>
+            <span class="cap-desc">Goal Tracking + Diary. High friction for daily check-ins.</span>
+          </div>
+          <div class="capability-row">
+            <span class="cap-number">03</span>
+            <span class="cap-title">Fabulous</span>
+            <span class="cap-desc">Narrative Goal Tracking. Overly structured and rigid for most users.</span>
+          </div>
+        </div>
+
+        <div style="padding: var(--space-6); border: 1px solid var(--color-primary); background-color: var(--color-surface); margin-bottom: var(--space-12);">
+          <h4 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-2); color: var(--color-primary);">The Design Challenge</h4>
+          <p class="secondary-paragraph" style="font-style: italic; font-size: 1.2rem;">
+            "How might I sustain user motivation through psychological design instead of just tracking behavior?"
+          </p>
+        </div>
+
+        <!-- Strategy & Approach -->
+        <h3 class="table-heading" id="define" style="font-size: 1.5rem;">02. Strategy & Approach</h3>
+        <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+          In my literature review of habit frameworks, I discovered the <strong>Hook Model</strong>. It's a particularly effective approach for increasing investment in habit formation through a cyclical process of triggers, actions, rewards, and investments. It directly addresses motivation decline by creating multiple reinforcement points throughout the habit cycle.
+        </p>
+        
+        <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+          <img src="assets/images/projects/HB/Hook Model Diagram.png" alt="Hook Model Diagram" style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <div class="about-capabilities" style="margin-bottom: var(--space-12);">
+          <h3 class="table-heading">Design Principles Based on Personas</h3>
+          <div class="capability-row">
+            <span class="cap-number">01</span>
+            <span class="cap-title">Visual Progress</span>
+            <span class="cap-desc">Build stronger motivation through clear visualization of progress. Users need to see tangible results of their efforts.</span>
+          </div>
+          <div class="capability-row">
+            <span class="cap-number">02</span>
+            <span class="cap-title">Coherent Integration</span>
+            <span class="cap-desc">Minimize distractions and concentration breaks from the user's routine. Respects busy lifestyles.</span>
+          </div>
+          <div class="capability-row">
+            <span class="cap-number">03</span>
+            <span class="cap-title">Simple Tracking</span>
+            <span class="cap-desc">Busy users should need as little time as possible to use Habit Boost. Reduces friction to habit formation.</span>
+          </div>
+        </div>
+
+        <!-- Process -->
+        <h3 class="table-heading" style="font-size: 1.5rem;">03. End-to-End Process</h3>
+        <div class="text-columns" style="margin-bottom: var(--space-12);">
+          <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
+            <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">1. Research</strong>
+            <span class="secondary-paragraph">Interviews & analysis of user motivation drop-offs.</span>
+          </div>
+          <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
+            <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">2. Strategy</strong>
+            <span class="secondary-paragraph">Defined the approach using the Hook Model.</span>
+          </div>
+          <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
+            <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">3. Design</strong>
+            <span class="secondary-paragraph">Architectural flows & low-fidelity wireframing.</span>
+          </div>
+          <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
+            <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">4. Testing</strong>
+            <span class="secondary-paragraph">5 test rounds to validate ease of use and friction.</span>
+          </div>
+          <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
+            <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">5. Delivery</strong>
+            <span class="secondary-paragraph">Final prototype with validated user impact.</span>
+          </div>
+        </div>
+
+        <!-- Personas & Goals -->
+        <h3 class="table-heading" style="font-size: 1.5rem;">04. Personas & Goals</h3>
+        <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+          Consolidating key insights into 2 goal-oriented personas allowed me to balance the need for motivational reflection with the necessity of speed.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-12);">
+          <div style="padding: var(--space-6); border: 1px solid var(--color-border); background-color: var(--color-surface); text-align: center;">
+            <img src="assets/images/projects/HB/Hectic Persona.png" alt="Hectic Persona - Katniss" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto var(--space-4); object-fit: cover;">
+            <h4 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-2);">Katniss, 22 (Hectic)</h4>
+            <p class="secondary-paragraph" style="font-weight: 600; margin-bottom: var(--space-2);">Goal: Maintain Long-Lasting Habits</p>
+            <p class="secondary-paragraph">She needs to ensure motivation remains high to stay inspired in completing her routines.</p>
+          </div>
+          <div style="padding: var(--space-6); border: 1px solid var(--color-border); background-color: var(--color-surface); text-align: center;">
+            <img src="assets/images/projects/HB/Focused Persona.png" alt="Focused Persona - Travis" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto var(--space-4); object-fit: cover;">
+            <h4 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-2);">Travis, 26 (Focused)</h4>
+            <p class="secondary-paragraph" style="font-weight: 600; margin-bottom: var(--space-2);">Goal: Time-Manage Daily Routines</p>
+            <p class="secondary-paragraph">He needs a reliable & simple way to keep up with his to-dos amidst a very busy schedule.</p>
+          </div>
+        </div>
+
+        <!-- Ideation -->
+        <h3 class="table-heading" id="ideate" style="font-size: 1.5rem;">05. The Solution Direction: A Garden Metaphor</h3>
+        <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+          These insights led to a cultivation visual metaphor—a garden that grows with commitment but also reflects natural cycles of growth and rest. Unlike traditional point systems that punish failure (streaks), the garden provides the visual progress and compassionate accountability missing from competitor apps.
+        </p>
+
+        <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-12); overflow: hidden; background-color: var(--color-surface);">
+          <img src="assets/images/projects/HB/Habit Garden.png" alt="Habit Garden concept illustration" style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <!-- Iteration -->
+        <h3 class="table-heading" id="iterate" style="font-size: 1.5rem;">06. Key Design Decisions</h3>
+        
+        <div style="margin-bottom: var(--space-8);">
+          <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 1: Feature Prioritization for MVP</h4>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            I prioritized features that required low effort but yielded high impact. I led an initial voting system and cross-discipline workshops, constantly referring back to persona pain points. I made the tough call to say <em>no</em> to social features (which competed with the need for private reflection) and prioritized the core habit-reward loop instead.
+          </p>
           
-          <aside class="about-sidebar">
-            <ul class="about-meta-list" role="list">
-              <li><strong>ROLE</strong><br>Lead UX Researcher</li>
-              <li><strong>TIMELINE</strong><br>12 Weeks</li>
-              <li><strong>TOOLS</strong><br>Figma, Miro</li>
-              <li><strong>TEAM</strong><br>Solo Lead</li>
-              <li>
-                <strong>IMPACT</strong><br>
-                <span style="color: var(--color-primary); font-family: var(--font-display); font-size: 1.5rem;">73%</span> Goal Completion<br>
-                <span style="color: var(--color-primary); font-family: var(--font-display); font-size: 1.5rem;">82</span> SUS Score
-              </li>
-            </ul>
-          </aside>
-
-          <div class="about-main-content">
-            
-            <div class="about-text-blocks">
-              <h2 class="editorial-subtitle full-width">An app that turns daily routines into lasting habits.</h2>
-              
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
-                By applying behavioral psychology to a gamified garden, I created a system that sustains motivation and helps users build routines that stick.
-              </p>
-
-              <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-12); overflow: hidden; background-color: var(--color-surface);">
-                <img src="assets/images/projects/HB/Habit Boost Thumbnail.png" alt="Habit Boost app preview on iPhone" style="width: 100%; height: auto; display: block;">
+          <div style="display: flex; flex-direction: column; gap: var(--space-6); margin-bottom: var(--space-8);">
+              <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                <img src="assets/images/projects/HB/Feature Priortization_1.png" alt="Feature prioritization matrix 1" style="width: 100%; height: auto; display: block;">
               </div>
-
-              <h3 class="table-heading" id="discover" style="font-size: 1.5rem;">01. The Problem</h3>
-              <div class="text-columns" style="margin-bottom: var(--space-8);">
-                <p class="secondary-paragraph">
-                  Imagine making a promise to yourself to start a fitness routine or learn a new language. The first week goes well. The second week, not so much. Then eventually you lose all hope. <strong>73% of people abandon their habits within the first month.</strong>
-                </p>
-                <p class="secondary-paragraph">
-                  Despite a saturated market of habit-tracking apps, users continue to struggle with long-term commitment. The problem isn't a lack of tools—it's that existing solutions don't address the psychological reality of motivation decline.
-                </p>
+              <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+                <img src="assets/images/projects/HB/Feature Prioritization_2.png" alt="Feature prioritization matrix 2" style="width: 100%; height: auto; display: block;">
               </div>
+          </div>
+        </div>
 
-              <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
-                <img src="assets/images/projects/HB/Motivational Graph.png" alt="Motivation decline graph showing user drop-off" style="width: 100%; height: auto; display: block;">
-              </div>
+        <div style="margin-bottom: var(--space-8);">
+          <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 2: Streamlined User Flow</h4>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            Every additional step increases friction. I designed user flows that minimised time investment while maximising the psychological reward of progress visualization—supporting busy schedules directly.
+          </p>
+          <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+            <img src="assets/images/projects/HB/System Architecture Flow.png" alt="System architecture and user flow" style="width: 100%; height: auto; display: block;">
+          </div>
+        </div>
 
-              <div class="about-capabilities" style="margin-bottom: var(--space-12);">
-                <h3 class="table-heading">Competitive Audit Findings</h3>
-                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                  All leading apps track—none support. A competitive audit of the three dominant apps revealed the same gap: they share identical feature sets centered on goal tracking, but none address the emotional and psychological challenges users face when motivation drops.
-                </p>
-                <div class="capability-row">
-                  <span class="cap-number">01</span>
-                  <span class="cap-title">Habit App</span>
-                  <span class="cap-desc">Simple Goal Tracking. Lacks emotional reinforcement.</span>
-                </div>
-                <div class="capability-row">
-                  <span class="cap-number">02</span>
-                  <span class="cap-title">Habitify</span>
-                  <span class="cap-desc">Goal Tracking + Diary. High friction for daily check-ins.</span>
-                </div>
-                <div class="capability-row">
-                  <span class="cap-number">03</span>
-                  <span class="cap-title">Fabulous</span>
-                  <span class="cap-desc">Narrative Goal Tracking. Overly structured and rigid for most users.</span>
-                </div>
-              </div>
+        <div style="margin-bottom: var(--space-12);">
+          <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 3: Usability-Driven Iterations</h4>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+            I led 5 rounds of moderated usability testing with 15 participants over 2 weeks. Testing revealed that initial designs created unnecessary cognitive load. 
+          </p>
+          
+          <div style="margin-bottom: var(--space-12);">
+            <h5 style="font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); margin-bottom: var(--space-2);">Iteration 01</h5>
+            <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Removing Bottom Nav</h4>
+            <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+              <strong>Why:</strong> Testing showed secondary navigation competed with primary actions, contradicting the "Simple" principle. I chose focused hierarchy over feature parity.
+            </p>
+            <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+              <img src="assets/images/projects/HB/Removing Bottom Nav.png" alt="Removing bottom navigation iteration" style="width: 100%; height: auto; display: block;">
+            </div>
+          </div>
 
-              <div style="padding: var(--space-6); border: 1px solid var(--color-primary); background-color: var(--color-surface); margin-bottom: var(--space-12);">
-                <h4 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-2); color: var(--color-primary);">The Design Challenge</h4>
-                <p class="secondary-paragraph" style="font-style: italic; font-size: 1.2rem;">
-                  "How might I sustain user motivation through psychological design instead of just tracking behavior?"
-                </p>
-              </div>
+          <div style="margin-bottom: var(--space-12);">
+            <h5 style="font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); margin-bottom: var(--space-2);">Iteration 02</h5>
+            <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Consolidating Tracking & Progress</h4>
+            <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+              <strong>Why:</strong> Separating habits from progress created cognitive load. Combining them delivered instant gratification aligning with the Hook Model's reward principle.
+            </p>
+            <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+              <img src="assets/images/projects/HB/Bringing actions closer to progress and reward.png" alt="Consolidating tracking and progress" style="width: 100%; height: auto; display: block;">
+            </div>
+          </div>
 
-              <h3 class="table-heading" id="define" style="font-size: 1.5rem;">02. Strategy & Approach</h3>
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                In my literature review of habit frameworks, I discovered the <strong>Hook Model</strong>. It's a particularly effective approach for increasing investment in habit formation through a cyclical process of triggers, actions, rewards, and investments. It directly addresses motivation decline by creating multiple reinforcement points throughout the habit cycle.
-              </p>
-              
-              <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
-                <img src="assets/images/projects/HB/Hook Model Diagram.png" alt="Hook Model Diagram" style="width: 100%; height: auto; display: block;">
-              </div>
-
-              <div class="about-capabilities" style="margin-bottom: var(--space-12);">
-                <h3 class="table-heading">Design Principles Based on Personas</h3>
-                <div class="capability-row">
-                  <span class="cap-number">01</span>
-                  <span class="cap-title">Visual Progress</span>
-                  <span class="cap-desc">Build stronger motivation through clear visualization of progress. Users need to see tangible results of their efforts.</span>
-                </div>
-                <div class="capability-row">
-                  <span class="cap-number">02</span>
-                  <span class="cap-title">Coherent Integration</span>
-                  <span class="cap-desc">Minimize distractions and concentration breaks from the user's routine. Respects busy lifestyles.</span>
-                </div>
-                <div class="capability-row">
-                  <span class="cap-number">03</span>
-                  <span class="cap-title">Simple Tracking</span>
-                  <span class="cap-desc">Busy users should need as little time as possible to use Habit Boost. Reduces friction to habit formation.</span>
-                </div>
-              </div>
-
-              <h3 class="table-heading" style="font-size: 1.5rem;">03. End-to-End Process</h3>
-              <div class="text-columns" style="margin-bottom: var(--space-12);">
-                <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
-                  <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">1. Research</strong>
-                  <span class="secondary-paragraph">Interviews & analysis of user motivation drop-offs.</span>
-                </div>
-                <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
-                  <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">2. Strategy</strong>
-                  <span class="secondary-paragraph">Defined the approach using the Hook Model.</span>
-                </div>
-                <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
-                  <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">3. Design</strong>
-                  <span class="secondary-paragraph">Architectural flows & low-fidelity wireframing.</span>
-                </div>
-                <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
-                  <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">4. Testing</strong>
-                  <span class="secondary-paragraph">5 test rounds to validate ease of use and friction.</span>
-                </div>
-                <div style="padding: var(--space-4); border-left: 2px solid var(--color-primary);">
-                  <strong style="display: block; font-family: var(--font-display); margin-bottom: 4px;">5. Delivery</strong>
-                  <span class="secondary-paragraph">Final prototype with validated user impact.</span>
-                </div>
-              </div>
-
-              <h3 class="table-heading" style="font-size: 1.5rem;">04. Personas & Goals</h3>
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                Consolidating key insights into 2 goal-oriented personas allowed me to balance the need for motivational reflection with the necessity of speed.
-              </p>
-              
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-12);">
-                <div style="padding: var(--space-6); border: 1px solid var(--color-border); background-color: var(--color-surface); text-align: center;">
-                  <img src="assets/images/projects/HB/Hectic Persona.png" alt="Hectic Persona - Katniss" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto var(--space-4); object-fit: cover;">
-                  <h4 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-2);">Katniss, 22 (Hectic)</h4>
-                  <p class="secondary-paragraph" style="font-weight: 600; margin-bottom: var(--space-2);">Goal: Maintain Long-Lasting Habits</p>
-                  <p class="secondary-paragraph">She needs to ensure motivation remains high to stay inspired in completing her routines.</p>
-                </div>
-                <div style="padding: var(--space-6); border: 1px solid var(--color-border); background-color: var(--color-surface); text-align: center;">
-                  <img src="assets/images/projects/HB/Focused Persona.png" alt="Focused Persona - Travis" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto var(--space-4); object-fit: cover;">
-                  <h4 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-2);">Travis, 26 (Focused)</h4>
-                  <p class="secondary-paragraph" style="font-weight: 600; margin-bottom: var(--space-2);">Goal: Time-Manage Daily Routines</p>
-                  <p class="secondary-paragraph">He needs a reliable & simple way to keep up with his to-dos amidst a very busy schedule.</p>
-                </div>
-              </div>
-
-              <h3 class="table-heading" id="ideate" style="font-size: 1.5rem;">05. The Solution Direction: A Garden Metaphor</h3>
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                These insights led to a cultivation visual metaphor—a garden that grows with commitment but also reflects natural cycles of growth and rest. Unlike traditional point systems that punish failure (streaks), the garden provides the visual progress and compassionate accountability missing from competitor apps.
-              </p>
-
-              <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-12); overflow: hidden; background-color: var(--color-surface);">
-                <img src="assets/images/projects/HB/Habit Garden.png" alt="Habit Garden concept illustration" style="width: 100%; height: auto; display: block;">
-              </div>
-
-              <h3 class="table-heading" id="iterate" style="font-size: 1.5rem;">06. Key Design Decisions</h3>
-              
-              <div style="margin-bottom: var(--space-8);">
-                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 1: Feature Prioritization for MVP</h4>
-                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                  I prioritized features that required low effort but yielded high impact. I led an initial voting system and cross-discipline workshops, constantly referring back to persona pain points. I made the tough call to say <em>no</em> to social features (which competed with the need for private reflection) and prioritized the core habit-reward loop instead.
-                </p>
-                
-                <div style="display: flex; flex-direction: column; gap: var(--space-6); margin-bottom: var(--space-8);">
-                    <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
-                      <img src="assets/images/projects/HB/Feature Priortization_1.png" alt="Feature prioritization matrix 1" style="width: 100%; height: auto; display: block;">
-                    </div>
-                    <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
-                      <img src="assets/images/projects/HB/Feature Prioritization_2.png" alt="Feature prioritization matrix 2" style="width: 100%; height: auto; display: block;">
-                    </div>
-                </div>
-              </div>
-
-              <div style="margin-bottom: var(--space-8);">
-                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 2: Streamlined User Flow</h4>
-                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                  Every additional step increases friction. I designed user flows that minimised time investment while maximising the psychological reward of progress visualization—supporting busy schedules directly.
-                </p>
-                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
-                  <img src="assets/images/projects/HB/System Architecture Flow.png" alt="System architecture and user flow" style="width: 100%; height: auto; display: block;">
-                </div>
-              </div>
-
-              <div style="margin-bottom: var(--space-12);">
-                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 3: Usability-Driven Iterations</h4>
-                <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
-                  I led 5 rounds of moderated usability testing with 15 participants over 2 weeks. Testing revealed that initial designs created unnecessary cognitive load. 
-                </p>
-                
-                <div style="margin-bottom: var(--space-12);">
-                  <h5 style="font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); margin-bottom: var(--space-2);">Iteration 01</h5>
-                  <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Removing Bottom Nav</h4>
-                  <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                    <strong>Why:</strong> Testing showed secondary navigation competed with primary actions, contradicting the "Simple" principle. I chose focused hierarchy over feature parity.
-                  </p>
-                  <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
-                    <img src="assets/images/projects/HB/Removing Bottom Nav.png" alt="Removing bottom navigation iteration" style="width: 100%; height: auto; display: block;">
-                  </div>
-                </div>
-
-                <div style="margin-bottom: var(--space-12);">
-                  <h5 style="font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); margin-bottom: var(--space-2);">Iteration 02</h5>
-                  <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Consolidating Tracking & Progress</h4>
-                  <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                    <strong>Why:</strong> Separating habits from progress created cognitive load. Combining them delivered instant gratification aligning with the Hook Model's reward principle.
-                  </p>
-                  <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
-                    <img src="assets/images/projects/HB/Bringing actions closer to progress and reward.png" alt="Consolidating tracking and progress" style="width: 100%; height: auto; display: block;">
-                  </div>
-                </div>
-
-                <div style="margin-bottom: var(--space-12);">
-                  <h5 style="font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); margin-bottom: var(--space-2);">Iteration 03</h5>
-                  <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Prioritizing Habit Overview</h4>
-                  <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                    <strong>Why:</strong> Restructured the home screen to show habit status first, addressing the user's need for motivational feedback before exploring.
-                  </p>
-                  <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
-                    <img src="assets/images/projects/HB/clearer focus on my habits.png" alt="Prioritizing habit overview" style="width: 100%; height: auto; display: block;">
-                  </div>
-                </div>
-              </div>
-
-              <h3 class="table-heading" style="font-size: 1.5rem;">07. Core Feature Walkthrough</h3>
-              
-              <div style="margin-bottom: var(--space-8);">
-                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Creating Good Habits</h4>
-                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                  Personalize your habit or select from a list. Your garden will grow as the commitment does. <em>(Addresses Travis's need for quick setup)</em>
-                </p>
-                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
-                  <img src="assets/images/projects/HB/Creating good habits.png" alt="Creating good habits screens" style="width: 100%; height: auto; display: block;">
-                </div>
-              </div>
-
-              <div style="margin-bottom: var(--space-8);">
-                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Keeping Up With Your Goals</h4>
-                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                  A familiar and simple way of tracking habits without overwhelming complexity.
-                </p>
-                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
-                  <img src="assets/images/projects/HB/Keeping up with your goals.png" alt="Keeping up with goals screens" style="width: 100%; height: auto; display: block;">
-                </div>
-              </div>
-
-              <div style="margin-bottom: var(--space-8);">
-                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Staying Invested and Inspired</h4>
-                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                  Visualizing good progress, growth and success to keep motivation high. <em>(Core to Katniss's sustained motivation needs)</em>
-                </p>
-                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
-                  <img src="assets/images/projects/HB/Staying Invested and Inspired.png" alt="Staying invested and inspired screens" style="width: 100%; height: auto; display: block;">
-                </div>
-              </div>
-
-              <div style="margin-bottom: var(--space-12);">
-                <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Support for Uninspiring Days</h4>
-                <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-                  Keeping users accountable and determined to bounce back. <em>(Responds directly to the "cheat day spiral" pattern identified in research)</em>
-                </p>
-                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
-                  <img src="assets/images/projects/HB/Support for Uninspiring Days.png" alt="Support for uninspiring days screens" style="width: 100%; height: auto; display: block;">
-                </div>
-              </div>
-
-              <h3 class="table-heading" id="prototype" style="font-size: 1.5rem;">08. The Final Prototype & Outcomes</h3>
-              <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
-                The final interactive prototype resulted in a <strong>73% increase in habit completion</strong> (11 out of 15 users completed their first habit goal during testing compared to the 4/15 baseline). Navigation simplification reduced required clicks by 67%, driving an <strong>82 SUS Score</strong>.
-              </p>
-
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-12);">
-                <div style="border: 1px solid var(--color-border); background-color: var(--color-surface); overflow: hidden;">
-                  <img src="assets/images/projects/HB/CheckIn.png" alt="Check In screen" style="width: 100%; height: auto; display: block;">
-                </div>
-                <div style="border: 1px solid var(--color-border); background-color: var(--color-surface); overflow: hidden;">
-                  <img src="assets/images/projects/HB/Track.png" alt="Track screen" style="width: 100%; height: auto; display: block;">
-                </div>
-                <div style="border: 1px solid var(--color-border); background-color: var(--color-surface); overflow: hidden;">
-                  <img src="assets/images/projects/HB/Grow.png" alt="Grow screen" style="width: 100%; height: auto; display: block;">
-                </div>
-              </div>
-
-              <h3 class="table-heading" id="reflect" style="font-size: 1.5rem;">09. Lessons Learned</h3>
-              
-              <div class="about-capabilities" style="margin-bottom: var(--space-8);">
-                <div class="capability-row">
-                  <span class="cap-number">01</span>
-                  <span class="cap-title">Simplicity vs. Personalization</span>
-                  <span class="cap-desc">Initial designs overwhelmed users with customization options. I implemented "smart defaults" with progressive disclosure, reducing onboarding from 3+ minutes to 45 seconds.</span>
-                </div>
-                <div class="capability-row">
-                  <span class="cap-number">02</span>
-                  <span class="cap-title">Accessibility Oversight</span>
-                  <span class="cap-desc">Colorblind users couldn't distinguish habit status by color alone. I redesigned elements using icons + color + text labels to achieve WCAG AA compliance. Testing for accessibility must happen early.</span>
-                </div>
-                <div class="capability-row">
-                  <span class="cap-number">03</span>
-                  <span class="cap-title">Feature Bloat</span>
-                  <span class="cap-desc">Removed social features after testing showed 78% of users preferred private tracking. User satisfaction increased from 72% to 92%. The best feature is sometimes the one you don't build.</span>
-                </div>
-              </div>
-
+          <div style="margin-bottom: var(--space-12);">
+            <h5 style="font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); margin-bottom: var(--space-2);">Iteration 03</h5>
+            <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Prioritizing Habit Overview</h4>
+            <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+              <strong>Why:</strong> Restructured the home screen to show habit status first, addressing the user's need for motivational feedback before exploring.
+            </p>
+            <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
+              <img src="assets/images/projects/HB/clearer focus on my habits.png" alt="Prioritizing habit overview" style="width: 100%; height: auto; display: block;">
             </div>
           </div>
         </div>
+
+        <h3 class="table-heading" style="font-size: 1.5rem;">07. Core Feature Walkthrough</h3>
+        
+        <div style="margin-bottom: var(--space-8);">
+          <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Creating Good Habits</h4>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            Personalize your habit or select from a list. Your garden will grow as the commitment does. <em>(Addresses Travis's need for quick setup)</em>
+          </p>
+          <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+            <img src="assets/images/projects/HB/Creating good habits.png" alt="Creating good habits screens" style="width: 100%; height: auto; display: block;">
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--space-8);">
+          <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Keeping Up With Your Goals</h4>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            A familiar and simple way of tracking habits without overwhelming complexity.
+          </p>
+          <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+            <img src="assets/images/projects/HB/Keeping up with your goals.png" alt="Keeping up with goals screens" style="width: 100%; height: auto; display: block;">
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--space-8);">
+          <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Staying Invested and Inspired</h4>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            Visualizing good progress, growth and success to keep motivation high. <em>(Core to Katniss's sustained motivation needs)</em>
+          </p>
+          <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+            <img src="assets/images/projects/HB/Staying Invested and Inspired.png" alt="Staying invested and inspired screens" style="width: 100%; height: auto; display: block;">
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--space-12);">
+          <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-2);">Support for Uninspiring Days</h4>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            Keeping users accountable and determined to bounce back. <em>(Responds directly to the "cheat day spiral" pattern identified in research)</em>
+          </p>
+          <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-8); overflow: hidden; background-color: var(--color-surface);">
+            <img src="assets/images/projects/HB/Support for Uninspiring Days.png" alt="Support for uninspiring days screens" style="width: 100%; height: auto; display: block;">
+          </div>
+        </div>
+
+        <!-- Final Prototype -->
+        <h3 class="table-heading" id="prototype" style="font-size: 1.5rem;">08. The Final Prototype & Outcomes</h3>
+        <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+          The final interactive prototype resulted in a <strong>73% increase in habit completion</strong> (11 out of 15 users completed their first habit goal during testing compared to the 4/15 baseline). Navigation simplification reduced required clicks by 67%, driving an <strong>82 SUS Score</strong>.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-12);">
+          <div style="border: 1px solid var(--color-border); background-color: var(--color-surface); overflow: hidden;">
+            <img src="assets/images/projects/HB/CheckIn.png" alt="Check In screen" style="width: 100%; height: auto; display: block;">
+          </div>
+          <div style="border: 1px solid var(--color-border); background-color: var(--color-surface); overflow: hidden;">
+            <img src="assets/images/projects/HB/Track.png" alt="Track screen" style="width: 100%; height: auto; display: block;">
+          </div>
+          <div style="border: 1px solid var(--color-border); background-color: var(--color-surface); overflow: hidden;">
+            <img src="assets/images/projects/HB/Grow.png" alt="Grow screen" style="width: 100%; height: auto; display: block;">
+          </div>
+        </div>
+
+        <!-- Reflection -->
+        <h3 class="table-heading" id="reflect" style="font-size: 1.5rem;">09. Lessons Learned</h3>
+        
+        <div class="about-capabilities" style="margin-bottom: var(--space-8);">
+          <div class="capability-row">
+            <span class="cap-number">01</span>
+            <span class="cap-title">Simplicity vs. Personalization</span>
+            <span class="cap-desc">Initial designs overwhelmed users with customization options. I implemented "smart defaults" with progressive disclosure, reducing onboarding from 3+ minutes to 45 seconds.</span>
+          </div>
+          <div class="capability-row">
+            <span class="cap-number">02</span>
+            <span class="cap-title">Accessibility Oversight</span>
+            <span class="cap-desc">Colorblind users couldn't distinguish habit status by color alone. I redesigned elements using icons + color + text labels to achieve WCAG AA compliance. Testing for accessibility must happen early.</span>
+          </div>
+          <div class="capability-row">
+            <span class="cap-number">03</span>
+            <span class="cap-title">Feature Bloat</span>
+            <span class="cap-desc">Removed social features after testing showed 78% of users preferred private tracking. User satisfaction increased from 72% to 92%. The best feature is sometimes the one you don't build.</span>
+          </div>
+        </div>
+
       </div>
     </section>
 

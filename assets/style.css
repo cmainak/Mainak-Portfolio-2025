@@ -68,10 +68,6 @@
    .skip-link:focus-visible {
      top: var(--space-4);
    }
-
-
-
-   
    
    /* ============================================================
       Scroll Progress Bar
@@ -328,9 +324,9 @@
     align-items: center;
     gap: var(--space-2);
     flex-shrink: 0;
-    position: relative; /* Establishes context */
-    z-index: 110;       /* Forces buttons above the mobile overlay */
-  }
+    position: relative; 
+    z-index: 110;       
+   }
    
    .theme-toggle {
      display: flex;
@@ -541,440 +537,430 @@
      margin-top: var(--space-2);
    }
    
-  /* 8. Mobile Nav Overlay
+   /* 8. Mobile Nav Overlay
    ---------------------------------------------------------- */
-@media (max-width: 767px) {
-  /* 1. Base Container */
-  .nav-container, .container {
-    padding: 0 var(--space-4);
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
-  /* 2. Free the Hamburger Button & Break the Glass Trap */
-  .nav-controls {
-    position: relative;
-    z-index: 110; 
-  }
-  
-  .site-header {
-    z-index: 100;
-  }
-  
-  body.menu-is-open .site-header {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
-  }
-
-  /* 3. The Full-Screen Menu Overlay (Flush Left) */
-  .nav-links {
-    position: fixed;
-    inset: 0;
-    z-index: 99;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start; 
-    padding: 7rem var(--space-4) 4rem var(--space-4);
-    gap: var(--space-6);
-    background: var(--color-bg);
-    height: 100vh;
-    height: 100dvh; 
-    overflow-y: auto;
-    overflow-x: hidden;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity var(--duration-base) var(--ease-out), visibility var(--duration-base) var(--ease-out);
-  }
-
-  .nav-links.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  /* 4. Massive Brutalist Links */
-  .nav-links a {
-    font-size: var(--text-2xl);
-    font-family: var(--font-display);
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--color-text);
-    padding: 0;
-    margin: 0;
-    display: block; 
-    text-align: left;
-    white-space: normal;
-  }
-
-  .nav-links a::after {
-    display: none;
-  }
-
-  .menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(1),
-  .menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) {
-    background: var(--color-primary);
-  }
-
-  /* 5. Clean Accordion Dropdown (Overriding Desktop Rules) */
-  .dropdown {
-    width: 100%;
-    display: block; 
-  }
-
-  .dropdown-toggle {
-    font-size: var(--text-2xl);
-    font-family: var(--font-display);
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--color-text);
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    text-align: left;
-    cursor: pointer;
-  }
-
-  /* CRITICAL FIX: Forcefully stripping desktop absolute positioning */
-  .dropdown-menu {
-    position: relative !important; 
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    width: 100%;
-    min-width: 0; 
-    box-shadow: none;
-    border: none;
-    border-left: 2px solid var(--color-primary); 
-    background: transparent;
-    margin-top: 0;
-    padding: 0 0 0 var(--space-4); 
-    
-    /* Accordion mechanics */
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--duration-base) var(--ease-out);
-  }
-  
-  .dropdown.is-expanded .dropdown-menu {
-    max-height: 500px; /* Gives plenty of room for your sub-links */
-    margin-top: var(--space-4);
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .dropdown.is-expanded .dropdown-toggle svg {
-    color: var(--color-primary);
-    transform: rotate(180deg);
-  }
-
-  /* 6. Sub-Project Links (Safe Wrapping) */
-  .dropdown-menu li {
-    margin-bottom: var(--space-4);
-  }
-  
-  .dropdown-menu li:last-child {
-    margin-bottom: 0;
-  }
-
-  .dropdown-menu a {
-    font-size: var(--text-lg); 
-    color: var(--color-text-muted);
-    text-transform: none; 
-    font-family: var(--font-body);
-    font-weight: 500;
-    border-bottom: none;
-    padding: 0;
-    display: block; 
-    text-align: left;
-    white-space: normal; 
-  }
-  
-  .dropdown-menu a:hover {
-    color: var(--color-primary);
-    padding-left: 0;
-  }
-
-  .dropdown-menu .view-all {
-    font-family: var(--font-display);
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--color-primary);
-  }
-}
+   @media (max-width: 767px) {
+     /* 1. Base Container */
+     .nav-container, .container {
+       padding: 0 var(--space-4);
+     }
+   
+     .menu-toggle {
+       display: flex;
+     }
+   
+     /* 2. Free the Hamburger Button & Break the Glass Trap */
+     .nav-controls {
+       position: relative;
+       z-index: 110; 
+     }
+     
+     .site-header {
+       z-index: 100;
+     }
+     
+     body.menu-is-open .site-header {
+       backdrop-filter: none;
+       -webkit-backdrop-filter: none;
+       background-color: transparent;
+       border-color: transparent;
+       box-shadow: none;
+     }
+   
+     /* 3. The Full-Screen Menu Overlay (Flush Left) */
+     .nav-links {
+       position: fixed;
+       inset: 0;
+       z-index: 99;
+       display: flex;
+       flex-direction: column;
+       align-items: flex-start;
+       justify-content: flex-start; 
+       padding: 7rem var(--space-4) 4rem var(--space-4);
+       gap: var(--space-6);
+       background: var(--color-bg);
+       height: 100vh;
+       height: 100dvh; 
+       overflow-y: auto;
+       overflow-x: hidden;
+       opacity: 0;
+       visibility: hidden;
+       pointer-events: none;
+       transition: opacity var(--duration-base) var(--ease-out), visibility var(--duration-base) var(--ease-out);
+     }
+   
+     .nav-links.is-open {
+       opacity: 1;
+       visibility: visible;
+       pointer-events: auto;
+     }
+   
+     /* 4. Massive Brutalist Links */
+     .nav-links a {
+       font-size: var(--text-2xl);
+       font-family: var(--font-display);
+       font-weight: 700;
+       text-transform: uppercase;
+       color: var(--color-text);
+       padding: 0;
+       margin: 0;
+       display: block; 
+       text-align: left;
+       white-space: normal;
+     }
+   
+     .nav-links a::after {
+       display: none;
+     }
+   
+     .menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(1),
+     .menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+       background: var(--color-primary);
+     }
+   
+     /* 5. Clean Accordion Dropdown */
+     .dropdown {
+       width: 100%;
+       display: block; 
+     }
+   
+     .dropdown-toggle {
+       font-size: var(--text-2xl);
+       font-family: var(--font-display);
+       font-weight: 700;
+       text-transform: uppercase;
+       color: var(--color-text);
+       background: transparent;
+       border: none;
+       padding: 0;
+       margin: 0;
+       width: 100%;
+       display: flex;
+       justify-content: space-between; 
+       align-items: center;
+       text-align: left;
+       cursor: pointer;
+     }
+   
+     .dropdown-menu {
+       position: relative !important; 
+       top: auto !important;
+       left: auto !important;
+       transform: none !important;
+       width: 100%;
+       min-width: 0; 
+       box-shadow: none;
+       border: none;
+       border-left: 2px solid var(--color-primary); 
+       background: transparent;
+       margin-top: 0;
+       padding: 0 0 0 var(--space-4); 
+       
+       max-height: 0;
+       overflow: hidden;
+       opacity: 0;
+       visibility: hidden;
+       transition: all var(--duration-base) var(--ease-out);
+     }
+     
+     .dropdown.is-expanded .dropdown-menu {
+       max-height: 500px;
+       margin-top: var(--space-4);
+       opacity: 1;
+       visibility: visible;
+     }
+   
+     .dropdown.is-expanded .dropdown-toggle svg {
+       color: var(--color-primary);
+       transform: rotate(180deg);
+     }
+   
+     /* 6. Sub-Project Links (Safe Wrapping) */
+     .dropdown-menu li {
+       margin-bottom: var(--space-4);
+     }
+     
+     .dropdown-menu li:last-child {
+       margin-bottom: 0;
+     }
+   
+     .dropdown-menu a {
+       font-size: var(--text-lg); 
+       color: var(--color-text-muted);
+       text-transform: none; 
+       font-family: var(--font-body);
+       font-weight: 500;
+       border-bottom: none;
+       padding: 0;
+       display: block; 
+       text-align: left;
+       white-space: normal; 
+     }
+     
+     .dropdown-menu a:hover {
+       color: var(--color-primary);
+       padding-left: 0;
+     }
+   
+     .dropdown-menu .view-all {
+       font-family: var(--font-display);
+       text-transform: uppercase;
+       font-weight: 700;
+       color: var(--color-primary);
+     }
+   }
    
    /* 9. Layout Foundations (Sections & Headings)
    ---------------------------------------------------------- */
-
-section {
-  /* THE FIX: Reduced from --space-24 (6rem) to --space-12 (3rem) 
-     to eliminate excessive dead space between sections while maintaining rhythm */
-  padding: var(--space-12) 0;
-  scroll-margin-top: var(--nav-height);
-}
-
-h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  line-height: var(--leading-tight);
-  /* THE FIX: Tightened proximity between headers and their content */
-  margin-bottom: var(--space-4);
-}
-
-h3 {
-  font-size: var(--text-md);
-  font-weight: 600;
-  margin-bottom: var(--space-2);
-}
-
-
-/* ============================================================
-   Refined About Page Layout & Typography Rules
-   ============================================================ */
-
+   section {
+     padding: var(--space-12) 0;
+     scroll-margin-top: var(--nav-height);
+   }
+   
+   h2 {
+     font-family: var(--font-display);
+     font-size: var(--text-2xl);
+     line-height: var(--leading-tight);
+     margin-bottom: var(--space-4);
+   }
+   
+   h3 {
+     font-size: var(--text-md);
+     font-weight: 600;
+     margin-bottom: var(--space-2);
+   }
+   
+   /* ============================================================
+      Refined About Page Layout & Typography Rules
+      ============================================================ */
    .about-intro {
-    margin-bottom: var(--space-16);
-  }
-  
-  .about-display-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    text-transform: uppercase;
-    line-height: 0.95;
-    margin-bottom: var(--space-6);
-    color: var(--color-text);
-  }
-  
-  .about-lead {
-    font-size: var(--text-md);
-    color: var(--color-text-muted);
-    max-width: 100%; 
-  line-height: var(--leading-relaxed);
-  }
-  
-  .about-profile-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-4);
-    margin-bottom: var(--space-24);
-  }
-  
-  .about-profile-item {
-    background: var(--color-surface);
-    border: 2px solid var(--color-text);
-    padding: var(--space-4);
-  }
-  
-  .profile-label {
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    color: var(--color-primary);
-    font-weight: 700;
-    display: block;
-    margin-bottom: var(--space-1);
-  }
-  
-  .profile-value {
-    font-family: var(--font-display);
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--color-text);
-  }
-  
-  .about-story-section,
-.about-principles-section,
-.about-capabilities-section,
-.about-personal-section,
-.about-training-section {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: var(--space-8);
-  /* THE FIX: Reduced from --space-24 to --space-12 to tighten the macro-spacing between related narrative blocks */
-  margin-bottom: var(--space-8); 
-  align-items: start;
-}
-  
-  .about-section-number {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: 800;
-    color: var(--color-primary);
-  }
-  
-  .about-section-title {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    text-transform: uppercase;
-    margin-bottom: var(--space-6);
-    color: var(--color-text);
-  }
-  
-  .about-story-copy {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    max-width: 100%;
-    color: var(--color-text-muted);
-    line-height: var(--leading-relaxed);
-  }
-  
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-6);
-  }
-  
-  .principle-card {
-    background: var(--color-surface);
-    border: 2px solid var(--color-text);
-    padding: var(--space-6);
-  }
-  
-  .principle-number {
-    font-family: var(--font-display);
-    color: var(--color-primary);
-    font-weight: 800;
-    font-size: var(--text-lg);
-    display: block;
-    margin-bottom: var(--space-2);
-  }
-  
-  .principle-card h3 {
-    font-family: var(--font-display);
-    text-transform: uppercase;
-    margin-bottom: var(--space-2);
-    font-size: var(--text-md);
-  }
-  
-  .principle-card p {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-  
-  .personal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-6);
-  }
-  
-  .personal-story {
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    line-height: var(--leading-relaxed);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    max-width: 100%;
-  }
-  
-  .personal-highlight {
-    background: var(--color-surface);
-    border: 2px solid var(--color-text);
-    padding: var(--space-6);
-  }
-  
-  .personal-label {
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    color: var(--color-primary);
-    font-weight: 700;
-    display: block;
-    margin-bottom: var(--space-2);
-  }
-  
-  .personal-highlight-title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: var(--space-2);
-    color: var(--color-text);
-  }
-  
-  .personal-detail {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-  }
-  
-  .training-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-4);
-  }
-  
-  .training-item {
-    background: var(--color-surface);
-    border: 2px solid var(--color-border);
-    padding: var(--space-4);
-  }
-  
-  .training-number {
-    font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--color-primary);
-    font-size: var(--text-xs);
-    display: block;
-    margin-bottom: var(--space-1);
-  }
-  
-  .training-item h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-base);
-    text-transform: uppercase;
-    margin-bottom: 2px;
-    color: var(--color-text);
-  }
-  
-  .training-item p {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-  }
-  
-  .about-cta {
-    background: var(--color-surface);
-    border: 2px solid var(--color-text);
-    padding: var(--space-12);
-    text-align: center;
-  }
-  
-  .about-cta h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    text-transform: uppercase;
-    margin-bottom: var(--space-6);
-    color: var(--color-text);
-  }
-  
-  @media (max-width: 767px) {
-    .about-story-section,
-    .about-principles-section,
-    .about-capabilities-section,
-    .about-personal-section,
-    .about-training-section {
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-    }
-    
-    .personal-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+     margin-bottom: var(--space-16);
+   }
+   
+   .about-display-title {
+     font-family: var(--font-display);
+     font-size: clamp(2.5rem, 6vw, 4rem);
+     text-transform: uppercase;
+     line-height: 0.95;
+     margin-bottom: var(--space-6);
+     color: var(--color-text);
+   }
+   
+   .about-lead {
+     font-size: var(--text-md);
+     color: var(--color-text-muted);
+     max-width: 100%; 
+     line-height: var(--leading-relaxed);
+   }
+   
+   .about-profile-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     gap: var(--space-4);
+     margin-bottom: var(--space-24);
+   }
+   
+   .about-profile-item {
+     background: var(--color-surface);
+     border: 2px solid var(--color-text);
+     padding: var(--space-4);
+   }
+   
+   .profile-label {
+     font-family: var(--font-display);
+     font-size: var(--text-xs);
+     color: var(--color-primary);
+     font-weight: 700;
+     display: block;
+     margin-bottom: var(--space-1);
+   }
+   
+   .profile-value {
+     font-family: var(--font-display);
+     font-weight: 700;
+     text-transform: uppercase;
+     color: var(--color-text);
+   }
+   
+   .about-story-section,
+   .about-principles-section,
+   .about-capabilities-section,
+   .about-personal-section,
+   .about-training-section {
+     display: grid;
+     grid-template-columns: 80px 1fr;
+     gap: var(--space-8);
+     margin-bottom: var(--space-8); 
+     align-items: start;
+   }
+   
+   .about-section-number {
+     font-family: var(--font-display);
+     font-size: var(--text-2xl);
+     font-weight: 800;
+     color: var(--color-primary);
+   }
+   
+   .about-section-title {
+     font-family: var(--font-display);
+     font-size: var(--text-xl);
+     text-transform: uppercase;
+     margin-bottom: var(--space-6);
+     color: var(--color-text);
+   }
+   
+   .about-story-copy {
+     display: flex;
+     flex-direction: column;
+     gap: var(--space-4);
+     max-width: 100%;
+     color: var(--color-text-muted);
+     line-height: var(--leading-relaxed);
+   }
+   
+   .principles-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+     gap: var(--space-6);
+   }
+   
+   .principle-card {
+     background: var(--color-surface);
+     border: 2px solid var(--color-text);
+     padding: var(--space-6);
+   }
+   
+   .principle-number {
+     font-family: var(--font-display);
+     color: var(--color-primary);
+     font-weight: 800;
+     font-size: var(--text-lg);
+     display: block;
+     margin-bottom: var(--space-2);
+   }
+   
+   .principle-card h3 {
+     font-family: var(--font-display);
+     text-transform: uppercase;
+     margin-bottom: var(--space-2);
+     font-size: var(--text-md);
+   }
+   
+   .principle-card p {
+     font-size: var(--text-sm);
+     color: var(--color-text-muted);
+   }
+   
+   .personal-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: var(--space-6);
+   }
+   
+   .personal-story {
+     color: var(--color-text-muted);
+     font-size: var(--text-sm);
+     line-height: var(--leading-relaxed);
+     display: flex;
+     flex-direction: column;
+     gap: var(--space-4);
+     max-width: 100%;
+   }
+   
+   .personal-highlight {
+     background: var(--color-surface);
+     border: 2px solid var(--color-text);
+     padding: var(--space-6);
+   }
+   
+   .personal-label {
+     font-family: var(--font-display);
+     font-size: var(--text-xs);
+     color: var(--color-primary);
+     font-weight: 700;
+     display: block;
+     margin-bottom: var(--space-2);
+   }
+   
+   .personal-highlight-title {
+     font-family: var(--font-display);
+     font-weight: 700;
+     text-transform: uppercase;
+     margin-bottom: var(--space-2);
+     color: var(--color-text);
+   }
+   
+   .personal-detail {
+     font-size: var(--text-xs);
+     color: var(--color-text-muted);
+   }
+   
+   .training-list {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+     gap: var(--space-4);
+   }
+   
+   .training-item {
+     background: var(--color-surface);
+     border: 2px solid var(--color-border);
+     padding: var(--space-4);
+   }
+   
+   .training-number {
+     font-family: var(--font-display);
+     font-weight: 700;
+     color: var(--color-primary);
+     font-size: var(--text-xs);
+     display: block;
+     margin-bottom: var(--space-1);
+   }
+   
+   .training-item h3 {
+     font-family: var(--font-display);
+     font-size: var(--text-base);
+     text-transform: uppercase;
+     margin-bottom: 2px;
+     color: var(--color-text);
+   }
+   
+   .training-item p {
+     font-size: var(--text-xs);
+     color: var(--color-text-muted);
+   }
+   
+   .about-cta {
+     background: var(--color-surface);
+     border: 2px solid var(--color-text);
+     padding: var(--space-12);
+     text-align: center;
+   }
+   
+   .about-cta h2 {
+     font-family: var(--font-display);
+     font-size: clamp(1.75rem, 4vw, 2.5rem);
+     text-transform: uppercase;
+     margin-bottom: var(--space-6);
+     color: var(--color-text);
+   }
+   
+   @media (max-width: 767px) {
+     .about-story-section,
+     .about-principles-section,
+     .about-capabilities-section,
+     .about-personal-section,
+     .about-training-section {
+       grid-template-columns: 1fr;
+       gap: var(--space-4);
+     }
+     
+     .personal-grid {
+       grid-template-columns: 1fr;
+     }
+   }
    
    /* 10. Buttons & Interactive
       ---------------------------------------------------------- */
-   
    .cta-button {
      display: inline-flex;
      align-items: center;
@@ -1033,30 +1019,20 @@ h3 {
      40% { transform: translateY(-8px); }
      60% { transform: translateY(-4px); }
    }
-
-
-/* ============================================================
-   Paragraph Typography & Readability Fix
+   
+   /* ============================================================
+      Paragraph Typography & Readability Fix
    ============================================================ */
-
    p, .secondary-paragraph, .about-story-copy p, .personal-story p {
-    /* THE FIX: Increased the clamp values so the font scales up nicely on larger screens */
-    font-size: clamp(1.125rem, 1.5vw, 1.25rem);
-    
-    /* Ensures comfortable line spacing for readability */
-    line-height: var(--leading-relaxed);
-    
-    /* THE FIX: Replaced var(--measure) with 100% so text flows naturally to the edge of its grid container */
-    max-width: 100%; 
-    
-    /* Prevents harsh, clipped word wrapping */
-    word-break: normal;
-    overflow-wrap: break-word;
-  }
-
+     font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+     line-height: var(--leading-relaxed);
+     max-width: 100%; 
+     word-break: normal;
+     overflow-wrap: break-word;
+   }
+   
    /* 11. Hero Layout
       ---------------------------------------------------------- */
-   
    #hero {
      position: relative;
      min-height: calc(100vh - var(--nav-height));
@@ -1226,7 +1202,6 @@ h3 {
    
    /* 12. Scroll Morph Transition
       ---------------------------------------------------------- */
-   
    #scroll-morph-section {
      padding-top: var(--space-4) !important;
      padding-bottom: 0 !important;
@@ -1245,7 +1220,6 @@ h3 {
    
    /* 13. About Section (Brutalist Update)
       ---------------------------------------------------------- */
-   
    #about {
      background-color: var(--color-surface);
    }
@@ -1385,208 +1359,196 @@ h3 {
    /* ============================================================
    Clean About Page (In a Nutshell - Split Layout)
    ============================================================ */
-
-.clean-about-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-12);
-  margin-top: var(--space-8);
-  margin-bottom: var(--space-24);
-  align-items: center; 
-}
-
-@media (min-width: 1024px) {
-  .clean-about-grid {
-    /* Splits the layout evenly on desktop */
+   .clean-about-grid {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: var(--space-12);
+   margin-top: var(--space-8);
+   margin-bottom: var(--space-24);
+   align-items: center; 
+   }
+   
+   @media (min-width: 1024px) {
+   .clean-about-grid {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-16);
-  }
-}
-
-.clean-about-content {
-  /* Constrains the text to a highly readable width */
-  max-width: 65ch;
-}
-
-.clean-about-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  line-height: 1.1;
-  margin-bottom: var(--space-8);
-  color: var(--color-text);
-}
-
-.clean-about-prose {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-.clean-about-prose p {
-  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
-  max-width: 100%;
-}
-
-.clean-about-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  /* Applies a stark, graphic B&W treatment to match the reference */
-  filter: grayscale(100%) contrast(120%);
-  transition: filter var(--duration-base) var(--ease-out);
-}
-
-.clean-about-image:hover img {
-  filter: grayscale(0%) contrast(100%);
-}
-
-
-
+   }
+   }
+   
+   .clean-about-content {
+   max-width: 65ch;
+   }
+   
+   .clean-about-title {
+   font-family: var(--font-display);
+   font-size: clamp(2.5rem, 5vw, 3.5rem);
+   line-height: 1.1;
+   margin-bottom: var(--space-8);
+   color: var(--color-text);
+   }
+   
+   .clean-about-prose {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-6);
+   }
+   
+   .clean-about-prose p {
+   font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+   color: var(--color-text-muted);
+   line-height: var(--leading-relaxed);
+   max-width: 100%;
+   }
+   
+   .clean-about-image img {
+   width: 100%;
+   height: auto;
+   display: block;
+   filter: grayscale(100%) contrast(120%);
+   transition: filter var(--duration-base) var(--ease-out);
+   }
+   
+   .clean-about-image:hover img {
+   filter: grayscale(0%) contrast(100%);
+   }
+   
    /* ============================================================
    Dedicated Work Page (Grid Layout)
-============================================================ */
-
-.editorial-work {
-  padding: var(--space-24) 0;
-  background-color: var(--color-bg);
-}
-
-.work-header-row {
-  margin-bottom: var(--space-8);
-  border-bottom: 2px solid var(--color-text);
-  padding-bottom: var(--space-8);
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-12);
-  margin-top: var(--space-12);
-}
-
-@media (min-width: 1024px) {
-  .project-grid {
+   ============================================================ */
+   .editorial-work {
+   padding: var(--space-24) 0;
+   background-color: var(--color-bg);
+   }
+   
+   .work-header-row {
+   margin-bottom: var(--space-8);
+   border-bottom: 2px solid var(--color-text);
+   padding-bottom: var(--space-8);
+   }
+   
+   .project-grid {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: var(--space-12);
+   margin-top: var(--space-12);
+   }
+   
+   @media (min-width: 1024px) {
+   .project-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-8) var(--space-6);
-  }
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.project-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.project-link:hover {
-  transform: translateY(-8px);
-}
-
-.project-image-wrapper {
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  margin-bottom: var(--space-6);
-  background-color: var(--color-surface);
-}
-
-.project-image-wrapper img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  transition: transform var(--duration-slow) var(--ease-out);
-}
-
-.project-link:hover .project-image-wrapper img {
-  transform: scale(1.05);
-}
-
-.project-meta {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-primary);
-  font-weight: 700;
-}
-
-.project-title {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  color: var(--color-text);
-  line-height: var(--leading-tight);
-  margin: 0;
-}
-
-.project-description {
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
-  margin: 0;
-}
-
-
-/* Add this to your style.css */
-/* De-emphasize Archive items until hovered */
-.archive-section .project-card {
-  opacity: 0.85;
-  filter: grayscale(20%); /* Subtly pushes them into the background */
-  transition: opacity var(--duration-base) ease, filter var(--duration-base) ease, transform var(--duration-base) ease;
-}
-
-.archive-section .project-card:hover {
-  opacity: 1;
-  filter: grayscale(0%);
-  transform: translateY(-4px); /* Restores prominence only when the user shows intent */
-}
-
-/* Make Archive titles slightly smaller to reinforce hierarchy */
-.archive-section .project-title {
-  font-size: var(--text-xl); 
-}
-
-.archive-section {
-  margin-top: var(--space-24);
-  padding-top: var(--space-12); /* Increased padding to respect Proximity */
-  border-top: 1px solid var(--color-border); /* Softer divider */
-}
-
-.archive-header {
-  margin-bottom: var(--space-12);
-}
-
-.archive-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 0;
-}
-
-.archive-subtitle {
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
-  margin-top: var(--space-2);
-}
+   }
+   }
+   
+   .project-card {
+   display: flex;
+   flex-direction: column;
+   }
+   
+   .project-link {
+   text-decoration: none;
+   color: inherit;
+   display: block;
+   transition: transform var(--duration-fast) var(--ease-out);
+   }
+   
+   .project-link:hover {
+   transform: translateY(-8px);
+   }
+   
+   .project-image-wrapper {
+   width: 100%;
+   overflow: hidden;
+   border: 1px solid var(--color-border);
+   margin-bottom: var(--space-6);
+   background-color: var(--color-surface);
+   }
+   
+   .project-image-wrapper img {
+   width: 100%;
+   height: auto;
+   aspect-ratio: 16/9;
+   object-fit: cover;
+   transition: transform var(--duration-slow) var(--ease-out);
+   }
+   
+   .project-link:hover .project-image-wrapper img {
+   transform: scale(1.05);
+   }
+   
+   .project-meta {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-2);
+   }
+   
+   .project-tags {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--space-3);
+   font-family: var(--font-display);
+   font-size: var(--text-sm);
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+   color: var(--color-primary);
+   font-weight: 700;
+   }
+   
+   .project-title {
+   font-family: var(--font-display);
+   font-size: var(--text-2xl);
+   color: var(--color-text);
+   line-height: var(--leading-tight);
+   margin: 0;
+   }
+   
+   .project-description {
+   font-size: var(--text-base);
+   color: var(--color-text-muted);
+   line-height: var(--leading-relaxed);
+   margin: 0;
+   }
+   
+   .archive-section .project-card {
+   opacity: 0.85;
+   filter: grayscale(20%); 
+   transition: opacity var(--duration-base) ease, filter var(--duration-base) ease, transform var(--duration-base) ease;
+   }
+   
+   .archive-section .project-card:hover {
+   opacity: 1;
+   filter: grayscale(0%);
+   transform: translateY(-4px); 
+   }
+   
+   .archive-section .project-title {
+   font-size: var(--text-xl); 
+   }
+   
+   .archive-section {
+   margin-top: var(--space-24);
+   padding-top: var(--space-12); 
+   border-top: 1px solid var(--color-border); 
+   }
+   
+   .archive-header {
+   margin-bottom: var(--space-12);
+   }
+   
+   .archive-title {
+   font-size: clamp(2rem, 5vw, 3.5rem);
+   margin-bottom: 0;
+   }
+   
+   .archive-subtitle {
+   font-size: var(--text-base);
+   color: var(--color-text-muted);
+   margin-top: var(--space-2);
+   }
    
    /* ============================================================
       14. Featured Projects Showcase (Zig-Zag Layout)
    ============================================================ */
-   
    #projects {
      background-color: var(--color-bg);
    }
@@ -1594,7 +1556,7 @@ h3 {
    .showcase-grid {
      display: flex;
      flex-direction: column;
-     gap: var(--space-24); /* Large gap separates distinct cognitive units */
+     gap: var(--space-24); 
    }
    
    .showcase-card {
@@ -1611,7 +1573,7 @@ h3 {
      }
      
      .showcase-card.reversed .showcase-visual {
-      order: -1; /* Flips the visual order, but keeps text alignment intact */
+      order: -1; 
       text-align: left;
      }
    }
@@ -1621,23 +1583,23 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Establishes the Figure */
-  }
+    z-index: 1; 
+   }
    
-  .showcase-visual img {
+   .showcase-visual img {
     position: relative;
-    z-index: 2; /* Forces it over the background text */
+    z-index: 2; 
     width: 100%;
     max-width: 500px;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(12px 12px 0 var(--color-primary));
     transition: transform var(--duration-slow) var(--ease-out);
-  }
+   }
    
-  .showcase-card:hover .showcase-visual img {
+   .showcase-card:hover .showcase-visual img {
     transform: scale(1.03) translateY(-10px);
-  }
+   }
    
    .showcase-bg-text {
     position: absolute;
@@ -1648,23 +1610,22 @@ h3 {
     font-size: clamp(6rem, 15vw, 12rem);
     font-weight: 800;
     color: transparent;
-    opacity: 0.03; /* CRITICAL: Pushes the text firmly into the 'Ground' */
+    opacity: 0.03; 
     -webkit-text-stroke: 2px var(--color-border);
-    z-index: 1; /* Explicitly layered behind */
+    z-index: 1; 
     pointer-events: none;
     user-select: none;
-
     white-space: nowrap;
-  }
+   }
    
-  .showcase-card.reversed .showcase-bg-text {
+   .showcase-card.reversed .showcase-bg-text {
     transform: translate(-50%, -50%) rotate(5deg);
-  }
+   }
    
    .showcase-content {
      display: flex;
      flex-direction: column;
-     gap: var(--space-4); /* Tight proximity for related info */
+     gap: var(--space-4); 
      z-index: 2;
    }
    
@@ -1688,8 +1649,6 @@ h3 {
      background-color: var(--color-text);
    }
    
-
-   
    .showcase-title {
      font-family: var(--font-display);
      font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -1700,12 +1659,12 @@ h3 {
    }
    
    .showcase-desc {
-    font-size: var(--text-md); /* Shrinks the text slightly */
-    color: var(--color-text-muted); /* Softens the color so it doesn't fight the title */
-    line-height: 1.5; /* Keeps it readable */
-    margin-top: var(--space-2); /* Adds a little breathing room from the title */
+    font-size: var(--text-md); 
+    color: var(--color-text-muted); 
+    line-height: 1.5; 
+    margin-top: var(--space-2); 
     margin-bottom: var(--space-4);
-  }
+   }
    
    .showcase-tags {
      display: flex;
@@ -1761,246 +1720,264 @@ h3 {
      background-color: var(--color-text);
    }
    
-   /* For Dedicated 'All Work' Page Title Layout */
-   .editorial-work {
-     padding: var(--space-24) 0;
-     background-color: var(--color-bg);
-   }
-   
-   .work-header-row {
+   /* ============================================================
+      15. Case Study (Horizontal Layout Redesign)
+   ============================================================ */
+   .case-study-media {
+     width: 100%;
+     border: 1px solid var(--color-border);
      margin-bottom: var(--space-8);
-     border-bottom: 2px solid var(--color-text);
-     padding-bottom: var(--space-8);
+     background-color: var(--color-surface);
+     overflow: hidden;
+     border-radius: 4px; 
    }
-
-   /* ============================================================
-      15. Case Study
-   ============================================================ */
    
-/* Unifies all case study images */
-.case-study-media {
-  width: 100%;
-  border: 1px solid var(--color-border);
-  margin-bottom: var(--space-8);
-  background-color: var(--color-surface);
-  overflow: hidden;
-  border-radius: 4px; /* Optional: Adds a tiny polish */
-}
-
-.case-study-media img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Unifies all Persona callouts */
-.persona-card {
-  padding: var(--space-6);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  margin-bottom: var(--space-12);
-
-}
-
-
-
-
-
-   /* ============================================================ 
-   Case Study Layout Grid (Restored)
-   ============================================================ */
-
-
+   .case-study-media img {
+     width: 100%;
+     height: auto;
+     display: block;
+   }
    
-.about-editorial-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-12);
-}
-
-/* Restores the left-sidebar on desktop */
-@media (min-width: 768px) {
-  .about-editorial-grid {
-    grid-template-columns: 220px 1fr; 
-    gap: var(--space-16);
+   .persona-card {
+     padding: var(--space-6);
+     border: 1px solid var(--color-border);
+     background-color: var(--color-surface);
+     margin-bottom: var(--space-12);
+   }
+   
+   /* ── Impact Metrics (New) ── */
+   .impact-metrics-grid {
+     display: flex;
+     flex-wrap: wrap;
+     gap: var(--space-8);
+     margin-top: var(--space-12);
+     margin-bottom: var(--space-8);
+   }
+   
+   .metric-item {
+     display: flex;
+     flex-direction: column;
+     min-width: 120px;
+   }
+   
+   .metric-value {
+     font-family: var(--font-display);
+     font-size: clamp(2.5rem, 5vw, 4rem);
+     font-weight: 800;
+     color: var(--color-primary);
+     line-height: 1;
+     margin-bottom: var(--space-2);
+   }
+   
+   .metric-label {
+     font-family: var(--font-display);
+     font-size: var(--text-sm);
+     text-transform: uppercase;
+     font-weight: 700;
+     color: var(--color-text);
+     letter-spacing: 0.05em;
+   }
+   
+   /* ── Horizontal Meta Data Row (New) ── */
+   .meta-horizontal-row {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: var(--space-6);
+     padding: var(--space-6) 0;
+     border-top: 2px solid var(--color-border);
+     border-bottom: 2px solid var(--color-border);
+     margin-bottom: var(--space-12);
+   }
+   
+   @media (min-width: 768px) {
+     .meta-horizontal-row {
+       grid-template-columns: repeat(4, 1fr);
+       padding: var(--space-8) 0;
+     }
+   }
+   
+   .meta-block {
+     display: flex;
+     flex-direction: column;
+     gap: var(--space-1);
+   }
+   
+   .meta-block strong {
+     font-family: var(--font-display);
+     font-size: var(--text-xs);
+     color: var(--color-text-muted);
+     text-transform: uppercase;
+     letter-spacing: 0.05em;
+   }
+   
+   .meta-block span {
+     font-family: var(--font-body);
+     font-size: var(--text-sm);
+     font-weight: 500;
+     color: var(--color-text);
+   }
+   
+   /* ── Problem & Response Split Section (New) ── */
+   .problem-response-section {
+     background-color: var(--color-surface); 
+     padding: var(--space-16) 0;
+     border-bottom: 1px solid var(--color-border);
+   }
+   
+   .split-content-grid {
+     display: grid;
+     grid-template-columns: 1fr;
+     gap: var(--space-8);
+   }
+   
+   @media (min-width: 768px) {
+     .split-content-grid {
+       grid-template-columns: 1fr 1fr;
+       gap: var(--space-16);
+     }
+   }
+   
+   .split-block h2 {
+     font-family: var(--font-display);
+     font-size: var(--text-2xl);
+     margin-bottom: var(--space-4);
+     line-height: var(--leading-tight);
+   }
+   
+   /* ── Main Case Study Content Wrapper (New) ── */
+   .case-study-body {
+     padding-top: var(--space-16);
+     padding-bottom: var(--space-24);
+   }
+   
+   .case-study-content {
+    max-width: 1200px !important; 
+    margin: 0 auto;
   }
-}
-
-/* Makes the role/tools sidebar stick to the screen while scrolling */
-.about-sidebar {
-  position: sticky;
-  top: calc(var(--nav-height) + var(--space-8));
-  align-self: start;
-}
-
-.about-main-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
-  padding-top: var(--space-4); 
-}
-
-/* Restores the styling for the meta-data box */
-.about-meta-list {
-  background-color: var(--color-surface);
-  padding: var(--space-4);
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  list-style: none;
-}
-
-.about-meta-list li {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  font-size: var(--text-sm);
-}
-
-.about-meta-list strong {
-  font-family: var(--font-display);
-  color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.75rem;
-}
-
-/* 1. The Scroll Wrapper */
-/* 1. The Scroll Wrapper */
-.figjam-scroll-wrapper {
-  /* CRITICAL FIX: Forces parents to ignore child width, preventing blowout */
-  width: 0;
-  min-width: 100%; 
-  
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  margin-bottom: var(--space-12);
-  /* Optional: soft inner shadow for scroll indication */
-  box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.1); 
-}
-
-/* 2. The Board */
-.figjam-board {
-  background-color: #F9F9F9;
-  background-image: radial-gradient(#D3D3D3 1px, transparent 1px);
-  background-size: 20px 20px;
-  padding: var(--space-6);
-  border: 1px solid var(--color-border);
-  
-  /* CRITICAL FIX: Forces the board to be exactly wide enough for 5 columns */
-  width: max-content;
-  min-width: 100%; 
-}
-
-.figjam-header {
-  margin-bottom: var(--space-8);
-  display: inline-block;
-  background-color: var(--color-surface);
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--color-border);
-}
-
-/* 3. The Grid Track (Replaces Flexbox) */
-.journey-flex-track {
-  display: grid;
-  /* Hardcodes 5 columns at 240px each, plus gaps. This guarantees horizontal scrolling */
-  grid-template-columns: repeat(5, 240px);
-  gap: var(--space-6);
-  align-items: start;
-}
-
-.journey-col {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Swimlane Headers */
-.stage-header {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  border-bottom: 2px solid var(--color-border);
-  padding-bottom: var(--space-2);
-  margin-bottom: var(--space-4);
-}
-
-/* 4. Authentic Miro/FigJam Sticky Notes */
-.sticky-note {
-  padding: var(--space-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-  min-height: 140px;
-  border-radius: 2px;
-  box-shadow: 2px 4px 10px rgba(0,0,0,0.08); 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.sticky-note:hover {
-  transform: translate(-2px, -2px) rotate(-1deg);
-  box-shadow: 4px 8px 15px rgba(0,0,0,0.12);
-}
-
-/* Exact Pastel Hexes */
-.sticky-yellow { background: #FFF2CC; color: #111; border: 1px solid #FFE599; }
-.sticky-pink   { background: #F4CCCC; color: #111; border: 1px solid #EA9999; }
-.sticky-green  { background: #D9EAD3; color: #111; border: 1px solid #B6D7A8; }
-
-.sticky-tag {
-  font-family: var(--font-display);
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: 1px solid rgba(0,0,0,0.15);
-  padding: 2px 6px;
-  align-self: flex-start;
-}
-
-.sticky-text {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-/* Connectors */
-.connector-arrow {
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--color-text-muted);
-  margin: -10px 0 var(--space-4) 0;
-}
-
+   
+   /* 1. The Scroll Wrapper */
+   .figjam-scroll-wrapper {
+     width: 0;
+     min-width: 100%; 
+     overflow-x: auto;
+     overflow-y: hidden;
+     -webkit-overflow-scrolling: touch;
+     margin-bottom: var(--space-12);
+     box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.1); 
+   }
+   
+   /* 2. The Board */
+   .figjam-board {
+     background-color: #F9F9F9;
+     background-image: radial-gradient(#D3D3D3 1px, transparent 1px);
+     background-size: 20px 20px;
+     padding: var(--space-6);
+     border: 1px solid var(--color-border);
+     width: max-content;
+     min-width: 100%; 
+   }
+   
+   .figjam-header {
+     margin-bottom: var(--space-8);
+     display: inline-block;
+     background-color: var(--color-surface);
+     padding: var(--space-2) var(--space-4);
+     border: 1px solid var(--color-border);
+   }
+   
+   /* 3. The Grid Track */
+   .journey-flex-track {
+     display: grid;
+     grid-template-columns: repeat(5, 240px);
+     gap: var(--space-6);
+     align-items: start;
+   }
+   
+   .journey-col {
+     display: flex;
+     flex-direction: column;
+   }
+   
+   /* Swimlane Headers */
+   .stage-header {
+     font-family: var(--font-body);
+     font-weight: 700;
+     font-size: 0.9rem;
+     text-transform: uppercase;
+     color: var(--color-text-muted);
+     border-bottom: 2px solid var(--color-border);
+     padding-bottom: var(--space-2);
+     margin-bottom: var(--space-4);
+   }
+   
+   /* 4. Authentic Miro/FigJam Sticky Notes */
+   .sticky-note {
+     padding: var(--space-4);
+     display: flex;
+     flex-direction: column;
+     gap: var(--space-2);
+     margin-bottom: var(--space-4);
+     min-height: 140px;
+     border-radius: 2px;
+     box-shadow: 2px 4px 10px rgba(0,0,0,0.08); 
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
+   }
+   
+   .sticky-note:hover {
+     transform: translate(-2px, -2px) rotate(-1deg);
+     box-shadow: 4px 8px 15px rgba(0,0,0,0.12);
+   }
+   
+   .sticky-yellow { background: #FFF2CC; color: #111; border: 1px solid #FFE599; }
+   .sticky-pink   { background: #F4CCCC; color: #111; border: 1px solid #EA9999; }
+   .sticky-green  { background: #D9EAD3; color: #111; border: 1px solid #B6D7A8; }
+   
+   .sticky-tag {
+     font-family: var(--font-display);
+     font-size: 0.65rem;
+     font-weight: 700;
+     text-transform: uppercase;
+     border: 1px solid rgba(0,0,0,0.15);
+     padding: 2px 6px;
+     align-self: flex-start;
+   }
+   
+   .sticky-text {
+     font-family: var(--font-body);
+     font-size: 0.85rem;
+     font-weight: 500;
+     line-height: 1.4;
+   }
+   
+   /* Connectors */
+   .connector-arrow {
+     text-align: center;
+     font-size: 1.2rem;
+     color: var(--color-text-muted);
+     margin: -10px 0 var(--space-4) 0;
+   }
    
    /* ============================================================
-   Marquee Infinite Scroll Animation
-============================================================ */
-@keyframes scrollMarquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-track { 
-  display: flex; 
-  width: max-content; 
-  animation: scrollMarquee 30s linear infinite; 
-}
-
-.marquee-content { 
-  display: flex; 
-  white-space: nowrap; 
-}
+      Marquee Infinite Scroll Animation
+   ============================================================ */
+   @keyframes scrollMarquee {
+     0%   { transform: translateX(0); }
+     100% { transform: translateX(-50%); }
+   }
    
+   .marquee-track { 
+     display: flex; 
+     width: max-content; 
+     animation: scrollMarquee 30s linear infinite; 
+   }
+   
+   .marquee-content { 
+     display: flex; 
+     white-space: nowrap; 
+   }
    
    /* 16. Contact (Split Grid Layout)
       ---------------------------------------------------------- */
-   
    #contact { 
      background-color: var(--color-surface); 
      padding-block: var(--space-24);
@@ -2073,10 +2050,8 @@ h3 {
      min-height: 120px; 
    }
    
-   
    /* 17. Footer
       ---------------------------------------------------------- */
-   
    .site-footer {
      background-color: var(--color-bg);
      border-top: 1px solid var(--color-border);
@@ -2105,13 +2080,6 @@ h3 {
    .site-footer a:hover {
      color: var(--color-primary);
    }
-   
-   
-   /* 18. Scroll Transition and animations
-      ---------------------------------------------------------- */
-
-
-   
    
    /* ============================================================
       19. Responsive Overrides (Consolidated)
