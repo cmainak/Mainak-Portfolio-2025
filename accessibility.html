@@ -96,25 +96,43 @@
     
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="site-header">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="assets/images/logo.png" alt="Mainak Chakraborty Logo" class="logo-image">
-                Mainak Chakraborty
-            </a>
-            <nav class="nav-links" aria-label="Main Navigation">
-                <a href="index.html#projects">Work</a>
-                <a href="about.html">About</a>
-                <a href="index.html#contact">Contact</a>
-            </nav>
-            <div class="nav-controls">
-                <button class="theme-toggle" aria-label="Toggle Dark Mode">
-                    <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                </button>
-            </div>
-        </div>
-    </header>
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Mainak Chakraborty — back to home">
+        <img src="assets/images/logo.png" alt="Mainak Chakraborty Logo" class="logo-image">
+        Mainak Chakraborty
+    </a>
+      <ul class="nav-links" role="list" id="nav-menu">
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+            <button type="button" aria-expanded="false" aria-controls="projects-menu" class="dropdown-toggle">
+              <span>Projects</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            
+            <ul id="projects-menu" class="dropdown-menu" role="list">
+              <li><a href="nutriscan.html">Nutri Scan</a></li>
+              <li><a href="HB.html">Habit Boost</a></li>
+              <li><a href="KWDS.html">Design System</a></li>
+              <li><a href="TU.html">Touro University</a></li>
+              <li><a href="work.html" class="view-all">View All Work ↗</a></li>
+            </ul>
+          </li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-controls" role="group">
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+        <button type="button" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
 
     <main id="main-content">
     
