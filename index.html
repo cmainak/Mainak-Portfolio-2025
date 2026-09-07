@@ -74,6 +74,17 @@
       color: var(--color-primary);
       margin-bottom: var(--space-4);
     }
+
+    /* — Section Heading Overrides — */
+h2.section-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-xl); 
+  font-weight: 500; 
+  color: var(--color-primary); 
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-8);
+}
   </style>
 </head>
 <body>
@@ -154,13 +165,11 @@
           
           <div class="hero-main">
             <h1 id="hero-heading">Mainak<br>Chakraborty</h1>
-           
           </div>
 
           <div class="hero-meta">
             <p>
-              Product Designer with an MS in Interaction Design. Passionate about building responsive, mobile-friendly web applications with a strong foundation in UX design principles, usability best practices, and translating design specifications into accessible, high-fidelity user interfaces.
-             
+              I am an emerging UX/UI Designer with an MS in Interaction Design. I am eager to apply my strong foundation in usability principles to build responsive, accessible web applications and translate complex user needs into clean, high-fidelity interfaces.
             </p>
             <a href="about.html" class="cta-button">Read more</a>
             
@@ -178,44 +187,10 @@
       </div> 
     </section>
 
-    <!--
-
-    <section id="about" aria-labelledby="about-heading">
-      <div class="container">
-    
-        <h2 id="about-heading">About Me</h2>
-    
-        <div class="about-layout">
-          <div class="about-photo" style="--stagger-delay: 100ms;">
-            <img
-              src="assets/images/Double exposure.jpg"
-              alt="Mainak Chakraborty, UX/UI designer"
-              loading="lazy"
-              decoding="async" />
-          </div>
-
-          <div class="about-content" style="--stagger-delay: 200ms;">
-
-
-            <p>
-              I design and build intuitive digital products driven by user-centered approach.
-
-            <a href="about.html" class="cta-button" style="margin-top: var(--space-4);">
-              Read More
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    -->
-
     <section id="projects" aria-labelledby="projects-heading" style="overflow: hidden;">
       <div class="container">
 
-        <!-- Clean, standalone section header -->
-        <h2 id="projects-heading" style="margin-bottom: var(--space-12);"> PROJECTS</h2>
+        <h2 id="projects-heading" class="section-heading" style="margin-bottom: var(--space-12);">Selected Work</h2>
 
         <div class="showcase-grid">
 
@@ -276,74 +251,12 @@
               </a>
             </div>
           </article>
-          <!--
-
-          <article class="showcase-card" aria-labelledby="kwds-title">
-            <figure class="showcase-visual">
-              <div class="showcase-bg-text" aria-hidden="true">SYSTEM!</div>
-              <img src="assets/images/projects/KW/KWDS/Cover.png" alt="Design System thumbnail">
-            </figure>
-    
-            <div class="showcase-content">
-              <div class="showcase-meta">
-                <span class="meta-num">03</span>
-                <span class="meta-line" aria-hidden="true"></span>
-                <span class="meta-cat">Design Systems / Architecture</span>
-              </div>
-              
-              <h3 id="kwds-title" class="showcase-title">KeelWorks DS</h3>
-              <p class="showcase-desc">Building a scalable, token-based design system to unify visual language across 5 distinct product lines.</p>
-              
-              <ul class="showcase-tags" role="list">
-                <li>Figma Variables</li>
-                <li>Documentation</li>
-                <li class="tag-highlight">8 min read</li>
-              </ul>
-              
-              <a href="KWDS.html" class="showcase-cta">
-                Read More 
-                <span class="cta-line" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-          -->
-<!--
-          <article class="showcase-card reversed" aria-labelledby="candle-soda-title">
-            <figure class="showcase-visual">
-              <div class="showcase-bg-text" aria-hidden="true">SODA!</div>
-              <img src="assets/images/projects/CS/Candle Soda Thumbnail.png" alt="Candle Soda Project thumbnail">
-            </figure>
-    
-            <div class="showcase-content">
-              <div class="showcase-meta">
-                <span class="meta-num">04</span>
-                <span class="meta-line" aria-hidden="true"></span>
-                <span class="meta-cat">Brand Identity Design </span>
-              </div>
-              
-              <h3 id="candle-soda-title" class="showcase-title">Candle Soda</h3>
-              <p class="showcase-desc">A refreshed corporate identity and packaging system honoring 75 years of heritage with a modern, soda-focused aesthetic.</p>
-              
-              <ul class="showcase-tags" role="list">
-                <li>Brand Identity</li>
-                <li>Print Design</li>
-                <li class="tag-highlight">5 min read</li>
-              </ul>
-              
-              <a href="CS.html" class="showcase-cta">
-                Read More 
-                <span class="cta-line" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
--->
+          
         </div>
 
-        <!-- View All Button moved to the bottom -->
         <div style="display: flex; justify-content: center; margin-top: var(--space-16);">
           <a href="work.html" class="cta-button">View All Work ↗</a>
         </div>
-
 
       </div>
     </section>
@@ -363,11 +276,10 @@
 
     <section id="contact" aria-labelledby="contact-heading">
       <div class="container">
-        <h2 id="contact-heading">Get in touch</h2>
+        <h2 id="contact-heading" class="section-heading">Get In Touch</h2>
 
         <div class="contact-layout">
           <div class="contact-info">
-           <p></p>
             <ul class="social-links" role="list">
               <li><a href="mailto:mainak.chak04@gmail.com">Email</a></li>
               <li><a href="https://www.linkedin.com/in/mainakc98/">LinkedIn</a></li>
