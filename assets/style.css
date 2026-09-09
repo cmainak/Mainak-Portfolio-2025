@@ -1738,12 +1738,127 @@
      display: block;
    }
    
-   .persona-card {
-     padding: var(--space-6);
-     border: 1px solid var(--color-border);
-     background-color: var(--color-surface);
-     margin-bottom: var(--space-12);
-   }
+  /* ============================================================
+   Redesigned Split Persona Card
+============================================================ */
+.persona-card-modern {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--color-text);
+  background-color: var(--color-surface);
+  margin-bottom: var(--space-12);
+  box-shadow: 8px 8px 0 var(--color-primary);
+}
+
+@media (min-width: 768px) {
+  .persona-card-modern {
+    grid-template-columns: 1fr 2.5fr;
+  }
+}
+
+.persona-visual {
+  /* Using your primary color for the solid background block */
+  background-color: var(--color-primary); 
+  display: flex;
+  align-items: flex-end; /* Anchors the illustration to the bottom */
+  justify-content: center;
+  padding: var(--space-6) var(--space-6) 0 var(--space-6);
+  border-bottom: 2px solid var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .persona-visual {
+    border-bottom: none;
+    border-right: 2px solid var(--color-text);
+  }
+}
+
+.persona-visual img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  display: block;
+}
+
+.persona-content {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.persona-header h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+  line-height: var(--leading-tight);
+}
+
+.persona-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.persona-quote {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: var(--color-primary);
+  font-style: italic;
+  font-weight: 600;
+  margin-top: var(--space-4);
+  line-height: var(--leading-relaxed);
+}
+
+.persona-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 640px) {
+  .persona-details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.persona-detail-block h5 {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.persona-detail-block p, 
+.persona-detail-block ul,
+.persona-detail-block li {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.persona-detail-block ul {
+  padding-left: var(--space-4);
+  margin: 0;
+}
+
+.persona-detail-block ul[style*="list-style: none"] li {
+  margin-bottom: var(--space-2);
+}
+
+.persona-detail-block strong {
+  color: var(--color-text);
+}
    
    /* ── Impact Metrics (New) ── */
    .impact-metrics-grid {
