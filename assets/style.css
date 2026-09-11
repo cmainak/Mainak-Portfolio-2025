@@ -1033,26 +1033,28 @@
    
    /* 11. Hero Layout
       ---------------------------------------------------------- */
-   #hero {
-     position: relative;
-     min-height: calc(100vh - var(--nav-height));
-     display: flex;
-     flex-direction: column; 
-     padding-bottom: 0 !important; 
-     background-color: var(--color-bg);
-     overflow: hidden;
-   }
+      #hero {
+        position: relative;
+        min-height: calc(100vh - var(--nav-height));
+        max-height: 1080px; /* 1. Add this to stop infinite vertical stretching on TVs */
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        padding-bottom: 0 !important; 
+        background-color: var(--color-bg);
+        overflow: hidden;
+      }
    
-   #hero .relative-z {
-     position: relative;
-     z-index: 10;
-     width: 100%;
-   }
+      #hero .relative-z {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+      }
    
-   #hero .container.relative-z {
-    margin-top: 12vh; 
-    margin-bottom: auto;
-   }
+      #hero .container.relative-z {
+        margin-top: auto; /* 12vh to auto to prevent massive top gaps */
+        margin-bottom: auto; /* Works with margin-top to vertically center the block */
+      }
    
    .hero-layout {
    display: grid;
@@ -1198,6 +1200,38 @@
    color: var(--color-text);
    padding-right: 2rem;
    }
+
+   /* ============================================================
+   Ultra-Wide / TV Monitor Adjustments
+============================================================ */
+@media (min-width: 1600px) {
+  /* Allow the main container to span wider than 1200px */
+  .container {
+    max-width: 1600px !important; 
+  }
+  
+  /* Give the Hero columns more breathing room */
+  .hero-layout {
+    gap: var(--space-16);
+  }
+
+  /* Scale up the massive heading so it fills the new space */
+  #hero h1 {
+    font-size: 6.5rem; 
+  }
+
+  /* Scale up the paragraph text for readability from a distance */
+  .hero-meta p {
+    font-size: 1.5rem; 
+    max-width: 60ch;
+  }
+  
+  /* Optional: Scale up the CTA button slightly */
+  .hero-meta .cta-button {
+    font-size: 1.25rem;
+    padding: 1.25rem 2.5rem;
+  }
+}
    
    
    /* 12. Scroll Morph Transition
