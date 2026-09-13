@@ -266,15 +266,23 @@
    }
    
    .nav-container {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     gap: var(--space-4);
-     height: 100%;
-     max-width: var(--max-width);
-     margin: 0 auto;
-     padding: 0 var(--space-6);
-   }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    height: 100%;
+    width: 100%;
+    max-width: 1200px; /* Standardize with .container */
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Standardize with .container */
+}
+
+/*  desktop padding matches .container exactly */
+@media (min-width: 768px) {
+    .nav-container {
+        padding: 0 3rem;
+    }
+}
    
    .nav-links {
      display: flex;
@@ -1206,8 +1214,9 @@
 ============================================================ */
 @media (min-width: 1600px) {
   /* Allow the main container to span wider than 1200px */
-  .container {
-    max-width: 1600px !important; 
+  .container,
+  .nav-container {
+    max-width: 1600px !important;
   }
   
   /* Give the Hero columns more breathing room */
