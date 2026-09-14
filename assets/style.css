@@ -414,6 +414,7 @@
      display: inline-flex;
      align-items: center;
      gap: 0.75rem;
+     line-height: 1;
      color: var(--color-text);
      text-decoration: none;
      font-family: var(--font-display);
@@ -1107,9 +1108,9 @@
     text-shadow: 2px 2px 0 var(--color-bg), 4px 4px 0 var(--color-border); 
     
     /* Pulls the massive text slightly left to optically align with the greeting */
-    margin-left: -5px; 
+    margin-left: 0; /* Changed from -5px */
   }
-  
+
    .hero-role {
    font-family: var(--font-display);
    font-size: var(--text-lg);
@@ -1218,14 +1219,15 @@
    padding-right: 2rem;
    }
 
-   /* ============================================================
+
+/* ============================================================
    Ultra-Wide / TV Monitor Adjustments
 ============================================================ */
 @media (min-width: 1600px) {
-  /* Allow the main container to span wider than 1200px */
+  /* Allow both main and nav containers to span wider than 1200px */
   .container,
   .nav-container {
-    max-width: 1600px !important;
+    max-width: 1600px !important; 
   }
   
   /* Give the Hero columns more breathing room */
