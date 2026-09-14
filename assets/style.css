@@ -1095,18 +1095,21 @@
    }
    }
    
-   #hero h1 {
-   font-family: var(--font-display);
-   font-size: clamp(2.75rem, 9vw, 5rem);
-   line-height: 0.85;                
-   text-transform: uppercase;
-   letter-spacing: -0.04em;          
-   margin-bottom: var(--space-4);
-   font-weight: 800;                 
-   color: var(--color-text);
-   text-shadow: 2px 2px 0 var(--color-bg), 4px 4px 0 var(--color-border);
-   }
-   
+   #hero h1 { 
+    font-family: var(--font-display); 
+    font-size: clamp(2.75rem, 9vw, 5rem); 
+    line-height: 0.85;
+    text-transform: uppercase; 
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-4); 
+    font-weight: 800;
+    color: var(--color-text); 
+    text-shadow: 2px 2px 0 var(--color-bg), 4px 4px 0 var(--color-border); 
+    
+    /* Pulls the massive text slightly left to optically align with the greeting */
+    margin-left: -5px; 
+  }
+  
    .hero-role {
    font-family: var(--font-display);
    font-size: var(--text-lg);

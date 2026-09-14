@@ -42,29 +42,7 @@
   <style>
 
     /* - Hero Section Animation - */
-    #hero {
-  position: relative;
-  min-height: calc(100vh - var(--nav-height));
-  max-height: 1080px; /* Stops infinite vertical stretching on TVs */
-  display: flex;
-  flex-direction: column; 
-  justify-content: center; /* Distributes vertical space evenly */
-  padding-bottom: 0 !important; 
-  background-color: var(--color-bg);
-  overflow: hidden;
-}
-
-#hero .container.relative-z {
-  margin-top: auto; /* Prevents massive top gaps by replacing rigid vh constraints[cite: 1] */
-  margin-bottom: auto; /* Works with margin-top to vertically center the block[cite: 1] */
-}
-
-/* Ensures the left column aligns optimally with the right column */
-.hero-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+    
 
 
 
@@ -192,12 +170,13 @@ h2.section-heading {
         <div class="hero-layout">
           
           <div class="hero-main">
+            <p class="hero-greeting">Hey there! 👋 I am</p>
             <h1 id="hero-heading">Mainak<br>Chakraborty</h1>
           </div>
 
           <div class="hero-meta">
             <p>
-              Product Designer with an MS in Interaction Design. Passionate about building responsive, mobile-friendly web applications with a strong foundation in UX design principles, usability best practices, and translating design specifications into accessible, high-fidelity user interfaces.
+              I am a Product Designer with an MS in Interaction Design. Passionate about building responsive, mobile-friendly web applications with a strong foundation in UX principles, usability best practices, and prototyping accessible, high-fidelity user interfaces.
             </p>
             <a href="#projects" class="cta-button">View Work</a>
             
