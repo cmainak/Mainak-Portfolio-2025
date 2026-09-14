@@ -40,6 +40,34 @@
   <link rel="icon" href="assets/images/Logo.png" type="image/svg+xml">
 
   <style>
+
+    /* - Hero Section Animation - */
+    #hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-height));
+  max-height: 1080px; /* Stops infinite vertical stretching on TVs */
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; /* Distributes vertical space evenly */
+  padding-bottom: 0 !important; 
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+#hero .container.relative-z {
+  margin-top: auto; /* Prevents massive top gaps by replacing rigid vh constraints[cite: 1] */
+  margin-bottom: auto; /* Works with margin-top to vertically center the block[cite: 1] */
+}
+
+/* Ensures the left column aligns optimally with the right column */
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
     /* — Homepage "Selected Work" intro row — */
     /* — Homepage "Selected Work" intro row — */
     .section-intro-row {

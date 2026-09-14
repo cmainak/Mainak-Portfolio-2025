@@ -1041,6 +1041,12 @@
    
    /* 11. Hero Layout
       ---------------------------------------------------------- */
+
+      /* 1. Dark Mode Fix for Hero Paragraphs */
+[data-theme="dark"] .hero-greeting,
+[data-theme="dark"] .hero-meta p {
+  color: var(--color-text); 
+}
       #hero {
         position: relative;
         min-height: calc(100vh - var(--nav-height));

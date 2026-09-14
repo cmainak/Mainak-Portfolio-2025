@@ -281,20 +281,20 @@
       </div>
     </section>
 
-    <!-- 2. "Overview" Section (Mapped to #overview) -->
+    <!-- 2. "Overview" Section -->
     <section id="overview" class="problem-response-section table-heading">
       <div class="container">
         <div class="split-content-grid">
           <div class="split-block">
             <h2 style="color: var(--color-primary);">The Problem</h2>
             <p class="secondary-paragraph">
-              I originally designed the site for myself rather than hiring managers. I placed heavy background details at the top of the page and added floating animations. This visual noise delayed task completion and broke accessibility standards.
+                Designing for myself instead of my audience resulted in severe information overload. Complex micro-interactions, erratic floating background objects, and unnecessary background details created a heavy cognitive load for busy hiring managers who only have seconds to skim a profile. Under the hood, the initial codebase was a chaotic mess of nested <code>&lt;div&gt;</code> tags built while learning to code, resulting in a poor Lighthouse accessibility score of 60.
             </p>
           </div>
           <div class="split-block">
             <h2 style="color: var(--color-primary);">The Solution</h2>
             <p class="secondary-paragraph">
-              I deleted the animations and moved my main projects to the top. The new layout lets recruiters scan my technical skills immediately.
+                I stripped away the fluff and pivoted to a clean, minimal, outcome-focused structure that respects the user's time. I moved primary projects to the top, removed visual noise, and replaced the structural layout with a clean CSS Grid system. By writing raw Vanilla JS and semantic HTML, I achieved the exact same visual design with a fraction of the codebase and fully compliant accessibility.
             </p>
           </div>
         </div>
@@ -304,104 +304,182 @@
     <!-- 3. Main Case Study Body -->
     <section class="case-study-body">
       <div class="container case-study-content">
-
-        <h3 id="refactoring" class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">Refactoring the code</h3>
-        <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-          I started this project in a Master's class before I knew how to code. Since I learned HTML and CSS by trial and error, my first working layout relied on a massive stack of nested <code>&lt;div&gt;</code> tags.
-        </p>
-        <p class="secondary-paragraph" style="margin-bottom: var(--space-12);">
-          Once the page looked right, I deleted the extra containers and rebuilt the structure using CSS Grid. I reorganized the file directory and added comments. The site now looks exactly the same but runs on much less code.
-        </p>
-
-        <!-- Add this block inside the #refactoring section -->
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-6); margin: var(--space-8) 0;">
   
-    <!-- Old Code Card -->
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid #e11d48;">
-      <strong style="font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase; color: #e11d48; display: block; margin-bottom: var(--space-2);">Before: Nested Containers & Latin Copy</strong>
-      <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-4);">From the original work.html with arbitrary 2-second linear hover animations.</p>
-      <pre style="background: #111; color: #eee; padding: var(--space-4); font-size: 0.8rem; overflow-x: auto; border-radius: 4px; line-height: 1.5;"><code>&lt;!-- Nested div soup with lorem ipsum --&gt;
-  &lt;div class="box"&gt;
-    &lt;img src="images/MoviePoster.jpg" alt="..."&gt;
-    &lt;div class="content"&gt;
-      &lt;h3&gt;Breaking bad Poster&lt;/h3&gt;
-      &lt;p&gt;Lorem, ipsum dolor sit amet...&lt;/p&gt;
-      &lt;a href="images/MoviePoster.jpg"&gt;View&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;</code></pre>
-    </div>
-  
-    <!-- New Code Card -->
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
-      <strong style="font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase; color: var(--color-primary); display: block; margin-bottom: var(--space-2);">After: Semantic Tags & CSS Grid</strong>
-      <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-4);">Current markup using semantic elements and clean data attributes.</p>
-      <pre style="background: #111; color: #eee; padding: var(--space-4); font-size: 0.8rem; overflow-x: auto; border-radius: 4px; line-height: 1.5;"><code>&lt;!-- Clean, accessible project card --&gt;
-  &lt;article class="project-card" data-category="ux-research"&gt;
-    &lt;div class="card-media"&gt;
-      &lt;img src="assets/images/nutri-thumb.png" alt="Nutri Scan interface"&gt;
-    &lt;/div&gt;
-    &lt;div class="card-content"&gt;
-      &lt;h3&gt;Nutri Scan&lt;/h3&gt;
-      &lt;p&gt;Translating food labels into rapid health ratings.&lt;/p&gt;
-      &lt;a href="nutriscan.html" class="project-link"&gt;View Case Study&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/article&gt;</code></pre>
-    </div>
-  
-  </div>
+        <!-- REFACTORING SECTION -->
+        <div id="refactoring" class="table-heading" style="padding-top: var(--space-4);">
+          <h3 style="font-size: 1.5rem; margin-bottom: var(--space-4);">Refactoring the "Div Soup"</h3>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+            My first successful build was a chaotic mess of nested tags used to force elements into alignment. I replaced the entire layout with a clean CSS Grid system and strict semantic HTML, achieving the exact same visual design with a fraction of the codebase.
+          </p>
 
-        <h3 id="javascript" class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">Writing Vanilla JavaScript</h3>
-        <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-          I wrote raw JavaScript instead of loading external libraries. The code handles four features:
-        </p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-12);">
-          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
-            <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Mobile Menu Toggle</strong>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">Opens and closes the navigation drawer on small screens.</p>
-          </div>
-          
-          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
-            <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Dark Mode Switch</strong>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">Swaps CSS color variables and saves the user's choice to local storage.</p>
-          </div>
-          
-          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
-            <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Project Gallery</strong>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">Filters portfolio items using data attributes.</p>
-          </div>
+          <div class="split-content-grid" style="margin-bottom: var(--space-12);">
+            
+            <!-- Old Code Card -->
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid #e11d48; display: flex; flex-direction: column;">
+              <strong style="font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase; color: #e11d48; display: block; margin-bottom: var(--space-2);">Before: Nested Containers</strong>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-4);">Excessive wrappers and non-semantic <code>&lt;div&gt;</code> tags created a bloated DOM tree.</p>
+              <pre style="background: #111; color: #eee; padding: var(--space-4); font-size: 0.8rem; overflow-x: auto; border-radius: 4px; line-height: 1.5; flex-grow: 1;"><code>&lt;div class="outer-wrapper"&gt;
+  &lt;div class="inner-container"&gt;
+    &lt;div class="row-align"&gt;
+      &lt;div class="col-left"&gt;
+        &lt;div class="content"&gt;
+          &lt;h3&gt;Project&lt;/h3&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            
+            <!-- New Code Card -->
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary); display: flex; flex-direction: column;">
+              <strong style="font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase; color: var(--color-primary); display: block; margin-bottom: var(--space-2);">After: Semantic HTML & CSS Grid</strong>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-4);">Clean markup mapped directly to a grid system for structural integrity.</p>
+              <pre style="background: #111; color: #eee; padding: var(--space-4); font-size: 0.8rem; overflow-x: auto; border-radius: 4px; line-height: 1.5; flex-grow: 1;"><code>&lt;article class="project-card"&gt;
+  &lt;div class="card-media"&gt;
+    &lt;img src="..." alt="..."&gt;
+  &lt;/div&gt;
+  &lt;div class="card-content"&gt;
+    &lt;h3&gt;Project&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
 
-          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
-            <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Contact Form Validation</strong>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">Checks inputs in the browser to block empty or broken email submissions.</p>
+/* CSS Architecture */
+.grid-layout { display: grid; }</code></pre>
+            </div>
           </div>
         </div>
 
-        <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); margin: var(--space-8) 0;">
+        <!-- JAVASCRIPT SECTION -->
+        <div id="javascript" class="table-heading" style="padding-top: var(--space-8);">
+          <h3 style="font-size: 1.5rem; margin-bottom: var(--space-4);">Writing Vanilla JavaScript</h3>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            I wrote raw JavaScript instead of loading external libraries. The code handles four main features, avoiding heavy frameworks like React for simple state changes.
+          </p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-8);">
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
+              <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Mobile Menu Toggle</strong>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">Opens and closes the navigation drawer on small screens.</p>
+            </div>
+            
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
+              <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Dark Mode Switch</strong>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">Swaps CSS color variables and saves the user's choice to local storage.</p>
+            </div>
+            
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
+              <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Project Gallery</strong>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">Filters portfolio items using data attributes.</p>
+            </div>
+
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
+              <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Form Validation</strong>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">Checks inputs in the browser to block empty or broken email submissions.</p>
+            </div>
+          </div>
+
+          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); margin-bottom: var(--space-12);">
             <strong style="font-family: var(--font-display); font-size: var(--text-sm); text-transform: uppercase; color: var(--color-primary); display: block; margin-bottom: var(--space-2);">Production Snippet: Non-blocking Theme Initialization</strong>
             <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">
               To prevent a flash of unstyled content, this script checks local storage and the browser OS preference before the DOM paints.
             </p>
             <pre style="background: #111; color: #eee; padding: var(--space-4); font-size: 0.85rem; overflow-x: auto; border-radius: 4px; line-height: 1.5;"><code>(function () {
-            try {
-              const saved = localStorage.getItem('color-scheme');
-              const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-              const theme = saved || (prefersDark ? 'dark' : 'light');
-              document.documentElement.setAttribute('data-theme', theme);
-            } catch(e) {}
-          })();</code></pre>
+  try {
+    const saved = localStorage.getItem('color-scheme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = saved || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch(e) {}
+})();</code></pre>
           </div>
+        </div>
 
-        <h3 id="accessibility" class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">Fixing accessibility and deployment</h3>
-        <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-          The first Google Lighthouse audit returned a score of 60. The layout failed W3C standards for text contrast and keyboard navigation.
-        </p>
-        <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-          I fixed these WCAG failures by replacing generic containers with semantic layout tags, adding ARIA labels to the JavaScript features, and making every button keyboard accessible. The Lighthouse score now sits above 95.
-        </p>
-        <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
-          The site uses an automated deployment pipeline. When I push a commit to the main branch on GitHub, a Netlify webhook triggers and updates the live site in seconds without manual server work.
-        </p>
+     <!-- ACCESSIBILITY SECTION -->
+<div id="accessibility" class="table-heading" style="padding-top: var(--space-8);">
+    <h3 style="font-size: 1.5rem; margin-bottom: var(--space-4);">Visual Pivot & Accessibility Turnaround</h3>
+    <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
+      The first Google Lighthouse audit returned a score of 60 due to W3C standards failures, poor text contrast, and missing keyboard states. I systematically fixed these issues, redesigned for scannability, and boosted the score to 95+.
+    </p>
+    
+    <!-- Custom Carousel Wrapper -->
+    <div class="accessibility-carousel" style="margin-bottom: var(--space-12); position: relative;">
+      
+      <!-- Track Container -->
+      <div class="carousel-viewport" style="overflow: hidden; width: 100%;">
+        <div class="carousel-track" style="display: flex; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);">
+          
+          <!-- ================= SLIDE 1: UI Pivot ================= -->
+          <div class="carousel-slide" style="min-width: 100%; flex-shrink: 0; padding-right: 2px;">
+            <div class="split-content-grid">
+              <div class="split-block">
+                <strong style="display: block; margin-bottom: var(--space-2); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font-display); font-size: var(--text-xs);">Before (Lighthouse 60)</strong>
+                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-4); background-color: var(--color-surface); overflow: hidden; border-radius: 4px;">
+                  <img src="assets/images/projects/portfolio/before-bloat.jpg" alt="Initial portfolio with distracting animations" style="width: 100%; height: auto; display: block;">
+                </div>
+                <p class="secondary-paragraph" style="font-size: var(--text-sm);">Severe information overload, erratic micro-interactions, and accessibility failures.</p>
+              </div>
+              
+              <div class="split-block">
+                <strong style="display: block; margin-bottom: var(--space-2); color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font-display); font-size: var(--text-xs);">After (Lighthouse 95+)</strong>
+                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-4); background-color: var(--color-surface); overflow: hidden; border-radius: 4px;">
+                  <img src="assets/images/projects/portfolio/after-clean.jpg" alt="Clean, grid-based minimal portfolio design" style="width: 100%; height: auto; display: block;">
+                </div>
+                <p class="secondary-paragraph" style="font-size: var(--text-sm);">Clear typographic hierarchy, eliminated visual noise, and compliant keyboard tracking.</p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- ================= SLIDE 2: Code Refactor (Add your 2nd pair here) ================= -->
+          <div class="carousel-slide" style="min-width: 100%; flex-shrink: 0; padding-right: 2px;">
+            <div class="split-content-grid">
+              <div class="split-block">
+                <strong style="display: block; margin-bottom: var(--space-2); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font-display); font-size: var(--text-xs);">Before (Div Soup Code)</strong>
+                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-4); background-color: var(--color-surface); overflow: hidden; border-radius: 4px;">
+                  <img src="assets/images/projects/portfolio/before-code.jpg" alt="Messy nested divs" style="width: 100%; height: auto; display: block;">
+                </div>
+                <p class="secondary-paragraph" style="font-size: var(--text-sm);">Chaotic, non-semantic DOM structure causing screen reader failures.</p>
+              </div>
+              
+              <div class="split-block">
+                <strong style="display: block; margin-bottom: var(--space-2); color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font-display); font-size: var(--text-xs);">After (Semantic HTML)</strong>
+                <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-4); background-color: var(--color-surface); overflow: hidden; border-radius: 4px;">
+                  <img src="assets/images/projects/portfolio/after-code.jpg" alt="Clean semantic HTML" style="width: 100%; height: auto; display: block;">
+                </div>
+                <p class="secondary-paragraph" style="font-size: var(--text-sm);">Strict architectural tags passing W3C validation instantly.</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  
+      <!-- Navigation Controls matching Screenshot 2026-09-14 at 2.31.56 PM.png -->
+      <div class="carousel-controls" style="display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-8);">
+        
+        <!-- Left Arrow -->
+        <button id="carousel-prev" aria-label="Previous slide" style="width: 48px; height: 48px; border-radius: 50%; border: none; background-color: #D1D5DB; color: #6B7280; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; pointer-events: none; opacity: 0.7;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        
+        <!-- Right Arrow -->
+        <button id="carousel-next" aria-label="Next slide" style="width: 48px; height: 48px; border-radius: 50%; border: none; background-color: var(--color-primary); color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        
+        <!-- Progress Line -->
+        <div style="flex-grow: 1; height: 4px; background-color: var(--color-border); border-radius: 2px; overflow: hidden; position: relative;">
+          <div id="carousel-progress" style="position: absolute; top: 0; left: 0; height: 100%; width: 50%; background-color: var(--color-primary); transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);"></div>
+        </div>
+        
+      </div>
+      
+    </div>
+  
+    <p class="secondary-paragraph" style="margin-bottom: var(--space-8); padding-top: var(--space-4);">
+      <strong>Continuous Deployment:</strong> The site uses an automated pipeline. When I push a commit to the main branch on GitHub, a Netlify webhook triggers and updates the live site in seconds without manual server work.
+    </p>
+  </div>
 
       </div>
     </section>
@@ -419,8 +497,6 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
         </a>
       </div>
-
-      
     </nav>
   </main>
 
@@ -563,12 +639,77 @@
         window.addEventListener('scroll', updateActivePill, { passive: true });
         updateActivePill();
     });
-
-    
   </script>
 
+  <!-- ACCESSIBILITY SECTION CAROUSEL (LEFT RIGHT ARROWS)-->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.querySelector('.carousel-track');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const btnPrev = document.getElementById('carousel-prev');
+      const btnNext = document.getElementById('carousel-next');
+      const progressBar = document.getElementById('carousel-progress');
+      
+      if(!track || slides.length === 0) return;
+      
+      let currentIndex = 0;
+      const totalSlides = slides.length;
   
- 
+      const updateCarousel = () => {
+        // Move track
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Fill progress line based on Screenshot 2026-09-14 at 2.31.56 PM.png behavior
+        const progressPercentage = ((currentIndex + 1) / totalSlides) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+        
+        // Handle Prev Button State
+        if (currentIndex === 0) {
+          btnPrev.style.backgroundColor = '#D1D5DB';
+          btnPrev.style.color = '#6B7280';
+          btnPrev.style.pointerEvents = 'none';
+          btnPrev.style.boxShadow = 'none';
+        } else {
+          btnPrev.style.backgroundColor = 'var(--color-primary)';
+          btnPrev.style.color = '#ffffff';
+          btnPrev.style.pointerEvents = 'auto';
+          btnPrev.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+        }
+        
+        // Handle Next Button State
+        if (currentIndex === totalSlides - 1) {
+          btnNext.style.backgroundColor = '#D1D5DB';
+          btnNext.style.color = '#6B7280';
+          btnNext.style.pointerEvents = 'none';
+          btnNext.style.boxShadow = 'none';
+        } else {
+          btnNext.style.backgroundColor = 'var(--color-primary)';
+          btnNext.style.color = '#ffffff';
+          btnNext.style.pointerEvents = 'auto';
+          btnNext.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+        }
+      };
+  
+      btnNext.addEventListener('click', () => {
+        if (currentIndex < totalSlides - 1) {
+          currentIndex++;
+          updateCarousel();
+        }
+      });
+  
+      btnPrev.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
+      });
+      
+      // Set initial state
+      updateCarousel();
+    });
+  </script>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-left" style="display: flex; align-items: center; gap: var(--space-2);">
