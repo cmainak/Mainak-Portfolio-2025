@@ -1054,7 +1054,13 @@
   margin-left: 3px;
   padding-left: 0;
 }
+.hero-greeting {
+  margin-bottom: var(--space-4); /* 16px in an 8pt grid */
+}
 
+#hero-heading {
+  margin-top: 0;
+}
       #hero {
         position: relative;
         min-height: calc(100vh - var(--nav-height));
