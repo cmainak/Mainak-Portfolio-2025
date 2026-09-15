@@ -1423,8 +1423,9 @@
    }
    
    .editorial-about {
-   padding: var(--space-24) 0;
-   background-color: var(--color-bg);
+    padding-top: var(--space-8); /* Shrinks the top gap globally */
+    padding-bottom: var(--space-24); /* Maintains your original bottom spacing */
+    background-color: var(--color-bg);
    }
    
    /* ============================================================
@@ -1487,8 +1488,9 @@
    Dedicated Work Page (Grid Layout)
    ============================================================ */
    .editorial-work {
-   padding: var(--space-24) 0;
-   background-color: var(--color-bg);
+    padding-top: var(--space-8); /* Shrinks the top gap globally */
+    padding-bottom: var(--space-24); /* Maintains your original bottom spacing */
+    background-color: var(--color-bg);
    }
    
    .work-header-row {
