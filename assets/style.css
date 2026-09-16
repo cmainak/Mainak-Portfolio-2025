@@ -1497,12 +1497,12 @@
   max-width: 100%; /* Forces downward scaling */
   height: auto;
   display: block;
-  filter: grayscale(100%) contrast(120%); /* Maintains your stark B&W treatment */[cite: 1]
-  transition: filter var(--duration-base) var(--ease-out); /*[cite: 1]*/
+  filter: grayscale(100%) contrast(120%); /* Maintains your stark B&W treatment */
+  transition: filter var(--duration-base) var(--ease-out); 
 }
 
 .clean-about-image:hover img {
-  filter: grayscale(0%) contrast(100%); /*[cite: 1]*/
+  filter: grayscale(0%) contrast(100%); 
 }
 
 /* 5. Desktop Layout (Split Columns) */
