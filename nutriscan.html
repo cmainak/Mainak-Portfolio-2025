@@ -317,83 +317,49 @@
         </div>
 -->
 
-<!-- Discovery & Initial Research Section -->
-<div class="case-study-content-block" style="margin-bottom: var(--space-12);">
-  <h3 class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">01. Discovery & User Research</h3>
-  <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-    To validate the initial FDA statistics—which show 65% of US shoppers struggle to interpret food labels—I utilized a mixed-methods approach to observe actual mid-aisle friction.
-  </p>
-
-  <div class="principles-grid">
+<!-- Interactive Research Methods Carousel -->
+<div class="carousel-container" style="margin-bottom: var(--space-12);">
+  
+  <!-- Dynamic Content Display (Combined Card) -->
+  <article class="principle-card" style="display: flex; flex-direction: column; min-height: 200px;">
     
-  <!-- Research Method 1: Discovery Survey -->
-  <article class="principle-card" style="display: flex; flex-direction: column;">
-    <!-- Artifact Image Placeholder -->
-    <div style="width: 100%; height: 140px; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg); margin-bottom: var(--space-4); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-      <!-- REPLACE SRC WITH YOUR SURVEY CHART IMAGE -->
-      <img src="assets/images/projects/orbit/survey-chart-placeholder.jpg" alt="Bar chart showing survey responses on label confusion" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+    <!-- Image Display (Now INSIDE the card) -->
+    <div class="carousel-image-wrapper" style="width: 100%; height: 250px; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg); margin-bottom: var(--space-4); display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px;">
+      <img id="research-img" src="assets/images/projects/orbit/survey-chart-placeholder.jpg" alt="Bar chart showing survey responses on label confusion" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.8; transition: opacity 0.2s ease;">
     </div>
 
-    <span class="principle-number" aria-hidden="true">01</span>
-    <!-- Shifted from "Quantitative Surveys" to a qualitative framing -->
-    <h3 style="font-family: var(--font-display); font-size: var(--text-md); margin-bottom: var(--space-4);">Discovery Questionnaire</h3>
+    <!-- Text Display -->
+    <span id="research-number" class="principle-number" aria-hidden="true">01</span>
+    <h3 id="research-title" style="font-family: var(--font-display); font-size: var(--text-md); margin-bottom: var(--space-4);">Discovery Questionnaire</h3>
     
     <p style="margin-bottom: var(--space-4); flex-grow: 1;">
-      <strong style="display: block; color: var(--color-text); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Directional Insights</strong>
-      Distributed an exploratory survey to shoppers managing dietary restrictions to identify initial behavioral trends and pain points.
+      <strong id="research-subtitle" style="display: block; color: var(--color-text); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Directional Insights</strong>
+      <span id="research-desc">Distributed an exploratory survey to shoppers managing dietary restrictions to identify initial behavioral trends and pain points.</span>
     </p>
     
     <p style="border-top: 1px solid var(--color-border); padding-top: var(--space-3);">
-      <strong style="display: block; color: var(--color-primary); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Key Insight</strong>
-      Overwhelming distrust of vague "health-washing" marketing claims on packaging.
+      <strong id="research-insight-label" style="display: block; color: var(--color-primary); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Key Insight</strong>
+      <span id="research-insight-text">Overwhelming distrust of vague "health-washing" marketing claims on packaging.</span>
     </p>
   </article>
 
-    <!-- Research Method 2: Contextual Inquiry -->
-    <article class="principle-card" style="display: flex; flex-direction: column;">
-      <!-- Artifact Image Placeholder -->
-      <div style="width: 100%; height: 140px; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg); margin-bottom: var(--space-4); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-        <!-- REPLACE SRC WITH A PHOTO OF A MESSY GROCERY SHELF OR SOMEONE HOLDING A PHONE IN AN AISLE -->
-        <img src="assets/images/projects/orbit/grocery-aisle-placeholder.jpg" alt="Shopper looking at their phone in a grocery aisle" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
-      </div>
-
-      <span class="principle-number" aria-hidden="true">02</span>
-      <h3 style="font-family: var(--font-display); font-size: var(--text-md); margin-bottom: var(--space-4);">Contextual Inquiry</h3>
-      
-      <p style="margin-bottom: var(--space-4); flex-grow: 1;">
-        <strong style="display: block; color: var(--color-text); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">The Reality (4 Shoppers)</strong>
-        Shadowed 4 target users during live grocery runs to observe mid-aisle friction.
-      </p>
-      
-      <p style="border-top: 1px solid var(--color-border); padding-top: var(--space-3);">
-        <strong style="display: block; color: var(--color-primary); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Key Insight</strong>
-        Traditional barcode apps required too many taps, breaking their physical shopping flow.
-      </p>
-    </article>
-
-    <!-- Research Method 3: Competitive Audit -->
-    <article class="principle-card" style="display: flex; flex-direction: column;">
-      <!-- Artifact Image Placeholder -->
-      <div style="width: 100%; height: 140px; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg); margin-bottom: var(--space-4); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-        <!-- REPLACE SRC WITH A SCREENSHOT OF COMPETITOR APPS (LIKE YUKA OR MYFITNESSPAL) SHOWING A PAYWALL -->
-        <img src="assets/images/projects/orbit/competitor-audit-placeholder.jpg" alt="Screenshots of competitor nutrition apps" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
-      </div>
-
-      <span class="principle-number" aria-hidden="true">03</span>
-      <h3 style="font-family: var(--font-display); font-size: var(--text-md); margin-bottom: var(--space-4);">Competitive Audit</h3>
-      
-      <p style="margin-bottom: var(--space-4); flex-grow: 1;">
-        <strong style="display: block; color: var(--color-text); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Market Gap</strong>
-        Analyzed dominant nutrition and barcode scanning applications currently on the market.
-      </p>
-      
-      <p style="border-top: 1px solid var(--color-border); padding-top: var(--space-3);">
-        <strong style="display: block; color: var(--color-primary); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Key Insight</strong>
-        Competitors provided raw data but hid actionable personalization behind premium paywalls.
-      </p>
-    </article>
-
+  <!-- Controls & Progress (Matching your design system) -->
+  <div class="carousel-controls" style="display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-6);">
+    <div style="display: flex; gap: var(--space-2);">
+      <button id="research-prev" class="carousel-btn" aria-label="Previous Method">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="research-next" class="carousel-btn" aria-label="Next Method">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div class="carousel-progress-track" style="flex: 1; height: 4px; background: var(--color-border); position: relative; border-radius: 2px; overflow: hidden;">
+      <div id="research-progress-fill" style="position: absolute; top: 0; left: 0; height: 100%; width: 33.33%; background: var(--color-primary); transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);"></div>
+    </div>
   </div>
+  
 </div>
 
 <div class="case-study-content-block" style="margin-bottom: var(--space-12);">
@@ -923,6 +889,106 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="assets/script.js"></script>
-
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Data Array containing all your research methods content
+      const researchMethods = [
+        {
+          imgSrc: 'assets/images/projects/orbit/survey-chart-placeholder.jpg',
+          imgAlt: 'Bar chart showing survey responses on label confusion',
+          number: '01',
+          title: 'Discovery Questionnaire',
+          subtitle: 'Directional Insights',
+          desc: 'Distributed an exploratory survey to shoppers managing dietary restrictions to identify initial behavioral trends and pain points.',
+          insightLabel: 'Key Insight',
+          insightText: 'Overwhelming distrust of vague "health-washing" marketing claims on packaging.'
+        },
+        {
+          imgSrc: 'assets/images/projects/orbit/Observation.png',
+          imgAlt: 'Shopper looking at their phone in a grocery aisle',
+          number: '02',
+          title: 'Contextual Inquiry',
+          subtitle: 'The Reality (4 Shoppers)',
+          desc: 'Shadowed 4 target users during live grocery runs to observe mid-aisle friction.',
+          insightLabel: 'Key Insight',
+          insightText: 'Traditional barcode apps required too many taps, breaking their physical shopping flow.'
+        },
+        {
+          imgSrc: 'assets/images/projects/orbit/competitor-audit-placeholder.jpg',
+          imgAlt: 'Screenshots of competitor nutrition apps',
+          number: '03',
+          title: 'Competitive Audit',
+          subtitle: 'Market Gap',
+          desc: 'Analyzed dominant nutrition and barcode scanning applications currently on the market.',
+          insightLabel: 'Key Insight',
+          insightText: 'Competitors provided raw data but hid actionable personalization behind premium paywalls.'
+        }
+      ];
+      
+      let currentIndex = 0;
+      
+      // 2. Grab DOM elements
+      const img = document.getElementById('research-img');
+      const number = document.getElementById('research-number');
+      const title = document.getElementById('research-title');
+      const subtitle = document.getElementById('research-subtitle');
+      const desc = document.getElementById('research-desc');
+      const insightLabel = document.getElementById('research-insight-label');
+      const insightText = document.getElementById('research-insight-text');
+      
+      const prevBtn = document.getElementById('research-prev');
+      const nextBtn = document.getElementById('research-next');
+      const progressFill = document.getElementById('research-progress-fill');
+      
+      // 3. Update Function
+      function updateResearchCarousel() {
+        const data = researchMethods[currentIndex];
+        
+        // Fade out image
+        img.style.opacity = 0;
+        
+        setTimeout(() => {
+          // Update content
+          img.src = data.imgSrc;
+          img.alt = data.imgAlt;
+          number.textContent = data.number;
+          title.textContent = data.title;
+          subtitle.textContent = data.subtitle;
+          desc.textContent = data.desc;
+          insightLabel.textContent = data.insightLabel;
+          insightText.textContent = data.insightText;
+          
+          // Fade image back in
+          img.style.opacity = 0.8;
+        }, 200);
+        
+        // Update Progress Bar
+        const progressPercentage = ((currentIndex + 1) / researchMethods.length) * 100;
+        progressFill.style.width = progressPercentage + '%';
+        
+        // Toggle button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === researchMethods.length - 1;
+      }
+  
+      // 4. Event Listeners
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateResearchCarousel();
+        }
+      });
+  
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < researchMethods.length - 1) {
+          currentIndex++;
+          updateResearchCarousel();
+        }
+      });
+      
+      // Initialize on load
+      updateResearchCarousel();
+    });
+  </script>
 </body>
 </html>
