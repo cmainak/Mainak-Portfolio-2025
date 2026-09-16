@@ -1237,6 +1237,19 @@
    }
 
 
+   /* Constrains massive font scaling on tablets and landscape phones */
+@media (max-width: 1023px) {
+  #hero h1, 
+  #hero h1.animated-name {
+    /* Lowers the minimum size, slows the growth rate, and tightly caps the max size to 4.5rem */
+    font-size: clamp(2.5rem, 8vw, 4.5rem) !important; 
+    
+    /* Adjusts the negative left margin for optical alignment at this smaller scale */
+    margin-left: -2px; 
+  }
+}
+
+
 /* ============================================================
    Ultra-Wide / TV Monitor Adjustments
 ============================================================ */
