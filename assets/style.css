@@ -1441,62 +1441,82 @@
     background-color: var(--color-bg);
    }
    
-   /* ============================================================
+  /* ============================================================
    Clean About Page (In a Nutshell - Split Layout)
    ============================================================ */
-   .clean-about-grid {
-   display: grid;
-   grid-template-columns: 1fr;
-   gap: var(--space-12);
-   margin-top: var(--space-8);
-   margin-bottom: var(--space-24);
-   align-items: center; 
-   }
-   
-   @media (min-width: 1024px) {
-   .clean-about-grid {
-    grid-template-columns: 1fr 1fr;
+
+/* 1. Base Mobile/Tablet Layout (Stacked) */
+.clean-about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-24);
+  align-items: center; 
+}
+
+/* 2. Text Container & Grid Safety */
+.clean-about-content {
+  min-width: 0; /* CRITICAL: Prevents grid blowouts */
+  max-width: 65ch; /* Highly readable line length */
+}
+
+/* 3. Typography */
+.clean-about-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.clean-about-prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.clean-about-prose p {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 100%;
+}
+
+/* 4. Image Constraints (Tablets & Foldables) */
+.clean-about-image {
+  min-width: 0; /* CRITICAL: Prevents grid blowouts */
+  width: 100%;
+  max-width: 440px; /* Prevents massive vertical stretching on iPads */
+  margin: 0 auto; /* Centers beautifully under text on mobile/tablet */
+  overflow: hidden;
+}
+
+.clean-about-image img {
+  width: 100%;
+  max-width: 100%; /* Forces downward scaling */
+  height: auto;
+  display: block;
+  filter: grayscale(100%) contrast(120%); /* Maintains your stark B&W treatment */[cite: 1]
+  transition: filter var(--duration-base) var(--ease-out); /*[cite: 1]*/
+}
+
+.clean-about-image:hover img {
+  filter: grayscale(0%) contrast(100%); /*[cite: 1]*/
+}
+
+/* 5. Desktop Layout (Split Columns) */
+@media (min-width: 1024px) {
+  .clean-about-grid {
+    grid-template-columns: 1.1fr 0.9fr; /* Gives the text side slightly more breathing room */
     gap: var(--space-16);
-   }
-   }
-   
-   .clean-about-content {
-   max-width: 65ch;
-   }
-   
-   .clean-about-title {
-   font-family: var(--font-display);
-   font-size: clamp(2.5rem, 5vw, 3.5rem);
-   line-height: 1.1;
-   margin-bottom: var(--space-8);
-   color: var(--color-text);
-   }
-   
-   .clean-about-prose {
-   display: flex;
-   flex-direction: column;
-   gap: var(--space-6);
-   }
-   
-   .clean-about-prose p {
-   font-size: clamp(1.125rem, 1.5vw, 1.25rem);
-   color: var(--color-text-muted);
-   line-height: var(--leading-relaxed);
-   max-width: 100%;
-   }
-   
-   .clean-about-image img {
-   width: 100%;
-   overflow: hidden;
-   height: auto;
-   display: block;
-   filter: grayscale(100%) contrast(120%);
-   transition: filter var(--duration-base) var(--ease-out);
-   }
-   
-   .clean-about-image:hover img {
-   filter: grayscale(0%) contrast(100%);
-   }
+  }
+  
+  .clean-about-image {
+    max-width: 100%; /* Removes the tablet constraint so it fills the column naturally */
+    margin: 0; /* Resets auto-centering */
+  }
+}
    
    /* ============================================================
    Dedicated Work Page (Grid Layout)
