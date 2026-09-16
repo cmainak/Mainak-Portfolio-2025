@@ -1487,6 +1487,7 @@
    
    .clean-about-image img {
    width: 100%;
+   overflow: hidden;
    height: auto;
    display: block;
    filter: grayscale(100%) contrast(120%);
