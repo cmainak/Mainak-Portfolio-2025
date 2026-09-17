@@ -809,51 +809,58 @@ details[open].research-accordion .accordion-icon::after {
           </figcaption>
         </figure>
 
-        <!-- Revised Lessons Learned Section (Accordion Format) -->
+<!-- Revised Lessons Learned Section (Broader Strategic Mindset in Accordion Format) -->
 <div class="case-study-content-block" style="margin-bottom: var(--space-12);">
-    <h3 class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-6);">06. Lessons Learned & Core Challenges</h3>
+  
+  <h3 class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">06. Lessons Learned & Reflections</h3>
+  <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+    Designing Nutri Scan highlighted the gap between digital interfaces and physical environments. Here is what I learned.
+  </p>
+  
+  <!-- Accordion Group Container -->
+  <div class="accordion-group" style="margin-bottom: var(--space-8);">
     
-    <!-- Accordion Group Container -->
-    <div class="accordion-group" style="margin-bottom: var(--space-8);">
-      
-      <!-- Challenge 1 -->
-      <details class="research-accordion">
-        <summary class="accordion-header">
-          <span class="accordion-title">Challenge 1: Breaking My Own Design Assumptions</span>
-          <span class="accordion-icon"></span>
-        </summary>
-        <div class="accordion-content">
-          <p style="font-size: var(--text-sm); color: var(--color-text); margin-bottom: var(--space-2);"><strong>The Problem:</strong> I initially designed the scanning flow based on standard app logic—once a user scans a barcode, they are taken to a new "Results" screen.</p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);"><strong>The Solution:</strong> During early mid-fidelity testing, I observed that taking users to a new screen completely broke their physical scanning context, causing frustration. I pivoted the architecture to a progressive, bottom-anchored camera overlay. This taught me that surface-level logic fails in practice, reinforcing my drive to prototype and test in realistic, physical environments as early as possible.</p>
-        </div>
-      </details>
-  
-      <!-- Challenge 2 -->
-      <details class="research-accordion">
-        <summary class="accordion-header">
-          <span class="accordion-title">Challenge 2: Reducing Cognitive Load</span>
-          <span class="accordion-icon"></span>
-        </summary>
-        <div class="accordion-content">
-          <p style="font-size: var(--text-sm); color: var(--color-text); margin-bottom: var(--space-2);"><strong>The Problem:</strong> I wanted to give users detailed health scores (e.g., 41/100). However, testing showed users hesitated, wondering if 41 was a passing or failing grade.</p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);"><strong>The Solution:</strong> I replaced the raw numbers with a 3-tier traffic-light color system and binary risk tags (High, Limited). This directly solved the challenge of decision fatigue and reduced the time-on-task from over 5 minutes to under 2 minutes.</p>
-        </div>
-      </details>
-  
-      <!-- Challenge 3 -->
-      <details class="research-accordion">
-        <summary class="accordion-header">
-          <span class="accordion-title">Challenge 3: Minimizing Setup Friction</span>
-          <span class="accordion-icon"></span>
-        </summary>
-        <div class="accordion-content">
-          <p style="font-size: var(--text-sm); color: var(--color-text); margin-bottom: var(--space-2);"><strong>The Problem:</strong> To personalize the app, users needed to set their dietary preferences. My initial text-heavy checklist triggered a 40% drop-off rate during onboarding tests.</p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);"><strong>The Solution:</strong> I transformed the onboarding flow into a highly visual, scannable grid of branded icon chips with smart presets. This eliminated the friction and resulted in a 100% task completion rate in final testing.</p>
-        </div>
-      </details>
-  
-    </div>
+    <!-- Lesson 1 -->
+    <details class="research-accordion">
+      <summary class="accordion-header">
+        <span class="accordion-title">1. The physical environment dictates the digital experience.</span>
+        <span class="accordion-icon"></span>
+      </summary>
+      <div class="accordion-content">
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
+          It is easy to design logical user flows in a quiet room, but grocery shopping is a chaotic physical experience. Initially, I designed a standard app flow where scanning a barcode loaded a new screen. Testing revealed this broke the user's physical context and caused frustration mid-aisle. When designing digital tools for physical environments, standard app conventions often fail. You must test in realistic settings early. This insight drove my pivot to a progressive camera overlay.
+        </p>
+      </div>
+    </details>
+
+    <!-- Lesson 2 -->
+    <details class="research-accordion">
+      <summary class="accordion-header">
+        <span class="accordion-title">2. Users want confident decisions, not raw data.</span>
+        <span class="accordion-icon"></span>
+      </summary>
+      <div class="accordion-content">
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
+          I originally thought empowering users meant giving them granular data, like a 41 out of 100 health score. Observing users hesitate in testing showed me that raw data actually increases cognitive load. Shoppers do not want to interpret numbers. They want confident closure. By replacing the numerical scores with a clear color system and binary risk tags, I learned that true user empowerment comes from translating complex information into immediate actionable decisions.
+        </p>
+      </div>
+    </details>
+
+    <!-- Lesson 3 -->
+    <details class="research-accordion">
+      <summary class="accordion-header">
+        <span class="accordion-title">3. Balancing deep personalization with user momentum.</span>
+        <span class="accordion-icon"></span>
+      </summary>
+      <div class="accordion-content">
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
+          For Nutri Scan to provide accurate safety warnings, it required users to input their specific dietary restrictions. My first approach was a detailed text checklist. This caused a 40% drop-off because it felt like an interrogation. I realized that while users crave personalized experiences, they refuse to sacrifice their momentum to get them. Transforming the onboarding into visual icon chips taught me how to gather complex user preferences in a way that feels effortless.
+        </p>
+      </div>
+    </details>
+
   </div>
+</div>
 
       </div>
     </section>
