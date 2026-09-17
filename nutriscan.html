@@ -27,6 +27,70 @@
 
   <style>
     /* Creates the side-by-side layout for the pills and the arrow */
+
+    /* ── Brutalist Jump Navigation CSS ── */
+  html { scroll-behavior: smooth; }
+
+.jump-nav {
+  position: fixed;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100vw - var(--space-8));
+  max-width: 680px;
+  min-width: 280px;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-text);
+  box-shadow: 8px 8px 0 var(--color-primary); 
+  padding: var(--space-2);
+}
+
+.jump-pill {
+  flex: 1 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--color-text);
+  background: transparent;
+  border: 2px solid transparent;
+  transition: all var(--duration-fast) var(--ease-out);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.jump-pill:hover {
+  background-color: var(--color-bg);
+  border-color: var(--color-border);
+}
+
+.jump-pill.active {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary, #fff);
+  border-color: var(--color-primary);
+}
+
+.table-heading[id] {
+  scroll-margin-top: calc(80px + var(--space-8)); 
+}
+
+@media (max-width: 768px) {
+  .jump-nav {
+    bottom: var(--space-4);
+    box-shadow: 4px 4px 0 var(--color-primary);
+  }
+  .jump-pill {
+    font-size: 0.7rem;
+    padding: var(--space-2) var(--space-3);
+  }
+}
     .jump-nav-inner {
       display: flex;
       align-items: center;
@@ -181,55 +245,55 @@
     }
 
     /* ── Research Accordion CSS ── */
-.research-accordion {
-  border-bottom: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-}
+    .research-accordion {
+      border-bottom: 1px solid var(--color-border);
+      background-color: var(--color-surface);
+    }
 
-/* Adds a top border only to the first item to match your screenshot */
-.research-accordion:first-of-type {
-  border-top: 1px solid var(--color-border);
-}
+    /* Adds a top border only to the first item */
+    .research-accordion:first-of-type {
+      border-top: 1px solid var(--color-border);
+    }
 
-.accordion-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-4) 0;
-  cursor: pointer;
-  list-style: none; /* Removes the default HTML arrow */
-}
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-4) 0;
+      cursor: pointer;
+      list-style: none; /* Removes the default HTML arrow */
+    }
 
-/* Removes default arrow in Safari */
-.accordion-header::-webkit-details-marker {
-  display: none; 
-}
+    /* Removes default arrow in Safari */
+    .accordion-header::-webkit-details-marker {
+      display: none; 
+    }
 
-.accordion-title {
-  font-family: var(--font-display); 
-  font-size: 1.1rem; 
-  color: var(--color-text);
-  font-weight: 600;
-}
+    .accordion-title {
+      font-family: var(--font-display); 
+      font-size: 1.1rem; 
+      color: var(--color-text);
+      font-weight: 600;
+    }
 
-/* The Plus Icon */
-.accordion-icon::after {
-  content: '+';
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--color-text);
-}
+    /* The Plus Icon */
+    .accordion-icon::after {
+      content: '+';
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--color-text);
+    }
 
-/* Changes to Minus when open */
-details[open].research-accordion .accordion-icon::after {
-  content: '−';
-}
+    /* Changes to Minus when open */
+    details[open].research-accordion .accordion-icon::after {
+      content: '−';
+    }
 
-.accordion-content {
-  padding-bottom: var(--space-6);
-  padding-top: var(--space-2);
-}
+    .accordion-content {
+      padding-bottom: var(--space-6);
+      padding-top: var(--space-2);
+    }
   </style>
 </head>
 <body>
@@ -328,17 +392,13 @@ details[open].research-accordion .accordion-icon::after {
             <strong>PLATFORM</strong>
             <span>iOS Mobile App</span>
           </div>
-          <div class="meta-block">
-            <strong>TEAM</strong>
-            <span>4</span>
-          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- 2. "Empathize" Section (Mapped to #empathize) -->
-    <section id="empathize" class="problem-response-section table-heading">
+    <!-- Pre-process: Problem & Solution Section -->
+    <section class="problem-response-section table-heading">
       <div class="container">
         <div class="split-content-grid">
           <div class="split-block">
@@ -357,176 +417,146 @@ details[open].research-accordion .accordion-icon::after {
       </div>
     </section>
 
-    
-
-    <!-- 3. Main Case Study Body (Mapped to remaining IDs) -->
+    <!-- 3. Main Case Study Body -->
     <section class="case-study-body">
       <div class="container case-study-content">
-        <!--
-        <div class="case-study-media" style="margin-bottom: var(--space-12);">
-          <img src="assets/images/projects/orbit/Nutri Scan Thumbnail.png" alt="Nutri Scan app preview on iPhone">
+
+        <!-- 01. Empathize & Research -->
+        <h3 id="empathize" class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-6);">01. Crafting the Research</h3>
+        
+      <!-- Interactive Accordion: Crafting the Research Section -->
+<div class="case-study-content-block" style="margin-bottom: var(--space-12);">
+  
+  <div style="margin-bottom: var(--space-8);">
+    <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-4);">What questions should be asked?</strong>
+    <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+      To properly define the scope of the problem before jumping into solutions, I drafted core research objectives focusing on in-store shopper behavior and digital interventions. I anchored my research around four main areas:
+    </p>
+
+    <!-- Accordion Group Container -->
+    <div class="accordion-group">
+      
+      <!-- Accordion 1 -->
+      <details class="research-accordion">
+        <summary class="accordion-header">
+          <span class="accordion-title">1. Gain clarity on the In-Store Shopping Experience</span>
+          <span class="accordion-icon"></span>
+        </summary>
+        <div class="accordion-content">
+          <ul style="list-style-type: none; padding-left: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">How do shoppers currently navigate and interpret complex ingredient labels mid-aisle?</li>
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">Where do they experience the most friction or frustration when evaluating a product?</li>
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">Does manually searching for unfamiliar ingredients on their phone disrupt their physical shopping flow?</li>
+          </ul>
         </div>
--->
+      </details>
 
-<!-- Interactive Accordion: Crafting the Research Section -->
-<div class="case-study-content-block" style="margin-bottom: var(--space-12);">
-    <h3 class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">Crafting the Research</h3>
-    
-    <div style="margin-bottom: var(--space-8);">
+      <!-- Accordion 2 -->
+      <details class="research-accordion">
+        <summary class="accordion-header">
+          <span class="accordion-title">2. Understand consumer shopping habits</span>
+          <span class="accordion-icon"></span>
+        </summary>
+        <div class="accordion-content">
+          <ul style="list-style-type: none; padding-left: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">How do dietary restrictions impact their weekly grocery planning and store choice?</li>
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">Are they primarily looking for new healthy alternatives, or just verifying their usual routine purchases?</li>
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">How does the urgency of a physical shopping trip change their willingness to research a product?</li>
+          </ul>
+        </div>
+      </details>
 
-      <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-        To properly define the scope of the problem before jumping into solutions, I drafted core research objectives focusing on in-store shopper behavior and digital interventions. I anchored my research around three main areas:
-      </p>
-  
-      <!-- Accordion Group Container -->
-      <div class="accordion-group">
-        
-        <!-- Accordion 1 -->
-        <details class="research-accordion">
-          <summary class="accordion-header">
-            <span class="accordion-title">1. Gain clarity on the In-Store Shopping Experience</span>
-            <span class="accordion-icon"></span>
-          </summary>
-          <div class="accordion-content">
-            <ul style="list-style-type: none; padding-left: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">How do shoppers currently navigate and interpret complex ingredient labels mid-aisle?</li>
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">Where do they experience the most friction or frustration when evaluating a product?</li>
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">Does manually searching for unfamiliar ingredients on their phone disrupt their physical shopping flow?</li>
-            </ul>
-          </div>
-        </details>
-  
-        <!-- Accordion 2 -->
-        <details class="research-accordion">
-          <summary class="accordion-header">
-            <span class="accordion-title">2. Understand user trust and cognitive load</span>
-            <span class="accordion-icon"></span>
-          </summary>
-          <div class="accordion-content">
-            <ul style="list-style-type: none; padding-left: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">Do users actually trust the "health-washing" marketing claims on the front of packaging?</li>
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">What specific elements make a nutrition label feel overwhelming or unreadable?</li>
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">How much time are time-poor shoppers actually willing to spend evaluating a single item?</li>
-            </ul>
-          </div>
-        </details>
-  
-        <!-- Accordion 3 -->
-        <details class="research-accordion">
-          <summary class="accordion-header">
-            <span class="accordion-title">3. Discover what features provide instant value</span>
-            <span class="accordion-icon"></span>
-          </summary>
-          <div class="accordion-content">
-            <ul style="list-style-type: none; padding-left: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">What specific information does a user need to confidently say "yes" or "no" to a product in under 3 seconds?</li>
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">What visual language or scoring system would make them trust the app's health rating?</li>
-              <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">What alternative actions do they expect if a scanned product fails their dietary criteria?</li>
-            </ul>
-          </div>
-        </details>
-        
-      </div>
-    </div>
-  </div>
+      <!-- Accordion 3 -->
+      <details class="research-accordion">
+        <summary class="accordion-header">
+          <span class="accordion-title">3. Understand user trust and cognitive load</span>
+          <span class="accordion-icon"></span>
+        </summary>
+        <div class="accordion-content">
+          <ul style="list-style-type: none; padding-left: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">Do users actually trust the "health-washing" marketing claims on the front of packaging?</li>
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">What specific elements make a nutrition label feel overwhelming or unreadable?</li>
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">How much time are time-poor shoppers actually willing to spend evaluating a single item?</li>
+          </ul>
+        </div>
+      </details>
 
-<!-- Interactive Research Methods Carousel -->
-<div class="carousel-container" style="margin-bottom: var(--space-12);">
-  
-  <!-- Dynamic Content Display (Combined Card) -->
-  <article class="principle-card" style="display: flex; flex-direction: column; min-height: 200px;">
-    
-    <!-- Image Display (Now INSIDE the card) -->
-    <div class="carousel-image-wrapper" style="width: 100%; height: 250px; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg); margin-bottom: var(--space-4); display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px;">
-      <img id="research-img" src="assets/images/projects/orbit/survey-chart-placeholder.jpg" alt="Bar chart showing survey responses on label confusion" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.8; transition: opacity 0.2s ease;">
-    </div>
-
-    <!-- Text Display -->
-    <span id="research-number" class="principle-number" aria-hidden="true">01</span>
-    <h3 id="research-title" style="font-family: var(--font-display); font-size: var(--text-md); margin-bottom: var(--space-4);">Discovery Questionnaire</h3>
-    
-    <p style="margin-bottom: var(--space-4); flex-grow: 1;">
-      <strong id="research-subtitle" style="display: block; color: var(--color-text); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Directional Insights</strong>
-      <span id="research-desc">Distributed an exploratory survey to shoppers managing dietary restrictions to identify initial behavioral trends and pain points.</span>
-    </p>
-    
-    <p style="border-top: 1px solid var(--color-border); padding-top: var(--space-3);">
-      <strong id="research-insight-label" style="display: block; color: var(--color-primary); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Key Insight</strong>
-      <span id="research-insight-text">Overwhelming distrust of vague "health-washing" marketing claims on packaging.</span>
-    </p>
-  </article>
-
-  <!-- Controls & Progress (Matching your design system) -->
-  <div class="carousel-controls" style="display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-6);">
-    <div style="display: flex; gap: var(--space-2);">
-      <button id="research-prev" class="carousel-btn" aria-label="Previous Method">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button id="research-next" class="carousel-btn" aria-label="Next Method">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
-    
-    <!-- Progress Bar -->
-    <div class="carousel-progress-track" style="flex: 1; height: 4px; background: var(--color-border); position: relative; border-radius: 2px; overflow: hidden;">
-      <div id="research-progress-fill" style="position: absolute; top: 0; left: 0; height: 100%; width: 33.33%; background: var(--color-primary); transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);"></div>
-    </div>
-  </div>
-  
-</div>
-
-<div class="case-study-content-block" style="margin-bottom: var(--space-12);">
-  <h3 class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">Ideation & Problem Framing</h3>
-  <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-    Before committing to ideation, I translated Stephanie's journey map into three core "How Might We" challenges:
-  </p>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-6);">
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
-      <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Speed of Assessment</strong>
-      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">How might we evaluate product suitability in under 3 seconds without taking shoppers out of their flow?</p>
-    </div>
-    
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
-      <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Cognitive Load</strong>
-      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">How might we translate complex chemical additives into actionable safety ratings without overwhelming the user?</p>
-    </div>
-    
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
-      <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Decision Closure</strong>
-      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">How might we provide immediate, safe alternatives when a scanned item fails dietary criteria?</p>
+      <!-- Accordion 4 -->
+      <details class="research-accordion">
+        <summary class="accordion-header">
+          <span class="accordion-title">4. Discover what features provide instant value</span>
+          <span class="accordion-icon"></span>
+        </summary>
+        <div class="accordion-content">
+          <ul style="list-style-type: none; padding-left: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">What specific information does a user need to confidently say "yes" or "no" to a product in under 3 seconds?</li>
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">What visual language or scoring system would make them trust the app's health rating?</li>
+            <li style="margin-bottom: var(--space-3); padding-left: var(--space-4); border-left: 2px solid var(--color-primary);">What alternative actions do they expect if a scanned product fails their dietary criteria?</li>
+          </ul>
+        </div>
+      </details>
+      
     </div>
   </div>
 </div>
 
+        <!-- Interactive Research Methods Carousel -->
+        <div class="carousel-container" style="margin-bottom: var(--space-12);">
+          
+          <article class="principle-card" style="display: flex; flex-direction: column; min-height: 200px;">
+            <div class="carousel-image-wrapper" style="width: 100%; height: 250px; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg); margin-bottom: var(--space-4); display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px;">
+              <img id="research-img" src="assets/images/projects/orbit/survey-chart-placeholder.jpg" alt="Bar chart showing survey responses on label confusion" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.8; transition: opacity 0.2s ease;">
+            </div>
 
+            <span id="research-number" class="principle-number" aria-hidden="true">01</span>
+            <h3 id="research-title" style="font-family: var(--font-display); font-size: var(--text-md); margin-bottom: var(--space-4);">Discovery Questionnaire</h3>
+            
+            <p style="margin-bottom: var(--space-4); flex-grow: 1;">
+              <strong id="research-subtitle" style="display: block; color: var(--color-text); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Directional Insights</strong>
+              <span id="research-desc">Distributed an exploratory survey to shoppers managing dietary restrictions to identify initial behavioral trends and pain points.</span>
+            </p>
+            
+            <p style="border-top: 1px solid var(--color-border); padding-top: var(--space-3);">
+              <strong id="research-insight-label" style="display: block; color: var(--color-primary); font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xs); letter-spacing: 0.05em; margin-bottom: var(--space-1);">Key Insight</strong>
+              <span id="research-insight-text">Overwhelming distrust of vague "health-washing" marketing claims on packaging.</span>
+            </p>
+          </article>
 
+          <div class="carousel-controls" style="display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-6);">
+            <div style="display: flex; gap: var(--space-2);">
+              <button id="research-prev" class="carousel-btn" aria-label="Previous Method">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button id="research-next" class="carousel-btn" aria-label="Next Method">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+            
+            <div class="carousel-progress-track" style="flex: 1; height: 4px; background: var(--color-border); position: relative; border-radius: 2px; overflow: hidden;">
+              <div id="research-progress-fill" style="position: absolute; top: 0; left: 0; height: 100%; width: 33.33%; background: var(--color-primary); transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);"></div>
+            </div>
+          </div>
+        </div>
 
-        <h3 id="define" class="table-heading" style="font-size: 1.5rem;">02. Strategy & Persona</h3>
+        <!-- 02. Define: Strategy & Persona -->
+        <h3 id="define" class="table-heading" style="font-size: 1.5rem;">02. Define: Strategy & Persona</h3>
         <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-          I synthesized insights from exploratory survey responses (n=22) and 4 in-depth interviews. The research revealed a clear gap. A clear pattern emerged: shoppers were wasting time mid-aisle trying to decode dense nutrition labels. The goal: Build a scanning tool that cuts through marketing claims and gives users an instant, definitive "yes" or "no" for their specific diet.</p>
+          I synthesized insights from exploratory survey responses (n=22) and 4 in-depth interviews. The research revealed a clear gap. A clear pattern emerged: shoppers were wasting time mid-aisle trying to decode dense nutrition labels. The goal: Build a scanning tool that cuts through marketing claims and gives users an instant, definitive "yes" or "no" for their specific diet.
+        </p>
         
         <div class="persona-card-modern">
-          <!-- Left Side: Visual/Illustration -->
           <div class="persona-visual">
-            <!-- Replace with your actual illustration asset -->
             <img src="assets/images/projects/orbit/Stephanie.jpg" alt="Illustration of Stephanie">
           </div>
         
-          <!-- Right Side: Data -->
           <div class="persona-content">
-            
-            <!-- Header Area -->
             <div class="persona-header">
               <h4>Stephanie</h4>
               <span class="persona-subtitle">24, Grad Student</span>
               <p class="persona-quote">"I just want a quick Yes or No so I can get out of the aisle. Why is reading labels harder than my grad school textbooks?"</p>
             </div>
         
-            <!-- Details Grid -->
             <div class="persona-details-grid">
-              
-              <!-- Block 1 -->
               <div class="persona-detail-block">
                 <h5>About</h5>
                 <ul style="list-style: none; padding: 0;">
@@ -536,13 +566,11 @@ details[open].research-accordion .accordion-icon::after {
                 </ul>
               </div>
         
-              <!-- Block 2 -->
               <div class="persona-detail-block">
                 <h5>Core Need</h5>
                 <p>Finding a way to instantly identify safe foods and healthy alternatives without spending 10 minutes squinting at chemical names mid-aisle.</p>
               </div>
         
-              <!-- Block 3 -->
               <div class="persona-detail-block">
                 <h5>Goals</h5>
                 <ul>
@@ -551,7 +579,6 @@ details[open].research-accordion .accordion-icon::after {
                 </ul>
               </div>
         
-              <!-- Block 4 -->
               <div class="persona-detail-block">
                 <h5>Pain Points</h5>
                 <ul>
@@ -559,19 +586,17 @@ details[open].research-accordion .accordion-icon::after {
                   <li>Distrusts vague marketing claims on packaging.</li>
                 </ul>
               </div>
-        
             </div>
           </div>
         </div>
 
         <!-- Live FigJam Journey Map -->
-        <div class="figjam-scroll-wrapper" aria-label="Current State Journey Map">
+        <div class="figjam-scroll-wrapper" aria-label="Current State Journey Map" style="margin-bottom: var(--space-12);">
           <div class="figjam-board">
             <div class="figjam-header">
               <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--color-text); text-transform: uppercase;"> In-Store Journey Mapping</h3>
             </div>
             <div class="journey-flex-track">
-              <!-- Column 1 -->
               <div class="journey-col">
                 <div class="stage-header">1. Shelf Browsing</div>
                 <div class="sticky-note sticky-yellow">
@@ -589,7 +614,6 @@ details[open].research-accordion .accordion-icon::after {
                   <div class="sticky-text">Instant, camera-based barcode scanning overlay (&lt;2s load).</div>
                 </div>
               </div>
-              <!-- Column 2 -->
               <div class="journey-col">
                 <div class="stage-header">2. Label Inspection</div>
                 <div class="sticky-note sticky-yellow">
@@ -607,7 +631,6 @@ details[open].research-accordion .accordion-icon::after {
                   <div class="sticky-text">High-contrast, scannable typographic breakdown of ingredients.</div>
                 </div>
               </div>
-              <!-- Column 3 -->
               <div class="journey-col">
                 <div class="stage-header">3. Manual Lookup</div>
                 <div class="sticky-note sticky-yellow">
@@ -625,7 +648,6 @@ details[open].research-accordion .accordion-icon::after {
                   <div class="sticky-text">Binary, color-coded health rating with explicit risk tags.</div>
                 </div>
               </div>
-              <!-- Column 4 -->
               <div class="journey-col">
                 <div class="stage-header">4. Comparison</div>
                 <div class="sticky-note sticky-yellow">
@@ -643,7 +665,6 @@ details[open].research-accordion .accordion-icon::after {
                   <div class="sticky-text">Instant 1-tap safe alternative swap suggestions.</div>
                 </div>
               </div>
-              <!-- Column 5 -->
               <div class="journey-col">
                 <div class="stage-header">5. Selection / Exit</div>
                 <div class="sticky-note sticky-yellow">
@@ -665,7 +686,33 @@ details[open].research-accordion .accordion-icon::after {
           </div>
         </div>
 
-        <h3 id="ideate" class="table-heading" style="font-size: 1.5rem;">03. Architecture & User Flow</h3>
+        <!-- 03. Ideate: Architecture & User Flow -->
+        <h3 id="ideate" class="table-heading" style="font-size: 1.5rem;">03. Ideate: Architecture & User Flow</h3>
+        
+        <div class="case-study-content-block" style="margin-bottom: var(--space-8);">
+          <strong style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-4); display: block;">Ideation & Problem Framing</strong>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            Before committing to ideation, I translated Stephanie's journey map into three core "How Might We" challenges:
+          </p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-6);">
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
+              <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Speed of Assessment</strong>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">How might we evaluate product suitability in under 3 seconds without taking shoppers out of their flow?</p>
+            </div>
+            
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
+              <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Cognitive Load</strong>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">How might we translate complex chemical additives into actionable safety ratings without overwhelming the user?</p>
+            </div>
+            
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-6); border-top: 4px solid var(--color-primary);">
+              <strong style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); display: block; margin-bottom: var(--space-2);">Decision Closure</strong>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">How might we provide immediate, safe alternatives when a scanned item fails dietary criteria?</p>
+            </div>
+          </div>
+        </div>
+
         <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
           To solve for speed, the app architecture handles the heavy lifting in under two seconds. I mapped a direct flow: Scan, Instant Health Score, Personalized Swap Suggestions.
         </p>
@@ -673,18 +720,10 @@ details[open].research-accordion .accordion-icon::after {
         <div style="width: 100%; border: 1px solid var(--color-border); margin-bottom: var(--space-12); overflow: hidden; background-color: var(--color-surface);">
           <img src="assets/images/projects/orbit/Minimum Steps Flow.png" alt="Nutri Scan User Flow" style="width: 100%; height: auto; display: block;">
         </div>
-<!--
-        <figure style="margin: 0; margin-bottom: var(--space-12);">
-          <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
-            <img src="assets/images/projects/orbit/User Flow.png" alt="Nutri Scan Detailed User Flow" style="width: 100%; height: auto; display: block;">
-          </div>
-          <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-3); font-style: italic; border-left: 2px solid var(--color-primary); padding-left: var(--space-3);">
-            Mapping the core user journey. Visualizing the architecture early identified redundant steps and condensed the path from initial scan to health insight into a single flow.
-          </figcaption>
-        </figure>
 
-        -->
-
+        <!-- 04. Prototype: Key Design Decisions -->
+        <h3 id="prototype" class="table-heading" style="font-size: 1.5rem;">04. Prototype: Key Design Decisions</h3>
+        
         <figure style="margin: 0; margin-bottom: var(--space-12);">
           <div style="width: 100%; border: 1px solid var(--color-border); overflow: hidden; background-color: var(--color-surface);">
             <img src="assets/images/projects/orbit/Low-fi.png" alt="Nutri Scan Low-Fidelity Wireframes" style="width: 100%; height: auto; display: block;">
@@ -695,14 +734,12 @@ details[open].research-accordion .accordion-icon::after {
         </figure>
 
         <div class="case-study-content-block" style="margin-bottom: var(--space-12);">
-          <h3 class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">Usability Testing & Evidence-Based Iterations</h3>
+          <strong style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-4); display: block;">Usability Testing & Evidence-Based Iterations</strong>
           <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
             I evaluated the interactive mid-fidelity prototype with 5 target participants across 3 core supermarket shopping tasks. The test focused on time-on-task, clarity of information hierarchy, and error recovery.
           </p>
         
           <div class="principles-grid">
-            
-            <!-- Friction 1 -->
             <article class="principle-card">
               <span class="principle-number" aria-hidden="true">01</span>
               <h3>Camera Flow Disruption</h3>
@@ -716,7 +753,6 @@ details[open].research-accordion .accordion-icon::after {
               </p>
             </article>
         
-            <!-- Friction 2 -->
             <article class="principle-card">
               <span class="principle-number" aria-hidden="true">02</span>
               <h3>Ambiguous Scoring</h3>
@@ -730,7 +766,6 @@ details[open].research-accordion .accordion-icon::after {
               </p>
             </article>
         
-            <!-- Friction 3 -->
             <article class="principle-card">
               <span class="principle-number" aria-hidden="true">03</span>
               <h3>Setup Friction</h3>
@@ -743,12 +778,9 @@ details[open].research-accordion .accordion-icon::after {
                 Swapped text-heavy lists with visual icon chips and smart presets.
               </p>
             </article>
-        
           </div>
         </div>
         
-
-        <h3 id="prototype" class="table-heading" style="font-size: 1.5rem;">04. Key Design Decisions</h3>
         <div style="margin-bottom: var(--space-8);">
           <h4 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--color-text); margin-bottom: var(--space-4);">Decision 1: Progressive Disclosure over Separate Screens</h4>
           <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
@@ -788,7 +820,8 @@ details[open].research-accordion .accordion-icon::after {
           </div>
         </div>
 
-        <h3 id="test" class="table-heading" style="font-size: 1.5rem;">05. Final Prototype & Reflection</h3>
+        <!-- 05. Test: Final Prototype & Reflection -->
+        <h3 id="test" class="table-heading" style="font-size: 1.5rem;">05. Test: Final Prototype & Reflection</h3>
         <p class="secondary-paragraph" style="margin-bottom: var(--space-8);">
           The interactive prototype reduced time-on-task from over 5 minutes to under 2 minutes. Moderated testing yielded a 100% completion rate. Try the flow below.
         </p>
@@ -809,58 +842,58 @@ details[open].research-accordion .accordion-icon::after {
           </figcaption>
         </figure>
 
-<!-- Revised Lessons Learned Section (Broader Strategic Mindset in Accordion Format) -->
-<div class="case-study-content-block" style="margin-bottom: var(--space-12);">
-  
-  <h3 class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">06. Lessons Learned & Reflections</h3>
-  <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
-    Designing Nutri Scan highlighted the gap between digital interfaces and physical environments. Here is what I learned.
-  </p>
-  
-  <!-- Accordion Group Container -->
-  <div class="accordion-group" style="margin-bottom: var(--space-8);">
-    
-    <!-- Lesson 1 -->
-    <details class="research-accordion">
-      <summary class="accordion-header">
-        <span class="accordion-title">1. The physical environment dictates the digital experience.</span>
-        <span class="accordion-icon"></span>
-      </summary>
-      <div class="accordion-content">
-        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
-          It is easy to design logical user flows in a quiet room, but grocery shopping is a chaotic physical experience. Initially, I designed a standard app flow where scanning a barcode loaded a new screen. Testing revealed this broke the user's physical context and caused frustration mid-aisle. When designing digital tools for physical environments, standard app conventions often fail. You must test in realistic settings early. This insight drove my pivot to a progressive camera overlay.
-        </p>
-      </div>
-    </details>
+        <!-- 06. Lessons Learned & Reflections -->
+        <div class="case-study-content-block" style="margin-bottom: var(--space-12);">
+          
+          <h3 class="table-heading" style="font-size: 1.5rem; margin-bottom: var(--space-4);">06. Lessons Learned & Reflections</h3>
+          <p class="secondary-paragraph" style="margin-bottom: var(--space-6);">
+            Designing Nutri Scan highlighted the gap between digital interfaces and physical environments. Here is what I learned.
+          </p>
+          
+          <!-- Accordion Group Container -->
+          <div class="accordion-group" style="margin-bottom: var(--space-8);">
+            
+            <!-- Lesson 1 -->
+            <details class="research-accordion">
+              <summary class="accordion-header">
+                <span class="accordion-title">1. The physical environment dictates the digital experience.</span>
+                <span class="accordion-icon"></span>
+              </summary>
+              <div class="accordion-content">
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
+                  It is easy to design logical user flows in a quiet room, but grocery shopping is a chaotic physical experience. Initially, I designed a standard app flow where scanning a barcode loaded a new screen. Testing revealed this broke the user's physical context and caused frustration mid-aisle. When designing digital tools for physical environments, standard app conventions often fail. You must test in realistic settings early. This insight drove my pivot to a progressive camera overlay.
+                </p>
+              </div>
+            </details>
 
-    <!-- Lesson 2 -->
-    <details class="research-accordion">
-      <summary class="accordion-header">
-        <span class="accordion-title">2. Users want confident decisions, not raw data.</span>
-        <span class="accordion-icon"></span>
-      </summary>
-      <div class="accordion-content">
-        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
-          I originally thought empowering users meant giving them granular data, like a 41 out of 100 health score. Observing users hesitate in testing showed me that raw data actually increases cognitive load. Shoppers do not want to interpret numbers. They want confident closure. By replacing the numerical scores with a clear color system and binary risk tags, I learned that true user empowerment comes from translating complex information into immediate actionable decisions.
-        </p>
-      </div>
-    </details>
+            <!-- Lesson 2 -->
+            <details class="research-accordion">
+              <summary class="accordion-header">
+                <span class="accordion-title">2. Users want confident decisions, not raw data.</span>
+                <span class="accordion-icon"></span>
+              </summary>
+              <div class="accordion-content">
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
+                  I originally thought empowering users meant giving them granular data, like a 41 out of 100 health score. Observing users hesitate in testing showed me that raw data actually increases cognitive load. Shoppers do not want to interpret numbers. They want confident closure. By replacing the numerical scores with a clear color system and binary risk tags, I learned that true user empowerment comes from translating complex information into immediate actionable decisions.
+                </p>
+              </div>
+            </details>
 
-    <!-- Lesson 3 -->
-    <details class="research-accordion">
-      <summary class="accordion-header">
-        <span class="accordion-title">3. Balancing deep personalization with user momentum.</span>
-        <span class="accordion-icon"></span>
-      </summary>
-      <div class="accordion-content">
-        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
-          For Nutri Scan to provide accurate safety warnings, it required users to input their specific dietary restrictions. My first approach was a detailed text checklist. This caused a 40% drop-off because it felt like an interrogation. I realized that while users crave personalized experiences, they refuse to sacrifice their momentum to get them. Transforming the onboarding into visual icon chips taught me how to gather complex user preferences in a way that feels effortless.
-        </p>
-      </div>
-    </details>
+            <!-- Lesson 3 -->
+            <details class="research-accordion">
+              <summary class="accordion-header">
+                <span class="accordion-title">3. Balancing deep personalization with user momentum.</span>
+                <span class="accordion-icon"></span>
+              </summary>
+              <div class="accordion-content">
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: var(--leading-relaxed);">
+                  For Nutri Scan to provide accurate safety warnings, it required users to input their specific dietary restrictions. My first approach was a detailed text checklist. This caused a 40% drop-off because it felt like an interrogation. I realized that while users crave personalized experiences, they refuse to sacrifice their momentum to get them. Transforming the onboarding into visual icon chips taught me how to gather complex user preferences in a way that feels effortless.
+                </p>
+              </div>
+            </details>
 
-  </div>
-</div>
+          </div>
+        </div>
 
       </div>
     </section>
@@ -882,74 +915,6 @@ details[open].research-accordion .accordion-icon::after {
     </nav>
   </main>
 
-  <style>
-    /* ── Brutalist Jump Navigation CSS ── */
-    html {
-      scroll-behavior: smooth; 
-    }
-  
-    .jump-nav {
-      position: fixed;
-      bottom: var(--space-8);
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      width: calc(100vw - var(--space-8));
-      max-width: 680px;
-      min-width: 280px;
-      background-color: var(--color-surface);
-      border: 2px solid var(--color-text);
-      box-shadow: 8px 8px 0 var(--color-primary); 
-      padding: var(--space-2);
-    }
-  
-    .jump-pill {
-      flex: 1 0 auto;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--space-2) var(--space-4);
-      font-family: var(--font-display);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      color: var(--color-text);
-      background: transparent;
-      border: 2px solid transparent;
-      transition: all var(--duration-fast) var(--ease-out);
-      white-space: nowrap;
-      cursor: pointer;
-    }
-  
-    .jump-pill:hover {
-      background-color: var(--color-bg);
-      border-color: var(--color-border);
-    }
-  
-    .jump-pill.active {
-      background-color: var(--color-primary);
-      color: var(--color-on-primary, #fff);
-      border-color: var(--color-primary);
-    }
-  
-    .table-heading[id] {
-      scroll-margin-top: calc(80px + var(--space-8)); 
-    }
-  
-    @media (max-width: 768px) {
-      .jump-nav {
-        bottom: var(--space-4);
-        box-shadow: 4px 4px 0 var(--color-primary);
-      }
-      .jump-pill {
-        font-size: 0.7rem;
-        padding: var(--space-2) var(--space-3);
-      }
-    }
-  </style>
-  
   <script>
     /* ── Universal Scroll & Jump JS ── */
     document.addEventListener("DOMContentLoaded", () => {
@@ -958,7 +923,6 @@ details[open].research-accordion .accordion-icon::after {
     
         const pills = document.querySelectorAll('.jump-pill');
         
-        // Updated array to match new Design Thinking IDs
         const sectionIds = ['empathize', 'define', 'ideate', 'prototype', 'test'];
         
         const sections = sectionIds.map(id => document.getElementById(id));
@@ -1047,7 +1011,6 @@ details[open].research-accordion .accordion-icon::after {
   <script src="assets/script.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Data Array containing all your research methods content
       const researchMethods = [
         {
           imgSrc: 'assets/images/projects/orbit/survey-chart-placeholder.jpg',
@@ -1083,7 +1046,6 @@ details[open].research-accordion .accordion-icon::after {
       
       let currentIndex = 0;
       
-      // 2. Grab DOM elements
       const img = document.getElementById('research-img');
       const number = document.getElementById('research-number');
       const title = document.getElementById('research-title');
@@ -1096,15 +1058,12 @@ details[open].research-accordion .accordion-icon::after {
       const nextBtn = document.getElementById('research-next');
       const progressFill = document.getElementById('research-progress-fill');
       
-      // 3. Update Function
       function updateResearchCarousel() {
         const data = researchMethods[currentIndex];
         
-        // Fade out image
         img.style.opacity = 0;
         
         setTimeout(() => {
-          // Update content
           img.src = data.imgSrc;
           img.alt = data.imgAlt;
           number.textContent = data.number;
@@ -1114,20 +1073,16 @@ details[open].research-accordion .accordion-icon::after {
           insightLabel.textContent = data.insightLabel;
           insightText.textContent = data.insightText;
           
-          // Fade image back in
           img.style.opacity = 0.8;
         }, 200);
         
-        // Update Progress Bar
         const progressPercentage = ((currentIndex + 1) / researchMethods.length) * 100;
         progressFill.style.width = progressPercentage + '%';
         
-        // Toggle button states
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex === researchMethods.length - 1;
       }
   
-      // 4. Event Listeners
       prevBtn.addEventListener('click', () => {
         if (currentIndex > 0) {
           currentIndex--;
@@ -1142,7 +1097,6 @@ details[open].research-accordion .accordion-icon::after {
         }
       });
       
-      // Initialize on load
       updateResearchCarousel();
     });
   </script>
